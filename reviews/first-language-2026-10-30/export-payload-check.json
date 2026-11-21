@@ -1,0 +1,856 @@
+{
+  "checkedAt": "2026-10-30T17:44:39.030Z",
+  "passed": true,
+  "label": "source",
+  "scope": "Current staged changes excluding this receipt; bounded pattern scan, not complete secret detection.",
+  "branch": "feat/first-playable-loop",
+  "findings": [],
+  "members": [
+    {
+      "path": ".gitattributes",
+      "bytes": 14574,
+      "sha256": "ff92c9a91fe48ce96c9e55dedb1a82e78af07175807baae3db4b130e0d02b3de",
+      "textScanned": true
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 160340,
+      "sha256": "617e50d201e808867384979f1e1d37b4e0638cf6d2fd70010c2aa9853ced591d",
+      "textScanned": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 9457,
+      "sha256": "58a431559e83403b92108e8ed87e5b6546600721dd55ef42430dc5db4f14f600",
+      "textScanned": true
+    },
+    {
+      "path": "START_NEXT_CHAT.txt",
+      "bytes": 1496,
+      "sha256": "a448fd2b6f7549da4a1e9111fe9b5fb581e44b2343e128ef8fb05219c4f91c18",
+      "textScanned": true
+    },
+    {
+      "path": "docs/CHECKPOINT_2026_10_25.md",
+      "bytes": 3221,
+      "sha256": "855cda4076e6f288e0c7cbc2ae4e5509412653835ffd0aa037125dca5432237b",
+      "textScanned": true
+    },
+    {
+      "path": "docs/DEVELOPMENT_PROGRESS.md",
+      "bytes": 28701,
+      "sha256": "36e82c71ad1fc9945c14dbc983abb8704bacff06d338cd37f95c3a35426c66b9",
+      "textScanned": true
+    },
+    {
+      "path": "docs/HANDOFF_NEXT_CHAT.md",
+      "bytes": 589,
+      "sha256": "33752247b11b2d912806e168f5494155c84828d7433f62f18a07c295d6f15625",
+      "textScanned": true
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATE.md",
+      "bytes": 4676,
+      "sha256": "7e8f545f2ac543a6de18c3bb245eda7cc92b834792acef3d95c16e84ba399b03",
+      "textScanned": true
+    },
+    {
+      "path": "docs/PUBLIC_POLISH.md",
+      "bytes": 5022,
+      "sha256": "8eae37441394b7485e7475f5ffd2299c710a288ed881df6fde02fea8b37bbf8d",
+      "textScanned": true
+    },
+    {
+      "path": "docs/WINDOWS_DESKTOP.md",
+      "bytes": 9636,
+      "sha256": "b6ed3e263a5d589642e221527fb99052fd2373f2a0cb7f9aee3ca223e95401dc",
+      "textScanned": true
+    },
+    {
+      "path": "docs/development-work-ledger.json",
+      "bytes": 32452,
+      "sha256": "3bb952e4d4f2c58bb4d6a993463f00f0f26c8f27b2e5d2e85bb284836f24571a",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Accessibility-and-Languages.md",
+      "bytes": 6394,
+      "sha256": "cd50777a6dd20286bd3729151ce095d47ace62adb136477f202385a067864249",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Changelog.md",
+      "bytes": 160340,
+      "sha256": "617e50d201e808867384979f1e1d37b4e0638cf6d2fd70010c2aa9853ced591d",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Development-Progress.md",
+      "bytes": 28701,
+      "sha256": "36e82c71ad1fc9945c14dbc983abb8704bacff06d338cd37f95c3a35426c66b9",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Getting-Started.md",
+      "bytes": 23628,
+      "sha256": "9d06e1716891ec3970899d6759143cde3f0ca7fad4748772e5a625ef431a7e11",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Home.md",
+      "bytes": 9131,
+      "sha256": "b5fcb4fa7eaf4081ce1817c3d51bcb474c65dac9605a871258b0710fbfdc06d5",
+      "textScanned": true
+    },
+    {
+      "path": "docs/wiki/Profiles.md",
+      "bytes": 4929,
+      "sha256": "7517f1c30747afae69b38e419af5bc3dc59d8b033951ac733af55ef4e84bb1d4",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ar.json",
+      "bytes": 203001,
+      "sha256": "e927624f010c9bdf44b3beac07d3df2737942ab368f059090ac296fe0ea83379",
+      "textScanned": true
+    },
+    {
+      "path": "locales/bn.json",
+      "bytes": 265755,
+      "sha256": "1dfe87125acbde5eae9ec2fd9fe74759038df92232e7d59c42da25db059567bd",
+      "textScanned": true
+    },
+    {
+      "path": "locales/de.json",
+      "bytes": 165960,
+      "sha256": "7359bbeb54e1bf69e009b0fedcc2641c515d1b19daf417f15f8e2c12a46f6adc",
+      "textScanned": true
+    },
+    {
+      "path": "locales/en.json",
+      "bytes": 160380,
+      "sha256": "060e31658c508207865894bb540bc5ab976a03db84b4e5401a23907660a22d99",
+      "textScanned": true
+    },
+    {
+      "path": "locales/es.json",
+      "bytes": 174283,
+      "sha256": "286b9d4b2142286b3eb736e196ec972e453c0f7320e1ca36c366edf434e0344a",
+      "textScanned": true
+    },
+    {
+      "path": "locales/fr.json",
+      "bytes": 166240,
+      "sha256": "8e48c274ef8d9741cbb2c2015a9816e17dec0db2b2629e4000314e928b13c394",
+      "textScanned": true
+    },
+    {
+      "path": "locales/hi.json",
+      "bytes": 272847,
+      "sha256": "1532297c95f676e4ad7efcbcc60046a8191ee8cc330286e48b5b3d082eeb0b5b",
+      "textScanned": true
+    },
+    {
+      "path": "locales/id.json",
+      "bytes": 165514,
+      "sha256": "7cf8b2fbabe918c623f6342f00fc958fe270e41fe8d93b23c462917465b01436",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ja.json",
+      "bytes": 173107,
+      "sha256": "d8215c696dc69704cdfeedc9a5850b08cd14e98233832f75ebf9e86b0ea2a503",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ko.json",
+      "bytes": 169145,
+      "sha256": "359f205b6cc2aa0e10607da088611a5191ef348fbb3eb99d15aa74817f05a664",
+      "textScanned": true
+    },
+    {
+      "path": "locales/pt-BR.json",
+      "bytes": 165706,
+      "sha256": "d3e0eefd547a589174588fb8b53538605945a1e3e3ff0cd74dc5ff4993f143a3",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ru.json",
+      "bytes": 228141,
+      "sha256": "7a3fd9c508866fb26b38c6f2419d1eab86ba39760a1edb8cb5db4b778f15d22d",
+      "textScanned": true
+    },
+    {
+      "path": "locales/source/first-language.mjs",
+      "bytes": 2286,
+      "sha256": "c9923ec63fef0a98c430b07ce3423a6f2e4f0e42371931eeb5c324434c7ed046",
+      "textScanned": true
+    },
+    {
+      "path": "locales/source/runtime-extras.mjs",
+      "bytes": 17828,
+      "sha256": "2d7cd1b5910405f56ac6eca159e388d229364a261c2e81045f8e22bfc2077cf6",
+      "textScanned": true
+    },
+    {
+      "path": "locales/ur.json",
+      "bytes": 206223,
+      "sha256": "409ca6f8d5700ee938a4883fb45736fcb4c265a50fc5f984c740cc9e35d9150a",
+      "textScanned": true
+    },
+    {
+      "path": "locales/zh-Hans.json",
+      "bytes": 154645,
+      "sha256": "1ea76451669dd667d9d097635d3832d93b608b8392a6d6092e05829884561a9e",
+      "textScanned": true
+    },
+    {
+      "path": "locales/zh-Hant.json",
+      "bytes": 154627,
+      "sha256": "2cd6b0833db36dd70cddeb0885873a4d3b1fc6de6b09d8e8ec84d0c6b67d6c97",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/IMPLEMENTATION.md",
+      "bytes": 2145,
+      "sha256": "77dd63a94aa9cc1e87685d69ec712943f6b4e87912b1bf070dbc0c05e7b8bf17",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/focused-01.log",
+      "bytes": 4180,
+      "sha256": "abde2bd2a40ed7c33e6e1a67fac55bebf2f711d8ed2d695123b5eee45e11d479",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/freeze-review.mjs",
+      "bytes": 10736,
+      "sha256": "06a397ec0de2f0807f636f0847773ba5ecd19295e7d1a8ce5f516b9af684f3a4",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/full-gate-01.log",
+      "bytes": 2408,
+      "sha256": "00fa16a45bb2a3ef57534832ef9d07165de6fb86aa1fb52b120764279c39f9e3",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/full-gate-02.log",
+      "bytes": 111178,
+      "sha256": "39a1e6c912e1119a21f3e0b9a00dacd602398db3f54386102324c4b50d02a70c",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/full-gate-03.log",
+      "bytes": 111169,
+      "sha256": "52737ecf4c581c2bc36d5f725fb596b6219f0427f76b6c90ea85993e5d13ded2",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/gate-preservation.json",
+      "bytes": 34950,
+      "sha256": "28a2f38cdcf09211d7b32eab884ebef62ab729b4e11a9998bf42900612145c94",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/runtime-verification.json",
+      "bytes": 303,
+      "sha256": "af4e25dcb6bc6a274baf3af3403ec2d1b6586eef87ec9b0f5ac91dd22d64bd39",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "c06f2b3d1584d70e71407e4b4a238a210a442685e829ac424fb356bcbab2e77d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-01/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "abf1b97cf81c99f619d19def80a83d0d2bbe8098d924e5287328d8702dd0813f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/gate-preservation.json",
+      "bytes": 34948,
+      "sha256": "460477586bb0e6981fc1a2186a375ee4f435449d55c29833dcb81c6247be9bc8",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/runtime-verification.json",
+      "bytes": 315539,
+      "sha256": "83f6ced9027978faa465605820bb99783df6ad0792cc0a566c1edeb557cbd413",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "a667d6a9e041a71396b8026bb0a9eea66c804e0cf755a9d1a8b7c0b0a823ba55",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-02/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "3f1775d18f6a2a7034cc485af50343a32b28171f17a7f7154ff0827b4a3a621d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/alchemist-lab-2026-10-27--art-verification.json",
+      "bytes": 3238,
+      "sha256": "1a34801387c735f1fa36eeeebd11b7493d6adc50dc4adc4dd6b5f0e26c1c74ea",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/gate-preservation.json",
+      "bytes": 34948,
+      "sha256": "dd8f4a524b276fb341c76fcff4d4ffc7f905b599c36599e9fea0b1bcf542386b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/resonant-tolls-2026-10-27--art-verification.json",
+      "bytes": 3235,
+      "sha256": "9097860a723322f04214cfbc4fee897d38751f1ac681eac20cc8c200706b7c9b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/resonant-tolls-2026-10-27--emitted-atlases-public.json",
+      "bytes": 26468,
+      "sha256": "2cf44dc5d75919502d02ba95432c046fba6601aeac88c687b097ddb7d097094f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/resonant-tolls-2026-10-27--emitted-atlases-testing.json",
+      "bytes": 25964,
+      "sha256": "3e1480a6a9549fc9be87b90acdbfb5694fc6d625a6e5f2cd1a7277a3bbabc6c0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/runtime-verification.json",
+      "bytes": 315539,
+      "sha256": "3ddfc9c93811ce94a73d3bcc76bd7cf769c29cfa5ab1ea00b141b2049bcd2243",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/small-wakes-2026-10-26--art-verification.json",
+      "bytes": 2964,
+      "sha256": "625ea6976fcdc817bff4d834fb54b953beb556fba53947ba21217d62627991f7",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/stage1-validation.json",
+      "bytes": 1978,
+      "sha256": "9ef6e8c147e15c0b854fafd2d06ed41a1cb8ef0602e7556fdb13f37f1a4cca76",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/gate-03/warden-patrol-2026-10-25--art-verification.json",
+      "bytes": 762,
+      "sha256": "a2c750c830faccdab101e465076b71b0b6e3602958f08e253d3335e62e060dbe",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/launch-preview.ps1",
+      "bytes": 3818,
+      "sha256": "76fcaa2777c079a0036cb1eb3a13d6a32892a9400658887825633d8b6d78a629",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/local-verification.json",
+      "bytes": 883,
+      "sha256": "d898f8c6b595059c68d02c8934dae0039bffbd61f7c2fcbba18afec0a78ae9e4",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/publish-wiki.mjs",
+      "bytes": 2970,
+      "sha256": "edb618d6572416fda3cec74399e57f04f225f2be8153d0650ab53f06439271f5",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/review-inputs.mjs",
+      "bytes": 2540,
+      "sha256": "5d5fd6423cb48ae85dfeb4aceb2362ec1c0e14f4be607dc7b3040b3e14af4928",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/run-gate.mjs",
+      "bytes": 3320,
+      "sha256": "c53658265a2447d36d8f84d63fc9e9b40b240f59d43e201c1eb9183d7e9dbd16",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/scan-export.mjs",
+      "bytes": 1672,
+      "sha256": "5b13a8ef8206d338d53d2b1ae46b2d445a198a1090470252c81680d65e559760",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/smoke-preview.mts",
+      "bytes": 12551,
+      "sha256": "98dae7035f7d650350823e485df869d45a70474b8467a22d5c2f0488440feac9",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/verify-local.mjs",
+      "bytes": 1823,
+      "sha256": "b3d4408736d72f89fd78be12c8083218da0b97a1c68bbd50c9ff1bf89cb6fa92",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/first-language-2026-10-30/verify-wiki.mjs",
+      "bytes": 1660,
+      "sha256": "a824171c6b7c7dadfb858d46f23389abf3ada4a6b89849a260bc3360569a93f9",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/checkpoint-status.json",
+      "bytes": 3610,
+      "sha256": "f368bcd977e07aae26edfe242dde42118e1c159b57a70be71b4a433897f86f1b",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/ci-124193482156.log",
+      "bytes": 168505,
+      "sha256": "b7b5becd13a87bf947c20b302f1954af9182aaec710467fb6ff0ffb6a8a19351",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/ci-124193577775.log",
+      "bytes": 169536,
+      "sha256": "02c64d011c39c820f7d753d1ac574cd2759bed4b2251f5c81d2b56cbbf619fd4",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/human-feedback-5250.json",
+      "bytes": 651,
+      "sha256": "4290dba4b8c7912abdd612b99301de31377b063a9da0e0740eead9ff42ddda79",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/human-name-policy.json",
+      "bytes": 523,
+      "sha256": "29a554ce134ad4f68e0d42f4278ff756a9af7b669848e7e6132bc84aac08f584",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/preview-public-bytes-03.json",
+      "bytes": 308576,
+      "sha256": "b70b4248b87b5c1137a32911768240aab8e8de81e07b2e172c858f596fe54bcd",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/preview-public-live-check-03.json",
+      "bytes": 13774,
+      "sha256": "6df2d79f1df47f1c82a5c0c4b1e14d8dfbb65ebd40409b048b370fcddf655ad8",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/preview-public-processes-03.json",
+      "bytes": 1079,
+      "sha256": "ef8685de2a9da9905c3c9d90dbc1abb020915eb08995350788bded9bd99044a7",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/preview-testing-bytes-03.json",
+      "bytes": 308579,
+      "sha256": "843385801c217a7dec343da79ff74f6a405fe3b3e28f5a1fe9a0ec058570031e",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/preview-testing-live-check-03.json",
+      "bytes": 13772,
+      "sha256": "f24ceccafb31108fce6a2aa0f6c48d7a2057a91dfdc1be49afa053036a2ae4de",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/preview-testing-processes-03.json",
+      "bytes": 1082,
+      "sha256": "35b2c01c759007ee42021159762f4a78601ff952fcd4c9f2eb443e19e7938f44",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/public-build-03.log",
+      "bytes": 361,
+      "sha256": "a2edda54bd0cc2d97b761c6051f8048970e0cd285d8a9751b04e869a11638a8f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/public-smoke-03.log",
+      "bytes": 1051,
+      "sha256": "1e45c4e4d761438f41211ef2c008059756e9e23aa431f63da2479ee4fb93d4ac",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/source-ci-diagnostics.json",
+      "bytes": 1115,
+      "sha256": "ebce8020a0c83277ad2a0eb06504dbbc018dd90ff11a7c6c86504ae7f3a66f01",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/source-ci.json",
+      "bytes": 1345,
+      "sha256": "883cf943e921e882f867debac40d7bd876788c7d210650d88030fdbeac2e7c58",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/testing-build-03.log",
+      "bytes": 753,
+      "sha256": "97fb1dca1fe41cb226ffd2ecb4300098dc5d4933108d91e31c15271cf28bf247",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/testing-smoke-03.log",
+      "bytes": 1045,
+      "sha256": "ce58a790bb65457202756b5c8cb1bcfa389008caa8494be1900ae2b18a19c042",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/wiki-prepared-03.json",
+      "bytes": 476,
+      "sha256": "d04a5f5cf1de65b8180d4d87188581723d9aac75030e52c2a7c68206c632f422",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/wiki-publication-03.json",
+      "bytes": 19108,
+      "sha256": "fe476ad74473602d2d74d05b78904f99a634fa01fb153cc6a30921fa4bf304e9",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/wiki-publish-03.log",
+      "bytes": 1204,
+      "sha256": "752bf180ff4da6beed9bc9988f2f0832eccf551854d635f29f1025f8733d4cff",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/wiki-push-03.json",
+      "bytes": 506,
+      "sha256": "7889fd64a726dc772dc84a2882183494c15b8be514fe7982ab308078ba1ff621",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/wiki-receipt-preservation-03.json",
+      "bytes": 415,
+      "sha256": "c2f739f510ba0fdb34eb4002967cc4fd7a7d401e714395ff57df4e634e209850",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/profile-navigation-2026-10-30/wiki-verification-03.log",
+      "bytes": 753,
+      "sha256": "0752adac7edbd41f74355423552cfa2c0b5dca123970e9bb3ffa77185cc3d9ee",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/DELIVERY.md",
+      "bytes": 983,
+      "sha256": "f58f6aa58643fb13e7eb787a8b24f1e76ea5dbac9d0cb54d4f1cfa220b285cbc",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/REQUEST.md",
+      "bytes": 485,
+      "sha256": "9fcf89fd564f2f93f77c7ecd636635180d548eecbae1cf17862fdba361e76ca1",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/archive-extraction-01.log",
+      "bytes": 1655,
+      "sha256": "58ec45159e6201b188229e2bef6066f059688f2c43ba250a4e1b670ee105a606",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/copy-package.ps1",
+      "bytes": 1924,
+      "sha256": "b643202c46f2c1f209dbaf1f5564b665101e07947464fe591ea73fa37de58300",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/deep-copied-01-lan-launch.log",
+      "bytes": 556,
+      "sha256": "eff6915e0d102b3aff4c6f240e4f81849d691fdbfcd79e72631af8dd9c8fecad",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/deep-copied-01-smoke-launch.log",
+      "bytes": 4658,
+      "sha256": "56894cb8722690fb64db3bbbfe8205ca32f88141a4e4b3d59faef9f86473cd25",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/deep-extracted-01-lan-launch.log",
+      "bytes": 556,
+      "sha256": "9a008b205ed5d7e815ed8c2c1dbe6cff2420f432c99961cb3d0f051f832c7ec4",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/deep-extracted-01-smoke-launch.log",
+      "bytes": 4658,
+      "sha256": "abeb5807378630167fa0d1e062372357ac721bfd83ac3072b3ca728e37f275e2",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/delivery-checksums.json",
+      "bytes": 1080,
+      "sha256": "4d025c591c74e911092e2a127df1fad24053bd52a13052c46b039e9ccf156097",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/desktop-build-02.log",
+      "bytes": 1030,
+      "sha256": "2605dfeb469fb0bf0a433034bc5e34356069534bf3a2ed3900a5a8b0b82ce7cf",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-deep-copied-01-lan.json",
+      "bytes": 604,
+      "sha256": "d5cdbb458a777ed9460793799fe8ba9c543551b93061570b869f32d03a1e7adb",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-deep-copied-01-smoke.json",
+      "bytes": 6984,
+      "sha256": "07f8b7671ab018972e4b0b607030877d2085f8c2609d5e77fe49f91a97e87a40",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-deep-extracted-01-lan.json",
+      "bytes": 604,
+      "sha256": "a51be03fc1085fb85b44e32b2c9991eb7397bfcdb85d0608b530903326b2be02",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-deep-extracted-01-smoke.json",
+      "bytes": 6984,
+      "sha256": "07f8b7671ab018972e4b0b607030877d2085f8c2609d5e77fe49f91a97e87a40",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-fixture.ps1",
+      "bytes": 2445,
+      "sha256": "542cc2cef2072b39b8ffd8a14e0fd64dfa5c5b4cabac091d48f1c86d9b10eab0",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-original-01-lan.json",
+      "bytes": 604,
+      "sha256": "80c31bad2f4bd202291b9a0c6718896b34744f6a6464fcf3ccea119e17e46e8d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/native-original-01-smoke.json",
+      "bytes": 6984,
+      "sha256": "07f8b7671ab018972e4b0b607030877d2085f8c2609d5e77fe49f91a97e87a40",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/ordinary-copy-01.log",
+      "bytes": 701,
+      "sha256": "c0d2d0b0d54310d2b94615efe84e03d50650c5b18c56b132e2b9c09d278d674f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/original-01-lan-launch.log",
+      "bytes": 556,
+      "sha256": "6115305774ecddab89def29472ff776299d889f623e2525633d0c7b8cd8baf5d",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/original-01-smoke-launch.log",
+      "bytes": 4658,
+      "sha256": "70401425508028985d593c5e17e48f55122791c28c6b6353d873ee130e34a99f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-archive-extraction.json",
+      "bytes": 1655,
+      "sha256": "58ec45159e6201b188229e2bef6066f059688f2c43ba250a4e1b670ee105a606",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-copy-command.json",
+      "bytes": 702,
+      "sha256": "ad3bd96a42a1199a127146eecf54a029e7d76a3fa5f1165d266890edaa335099",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-ordinary-copy.json",
+      "bytes": 701,
+      "sha256": "c0d2d0b0d54310d2b94615efe84e03d50650c5b18c56b132e2b9c09d278d674f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-post-native-0.json",
+      "bytes": 620,
+      "sha256": "fcebeac8038257e38d59804e487703f797619195c7ecf17a454b61806ebf48f7",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-post-native-1.json",
+      "bytes": 685,
+      "sha256": "b5e7a4682a5d5e604418f5b27c0e384ebf01b9dab8347abfe72b8c3474c790c4",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-post-native-2.json",
+      "bytes": 701,
+      "sha256": "c0d2d0b0d54310d2b94615efe84e03d50650c5b18c56b132e2b9c09d278d674f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/package-status.json",
+      "bytes": 39925,
+      "sha256": "1447b45ee1bea008bfcf81cf3bf20c3de287ae830c35bc35eadaebb4aa845f2c",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/post-native-0.log",
+      "bytes": 620,
+      "sha256": "fcebeac8038257e38d59804e487703f797619195c7ecf17a454b61806ebf48f7",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/post-native-1.log",
+      "bytes": 685,
+      "sha256": "b5e7a4682a5d5e604418f5b27c0e384ebf01b9dab8347abfe72b8c3474c790c4",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/post-native-2.log",
+      "bytes": 701,
+      "sha256": "c0d2d0b0d54310d2b94615efe84e03d50650c5b18c56b132e2b9c09d278d674f",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/seal-01.log",
+      "bytes": 1184,
+      "sha256": "71b0e2b7af28064923488b7b788bc01bfe4d05d3a944183a74f5e903fd3f5942",
+      "textScanned": true
+    },
+    {
+      "path": "reviews/windows-profile-navigation-2026-10-30-r02/seal-status.mjs",
+      "bytes": 6762,
+      "sha256": "33840a6be5e89134eb4721fc1d1640a5108a7159cbe348f6a70235042e56839d",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/display-name.ts",
+      "bytes": 586,
+      "sha256": "d778aa89da858cecfddc8a5c93353e8c610a5378a031d77ad5e5d4cb0cb56f43",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/i18n.ts",
+      "bytes": 2578,
+      "sha256": "f0211ffc5c731d773615fc8d06dad70c6ccc9361cc6e751a2bcdc117bceeb0b5",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/language-preference.ts",
+      "bytes": 538,
+      "sha256": "238e316d5a85baf8f16a697ba465d74c7ec1dbc4308863db77ab3e89a0b90ec2",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/main.ts",
+      "bytes": 52241,
+      "sha256": "05d6eb418db91bc208eeedfdde1ea6d407081e2fb27beeb822d8ecfe114b0d02",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/language-welcome.css",
+      "bytes": 2387,
+      "sha256": "97e8e30c18f1697d140fc8de89bffc6ac760d6109ecb78207836d0201a8e935c",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/language-welcome.ts",
+      "bytes": 2884,
+      "sha256": "4188698aacf66f2e98967bec5ffc2840629a3b1a12104b9a3c7a2b7bdfdfd8e8",
+      "textScanned": true
+    },
+    {
+      "path": "src/client/ui/setup.ts",
+      "bytes": 36280,
+      "sha256": "56a606b8069a604c5670db1f7d6b04f3d9237826c6c92974d7f1e774bd829b36",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/development-progress.json",
+      "bytes": 37450,
+      "sha256": "1684e62f69ea1f057d16987107c8010ab580e683557a0e3cb442d85f8b9ea352",
+      "textScanned": true
+    },
+    {
+      "path": "src/shared/update-history.json",
+      "bytes": 187317,
+      "sha256": "3fe2225a329c8e50dc5062738b0c37a08b41e972035a06fca09e840e3bc0ab98",
+      "textScanned": true
+    },
+    {
+      "path": "tests/first-language.test.ts",
+      "bytes": 10045,
+      "sha256": "e213b478de2ca7a2d7fb56700bea57ce4081338734e444c2850ba5865250c3de",
+      "textScanned": true
+    }
+  ]
+}

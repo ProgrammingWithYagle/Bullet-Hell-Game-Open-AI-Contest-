@@ -1,0 +1,36 @@
+{
+  "createdAt": "2026-10-31T21:13:46.897Z",
+  "passed": true,
+  "runtimeSourceSha256": "34a38cc374020ae34c367b44a30628cd8007966448a14bd29fadd23523028d14",
+  "contentRevision": "fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b",
+  "checks": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5280/",
+      "endpoint": "http://127.0.0.1:2656",
+      "sourceCommit": "517472b3e1efda13500d35e0351b3a7fdb565b92",
+      "protocol": 45,
+      "available": true,
+      "mainAndWorkerContainBothExpansions": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5281/",
+      "endpoint": "http://127.0.0.1:2657",
+      "sourceCommit": "517472b3e1efda13500d35e0351b3a7fdb565b92",
+      "protocol": 45,
+      "available": true,
+      "mainAndWorkerContainBothExpansions": true
+    }
+  ],
+  "earlierUserPreviewsRetained": [
+    5276,
+    5277,
+    5278,
+    5279
+  ],
+  "limits": [
+    "Native source/HTTP/transport checks; no rendered/human acceptance or personally played clear.",
+    "Production Site/backend and Windows builds remain separate."
+  ]
+}

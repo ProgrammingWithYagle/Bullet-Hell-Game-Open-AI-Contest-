@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-10T04:07:02.377Z",
+  "runtimeChanged": false,
+  "canonicalFilesWritten": false,
+  "source": "src/shared/game.ts endByHost removes tracked Traverse/Flak/Marksman/Grenadier/Sniper shots; it does not promise ordinary primary removal.",
+  "failedGate01": {
+    "tests": 2151,
+    "pass": 2149,
+    "fail": 2,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "heavyFailure": "Helper incorrectly included ordinary Open primary in handled C host-exit removal set.",
+  "scopeCorrection": "Require actual tracked C removals; retain and report ordinary primary separately without changing its issued authority.",
+  "priorDiagnosisCorrection": "The earlier round-proof02-fixture-correction record said direct Game did not supply Room/Session host removal events. That explanation was too broad: Game supplies tracked C removals; the included ordinary primary was outside that cleanup contract. Preserve that historical record and read this clarification.",
+  "olderSniperFailure": "Original stopped-cover crossing assertion, unchanged and isolated separately."
+}

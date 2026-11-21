@@ -1,0 +1,321 @@
+✖ Ending a live machinery run removes owned work, constructs and technique state from its final snapshot (36.1885ms)
+✖ Ending a live traps run removes owned work, constructs and technique state from its final snapshot (8.5275ms)
+✖ Ending a live builder run removes owned work, constructs and technique state from its final snapshot (10.4084ms)
+✖ Ending during committed maintenance cancels repair, without applying health or leaving a repair target in the final view (7.8448ms)
+✖ A real paused host exit clears all three Engineer owners for peers and late observers; non-host end requests cannot erase their work (626.7953ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3014.2374
+
+✖ failing tests:
+
+test at tests\engineer-exit.test.ts:1:875
+✖ Ending a live machinery run removes owned work, constructs and technique state from its final snapshot (36.1885ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     aim: -1.5707963267948966,
+  +     at: 1,
+  +     braceUntil: 70,
+  +     commandAt: 25,
+  +     farAim: false,
+  +     followOffset: {
+  +       x: 0,
+  +       y: -65
+  +     },
+  +     formationOffset: {
+  +       x: -3.980102097228898e-15,
+  +       y: 0
+  +     },
+  +     health: 84,
+  +     id: 1,
+  +     kind: 'turret',
+  +     machinery: true,
+  +     maxHealth: 84,
+  +     mobile: true,
+  +     order: 'follow',
+  +     owner: 'solo',
+  +     radius: 18,
+  +     retaliation: 0,
+  +     until: 361,
+  +     x: 695,
+  +     y: 687
+  +   },
+  +   {
+  +     at: 32,
+  +     convergence: false,
+  +     id: 1,
+  +     kind: 'engineer-coil',
+  +     owner: 'solo',
+  +     radius: 12,
+  +     rays: [
+  +       {
+  +         x: 695,
+  +         y: 230.64800000000002
+  +       }
+  +     ],
+  +     toX: 695,
+  +     toY: 230.64800000000002,
+  +     until: 55,
+  +     x: 695,
+  +     y: 687
+  +   }
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-exit.test.ts:19:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'turret', id: 1, owner: 'solo', x: 695, y: 687, radius: 18, aim: -1.5707963267948966, health: 84, maxHealth: 84, at: 1, until: 361, mobile: true, machinery: true, followOffset: [Object], formationOffset: [Object], order: 'follow', commandAt: 25, braceUntil: 70, farAim: false, retaliation: 0 }, { kind: 'engineer-coil', id: 1, owner: 'solo', x: 695, y: 687, toX: 695, toY: 230.64800000000002, radius: 12, at: 32, until: 55, convergence: false, rays: [Array] } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engineer-exit.test.ts:1:875
+✖ Ending a live traps run removes owned work, constructs and technique state from its final snapshot (8.5275ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     aim: -1.5707963267948966,
+  +     armedAt: 31,
+  +     at: 1,
+  +     detonateAt: 47,
+  +     held: false,
+  +     id: 1,
+  +     kind: 'engineer-charge',
+  +     owner: 'solo',
+  +     radius: 44,
+  +     state: 'fuse',
+  +     until: 1081,
+  +     x: 695,
+  +     y: 632
+  +   }
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-exit.test.ts:19:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'engineer-charge', id: 1, owner: 'solo', x: 695, y: 632, radius: 44, at: 1, armedAt: 31, detonateAt: 47, until: 1081, state: 'fuse', aim: -1.5707963267948966, held: false } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engineer-exit.test.ts:1:875
+✖ Ending a live builder run removes owned work, constructs and technique state from its final snapshot (10.4084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     at: 32,
+  +     id: 1,
+  +     kind: 'engineer-builder-plan',
+  +     owner: 'solo',
+  +     radius: 20,
+  +     toX: 695,
+  +     toY: 632,
+  +     until: 47,
+  +     x: 695,
+  +     y: 632
+  +   },
+  +   {
+  +     aim: -1.5707963267948966,
+  +     at: 1,
+  +     builder: true,
+  +     builderGroup: 1,
+  +     buildingAt: 32,
+  +     buildingUntil: 47,
+  +     halfSpan: 110,
+  +     health: 105,
+  +     id: 2,
+  +     kind: 'wall',
+  +     linkedSiege: undefined,
+  +     maxHealth: 105,
+  +     owner: 'solo',
+  +     radius: 110,
+  +     retaliation: 0,
+  +     source: 'engineer-builder-screen',
+  +     until: 901,
+  +     x: 695,
+  +     y: 632
+  +   }
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-exit.test.ts:19:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'engineer-builder-plan', id: 1, owner: 'solo', x: 695, y: 632, toX: 695, toY: 632, at: 32, until: 47, radius: 20 }, { kind: 'wall', id: 2, owner: 'solo', x: 695, y: 632, aim: -1.5707963267948966, halfSpan: 110, radius: 110, health: 105, maxHealth: 105, at: 1, until: 901, source: 'engineer-builder-screen', builder: true, builderGroup: 1, buildingAt: 32, buildingUntil: 47, linkedSiege: undefined, retaliation: 0 } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engineer-exit.test.ts:1:1992
+✖ Ending during committed maintenance cancels repair, without applying health or leaving a repair target in the final view (7.8448ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     at: 32,
+  +     id: 2,
+  +     kind: 'engineer-builder-work',
+  +     owner: 'solo',
+  +     radius: 25,
+  +     toX: 695,
+  +     toY: 632,
+  +     until: 56,
+  +     x: 695,
+  +     y: 752
+  +   },
+  +   {
+  +     absorbed: 50,
+  +     aim: -1.5707963267948966,
+  +     at: 1,
+  +     builder: true,
+  +     builderGroup: 1,
+  +     buildingAt: 1,
+  +     buildingUntil: 16,
+  +     halfSpan: 110,
+  +     health: 55,
+  +     id: 2,
+  +     kind: 'wall',
+  +     linkedSiege: undefined,
+  +     maxHealth: 105,
+  +     owner: 'solo',
+  +     radius: 110,
+  +     retaliation: 0,
+  +     source: 'engineer-builder-screen',
+  +     until: 901,
+  +     x: 695,
+  +     y: 632
+  +   }
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-exit.test.ts:27:67)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'engineer-builder-work', id: 2, owner: 'solo', x: 695, y: 752, toX: 695, toY: 632, at: 32, until: 56, radius: 25 }, { kind: 'wall', id: 2, owner: 'solo', x: 695, y: 632, aim: -1.5707963267948966, halfSpan: 110, radius: 110, health: 55, maxHealth: 105, at: 1, until: 901, source: 'engineer-builder-screen', builder: true, builderGroup: 1, buildingAt: 1, buildingUntil: 16, linkedSiege: undefined, retaliation: 0, absorbed: 50 } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engineer-exit.test.ts:1:3023
+✖ A real paused host exit clears all three Engineer owners for peers and late observers; non-host end requests cannot erase their work (626.7953ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     aim: -1.5707963267948966,
+  +     armedAt: 33,
+  +     at: 3,
+  +     detonateAt: 0,
+  +     held: false,
+  +     id: 2,
+  +     kind: 'engineer-charge',
+  +     owner: 'QL8ywBV15',
+  +     radius: 44,
+  +     state: 'arming',
+  +     until: 1083,
+  +     x: 725,
+  +     y: 632
+  +   },
+  +   {
+  +     aim: -1.5707963267948966,
+  +     at: 3,
+  +     braceUntil: 18,
+  +     commandAt: 27,
+  +     farAim: false,
+  +     followOffset: {
+  +       x: 0,
+  +       y: -65
+  +     },
+  +     formationOffset: {
+  +       x: -3.980102097228898e-15,
+  +       y: 0
+  +     },
+  +     health: 84,
+  +     id: 1,
+  +     kind: 'turret',
+  +     machinery: true,
+  +     maxHealth: 84,
+  +     mobile: true,
+  +     order: 'follow',
+  +     owner: 'BnJt7naCC',
+  +     radius: 18,
+  +     retaliation: 0,
+  +     until: 363,
+  +     x: 695,
+  +     y: 687
+  +   },
+  +   {
+  +     aim: -1.5707963267948966,
+  +     at: 3,
+  +     builder: true,
+  +     builderGroup: 3,
+  +     buildingAt: 3,
+  +     buildingUntil: 18,
+  +     halfSpan: 110,
+  +     health: 105,
+  +     id: 4,
+  +     kind: 'wall',
+  +     maxHealth: 105,
+  +     owner: 'VK8aJ3G9A',
+  +     radius: 110,
+  +     retaliation: 0,
+  +     source: 'engineer-builder-screen',
+  +     until: 903,
+  +     x: 755,
+  +     y: 632
+  +   }
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-exit.test.ts:44:137)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'engineer-charge', id: 2, owner: 'QL8ywBV15', x: 725, y: 632, radius: 44, at: 3, armedAt: 33, detonateAt: 0, until: 1083, state: 'arming', aim: -1.5707963267948966, held: false }, { kind: 'turret', id: 1, owner: 'BnJt7naCC', x: 695, y: 687, radius: 18, aim: -1.5707963267948966, health: 84, maxHealth: 84, at: 3, until: 363, mobile: true, machinery: true, followOffset: [Object], formationOffset: [Object], order: 'follow', commandAt: 27, braceUntil: 18, farAim: false, retaliation: 0 }, { kind: 'wall', id: 4, owner: 'VK8aJ3G9A', x: 755, y: 632, aim: -1.5707963267948966, halfSpan: 110, radius: 110, health: 105, maxHealth: 105, at: 3, until: 903, source: 'engineer-builder-screen', builder: true, builderGroup: 3, buildingAt: 3, buildingUntil: 18, retaliation: 0 } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,237 @@
+{
+  "passed": true,
+  "raw": "reviews/performance/endurance-50-moths-20261024-2.json",
+  "rawSha256": "e0569da31afbfbbda7834c9b8b1a89efc95ddfeffed79fea6e7bca192d92856d",
+  "frozenCommit": "723a66796e4a6d2c6d3c28611b5b7a5366de2f08",
+  "runtimeSourceSha256": "88a3817d29f0535cba3e731fbe0cbe03c599511cc2ce05d613045de665f9cc79",
+  "frozenSourcesVerifiedAgainstGit": 93,
+  "frozenBundleHashesVerified": [
+    {
+      "name": "measure-endurance.mjs",
+      "sha256": "475dad140a3ead928d9fb41e0421d46c64fe2ab4b44e202d3301b2db95fac5e2"
+    },
+    {
+      "name": "endurance-server-fixture.mjs",
+      "sha256": "254ce17694dc0fbc6f6af91d96255f6138cff8d9ae00c45257d7c089b9985acb"
+    }
+  ],
+  "independentVerifier": "tools/verify-endurance.py",
+  "independentVerifierSha256": "c829cae9877ce7b68e7455b1028ce73f3e74925a87235d460405df5c99b518da",
+  "durationSeconds": 3600.151562,
+  "ticks": 108001,
+  "tickMedianMs": 9.831099999602884,
+  "tickP99Ms": 21.406600000103936,
+  "tickWorstMs": 112.1050999998115,
+  "ticksOver33_333Ms": 236,
+  "acceptedInputs": 4286000,
+  "rejectedInputs": 0,
+  "observedAcceptedInputsPerClientSecond": 23.810108692307328,
+  "encodedOutboundBytes": 15534440747,
+  "encodedOutboundBytesPerSecond": 4314940.768318687,
+  "serverHeap": {
+    "minimumMiB": 22.188369750976562,
+    "medianMiB": 46.368194580078125,
+    "maximumMiB": 81.99445343017578,
+    "tenMinuteBins": [
+      {
+        "minuteStart": 0,
+        "samples": 40,
+        "minimumMiB": 22.188369750976562,
+        "medianMiB": 44.16694641113281,
+        "maximumMiB": 75.15237426757812
+      },
+      {
+        "minuteStart": 10,
+        "samples": 40,
+        "minimumMiB": 22.240951538085938,
+        "medianMiB": 41.040122985839844,
+        "maximumMiB": 74.89530181884766
+      },
+      {
+        "minuteStart": 20,
+        "samples": 40,
+        "minimumMiB": 22.8636474609375,
+        "medianMiB": 46.396080017089844,
+        "maximumMiB": 78.84198760986328
+      },
+      {
+        "minuteStart": 30,
+        "samples": 40,
+        "minimumMiB": 23.122344970703125,
+        "medianMiB": 49.107666015625,
+        "maximumMiB": 80.7420654296875
+      },
+      {
+        "minuteStart": 40,
+        "samples": 40,
+        "minimumMiB": 23.072486877441406,
+        "medianMiB": 54.097930908203125,
+        "maximumMiB": 81.99445343017578
+      },
+      {
+        "minuteStart": 50,
+        "samples": 40,
+        "minimumMiB": 23.45616912841797,
+        "medianMiB": 50.04413604736328,
+        "maximumMiB": 76.33719635009766
+      }
+    ]
+  },
+  "sdkParentHeap": {
+    "minimumMiB": 47.59996032714844,
+    "medianMiB": 139.83931732177734,
+    "maximumMiB": 271.59412384033203,
+    "tenMinuteBins": [
+      {
+        "minuteStart": 0,
+        "samples": 40,
+        "minimumMiB": 50.22674560546875,
+        "medianMiB": 150.8280487060547,
+        "maximumMiB": 244.18399810791016
+      },
+      {
+        "minuteStart": 10,
+        "samples": 40,
+        "minimumMiB": 60.288307189941406,
+        "medianMiB": 126.71028900146484,
+        "maximumMiB": 251.46585083007812
+      },
+      {
+        "minuteStart": 20,
+        "samples": 40,
+        "minimumMiB": 52.032081604003906,
+        "medianMiB": 136.60012817382812,
+        "maximumMiB": 271.59412384033203
+      },
+      {
+        "minuteStart": 30,
+        "samples": 40,
+        "minimumMiB": 70.13243865966797,
+        "medianMiB": 149.57183074951172,
+        "maximumMiB": 255.79952239990234
+      },
+      {
+        "minuteStart": 40,
+        "samples": 40,
+        "minimumMiB": 47.59996032714844,
+        "medianMiB": 140.52520751953125,
+        "maximumMiB": 256.90550231933594
+      },
+      {
+        "minuteStart": 50,
+        "samples": 40,
+        "minimumMiB": 52.51527404785156,
+        "medianMiB": 147.2135238647461,
+        "maximumMiB": 262.32244873046875
+      }
+    ]
+  },
+  "serverRss": {
+    "minimumMiB": 82.49609375,
+    "medianMiB": 216.1875,
+    "maximumMiB": 222.1171875,
+    "tenMinuteBins": [
+      {
+        "minuteStart": 0,
+        "samples": 40,
+        "minimumMiB": 82.49609375,
+        "medianMiB": 216.80078125,
+        "maximumMiB": 221.1640625
+      },
+      {
+        "minuteStart": 10,
+        "samples": 40,
+        "minimumMiB": 216.25,
+        "medianMiB": 218.28515625,
+        "maximumMiB": 221.41015625
+      },
+      {
+        "minuteStart": 20,
+        "samples": 40,
+        "minimumMiB": 215.42578125,
+        "medianMiB": 218.69921875,
+        "maximumMiB": 222.1171875
+      },
+      {
+        "minuteStart": 30,
+        "samples": 40,
+        "minimumMiB": 207.51953125,
+        "medianMiB": 212.44140625,
+        "maximumMiB": 220.6171875
+      },
+      {
+        "minuteStart": 40,
+        "samples": 40,
+        "minimumMiB": 206.4765625,
+        "medianMiB": 209.26171875,
+        "maximumMiB": 213.1796875
+      },
+      {
+        "minuteStart": 50,
+        "samples": 40,
+        "minimumMiB": 205.45703125,
+        "medianMiB": 209.66796875,
+        "maximumMiB": 213.05078125
+      }
+    ]
+  },
+  "sdkParentRss": {
+    "minimumMiB": 169.20703125,
+    "medianMiB": 455.890625,
+    "maximumMiB": 475.05859375,
+    "tenMinuteBins": [
+      {
+        "minuteStart": 0,
+        "samples": 40,
+        "minimumMiB": 169.20703125,
+        "medianMiB": 408.87890625,
+        "maximumMiB": 436.07421875
+      },
+      {
+        "minuteStart": 10,
+        "samples": 40,
+        "minimumMiB": 419.7421875,
+        "medianMiB": 434.9296875,
+        "maximumMiB": 455.0546875
+      },
+      {
+        "minuteStart": 20,
+        "samples": 40,
+        "minimumMiB": 431.1875,
+        "medianMiB": 454.875,
+        "maximumMiB": 459.265625
+      },
+      {
+        "minuteStart": 30,
+        "samples": 40,
+        "minimumMiB": 451.39453125,
+        "medianMiB": 464.453125,
+        "maximumMiB": 471.93359375
+      },
+      {
+        "minuteStart": 40,
+        "samples": 40,
+        "minimumMiB": 459.69140625,
+        "medianMiB": 465.76171875,
+        "maximumMiB": 475.05859375
+      },
+      {
+        "minuteStart": 50,
+        "samples": 40,
+        "minimumMiB": 449.7421875,
+        "medianMiB": 466.9765625,
+        "maximumMiB": 468.515625
+      }
+    ]
+  },
+  "figureReceiptSha256": "0b13d0a856554915e6221b1d536fcefb301c45297cc0afca18d925639c54bb5d",
+  "renderedClients": 0,
+  "limits": [
+    "Fifty scripted localhost clients; zero rendered clients. This is not the 49-scripted-plus-one-rendered gate, a hosted/WAN/phone result, or human acceptance.",
+    "Players are invulnerable, the single Moths boss has 1e9 HP/deadline and 4,000 hostile projectiles are replenished. This isolates continuous combat load; it does not measure authored difficulty, votes/shop/deaths/reconnect or a normal full run.",
+    "Memory is sampled without forced GC. Report the observed trend and minima; throughput pass does not independently certify a universal memory bound.",
+    "Exact frozen runtime and tool bundles remain unchanged even when the working tree advances. External installed dependencies and lockfile identities are recorded at freeze time.",
+    "Other normal art packing and build work occurred on the same host during the frozen probe.",
+    "Source art changes after the frozen commit are not attributed these measurements."
+  ]
+}

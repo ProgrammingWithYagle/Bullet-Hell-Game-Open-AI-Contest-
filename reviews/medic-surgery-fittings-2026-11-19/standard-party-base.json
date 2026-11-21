@@ -1,0 +1,929 @@
+{
+  "protocol": 84,
+  "scope": "Ordinary ten-encounter Standard using the staged authority. Both policies own the same fitting at the first eligible earned shop. Three seeds and two difficulties.",
+  "cohort": "party",
+  "stage": {
+    "name": "stage01",
+    "scratchOnly": true,
+    "baseRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+    "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+    "game": "624e86c05d35a5a27cb674581ecc91063b15171fa1e4eeeff21e8629c84dc229",
+    "bundle": "006682994d6b7fdf830db83c6a91797366fc90982eb70c4528765182bca82893",
+    "files": [
+      {
+        "path": "src/shared/medic-field-surgery.ts",
+        "sha256": "7544b1a5210ecfe6472fe91cb8f4a915e04cffb04a8a6be21be9302af4464166"
+      },
+      {
+        "path": "content/catalog.json",
+        "sha256": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc"
+      },
+      {
+        "path": "content/revision.json",
+        "sha256": "7222d59990e046c99a53a71f4a8bd60ec3cba61a6c7567c8ad311a56951b4545"
+      },
+      {
+        "path": "src/shared/game.ts",
+        "sha256": "decaf721c10764e9f6b3c610a8374ceb328735c752f1faa1096fbf136d331f0f"
+      },
+      {
+        "path": "src/shared/protocol.ts",
+        "sha256": "b9ffda691e61ca7de4f7d74754103bc4eca04f9a1faf247d675fff198d2309ac"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 2,
+      "earned": 8,
+      "tick": 5083,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 704
+        },
+        {
+          "encounter": 2,
+          "earned": 8,
+          "clears": 2,
+          "t": 1483
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1412,
+          "until": 1592,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 1880,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 88,
+          "damage": 21.768749999999997,
+          "dealt": 2772.5759999999937,
+          "healed": 21.768750000000075,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 96,
+          "damage": 0,
+          "dealt": 3018.188000000007,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "cce3216b0bdf3ccf1c4282bcacb69615ae6cb36be9e3da5efffb280789a02e9e"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 2,
+      "earned": 8,
+      "tick": 5083,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 704
+        },
+        {
+          "encounter": 2,
+          "earned": 8,
+          "clears": 2,
+          "t": 1483
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1412,
+          "until": 1592,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 1880,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 88,
+          "damage": 21.768749999999997,
+          "dealt": 2772.5759999999937,
+          "healed": 21.768750000000075,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 96,
+          "damage": 0,
+          "dealt": 3018.188000000007,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "cce3216b0bdf3ccf1c4282bcacb69615ae6cb36be9e3da5efffb280789a02e9e"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 2,
+      "earned": 8,
+      "tick": 5083,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 704
+        },
+        {
+          "encounter": 2,
+          "earned": 8,
+          "clears": 2,
+          "t": 1483
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1412,
+          "until": 1592,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 1880,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 88,
+          "damage": 21.768749999999997,
+          "dealt": 2772.5759999999937,
+          "healed": 21.768750000000075,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 96,
+          "damage": 0,
+          "dealt": 3018.188000000007,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "cce3216b0bdf3ccf1c4282bcacb69615ae6cb36be9e3da5efffb280789a02e9e"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 2,
+      "earned": 8,
+      "tick": 5083,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 704
+        },
+        {
+          "encounter": 2,
+          "earned": 8,
+          "clears": 2,
+          "t": 1483
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1412,
+          "until": 1592,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 1880,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 88,
+          "damage": 21.768749999999997,
+          "dealt": 2772.5759999999937,
+          "healed": 21.768750000000075,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 96,
+          "damage": 0,
+          "dealt": 3018.188000000007,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "cce3216b0bdf3ccf1c4282bcacb69615ae6cb36be9e3da5efffb280789a02e9e"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2842,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1370
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1958,
+          "until": 2138,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2438,
+          "until": 2618,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2906,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 321.57750000000044,
+          "dealt": 4483.245000000001,
+          "healed": 198.77500000000038,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 91.4475,
+          "dealt": 4960.070500000004,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "1675eefae8951d391510de6cdd4cb9eecbbe6cc56517eb5035d91e66b8b3aa9a"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2842,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1370
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1958,
+          "until": 2138,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2438,
+          "until": 2618,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2906,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 321.57750000000044,
+          "dealt": 4483.245000000001,
+          "healed": 198.77500000000038,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 91.4475,
+          "dealt": 4960.070500000004,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "1675eefae8951d391510de6cdd4cb9eecbbe6cc56517eb5035d91e66b8b3aa9a"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2842,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1370
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1958,
+          "until": 2138,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2438,
+          "until": 2618,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2906,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 321.57750000000044,
+          "dealt": 4483.245000000001,
+          "healed": 198.77500000000038,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 91.4475,
+          "dealt": 4960.070500000004,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "1675eefae8951d391510de6cdd4cb9eecbbe6cc56517eb5035d91e66b8b3aa9a"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2842,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1370
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 1958,
+          "until": 2138,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2438,
+          "until": 2618,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2906,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 321.57750000000044,
+          "dealt": 4483.245000000001,
+          "healed": 198.77500000000038,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 91.4475,
+          "dealt": 4960.070500000004,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "1675eefae8951d391510de6cdd4cb9eecbbe6cc56517eb5035d91e66b8b3aa9a"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 109,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2784,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1284
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2384,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2385,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1916,
+          "until": 2096,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2386,
+          "until": 2566,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2854,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 1,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 256.4000000000004,
+          "dealt": 4351.237499999999,
+          "healed": 261.52500000000015,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 260.12500000000017,
+          "dealt": 5166.448999999999,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "db33f8ac2fc41695c8abcb75a649c2b2317a8778b2c45f0bbc41b590292eb08f"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 109,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2784,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1284
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2384,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2385,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1916,
+          "until": 2096,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2386,
+          "until": 2566,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2854,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 1,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 256.4000000000004,
+          "dealt": 4351.237499999999,
+          "healed": 261.52500000000015,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 260.12500000000017,
+          "dealt": 5166.448999999999,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "db33f8ac2fc41695c8abcb75a649c2b2317a8778b2c45f0bbc41b590292eb08f"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 109,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2784,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1284
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2384,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2385,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1916,
+          "until": 2096,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2386,
+          "until": 2566,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2854,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 1,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 256.4000000000004,
+          "dealt": 4351.237499999999,
+          "healed": 261.52500000000015,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 260.12500000000017,
+          "dealt": 5166.448999999999,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "db33f8ac2fc41695c8abcb75a649c2b2317a8778b2c45f0bbc41b590292eb08f"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 109,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 1,
+      "earned": 5,
+      "tick": 2784,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 5,
+          "clears": 1,
+          "t": 1284
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2384,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 1,
+          "boss": "matron",
+          "tick": 2385,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1916,
+          "until": 2096,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 2386,
+          "until": 2566,
+          "radius": 140,
+          "encounter": 1
+        }
+      ],
+      "usedQAt": 2854,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 5,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 1,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 0,
+          "damage": 256.4000000000004,
+          "dealt": 4351.237499999999,
+          "healed": 261.52500000000015,
+          "rescues": 0,
+          "status": "downed"
+        },
+        {
+          "id": "ally",
+          "health": 0,
+          "damage": 260.12500000000017,
+          "dealt": 5166.448999999999,
+          "healed": 0,
+          "rescues": 0,
+          "status": "downed"
+        }
+      ],
+      "trajectory": "db33f8ac2fc41695c8abcb75a649c2b2317a8778b2c45f0bbc41b590292eb08f"
+    }
+  ]
+}

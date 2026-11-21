@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "sourceCommit": "27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0",
+  "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+  "protocol": 89,
+  "checkedAt": "2026-11-21T02:15:08.602Z",
+  "nativeDriverSha256": "7fadedc25050d759390c8b3e6b73450599c05a871254910439ae32a1cd3a0e6f",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0",
+      "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+      "protocol": 89,
+      "url": "http://127.0.0.1:5422/",
+      "endpoint": "http://127.0.0.1:2798",
+      "files": 2143,
+      "manifestSha256": "b81db53bccf4948dfa4865b80704ae07372a0eaf37e6c4544223ac8f163b88ce",
+      "backendSha256": "e720da227a4395cdd82d49b87c9744695d067f3bc4313c3d37363a2887821c71",
+      "backendStartedAt": "2026-11-21T02:11:39.352Z",
+      "worker": {
+        "path": "assets/offline.worker-Dzt9ntFQ.js",
+        "bytes": 1623949,
+        "sha256": "c0465dfc3994774fc7695e4a48f0ea821da9e987e9c650980b44246bbf7cbd25"
+      },
+      "sampledNewAssets": 16,
+      "httpSha256": "c279b75de82ef52d6995afbf63ee12e0bb7a105d426d58b2d25f29ab695890d4",
+      "httpLogSha256": "893ea898406923d00cf667354f5b42d7e8597fac48db5f178117ba7db37232f0",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "158de76d444c8ea51fe41d721db54267d4df9c247bfc52643c41e10270b629a3",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "99376365a4908ff95855968c44bbafabc260f8d4916ff89c24fe2f15f1b63c4d",
+          "backendStartedAt": "2026-11-21T02:11:39.352Z"
+        },
+        {
+          "fitting": "shunt",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-shunt.log",
+          "logSha256": "c47b6e722db93b6dbbe603bd76249ef71c39bec51b5389e8af826c352a252c9e",
+          "raw": "testing-worker-shunt.json",
+          "resultSha256": "2333e57a03c51f5b06fe3de0fca6083733ac6555a4a1a7d85d13e8643c34079f",
+          "backendStartedAt": "2026-11-21T02:11:39.352Z"
+        },
+        {
+          "fitting": "twin",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-twin.log",
+          "logSha256": "53f8abe807716de567d5a692f893b8fb544f4bf15a5b2d6ac45c9eec61657905",
+          "raw": "testing-worker-twin.json",
+          "resultSha256": "149df38c6c3a519750dcb6219c590a61019478ef84e24534d73adadbe4cd54ee",
+          "backendStartedAt": "2026-11-21T02:11:39.352Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "bfbe356c0699fa844f19c54dcf947b35d321834beab375702aee811fe33d081b",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "c4755a05fa760a428c37fca270383a684256c6efec49a39666671e7ed1c672ac",
+          "backendStartedAt": "2026-11-21T02:11:39.352Z"
+        },
+        {
+          "fitting": "shunt",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-shunt.log",
+          "logSha256": "442d83375fea3831a00356b8547000cbbc423575e07a898b18df10fffcd063a0",
+          "raw": "testing-peer-shunt.json",
+          "resultSha256": "22bc2fb639971e3c57026b31dce0e6786f8fbe98ed0e7d664c2b6cee0b457593",
+          "backendStartedAt": "2026-11-21T02:11:39.352Z"
+        },
+        {
+          "fitting": "twin",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-twin.log",
+          "logSha256": "d005e32e99b5e6e048640feb42a387d8c5bd4f39b6633fade4f89eb703f16e2f",
+          "raw": "testing-peer-twin.json",
+          "resultSha256": "a272e29241e4e0b6a7ee39ebbc1d1b31ad449970e647bbdbadf9e4ca582c625e",
+          "backendStartedAt": "2026-11-21T02:11:39.352Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0",
+      "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+      "protocol": 89,
+      "url": "http://127.0.0.1:5423/",
+      "endpoint": "http://127.0.0.1:2799",
+      "files": 2143,
+      "manifestSha256": "23691326890bc0dbf4df2a71d8f27f0007bd869124601e479d8f8b896f95611e",
+      "backendSha256": "e720da227a4395cdd82d49b87c9744695d067f3bc4313c3d37363a2887821c71",
+      "backendStartedAt": "2026-11-21T02:11:38.970Z",
+      "worker": {
+        "path": "assets/offline.worker-BXdAUjcl.js",
+        "bytes": 1624046,
+        "sha256": "671b0fd0bd5bdb2a101440aaf3b85b6b82cd6082336210dd455019c136d63c95"
+      },
+      "sampledNewAssets": 16,
+      "httpSha256": "465f16dd58d1906ea99656c859d274f4a064e2baa86a0befedb3d06e2ebff792",
+      "httpLogSha256": "1eed98319acd90d76cf764df12e7293e49d8408a5ad91b80a72d18f06f37849d",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "0437b7250787a226334bd2e0a016b73a0a6270090cf7c5698f255c2ff12e3870",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "0ac8273c0262c9b6298b34d5b853ff7d6019f6753a3c36d6efc812e0e20bb7e0",
+          "backendStartedAt": "2026-11-21T02:11:38.970Z"
+        },
+        {
+          "fitting": "shunt",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-shunt.log",
+          "logSha256": "36096025501b01122b6f0b8f9d722ef8793191e14c1fc1807ef5aadf218ce909",
+          "raw": "public-worker-shunt.json",
+          "resultSha256": "8bad40cc2c0c7357ddaf42b447f2ea8affebb885f081b3be13870093afba6884",
+          "backendStartedAt": "2026-11-21T02:11:38.970Z"
+        },
+        {
+          "fitting": "twin",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-twin.log",
+          "logSha256": "1381824d82d8a2dda653b98ffe6b6fd1b59a77c675b62c50e4ea9c770f2a7855",
+          "raw": "public-worker-twin.json",
+          "resultSha256": "17bea32183e073813d316400cc6b73cac53bb87d4019153ce4f7e96863a64d0c",
+          "backendStartedAt": "2026-11-21T02:11:38.970Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "afa26ce7f01446141190bfd42a5ec8b4c3d9edaf71c94b85a46c066fba84f78c",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "0ccb4ac1a77ee61ee7295744d81033c6b6151092599f8448b8c4d56d6591501d",
+          "backendStartedAt": "2026-11-21T02:11:38.970Z"
+        },
+        {
+          "fitting": "shunt",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-shunt.log",
+          "logSha256": "eb5d19f31df9eb82d226ce4a534cfc6f984dc92839a4421616116739c2157055",
+          "raw": "public-peer-shunt.json",
+          "resultSha256": "9c5c2dabd2cc60ca8eec068190bc6286f0fae2e4f814fc0b94237b2d3b881060",
+          "backendStartedAt": "2026-11-21T02:11:38.970Z"
+        },
+        {
+          "fitting": "twin",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-twin.log",
+          "logSha256": "cbd8ed34d30b0dae3c93b4435787a0d606da009214973734d1ebf32a828a0a2e",
+          "raw": "public-peer-twin.json",
+          "resultSha256": "79080018cceed4c9398adde56f10f93c0eb1021cda709216a1d4960183940b72",
+          "backendStartedAt": "2026-11-21T02:11:38.970Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

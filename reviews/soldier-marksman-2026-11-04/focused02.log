@@ -1,0 +1,26 @@
+✔ Marksman is an affordable real alternative to Skirmisher, with symmetric authority conflicts (6.687ms)
+✔ Bank Shot spends one real round and its own recovery without needing or changing E (23.5753ms)
+✔ a bank consumes the rest of the same tick, preserves speed and uses the actual projectile footprint (8.7542ms)
+✔ oblique reflection reverses the normal component while keeping tangential travel and total speed (7.0619ms)
+✔ a second wall stops the spent bank and a closed civic gate uses the same real geometry (12.7954ms)
+✔ a physical shot starting inside cover is absorbed rather than moved through the wall (3.2536ms)
+✔ a live body before the wall receives ordinary credited damage and prevents a later bank (7.5962ms)
+✔ the reflected leg can hit a real body behind the original firing direction without teleporting damage (3.7531ms)
+✔ each leg reports its actual portion of the tick and last physical origin (2.3674ms)
+✔ moving pins, raid bodies and district bodies are sampled over the leg rather than replaying their whole tick (3.0898ms)
+✔ moving core collision uses the same fractional interval and full-tick endpoints stay exact (4.2015ms)
+✔ manual Reload and accepted dodge reject Bank Shot without spending its round or recovery (5.0129ms)
+✔ empty ammunition and a failed projectile admission cannot spend recovery (3.7293ms)
+✔ disconnect and downing remove unfinished flight while rostered spent recovery remains (4.6189ms)
+✔ ordinary health damage after release leaves a living owner's actual projectile in flight (2.5153ms)
+✔ finite lifetime and explicit host cleanup remove flight/cues without inventing ownership (11.0975ms)
+✔ public contact feedback is bounded and omits private flight/payment state (2.6423ms)
+✔ exact issued57 boundaries retain their old Skirmisher ownership and cannot invent Marksman (7.9493ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1379.5127

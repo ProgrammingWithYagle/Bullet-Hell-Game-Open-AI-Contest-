@@ -1,0 +1,169 @@
+{
+  "passed": false,
+  "pending": true,
+  "checkedAt": "2026-11-04T16:15:25.505Z",
+  "recordedAt": "2026-11-04T16:19:15.105Z",
+  "sourceCommit": "d9abd98da876da7d5fb386e85e37f2ff232f9ff5",
+  "events": [
+    {
+      "id": 41861696260,
+      "event": "push",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41861696260",
+      "headSha": "d9abd98da876da7d5fb386e85e37f2ff232f9ff5",
+      "status": "in_progress",
+      "conclusion": null,
+      "totalJobs": 1,
+      "jobs": [
+        {
+          "id": 126684919073,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned package manager",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned image verification dependency",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify content, rules, networking and client build",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve verification report",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "observedTests": 1471,
+          "observedPass": 1471,
+          "observedFail": 0,
+          "decodedLogPath": "reviews/soldier-volley-2026-11-04/ci-push-126684919073.log",
+          "decodedLogSha256": "50213e20d8577ae73b1a35f31f78bb4bf9f50f9ccb4e92a8032c3212ce27f9b2"
+        }
+      ]
+    },
+    {
+      "id": 41861726882,
+      "event": "pull_request",
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41861726882",
+      "headSha": "d9abd98da876da7d5fb386e85e37f2ff232f9ff5",
+      "status": "in_progress",
+      "conclusion": null,
+      "totalJobs": 1,
+      "jobs": [
+        {
+          "id": 126685022694,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned package manager",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned image verification dependency",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify content, rules, networking and client build",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve verification report",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "observedTests": 1471,
+          "observedPass": 1471,
+          "observedFail": 0,
+          "decodedLogPath": "reviews/soldier-volley-2026-11-04/ci-pull_request-126685022694.log",
+          "decodedLogSha256": "cff7d884afe8b1ff22801aafd93f65557ab4bf9aa50d4c5f1b8c9f930727e9f4"
+        }
+      ]
+    }
+  ],
+  "allTwentyTwoStepsSucceeded": true,
+  "bothDecodedLogsConfirm1471PassesZeroFailures": true,
+  "reason": "Actions still reports both jobs/runs in_progress with null conclusions although all11steps per job succeeded and both full logs end with runner cleanup. Preserve this as pending, not a completed CI pass.",
+  "limits": "Local full gate and fresh native/frozen evidence pass separately. Last source with fully concluded CI remains84b6bbad/protocol56; older reviews are historical, not acceptance for this source."
+}

@@ -1,0 +1,7 @@
+# Saved reading and earned scene archives
+
+The visual-novel reader stores only local reading positions in ga-story-reading-v1. Bookmarks use the canonical arc, actual narrative language, scene ID and a non-security content stamp. They are shared across UI contexts without storing room/player identifiers. A text revision starts at the beginning; a translated edition has a separate position. The512most recent positions are bounded, and stored input is strictly parsed before use.
+
+Bookmarks are separate from profiles, unlocks, Ready votes, run receipts and rewards. Unavailable, corrupt, future-version or quota-full storage preserves existing bytes and keeps reading position for the current session. The reader shows the session-only fallback honestly. It does not promise cross-device or export/import bookmark transfer. Persistent volume/chapter loading and a global resume-to-last-scene entry remain future long-form work.
+
+The chapter hub's previously unbound completed-scene buttons now open earned reports. The handler checks the current personal Story receipts again and rejects future, malformed and stale eligibility. Reading cannot start a run or manufacture a clear. Native controller checks exercise actual archive clicks, reload persistence, Arabic direction, text/language changes, corrupt/quota storage and profile preservation. These checks do not replace rendered/device/accessibility or long-reading human review.

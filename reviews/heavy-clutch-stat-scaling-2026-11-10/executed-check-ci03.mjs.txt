@@ -1,0 +1,53 @@
+import {decodeRuntimeEvidenceArchive} from './unzip-runtime-artifact01.mjs';
+import fs from'node:fs';import assert from'node:assert/strict';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';
+const root='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)',chat='C:/Users/yigal/Documents/Codex/2026-11-05/continue-grave-accord-in-the-same',scope='reviews/heavy-clutch-stat-scaling-2026-11-10',repo='ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-';process.chdir(root);
+const phase=process.argv[2];assert(['source','metadata'].includes(phase));const stage=new URL('./',import.meta.url);
+const source=fs.readFileSync(new URL('source-commit.txt',stage),'utf8').trim(),head=phase==='source'?source:fs.readFileSync(new URL('metadata-commit.txt',stage),'utf8').trim();
+const env={...process.env,GIT_TERMINAL_PROMPT:'0',GCM_INTERACTIVE:'Never'};for(const k of Object.keys(env))if(/^(GIT_TRACE|GCM_TRACE|GIT_CURL_VERBOSE)/i.test(k))delete env[k];
+const git=(...a)=>execFileSync('git',['-c','core.bare=false',...a],{encoding:'utf8',stdio:['pipe','pipe','pipe'],env,timeout:10000}).trim();assert.equal(git('rev-parse','HEAD'),head);assert.equal(git('branch','--show-current'),'feat/first-playable-loop');
+const destination=phase==='source'?scope+'/source-ci.json':chat+'/outputs/Heavy-clutch-stat-scaling-metadata-ci.json';
+if(fs.existsSync(destination)){const prior=JSON.parse(fs.readFileSync(destination,'utf8'));assert(prior.passed&&prior.head===head);console.log(JSON.stringify({passed:true,phase,head,alreadyVerified:true}));process.exit(0);}
+const credential=execFileSync('git',['-c','core.bare=false','credential','fill'],{input:'protocol=https\nhost=github.com\npath='+repo+'.git\n\n',encoding:'utf8',stdio:['pipe','pipe','pipe'],env,timeout:10000});
+const token=credential.split(/\r?\n/).find(l=>l.startsWith('password='))?.slice(9);assert(token,'Missing cached Git credential');
+const headers={Authorization:'Bearer '+token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Cache-Control':'no-cache'},api='https://api.github.com/repos/'+repo;
+const get=async path=>{const response=await fetch(api+path+(path.includes('?')?'&':'?')+'_ga_check='+Date.now(),{headers,cache:'no-store',signal:AbortSignal.timeout(10000)});assert(response.ok,'GitHub read HTTP '+response.status);return response.json();};
+const [listed,pr]=await Promise.all([get('/actions/runs?head_sha='+head+'&per_page=100'),get('/pulls/14')]);assert(pr.draft&&pr.state==='open'&&pr.head.ref==='feat/first-playable-loop'&&pr.head.sha===head);
+const selected=await Promise.all(['push','pull_request'].map(async event=>{const r=listed.workflow_runs.filter(r=>r.head_sha===head&&r.event===event).sort((a,b)=>b.id-a.id)[0];return r?get('/actions/runs/'+r.id):undefined;}));
+const observed=[];for(const run of selected.filter(Boolean)){
+ assert.equal(run.head_sha,head);let jobs=[],total=Infinity,page=1;
+ assert(Number.isInteger(run.run_attempt)&&run.run_attempt>0);while(jobs.length<total){const data=await get('/actions/runs/'+run.id+'/attempts/'+run.run_attempt+'/jobs?per_page=100&page='+page++);total=data.total_count;jobs.push(...data.jobs);assert(data.jobs.length||jobs.length===total);}
+ assert.equal(jobs.length,total);for(const job of jobs){assert.equal(job.run_id,run.id);assert(Array.isArray(job.steps),'The exact run-attempt job listing must include explicit step records.');}observed.push({run,jobs});
+}
+if(selected.some(r=>!r||r.status!=='completed')){
+ const pending={checkedAt:new Date().toISOString(),phase,head,pending:true,runs:observed.map(({run,jobs})=>({id:run.id,event:run.event,status:run.status,conclusion:run.conclusion,url:run.html_url,jobs:jobs.map(j=>({id:j.id,status:j.status,conclusion:j.conclusion,steps:j.steps.map(s=>({name:s.name,status:s.status,conclusion:s.conclusion}))}))}))};
+ fs.writeFileSync(new URL('ci-status-'+phase+'.json',stage),JSON.stringify(pending,null,2)+'\n');console.log(JSON.stringify(pending));process.exit(0);
+}
+const proof=JSON.parse(fs.readFileSync(scope+'/source-verification.json')),expected=proof.testResults.pass,events=[],artifactCache=new Map();
+const byteBinding=JSON.parse(fs.readFileSync(scope+'/source-binding-audit04.json'));assert(byteBinding.passed&&byteBinding.sourceCommit===source&&byteBinding.allDifferencesOnlyCRLF&&byteBinding.allRuntimeParsedJSONOrEmittedCodeExact);assert.equal(byteBinding.workingRuntimeSourceSha256,proof.runtimeSourceSha256);assert.equal(byteBinding.workingSourceSnapshotSha256,proof.sourceSnapshotSha256);assert.equal(byteBinding.verificationDriverSha256,proof.verificationDriverSha256);
+async function runtimeArtifact(run){
+ if(artifactCache.has(run.id))return artifactCache.get(run.id);
+ const listed=await get('/actions/runs/'+run.id+'/artifacts?per_page=100');
+ const artifact=listed.artifacts.find(a=>a.name==='verification-evidence'&&!a.expired);assert(artifact,'The successful exact run must retain its own runtime report.');
+ let response=await fetch(api+'/actions/artifacts/'+artifact.id+'/zip',{headers,redirect:'manual',signal:AbortSignal.timeout(10000)});
+ if(response.status===302){const url=new URL(response.headers.get('location'));assert(url.protocol==='https:'&&/(?:^|.)(?:blob.core.windows.net|githubusercontent.com)$/.test(url.hostname));response=await fetch(url,{signal:AbortSignal.timeout(10000)});}
+ assert(response.ok,'Runtime artifact HTTP '+response.status);const zip=Buffer.from(await response.arrayBuffer());assert(zip.length<8*1024*1024);
+ const extracted=decodeRuntimeEvidenceArchive(zip),runtime=JSON.parse(extracted.text);
+ assert(Date.parse(runtime.createdAt)>=Date.parse(run.created_at));assert(runtime.passed&&runtime.checks.length===7&&runtime.checks.every(c=>c.passed));
+ assert.equal(runtime.runtimeSourceSha256,byteBinding.committedRuntimeSourceSha256);assert.equal(runtime.sourceSnapshotSha256,byteBinding.committedSourceSnapshotSha256);for(const key of['contentRevision','verificationDriverSha256','testFiles'])assert.equal(runtime[key],proof[key],key);
+ assert(runtime.testFileConcurrency>=4&&runtime.testFileConcurrency<=8);
+ const record={verified:true,committedGitSourceBytesExact:true,localRawHashKeptSeparate:true,sourceByteBindingAudit:scope+'/source-binding-audit04.json',sourceByteBindingAuditSha256:createHash('sha256').update(fs.readFileSync(scope+'/source-binding-audit04.json')).digest('hex'),localRawRuntimeSourceSha256:byteBinding.workingRuntimeSourceSha256,localRawSourceSnapshotSha256:byteBinding.workingSourceSnapshotSha256,artifactId:artifact.id,artifactName:artifact.name,artifactArchiveSha256:createHash('sha256').update(zip).digest('hex'),runtimeReportMember:extracted.name,runtimeReportSha256:createHash('sha256').update(extracted.text).digest('hex'),runtimeSourceSha256:runtime.runtimeSourceSha256,sourceSnapshotSha256:runtime.sourceSnapshotSha256,contentRevision:runtime.contentRevision,verificationDriverSha256:runtime.verificationDriverSha256,testFiles:runtime.testFiles,testFileConcurrency:runtime.testFileConcurrency,checks:runtime.checks,outputFiles:runtime.outputFiles,originalFullRuntimeReportRetainedInGitHubArtifact:true,duplicatedAssetInventory:false};
+ artifactCache.set(run.id,record);return record;
+}
+for(const {run,jobs}of observed){const checked=[];for(const job of jobs){
+ let response=await fetch(api+'/actions/jobs/'+job.id+'/logs',{headers,redirect:'manual',signal:AbortSignal.timeout(10000)});
+ if(response.status===302){const url=new URL(response.headers.get('location'));assert(url.protocol==='https:'&&/(?:^|\.)(?:blob\.core\.windows\.net|githubusercontent\.com)$/.test(url.hostname));response=await fetch(url,{signal:AbortSignal.timeout(10000)});}
+ assert(response.ok,'Decoded job log HTTP '+response.status);const raw=await response.text();
+ const counts=Object.fromEntries(['tests','pass','fail','cancelled','skipped'].map(k=>[k,Number(raw.match(new RegExp('ℹ '+k+'\\s+(\\d+)'))?.[1])]));
+ const path=phase==='source'?scope+'/ci-source-'+run.event+'-'+job.id+'.log':chat+'/outputs/Heavy-clutch-stat-scaling-metadata-ci-'+run.event+'-'+job.id+'.log';
+ if(fs.existsSync(path))assert.equal(fs.readFileSync(path,'utf8'),raw);else fs.writeFileSync(path,raw,{flag:'wx'});
+ checked.push({id:job.id,name:job.name,status:job.status,conclusion:job.conclusion,steps:job.steps.map(s=>({name:s.name,number:s.number,status:s.status,conclusion:s.conclusion})),...counts,log:path,decodedLogSha256:createHash('sha256').update(raw).digest('hex'),verified:job.status==='completed'&&job.conclusion==='success'&&job.steps.length>0&&job.steps.every(s=>s.status==='completed'&&s.conclusion==='success')&&counts.tests===expected&&counts.pass===expected&&counts.fail===0&&counts.cancelled===0&&counts.skipped===0&&raw.includes('Verification passed; evidence')});
+ if(checked.at(-1).verified)checked.at(-1).runtimeEvidence=await runtimeArtifact(run);
+ }events.push({id:run.id,event:run.event,url:run.html_url,headSha:run.head_sha,status:run.status,conclusion:run.conclusion,totalJobs:jobs.length,jobs:checked});}
+const passed=events.length===2&&events.every(e=>e.conclusion==='success'&&e.jobs.length>0&&e.jobs.every(j=>j.verified&&j.runtimeEvidence?.verified));
+const report={passed,checkedAt:new Date().toISOString(),phase,head,sourceCommit:source,events,draftPR14:true,credentialsPrintedOrStored:false,transport:'Bounded native GitHub API for both push/PR runs and decoded log files; GitHub connector supplies draft-PR metadata. Cached credential remains in memory only.'};
+fs.writeFileSync(passed?destination:scope+'/ci-'+phase+'-failed-'+Date.now()+'.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({passed,phase,head,events:events.map(e=>({id:e.id,event:e.event,conclusion:e.conclusion,jobs:e.jobs.map(j=>({id:j.id,pass:j.pass,fail:j.fail,verified:j.verified}))})),credentialsPrintedOrStored:false}));assert(passed,'Exact-head CI failed; original jobs/logs are preserved.');

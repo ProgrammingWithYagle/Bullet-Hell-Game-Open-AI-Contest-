@@ -1,0 +1,11 @@
+# Manual home artwork gallery
+
+The human reports positive testing5244camera/lava feedback within their trial, then requests multiple home-screen images switched by arrows. Implement three manually selected panels: existing full cover, existing seven-survivor illustration, and six existing map paintings. Artwork remains original; no new bitmap generation or claimed gameplay capture.
+
+The component uses translated region/button/caption/count labels,44pxcontrols, direct page buttons, keyboard arrows/Home/End and mirrored RTL arrows. It never rotates automatically or steals focus. Main cover keeps high-priority loading; secondary artwork is lazy. The menu owns cleanup and remembers its gallery index when returning from setup without changing class/mode/map/difficulty choices. Both audiences share the component and styling, including full-cover containment at compact widths.
+
+Four native controller/integration tests cover wrapping/page selection, focus/cleanup, RTL/keyboard and remembered real setup state, plus source parity in fifteen languages and missing-art rejection. The full suite, exact source CI, fresh audience roots and human comparison remain separate receipts. Existing source6f397a5and metadata4982139camera/Wiki/native evidence remain preserved; matching gallery Windows packaging follows a stable pass.
+
+Gate01 stopped at the translation verifier because the unchanged proper-name caption Grave Accord was treated as untranslated UI copy. The caption is now a source-authored localized welcome in every language; validation is retained. Gate02 verifies those final labels with the full suite.
+
+Gate02 passed 871/873; the two earlier compiled audience fixtures flattened markup and could not resolve the nested gallery. They now use the existing shared native DOM controller fixture. Their original first-run, class/mode/map/difficulty, confirmation, storage and public/testing assertions are retained; focus is checked against actual activeElement instead of a fixture-only flag. Focused02 passes 11/11. Gate03 caught a missing event argument in that fixture conversion; it now dispatches an input event through the shared fixture. Gate04 verifies the complete final source. All failed receipts remain preserved.

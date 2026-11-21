@@ -1,0 +1,1483 @@
+﻿2026-10-31T01:55:14.5256362Z Current runner version: '2.338.2'
+2026-10-31T01:55:14.5277899Z ##[group]Runner Image Provisioner
+2026-10-31T01:55:14.5278599Z Hosted Compute Agent
+2026-10-31T01:55:14.5279079Z Version: 20261021.618
+2026-10-31T01:55:14.5279709Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-31T01:55:14.5280291Z Build Date: 2026-10-21T00:45:21Z
+2026-10-31T01:55:14.5280873Z Worker ID: {519a2966-5225-41a0-addd-561c0eb68ef0}
+2026-10-31T01:55:14.5281461Z Region: westus3
+2026-10-31T01:55:14.5281918Z Cloud: Azure
+2026-10-31T01:55:14.5282426Z ##[endgroup]
+2026-10-31T01:55:14.5283987Z ##[group]Operating System
+2026-10-31T01:55:14.5284490Z Ubuntu
+2026-10-31T01:55:14.5284997Z 26.04.1
+2026-10-31T01:55:14.5285426Z LTS
+2026-10-31T01:55:14.5285957Z ##[endgroup]
+2026-10-31T01:55:14.5286414Z ##[group]Runner Image
+2026-10-31T01:55:14.5286890Z Image: ubuntu-26.04
+2026-10-31T01:55:14.5287403Z Version: 20261025.179.1
+2026-10-31T01:55:14.5288456Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261025.179/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-31T01:55:14.5289730Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261025.179
+2026-10-31T01:55:14.5290495Z ##[endgroup]
+2026-10-31T01:55:14.5291441Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T01:55:14.5293136Z Contents: read
+2026-10-31T01:55:14.5293716Z Metadata: read
+2026-10-31T01:55:14.5294171Z ##[endgroup]
+2026-10-31T01:55:14.5295932Z Secret source: Actions
+2026-10-31T01:55:14.5296715Z Cache mode: write
+2026-10-31T01:55:14.5297355Z Prepare workflow directory
+2026-10-31T01:55:14.5564873Z Prepare all required actions
+2026-10-31T01:55:14.5619330Z Getting action download info
+2026-10-31T01:55:14.8395695Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-31T01:55:14.9491655Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-10-31T01:55:15.2374786Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-10-31T01:55:15.3980066Z Complete job name: verify
+2026-10-31T01:55:15.4860371Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-31T01:55:15.4861184Z with:
+2026-10-31T01:55:15.4861679Z   repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:55:15.4864981Z   token: ***
+2026-10-31T01:55:15.4865345Z   ssh-strict: true
+2026-10-31T01:55:15.4865709Z   ssh-user: git
+2026-10-31T01:55:15.4866076Z   persist-credentials: true
+2026-10-31T01:55:15.4866479Z   clean: true
+2026-10-31T01:55:15.4866841Z   sparse-checkout-cone-mode: true
+2026-10-31T01:55:15.4867259Z   fetch-depth: 1
+2026-10-31T01:55:15.4867614Z   fetch-tags: false
+2026-10-31T01:55:15.4867980Z   show-progress: true
+2026-10-31T01:55:15.4868342Z   lfs: false
+2026-10-31T01:55:15.4868678Z   submodules: false
+2026-10-31T01:55:15.4869042Z   set-safe-directory: true
+2026-10-31T01:55:15.4869480Z   allow-unsafe-pr-checkout: false
+2026-10-31T01:55:15.4870092Z ##[endgroup]
+2026-10-31T01:55:15.6841513Z Syncing repository: ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:55:15.6843996Z ##[group]Getting Git version info
+2026-10-31T01:55:15.6844832Z Working directory is '/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-'
+2026-10-31T01:55:15.6845869Z [command]/usr/bin/git version
+2026-10-31T01:55:15.6875406Z git version 2.56.0
+2026-10-31T01:55:15.6892970Z ##[endgroup]
+2026-10-31T01:55:15.6901432Z Temporarily overriding HOME='/home/runner/work/_temp/8e227406-51e0-4f51-8c5d-796fa2b666d9' before making global git config changes
+2026-10-31T01:55:15.6903234Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T01:55:15.6906510Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:55:15.6974912Z Deleting the contents of '/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-'
+2026-10-31T01:55:15.6977133Z ##[group]Determining repository object format
+2026-10-31T01:55:15.6978243Z ##[endgroup]
+2026-10-31T01:55:15.6979127Z ##[group]Initializing the repository
+2026-10-31T01:55:15.6985126Z [command]/usr/bin/git init /home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:55:15.7289104Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-31T01:55:15.7290706Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-31T01:55:15.7292003Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-31T01:55:15.7292934Z hint: call:
+2026-10-31T01:55:15.7294019Z hint:
+2026-10-31T01:55:15.7294743Z hint: 	git config --global init.defaultBranch <name>
+2026-10-31T01:55:15.7295450Z hint:
+2026-10-31T01:55:15.7295970Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-31T01:55:15.7296915Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-31T01:55:15.7297643Z hint:
+2026-10-31T01:55:15.7298246Z hint: 	git branch -m <name>
+2026-10-31T01:55:15.7298850Z hint:
+2026-10-31T01:55:15.7299633Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-31T01:55:15.7304564Z Initialized empty Git repository in /home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git/
+2026-10-31T01:55:15.7319010Z [command]/usr/bin/git remote add origin https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:55:15.7370126Z ##[endgroup]
+2026-10-31T01:55:15.7371357Z ##[group]Disabling automatic garbage collection
+2026-10-31T01:55:15.7372375Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-31T01:55:15.7408518Z ##[endgroup]
+2026-10-31T01:55:15.7409890Z ##[group]Setting up auth
+2026-10-31T01:55:15.7410573Z Removing SSH command configuration
+2026-10-31T01:55:15.7414270Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T01:55:15.7449670Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T01:55:15.9475310Z Removing HTTP extra header
+2026-10-31T01:55:15.9480585Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T01:55:15.9509428Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T01:55:15.9762379Z Removing includeIf entries pointing to credentials config files
+2026-10-31T01:55:15.9766291Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T01:55:15.9804816Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T01:55:16.0045061Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-31T01:55:16.0080275Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git.path /home/runner/work/_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:55:16.0108949Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:55:16.0140229Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:55:16.0167870Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:55:16.0194350Z ##[endgroup]
+2026-10-31T01:55:16.0195366Z ##[group]Fetching the repository
+2026-10-31T01:55:16.0199729Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +33b75d9094782b6c987efde118d4da5e8b864c1f:refs/remotes/pull/14/merge
+2026-10-31T01:55:45.5562887Z From https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:55:45.5564573Z  * [new ref]         33b75d9094782b6c987efde118d4da5e8b864c1f -> pull/14/merge
+2026-10-31T01:55:45.5572904Z ##[endgroup]
+2026-10-31T01:55:45.5573543Z ##[group]Determining the checkout info
+2026-10-31T01:55:45.5574232Z ##[endgroup]
+2026-10-31T01:55:45.5575500Z [command]/usr/bin/git sparse-checkout disable
+2026-10-31T01:55:45.5627682Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-31T01:55:45.5658104Z ##[group]Checking out the ref
+2026-10-31T01:55:45.5661510Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/14/merge
+2026-10-31T01:55:47.5853115Z Updating files:   6% (455/7169)
+2026-10-31T01:55:47.9993637Z Updating files:   6% (487/7169)
+2026-10-31T01:55:48.2674552Z Updating files:   7% (502/7169)
+2026-10-31T01:55:48.4966129Z Updating files:   8% (574/7169)
+2026-10-31T01:55:48.5853456Z Updating files:   9% (646/7169)
+2026-10-31T01:55:48.6313832Z Updating files:   9% (703/7169)
+2026-10-31T01:55:48.8262194Z Updating files:  10% (717/7169)
+2026-10-31T01:55:48.8833272Z Updating files:  11% (789/7169)
+2026-10-31T01:55:48.9653553Z Updating files:  12% (861/7169)
+2026-10-31T01:55:49.1698478Z Updating files:  13% (932/7169)
+2026-10-31T01:55:49.2597507Z Updating files:  14% (1004/7169)
+2026-10-31T01:55:49.3827623Z Updating files:  15% (1076/7169)
+2026-10-31T01:55:49.5523789Z Updating files:  16% (1148/7169)
+2026-10-31T01:55:49.5791467Z Updating files:  17% (1219/7169)
+2026-10-31T01:55:49.7874850Z Updating files:  17% (1246/7169)
+2026-10-31T01:55:49.9358053Z Updating files:  18% (1291/7169)
+2026-10-31T01:55:50.0225771Z Updating files:  19% (1363/7169)
+2026-10-31T01:55:50.1050829Z Updating files:  20% (1434/7169)
+2026-10-31T01:55:50.1205086Z Updating files:  21% (1506/7169)
+2026-10-31T01:55:50.1355253Z Updating files:  22% (1578/7169)
+2026-10-31T01:55:50.1884367Z Updating files:  23% (1649/7169)
+2026-10-31T01:55:50.2365906Z Updating files:  24% (1721/7169)
+2026-10-31T01:55:50.2789330Z Updating files:  25% (1793/7169)
+2026-10-31T01:55:50.3096122Z Updating files:  26% (1864/7169)
+2026-10-31T01:55:50.3443838Z Updating files:  27% (1936/7169)
+2026-10-31T01:55:50.4484731Z Updating files:  28% (2008/7169)
+2026-10-31T01:55:50.5750097Z Updating files:  29% (2080/7169)
+2026-10-31T01:55:50.6897767Z Updating files:  29% (2123/7169)
+2026-10-31T01:55:50.6974475Z Updating files:  30% (2151/7169)
+2026-10-31T01:55:50.7062271Z Updating files:  31% (2223/7169)
+2026-10-31T01:55:50.7124928Z Updating files:  32% (2295/7169)
+2026-10-31T01:55:50.7164581Z Updating files:  33% (2366/7169)
+2026-10-31T01:55:50.7208329Z Updating files:  34% (2438/7169)
+2026-10-31T01:55:50.7445698Z Updating files:  35% (2510/7169)
+2026-10-31T01:55:50.7554758Z Updating files:  36% (2581/7169)
+2026-10-31T01:55:50.7713360Z Updating files:  37% (2653/7169)
+2026-10-31T01:55:50.7774216Z Updating files:  38% (2725/7169)
+2026-10-31T01:55:50.8000733Z Updating files:  39% (2796/7169)
+2026-10-31T01:55:50.8087656Z Updating files:  40% (2868/7169)
+2026-10-31T01:55:50.8161461Z Updating files:  41% (2940/7169)
+2026-10-31T01:55:50.8242500Z Updating files:  42% (3011/7169)
+2026-10-31T01:55:50.8284954Z Updating files:  43% (3083/7169)
+2026-10-31T01:55:50.8356861Z Updating files:  44% (3155/7169)
+2026-10-31T01:55:50.8454934Z Updating files:  45% (3227/7169)
+2026-10-31T01:55:50.8497409Z Updating files:  46% (3298/7169)
+2026-10-31T01:55:50.8548327Z Updating files:  47% (3370/7169)
+2026-10-31T01:55:50.8621044Z Updating files:  48% (3442/7169)
+2026-10-31T01:55:50.8737528Z Updating files:  49% (3513/7169)
+2026-10-31T01:55:50.8787008Z Updating files:  50% (3585/7169)
+2026-10-31T01:55:50.8848097Z Updating files:  51% (3657/7169)
+2026-10-31T01:55:50.8919772Z Updating files:  52% (3728/7169)
+2026-10-31T01:55:50.8973731Z Updating files:  53% (3800/7169)
+2026-10-31T01:55:50.9188242Z Updating files:  54% (3872/7169)
+2026-10-31T01:55:50.9335088Z Updating files:  55% (3943/7169)
+2026-10-31T01:55:50.9380158Z Updating files:  56% (4015/7169)
+2026-10-31T01:55:50.9485881Z Updating files:  57% (4087/7169)
+2026-10-31T01:55:50.9558938Z Updating files:  58% (4159/7169)
+2026-10-31T01:55:50.9595328Z Updating files:  59% (4230/7169)
+2026-10-31T01:55:50.9645896Z Updating files:  60% (4302/7169)
+2026-10-31T01:55:50.9694129Z Updating files:  61% (4374/7169)
+2026-10-31T01:55:50.9834777Z Updating files:  62% (4445/7169)
+2026-10-31T01:55:50.9925156Z Updating files:  63% (4517/7169)
+2026-10-31T01:55:50.9989676Z Updating files:  64% (4589/7169)
+2026-10-31T01:55:51.0098512Z Updating files:  65% (4660/7169)
+2026-10-31T01:55:51.0331676Z Updating files:  66% (4732/7169)
+2026-10-31T01:55:51.0436478Z Updating files:  67% (4804/7169)
+2026-10-31T01:55:51.0543333Z Updating files:  68% (4875/7169)
+2026-10-31T01:55:51.0574416Z Updating files:  69% (4947/7169)
+2026-10-31T01:55:51.0631936Z Updating files:  70% (5019/7169)
+2026-10-31T01:55:51.0785246Z Updating files:  71% (5090/7169)
+2026-10-31T01:55:51.0876829Z Updating files:  72% (5162/7169)
+2026-10-31T01:55:51.0926733Z Updating files:  73% (5234/7169)
+2026-10-31T01:55:51.0969477Z Updating files:  74% (5306/7169)
+2026-10-31T01:55:51.1009823Z Updating files:  75% (5377/7169)
+2026-10-31T01:55:51.1109389Z Updating files:  76% (5449/7169)
+2026-10-31T01:55:51.1512466Z Updating files:  77% (5521/7169)
+2026-10-31T01:55:51.1594627Z Updating files:  78% (5592/7169)
+2026-10-31T01:55:51.1667815Z Updating files:  79% (5664/7169)
+2026-10-31T01:55:51.1739097Z Updating files:  80% (5736/7169)
+2026-10-31T01:55:51.1800881Z Updating files:  81% (5807/7169)
+2026-10-31T01:55:51.2028526Z Updating files:  82% (5879/7169)
+2026-10-31T01:55:51.2140659Z Updating files:  83% (5951/7169)
+2026-10-31T01:55:51.2247152Z Updating files:  84% (6022/7169)
+2026-10-31T01:55:51.2272709Z Updating files:  85% (6094/7169)
+2026-10-31T01:55:51.2294003Z Updating files:  86% (6166/7169)
+2026-10-31T01:55:51.2319062Z Updating files:  87% (6238/7169)
+2026-10-31T01:55:51.2340397Z Updating files:  88% (6309/7169)
+2026-10-31T01:55:51.2372396Z Updating files:  89% (6381/7169)
+2026-10-31T01:55:51.2393113Z Updating files:  90% (6453/7169)
+2026-10-31T01:55:51.2419382Z Updating files:  91% (6524/7169)
+2026-10-31T01:55:51.2464863Z Updating files:  92% (6596/7169)
+2026-10-31T01:55:51.2498592Z Updating files:  93% (6668/7169)
+2026-10-31T01:55:51.2540561Z Updating files:  94% (6739/7169)
+2026-10-31T01:55:51.2581384Z Updating files:  95% (6811/7169)
+2026-10-31T01:55:51.2622626Z Updating files:  96% (6883/7169)
+2026-10-31T01:55:51.2662162Z Updating files:  97% (6954/7169)
+2026-10-31T01:55:51.2700739Z Updating files:  98% (7026/7169)
+2026-10-31T01:55:51.2732016Z Updating files:  99% (7098/7169)
+2026-10-31T01:55:51.2732900Z Updating files: 100% (7169/7169)
+2026-10-31T01:55:51.2733209Z Updating files: 100% (7169/7169), done.
+2026-10-31T01:55:51.2926095Z Note: switching to 'refs/remotes/pull/14/merge'.
+2026-10-31T01:55:51.2926644Z 
+2026-10-31T01:55:51.2927211Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-31T01:55:51.2927842Z changes and commit them, and you can discard any commits you make in this
+2026-10-31T01:55:51.2928409Z state without impacting any branches by switching back to a branch.
+2026-10-31T01:55:51.2928707Z 
+2026-10-31T01:55:51.2928896Z If you want to create a new branch to retain commits you create, you may
+2026-10-31T01:55:51.2929352Z do so (now or later) by using -c with the switch command. Example:
+2026-10-31T01:55:51.2929617Z 
+2026-10-31T01:55:51.2929722Z   git switch -c <new-branch-name>
+2026-10-31T01:55:51.2930256Z 
+2026-10-31T01:55:51.2930381Z Or undo this operation with:
+2026-10-31T01:55:51.2930565Z 
+2026-10-31T01:55:51.2930675Z   git switch -
+2026-10-31T01:55:51.2930818Z 
+2026-10-31T01:55:51.2931098Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-31T01:55:51.2931461Z 
+2026-10-31T01:55:51.2931897Z HEAD is now at 33b75d9 Merge d5f935ad0cd8bb5cc164cacade4129f686f74e4d into c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1
+2026-10-31T01:55:51.3151603Z ##[endgroup]
+2026-10-31T01:55:51.3194183Z [command]/usr/bin/git log -1 --format=%H
+2026-10-31T01:55:51.3221973Z 33b75d9094782b6c987efde118d4da5e8b864c1f
+2026-10-31T01:55:51.4109909Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+2026-10-31T01:55:51.4110234Z with:
+2026-10-31T01:55:51.4110403Z   node-version: 24
+2026-10-31T01:55:51.4110586Z   check-latest: false
+2026-10-31T01:55:51.4112479Z   token: ***
+2026-10-31T01:55:51.4112672Z   package-manager-cache: true
+2026-10-31T01:55:51.4113073Z ##[endgroup]
+2026-10-31T01:55:51.5313691Z Found in cache @ /opt/hostedtoolcache/node/24.22.1/x64
+2026-10-31T01:55:53.4125346Z ##[group]Environment details
+2026-10-31T01:55:56.4592469Z node: v24.22.1
+2026-10-31T01:55:56.4592912Z npm: 11.19.1
+2026-10-31T01:55:56.4593161Z yarn: 1.22.22
+2026-10-31T01:55:56.4593694Z ##[endgroup]
+2026-10-31T01:55:56.4725611Z ##[group]Run npm install --global pnpm@11.25.0
+2026-10-31T01:55:56.4725963Z [36;1mnpm install --global pnpm@11.25.0[0m
+2026-10-31T01:55:56.4801583Z shell: /usr/bin/bash -e {0}
+2026-10-31T01:55:56.4801815Z ##[endgroup]
+2026-10-31T01:55:59.3256321Z 
+2026-10-31T01:55:59.3265022Z added 1 package in 3s
+2026-10-31T01:55:59.3265345Z 
+2026-10-31T01:55:59.3265654Z 1 package is looking for funding
+2026-10-31T01:55:59.3266063Z   run `npm fund` for details
+2026-10-31T01:55:59.3401620Z ##[group]Run pnpm install --frozen-lockfile
+2026-10-31T01:55:59.3401948Z [36;1mpnpm install --frozen-lockfile[0m
+2026-10-31T01:55:59.3433661Z shell: /usr/bin/bash -e {0}
+2026-10-31T01:55:59.3433889Z ##[endgroup]
+2026-10-31T01:56:00.4783036Z ? Verifying lockfile against supply-chain policies (214 entries)...
+2026-10-31T01:56:00.4867290Z Lockfile is up to date, resolution step is skipped
+2026-10-31T01:56:00.5605700Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-31T01:56:00.5797413Z Packages: +140
+2026-10-31T01:56:00.5798052Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-10-31T01:56:00.9849410Z Packages are hard linked from the content-addressable store to the virtual store.
+2026-10-31T01:56:00.9849964Z   Content-addressable store is at: /home/runner/.local/share/pnpm/store/v11
+2026-10-31T01:56:00.9850510Z   Virtual store is at:             node_modules/.pnpm
+2026-10-31T01:56:01.5712081Z Progress: resolved 140, reused 0, downloaded 71, added 10
+2026-10-31T01:56:02.5774649Z Progress: resolved 140, reused 0, downloaded 135, added 22
+2026-10-31T01:56:03.1670308Z ✓ Lockfile passes supply-chain policies (214 entries in 2.6s)
+2026-10-31T01:56:03.5774414Z Progress: resolved 140, reused 0, downloaded 138, added 82
+2026-10-31T01:56:03.9196093Z Progress: resolved 140, reused 0, downloaded 140, added 140, done
+2026-10-31T01:56:03.9640243Z .../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+2026-10-31T01:56:04.0887744Z .../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+2026-10-31T01:56:04.5668248Z 
+2026-10-31T01:56:04.5668945Z dependencies:
+2026-10-31T01:56:04.5669326Z + @colyseus/core 0.18.21
+2026-10-31T01:56:04.5669675Z + @colyseus/schema 5.0.42
+2026-10-31T01:56:04.5669991Z + @colyseus/sdk 0.18.6
+2026-10-31T01:56:04.5670336Z + @colyseus/ws-transport 0.18.4
+2026-10-31T01:56:04.5670743Z + @fontsource/im-fell-english-sc 5.3.0
+2026-10-31T01:56:04.5671134Z + @fontsource/noto-sans 5.3.0
+2026-10-31T01:56:04.5671548Z + @fontsource/noto-sans-arabic 5.3.0
+2026-10-31T01:56:04.5672119Z + @fontsource/noto-sans-bengali 5.3.0
+2026-10-31T01:56:04.5672534Z + @fontsource/noto-sans-devanagari 5.3.0
+2026-10-31T01:56:04.5673121Z + @fontsource/noto-sans-jp 5.3.1
+2026-10-31T01:56:04.5674111Z + @fontsource/noto-sans-kr 5.3.1
+2026-10-31T01:56:04.5674470Z + @fontsource/noto-sans-sc 5.3.1
+2026-10-31T01:56:04.5674841Z + @fontsource/noto-sans-tc 5.3.1
+2026-10-31T01:56:04.5675130Z + phaser 4.2.1
+2026-10-31T01:56:04.5675240Z 
+2026-10-31T01:56:04.5675327Z devDependencies:
+2026-10-31T01:56:04.5675652Z + @types/express 5.0.6
+2026-10-31T01:56:04.5675954Z + @types/node 24.19.2
+2026-10-31T01:56:04.5676231Z + electron 45.0.0
+2026-10-31T01:56:04.5676489Z + esbuild 0.28.2
+2026-10-31T01:56:04.5676762Z + prettier 3.9.10
+2026-10-31T01:56:04.5677011Z + resedit 3.1.0
+2026-10-31T01:56:04.5677266Z + tsx 4.23.15
+2026-10-31T01:56:04.5677543Z + typescript 7.0.2
+2026-10-31T01:56:04.5677813Z + vite 8.3.5
+2026-10-31T01:56:04.5677944Z 
+2026-10-31T01:56:04.8514885Z Done in 5.4s using pnpm v11.25.0
+2026-10-31T01:56:05.5368947Z ##[group]Run python -m venv .art-verify-venv
+2026-10-31T01:56:05.5369277Z [36;1mpython -m venv .art-verify-venv[0m
+2026-10-31T01:56:05.5369739Z [36;1m.art-verify-venv/bin/python -m pip install --disable-pip-version-check -r tools/art-verification-requirements.txt[0m
+2026-10-31T01:56:05.5370246Z [36;1mecho "$PWD/.art-verify-venv/bin" >> "$GITHUB_PATH"[0m
+2026-10-31T01:56:05.5397637Z shell: /usr/bin/bash -e {0}
+2026-10-31T01:56:05.5397848Z ##[endgroup]
+2026-10-31T01:56:08.0205811Z Collecting Pillow==12.3.0 (from -r tools/art-verification-requirements.txt (line 1))
+2026-10-31T01:56:08.0575041Z   Downloading pillow-12.3.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+2026-10-31T01:56:08.0729533Z Downloading pillow-12.3.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+2026-10-31T01:56:08.1709499Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 89.6 MB/s eta 0:00:00
+2026-10-31T01:56:08.1823320Z Installing collected packages: Pillow
+2026-10-31T01:56:08.4196180Z Successfully installed Pillow-12.3.0
+2026-10-31T01:56:08.5080286Z ##[group]Run pnpm verify
+2026-10-31T01:56:08.5080535Z [36;1mpnpm verify[0m
+2026-10-31T01:56:08.5109204Z shell: /usr/bin/bash -e {0}
+2026-10-31T01:56:08.5109447Z ##[endgroup]
+2026-10-31T01:56:08.9896196Z $ node tools/verify.mjs
+2026-10-31T01:56:09.0252500Z 
+2026-10-31T01:56:09.0253201Z Stage 1 authored content
+2026-10-31T01:56:10.8320934Z {
+2026-10-31T01:56:10.8321266Z   "schemaVersion": 1,
+2026-10-31T01:56:10.8321646Z   "stage": "Stage 1 source validation",
+2026-10-31T01:56:10.8321944Z   "passed": true,
+2026-10-31T01:56:10.8322144Z   "legalMutationSets": 2255,
+2026-10-31T01:56:10.8322369Z   "checks": [
+2026-10-31T01:56:10.8322728Z     {
+2026-10-31T01:56:10.8323189Z       "name": "Complete finite versioned content",
+2026-10-31T01:56:10.8323589Z       "passed": true
+2026-10-31T01:56:10.8323834Z     },
+2026-10-31T01:56:10.8324058Z     {
+2026-10-31T01:56:10.8324529Z       "name": "Seven classes, 378 specialization nodes, all eighteen grades and ultimates",
+2026-10-31T01:56:10.8325191Z       "passed": true
+2026-10-31T01:56:10.8325467Z     },
+2026-10-31T01:56:10.8325691Z     {
+2026-10-31T01:56:10.8326039Z       "name": "Campaign, raid and uncapped endless budgets",
+2026-10-31T01:56:10.8326446Z       "passed": true
+2026-10-31T01:56:10.8326700Z     },
+2026-10-31T01:56:10.8326912Z     {
+2026-10-31T01:56:10.8327389Z       "name": "Fixed boss grades, independent variants and complete translated tier labels",
+2026-10-31T01:56:10.8327987Z       "passed": true
+2026-10-31T01:56:10.8328312Z     },
+2026-10-31T01:56:10.8328521Z     {
+2026-10-31T01:56:10.8328870Z       "name": "Weapon accounting, rates and finite cooldowns",
+2026-10-31T01:56:10.8329265Z       "passed": true
+2026-10-31T01:56:10.8329510Z     },
+2026-10-31T01:56:10.8329727Z     {
+2026-10-31T01:56:10.8330105Z       "name": "Every legal one-, two- and three-mutation composition",
+2026-10-31T01:56:10.8330551Z       "passed": true
+2026-10-31T01:56:10.8330809Z     },
+2026-10-31T01:56:10.8331019Z     {
+2026-10-31T01:56:10.8331411Z       "name": "Boss attack contracts, transitions, arenas and deadlines",
+2026-10-31T01:56:10.8331844Z       "passed": true
+2026-10-31T01:56:10.8332269Z     },
+2026-10-31T01:56:10.8332429Z     {
+2026-10-31T01:56:10.8332904Z       "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+2026-10-31T01:56:10.8333307Z       "passed": true
+2026-10-31T01:56:10.8333478Z     },
+2026-10-31T01:56:10.8333629Z     {
+2026-10-31T01:56:10.8333846Z       "name": "Design bible and complete editable tables",
+2026-10-31T01:56:10.8334095Z       "passed": true
+2026-10-31T01:56:10.8334266Z     },
+2026-10-31T01:56:10.8334414Z     {
+2026-10-31T01:56:10.8334711Z       "name": "Painted arena cover and lava native pixels, transparency and provenance",
+2026-10-31T01:56:10.8335031Z       "passed": true
+2026-10-31T01:56:10.8335197Z     },
+2026-10-31T01:56:10.8335344Z     {
+2026-10-31T01:56:10.8335689Z       "name": "Painted arena worlds match exact normalized native pixels and floor-fit metadata",
+2026-10-31T01:56:10.8336066Z       "passed": true
+2026-10-31T01:56:10.8336248Z     },
+2026-10-31T01:56:10.8336401Z     {
+2026-10-31T01:56:10.8336698Z       "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+2026-10-31T01:56:10.8337032Z       "passed": true
+2026-10-31T01:56:10.8337212Z     },
+2026-10-31T01:56:10.8337357Z     {
+2026-10-31T01:56:10.8337640Z       "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+2026-10-31T01:56:10.8337951Z       "passed": true
+2026-10-31T01:56:10.8338116Z     },
+2026-10-31T01:56:10.8338258Z     {
+2026-10-31T01:56:10.8338506Z       "name": "All fifteen translation catalogs and placeholder parity",
+2026-10-31T01:56:10.8338799Z       "passed": true
+2026-10-31T01:56:10.8338960Z     },
+2026-10-31T01:56:10.8339114Z     {
+2026-10-31T01:56:10.8339378Z       "name": "Eight reviewed art proof sets with original provenance",
+2026-10-31T01:56:10.8339685Z       "passed": true
+2026-10-31T01:56:10.8339887Z     },
+2026-10-31T01:56:10.8340111Z     {
+2026-10-31T01:56:10.8340545Z       "name": "Original music and SFX objective review",
+2026-10-31T01:56:10.8340799Z       "passed": true
+2026-10-31T01:56:10.8340977Z     },
+2026-10-31T01:56:10.8341130Z     {
+2026-10-31T01:56:10.8341336Z       "name": "Leaderboard fixtures and bounded score",
+2026-10-31T01:56:10.8341784Z       "passed": true
+2026-10-31T01:56:10.8341968Z     }
+2026-10-31T01:56:10.8342116Z   ]
+2026-10-31T01:56:10.8342305Z }
+2026-10-31T01:56:10.8423276Z 
+2026-10-31T01:56:10.8423676Z TypeScript
+2026-10-31T01:56:13.0212143Z 
+2026-10-31T01:56:13.0213033Z Headless rules and real-network integration
+2026-10-31T01:56:14.7255123Z ✔ only exact known issued29 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings (8.580887ms)
+2026-10-31T01:56:14.7389000Z ✔ all fifteen manual guides route distinct Ambulance phases and form help, with existing action poses and static reduced motion (171.259606ms)
+2026-10-31T01:56:15.1065418Z ✔ real owner and observer replicate locked second-dispatch geometry, door repeat budgets and complete encounter cleanup (412.604772ms)
+2026-10-31T01:56:16.1595047Z ✔ connected Ambulance patrol paths honor every actual offset map, cover difficulty and lava footprint (90.618806ms)
+2026-10-31T01:56:16.1597177Z ✔ normal early and late dispatches have one/two independently warned headings; advanced forms add distinct stops (29.898049ms)
+2026-10-31T01:56:16.1624156Z ✔ a dispatch locks real origin/destination throughout the full warning and cannot hit before release (2.273716ms)
+2026-10-31T01:56:16.1654573Z ✔ moving Ambulance body and moving survivor use relative swept contact, once per dispatch (1.127188ms)
+2026-10-31T01:56:16.1670395Z ✔ the first active frame never sweeps player movement that finished before charge activation (1.450046ms)
+2026-10-31T01:56:16.1671706Z ✔ body-radius rays clip to offset bounds and cover, while new masonry cancels actual travel before it (6.043066ms)
+2026-10-31T01:56:16.1673300Z ✔ first stop emits exactly40 Brutal or120 Crazed shots with full fresh tells, retained Brutal prefix and crossing repeats (7.11042ms)
+2026-10-31T01:56:16.1674591Z ✔ driver exposure remains a stationary exactly-three-second real recovery window (2.06727ms)
+2026-10-31T01:56:16.1676341Z ✔ reset cancels every unreleased owned cue at any stage, preserves already emitted shots and supports a delayed next phase (7.075353ms)
+2026-10-31T01:56:16.1677673Z ✔ phase entry retains the Ambulance route; stagger, victory and deadline clean it up (45.518422ms)
+2026-10-31T01:56:16.1679025Z ✔ actual Baby/Easy assistance expiry and repeated recovery never deadlock the dedicated dispatch scheduler (572.529054ms)
+2026-10-31T01:56:16.1680533Z ✔ one stable camera contains every complete boss pose at all four physical borders on all36map/difficulty combinations (79.189732ms)
+2026-10-31T01:56:16.1681905Z ✔ all172survivor clips remain fully visible at each map/difficulty border with unchanged ground-body clearance (20.378166ms)
+2026-10-31T01:56:16.1683417Z ✔ the actual camera adapter and pointer projection share one fixed transform without a map or phase jump (1.806314ms)
+2026-10-31T01:56:16.1684664Z ✔ real pointer events aim at the displayed world position through camera zoom and letterboxing (1.884159ms)
+2026-10-31T01:56:16.1685960Z ✔ Brass Toad can take successive body-clear hops around the actual Baby Ossuary cover to the upper floor (166.995028ms)
+2026-10-31T01:56:16.1687138Z ✔ actual Brass Toad encounters can reach the upper floor on every map and difficulty (1056.514905ms)
+2026-10-31T01:56:16.1688292Z ✔ every secondary map uses non-bed art bound to its exact authoritative cover rectangle (6.412507ms)
+2026-10-31T01:56:16.1689639Z ✔ secondary maps have distinct encounter axes and a genuine factory chicane rather than another open center lane (0.467634ms)
+2026-10-31T01:56:16.1690876Z ✔ five opaque ground paintings bind their exact natives and all six existing map footprints (83.608753ms)
+2026-10-31T01:56:16.1692462Z ✔ map switches reset the whole floor rectangle below cover without changing collision, bounds or spawns (1.42221ms)
+2026-10-31T01:56:16.1693917Z ✔ the actual floor preload planner queues every identity once and rejects missing URLs before queuing (0.634311ms)
+2026-10-31T01:56:16.1695193Z ✔ six maps have six distinct footprints and cover layouts with reachable spawns and all Accord pads (61.543775ms)
+2026-10-31T01:56:16.1696472Z ✔ prediction and authoritative movement agree on every new footprint, including fast dodges against cover (74.703124ms)
+2026-10-31T01:56:16.1697726Z ✔ painted cover and lava bind their preserved originals, requests and exact RGBA derivatives (7.518982ms)
+2026-10-31T01:56:16.1699294Z ✔ all 36 map/difficulty combinations use painted cover fitted to actual collision with intact end caps and no placeholder block (83.804233ms)
+2026-10-31T01:56:16.1700522Z ✔ missing cover art fails closed during preload rather than drawing a substitute (0.772445ms)
+2026-10-31T01:56:16.5979062Z ✔ Easy has exactly half Baby circles and a channel exactly 1.5 times as long in real solo and fifty-player encounters (125.803619ms)
+2026-10-31T01:56:16.6060528Z ✔ the longer Easy channel still resets when a participant leaves a circle (5.89919ms)
+2026-10-31T01:56:16.6062074Z ✔ two additional Baby cover props match actual collision and keep fifty deployments, all six circles and boss routes reachable on every map (86.401581ms)
+2026-10-31T01:56:16.6064107Z ✔ new Baby cover stops real projectiles and client prediction agrees with authority at the new collider (25.443954ms)
+2026-10-31T01:56:16.6065371Z ✔ issued protocol-16 local boundaries retain progress under the revised assistance rules (3.814778ms)
+2026-10-31T01:56:17.0817248Z ✔ real clients receive the exact Baby/Easy circle counts and channel duration and clear them at victory (507.308141ms)
+2026-10-31T01:56:18.0991406Z ✔ actual music changes from equipment through all66boss themes and back with hold API missing (111.93638ms)
+2026-10-31T01:56:18.0993306Z ✔ actual music changes from equipment through all66boss themes and back with hold API supported (91.210939ms)
+2026-10-31T01:56:18.0994560Z ✔ actual music changes from equipment through all66boss themes and back with hold API throws (87.041148ms)
+2026-10-31T01:56:18.0996175Z ✔ leaving during decode cancels the pending theme instead of starting music on the menu (15.303849ms)
+2026-10-31T01:56:18.0997178Z ✔ 67 compressed tracks retain exact original master hashes and delivery hashes (574.229512ms)
+2026-10-31T01:56:18.0998153Z ✔ music duration tolerates resampling but rejects encoder padding and invalid buffers (0.3907ms)
+2026-10-31T01:56:18.0999130Z ✔ bad compressed padding falls back to PCM and stays bypassed for the page (0.746297ms)
+2026-10-31T01:56:18.1000143Z ✔ decoder failure preserves playback through PCM; two invalid decoders fail without a source (0.640179ms)
+2026-10-31T01:56:18.1001500Z ✔ 144 real map/difficulty/phase procession paths stay body-clear within actual offset bounds, masonry and conservative lava footprints (331.032329ms)
+2026-10-31T01:56:18.1002723Z ✔ Paired Knell overlaps two independently warned outward fronts from one locked source and opening (9.097484ms)
+2026-10-31T01:56:18.1004125Z ✔ the extracted ring capsule contact preserves all existing service behavior, inward/outward sweeps and body-width opening edges (0.275909ms)
+2026-10-31T01:56:18.1005337Z ✔ first ring activation ignores old player motion and each travelling front damages a survivor once (8.71104ms)
+2026-10-31T01:56:18.1006695Z ✔ Procession moves only after its tell, uses all eight drawn gait frames, and closes toward the marked survivor and locks the toll to its final source (7.31498ms)
+2026-10-31T01:56:18.1008360Z ✔ new cover safely stops the planned procession instead of teleporting through it or releasing from an unreached source (2.235115ms)
+2026-10-31T01:56:18.1009097Z ✔ Counterstroke interleaves inward and outward fronts before the earlier wave finishes (7.27415ms)
+2026-10-31T01:56:18.1010059Z ✔ Brutal layers four peals and two independent aimed clappers instead of the former exclusive silent hold (8.196838ms)
+2026-10-31T01:56:18.1010897Z ✔ Crazed primary and responding bell stay dangerous together, with fixed sources/openings and complete independent warnings (5.715738ms)
+2026-10-31T01:56:18.1011709Z ✔ advanced Carillon uses six overlapping alternating peals instead of another generic projectile spray (5.761806ms)
+2026-10-31T01:56:18.1012523Z ✔ rich actor data cannot overwrite numeric cue identities or leak into path points and snapshots cannot mutate the owner (7.404783ms)
+2026-10-31T01:56:18.1013724Z ✔ explicit interruption/reset clear peals with a fresh restart delay, while a phase change retains the committed score (10.39658ms)
+2026-10-31T01:56:18.1014559Z ✔ completed rings and repeated assistance cycles do not retain hit sets, responders or stale owned cues (0.342859ms)
+2026-10-31T01:56:18.1015793Z ✔ actual Game removes generic Bellringer bullets/lasers and clears owned fronts during stagger, assistance and encounter exit (88.786773ms)
+2026-10-31T01:56:18.1017057Z ✔ clapper sector is harmless for its full 36-tick lock, ignores old motion on activation and hits once per swing (3.896249ms)
+2026-10-31T01:56:18.1018164Z ✔ swept clapper geometry covers radial edges and caps but leaves a real sideways body-clear escape (0.790342ms)
+2026-10-31T01:56:18.1019350Z ✔ a new clapper locks the current survivor position rather than reusing the first aim, and strike/reply sounds come from actual activation (5.945459ms)
+2026-10-31T01:56:18.1020274Z ✔ both simultaneous sources share a clear-floor opening outside the first clapper, including offset arenas and lava footprints (86.793677ms)
+2026-10-31T01:56:18.9215017Z ✔ exact known issued33 local Practice/profile state migrates to the current protocol without changing builds/form history/preferences; foreign or online state stays strict (6.131755ms)
+2026-10-31T01:56:18.9217679Z ✔ fifteen closed guides expose four distinct Bellringer phases and advanced mechanics while actual procession uses drawn frames8–15 and reduced motion remains static (81.889533ms)
+2026-10-31T01:56:18.9219625Z ✔ real owner and observer replicate concurrent primary, newly warned Crazed responding bell, locked geometry and encounter cleanup (284.225854ms)
+2026-10-31T01:56:18.9221667Z ✔ known issued34 local state migrates exactly while a foreign34 revision and online-shaped data remain rejected (6.642172ms)
+2026-10-31T01:56:19.6645128Z ✔ issued36 Practice/profile progress migrates to37; foreign revisions, forged online state and authoritative imports remain strict (6.767057ms)
+2026-10-31T01:56:19.6657527Z ✔ real owner and observer see the same phase-crossing advanced throw, return warning, damaged/broken head and unbroken Crazed return (807.737659ms)
+2026-10-31T01:56:19.6852259Z ✔ only advanced forms throw one finite physical clapper, with two complete warnings and fixed source/target/timeline (4.087723ms)
+2026-10-31T01:56:19.6867443Z ✔ outbound tell is harmless, first activation ignores past player motion, and later relative sweeps hit once per leg (0.600871ms)
+2026-10-31T01:56:19.6874339Z ✔ the outbound landing segment still damages at its warned endpoint before the harmless settling interval (0.31693ms)
+2026-10-31T01:56:19.6875444Z ✔ crossing the thin tether behind or ahead of the travelling head is safe; only its actual swept body hits (0.305403ms)
+2026-10-31T01:56:19.6876322Z ✔ only the landed return-warning window exposes a real weak point; breaking it cancels the return and fades without delayed damage (0.463858ms)
+2026-10-31T01:56:19.6877210Z ✔ the return closes its break window exactly at activation, warns anew, sounds once per release and keeps its own contact budget (0.526911ms)
+2026-10-31T01:56:19.6878084Z ✔ throws remain clear of actual cover, offset bounds and conservative lava footprints on all map/difficulty/form combinations (95.87664ms)
+2026-10-31T01:56:19.6878953Z ✔ Standard retains two/three/four fronts with wider gaps, shorter clapper reach and deliberately slower spacing (24.939532ms)
+2026-10-31T01:56:19.6880155Z ✔ every advanced phase gets one complete return-chain decision overlapping peals, and Crazed keeps its concurrent responding bell (38.396852ms)
+2026-10-31T01:56:19.6881109Z ✔ actual Soldier projectiles hit and break the landed head through normal weak-point routing, without transferring damage to the boss (28.668893ms)
+2026-10-31T01:56:19.6882043Z ✔ already warned throws/returns finish across actual phase entry and explicit stagger/defeat cleanup removes their weak ownership (52.255228ms)
+2026-10-31T01:56:19.6883124Z ✔ the drawn throw/return/weak-point cues use exact shared geometry, remain bounded and expose numeric state to snapshots (7.052621ms)
+2026-10-31T01:56:19.6883899Z ✔ primary toll, responding bell and clapper have distinct bounded metallic synthesis specifications (0.679718ms)
+2026-10-31T01:56:19.6884683Z ✔ each real bell cue schedules exactly three bounded partials and releases its voice once after all nodes disconnect (0.958021ms)
+2026-10-31T01:56:28.7932020Z ✔ all runtime boss art, loading references, ground anchors and lifts match native alpha (2239.310528ms)
+2026-10-31T01:56:28.7936449Z ✔ all 66 bosses deploy fully in view on every map/difficulty with physical bodies clear of masonry (1059.226242ms)
+2026-10-31T01:56:28.7937779Z ✔ whole-body route walls and scripted placement guard every edge on all 2376 boss/map/difficulty combinations (1329.261388ms)
+2026-10-31T01:56:28.7939219Z ✔ actual moving encounters retain complete art on six maps at Normal/Hard and keep their final defeat position (5184.831825ms)
+2026-10-31T01:56:28.8683996Z ✔ every authored falling sequence completes inside the defeat beat, with honest coverage of remaining settled poses (2.039335ms)
+2026-10-31T01:56:28.8685131Z ✔ the full defeat beat stops combat without repeating rewards and leaves the complete vote duration afterward (11.954742ms)
+2026-10-31T01:56:28.8686045Z ✔ a final campaign clear keeps its banked combat result while the fall finishes before the result screen (24.501061ms)
+2026-10-31T01:56:28.8686904Z ✔ solo saves and trusted room boundaries resume the remaining fall without losing menu time or accepting forged fall state (5.833692ms)
+2026-10-31T01:56:28.8687756Z ✔ real multiplayer peers observe the same defeat window and a full voting period after it (5268.025421ms)
+2026-10-31T01:56:28.8688862Z ✔ boss guide starts closed, pauses Solo only, and closing it preserves an independent manual pause (0.781917ms)
+2026-10-31T01:56:28.8689787Z ✔ all fifteen guide dialogs default hidden, expose open/close controls and distinguish frozen Solo from continuing online play (0.570815ms)
+2026-10-31T01:56:28.8690449Z ✔ Session never sends a global pause command for an online guide (0.752444ms)
+2026-10-31T01:56:28.8691361Z ✔ the actual public offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input (810.178623ms)
+2026-10-31T01:56:28.8692567Z ✔ the actual testing offline worker freezes combat clocks, deadlines, player state and warnings while reading, then resumes without catchup or held input (697.239596ms)
+2026-10-31T01:56:28.8694596Z ✔ final availability is optional Baby-only while the explicit testing switch keeps current review guides available on all six difficulties (0.326734ms)
+2026-10-31T01:56:28.8696027Z ✔ local boss-form choice starts the real Normal or Brutal Constable on every map and class (74.530897ms)
+2026-10-31T01:56:28.8697183Z ✔ Practice form validates input, survives a boundary restore and applies only to the opener (4.088142ms)
+2026-10-31T01:56:28.8698307Z ✔ actual offline worker honors the selected form and reports invalid init messages (676.045516ms)
+2026-10-31T01:56:28.8699540Z ✔ online Session creation excludes the local Practice form and starts the normal authoritative contract (118.754221ms)
+2026-10-31T01:56:28.8714066Z ✔ boss-form controls have an explicit accessible label and first-boss scope in all fifteen locales (0.971911ms)
+2026-10-31T01:56:28.8729486Z ✔ startup loads every boss identity and shared actor but no deferred full boss atlas (2.452564ms)
+2026-10-31T01:56:28.8744869Z ✔ all 63 exact identity references retain their source pixels, dimensions, origin and world size through recorded atlas extensions (55.763899ms)
+2026-10-31T01:56:28.8746572Z ✔ an unavailable full atlas uses that same boss identity at frame zero and ready/shared textures keep their actual pose (0.565718ms)
+2026-10-31T01:56:28.8747973Z ✔ one in-flight request coalesces repeated and superseded bosses without retaining stale completions (6.677334ms)
+2026-10-31T01:56:28.8749389Z ✔ cycling the full boss roster retains at most two decoded full atlases and reserves space before each load (13.839597ms)
+2026-10-31T01:56:28.8750843Z ✔ failed loads keep the identity available and retry only after five seconds with a monotonic finite clock (1.292535ms)
+2026-10-31T01:56:28.8752113Z ✔ scene shutdown releases cached resources and rejects further requests, including a late completion (1.204936ms)
+2026-10-31T01:56:28.8753478Z ✔ a live boss sprite releases its old atlas for its own identity before the texture is destroyed (0.414645ms)
+2026-10-31T01:56:28.8754785Z ✔ selected pose metadata resolves exact runtime atlas URLs and rejects missing or duplicate bindings (0.599969ms)
+2026-10-31T01:56:28.8756044Z ✔ all sixty-three bosses retain identity and the bounded tier-appropriate Brutal phases (2.231106ms)
+2026-10-31T01:56:28.8757415Z ✔ Brutal combat doubles health and attack damage, extends the deadline while uncleared boss contracts remain Normal (36.066903ms)
+2026-10-31T01:56:28.8758750Z ✔ Constable final transition retains gapped rings and additional Brutal pincer origins (320.556967ms)
+2026-10-31T01:56:28.8759967Z ✔ admission offers reserve finite capacity and waiting players get the released slot in order (1.443148ms)
+2026-10-31T01:56:28.8761159Z ✔ stale offers and cancelled waiters release their hold; forged and reused permits fail (0.379212ms)
+2026-10-31T01:56:28.8762264Z ✔ room limits keep create requests waiting while eligible joins can use existing rooms (0.264602ms)
+2026-10-31T01:56:28.8763425Z ✔ unpolled waiters expire and the pending queue is bounded (5.87175ms)
+2026-10-31T01:56:28.8764587Z file:///home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/tools/sync-changelog.mjs:28
+2026-10-31T01:56:28.8765913Z       throw new Error('Stale changelog: ' + path + '; run node tools/sync-changelog.mjs');
+2026-10-31T01:56:28.8766537Z             ^
+2026-10-31T01:56:28.8766830Z 
+2026-10-31T01:56:28.8767326Z Error: Stale changelog: CHANGELOG.md; run node tools/sync-changelog.mjs
+2026-10-31T01:56:28.8768422Z     at file:///home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/tools/sync-changelog.mjs:28:13
+2026-10-31T01:56:28.8769432Z     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+2026-10-31T01:56:28.8770085Z     at async node:internal/modules/esm/loader:647:26
+2026-10-31T01:56:28.8770814Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+2026-10-31T01:56:28.8771372Z 
+2026-10-31T01:56:28.8771632Z Node.js v24.22.1
+2026-10-31T01:56:28.8772556Z ✖ journal snapshot agrees with actual playable content rather than authored future content (44.801807ms)
+2026-10-31T01:56:28.8773994Z ✔ journal preserves locale navigation, semantic dates and explicitly English editorial content (567.838495ms)
+2026-10-31T01:56:28.8775353Z ✔ issued41local saves retain exact map/economy/build identity while unknown and authoritative envelopes stay strict (9.053014ms)
+2026-10-31T01:56:28.8776789Z ✔ every delivery state has a source-backed notice in all fifteen catalogs, with bounded cooldown formatting (58.202357ms)
+2026-10-31T01:56:30.7798575Z ✔ authority confirms delivery/rejections, binds sender identity and acknowledges duplicate requests without duplicate posts (4.487419ms)
+2026-10-31T01:56:30.7800551Z ✔ outbox waits for confirmation, retains a request after timeout/drop and permits a safe explicit retry or a genuinely new message (36.020634ms)
+2026-10-31T01:56:30.7802930Z ✔ late success still confirms the pending text; cooldown, disable, send failure and destroyed lifetimes preserve bounded state (71.871187ms)
+2026-10-31T01:56:30.7804665Z ✔ actual peers receive explicit cooldown and reconnect retry acknowledges a lost confirmation without a duplicate broadcast (3835.052746ms)
+2026-10-31T01:56:32.1995612Z ✔ quickly hiding and showing chat restores its recent history without another player needing to post (5211.533342ms)
+2026-10-31T01:56:33.2267316Z ✔ fifty developed builds fit the unchanged writer limit and preserve their exact raw identity in both envelope formats (135.953081ms)
+2026-10-31T01:56:33.2268707Z ℹ {"participants":50,"rawBytes":446522,"compressedBytes":43838,"registrationBytes":58648,"bodyLimit":65536,"classes":7}
+2026-10-31T01:56:33.2270081Z ✔ packed signatures authenticate before inflation and bind the encoding without downgrading legacy checkpoints (3.904753ms)
+2026-10-31T01:56:33.2271119Z ✔ authenticated expansion beyond one MiB, truncated streams and trailing compressed data are rejected (3.966784ms)
+2026-10-31T01:56:33.2271904Z ✔ legacy envelope compatibility retains strict UTF-8, metadata, clock and expiry checks (0.778042ms)
+2026-10-31T01:56:33.2272731Z ✔ an incompressible legal roster fails closed without dropping receipts or raising the transport limit (34.220163ms)
+2026-10-31T01:56:33.2274073Z ✔ the maximum packed envelope leaves HTTP headroom for every permitted lifecycle and lookup field (0.984448ms)
+2026-10-31T01:56:33.2275289Z ✔ offline checkpoint round-trip preserves purchased power, rewards, voting timers and deterministic choices (14.020903ms)
+2026-10-31T01:56:33.2276401Z ✔ restoring resets the input sequence so a new client can move without replaying stale combat input (3.888868ms)
+2026-10-31T01:56:33.2277116Z ✔ malformed, stale, cross-class, over-budget and incompatible boundary saves are rejected (6.076989ms)
+2026-10-31T01:56:33.2277930Z ✔ Tollkeeper locks both segments, reflects once at the wall and sweeps moving survivors only after its tell (3.627562ms)
+2026-10-31T01:56:33.2278749Z ✔ Chain Marshal anchors absorb actual shots and breaking one cancels only its own sweep (35.788566ms)
+2026-10-31T01:56:33.2279448Z ✔ Widow rotates the open gate, blocks shots and movement, and ejects a closing overlap without trapping (6.767401ms)
+2026-10-31T01:56:33.2280496Z ✔ Widow collision prediction uses the same active shutters as the authoritative player step (20.815564ms)
+2026-10-31T01:56:33.2281189Z ✔ Ambulance patrols, locks and executes a charge, then exposes its driver for exactly three seconds (26.229ms)
+2026-10-31T01:56:33.2281962Z ✔ each civic boss executes its tier-appropriate phases without a Normal shield event and cleans on victory/deadline (48.032317ms)
+2026-10-31T01:56:33.2282697Z ✔ Quarantine has four nonrepeating regular choices then an actual route finale and 27 SP (28.014525ms)
+2026-10-31T01:56:33.2283710Z ✔ all six arena choices launch real collision layouts and survive a local boundary; old v6 stays Practice only (12.006088ms)
+2026-10-31T01:56:34.2015090Z ✔ real clients receive all four civic signatures, selected map, breakable anchors and active gates (3692.357801ms)
+2026-10-31T01:56:35.2508601Z ✔ all seven survivors are selectable with their own four compatible weapon tiers and 54 purchasable nodes (20.655233ms)
+2026-10-31T01:56:35.2533484Z ✔ Tank wall takes finite swept bullet damage while teammates walk through it (7.605624ms)
+2026-10-31T01:56:35.2535354Z ✔ Tank charge moves its authored distance, stops on cover and hits a crossed enemy only once (6.786482ms)
+2026-10-31T01:56:35.2536656Z ✔ The City Holds grants finite team shield and capped armor without stacking identical fields (12.426447ms)
+2026-10-31T01:56:35.2551891Z ✔ Mage sigil deals one burst and slows ordinary enemies without slowing the boss (6.048279ms)
+2026-10-31T01:56:35.2553243Z ✔ Mage ward detonates at the locked aim point and grants nearby allies a temporary shield (8.347421ms)
+2026-10-31T01:56:35.2554413Z ✔ Silent Twelfth releases three timed pulses and clears only nearby hostile projectiles (7.964154ms)
+2026-10-31T01:56:35.2556079Z ✔ Engineer deploys an 80-HP turret with real owned projectiles; cover still blocks its fire (5.190496ms)
+2026-10-31T01:56:35.2557365Z ✔ Engineer siege and skill paths change actual construct count, health, damage and duration (4.370407ms)
+2026-10-31T01:56:35.2558658Z ✔ Assassin veil prevents new target locks but still takes existing projectile and contact damage (8.233983ms)
+2026-10-31T01:56:35.2560027Z ✔ Assassin Shadow Step sweeps enemies, respects masonry and ultimate provides three free empowered steps (3.233334ms)
+2026-10-31T01:56:35.2561400Z ✔ new class-specific skills affect barrier health, sigil radius, veil duration and extra ultimate charges (4.363817ms)
+2026-10-31T01:56:35.2562711Z ✔ Last Passage guarantees critical primary damage and Siege Engine accelerates owned turrets (7.125363ms)
+2026-10-31T01:56:35.2564338Z ✔ seven real clients keep every class identity and replicate constructs, veil, charges and temporary team shields (371.849704ms)
+2026-10-31T01:56:35.2565719Z ✔ 21 transformations are legal six-SP depth-three purchases with stable IDs and prerequisites (5.410646ms)
+2026-10-31T01:56:35.2567017Z ✔ Breach Cadence emits three real delayed shots on the locked aim with unchanged damage budget (14.489831ms)
+2026-10-31T01:56:35.2568246Z ✔ Marching Colors follows authority and prediction beyond the original rally location (6.374792ms)
+2026-10-31T01:56:35.2569495Z ✔ Supply Line has a weaker field and refills only present allies a second time at midpoint (10.862052ms)
+2026-10-31T01:56:35.2570757Z ✔ Split Suppression creates two narrow cones, a central gap, real slow and the same total pellet damage (4.266714ms)
+2026-10-31T01:56:35.2572130Z ✔ Shoulder Mantlet follows aim, takes finite projectile damage and trades body armor for its front wall (3.87242ms)
+2026-10-31T01:56:35.2573490Z ✔ Furnace Vents schedules short-lived rings only during Overdrive (19.007375ms)
+2026-10-31T01:56:35.2574632Z ✔ Cornerstone creates two angled half-length finite walls with matching swept collision (4.537974ms)
+2026-10-31T01:56:35.2575875Z ✔ Wake Guard leaves a two-second departure wall without replacing the ordinary Q wall (3.768006ms)
+2026-10-31T01:56:35.2577196Z ✔ Procession follows its owner, admits late allies once and cannot refill shields by leaving and returning (9.794503ms)
+2026-10-31T01:56:35.2578706Z ✔ Field Triage anchors healing on the injured ally and retains reduced radius while moving (2.174087ms)
+2026-10-31T01:56:35.2579952Z ✔ Serum Relay heals and cleanses three unique targets through a chain beyond the old radius (3.631494ms)
+2026-10-31T01:56:35.2581206Z ✔ Second Breath retains its three later pulses after the distinct Normal and Hard Medic revivals (12.009811ms)
+2026-10-31T01:56:35.2582464Z ✔ Ward Echo delivers 40 then 25 at a locked point while keeping the finite allied shield (2.435164ms)
+2026-10-31T01:56:35.2583845Z ✔ Twin Sigils makes two smaller centers with half burst damage and separate persistent slow regions (1.234517ms)
+2026-10-31T01:56:35.2585078Z ✔ Orbit Requiem uses three actual moving pulse centers and splits the original pulse budget (3.559818ms)
+2026-10-31T01:56:35.2586421Z ✔ Crossfire Pair halves each turret health and damage and assigns distinct near/far target preferences (1.994472ms)
+2026-10-31T01:56:35.2587695Z ✔ Return Current stores only absorbed HP damage and releases at most 72 nearby damage once (5.924126ms)
+2026-10-31T01:56:35.2588924Z ✔ Foundry Relay is a finite moving siege body with 160 base health and 160 pixels-per-second speed (2.674257ms)
+2026-10-31T01:56:35.2590234Z ✔ Decoy Veil attracts actual targeting and absorbs projectiles without entering the player roster (2.597043ms)
+2026-10-31T01:56:35.2591499Z ✔ Aftercut splits actual path damage 60/40 and holds the delayed sweep at the original path (2.184512ms)
+2026-10-31T01:56:35.2592630Z ✔ Unwritten Traps trades duration and a charge for three real departure pulses (4.132064ms)
+2026-10-31T01:56:35.2593925Z ✔ scheduled talent damage and cues stop when their owner is down or the encounter ends (3.768527ms)
+2026-10-31T01:56:35.2595328Z ✔ issued protocol-17 local saves retain skill node ownership and progression under protocol 19 (2.690441ms)
+2026-10-31T01:56:35.2596606Z ✔ every talent has authored names and behavior help in all fifteen locales (17.306198ms)
+2026-10-31T01:56:35.2597779Z ✔ Furnace Vents uses the advertised lower primary-fire bonus during the real weapon cadence (1.43307ms)
+2026-10-31T01:56:35.2598926Z ✔ class transformation paths retain the existing turret and ultimate capstones (5.231161ms)
+2026-10-31T01:56:35.2600077Z ✔ Return Current cancels on replacement, clips overkill and stops if its owner is down (1.475703ms)
+2026-10-31T01:56:35.2601207Z ✔ ordinary enemy contact damages the finite decoy through its target adapter (1.402986ms)
+2026-10-31T01:56:35.2602334Z ✔ transformation jobs remain bounded and are cancelled by disconnecting before release (9.911516ms)
+2026-10-31T01:56:37.0879158Z ✔ Clerk fixes all289valid target placements and supplies three distinct later appeal positions on actual maps (469.003572ms)
+2026-10-31T01:56:37.0924573Z ✔ placement stays in the target reachable component rather than choosing through a sealed partition (1.173937ms)
+2026-10-31T01:56:37.0925704Z ✔ first-phase stamps lock harmless ordered tells and reopen I exactly when III strikes (2.963515ms)
+2026-10-31T01:56:37.0927067Z ✔ late phase marks collision-resolved movement then gives a complete new warning and reopens III after its strike (4.880631ms)
+2026-10-31T01:56:37.0928364Z ✔ a newly inserted patrol obstacle changes the actual stop but never removes the complete stamp warning (1.957377ms)
+2026-10-31T01:56:37.0929875Z ✔ advanced late appeal replaces the expired field with five shifted fully warned positions (4.799351ms)
+2026-10-31T01:56:37.0944599Z ✔ stamp contact sweeps fast crossings, shares a half-second hit budget and expires with its visible geometry (1.442664ms)
+2026-10-31T01:56:37.0946030Z ✔ actual Clerk retains damaging stamps, a whole-body safe interior and hostile projectile absorption (34.697171ms)
+2026-10-31T01:56:37.0947443Z ✔ actual auxiliary fans occur between clear signature sequences and retain advanced echo density (378.973321ms)
+2026-10-31T01:56:37.0948711Z ✔ phase retains Clerk appeals/protection; stagger and encounter exit clean them up (22.451561ms)
+2026-10-31T01:56:37.0950409Z ✔ existing stamp casting poses follow real strike order and reduced motion keeps its static authority pose (7.407541ms)
+2026-10-31T01:56:37.0951782Z ✔ fifteen locales and known protocol23 local saves preserve help, form/build history and strict boundaries (34.347374ms)
+2026-10-31T01:56:37.0953364Z ✔ real owner/observer clients receive Clerk patrol, phase sound and independent appeal warnings then clear them on defeat (1971.63865ms)
+2026-10-31T01:56:38.1114808Z ✔ Brutal locks one random I–V safe number across its whole first phase, including interrupted casts, then rerolls late (16.597449ms)
+2026-10-31T01:56:38.1115889Z ✔ all six green-shelter boss damage bonuses are exact and require the full body inside an active shelter (7.171922ms)
+2026-10-31T01:56:38.1116640Z ✔ Crazed late batches add exactly two warned domains while other forms/phases add none (6.286903ms)
+2026-10-31T01:56:38.1117424Z ✔ activated domains survive later casts and cast cancellation, pending domains cancel, and encounter reset clears them (4.227475ms)
+2026-10-31T01:56:38.1118282Z ✔ permanent-domain contacts share a one-second per-survivor budget across overlaps and never hit during the warning (4.378599ms)
+2026-10-31T01:56:38.1119208Z ✔ the actual Game applies shelter bonuses at boss impact and maximum-health domains bypass armor/shields while respecting invulnerability (117.803221ms)
+2026-10-31T01:56:38.1120058Z ✔ Clerk forms create exactly3/5/10 separated stamps with red purple black severity and full warnings (14.018903ms)
+2026-10-31T01:56:38.1120768Z ✔ Brutal/Crazed late appeals replace expired fields, keep caps5/10 and shift every new center (15.568276ms)
+2026-10-31T01:56:38.1121445Z ✔ purple stamps deal exactly twice red base damage under the shared half-second contact budget (2.590142ms)
+2026-10-31T01:56:38.1122552Z ✔ actual black seal removes75percent of current health once per activation while armor and shield capacity remain (47.524472ms)
+2026-10-31T01:56:38.1123623Z ✔ black current-health loss is nonlethal down to1HP and never heals a pre-existing fractional health value (55.35606ms)
+2026-10-31T01:56:38.1124894Z ✔ dash invulnerability delays a black seal hit without consuming its one-hit activation budget (20.387868ms)
+2026-10-31T01:56:38.1125967Z ✔ reentering the same black seal cannot drain again but a different black seal has its own earned hit (15.717206ms)
+2026-10-31T01:56:38.1126913Z ✔ green whole-body shelter prevents current-health curses as well as ordinary hostile damage (12.549894ms)
+2026-10-31T01:56:38.1127652Z ✔ graded fields warn two three four bounded volley sources and preserve actual reopen-before-release clocks (16.792963ms)
+2026-10-31T01:56:38.1128493Z ✔ fifteen-locale advanced help describes randomized numbered shelter, purple affliction and once-per-seal black health loss (0.61519ms)
+2026-10-31T01:56:38.1129328Z ✔ all867sampled target/form placements fit complete separated fields and fresh late appeals on all maps (1382.59655ms)
+2026-10-31T01:56:38.1130132Z ✔ each Clerk reopening precedes its form-specific locked seven-shot fans with a full warning and no tracking (16.674052ms)
+2026-10-31T01:56:38.1130897Z ✔ shelter fans and their isolated cue arrays remain bounded through advanced repeats and reset (6.906439ms)
+2026-10-31T01:56:38.1132045Z ✔ all289valid map targets and both seal sets leave time for a central fan shot to meet the open shelter (397.86222ms)
+2026-10-31T01:56:38.1133223Z ✔ actual Normal Clerk fires while its seal is useful and real rim interceptions prevent injury (30.455445ms)
+2026-10-31T01:56:38.1134174Z ✔ a wall encountered before a seal absorbs the shot without inventing a rim impact (10.512355ms)
+2026-10-31T01:56:38.1135174Z ✔ actual interception cues are capped at48, sit on the rim, expire naturally and survive phase entry (12.592233ms)
+2026-10-31T01:56:38.1136338Z ✔ only the known protocol24 local Practice/profile revision migrates while exact form and build history survives (18.177647ms)
+2026-10-31T01:56:38.1137546Z ✔ an exposed survivor on a warned fan wing takes actual projectile damage outside both the seal and stamp (18.519534ms)
+2026-10-31T01:56:39.0963035Z ✔ Standard preserves I then III; both advanced forms can choose every numbered seal (984.148769ms)
+2026-10-31T01:56:39.0966423Z ✔ the randomly chosen shelter is locked before the first strike and each fresh late appeal chooses independently (3.463545ms)
+2026-10-31T01:56:39.0974123Z ✔ every possible random shelter covers its last possible fan echo arrival plus a half-second exit margin (22.718676ms)
+2026-10-31T01:56:39.0979495Z ✔ actual Crazed green shelter absorbs late repeated shots after the former2.5second window and protects its occupant (60.557065ms)
+2026-10-31T01:56:39.0981146Z ✔ real purple contact in both advanced forms removes15percent current health through armor and shield capacity and applies poison (28.169882ms)
+2026-10-31T01:56:39.0983125Z ✔ reentering the same purple seal cannot take another percentage hit or refresh poison, while another purple seal can (13.066174ms)
+2026-10-31T01:56:39.0984928Z ✔ invulnerability prevents purple affliction without consuming the once-per-seal budget (10.843735ms)
+2026-10-31T01:56:39.0988496Z ✔ poison deals exactly six half-second ticks, expires after three seconds and grants no fresh damage invulnerability (9.016461ms)
+2026-10-31T01:56:39.0989954Z ✔ fresh poison refreshes duration without stacking tick potency or postponing the next pending tick (5.19056ms)
+2026-10-31T01:56:39.0991365Z ✔ green shelter prevents new purple affliction and ongoing poison ticks; invulnerable skipped ticks never accumulate (22.786326ms)
+2026-10-31T01:56:39.0993017Z ✔ authoritative and predicted walking slow match at35percent, dash keeps full speed and poison expiry restores movement (9.943784ms)
+2026-10-31T01:56:39.0995283Z ✔ an antidote consumes at full health to cleanse poison and slow; ordinary Medic cleanse removes it from nearby allies (4.066116ms)
+2026-10-31T01:56:39.0996529Z ✔ downing victory timeout and wipe clear all poison timers before revival or another encounter (27.516656ms)
+2026-10-31T01:56:39.0997707Z ✔ all fifteen source catalogs agree with runtime help on randomized shelter,15percent first hit and35percent slow (17.559863ms)
+2026-10-31T01:56:39.0998954Z ✔ only known protocol26 local Practice and profile state migrates, preserving exact forms and build history (5.978366ms)
+2026-10-31T01:56:39.1000304Z ✔ real owner and observer receive identical random shelter, poison deadline,15percent loss and subsequent antidote cleanse (269.528382ms)
+2026-10-31T01:56:39.1303635Z ✔ prediction reconciles acknowledged input and replays only the pending movement (16.407317ms)
+2026-10-31T01:56:39.1324432Z ✔ Endless keeps normalized base income while paying fixed-classification bounty premiums (17.451683ms)
+2026-10-31T01:56:39.1344580Z ✔ late arrivals receive boundary income once and purchased coins are not refunded (2.378529ms)
+2026-10-31T01:56:39.1374397Z ✔ all shipped language plural forms format numbers without recursive substitution (34.708808ms)
+2026-10-31T01:56:39.1375928Z ✔ reused grid output deduplicates straddling actors, preserves owned results and clears stale cells (1.886141ms)
+2026-10-31T01:56:39.1381528Z ✔ ordinary actor contact sweeps the moving survivor and retains its contact cooldown (0.760154ms)
+2026-10-31T01:56:39.9214605Z ✔ leaving during delayed health aborts actual HTTP and settles the search promptly (90.629883ms)
+2026-10-31T01:56:39.9215581Z ✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (74.055398ms)
+2026-10-31T01:56:39.9216412Z ✔ leaving during delayed code aborts actual HTTP and settles the search promptly (64.172926ms)
+2026-10-31T01:56:39.9217230Z ✔ leaving during server startup cancels the retry delay and makes no later request (117.628583ms)
+2026-10-31T01:56:39.9218027Z ✔ cancelled admission releases the known ticket once during its retry delay (13.592453ms)
+2026-10-31T01:56:39.9218837Z ✔ cancelled admission releases the known ticket once during a pending poll (1019.869867ms)
+2026-10-31T01:56:39.9219660Z ✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (9.668455ms)
+2026-10-31T01:56:39.9220877Z ✔ code lookup distinguishes missing, throttled and failing servers (7.116888ms)
+2026-10-31T01:56:39.9221672Z ✔ an incompatible HTTP address and startup throttling fail promptly with useful errors (4.542445ms)
+2026-10-31T01:56:39.9222450Z ✔ Cancel aborts the actual SDK matchmaking POST and releases admission (13.597072ms)
+2026-10-31T01:56:39.9223131Z Room connection was closed unexpectedly (4000): 
+2026-10-31T01:56:39.9223927Z ✔ Cancel closes an actual SDK socket whose server never sends the room handshake (23.403732ms)
+2026-10-31T01:56:39.9224769Z ✔ a room that closed after listing gives useful guidance and releases its join ticket (56.05037ms)
+2026-10-31T01:56:39.9225436Z ✔ closing offline startup settles before its first view and suppresses late worker events (1.659848ms)
+2026-10-31T01:56:39.9226066Z ✔ an unresolved asset task can be cancelled without accepting its late completion (0.246665ms)
+2026-10-31T01:56:39.9226730Z ✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (37.813929ms)
+2026-10-31T01:56:39.9558205Z ✔ Cancel keeps a newer load intact after the older join returns success (489.56865ms)
+2026-10-31T01:56:39.9605810Z ✔ Cancel keeps a newer load intact after the older join returns error (340.899889ms)
+2026-10-31T01:56:39.9634186Z ✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (314.018157ms)
+2026-10-31T01:56:39.9638552Z ✔ a saved language that fails to load still reaches the usable English menu with a retry notice (250.158779ms)
+2026-10-31T01:56:39.9680410Z ✔ Constable retains the original four motion sheets and eight attack frames alongside the four-pose shuffle (14.530675ms)
+2026-10-31T01:56:39.9694695Z ✔ normal and Brutal Constable casts hold anticipation until actual authority release and never mutate game state (202.958694ms)
+2026-10-31T01:56:39.9724102Z ✔ drawing lead cannot release early and the old ten-fps warning-start release would be fourteen ticks early (7.239489ms)
+2026-10-31T01:56:39.9757403Z ✔ hurt cannot replace a warning, recovery or stagger, and becomes its own planted three-pose response at rest (6.982067ms)
+2026-10-31T01:56:39.9769546Z ✔ a real successful Accord replaces interrupted casts with the complete stagger interval (11.451766ms)
+2026-10-31T01:56:39.9804161Z ✔ Constable defeat plays on world time after combat stops, settles once and retains the banked reward (2.399252ms)
+2026-10-31T01:56:39.9840142Z ✔ reduced motion preserves every authoritative state with bounded readable frames (5.643877ms)
+2026-10-31T01:56:39.9863958Z ✔ Constable metadata binds both the exact committed LF blob and historical Windows CRLF bytes (8.357684ms)
+2026-10-31T01:56:40.5794977Z ✔ Constable two-phase schedule executes opening volleys and final shared-gap rings with Brutal pincers (69.226059ms)
+2026-10-31T01:56:40.5844767Z ✔ all maps keep walking Constable inside bounds and cover while casts, Accords and stagger plant his feet (502.800499ms)
+2026-10-31T01:56:40.5854628Z ✔ warning origins and aim remain locked through both volley releases and movement resumes afterwards (30.774666ms)
+2026-10-31T01:56:40.5855865Z ✔ actual lockdown projectiles preserve the announced overlapping escape wedge (5.805466ms)
+2026-10-31T01:56:40.5857393Z ✔ stationary survivors take real arrest damage while leaving the locked zone avoids that field (24.879178ms)
+2026-10-31T01:56:40.5858803Z ✔ boss locomotion holds between 30 Hz positions at 60 Hz draw and resets at cast boundaries (1.287596ms)
+2026-10-31T01:56:40.5860260Z ✔ the selected four-pose atlas binds exact independent reconstruction and the original 27-pose contract (2.09345ms)
+2026-10-31T01:56:40.5861737Z ✔ named Constable phases cover all fifteen supported languages and retain the ordinary phase number (0.357549ms)
+2026-10-31T01:56:40.5863223Z ✔ Easy Standard phase assistance retains outgoing volleys, arrest fields and their cast clocks (16.773766ms)
+2026-10-31T01:56:40.5865154Z ✔ issued map/fixed-grade Practice boundaries preserve identity and progress through the Constable content revision (3.094371ms)
+2026-10-31T01:56:40.5866812Z ✔ content-only migration still rejects unknown revisions, online records and forged current-version threat cards (1.054441ms)
+2026-10-31T01:56:40.9244900Z ✔ a successful key change keeps its owning controls and keyboard focus with a saved notice (102.476565ms)
+2026-10-31T01:56:40.9245996Z ✔ a failed control-mode save restores the displayed value and allows a focused retry (86.055257ms)
+2026-10-31T01:56:40.9246969Z ✔ held-key repeats and IME composition cannot accidentally choose a new control (47.019909ms)
+2026-10-31T01:56:40.9248003Z ✔ disposed settings ignore detached and still-connected old actions and release captured events (27.722297ms)
+2026-10-31T01:56:40.9249067Z ✔ closing a settings disclosure or losing focus cancels capture before the next key (28.46048ms)
+2026-10-31T01:56:40.9250106Z ✔ leaving the actual setup settings page disposes its capture without waiting for a key or timer (768.279102ms)
+2026-10-31T01:56:40.9802359Z ✔ a conflicting binding stays unchanged and Tab or Escape can cancel capture without saving (57.778494ms)
+2026-10-31T01:56:41.0262715Z ✔ mouse buttons, Space and the left stick have source-backed readable labels in all fifteen languages (45.755603ms)
+2026-10-31T01:56:41.0689965Z ✔ clicking another menu control cancels capture without swallowing navigation or rebinding the mouse (41.964174ms)
+2026-10-31T01:56:41.1091999Z ✔ remapped keyboard, mouse, gamepad and touch dispatch actions independently and clear toggles on blur (4.633981ms)
+2026-10-31T01:56:41.1095064Z ✔ input is finite, bounded, strict and replay-resistant (17.468835ms)
+2026-10-31T01:56:41.1096190Z ✔ swept collision catches a bullet crossing the complete body in one tick (0.270681ms)
+2026-10-31T01:56:41.1097757Z ✔ swept dash blocks and slides at arena cover instead of tunnelling (0.267416ms)
+2026-10-31T01:56:41.1099808Z ✔ diagonal movement has the same speed and clients cannot multiply steps (11.108568ms)
+2026-10-31T01:56:41.1104724Z ✔ purchase deduplication is atomic and conflicts cannot spend twice (3.827568ms)
+2026-10-31T01:56:41.1107713Z ✔ skill prerequisites, budgets, class ownership and one capstone are enforced (1.135261ms)
+2026-10-31T01:56:41.1108832Z ✔ friendly bullets pass through teammates without damage (7.391785ms)
+2026-10-31T01:56:41.1109833Z ✔ two-second teammate channel revives and interrupted channels reset (8.256005ms)
+2026-10-31T01:56:41.1110946Z ✔ solo self-revive is available once per encounter, then defeat follows (5.657707ms)
+2026-10-31T01:56:41.1113091Z ✔ Medic ultimate channels, returns an eliminated ally and freezes its cooldown in shops (5.830152ms)
+2026-10-31T01:56:41.1120455Z ✔ votes, rewards and shop follow authoritative timers and late arrivals wait for a boundary (7.157488ms)
+2026-10-31T01:56:41.1121907Z ✔ boss timeout defeats the encounter independently of party health (2.16128ms)
+2026-10-31T01:56:41.1123075Z ✔ seed replay produces the same complete combat state (138.788796ms)
+2026-10-31T01:56:41.1124360Z ✔ Courier motion binds three complete native strips and the retained sixteen-pose source prefix (6.095645ms)
+2026-10-31T01:56:41.1131451Z ✔ normal and Brutal Courier charges keep their exact authoritative action poses ahead of hit reactions and drawing lead (54.75997ms)
+2026-10-31T01:56:41.1133182Z ✔ Courier idle shows all four breathing poses and a real friendly hit starts and completes all four recoil poses (6.184287ms)
+2026-10-31T01:56:41.1134736Z ✔ a real successful Accord plays the upright entry once then loops three weak Courier poses for the full authoritative stagger (26.975491ms)
+2026-10-31T01:56:41.1136301Z ✔ Courier death overrides recoil, charge and Accord and completes on world time with rewards banked only once (6.557369ms)
+2026-10-31T01:56:41.1149231Z ✔ all cropped identities retain world anchors through loading and eviction, and live Courier poses never select a corpse fallback (6.579612ms)
+2026-10-31T01:56:42.4855613Z ✔ Courier routes execute one/two Standard legs and two/three advanced legs with explicit recovery (14.872611ms)
+2026-10-31T01:56:42.4858250Z ✔ every charge warning locks its lane and a return starts at the actual wall stop before retargeting (2.903549ms)
+2026-10-31T01:56:42.4859860Z ✔ moving charge bodies sweep fast crossing players once per leg and keep fading trails authoritative (1.309449ms)
+2026-10-31T01:56:42.4861401Z ✔ overlapping return trails share one half-second contact budget and detect crossing a narrow trail (1.143764ms)
+2026-10-31T01:56:42.4867419Z ✔ advanced dispatch locks actual final origin and angles, waits a full warning and preserves the central gap (1.892011ms)
+2026-10-31T01:56:42.4868883Z ✔ advanced third delivery rotates to another actual target with a fresh locked warning (2.862718ms)
+2026-10-31T01:56:42.4870374Z ✔ Courier complete routes remain inside actual bounds and do not cross masonry on all maps, difficulties and forms (143.591547ms)
+2026-10-31T01:56:42.4871955Z ✔ actual Courier attack cadence keeps a clear recovery and retains the existing warned cross volley between routes (487.689716ms)
+2026-10-31T01:56:42.4873471Z ✔ the real advanced dispatch uses the shared 2.5x/7.5x projectile wave budget without duplicating route legs (38.409701ms)
+2026-10-31T01:56:42.4874868Z ✔ phase changes retain Courier work; successful stagger and encounter exit cancel it (33.352564ms)
+2026-10-31T01:56:42.4876145Z ✔ fifteen locales bind Courier phase names, persistent response hints and encounter help to the same source (46.696591ms)
+2026-10-31T01:56:42.4927591Z ✔ issued protocol21 local saves preserve completed Crazed/Brutal forms exactly and reject unknown or online envelopes (4.037669ms)
+2026-10-31T01:56:44.4268947Z ✔ real owner and observer receive actual Courier route/return/dispatch cues and phase sound, then clear them on victory (1966.082438ms)
+2026-10-31T01:56:45.4805847Z ✔ all 66 identities admit Crazed with their fixed grade, inherited full signature and tier-appropriate phase count (197.396393ms)
+2026-10-31T01:56:45.4831598Z ✔ Crazed queues at most the finite pending budget and actual echoes never exceed the 4000-hostile cap (312.177392ms)
+2026-10-31T01:56:45.4863528Z ✔ controlled Clockmender rings scale actual shots 24/60/180, preserve stop/resume and leave no uncontrolled duplicates (77.181178ms)
+2026-10-31T01:56:45.4884521Z ✔ controlled drone swarms retain live source cancellation at the higher projectile densities (14.097093ms)
+2026-10-31T01:56:45.4886232Z ✔ variant pressure locks pursuit positions, warns before contact, sweeps fast movement and expires without hidden repeats (1.786826ms)
+2026-10-31T01:56:45.4887815Z ✔ Brutal and Crazed add different real warned patterns, rotate targets and bound fifty-player marks (23.608626ms)
+2026-10-31T01:56:45.4889295Z ✔ real Crazed corner pressure reaches distant players and survives phase entry while interruptions/exits clear it (56.527778ms)
+2026-10-31T01:56:45.4890586Z ✔ Warden active cones retain a clear auxiliary-pressure window even in Crazed (148.062823ms)
+2026-10-31T01:56:45.4891964Z ✔ Endless progresses each actually cleared identity through Standard, Brutal and Crazed across saved boundaries (241.975437ms)
+2026-10-31T01:56:45.4893617Z ✔ known protocol20 local saves and profiles retain progress; unproven legacy form history is conservatively Standard (3.535394ms)
+2026-10-31T01:56:45.4896992Z ✔ four spacious maps reduce real retreat distance and painted/colliding geometry together while two narrow layouts stay full size (47.102962ms)
+2026-10-31T01:56:45.4898623Z ✔ phase transitions send one distinct priority sound per actual phase and the original new cue reconstructs exactly (218.887974ms)
+2026-10-31T01:56:45.4900100Z ✔ real owner/observer rooms replicate purple Crazed admission, locked extra pressure, phase sound and cleanup (326.828664ms)
+2026-10-31T01:56:45.4901603Z ✔ only the known issued protocol28 local Practice boundary migrates to29 with player and form history intact (8.277556ms)
+2026-10-31T01:56:45.4903255Z ✔ real owner and observer receive Widow crossing geometry and combat-long Clerk domains, with complete victory cleanup (766.234099ms)
+2026-10-31T01:56:45.4905192Z ✔ compiled public desktop LAN authority reports the matching audience and enforces its opener policy (474.957764ms)
+2026-10-31T01:56:45.4906569Z ✔ compiled testing desktop LAN authority reports the matching audience and enforces its opener policy (419.442161ms)
+2026-10-31T01:56:45.4907936Z ✔ packaged font responses stream exact bytes from Windows paths beyond 260 characters and keep HEAD empty (31.789629ms)
+2026-10-31T01:56:45.4909186Z ✔ packaged module and stylesheet responses retain valid MIME types, CSP and nosniff (6.088605ms)
+2026-10-31T01:56:45.4910398Z ✔ desktop input checks accept the verified source and reject failed or stale runtime reports (5.667542ms)
+2026-10-31T01:56:45.4934726Z ✔ a changed or newly added test invalidates desktop source evidence without changing the runtime fingerprint (2.22175ms)
+2026-10-31T01:56:45.4936118Z ✔ the real desktop builder refuses failed evidence before creating a package (82.274629ms)
+2026-10-31T01:56:46.9966980Z ✔ LAN endpoints accept only canonical private/loopback IPv4 and bounded ports (1.303931ms)
+2026-10-31T01:56:46.9969465Z ✔ desktop static protocol contains decoded paths and restricts navigation/external links (0.343739ms)
+2026-10-31T01:56:46.9972186Z ✔ desktop/LAN messages cover every authored locale with matching nonempty keys (0.976877ms)
+2026-10-31T01:56:46.9973921Z ✔ explicit LAN authority supports real clients and graceful stop, and preserves an occupied port (1661.620021ms)
+2026-10-31T01:56:50.0067765Z ✔ difficulty assist matrix separates phase shields, revival health and Brutal across every difficulty (1.041272ms)
+2026-10-31T01:56:50.0071348Z ✔ actual teammate channels distinguish all seven rescuers, Medic health and the Baby shield across six difficulties (225.338424ms)
+2026-10-31T01:56:50.0073444Z ✔ solo recovery gives Medic its explicit health values while other classes retain the ordinary restrictions (115.866737ms)
+2026-10-31T01:56:50.0074940Z ✔ Medic resurrection and revive kits use the same exact health and remain entirely blocked on Hellish (13.021911ms)
+2026-10-31T01:56:50.0078641Z ✔ Hard+ rejects revive kit purchases atomically while other supplies remain available (1.432801ms)
+2026-10-31T01:56:50.0080024Z ✔ actual phase transitions offer the shield event only on Baby/Easy Standard and retain in-flight hazards on every difficulty (25.940148ms)
+2026-10-31T01:56:50.0081407Z ✔ all entry identities have two half-health phases retaining late authored mechanics, while later threats keep three/four (1.774237ms)
+2026-10-31T01:56:50.0082660Z ✔ Brutal and Crazed retain exact 2.5x and 7.5x rational projectile budgets with warned non-recursive repeats (47.441944ms)
+2026-10-31T01:56:50.0084157Z ✔ echo queues enforce finite group/projectile budgets and defeat removes future releases and cues (7.953687ms)
+2026-10-31T01:56:50.0085289Z ✔ cover count, boundary walls and exact presentation agree on every map and difficulty (16.71591ms)
+2026-10-31T01:56:50.0086355Z ✔ client prediction and authority both traverse removed cover and stop at retained Hard cover (23.50318ms)
+2026-10-31T01:56:50.0087193Z ✔ Hellish lava has a three-second tell, actual contact damage, a half-second interval and no damage on safe ground (11.534904ms)
+2026-10-31T01:56:50.0087946Z ✔ Insane forces Brutal and Hellish Crazed for every opening identity, including future contracts (170.699754ms)
+2026-10-31T01:56:50.0088824Z ✔ issued protocol-15 local saves/profiles migrate without losing run progress while unknown revisions and online envelopes stay strict (4.282841ms)
+2026-10-31T01:56:50.0089738Z ✔ difficulty cards and phase cues have all fifteen source-backed translations and both new floor natives retain their hashes (31.052137ms)
+2026-10-31T01:56:50.0090600Z ✔ actual difficulty-card markup presents shield, revive, cover and forced-Brutal distinctions for all six choices (188.335674ms)
+2026-10-31T01:56:50.0091449Z ✔ real two-client Hellish room replicates forced Crazed, warned echoes/lava, rejects revive channels and cleans on defeat (3493.517232ms)
+2026-10-31T01:56:51.0389649Z ✔ compiled room search shows the version error, retries, then aborts when the player goes back (734.716508ms)
+2026-10-31T01:56:51.0391246Z ✔ code lookup keeps actionable errors and disposal cancels without a late launch (470.415293ms)
+2026-10-31T01:56:51.0392500Z ✔ leaving the online records tab aborts its real pending board request (209.786228ms)
+2026-10-31T01:56:51.0393900Z ✔ existing rows still open after pagination and changing filters aborts roster requests (189.767104ms)
+2026-10-31T01:57:26.0415500Z ✔ all twenty Pilgrimage identities launch real Pilgrimage rooms and replicate the same finite signature shapes to clients (38520.035481ms)
+2026-10-31T01:57:27.0651242Z ✔ each Pilgrimage signature is finite, bounded and executes actual Normal/Brutal phases (222.810815ms)
+2026-10-31T01:57:27.0652489Z ✔ coffin front resistance, rectangular weak collisions and destruction remain distinct from the boss (0.410783ms)
+2026-10-31T01:57:27.0653773Z ✔ foreman keeps the last occupied zone cool and a neutral switch can suppress all vents (0.540785ms)
+2026-10-31T01:57:27.0654848Z ✔ diver announces one true puddle, is protected underwater and resurfaces at that fixed place (0.349604ms)
+2026-10-31T01:57:27.0655854Z ✔ clock bullets release only after warning, stop, warn for restart and resume the same vectors (1.825553ms)
+2026-10-31T01:57:27.0656890Z ✔ breaking a wire anchor removes only its own adjacent lines, retaining a stable visible gate (0.222457ms)
+2026-10-31T01:57:27.0657874Z ✔ gravedigger cover travels before the delayed pit and can be destroyed early (0.463111ms)
+2026-10-31T01:57:27.0658913Z ✔ notary draws separate spiral segments progressively and leaves the authored angular opening (0.240303ms)
+2026-10-31T01:57:27.0660348Z ✔ destroying one hive drone opens its third of the swarm while retaining the fallback gap (1.101059ms)
+2026-10-31T01:57:27.0661407Z ✔ ice drift is bounded, movement follows input, and dodge or dry ground clears it immediately (0.898471ms)
+2026-10-31T01:57:27.0662298Z ✔ ferryman always retains both the open bridge and an outer bypass (0.202107ms)
+2026-10-31T01:57:27.0663254Z ✔ porcelain cover warns before splitting once into actual projectiles (0.713018ms)
+2026-10-31T01:57:27.0665665Z ✔ boiler neutral valve adds a wide vent opening and retains the original escape wedge (0.287943ms)
+2026-10-31T01:57:27.0666685Z ✔ mirror ghost never hurts or steals health and the real warp relocates only once (0.239532ms)
+2026-10-31T01:57:27.0667603Z ✔ chalk leaves one erased edge and harp strikes count in a fixed sequence (0.178632ms)
+2026-10-31T01:57:27.0668438Z ✔ crow flocks contain fifteen discrete delayed bodies and stop at real cover (0.46238ms)
+2026-10-31T01:57:27.0669497Z ✔ ledger seals slow without taking coins and crossing a cleansing circle prevents predicted reapplication (0.194426ms)
+2026-10-31T01:57:27.0670383Z ✔ engine armor protects the body before the distinct core opens (0.278709ms)
+2026-10-31T01:57:27.0671187Z ✔ salt sequence retains two gates and a neutral hold delays all future steps (0.615925ms)
+2026-10-31T01:57:27.0672183Z ✔ sixteen-fight Pilgrimage restores boundaries, never repeats and reaches the same final build budget (74.167459ms)
+2026-10-31T01:57:27.0673623Z ✔ clock freeze and restart updates overwrite the same projectile identities for network presentation (24.330056ms)
+2026-10-31T01:57:27.0675422Z ✔ engine core projectile transfers one boosted hit rather than also damaging its invisible body (30.951009ms)
+2026-10-31T01:57:27.0676756Z ✔ ice and seal prediction deep-copy terrain state and match the authority through a dodge (20.499525ms)
+2026-10-31T01:57:27.0678126Z ✔ every Pilgrimage identity executes all Normal/Brutal phases on actual maps and clears signatures at victory (1653.678681ms)
+2026-10-31T01:57:27.0679346Z ✔ local protocol-9 Midnight saves migrate but cannot claim a Pilgrimage identity or route (1.041081ms)
+2026-10-31T01:57:27.0680666Z ✔ signature positions copy only coordinates from rich actors and retain numeric cue IDs (0.737031ms)
+2026-10-31T01:57:27.0682579Z ✔ new health mutations produce consistent live and restorable authoritative boundaries (1.822929ms)
+2026-10-31T01:57:27.0684354Z ✔ a destroyed hive drone removes its own actual projectiles without erasing the others (0.345682ms)
+2026-10-31T01:57:27.0685634Z ✔ Early Watch grades, two longer phases and late Brutal geometry execute through real Game casts (231.839738ms)
+2026-10-31T01:57:27.0686814Z ✔ destroying a ticket stand cancels all its pending volleys and leaves the other aisle intact (9.462245ms)
+2026-10-31T01:57:27.0687957Z ✔ Toad changes ground position only on its warned hop, lands with real damage and emits a broad-gap ring (7.236441ms)
+2026-10-31T01:57:27.0689145Z ✔ breaking the drain plug removes the tongue without suppressing warned hops (4.144595ms)
+2026-10-31T01:57:27.0690483Z ✔ wind is bounded, absent during tells and dodge, and authority/prediction share collision-resolved displacement (9.457359ms)
+2026-10-31T01:57:27.0691941Z ✔ phase changes retain outgoing attack cues and every moving body respects all six arena layouts (655.534793ms)
+2026-10-31T01:57:27.0693323Z ✔ four-frame defeats hold the last pose and hop lift follows combat time even after a world-clock offset (4.639056ms)
+2026-10-31T01:57:27.0694825Z ✔ issued protocol-14 Practice migration preserves fixed-grade cards, progress and run identity while rejecting unknown revisions and forged scope (1.464868ms)
+2026-10-31T01:57:27.0696286Z ✔ fifteen locale sources contain original names, complete help and three named phase labels (40.697348ms)
+2026-10-31T01:57:27.0697579Z ✔ real two-client rooms replicate every Early Watch identity, warned geometry and break cancellation (6654.732977ms)
+2026-10-31T01:57:27.0711539Z ✔ real Soldier fire destroys each Early Watch weak point through the shared swept-hit path (21.8513ms)
+2026-10-31T01:57:27.0713167Z ✔ personal profile export and import retain all sixty-five ordinary discoveries (2.475121ms)
+2026-10-31T01:57:27.0714432Z ✔ illustrations cover every playable weapon, supply, specialization path and mutation without generic substitutions (8.656753ms)
+2026-10-31T01:57:27.0715767Z ✔ sixty-five drawn boss/part/minion action atlases retain 520 distinct frames, common action scale and exact source hashes (104.103329ms)
+2026-10-31T01:57:27.0716912Z ✔ each playable boss selects its own complete original theme and intermission returns to city music (374.854402ms)
+2026-10-31T01:57:27.0718031Z ✔ five-fight Quarantine keeps five distinct bosses for every opening identity and saved vote (655.457828ms)
+2026-10-31T01:57:27.0719132Z ✔ Endless marks previously defeated candidates Brutal and excludes the last twelve identities (61.056262ms)
+2026-10-31T01:57:27.0720283Z ✔ Courier locks a harmless charge warning then actually moves along that lane and leaves an expiring trail (21.691486ms)
+2026-10-31T01:57:27.0721395Z ✔ Ratcatcher summons three locked packs of four real rats, respects its cap and serializes their lanes (52.316827ms)
+2026-10-31T01:57:27.0722509Z ✔ shooting the 65-HP sack interrupts the warned pack without also damaging the boss, then the sack recovers (16.900195ms)
+2026-10-31T01:57:27.0723835Z ✔ Clerk stamps three non-overlapping zones in order and reopens the first as a real safe interior (10.492781ms)
+2026-10-31T01:57:27.0724944Z ✔ early bosses have two phases retaining stronger Brutal sacks/rats and the Clerk final echo (288.658775ms)
+2026-10-31T01:57:27.0725938Z ✔ Easy Standard Accord cancels signature hazards/adds and resumes with a full fresh warning (23.812877ms)
+2026-10-31T01:57:27.0726968Z ✔ protocol-5 Heavy Practice boundaries retain builds and two-boss history; online v5 remains rejected (2.032138ms)
+2026-10-31T01:57:27.0727867Z ✔ signature art follows real cue time and respects reduced motion (9.313616ms)
+2026-10-31T01:57:27.0728935Z ✔ real clients receive charge, rat and stamp cues from each new boss with shared authoritative actor state (22634.421028ms)
+2026-10-31T01:57:51.6398505Z ✔ all ten new boss identities replicate finite numeric signatures over actual WebSockets (21236.168332ms)
+2026-10-31T01:57:51.6400148Z ✔ network survivors independently bank or enter the secret, and extension defeat preserves every campaign clear (31187.255505ms)
+2026-10-31T01:57:52.6639302Z ✔ all ten signatures are finite in Normal/Brutal phases for solo and sixteen-player objectives (156.270032ms)
+2026-10-31T01:57:52.6640827Z ✔ Widow fans emit only after warning and replay the exact eleven trajectories once after 2.5 seconds (2.018437ms)
+2026-10-31T01:57:52.6642196Z ✔ Astronomer has two damaging orbits and one harmless hollow safe orbit around its deployed core (0.572768ms)
+2026-10-31T01:57:52.6643676Z ✔ Fold reflects one actual hostile shot at the visible segment and never reflects it twice (0.474772ms)
+2026-10-31T01:57:52.6645021Z ✔ Red Comet visits three ordered warned waypoints at bounded speed and leaves oldest trails harmless first (1.381124ms)
+2026-10-31T01:57:52.6646279Z ✔ Memory Taxer leaves numbered history visible and hurts only outside the requested complete pad (0.409115ms)
+2026-10-31T01:57:52.6647542Z ✔ Moth ribbons contain real curved bodies, retain a 180px crossing and stop at masonry (1.671424ms)
+2026-10-31T01:57:52.6648730Z ✔ Conductor counts four fixed beats, leaving one visually marked safe lane on every pulse (0.29046ms)
+2026-10-31T01:57:52.6649964Z ✔ Walking District blocks move exactly 55px/s, are actual shared solids and expose a timed core (0.727046ms)
+2026-10-31T01:57:52.6651186Z ✔ Knocker announces three harmless counts, swings a bounded door sector and opens recovery (0.595732ms)
+2026-10-31T01:57:52.6652541Z ✔ Uncounted bounds four ledger echoes, warns its relocation, creates offset beams, a wide ring gap and capped summons (1.022443ms)
+2026-10-31T01:57:52.6655399Z ✔ seeded bags guarantee exclusive fights every fourth slot, readable openings and twelve-completion repeat protection (118.484008ms)
+2026-10-31T01:57:52.6656926Z ✔ actual Endless route preserves bags, history, seeded choices and power caps across restored boundaries (128.573995ms)
+2026-10-31T01:57:52.6658424Z ✔ new local history validation rejects duplicate cooldown identities, foreign bag entries and secret claims in old saves (1.045206ms)
+2026-10-31T01:57:52.6659817Z ✔ fold direction changes replicate the same projectile identity instead of creating a duplicate (11.724401ms)
+2026-10-31T01:57:52.6661057Z ✔ moving-block authority and prediction share analytical positions and clear a newly occupied rectangle (10.840213ms)
+2026-10-31T01:57:52.6662438Z ✔ Normal+ timeout-free campaign victory banks before the offer and keeps Easy locked without requiring removed Accords (21.461341ms)
+2026-10-31T01:57:52.6663953Z ✔ three actual Easy Standard shield holds still award genuine Accords across separate encounters (20.376024ms)
+2026-10-31T01:57:52.6665290Z ✔ each survivor may bank and leave while willing allies continue; only consenting entrants scale the secret (7.543173ms)
+2026-10-31T01:57:52.6666577Z ✔ an unanswered offer expires into the accepted subset, and all-declined offers preserve a terminal victory (4.102912ms)
+2026-10-31T01:57:52.6667980Z ✔ offer, acceptance and loading restore exactly; extension defeat retains the campaign bank and never auto-rewards a memorial (2.589802ms)
+2026-10-31T01:57:52.6669375Z ✔ local Practice victory and memorial records persist, cannot be erased by stale state, and remain separate from verified ranks (2.772793ms)
+2026-10-31T01:57:52.6670636Z ✔ new consent and visual-history messages cover all fifteen locales with matching placeholders (10.71068ms)
+2026-10-31T01:57:52.6671898Z ✔ all ten bosses execute actual Normal and Brutal phases on real arena geometry and clear every cue on victory (901.456336ms)
+2026-10-31T01:57:52.6673785Z ✔ reward-time arrivals cannot claim a campaign or memorial, and reconnecting non-consenters keep the campaign only (7.037445ms)
+2026-10-31T01:57:52.6674893Z ✔ switching equipment tabs retains focus on the current selected tab (227.401121ms)
+2026-10-31T01:57:52.6675890Z ✔ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (155.030786ms)
+2026-10-31T01:57:52.6677308Z ✔ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (134.37215ms)
+2026-10-31T01:57:52.6678309Z ✔ disposed equipment ignores old connected controls and cannot submit a purchase (123.157418ms)
+2026-10-31T01:57:52.6679094Z ✔ purchase errors remain in the current equipment status and clear on a fresh item choice (135.394341ms)
+2026-10-31T01:57:52.6680248Z ✔ a prerequisite link focuses its actual skill without resetting the skill scroll (134.573067ms)
+2026-10-31T01:57:52.6681483Z ✔ hidden or inert equipment cannot spend currency and a disposed result cannot alter a newer panel (142.083872ms)
+2026-10-31T01:57:52.6683183Z ✔ empty equipment and skill details show their own painted image while currency keeps text labels (146.686037ms)
+2026-10-31T01:57:52.6684802Z ✔ player resources use the same painted coins and manual without removing accessible labels or values (5.636957ms)
+2026-10-31T01:57:52.6686010Z ✔ all six opening arenas show the real bounds, cover, spawns and difficulty hazards (30.375662ms)
+2026-10-31T01:57:52.6687052Z ✔ welcome, map legends and difficulty explanations cover all fifteen supported locales (1.718783ms)
+2026-10-31T01:57:52.6688230Z ✔ mode previews describe all five authored run lengths and each difficulty has a distinct non-fallback symbol (0.621359ms)
+2026-10-31T01:57:52.6689479Z ✔ compiled public setup shares the clear first-run flow and preserves its audience boundary (372.732299ms)
+2026-10-31T01:57:52.6690584Z ✔ compiled testing setup shares the clear first-run flow and preserves its audience boundary (300.278065ms)
+2026-10-31T01:57:52.6691867Z ✔ actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing (345.269421ms)
+2026-10-31T01:57:52.6693706Z ✔ catalytic warnings retain their real radius and produce a bounded local eruption with a static reduced-motion alternative (1.676962ms)
+2026-10-31T01:57:52.6695018Z ✔ first-visit detection retains valid existing preferences and recovers from missing or corrupt ones (1.915244ms)
+2026-10-31T01:57:52.6696278Z ✔ automatic names change at new setup boundaries while typed names and mid-setup fallbacks stay fixed (0.185655ms)
+2026-10-31T01:57:52.6697735Z ✔ the welcome page precedes setup, previews without saving, and Continue saves once then focuses first-time play (363.226246ms)
+2026-10-31T01:57:52.6698746Z ✔ welcome language failures keep Continue usable and newer choices cancel older downloads (208.131449ms)
+2026-10-31T01:57:52.6699425Z ✔ closing an unfinished welcome page cancels its download and does not invent a saved choice (199.82754ms)
+2026-10-31T01:57:52.6700034Z ✔ a blocked preference save still allows play and explains the save failure (200.844951ms)
+2026-10-31T01:57:52.6700737Z ✔ real setup seeds its automatic name only on new setup and join boundaries, retaining all choices mid-setup (306.334402ms)
+2026-10-31T01:57:52.6701449Z ✔ first startup requires an explicit language choice once and does not store a detected suggestion (296.207036ms)
+2026-10-31T01:57:52.6702458Z ✔ all fifteen languages provide a short game-safe default name and source-backed welcome text (23.512305ms)
+2026-10-31T01:57:52.6703744Z ✔ all sixty-six identities have one fixed classification and exactly one above-Calamity secret; the minimum ordinary roster needs eighty-five more original bosses (1.600608ms)
+2026-10-31T01:57:52.6705023Z ✔ five subtiers have unambiguous codes and Brutal uses its own B marker, with complete labels in every authored locale (0.211272ms)
+2026-10-31T01:57:52.6705995Z ✔ real opening encounters preserve the same boss grade across routes and difficulties while graded health, difficulty and party size remain separate (754.114703ms)
+2026-10-31T01:57:52.6706897Z ✔ the high-tier Constable classification produces its declared projectile pressure without changing its telegraph (10.610412ms)
+2026-10-31T01:57:52.6707806Z ✔ actual campaign offers carry the concealed boss fixed grade and reward instead of a hidden card-position risk, including after a saved vote (80.230321ms)
+2026-10-31T01:57:52.6708779Z ✔ protocol-thirteen Practice migration reclassifies boundary contracts without losing player progress, money, run identity or extension history (0.798471ms)
+2026-10-31T01:57:52.6709728Z ✔ current boundaries reject forged fixed grades, hidden positional risk and nonfinite subtiers rather than changing a boss classification (0.711473ms)
+2026-10-31T01:57:52.6710482Z ✔ bounded render capture waits for actual hostile images and freezes before post-stress (0.865871ms)
+2026-10-31T01:57:52.6711077Z ✔ render capture reports a count drop or hidden frame instead of masking it (0.867203ms)
+2026-10-31T01:57:52.6711726Z ✔ real Heavy and Soldier clients receive Heavy buffs, actual enemy suppression and boundary identity (365.861139ms)
+2026-10-31T01:57:52.6712412Z ✔ Heavy is admitted with authored health, weapon, movement and Practice/server boundary saves (6.369061ms)
+2026-10-31T01:57:52.6713545Z ✔ Suppressing Cone emits fourteen short-range rounds, credits actual damage and slows ordinary enemies (25.000129ms)
+2026-10-31T01:57:52.6714301Z ✔ suppression duration skills change the actual slow deadline; bosses are never ordinary slowed actors (12.712213ms)
+2026-10-31T01:57:52.6714898Z ✔ suppression cannot damage targets beyond its authored radius (3.495936ms)
+2026-10-31T01:57:52.6715507Z ✔ Braced Firing applies five seconds of armor, fire cadence and movement cost, respecting the armor cap (23.4679ms)
+2026-10-31T01:57:52.6716218Z ✔ Foundry Overture cancels reload, preserves ammo, adds two pierces and blocks manual reload until expiry (11.974261ms)
+2026-10-31T01:57:52.6716871Z ✔ ultimate duration and potency skills affect the real firing window (9.298399ms)
+2026-10-31T01:57:52.6717675Z ✔ fractional fire deadlines sustain 35 shots/second at 30Hz and do not create an idle backlog (20.230997ms)
+2026-10-31T01:57:52.6718422Z ✔ piercing bullets hit distinct ordinary enemies before the boss, never repeated overlaps or targets behind walls (1.777132ms)
+2026-10-31T01:57:52.6719122Z ✔ ordinary actors enforce the sixty-enemy cap, wall collision, hit validity and expiry (0.741778ms)
+2026-10-31T01:57:52.6719704Z ✔ victory ends Heavy buffs and clears ordinary actors from saved boundaries (5.365805ms)
+2026-10-31T01:57:52.6720533Z ✔ Heavy movement selects all four drawn facings and shares the original idle world scale (0.376457ms)
+2026-10-31T01:57:52.6721594Z ✔ manual cover arrows and direct page buttons wrap without stealing focus or changing setup (10.171512ms)
+2026-10-31T01:57:52.6722608Z ✔ gallery keyboard navigation follows RTL and keeps the remembered image on a later mount (6.827079ms)
+2026-10-31T01:57:52.6723765Z ✔ the real home menu keeps its gallery image when returning from setup and cleans old controls (452.149339ms)
+2026-10-31T01:57:52.6724484Z ✔ all fifteen catalogs have source-backed image navigation and missing art fails before rendering (28.366023ms)
+2026-10-31T01:57:52.6725353Z ✔ password eye buttons reveal exact typed text without submitting or changing it; cancel clears the form (5.730525ms)
+2026-10-31T01:57:52.6726301Z ✔ host invite and waiting-room password controls render only the authorized value and clear it on owner change (4.36246ms)
+2026-10-31T01:57:52.6727038Z ✔ explicit host buttons send Pause/Continue, menu state alone sends nothing, and ending needs confirmation (9.73169ms)
+2026-10-31T01:57:52.6727732Z ✔ ending an encounter clears queued actions without inventing a clear or a player-down reason (5.312647ms)
+2026-10-31T01:57:52.6728420Z ✔ issued42local Practice keeps build/map/economy identity while server checkpoints remain strict (3.228601ms)
+2026-10-31T01:57:52.6729063Z ✔ all fifteen catalogs include the exact authored host-control and password notices (20.2337ms)
+2026-10-31T01:57:52.6729855Z ✔ host-only pause freezes real peers, chat stays live, leaving resumes and transfers private invite access, end reaches everyone (1091.84824ms)
+2026-10-31T01:57:52.6730711Z ✔ explicit pause holds the real intermission clock, rejects transactions, and Continue restores the same remaining time (493.421453ms)
+2026-10-31T01:57:52.6731490Z ✔ a dropped paused host reconnects without taking host control back or stopping the remaining player (631.609372ms)
+2026-10-31T01:57:52.6732154Z ✔ a manually paused journal renews its lease without stepping the game or its timers (10.321524ms)
+2026-10-31T01:57:52.6733080Z ✔ the defeat status counts actual remaining ticks and distinguishes the next fight, extra choice and results in all catalogs (127.565751ms)
+2026-10-31T01:57:52.6733940Z ✔ all seven actual portraits have bounded headshots; player status and room roster keep resources independent and text escaped (4.758406ms)
+2026-10-31T01:57:52.6734757Z ✔ room-code placement puts every menu in flow, hides only the duplicate waiting-room card and gives Settings priority (0.231573ms)
+2026-10-31T01:57:52.6735795Z ✔ the actual room-code controller retains one open control and focus across menu rebuilds without stealing another field’s focus (0.686006ms)
+2026-10-31T01:57:52.6736605Z ✔ leaving a connected LAN menu prevents delayed responses and detached controls from changing the next page (38.375959ms)
+2026-10-31T01:57:52.6737204Z ✔ a late initial status cannot undo a completed hosting request (17.216579ms)
+2026-10-31T01:57:52.6737733Z ✔ a delayed LAN status keeps the typed address and keyboard editing position (13.828165ms)
+2026-10-31T01:57:52.6738327Z ✔ failed Stop hosting requests leave a usable retry without erasing the address draft (15.590976ms)
+2026-10-31T01:57:52.6738911Z ✔ pending hosting blocks duplicate actions while Back still leaves safely (13.455574ms)
+2026-10-31T01:57:52.6739475Z ✔ the real setup disposes local-network actions before mounting another menu (339.737447ms)
+2026-10-31T01:57:52.6740050Z ✔ the latest language choice wins even when the older download finishes later (103.239215ms)
+2026-10-31T01:57:52.6740679Z ✔ choosing English cancels an older RTL language result without reversing document direction (61.454313ms)
+2026-10-31T01:57:52.6741345Z ✔ an aborted language request never changes the catalog, page direction or saved preference (58.974761ms)
+2026-10-31T01:57:52.6742057Z ✔ obsolete language failures are ignored while a current failure preserves the working language and can retry (63.620405ms)
+2026-10-31T01:57:52.6742928Z ✔ leaving a setup page aborts its pending language choice without saving or redrawing the next page (346.287997ms)
+2026-10-31T01:57:52.6743643Z ✔ a language load error remains on the current page with a retry and the current selection (240.860867ms)
+2026-10-31T01:57:52.6744411Z ✔ a completed language change keeps the current text draft, cursor and focused field (230.81768ms)
+2026-10-31T01:57:52.6745444Z ✔ a working language change reports a storage error without reverting to an inconsistent menu (210.090248ms)
+2026-10-31T01:57:52.6746138Z ✔ a cosmetic profile refresh keeps the pending language choice after startup from en (392.524926ms)
+2026-10-31T01:57:52.6746747Z ✔ a cosmetic profile refresh keeps the pending language choice after startup from fr (375.538394ms)
+2026-10-31T01:57:52.6747629Z ✔ Held Line keeps the body planted, gives two opposite locked80degree sweeps and preserves90/180anchor health (20.78533ms)
+2026-10-31T01:57:52.6748375Z ✔ late Writ marks a collision-resolved body move, then staggers two fresh complete warnings and return legs (4.544516ms)
+2026-10-31T01:57:52.6749186Z ✔ inserted cover stops the marked move early but the subsequent anchor field still receives a full new warning (7.707857ms)
+2026-10-31T01:57:52.6750233Z ✔ surviving late anchors aim a reversed return only when a fresh warning starts and never track within that warning (15.760104ms)
+2026-10-31T01:57:52.6751189Z ✔ cutting an anchor cancels only its own future sweep and owned barb repeats while the surviving anchor continues (8.528842ms)
+2026-10-31T01:57:52.6752412Z ✔ advanced opening barbs emit exactly40Brutal/120Crazed controlled shots with full separate warnings and extra crossing trajectories (7.321275ms)
+2026-10-31T01:57:52.6753424Z ✔ actual Game emits the owned advanced barb budget once without recapturing it into the global echo queue (67.168844ms)
+2026-10-31T01:57:52.6754438Z ✔ real sweep contact includes fast whole-body crossings, is harmless before activation and shares one half-second budget across both arms (4.816778ms)
+2026-10-31T01:57:52.6755350Z ✔ new masonry clips the live arm immediately and the painted locked envelope prevents growth after original cover is removed (7.398619ms)
+2026-10-31T01:57:52.6756218Z ✔ every actual map/difficulty provides clear separated anchors, bounded plain-geometry warning vertices and no buried socket (223.701347ms)
+2026-10-31T01:57:52.6757539Z ✔ a full signature recovers explicitly, permits auxiliary casts only between sequences and reset/paused state cancels every owned future cue (5.113758ms)
+2026-10-31T01:57:52.6758968Z ✔ phase retains Marshal paths and anchors; stagger and encounter exit clear owned work (22.108449ms)
+2026-10-31T01:57:52.6760091Z ✔ existing casting poses and fifteen authored phase guides follow the new warning/return clocks without claiming new walking art (23.26462ms)
+2026-10-31T01:57:52.6761404Z ✔ only known protocol27 local Practice/profile state migrates while exact forms/build history remains and online/signed state stays strict (2.863197ms)
+2026-10-31T01:57:52.6762632Z ✔ real owner and observer receive phase movement, clipped locked return geometry, source-specific cuts and cleanup (391.216954ms)
+2026-10-31T01:57:52.6764299Z ✔ only exact known issued30 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings (5.977275ms)
+2026-10-31T01:57:52.6765188Z ✔ all fifteen manual guides route distinct Matron phases and form help, with existing action poses and static reduced motion (79.526251ms)
+2026-10-31T01:57:52.6766091Z ✔ real owner and observer replicate locked relay geometry, crossing needle budgets and complete encounter cleanup (338.28168ms)
+2026-10-31T01:57:52.6767055Z ✔ Matron escort paths are connected and body-clear across all maps, difficulty cover and late flanks (89.751674ms)
+2026-10-31T01:57:52.6767950Z ✔ escort warning locks its path, moves under its speed budget and stops safely on new cover (3.333073ms)
+2026-10-31T01:57:52.6769003Z ✔ brood channels warn fully, spawn two/four from clear nest interiors and stop after nest destruction (8.735278ms)
+2026-10-31T01:57:52.6769972Z ✔ first phase calls one nest while late relays use surviving nests in a warned serial order (66.009799ms)
+2026-10-31T01:57:52.6771006Z ✔ lullabies respect the full marked gap, swept body crossings, first activation and one hit per wave (2.288367ms)
+2026-10-31T01:57:52.6772168Z ✔ Brutal emits thirty owned needles and Crazed retains that exact prefix before sixty crossing needles (26.934871ms)
+2026-10-31T01:57:52.6773524Z ✔ destroying a nest cancels its unreleased needles and broods, while an already launched lullaby continues (2.174208ms)
+2026-10-31T01:57:52.6774527Z ✔ explicit interruption/reset cancel pending work, while phase changes retain the warned escort (5.287845ms)
+2026-10-31T01:57:52.6775856Z ✔ only the explicit Matron ordinary-navigation option routes a brood around cover (2.729019ms)
+2026-10-31T01:57:52.6776831Z ✔ actual Matron cycles keep advancing after late-phase Baby/Easy assistance with eighteen-actor bounds (2255.953574ms)
+2026-10-31T01:57:52.6777904Z ✔ a downed Medic can recover an all-downed team on Hard or Insane, spending one charge after the full channel (18.325801ms)
+2026-10-31T01:57:52.6778897Z ✔ Medic self-revival cancels when released, and ordinary classes cannot use solo recovery in a team (43.678711ms)
+2026-10-31T01:57:52.6779685Z ✔ Baby Medic revival grants a bounded twenty-percent shield rather than stacking shield on repeated rescues (5.371665ms)
+2026-10-31T01:57:52.6780491Z ✔ passive regeneration actually falls by 25%, 50% and 100% for every class while lower difficulties retain their rate (57.11878ms)
+2026-10-31T01:57:52.6781279Z ✔ Hard and Insane revive-kit purchases respect the reviver class and Hellish never consumes a legacy kit (11.742508ms)
+2026-10-31T01:57:52.6782162Z ✔ the next encounter restores the finite Medic recovery allowance, and Hellish still permits deliberate healing without passive regeneration (11.822586ms)
+2026-10-31T01:57:52.6783253Z ✔ known protocol39 local Practice saves retain map choices and progress; server and forged envelopes stay strict (3.126628ms)
+2026-10-31T01:57:52.6784060Z ✔ real Medic and teammate clients receive Hard/Insane recovery health, shields and remaining charges from authority (8540.234087ms)
+2026-10-31T01:57:52.6784855Z ✔ actual item descriptions use the Medic fraction, Baby shield and one HP instead of a misleading one-percent value (183.106066ms)
+2026-10-31T01:57:52.6785658Z ✔ every class shares one personal shield budget across all three pools, enforced before damage as well as before views (35.234573ms)
+2026-10-31T01:57:52.6786677Z ✔ actual Tank shields respect combined caps for the whole team and Hellish keeps physical walls while rejecting plates (4.014711ms)
+2026-10-31T01:57:52.6787467Z ✔ boundary recovery trims old shields to the current shared cap without discarding the selected map or class (2.338611ms)
+2026-10-31T01:57:52.6788212Z ✔ every fight starts Heavy at half capacity, Tank at full, Soldier at fifteen percent and other classes at zero (31.299484ms)
+2026-10-31T01:57:58.5899013Z ✔ all fourteen new identities launch real Midnight rooms and replicate the same finite signature shapes to clients (21826.572193ms)
+2026-10-31T01:57:59.6098675Z ✔ Midnight Circuit completes ten distinct fixed-grade fights with a reserved finale and normalized base budgets (53.264305ms)
+2026-10-31T01:57:59.6100301Z ✔ every Midnight identity executes all Normal/Brutal phases on actual maps and clears signatures at victory (818.48105ms)
+2026-10-31T01:57:59.6110030Z ✔ Choir projectiles damage a separate caster and transfer exactly once to team boss damage credit (3.333333ms)
+2026-10-31T01:57:59.6114060Z ✔ Matron packs remain capped in a real long-lived encounter and are removed at the boundary (117.592403ms)
+2026-10-31T01:57:59.6116042Z ✔ bounded local protocol-8 saves preserve seven-class builds but cannot claim new routes or boss identities (1.087189ms)
+2026-10-31T01:57:59.6117747Z ✔ all 144 actual map/difficulty/phase roads remain connected, body-clear and inside actual offset bounds and lava footprints (148.607842ms)
+2026-10-31T01:57:59.6119519Z ✔ flasks lock survivor landings with a full warning and start away from the boss while walking has real bounded movement and drawn gait frames (5.815096ms)
+2026-10-31T01:57:59.6121376Z ✔ opposite aimed reagents neutralize into real coolant, remove damage/slow, and do not require walking into the dangerous pool (3.884418ms)
+2026-10-31T01:57:59.6123663Z ✔ a harmful pool ignores pre-landing motion, sweeps later movement, and shares one floor hit per half-second across overlapping reagents (1.610444ms)
+2026-10-31T01:57:59.6126075Z ✔ distillation warns a real full-field vapor bank; coolant protects its whole-body footprint and the bank continues around it (4.43272ms)
+2026-10-31T01:57:59.6128603Z ✔ vapor relative sweeps catch crossing players, respect finite tangent bounds and only exempt the actual inset coolant footprint (0.313263ms)
+2026-10-31T01:57:59.6130815Z ✔ thermal-runaway vessels are immediately visible, coolant actually defuses them, and ignored vessels receive a separate rupture warning and one burst (5.875825ms)
+2026-10-31T01:57:59.6133084Z ✔ Brutal creates matching-reagent coupling with an achievable neutralization window, and cooling either endpoint cancels both pending eruptions (2.909936ms)
+2026-10-31T01:57:59.6134770Z ✔ Ossuary Baby cover cannot isolate the primary pressure vessel from actual acid/alkali neutralization (54.086942ms)
+2026-10-31T01:57:59.6136174Z ✔ an uncanceled coupled eruption waits for its own full warning and deals one timed blast, not repeated contact damage (1.849347ms)
+2026-10-31T01:57:59.6137651Z ✔ Crazed adds a real catalyst interaction: coolant is spent to quench it, while unmixed reagents produce a freshly warned catalytic eruption (4.463415ms)
+2026-10-31T01:57:59.6139096Z ✔ advanced Fractionation adds a second perpendicular vapor bank with its own fresh warning and distinct one/two/three pressure vessels (8.695969ms)
+2026-10-31T01:57:59.6140480Z ✔ snapshot geometry is detached and numeric; explicit interruption/reset cancel chemistry while phase changes preserve it (4.157703ms)
+2026-10-31T01:57:59.6141652Z ✔ new cover interrupts a procession safely without canceling the independently warned reagent throws (1.126067ms)
+2026-10-31T01:57:59.6143006Z ✔ actual authority and local Prediction agree on reagent slow, coolant and expiration without adding vapor movement forces (18.943914ms)
+2026-10-31T01:57:59.6152086Z ✔ actual Game uses distinct chemistry phases with zero generic hostile projectiles or common Crazed pressure, and cleans owned work on stagger and exit (50.704406ms)
+2026-10-31T01:57:59.6153891Z ✔ only exact known issued32 Practice/profile state migrates to the current protocol while retaining builds, form history and optional settings (5.938108ms)
+2026-10-31T01:57:59.6155004Z ✔ all fifteen manual guides route all four distinct Mold phases and form help, with eight newly drawn walking frames, retained action poses and static reduced motion (47.160296ms)
+2026-10-31T01:57:59.6156019Z ✔ real owner and observer replicate aimed flasks, actual neutralization, cooled vessels, vapor tells and complete encounter cleanup (372.629026ms)
+2026-10-31T01:57:59.6156909Z ✔ exact issued37 local Practice/profile progress migrates to38 with strict rejection of foreign revisions and online state (6.343849ms)
+2026-10-31T01:57:59.6157848Z ✔ real owner/observer receive isolated phase-crossing column/cloud locks, condensation, spent coolant and cooled apparatus, then encounter cleanup (381.519785ms)
+2026-10-31T01:57:59.6158719Z ✔ distillation apparatus is Crazed-only, finite, cloned and bounded to one or two columns per cycle (8.893782ms)
+2026-10-31T01:57:59.6159577Z ✔ phase zero keeps one fixed lane, phase one re-aims between full warnings, phase two crosses two sources and phase three ends in reflux (8.007029ms)
+2026-10-31T01:57:59.6160459Z ✔ every aerosol locks its complete numeric route, damage and activation clock, independent of later target/phase/scale changes (0.399051ms)
+2026-10-31T01:57:59.6161387Z ✔ warnings are harmless, activation ignores old motion, later relative sweeps hit once per player per cloud and movement slow follows the real cloud (0.450817ms)
+2026-10-31T01:57:59.6162301Z ✔ coolant condenses a travelling aerosol before damage, is visibly spent with grace, and clears its slow and ownership at expiry (0.571936ms)
+2026-10-31T01:57:59.6163546Z ✔ cooling apparatus cancels its pending releases with a condensation cue, but does not revoke an already released remote cloud (0.717011ms)
+2026-10-31T01:57:59.6164582Z ✔ all actual Crazed phase/map/difficulty combinations place the requested apparatus on accessible reagent-sized clear floor and keep clouds inside bounds (1078.831386ms)
+2026-10-31T01:57:59.6165468Z ✔ actual phase entry retains issued column/cloud clocks and explicit stagger/defeat clears all new ownership (13.328493ms)
+2026-10-31T01:57:59.6166548Z ✔ the actual new-cue renderer uses shared routes, bounds its work, and remains visible on the hostile layer with reduced-motion pose support (1.730821ms)
+2026-10-31T01:57:59.6167316Z ✔ real acid/alkali landings create coolant beside a column and close its still-pending release (2.810619ms)
+2026-10-31T01:57:59.6168087Z ✔ isolated actual-Game aerosol damages real health once, appears in detached views and shares slow with client prediction (11.317137ms)
+2026-10-31T01:57:59.6168864Z ✔ real peer views preserve every player wire field and decoded build without serializing the schema twice (324.869659ms)
+2026-10-31T01:57:59.6169631Z ✔ explicit ready handshake delivers private codes after client handlers attach and permits a real guest join (169.909437ms)
+2026-10-31T01:57:59.6170434Z ✔ real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session (1256.413583ms)
+2026-10-31T01:57:59.6171102Z ✔ instance capacity reserves reconnect slots independently of room limits (0.464487ms)
+2026-10-31T01:57:59.6171530Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:57:59.6172105Z ✔ real WebSocket clients enforce visibility, versions, authority, idempotence and reconnection (933.765452ms)
+2026-10-31T01:57:59.6172543Z ℹ version rejection
+2026-10-31T01:57:59.6172994Z ℹ public room creation
+2026-10-31T01:57:59.6173283Z ℹ public guest joining
+2026-10-31T01:57:59.6173498Z ℹ interrupted connection
+2026-10-31T01:57:59.6173720Z ℹ private room creation
+2026-10-31T01:57:59.6174219Z ℹ client adapter recovers an early disconnect and closes during retry
+2026-10-31T01:57:59.6174950Z ✔ seven combined boss atlases retain every original source and bind fifty-six complete new collapse poses (34.535085ms)
+2026-10-31T01:57:59.6175922Z ✔ all seven normal and Brutal defeats play once on world time after authority stops combat and bank rewards only once (221.76567ms)
+2026-10-31T01:57:59.6176780Z ✔ stale cast, hurt and stagger cues cannot restart a settled defeat; reduced motion and a fresh encounter have explicit states (19.994718ms)
+2026-10-31T01:57:59.6177606Z ✔ unavailable collapse atlases use their own exact settled image while live fallback identities stay unchanged (1.645015ms)
+2026-10-31T01:57:59.6178391Z ✔ evicting a live or defeated combined atlas releases the sprite to the matching identity before texture destruction (0.589202ms)
+2026-10-31T01:57:59.6179273Z ✔ exact issued35 Practice/profile state migrates to the current protocol without changing builds, form history, resources or preferences (6.25739ms)
+2026-10-31T01:57:59.6180125Z ✔ real owner/observer retain phase-crossing reagent children, route movement, shootable needles and arena currents (1084.223895ms)
+2026-10-31T01:57:59.6181007Z ✔ alchemist: committed full scores retain their original phase, child attacks and damage through every legal form/phase change (79.72027ms)
+2026-10-31T01:57:59.6181911Z ✔ bellringer: committed full scores retain their original phase, child attacks and damage through every legal form/phase change (119.342473ms)
+2026-10-31T01:57:59.6182950Z ✔ matron: committed full scores retain their original phase, child attacks and damage through every legal form/phase change (42.488334ms)
+2026-10-31T01:57:59.6183750Z ✔ already announced Matron brood retains its spawn speed/count even when its phase changes after the escort is idle (3.976535ms)
+2026-10-31T01:57:59.6184558Z ✔ all six global difficulties retain warned constable fans and their actual locked-origin release across phase entry (68.555704ms)
+2026-10-31T01:57:59.6185696Z ✔ phase entry preserves an issued zone, an in-flight projectile and its pending advanced echoes, with natural release and field expiry (25.934147ms)
+2026-10-31T01:57:59.6187027Z ✔ common Brutal/Crazed arena pressure keeps its exact warning geometry and lifetime when the phase changes (66.779671ms)
+2026-10-31T01:57:59.6188111Z ✔ old glass needles and garden roots remain shootable dependencies when the next phase places a fresh set, and expire after their own beams (6.745051ms)
+2026-10-31T01:57:59.6189232Z ✔ Mold pool contact inflicts the same real health loss and keeps its hit budget across a Normal phase transition (18.218981ms)
+2026-10-31T01:57:59.6189979Z ✔ retained pools, currents, gates, wind and moving blocks remain on the shared authority/prediction path (63.780914ms)
+2026-10-31T01:57:59.6190616Z ✔ phase entry retains living Matron minions and old/new cues keep unique IDs (109.362956ms)
+2026-10-31T01:57:59.6191320Z ✔ Baby/Easy phase entry keeps attacks, whereas completing the warned shield channel still earns an interruption (13.388242ms)
+2026-10-31T01:57:59.6192089Z ✔ boss defeat clears carried cues, warnings, shots, minions and hit ownership for every executing identity (269.520768ms)
+2026-10-31T01:57:59.6193142Z ✔ Matron nest replacement never revokes a warned brood/needle and retained spawn/hit records stay bounded over repeated cycles (151.69524ms)
+2026-10-31T01:57:59.6194009Z ✔ Brutal adds real pincer, ring and triple-ring responses from the opening phase while Normal keeps its calibrated patterns (87.444771ms)
+2026-10-31T01:57:59.6194760Z ✔ Brutal Curfew combines three rings with a delayed pincer, preserving a common ring escape sector (6.00062ms)
+2026-10-31T01:57:59.6195578Z ✔ phase-entry cues trigger once per actual phase and survive repeated patches, pauses and reduced-motion presentation (0.334956ms)
+2026-10-31T01:57:59.6196306Z ✔ all fifteen phase-hint sets distinguish Normal and Brutal and explain each different response (1.065918ms)
+2026-10-31T01:57:59.6196977Z ✔ Brutal has an explicit persistent red treatment and switching to Normal or defeat clears it (0.275258ms)
+2026-10-31T01:57:59.6197844Z ✔ all sixty-six theme pulse clocks match the issued composition tempos without changing theme masters (0.475414ms)
+2026-10-31T01:57:59.6198485Z ✔ later phases and Brutal add bounded musical accents in even and odd meters (5.256679ms)
+2026-10-31T01:57:59.6199169Z ✔ music pulse scheduler stays bounded, follows volume/ducking and never bursts after hidden or suspended time (2.158804ms)
+2026-10-31T01:57:59.6199925Z ✔ one progress ledger keeps local, Wiki and in-game counts aligned with executable content and pending review (56.323257ms)
+2026-10-31T01:57:59.6200722Z ✔ the three original new-boss concepts preserve exact requests and native returns without inflating playable counts (6.092686ms)
+2026-10-31T01:57:59.6201444Z ✔ a real Rescue Charge spreads its six drawn poses across the complete ten-tick charge interval (24.902421ms)
+2026-10-31T01:57:59.6202204Z ✔ sixty-Hz rendering between twenty-Hz authority patches exposes every short-dodge pose without changing authority state (4.357888ms)
+2026-10-31T01:57:59.6203265Z ✔ the drawing clock is monotonic between patches, ignores duplicate observations and stops at one patch of lead (1.953561ms)
+2026-10-31T01:57:59.6204033Z ✔ run, encounter, phase and backward authority boundaries reset drawing time while noncombat clocks stay paused (5.512938ms)
+2026-10-31T01:57:59.6204811Z ✔ interpolated action frames keep authority-selected status and reduced motion stable through a stalled patch (1.986599ms)
+2026-10-31T01:57:59.6205522Z ✔ leaving Profile while a file is read prevents a late import from replacing saved progress (257.958067ms)
+2026-10-31T01:57:59.6206214Z ✔ a pending profile import ignores conflicting file and cosmetic actions and remains usable afterwards (226.254132ms)
+2026-10-31T01:57:59.6206934Z ✔ valid profile files report storage failures accurately and keep the previous bytes available to export (183.44646ms)
+2026-10-31T01:57:59.6207563Z ✔ a disposed profile cannot save from its detached cosmetic or file controls (151.396798ms)
+2026-10-31T01:57:59.6208386Z ✔ a successful profile import keeps its notice and returns focus to the current import control (134.770824ms)
+2026-10-31T01:57:59.6209418Z ✔ actual setup ignores an older profile refresh after moving to a different page (299.774786ms)
+2026-10-31T01:57:59.6210561Z ✔ an imported language refreshes its owning setup and keeps the success notice and import focus (247.880997ms)
+2026-10-31T01:57:59.9827828Z ✔ all six difficulties and personal progress cross real WebSockets without exposing seeded schedules or trusting profile power (865.697188ms)
+2026-10-31T01:58:00.0290935Z ✔ personal progress credits actual deployments, persists boundaries and rejects impossible history (11.805493ms)
+2026-10-31T01:58:00.0304239Z ✔ all six difficulties use the complete budget and Hard full participation unlocks the last two (25.307092ms)
+2026-10-31T01:58:00.0324132Z ✔ late arrivals cannot turn a partial campaign and secret clear into a full Hard unlock (7.322297ms)
+2026-10-31T01:58:00.0374166Z ✔ completed Endless mastery survives defeat, extraction, repeated views and stale restored checkpoints (9.46893ms)
+2026-10-31T01:58:00.0413323Z ✔ secret failure retains campaign mastery; a later stale view never removes the memorial (10.839771ms)
+2026-10-31T01:58:00.0414489Z ✔ teammate channel rescues count once and solo self-revival does not award cooperation (12.539292ms)
+2026-10-31T01:58:00.0444136Z ✔ protocol-12 Practice migration preserves the secret offer and personal solo history (3.441463ms)
+2026-10-31T01:58:00.0445369Z ✔ profiles migrate existing preferences and retain unverified legacy clears without granting unlocks (0.46572ms)
+2026-10-31T01:58:00.0446445Z ✔ import validates all bytes before replacement and keeps an exact prior backup (0.884131ms)
+2026-10-31T01:58:00.0447395Z ✔ storage failures and corrupt prior files preserve the previous profile bytes (0.595403ms)
+2026-10-31T01:58:00.0448418Z ✔ bindings reject conflicts and reserved navigation, and touch/gamepad can share action names (0.358972ms)
+2026-10-31T01:58:00.0449442Z ✔ hold/toggle latches recognize quick taps, hold edges and reset on blur/pause (0.183362ms)
+2026-10-31T01:58:00.0450986Z ✔ profile messages cover fifteen locales, preserve placeholders and interpolate toggle instructions (2.163608ms)
+2026-10-31T01:58:00.0452163Z ✔ replayed branches may discover another story without double-awarding encounter mastery (2.150559ms)
+2026-10-31T01:58:00.0453500Z ✔ legacy Hard campaign records stay portable but never infer missing participation or grant mastery (3.366772ms)
+2026-10-31T01:58:02.4974943Z ✔ all 168 timed class/mode/difficulty and 42 Endless combinations preserve legal power, saves and personal progress (2658.337759ms)
+2026-10-31T01:58:02.4977500Z ✔ runtime opening health matches the independently published authored uptime-model rows (134.852776ms)
+2026-10-31T01:58:02.4979859Z ✔ every boss uses its authored base duration, with Brutal HP/deadline and Raid/secret scaling kept independent (57.553877ms)
+2026-10-31T01:58:02.5424812Z ✔ friendly weapon projectiles damage Walking District blocks while hostile shots stop, and a destroyed block stops shielding within the same tick (29.911869ms)
+2026-10-31T01:58:02.5426510Z ✔ construct broad-phase rejection preserves rotated wall corners, endpoints and large projectile padding (20.142514ms)
+2026-10-31T01:58:02.5427522Z ✔ cached weak-point snapshots refresh after a sack breaks before another shot in the same batch (3.426831ms)
+2026-10-31T01:58:02.5428495Z ✔ construct broad-phase candidates preserve oldest-shield precedence and immediate destruction across eight overlapping walls (3.189529ms)
+2026-10-31T01:58:13.5987673Z ✔ all seven Raid bosses replicate numeric finite signature geometry over real WebSockets (12907.439277ms)
+2026-10-31T01:58:13.8812377Z ✔ Grand Raid admits sixteen real clients and rejects a seventeenth room join (284.63824ms)
+2026-10-31T01:58:14.9066821Z ✔ Raid signatures execute finite Normal and Brutal phases, cancel at reset and do not leak actor fields (60.57381ms)
+2026-10-31T01:58:14.9068744Z ✔ Colossus pylons scale for solo and sixteen players, break the pull and open four seconds (5.26775ms)
+2026-10-31T01:58:14.9070444Z ✔ Leviathan curves with three sequential rib openings and preserves the 1.5 weak transfer (3.639156ms)
+2026-10-31T01:58:14.9071968Z ✔ Triplets have three independent keepers and a 185px beam gap; 95 damage interrupts the highlighted keeper (0.35713ms)
+2026-10-31T01:58:14.9074134Z ✔ Heart neutral F valve reverses one stream and deals exactly one 120 damage hit without class checks (1.34182ms)
+2026-10-31T01:58:14.9075499Z ✔ Procession moves four separate attendants, rests for four seconds and stops when an attendant falls (1.530119ms)
+2026-10-31T01:58:14.9076774Z ✔ City Eater leaves a 240px escape lane and two 120HP temporary walls expose the core (1.669074ms)
+2026-10-31T01:58:14.9078048Z ✔ Saint shelters cancel inhalation and exhalation emits three actual sixteen-projectile waves (0.794618ms)
+2026-10-31T01:58:14.9079409Z ✔ Raid completes two distinct regular bosses and one reserved finale with concrete budgets, threats and maps (74.172202ms)
+2026-10-31T01:58:14.9080845Z ✔ Raid health multiplier is 1.25 and old local protocol-10 saves migrate without claiming Raid content (2.6704ms)
+2026-10-31T01:58:14.9082105Z ✔ Raid weak hit transfers one 1.5 projectile hit without body double credit (14.860473ms)
+2026-10-31T01:58:14.9083372Z ✔ Raid pull prediction and authority agree through a dodge (21.179262ms)
+2026-10-31T01:58:14.9084716Z ✔ all seven Raid identities execute actual Normal and Brutal phases and clear signatures on victory (577.85515ms)
+2026-10-31T01:58:14.9086171Z ✔ opening Ratcatcher locks three harmless scent lanes, spawns four real rats per lane and exposes recovery (2.950655ms)
+2026-10-31T01:58:14.9087700Z ✔ late phase marks a safe patrol, resolves movement, then locks a complete new warning from its actual stop (0.949007ms)
+2026-10-31T01:58:14.9090317Z ✔ a new collider stops patrol early and the subsequent warning uses that actual position (0.48561ms)
+2026-10-31T01:58:14.9093338Z ✔ pack spawning honors locked lane origins even if an external relocation changes the live boss during the tell (0.24941ms)
+2026-10-31T01:58:14.9094710Z ✔ intrinsic sack damage cancels the pending/next pack, restores on its exact clock, and never silences advanced whistles (0.657846ms)
+2026-10-31T01:58:14.9095787Z ✔ the sack follows actual patrol motion and uses relative swept contact without a fictional first-frame origin (0.39759ms)
+2026-10-31T01:58:14.9096975Z ✔ advanced opening/late phases release one/two full warned whistle rings with a locked safe gap and rotated second gap (1.120111ms)
+2026-10-31T01:58:14.9098347Z ✔ rat navigation actually goes around cover and makes contact while ordinary actors retain their previous behavior (3.415174ms)
+2026-10-31T01:58:14.9100126Z ✔ rat navigation replaces paths for moved targets/new walls and bounds its corner graph and actor routes (6.77811ms)
+2026-10-31T01:58:14.9101484Z ✔ actual advanced whistle emissions use the shared 2.5x/7.5x budget while rats retain the twelve-live cap (66.149657ms)
+2026-10-31T01:58:14.9102971Z ✔ all maps/difficulties admit a complete relocated muster with body and sack inside bounds and no masonry crossings (31.588885ms)
+2026-10-31T01:58:14.9104322Z ✔ phase retains Ratcatcher work; stagger cancels warnings without a free rat clear and exits remove rats (46.891344ms)
+2026-10-31T01:58:14.9105819Z ✔ fifteen locales and known protocol22 saves/profiles preserve phase help and exact completed form/build history (34.857381ms)
+2026-10-31T01:58:14.9107223Z ✔ real owner/observer rooms replicate the relocated origin, locked whistle gap, phase sound and cancellation (1878.079721ms)
+2026-10-31T01:58:14.9108613Z ✔ Ratcatcher existing action poses follow each actual whistle warning and release without mutating authority (29.826783ms)
+2026-10-31T01:58:14.9109857Z ✔ rats reach close navigation corners before turning rather than clipping a padded wall (1.592757ms)
+2026-10-31T01:58:14.9111084Z ✔ painted Gatehouse borders stop walking and long dashes while all fifty spawn positions remain clear (11.373893ms)
+2026-10-31T01:58:14.9112359Z ✔ the same published role-normalized rating produces HUD grades and concrete squad examples (0.753425ms)
+2026-10-31T01:58:14.9113807Z ✔ opening an own result reuses its downloaded first roster page and loads all fifty-one members once (273.513426ms)
+2026-10-31T01:58:14.9115433Z ✔ roster reuse ends with the filter generation and cannot show an old result in this week (209.191713ms)
+2026-10-31T01:58:14.9116688Z ✔ a failed own-result prefetch is retried normally when its row arrives through pagination (143.059896ms)
+2026-10-31T01:58:14.9117881Z ✔ a recent shortcut from a different difficulty cannot appear in the selected board (122.995326ms)
+2026-10-31T01:58:14.9119020Z ✔ an own result beyond two board pages stays a single row without repeated roster lookups (597.005412ms)
+2026-10-31T01:58:14.9120087Z ✔ device record filters retain the current keyboard editing focus (206.176926ms)
+2026-10-31T01:58:14.9121039Z ✔ switching record tabs focuses the current live tab (151.287207ms)
+2026-10-31T01:58:14.9122178Z ✔ online records retain mode, difficulty, squad size and week when returning from device records (171.929517ms)
+2026-10-31T01:58:14.9123350Z ✔ device and online record filters keep their separate choices (171.973552ms)
+2026-10-31T01:58:14.9124380Z ✔ a smaller mode keeps the corrected squad size and time period on return (157.466703ms)
+2026-10-31T01:58:14.9125372Z ✔ disposed record controls cannot navigate back or start a new board request (138.921196ms)
+2026-10-31T01:58:14.9126405Z ✔ detached record filters and tabs cannot replace the live online view (186.590114ms)
+2026-10-31T01:58:14.9127418Z ✔ an expired departure frees a waiting slot without immediately changing the boss health (9.788015ms)
+2026-10-31T01:58:14.9128699Z ✔ all boss and survivor poses fit every map/difficulty border from phone portrait to4K without stretching (167.114761ms)
+2026-10-31T01:58:14.9130064Z ✔ actual scale events refit the camera after fullscreen, orientation and window changes, then unsubscribe (0.758563ms)
+2026-10-31T01:58:14.9131555Z ✔ real pointer routing follows the current canvas after zoom, DPI, resize and temporary hidden bounds (4.566498ms)
+2026-10-31T01:58:14.9133015Z ✔ the real chat form retains its draft, focus and input guard as it moves through upgrades, settings and combat (1.470737ms)
+2026-10-31T01:58:14.9134580Z ✔ chat history refresh and menu replacement keep the draft; successful send clears it and disabled/offline chat cannot block controls (11.964607ms)
+2026-10-31T01:58:14.9136022Z ✔ confirmation clears only the submitted draft; edits, rejected delivery and uncertainty remain visible across menu moves (0.394474ms)
+2026-10-31T01:58:14.9137381Z ✔ C toggles chat, Enter starts typing, and text/copy/custom gameplay bindings remain usable (0.464508ms)
+2026-10-31T01:58:14.9138558Z ✔ an unfinished IME composition neither sends nor closes chat; a committed message can be submitted (0.259494ms)
+2026-10-31T01:58:14.9139757Z ✔ real room clients observe checkpoint waits, cannot alter frozen builds and join after the barrier (322.203123ms)
+2026-10-31T01:58:14.9140992Z ✔ real clients see a latched checkpoint outage while the Practice encounter continues (270.063041ms)
+2026-10-31T01:58:14.9142171Z ✔ room freezes its exact boundary and starts combat only after both durable acknowledgements (27.509593ms)
+2026-10-31T01:58:14.9143464Z ✔ room captures victory intermissions, pauses their clocks and guards automatic redeployment (26.732733ms)
+2026-10-31T01:58:14.9144670Z ✔ combat continues during a lease request; an outage latches Practice status and terminal runs finalize (16.667707ms)
+2026-10-31T01:58:14.9145910Z ✔ disposing a room during a slow checkpoint cannot start combat or broadcast after disposal (2.362416ms)
+2026-10-31T01:58:14.9147188Z ✔ an explicitly selected map stays fixed in every mode, through falls, choices, saves and later fights (122.793057ms)
+2026-10-31T01:58:14.9148532Z ✔ random-run maps stay fixed and random-each-fight changes only on deployment, reproducibly across saves (26.519421ms)
+2026-10-31T01:58:14.9149994Z ✔ authored route floors remain still throughout a fall; one defeat cue is emitted and old local saves retain the chosen map (2.257681ms)
+2026-10-31T01:58:14.9151413Z ✔ waiting-room names, classes, host status, map choice and counts are readable and escaped in all fifteen catalogs (19.073493ms)
+2026-10-31T01:58:14.9153332Z ✔ public and private rooms wait for their host, accept their code during play and retain one map and defeat position for both peers (980.735353ms)
+2026-10-31T01:58:14.9154824Z ✔ room passwords use separate salted verifiers, bounded Unicode text and exact case/space matching (209.870391ms)
+2026-10-31T01:58:14.9155669Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9156288Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9156878Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9157686Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9158313Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9158911Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9159512Z Room connection was closed unexpectedly (4002): 
+2026-10-31T01:58:14.9160694Z ✔ real public/private password rooms reject missing/wrong passwords, prompt lookup safely, reconnect and keep host authority (1670.915738ms)
+2026-10-31T01:58:14.9162160Z ✔ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (3.215318ms)
+2026-10-31T01:58:14.9163804Z ✔ journal acknowledges combat before the caller starts it, refreshes every thirty seconds and preserves response-lost event IDs (15.884204ms)
+2026-10-31T01:58:14.9165344Z ✔ initial outages, invalid acknowledgements and later failures cannot silently re-enable a journal (4.452128ms)
+2026-10-31T01:58:14.9166709Z ✔ actual HTTP process restart preserves file-backed boundaries and only one competing owner can claim them (638.889167ms)
+2026-10-31T01:58:14.9167875Z ✔ combat interrupted by a process restart can restore only as Recovery Practice (469.962681ms)
+2026-10-31T01:58:14.9169043Z ✔ fifty developed builds cross bounded real HTTP, survive process replacement and retain one-owner recovery with every receipt (719.50164ms)
+2026-10-31T01:58:14.9171213Z ℹ {"participants":50,"classes":7,"syntheticClears":10,"registrationBytes":58647,"lookupBytes":58902,"bodyLimit":65536,"claimWinners":1,"successfulReceiptsRetried":50,"failedReceiptsRetried":50,"fileBacked":true,"processRestart":true,"hostedD1":false,"renderedClients":0}
+2026-10-31T01:58:14.9173339Z ✔ run results use the same personally earned clears and experience as the saved profile without awarding anything (14.326089ms)
+2026-10-31T01:58:14.9174936Z ✔ late join, zero-clear defeat, timeout and banked victories retain their actual meanings in the result screen (3.531105ms)
+2026-10-31T01:58:14.9176370Z ✔ only automatic timed steps show a countdown; lobby, combat and terminal screens have none (0.18939ms)
+2026-10-31T01:58:14.9177689Z ✔ HTTP writer authentication binds exact UTF-8 bytes, route, time and nonce; identical event retries need a new nonce (35.152296ms)
+2026-10-31T01:58:14.9179032Z ✔ writer transport matches the documented seconds, body-digest and base64url HMAC contract (4.624192ms)
+2026-10-31T01:58:14.9180217Z ✔ a valid key cannot impersonate an unconfigured server or key ID, or add unsigned URL queries (2.819012ms)
+2026-10-31T01:58:14.9181517Z ✔ authenticated JSON rejects unknown fields, ill-typed restore flags and invalid IDs before changing a run (18.196445ms)
+2026-10-31T01:58:14.9182926Z ✔ unauthenticated/oversized writes and ranked registrations are rejected without creating a run (3.090673ms)
+2026-10-31T01:58:14.9184281Z ✔ authenticated ledger requests distinguish a stale ownership conflict from unavailable nonce/database storage (4.0546ms)
+2026-10-31T01:58:14.9185789Z ✔ actual local HTTP client registers, retries, reads and finalizes signed state without following redirects or leaking service access (50.028448ms)
+2026-10-31T01:58:14.9187427Z ✔ SQL lifecycle registration and event retry are idempotent; conflicts and finalized replay cannot change state (11.146614ms)
+2026-10-31T01:58:14.9188752Z ✔ two competing restore claims against the same expired lease yield exactly one owner epoch (3.274566ms)
+2026-10-31T01:58:14.9190227Z ✔ interrupted combat can only claim recovery practice and that downgrade stays latched (2.894633ms)
+2026-10-31T01:58:14.9191448Z ✔ stale boundary sequence fails the SQL guard and cannot insert an event or replace a checkpoint (2.816748ms)
+2026-10-31T01:58:14.9192625Z ✔ a pre-combat checkpoint cannot roll back started combat as a ranked boundary (5.022843ms)
+2026-10-31T01:58:14.9194314Z ✔ seven selection portraits share a full-body canvas and visible body height, with two new whole native poses and old five identities retained (16.495168ms)
+2026-10-31T01:58:14.9195778Z ✔ Matron nests obey their tell, summon bounded real packs and stop permanently when destroyed (16.514687ms)
+2026-10-31T01:58:14.9197026Z ✔ Alchemist reagent flasks lock full landing warnings before actual harmful pools become active (4.438017ms)
+2026-10-31T01:58:14.9198343Z ✔ Bellringer owns a real gapped toll with full tell safety and preserves shared swept radial contact (9.506276ms)
+2026-10-31T01:58:14.9199626Z ✔ Stitchwright has destructible tethers, a one-second neutral rescue and a dodgeable attachment (1.8314ms)
+2026-10-31T01:58:14.9200946Z ✔ Glass Surgeon leaves an actual missing edge and breaking one needle cancels only its connected sides (0.551576ms)
+2026-10-31T01:58:14.9202265Z ✔ Ash Baker loaves split exactly once into two real crumbs per loaf and show their split directions first (0.544536ms)
+2026-10-31T01:58:14.9203682Z ✔ Sluice currents push without damage and prediction uses exactly the same force and dry strips (38.63602ms)
+2026-10-31T01:58:14.9204916Z ✔ Stationmaster alternates two distinct signals and swept trains never hit the open track (1.644464ms)
+2026-10-31T01:58:14.9206143Z ✔ Lamplighter protects three outlined pockets during its pulse and preserves tell safety (0.480961ms)
+2026-10-31T01:58:14.9207929Z ✔ Anatomist tracks only for 0.7 seconds, then keeps two fixed caliper marks until release (0.342767ms)
+2026-10-31T01:58:14.9209215Z ✔ Gardener roots can be cut early into a restorative strip without canceling the other vines (0.528041ms)
+2026-10-31T01:58:14.9210504Z ✔ Choir casters have separate health and ordered locked beams; one defeated singer cancels only its own release (0.409756ms)
+2026-10-31T01:58:14.9211729Z ✔ Abbess moves two sanctuaries during the tell and any survivor can neutralize the incoming wave (0.524716ms)
+2026-10-31T01:58:14.9213114Z ✔ Judge damages only its announced half, includes fast crossings and alternates the open half next cast (0.243771ms)
+2026-10-31T01:58:14.9214314Z ✔ timed spiral emitters create a sequence of actual projectiles, not fallback pools (0.242088ms)
+2026-10-31T01:58:15.0515090Z ✔ fifty real peers can join a private room by code from one IP and wait for the host (2792.928183ms)
+2026-10-31T01:58:19.5279993Z ✔ a shared group can leave a sixteen-player lobby and rejoin a fifty-player lobby within one minute (4480.054907ms)
+2026-10-31T01:58:19.6320058Z ✔ failed room-code guesses remain limited without locking out a known valid code (100.867077ms)
+2026-10-31T01:58:19.7538482Z ✔ known room-code lookups have a bounded shared-network budget and cannot be reset with forwarded headers (125.966304ms)
+2026-10-31T01:58:19.8716627Z ✔ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (117.192708ms)
+2026-10-31T01:58:20.1898235Z ✔ records reads allow a full group to browse results and roster pages while retaining a shared-IP limit (320.338586ms)
+2026-10-31T01:58:20.9457245Z ✔ signed multiplayer boundary retains both builds, inventory, exact votes/RNG and duplicate-purchase replies (16.028558ms)
+2026-10-31T01:58:20.9459049Z ✔ fifty-player signed boundary round-trip stays bounded and retains every distinct participant build (16.271908ms)
+2026-10-31T01:58:20.9460673Z ✔ tampering, key mismatch, expiry, unsafe phases and malformed identities cannot restore a signed game (3.233064ms)
+2026-10-31T01:58:20.9462189Z ✔ boundary validator rejects duplicate participants, forged inventory and foreign vote IDs (3.323357ms)
+2026-10-31T01:58:20.9464229Z ✔ each expanded class map exposes all 54 real skills and exactly their prerequisites without overlapping targets (6.09619ms)
+2026-10-31T01:58:20.9465614Z ✔ keyboard navigation follows path depth and neighboring branches with bounded Home and End (0.5ms)
+2026-10-31T01:58:20.9466852Z ✔ zoom retains a minimum target above 44 pixels and preserves the viewport center (0.274046ms)
+2026-10-31T01:58:20.9468066Z ✔ map markup has every inspect target once, real prerequisite edges and escaped labels (1.250251ms)
+2026-10-31T01:58:20.9469373Z ✔ map adapter provides one roving tab stop and arrow focus without a purchase action (0.880282ms)
+2026-10-31T01:58:20.9474104Z ✔ classic is the default and issued eight-field profiles retain progress while migrating the option (6.511986ms)
+2026-10-31T01:58:20.9475605Z ✔ all fifteen locales expose the option, navigation help and zoom controls with placeholder parity (28.009817ms)
+2026-10-31T01:58:20.9477134Z ✔ the actual shop switches between 18 and 54 skills and expanded inspection uses the existing guarded purchase path (844.547336ms)
+2026-10-31T01:58:20.9478596Z ✔ all seven classes have 54 nodes and every branch contains the complete 18-grade ladder (2.069151ms)
+2026-10-31T01:58:20.9479934Z ✔ all 63 implemented specialization paths enforce prerequisites and spend exactly 21 points (16.984042ms)
+2026-10-31T01:58:20.9481291Z ✔ Medic offensive healing restores the most injured nearby ally and applies its hit-rate cap (20.189565ms)
+2026-10-31T01:58:20.9482632Z ✔ independent native-alpha derivation matches every visible Small Wakes pose and anchor (240.177602ms)
+2026-10-31T01:58:20.9485061Z ✔ actual Crab movement and every possible pose stay on every map/difficulty floor in both phases (3078.040471ms)
+2026-10-31T01:58:20.9486822Z ✔ all three Small Wakes identities deploy with their complete painted footprint and physical body clear of cover (82.047102ms)
+2026-10-31T01:58:31.6640036Z ✔ three original grades have two half-health phases and every phase/form casts through real Game authority (359.25559ms)
+2026-10-31T01:58:31.6641793Z ✔ Brutal makes real repeated waves and adds its distinct cross-cut, independent closure or rear pour (89.15335ms)
+2026-10-31T01:58:31.6643432Z ✔ locked wax/steam warnings stop at masonry, stay bounded and retain an actual cold center in phase two (2.718533ms)
+2026-10-31T01:58:31.6644901Z ✔ swept lane and moving-jaw contact cannot tunnel, hurt during warning or survive cancellation (0.747296ms)
+2026-10-31T01:58:31.6647313Z ✔ the real steam contact removes health only after its warning, then respects its expiry (6.576052ms)
+2026-10-31T01:58:31.6648983Z ✔ both phases/forms on all six arenas and every difficulty keep moving bodies, finite props and complete jaws inside their boards (4176.433683ms)
+2026-10-31T01:58:31.6650634Z ✔ breaking one finite anchor or valve cancels only its linked pressure and leaves another Brutal source working (6.288187ms)
+2026-10-31T01:58:31.6652204Z ✔ actual Soldier shots destroy each new finite weak point through swept hit selection and earn hit credit (13.625916ms)
+2026-10-31T01:58:31.6653698Z ✔ victory, timeout, wipe and stagger clear every Small Wakes pressure cue (43.458655ms)
+2026-10-31T01:58:31.6655494Z ✔ motion uses real warning/release clocks, full defeat frames and complete fallback identities (9.170843ms)
+2026-10-31T01:58:31.6657558Z ✔ all fifteen locales have individual phase names, persistent responses and extra Brutal help (0.469695ms)
+2026-10-31T01:58:31.6659770Z ✔ issued protocol19 local Practice and profiles retain identity, money, discoveries and purchases under protocol20 (2.037906ms)
+2026-10-31T01:58:31.6664748Z ✔ the independent verifier reconstructs all native RGBA ownership, anchors, atlases and v5 fallback crops (10699.362148ms)
+2026-10-31T01:58:31.6666105Z ✔ three distinct original scores match pulse clocks and preserve all 63 prior masters and score events (494.473009ms)
+2026-10-31T01:58:37.0232290Z ✔ real owner/observer rooms reject protocol19 and replicate all three Brutal signatures, cancellation and cleanup (5387.380614ms)
+2026-10-31T01:58:38.0620690Z ✔ supply purchases are atomic, stack to two, preserve three slots and reject forged/full requests (18.814947ms)
+2026-10-31T01:58:38.0621969Z ✔ medkits do not waste charges at full health, respect cooldown and consume a one-shot input once (41.947864ms)
+2026-10-31T01:58:38.0623355Z ✔ adrenaline expires on combat ticks and the authoritative view speed respects the movement cap (36.245684ms)
+2026-10-31T01:58:38.0624382Z ✔ armor plates expire independently and absorb damage before permanent shield and health (5.259454ms)
+2026-10-31T01:58:38.0625446Z ✔ antidote, ammo pouch and focus tonic apply their actual effects without changing ultimate cooldown (5.016885ms)
+2026-10-31T01:58:38.0626509Z ✔ revive kit requires a nearby downed teammate and never restores an eliminated player (5.928805ms)
+2026-10-31T01:58:38.0627545Z ✔ barrier blocks swept hostile shots, loses finite health and permits teammate movement (5.690993ms)
+2026-10-31T01:58:38.0628616Z ✔ practice boundary saves preserve supplies and reject duplicate, unknown or over-stacked inventory (8.728588ms)
+2026-10-31T01:58:38.0629842Z ✔ Tank actions retain twenty distinct directional clips, 88 drawn poses and every immutable native/request binding (201.115187ms)
+2026-10-31T01:58:38.0630993Z ✔ actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it (30.115472ms)
+2026-10-31T01:58:38.0632102Z ✔ damage interrupts a shot, recovers, and keeps movement available rather than replaying stale hit poses (6.417519ms)
+2026-10-31T01:58:38.0633430Z ✔ a real dodge follows movement direction, completes every drawn frame within the authoritative interval and wins over hurt (7.756911ms)
+2026-10-31T01:58:38.0634583Z ✔ downed motion locks its facing, holds the resting frame, and revival clears attack/hurt history (6.817811ms)
+2026-10-31T01:58:38.0636541Z ✔ late observers of an existing fall, reduced motion, waiting participants and other classes have explicit stable poses (3.347104ms)
+2026-10-31T01:58:38.0637553Z ✔ new runs, encounter boundaries, backward clocks and removed participants cannot inherit action state (4.112437ms)
+2026-10-31T01:58:38.0638428Z ✔ Engineer actions preserve twenty independent clips, all 23 returns and their exact input bindings (71.470959ms)
+2026-10-31T01:58:38.0639349Z ✔ Engineer and Tank presentation cues stay independent through fire, fall, revive and a class identity change (4.270751ms)
+2026-10-31T01:58:38.0640199Z ✔ Mage actions preserve twenty complete clips, all 25 native attempts and exact reference bindings (78.64048ms)
+2026-10-31T01:58:38.0640962Z ✔ real Mage primary casts select the corresponding independent staff clip in all four aim directions (10.225805ms)
+2026-10-31T01:58:38.0641762Z ✔ heavy actions retain all native attempts, exact bindings and complete padded directional clips (61.804793ms)
+2026-10-31T01:58:38.0642466Z ✔ heavy authority-fired primary shots select the correct independent attack facing (7.481373ms)
+2026-10-31T01:58:38.0643381Z ✔ assassin actions retain all native attempts, exact bindings and complete padded directional clips (66.345022ms)
+2026-10-31T01:58:38.0644088Z ✔ assassin authority-fired primary shots select the correct independent attack facing (10.020561ms)
+2026-10-31T01:58:38.0644789Z ✔ soldier actions retain all native attempts, exact bindings and complete padded directional clips (72.895949ms)
+2026-10-31T01:58:38.0645434Z ✔ soldier authority-fired primary shots select the correct independent attack facing (17.944198ms)
+2026-10-31T01:58:38.0646078Z ✔ medic actions retain all native attempts, exact bindings and complete padded directional clips (74.208731ms)
+2026-10-31T01:58:38.0646906Z ✔ medic authority-fired primary shots select the correct independent attack facing (5.277751ms)
+2026-10-31T01:58:38.0648028Z ✔ four additional survivors have independent directional runs with 124 approved poses and preserved native hashes (30.985439ms)
+2026-10-31T01:58:38.0649221Z ✔ soldier independent runs retain original north/south art, loop at their authored speed and share the action scale (7.503195ms)
+2026-10-31T01:58:38.0650697Z ✔ medic independent runs retain original north/south art, loop at their authored speed and share the action scale (11.565873ms)
+2026-10-31T01:58:38.0651652Z ✔ sixty-Hz drawing over actual thirty-Hz movement no longer alternates run and idle between movement updates for any class (55.82943ms)
+2026-10-31T01:58:38.0652519Z ✔ twenty-Hz movement patches retain a run between frames but stop at a bounded grace period and reset on encounter, departure and death (1.475374ms)
+2026-10-31T01:58:38.0654255Z ✔ small diagonal aim jitter does not flip sprite sheets while deliberate direction changes remain immediate and finite (1.037315ms)
+2026-10-31T01:58:38.0655079Z ✔ one-shot attack and hurt directions remain at their authoritative onset instead of flipping with later aim changes (7.326152ms)
+2026-10-31T01:58:38.0655900Z ✔ all 820 selected survivor poses retain exact original contracts and have bounded two-times display delivery textures (64.728801ms)
+2026-10-31T01:58:38.0656662Z ✔ every live action and run selector uses matching delivery cells while retaining world origin and size (1.419361ms)
+2026-10-31T01:58:38.0657390Z ✔ the complete survivor delivery atlas set stays below sixty percent of its original decoded RGBA allocation (0.191614ms)
+2026-10-31T01:58:38.0658097Z ✔ swept rectangle broad phase preserves fast crossings, padded grazing and stationary contacts (1.22988ms)
+2026-10-31T01:58:38.0658923Z ✔ real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all seven classes (2322.390255ms)
+2026-10-31T01:58:38.0659729Z ✔ both actual shop layouts show localized talent help and retain prerequisite and affordability guards (2578.075086ms)
+2026-10-31T01:58:42.7045441Z ✔ real private-room peers share a server result, can read its paged roster, and retain it after a complete server restart (21059.108232ms)
+2026-10-31T01:58:43.1849299Z ✔ only the host may end an endless run during a break; testing servers cannot create team records (482.659134ms)
+2026-10-31T01:58:44.2069299Z ✔ team score rounds exact fractions once and damage keys retain safe-integer ratio order (1.403407ms)
+2026-10-31T01:58:44.2070623Z ✔ real simulation hooks retain departed entrants, admit waiting players at the next fight and freeze survivors before healing (30.03846ms)
+2026-10-31T01:58:44.2071887Z ✔ testing changes, zero-duration clears and individual deadline violations never receive team ranks (16.338039ms)
+2026-10-31T01:58:44.2073244Z ✔ persistent boards preserve shared competition ranks, exact filters, weekly boundaries and immutable idempotent results (11.907265ms)
+2026-10-31T01:58:44.2074097Z ✔ endless ranks use only completed clears and last-clear time/ratio; final failed-fight duration is display only (1.174939ms)
+2026-10-31T01:58:44.2074889Z ✔ a failed record write never stops combat and can retry the exact banked result without duplicating it (5.521854ms)
+2026-10-31T01:58:44.2075681Z ✔ file-backed records work beyond 300-character paths and historical rosters page past fifty without losing members (6.362098ms)
+2026-10-31T01:58:44.2076472Z ✔ the browser accepts only matching board identities and safe display counters; weeks start on Monday in UTC (0.937808ms)
+2026-10-31T01:58:44.2077129Z ✔ public new runs ignore chosen opening bosses and use a varied authored entry pool (2.167027ms)
+2026-10-31T01:58:44.2077873Z ✔ bounded Solo test values change actual available points and coins, reject malformed requests and disable checkpoint saving (3.10072ms)
+2026-10-31T01:58:44.2078661Z ✔ a run modified by testing tools is removed from local records rather than awarding profile progress (10.303812ms)
+2026-10-31T01:58:44.2079318Z ✔ known issued profiles migrate name/chat defaults and preserve explicit off choices (3.25673ms)
+2026-10-31T01:58:44.2080089Z ✔ room chat normalizes plain text, rejects markup/control payloads, enforces opt-in/rate limits and retains only fifty messages (0.854455ms)
+2026-10-31T01:58:44.2080902Z ✔ local leaderboard records partition mode/difficulty and show actual clears without inventing verified scores (0.206315ms)
+2026-10-31T01:58:44.2082132Z ✔ the compiled public Solo worker removes testing commands and overrides chosen boss/form while testing worker changes real state (501.157473ms)
+2026-10-31T01:58:44.2083077Z ✔ real room peers receive bounded server-named chat, opt out, and cannot submit currency commands (1869.109766ms)
+2026-10-31T01:58:44.2083836Z ✔ public room construction rejects explicit boss injection and ordinary clients receive a random authored opening (45.553632ms)
+2026-10-31T01:58:44.2084681Z ✔ Session immediately removes a newly modified run even when phase and progress stay identical (6.519831ms)
+2026-10-31T01:58:44.2085643Z ✔ Tollkeeper body rays use supplied board bounds and reflect from actual masonry (2.419801ms)
+2026-10-31T01:58:44.2086602Z ✔ Standard opening retains its fixed complete reflection and cue vertices contain geometry only (0.972039ms)
+2026-10-31T01:58:44.2087541Z ✔ late booth movement stops at new cover then gives a complete warning from its actual stop (0.607609ms)
+2026-10-31T01:58:44.2088491Z ✔ late wheel halts at a bank and locks a fresh target heading for the whole return tell (1.311882ms)
+2026-10-31T01:58:44.2089287Z ✔ advanced banks warn fixed gapped side sprays and add a third late wheel leg (10.258904ms)
+2026-10-31T01:58:44.2089898Z ✔ a banked wheel is harmless during its entire tell and hits when its next leg releases (0.807605ms)
+2026-10-31T01:58:44.2090521Z ✔ newly inserted masonry cancels a live wheel at the actual collision instead of tunneling (0.342557ms)
+2026-10-31T01:58:44.2091217Z ✔ actual retained auxiliary attacks cast between routes and never overlap an active Tollkeeper tell (173.311031ms)
+2026-10-31T01:58:44.2091872Z ✔ real bank spray emissions retain exact20Brutal and60Crazed projectile budgets (27.707871ms)
+2026-10-31T01:58:44.2092724Z ✔ phase retains Tollkeeper wheels and banks; stagger and encounter exit clear owned work (33.013584ms)
+2026-10-31T01:58:44.2093848Z ✔ Baby assistance pauses wheel routes while Normal and advanced forms retain their intrinsic bank mechanic (47.081936ms)
+2026-10-31T01:58:44.2094830Z ✔ Tollkeeper fifteen-locale help and retained casting poses follow actual wheel and bank clocks (30.823938ms)
+2026-10-31T01:58:44.2095577Z ✔ known protocol25 local Practice and profile history migrates exactly while unknown or signed state stays strict (3.261217ms)
+2026-10-31T01:58:44.2096363Z ✔ real owner and observer receive a Tollkeeper bank, stopped wheel, fixed side sprays and phase sound (264.563375ms)
+2026-10-31T01:58:44.2097058Z ✔ Warden executes harmless warning, actual damage at release and a bounded contact interval (22.165287ms)
+2026-10-31T01:58:44.2097706Z ✔ the marked trailing interior stays clear of both auxiliary hazards and signature damage (14.006992ms)
+2026-10-31T01:58:44.2098320Z ✔ Warden fan/zone casts use their own radius, duration, damage and rest windows (61.808744ms)
+2026-10-31T01:58:44.2099057Z ✔ Warden Brutal scales health/deadline/contact damage and second visible phase uses a fully warned sequential return sweep (39.174853ms)
+2026-10-31T01:58:44.2099982Z ✔ an Easy Standard Accord removes the sweep and restarts with a complete new tell after stagger (12.693268ms)
+2026-10-31T01:58:44.2101001Z ✔ Warden defeat clears hazards, grants rewards once and animates on world ticks after combat stops (3.043255ms)
+2026-10-31T01:58:44.2102064Z ✔ concealed contracts retain server identity and completed-appearance history through boundaries (8.891921ms)
+2026-10-31T01:58:44.2104084Z ✔ protocol-4 local Practice saves migrate without granting new boss history; online state stays strict (1.846894ms)
+2026-10-31T01:58:44.2105280Z ✔ hurt and auxiliary casts cannot replace the active signature pose or restart a completed defeat (1.176832ms)
+2026-10-31T01:58:44.2106494Z ✔ real clients select Warden, receive authoritative sweeps and never receive concealed future boss IDs (6451.169688ms)
+2026-10-31T01:58:44.2107777Z ✔ Still Watch stays planted and Roving Vigil makes a visibly separate rest-only patrol on every map and cover rule (950.272877ms)
+2026-10-31T01:58:44.2109188Z ✔ patrol warning locks a route and next sweep locks its actual new ground origin and aim (8.459611ms)
+2026-10-31T01:58:44.2110317Z ✔ Brutal alternates direction and final pairs have two complete warnings with no overlapping active cone (34.777745ms)
+2026-10-31T01:58:44.2111603Z ✔ both sweep directions preserve a genuinely clear trailing interior under actual signature geometry (0.850979ms)
+2026-10-31T01:58:44.2112940Z ✔ the live final Brutal pair clears auxiliary hazards and cannot damage its marked trailing interior (32.772337ms)
+2026-10-31T01:58:44.2113975Z ✔ Brutal rest fan actually emits a warned second locked-origin projectile wave (8.919862ms)
+2026-10-31T01:58:44.2115005Z ✔ patrol art follows movement only, retains world scale and avoids animation under reduced motion (8.591236ms)
+2026-10-31T01:58:44.2116273Z ✔ victory, timeout, wipe and stagger cancel patrol/return cues and do not leave live motion state (31.14608ms)
+2026-10-31T01:58:44.2117417Z ✔ all fifteen locales have distinct phase responses and explicit fully warned Brutal return help (0.388365ms)
+2026-10-31T01:58:44.2118528Z ✔ issued protocol18 Practice retains money, skills and identity under the new encounter protocol (0.978909ms)
+2026-10-31T01:58:44.2119713Z ✔ independent Warden pixel verifier reconstructs the complete source and all four normalized poses (237.880051ms)
+2026-10-31T01:58:44.2120889Z ✔ real clients reject protocol18 and replicate patrol, new sweep origin, direction and cleanup (1705.340191ms)
+2026-10-31T01:58:44.2122055Z ✔ Warden presentation holds anticipation, channels throughout danger and recovers only in rest (2.05427ms)
+2026-10-31T01:58:44.2123243Z ✔ all lantern attachments transform with the exact shared scale and foot origin (0.274677ms)
+2026-10-31T01:58:44.2124478Z ✔ local rehearsal never damages during tells/rest, caps contact rate and resets cleanly (1.559348ms)
+2026-10-31T01:58:44.2125474Z ✔ rehearsal uses fixed steps, normalizes diagonal travel and stops after defeat (0.261097ms)
+2026-10-31T01:58:44.2126449Z ✔ Warden gives 36 harmless tell ticks, 120 active ticks, then 120 harmless rest ticks (2.360134ms)
+2026-10-31T01:58:44.2127502Z ✔ the trailing safe wedge stays disjoint from the rotating hazard through angle wrap (1.075793ms)
+2026-10-31T01:58:44.2128502Z ✔ sector collision includes body radius at sides, outer arc and endpoint corners (0.158755ms)
+2026-10-31T01:58:44.2129510Z ✔ a full warning locks aim instead of chasing the survivor and retargets only next cycle (0.700256ms)
+2026-10-31T01:58:44.2130536Z ✔ invalid clocks and nonfinite geometry cannot create invisible or permanent hazards (0.531306ms)
+2026-10-31T01:58:44.2131690Z ✔ each actual map and cover difficulty provides both gate orientations and a real clear open crossing (310.646729ms)
+2026-10-31T01:58:44.2133032Z ✔ first phase locks one horizontal set, warns completely and never closes more than two lanes (1.711703ms)
+2026-10-31T01:58:44.2134175Z ✔ the moving floor pall actually damages closed tracks once and leaves the entire open lane clear (4.874104ms)
+2026-10-31T01:58:44.2135448Z ✔ floor sweep contact matches relative player/bar movement and does not hit movement that ended before activation (2.582413ms)
+2026-10-31T01:58:44.2136746Z ✔ late phase physically moves only after its tell then gives serial vertical and horizontal gates full fresh warnings (5.191193ms)
+2026-10-31T01:58:44.2137952Z ✔ Brutal owns a 30-shot first-gate budget and Crazed keeps it with a 90-shot budget and later crossing tells (4.748459ms)
+2026-10-31T01:58:44.2139108Z ✔ gate ejection uses each orientation and never teleports through fixed masonry or a lava pit (0.244802ms)
+2026-10-31T01:58:44.2140236Z ✔ reset cancels all unreleased needles, pall and solids; recovery admits retained auxiliary casts (2.245734ms)
+2026-10-31T01:58:44.2141382Z ✔ actual authoritative movement and local prediction agree across both gate orientations (38.914158ms)
+2026-10-31T01:58:44.2142678Z ✔ phase entry retains Widow gates/warnings; stagger and encounter exit clean them up (24.954365ms)
+2026-10-31T01:58:44.2144106Z ✔ fifteen guides route the two phase names, advanced mechanics and existing casting poses without inventing walking art (3.035753ms)
+2026-10-31T01:58:44.2145212Z ✔ binary projectile batches round-trip exact doubles, ownership and shot/removal order (12.199056ms)
+2026-10-31T01:58:44.2146149Z ✔ projectile decoding rejects truncated, nonfinite, oversized and obsolete packets (0.490797ms)
+2026-10-31T01:58:44.2146721Z ℹ tests 950
+2026-10-31T01:58:44.2146981Z ℹ suites 0
+2026-10-31T01:58:44.2147240Z ℹ pass 949
+2026-10-31T01:58:44.2147504Z ℹ fail 1
+2026-10-31T01:58:44.2147751Z ℹ cancelled 0
+2026-10-31T01:58:44.2147998Z ℹ skipped 0
+2026-10-31T01:58:44.2148256Z ℹ todo 0
+2026-10-31T01:58:44.2148556Z ℹ duration_ms 151154.991796
+2026-10-31T01:58:44.2148759Z 
+2026-10-31T01:58:44.2148914Z ✖ failing tests:
+2026-10-31T01:58:44.2149075Z 
+2026-10-31T01:58:44.2149283Z test at tests/changelog.test.ts:1:527
+2026-10-31T01:58:44.2150115Z ✖ journal snapshot agrees with actual playable content rather than authored future content (44.801807ms)
+2026-10-31T01:58:44.2151048Z   Error: Command failed: /opt/hostedtoolcache/node/24.22.1/x64/bin/node tools/sync-changelog.mjs --check
+2026-10-31T01:58:44.2152128Z   file:///home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/tools/sync-changelog.mjs:28
+2026-10-31T01:58:44.2153227Z         throw new Error('Stale changelog: ' + path + '; run node tools/sync-changelog.mjs');
+2026-10-31T01:58:44.2153741Z               ^
+2026-10-31T01:58:44.2153989Z   
+2026-10-31T01:58:44.2154414Z   Error: Stale changelog: CHANGELOG.md; run node tools/sync-changelog.mjs
+2026-10-31T01:58:44.2155569Z       at file:///home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/tools/sync-changelog.mjs:28:13
+2026-10-31T01:58:44.2156462Z       at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+2026-10-31T01:58:44.2156951Z       at async node:internal/modules/esm/loader:647:26
+2026-10-31T01:58:44.2157608Z       at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+2026-10-31T01:58:44.2158111Z   
+2026-10-31T01:58:44.2158347Z   Node.js v24.22.1
+2026-10-31T01:58:44.2158568Z   
+2026-10-31T01:58:44.2158873Z       at genericNodeError (node:internal/errors:986:15)
+2026-10-31T01:58:44.2172623Z       at wrappedFn (node:internal/errors:540:14)
+2026-10-31T01:58:44.2173295Z       at checkExecSyncError (node:child_process:943:11)
+2026-10-31T01:58:44.2173632Z       at execFileSync (node:child_process:979:15)
+2026-10-31T01:58:44.2174289Z       at TestContext.<anonymous> (/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/tests/changelog.test.ts:28:3)
+2026-10-31T01:58:44.2174885Z       at Test.runInAsyncScope (node:async_hooks:227:14)
+2026-10-31T01:58:44.2175250Z       at Test.run (node:internal/test_runner/test:1402:25)
+2026-10-31T01:58:44.2175595Z       at Test.start (node:internal/test_runner/test:1262:17)
+2026-10-31T01:58:44.2176014Z       at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+2026-10-31T01:58:44.2176350Z     status: 1,
+2026-10-31T01:58:44.2176533Z     signal: null,
+2026-10-31T01:58:44.2177055Z     output: [ null, <Buffer >, <Buffer 66 69 6c 65 3a 2f 2f 2f 68 6f 6d 65 2f 72 75 6e 6e 65 72 2f 77 6f 72 6b 2f 42 75 6c 6c 65 74 2d 48 65 6c 6c 2d 47 61 6d 65 2d 4f 70 65 6e 2d 41 49 2d ... 602 more bytes> ],
+2026-10-31T01:58:44.2177531Z     pid: 2876,
+2026-10-31T01:58:44.2177725Z     stdout: <Buffer >,
+2026-10-31T01:58:44.2178212Z     stderr: <Buffer 66 69 6c 65 3a 2f 2f 2f 68 6f 6d 65 2f 72 75 6e 6e 65 72 2f 77 6f 72 6b 2f 42 75 6c 6c 65 74 2d 48 65 6c 6c 2d 47 61 6d 65 2d 4f 70 65 6e 2d 41 49 2d ... 602 more bytes>
+2026-10-31T01:58:44.2178631Z   }
+2026-10-31T01:58:44.2253932Z Verification failed
+2026-10-31T01:58:44.2463409Z [ELIFECYCLE] Command failed with exit code 1.
+2026-10-31T01:58:44.2767371Z ##[error]Process completed with exit code 1.
+2026-10-31T01:58:44.2842155Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-10-31T01:58:44.2842488Z with:
+2026-10-31T01:58:44.2842675Z   name: verification-evidence
+2026-10-31T01:58:44.2843221Z   path: reviews/stage1-validation.json
+reviews/runtime-verification.json
+
+2026-10-31T01:58:44.2843547Z   if-no-files-found: error
+2026-10-31T01:58:44.2843748Z   compression-level: 6
+2026-10-31T01:58:44.2843934Z   overwrite: false
+2026-10-31T01:58:44.2844115Z   include-hidden-files: false
+2026-10-31T01:58:44.2844312Z   archive: true
+2026-10-31T01:58:44.2844486Z ##[endgroup]
+2026-10-31T01:58:44.4153532Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-31T01:58:44.4173124Z The least common ancestor is /home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/reviews. This will be the root directory of the artifact
+2026-10-31T01:58:44.4176857Z With the provided path, there will be 2 files uploaded
+2026-10-31T01:58:44.4178212Z Artifact name is valid!
+2026-10-31T01:58:44.4178783Z Root directory input is valid!
+2026-10-31T01:58:44.9510775Z Uploading artifact: verification-evidence.zip
+2026-10-31T01:58:44.9541294Z Beginning upload of artifact content to blob storage
+2026-10-31T01:58:45.2267869Z Uploaded bytes 1163
+2026-10-31T01:58:45.2932054Z Finished uploading artifact content to blob storage!
+2026-10-31T01:58:45.2932864Z SHA256 digest of uploaded artifact is 6823103551656cb66a15ff6b897bed184171e856141f2ba052ea72a12c4014be
+2026-10-31T01:58:45.2933511Z Finalizing artifact upload
+2026-10-31T01:58:45.8734273Z Artifact verification-evidence successfully finalized. Artifact ID 13026187077
+2026-10-31T01:58:45.8735147Z Artifact verification-evidence has been successfully uploaded! Final size is 1163 bytes. Artifact ID is 13026187077
+2026-10-31T01:58:45.8737747Z Artifact download URL: https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41157589524/artifacts/13026187077
+2026-10-31T01:58:45.8928861Z Post job cleanup.
+2026-10-31T01:58:45.9670460Z [command]/usr/bin/git version
+2026-10-31T01:58:45.9713305Z git version 2.56.0
+2026-10-31T01:58:45.9743382Z Temporarily overriding HOME='/home/runner/work/_temp/df14d122-0f05-4667-ad26-69c06bff8df9' before making global git config changes
+2026-10-31T01:58:45.9744514Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T01:58:45.9754174Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-
+2026-10-31T01:58:45.9794640Z Removing SSH command configuration
+2026-10-31T01:58:45.9801217Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T01:58:45.9842077Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T01:58:46.0132072Z Removing HTTP extra header
+2026-10-31T01:58:46.0137679Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T01:58:46.0177597Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T01:58:46.0454904Z Removing includeIf entries pointing to credentials config files
+2026-10-31T01:58:46.0461921Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T01:58:46.0489199Z includeif.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git.path
+2026-10-31T01:58:46.0490110Z includeif.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git/worktrees/*.path
+2026-10-31T01:58:46.0490692Z includeif.gitdir:/github/workspace/.git.path
+2026-10-31T01:58:46.0491179Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T01:58:46.0497074Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git.path
+2026-10-31T01:58:46.0519489Z /home/runner/work/_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:58:46.0528613Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-711e825c\-5125\-4b67\-89c7\-1ffe7f587c96\.config
+2026-10-31T01:58:46.0564721Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git/worktrees/*.path
+2026-10-31T01:58:46.0587721Z /home/runner/work/_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:58:46.0595889Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Bullet-Hell-Game-Open-AI-Contest-/Bullet-Hell-Game-Open-AI-Contest-/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-711e825c\-5125\-4b67\-89c7\-1ffe7f587c96\.config
+2026-10-31T01:58:46.0626075Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-31T01:58:46.0647917Z /github/runner_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:58:46.0685996Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-711e825c\-5125\-4b67\-89c7\-1ffe7f587c96\.config
+2026-10-31T01:58:46.0715707Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T01:58:46.0737823Z /github/runner_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config
+2026-10-31T01:58:46.0742620Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-711e825c\-5125\-4b67\-89c7\-1ffe7f587c96\.config
+2026-10-31T01:58:46.0771776Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T01:58:46.1024241Z Removing credentials config '/home/runner/work/_temp/git-credentials-711e825c-5125-4b67-89c7-1ffe7f587c96.config'
+2026-10-31T01:58:46.1201947Z Cleaning up orphan processes

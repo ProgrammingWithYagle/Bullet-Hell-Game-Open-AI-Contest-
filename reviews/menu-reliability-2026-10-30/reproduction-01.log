@@ -1,0 +1,124 @@
+✖ leaving a connected LAN menu prevents delayed responses and detached controls from changing the next page (142.7409ms)
+✖ a late initial status cannot undo a completed hosting request (21.3561ms)
+✖ a delayed LAN status keeps the typed address and keyboard editing position (19.5951ms)
+✖ failed Stop hosting requests leave a usable retry without erasing the address draft (21.2908ms)
+✖ pending hosting blocks duplicate actions while Back still leaves safely (19.3126ms)
+✖ the real setup disposes local-network actions before mounting another menu (419.9124ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1646.3266
+
+✖ failing tests:
+
+test at tests\lan-menu-lifecycle.test.ts:1:1022
+✖ leaving a connected LAN menu prevents delayed responses and detached controls from changing the next page (142.7409ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(env.host.querySelector('#next-screen'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\lan-menu-lifecycle.test.ts:25:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\lan-menu-lifecycle.test.ts:1:1726
+✖ a late initial status cannot undo a completed hosting request (21.3561ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(env.host.querySelector('[data-lan-stop]'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\lan-menu-lifecycle.test.ts:32:37)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\lan-menu-lifecycle.test.ts:1:2375
+✖ a delayed LAN status keeps the typed address and keyboard editing position (19.5951ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '192.168.1.73:2666'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\lan-menu-lifecycle.test.ts:41:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '192.168.1.73:2666',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\lan-menu-lifecycle.test.ts:1:3210
+✖ failed Stop hosting requests leave a usable retry without erasing the address draft (21.2908ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\lan-menu-lifecycle.test.ts:48:65)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\lan-menu-lifecycle.test.ts:1:4085
+✖ pending hosting blocks duplicate actions while Back still leaves safely (19.3126ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'http://192.168.1.44:2568'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\lan-menu-lifecycle.test.ts:56:33)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'http://192.168.1.44:2568' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\lan-menu-lifecycle.test.ts:1:4915
+✖ the real setup disposes local-network actions before mounting another menu (419.9124ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\lan-menu-lifecycle.test.ts:65:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

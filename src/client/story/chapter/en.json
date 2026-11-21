@@ -1,0 +1,622 @@
+{
+  "title": "One Place Left",
+  "editionNotice": "This chapter's continuation is currently available in English. The gate opening and first return also have Spanish and Arabic editions.",
+  "intro": "An opening chapter: the gate, a chosen road, the people waiting at the ward. Two boss encounters and one ordinary encounter. Learning replaces SP purchases here; equipment still costs money. Boss fights allow twice the usual time for early training builds. Their health, attacks and threat grades are unchanged.",
+  "clock": "Boss time limit",
+  "standardClock": "Standard time",
+  "chapterClock": "Extended time · 2×",
+  "classic": "Earlier Story archive",
+  "chapterMode": "Story Campaign",
+  "classicHelp": "Earlier fifteen-boss Story saves and recovered text are preserved as legacy data. New campaigns use chapter learning. Free Play retains the original story-free SP runs.",
+  "training": "Learning and preparation",
+  "study": "Study this foundation",
+  "prepare": "Prepare this technique",
+  "known": "Learned",
+  "proven": "Demonstrated",
+  "prepared": "Prepared",
+  "notProven": "Complete the street encounter after putting this lesson to use. Reading or pressing an ability in an empty lane does not complete a demonstration.",
+  "locked": "The first lesson opens after the gate. Your basic class abilities are already available.",
+  "general": "Dodge is available from the start. Further General techniques need their own later lessons; this chapter does not sell them for SP.",
+  "readyHelp": "Take the time you need. Everyone present chooses Ready to continue. Before street practice, study your class foundation. A new purchase or preparation clears your Ready choice.",
+  "practiceHelp": "Use your lesson during the street encounter, then clear its waves. The green care marker at the starting shelter shows your assigned patient if you are playing Medic.",
+  "patient": "Assigned patient",
+  "complete": "Chapter complete",
+  "incomplete": "Chapter attempt ended",
+  "resultHelp": "This chapter has three objectives and two bosses. It does not complete the long main story, award the earlier prototype endings, or promote a character to an advanced grade.",
+  "objectives": "Objectives completed",
+  "bosses": "Bosses defeated",
+  "journal": "Local chapter journal",
+  "journalHelp": "Chapter records and learned techniques are kept here. Exports are local records; they cannot grant proofs in an online room.",
+  "export": "Export chapter journal",
+  "import": "Import chapter journal",
+  "imported": "Chapter journal imported.",
+  "importFailed": "The journal could not be imported. The previous record has been kept.",
+  "local": "Local record",
+  "noRecords": "No chapter record yet.",
+  "unreadable": "This chapter journal cannot be read. Its stored data has been kept.",
+  "lessons": {
+    "soldier": "A signal is useful when someone can act on it. Fire a shot that actually hits a street enemy while benefiting from your own Rally field. The shot must connect; casting Rally alone is not enough.",
+    "heavy": "Make the sweep meet the advance. Hit a street enemy with the slowing pellets from your Suppressing Cone ability. Ordinary weapon fire or a sweep into cover does not demonstrate this lesson.",
+    "tank": "Meet an advance with a controlled Rescue Charge. Connect its real sweep with a street enemy. You do not need to take damage to prove that you can use it.",
+    "medic": "Provide at least 16 points of actual care to your assigned patient at the starting shelter, using your healing field, nearby treatment or resurrection's healing. The patient's need is finite; deliberate player injuries do not count.",
+    "mage": "Put the prediction where a threat will be. Damage a street enemy with a slowing Sigil pulse. An empty circle or an unrelated weapon hit does not demonstrate control.",
+    "engineer": "Give the construct a useful line of fire. Let your own turret or siege construct land a damaging shot on a street enemy. Placing and cancelling a construct is not enough.",
+    "assassin": "Concealment needs a purpose. Land a damaging shot or sweep on a street enemy while using your actual concealment. Existing hazards still apply; concealment is not general invulnerability.",
+    "bard": "Listen before resolving the phrase. Land a primary note to earn cadence, then spend it on Resolving Phrase so a pulse actually damages a street enemy. Empty notes, uncharged pulses and Encore do not demonstrate this foundation.",
+    "swordsman": "Set the distance before you commit. Damage a street enemy with Measured Cut after its real windup and advance. A primary swing or an empty advance does not demonstrate this foundation; you do not need to take damage or parry a projectile.",
+    "summoner": "Name the work before delegating it. Mark a living street enemy with an actual primary beacon hit, then let your own retinue damage that same enemy before the mark fades. Complete the encounter to demonstrate the foundation. Empty calls, unmarked attacks and damage credited to somebody else do not prove it.",
+    "ranger": "Study Read the Ground, then strike an ordinary enemy with your own released Drawn Line arrow during Street Clearance and finish that encounter. A primary arrow, a tripline, another Ranger’s arrow, reading or an empty cast does not prove this lesson. Drawn Line spends one ready arrow; Crosswind spends three. Dodge cancels the draw without a refund. One proven foundation remains D−.",
+    "alchemist": "Prepare a Flare or Binding vial, then land it so the initial splash actually damages a street enemy. The flight and cover matter. Primary shots, later pool pulses, healing, empty throws and another Alchemist’s mixture do not demonstrate this foundation."
+  },
+  "choices": [
+    {
+      "title": "Take the ward road",
+      "text": "Follow Senn toward the triage yard. Clear its approach so the next cart has somewhere to turn."
+    },
+    {
+      "title": "Pass the registry",
+      "text": "Give Miri the three permitted names, then clear the gatehouse return road. The separate account stays separate."
+    },
+    {
+      "title": "Cross the wire yard",
+      "text": "Ask the ward's Engineer about a route through the works. Clear that yard before anyone can bring tools across."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "ward-road",
+      "title": "Room to turn",
+      "arenaId": "triage-yard",
+      "lines": [
+        [
+          "",
+          "Senn stopped the cart short of a rut and put their boot against the wheel. They did not let go when Mara came alongside. Beyond the yard wall, a length of white cloth caught and released on a nail."
+        ],
+        [
+          "Senn Arlow",
+          "That corner. We get around it empty. Coming back with someone in the cart, I don't know."
+        ],
+        [
+          "Bram Voss",
+          "Then we check it before we put anyone in."
+        ],
+        [
+          "",
+          "The ward's side shelter was still occupied. Mera Silt sat beside a basin, holding a folded cloth to her forearm. She had caught it on a split shutter while helping to close the window. Other patients waited behind the screen; none had been promised a place on Senn's cart."
+        ],
+        [
+          "Drin Hal",
+          "If you're here to move people, ask me first. If you're here to help, ask them."
+        ],
+        [
+          "Iona Vale",
+          "Mera? May I look?"
+        ],
+        [
+          "Mera Silt",
+          "Look, yes. Don't throw that cloth away. It's mine."
+        ],
+        [
+          "",
+          "Drin made space beside the basin. He was a Medic too, with a practice Iona had only recently begun learning. He asked the others to watch the approach while he sorted the work. There was time for one foundation before they went out. Useful work would show whether the lesson had taken; the lesson itself would not vanish if the attempt failed."
+        ]
+      ]
+    },
+    {
+      "id": "registry-turn",
+      "title": "Only three names",
+      "arenaId": "gatehouse",
+      "lines": [
+        [
+          "",
+          "Miri Fen had laid a plank across two closed cabinets to make a desk. The shorter cabinet rocked whenever they wrote. Vale waited until the pen stopped scratching."
+        ],
+        [
+          "Vale Ash",
+          "Three names. They agreed to these being written down. The rest isn't for the register."
+        ],
+        [
+          "Miri Fen",
+          "Three, then. I can count that high without an office seal."
+        ],
+        [
+          "",
+          "Miri copied the names onto a fresh sheet and read them back. Vale corrected one letter. The account attributed to Senn remained on its own page. Miri asked where the people would be staying; Vale gave the answer they had, rather than a destination nobody had agreed to."
+        ],
+        [
+          "Miri Fen",
+          "I'll leave the address blank. Better a blank than someone going to the wrong door."
+        ],
+        [
+          "",
+          "The return road led past the ward's starting shelter. Drin Hal, a Medic already working there, asked them to keep the road clear while he arranged care. Mera Silt had cut her forearm on a split shutter. She agreed to treatment, but wanted her own cloth kept. Other patients waited behind a screen; their care was not a promise that all could travel."
+        ],
+        [
+          "Drin Hal",
+          "Take a minute before you go. Show me what you've been taught. Then use it where it helps."
+        ],
+        [
+          "",
+          "They could study one foundation before clearing the road. A real use during that encounter could establish the demonstration; an empty gesture could not. Vale kept the separate account folded away."
+        ]
+      ]
+    },
+    {
+      "id": "wire-yard",
+      "title": "The person who repairs it",
+      "arenaId": "ossuary-works",
+      "lines": [
+        [
+          "",
+          "Kesa Morn inspected the wire Tamsin had brought, then handed it back without pulling it straight. A row of worn clamps hung behind Kesa's workbench. Each had been marked with a different number of cuts."
+        ],
+        [
+          "Tamsin Reed",
+          "I know. It was what we had."
+        ],
+        [
+          "Kesa Morn",
+          "I'm not asking why you used it. I'm asking who checks it tomorrow."
+        ],
+        [
+          "",
+          "Tamsin looked at the wire again. Kesa was an Engineer too, and would still be maintaining this route after the newcomers had gone. They agreed to inspect the gate repair together later. No replacement part had changed hands yet."
+        ],
+        [
+          "Hux Bell",
+          "Can the cart get through here?"
+        ],
+        [
+          "Kesa Morn",
+          "After the yard is clear. Before that, I wouldn't take a wheelbarrow."
+        ],
+        [
+          "",
+          "The ward's starting shelter stood on the near side of the works. Drin Hal introduced himself as the Medic responsible for its patients. Mera Silt, who had cut her forearm on a split shutter, agreed to care and asked to keep her own cloth. Other people waited behind the screen. Clearing this yard would make one approach usable; it would not inspect the other two roads or move those patients for them."
+        ],
+        [
+          "Kesa Morn",
+          "One thing at a time, Reed. Put it where it can do some work."
+        ],
+        [
+          "",
+          "There was time to study a foundation before the street encounter. Its demonstration needed an actual useful effect and a cleared approach. Tamsin kept the wire, along with the promise to return."
+        ]
+      ]
+    },
+    {
+      "id": "ward-porch",
+      "title": "The red door",
+      "arenaId": "triage-yard",
+      "lines": [
+        [
+          "",
+          "Iven set the concertina on his knee and pressed one button without opening the bellows. He had heard a loose reed during the approach. Playing louder had not improved it."
+        ],
+        [
+          "Iven Cair",
+          "There’s one note I keep trying to bully into tune."
+        ],
+        [
+          "Tamsin Reed",
+          "You want me to look at it?"
+        ],
+        [
+          "Iven Cair",
+          "When there’s somewhere to put the screws. Last time I did it on my lap."
+        ],
+        [
+          "Tamsin Reed",
+          "How many did you lose?"
+        ],
+        [
+          "Iven Cair",
+          "Two. I bought three."
+        ],
+        [
+          "",
+          "Tamsin held out a palm for the instrument, then glanced at the open doorway and lowered it. They could examine it later. Iven kept it on his knee."
+        ],
+        [
+          "Drin Hal",
+          "If you’re going to play, do it away from the patients. Ask the people beside you first."
+        ],
+        [
+          "Iven Cair",
+          "I will."
+        ],
+        [
+          "",
+          "He waited until Drin finished before answering. It was a small improvement, and nobody applauded it."
+        ],
+        [
+          "",
+          "Dara waited until Tamsin had finished speaking to Iven, then lifted the loose end of her scabbard strap. Tamsin pointed to the bench. Dara sat and kept the sword clear while Tamsin worked the buckle."
+        ],
+        [
+          "Dara Flint",
+          "How much do I owe you?"
+        ],
+        [
+          "Tamsin Reed",
+          "For moving a buckle?"
+        ],
+        [
+          "Dara Flint",
+          "For not asking whether I meant to do that."
+        ],
+        [
+          "Tamsin Reed",
+          "I was going to."
+        ],
+        [
+          "",
+          "Dara laughed, a little later than she meant to. The shortened strap kept the scabbard off the ground when she stood. She tried a step to either side before thanking Tamsin."
+        ],
+        [
+          "Dara Flint",
+          "There’s a woman at the training hall who told me to do this. She’s been a Swordsman for years. I thought it looked better hanging lower."
+        ],
+        [
+          "Tamsin Reed",
+          "She’ll be pleased."
+        ],
+        [
+          "Dara Flint",
+          "Oh, I’m not telling her. She’ll know."
+        ],
+        [
+          "",
+          "Dara checked the buckle once more. Knowing a useful piece of advice had not made it easy to take; needing somebody else to help had been worse. She had asked anyway. The next time she saw her teacher, there would be that to admit as well."
+        ],
+        [
+          "",
+          "A woman came up the steps with an empty pan under one arm. Joss recognized the blue cloth over its handle and stood to let her past."
+        ],
+        [
+          "Joss Merrow",
+          "Nell. Did they get it?"
+        ],
+        [
+          "Nell Dace",
+          "They got it. The boy on the far stairs brought this back."
+        ],
+        [
+          "",
+          "She lifted the pan. Someone had scraped it so thoroughly that a bright patch showed through the old seasoning."
+        ],
+        [
+          "Joss Merrow",
+          "I went to the canal steps first. Your neighbor said you were there."
+        ],
+        [
+          "Nell Dace",
+          "Yesterday. I was there yesterday."
+        ],
+        [
+          "Joss Merrow",
+          "I'll change it."
+        ],
+        [
+          "",
+          "He took out the wrapping paper and turned it over. On the back he wrote the ward door beside her name. Nell watched him add a second line."
+        ],
+        [
+          "Nell Dace",
+          "What's that?"
+        ],
+        [
+          "Joss Merrow",
+          "Which stairs the boy came from. There were twelve people when I left."
+        ],
+        [
+          "Nell Dace",
+          "Fourteen now. I cut the small ones again."
+        ],
+        [
+          "",
+          "Joss stopped writing. Nell shifted the pan to her other arm."
+        ],
+        [
+          "Nell Dace",
+          "Don't put that down as a promise for tomorrow. I don't know what I'll have."
+        ],
+        [
+          "Joss Merrow",
+          "Can I wash this, at least?"
+        ],
+        [
+          "Nell Dace",
+          "Ask Drin which water. And leave the black on the bottom. That's mine."
+        ],
+        [
+          "",
+          "She went inside to find the boy. Joss held the pan by its covered handle while he waited for Drin. The three squares on the front of his paper were still empty."
+        ],
+        [
+          "",
+          "Nela caught the strap of her map case on the porch post. By the time she freed it, the woman on the bench had watched her try twice."
+        ],
+        [
+          "Els Pell",
+          "Lift the strap. You're pulling it tighter."
+        ],
+        [
+          "Nela Venn",
+          "I know. I was trying to get it over the nail."
+        ],
+        [
+          "",
+          "She lifted it. The woman moved her knees aside so Nela could sit. A pair of little iron wheel pins lay on the bench between them."
+        ],
+        [
+          "Nela Venn",
+          "Are those for the cart?"
+        ],
+        [
+          "Els Pell",
+          "Not unless you want a wheel in your lap. They're for a barrow. Mind the point."
+        ],
+        [
+          "",
+          "Nela set her case on her own knees. The woman asked what she had in it, and Nela brought out a folded survey sheet."
+        ],
+        [
+          "Nela Venn",
+          "The pump yard. It's old, but I thought we could use the measurements."
+        ],
+        [
+          "Els Pell",
+          "You made it?"
+        ],
+        [
+          "Nela Venn",
+          "Copied it. I went out with the water surveyors. Mostly I held the staff."
+        ],
+        [
+          "Els Pell",
+          "That's work."
+        ],
+        [
+          "Nela Venn",
+          "It was, when the ground stayed under it."
+        ],
+        [
+          "",
+          "She smiled at that, then spread the sheet across the case. Els caught one corner before the wind folded it back."
+        ],
+        [
+          "Nela Venn",
+          "This blue line is the drain. Not a path. People keep thinking it's a path."
+        ],
+        [
+          "Els Pell",
+          "It looks like one."
+        ],
+        [
+          "Nela Venn",
+          "The other copies had a key. Mine got wet."
+        ],
+        [
+          "Els Pell",
+          "Then put it back."
+        ],
+        [
+          "",
+          "Nela found a pencil and wrote beside the line. She had meant to make a clean copy first."
+        ],
+        [
+          "Els Pell",
+          "Have you taken a cart around that corner?"
+        ],
+        [
+          "Nela Venn",
+          "No. I've only walked it."
+        ],
+        [
+          "Els Pell",
+          "With all that on?"
+        ],
+        [
+          "",
+          "Els nodded at the bow and quiver."
+        ],
+        [
+          "Nela Venn",
+          "With this. I've only been training a month. Before that I could put the staff down and squeeze through."
+        ],
+        [
+          "Els Pell",
+          "My barrow doesn't squeeze."
+        ],
+        [
+          "Nela Venn",
+          "Would you show me where it catches? After we're done here."
+        ],
+        [
+          "Els Pell",
+          "If you push it."
+        ],
+        [
+          "Nela Venn",
+          "All right."
+        ],
+        [
+          "Els Pell",
+          "And don't put your case on the load. You carry it."
+        ],
+        [
+          "",
+          "Nela looked down at the case on her knees, then closed the sheet inside it. Els collected her pins. Neither had inspected the corner or tested a loaded cart; for now, they had agreed what to try."
+        ],
+        [
+          "",
+          "At the other end of the bench, Heda Linn was trying to prise the lid off a copper kettle with a spoon. Perrin heard the scrape and winced."
+        ],
+        [
+          "Perrin Moss",
+          "You’ll make it oval."
+        ],
+        [
+          "Heda Linn",
+          "It can be oval if it opens."
+        ],
+        [
+          "",
+          "Perrin set their vial upright on their closed case and held out their free hand. Heda gave them the cloth beneath the kettle. They folded it over the lid and turned it a little the wrong way before lifting. A thin breath of steam escaped."
+        ],
+        [
+          "Heda Linn",
+          "You used to do that to the vats."
+        ],
+        [
+          "Perrin Moss",
+          "Those lids were bigger."
+        ],
+        [
+          "Heda Linn",
+          "So was the noise you made when you dropped one."
+        ],
+        [
+          "Perrin Moss",
+          "Once."
+        ],
+        [
+          "",
+          "Heda tapped a second dent in the rim with her spoon. Perrin looked at it, then set the lid down without answering."
+        ],
+        [
+          "",
+          "Heda had checked mixtures at the dyehouse long before Perrin began Alchemist training. Now she checked what came into the ward. Perrin had spent four weeks learning the discipline; they had spent years learning where a hot lid would stick."
+        ],
+        [
+          "Perrin Moss",
+          "Is there enough for two?"
+        ],
+        [
+          "Heda Linn",
+          "If you don’t mind it weak."
+        ],
+        [
+          "Perrin Moss",
+          "I mind. I’ll have it anyway."
+        ],
+        [
+          "",
+          "She poured into two small cups, keeping a finger on the cracked handle of her own. Perrin moved their vial from the case to the bench so she could set the other cup there."
+        ],
+        [
+          "Heda Linn",
+          "Your aunt asked me whether you’re eating."
+        ],
+        [
+          "Perrin Moss",
+          "Tell her yes."
+        ],
+        [
+          "Heda Linn",
+          "Are you?"
+        ],
+        [
+          "Perrin Moss",
+          "Not when people ask me questions over the cup."
+        ],
+        [
+          "",
+          "Heda drank first. The tea was thin enough to show the stain at the bottom. Perrin took a mouthful and made a face."
+        ],
+        [
+          "Heda Linn",
+          "You asked."
+        ],
+        [
+          "Perrin Moss",
+          "I know. I was hoping you were exaggerating."
+        ],
+        [
+          "",
+          "They finished it. Heda kept the kettle and both empty cups; Perrin put the cloth back beside her spoon and picked up their vial. When the group moved toward Drin, Heda stayed with the incoming stores. She still had work to check."
+        ],
+        [
+          "",
+          "With the chosen approach clear, Senn could bring the empty cart as far as the ward porch. They checked its brake before taking their foot from the wheel. They would not load anyone until the turn had been tried with a person's weight. The other roads remained unchecked."
+        ],
+        [
+          "Drin Hal",
+          "Tell me what worked. Tell me what didn't, too. I can't help with the version you wish had happened."
+        ],
+        [
+          "",
+          "A demonstrated foundation could now be prepared. Those who had not completed their demonstration still knew the lesson; it had not become an advanced technique through attendance. The group could continue with their basic abilities. Nobody would be sent away to prove themselves alone."
+        ],
+        [
+          "Iona Vale",
+          "And the people inside?"
+        ],
+        [
+          "Drin Hal",
+          "Some can leave. Some need equipment we can't carry. They need a choice that includes that."
+        ],
+        [
+          "",
+          "From behind the red door came a dragging sound, then the soft clatter of a bed rail. Drin stopped with his hand on the latch. The infirmary keeper had tended these rooms before the dead rose. The thing moving between their beds was still gathering bodies into nests."
+        ],
+        [
+          "Bram Voss",
+          "Who opens it?"
+        ],
+        [
+          "Drin Hal",
+          "I do. You keep the doorway usable. Don't bring the fight back through the shelter."
+        ],
+        [
+          "",
+          "They had time to choose their equipment and prepare what they had actually demonstrated. The Matron waited in the triage yard beyond the door."
+        ]
+      ]
+    },
+    {
+      "id": "one-place-left-close",
+      "title": "What the road is for",
+      "arenaId": "triage-yard",
+      "lines": [
+        [
+          "",
+          "After the Matron fell, Drin returned to the shelter before anyone asked him for a report. Mera was arguing with a man who wanted her chair for a patient from the next room. She agreed to move when he brought another chair, and stayed where she was until he did."
+        ],
+        [
+          "Senn Arlow",
+          "I can take one. I still mean one."
+        ],
+        [
+          "Iona Vale",
+          "Then we ask who wants to go, and whether we can look after them on the way."
+        ],
+        [
+          "",
+          "They had opened a gate, cleared one approach and confronted the keeper at the ward. The result gave them work to continue, rather than an answer to every problem inside. Patients still needed care. The shed still had only the one unclaimed place recorded earlier. No passenger had yet been chosen or loaded."
+        ],
+        [
+          "Mara Rook",
+          "Renn will want the road on his list."
+        ],
+        [
+          "Vale Ash",
+          "The road we checked. Leave the others blank."
+        ],
+        [
+          "",
+          "Mara felt the paper in her pocket and, in her hand, the bent cap she was still keeping for Hux. The brass plate remained at the gate wheel. Nobody here had established which office had issued the instruction. The captain and his key remained in the watch shelter; defeating the Matron had not answered for them."
+        ],
+        [
+          "Hux Bell",
+          "Before we go anywhere, I'm getting that wheel looked at."
+        ],
+        [
+          "",
+          "Senn nodded and kept their boot against it. For the moment, everyone knew which wheel he meant."
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+✔ switching equipment tabs retains focus on the current selected tab (556.6662ms)
+✔ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (213.2221ms)
+✔ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (204.9785ms)
+✔ disposed equipment ignores old connected controls and cannot submit a purchase (188.0347ms)
+✔ purchase errors remain in the current equipment status and clear on a fresh item choice (180.9524ms)
+✔ a prerequisite link focuses its actual skill without resetting the skill scroll (162.5356ms)
+✔ hidden or inert equipment cannot spend currency and a disposed result cannot alter a newer panel (151.1489ms)
+✔ actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing (594.3287ms)
+✔ each expanded class map exposes all 54 real skills and exactly their prerequisites without overlapping targets (6.6995ms)
+✔ map markup has every inspect target once, real prerequisite edges and escaped labels (1.6022ms)
+✔ map adapter provides one roving tab stop and arrow focus without a purchase action (1.1824ms)
+✔ the actual shop switches between 18 and 54 skills and expanded inspection uses the existing guarded purchase path (881.1839ms)
+✖ real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all seven classes (30012.3824ms)
+✖ both actual shop layouts show localized talent help and retain prerequisite and affordability guards (845.5504ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80091.6013
+
+✖ failing tests:
+
+test at tests\talent-network-ui.test.ts:1:771
+✖ real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all seven classes (30012.3824ms)
+  'test timed out after 30000ms'
+
+test at tests\talent-network-ui.test.ts:1:3238
+✖ both actual shop layouts show localized talent help and retain prerequisite and affordability guards (845.5504ms)
+  TypeError [Error]: Cannot read properties of null (reading 'click')
+      at render (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\talent-network-ui.test.ts:190:66)
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\talent-network-ui.test.ts:192:7)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

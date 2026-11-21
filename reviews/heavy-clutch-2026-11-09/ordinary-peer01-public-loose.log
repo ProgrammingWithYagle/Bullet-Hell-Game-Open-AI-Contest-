@@ -1,0 +1,24 @@
+{"mode":"loose","actualShortClear":{"boss":"constable","combatTicks":201,"actualEarnedSP":9}}
+{"mode":"loose","actualShortClear":{"boss":"stitchwright","combatTicks":323,"actualEarnedSP":15}}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+2 !== 3
+
+    at earnedClutchFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-stage\earned-flow01.mts:20:35)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processTimers (node:internal/timers:615:9)
+    at async earnedClutchPeerFlow (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-stage\earned-peer01.mts:10:16)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-stage\invoke-earned-peer01.mts:1:537) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 3,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

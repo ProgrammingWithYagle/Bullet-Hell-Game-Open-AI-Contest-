@@ -12,15 +12,66 @@
     "branches": [
       {
         "id": "ballistics",
-        "name": "Ballistics"
+        "name": "Ballistics",
+        "subbranches": [
+          {
+            "id": "ballistics-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "ballistics-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "ballistics-path-2",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          }
+        ]
       },
       {
         "id": "command",
-        "name": "Command"
+        "name": "Command",
+        "subbranches": [
+          {
+            "id": "command-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "command-path-1",
+            "nameKey": "ability.soldier-ultimate.name",
+            "name": "Last Roll Call"
+          },
+          {
+            "id": "command-path-2",
+            "nameKey": "ability.soldier-q.name",
+            "name": "Rally Field"
+          }
+        ]
       },
       {
         "id": "survival",
-        "name": "Survival"
+        "name": "Survival",
+        "subbranches": [
+          {
+            "id": "survival-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "survival-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "survival-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -77,15 +128,66 @@
     "branches": [
       {
         "id": "ordnance",
-        "name": "Ordnance"
+        "name": "Ordnance",
+        "subbranches": [
+          {
+            "id": "ordnance-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "ordnance-path-1",
+            "nameKey": "stat.magazine",
+            "name": "magazine"
+          },
+          {
+            "id": "ordnance-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
       },
       {
         "id": "suppression",
-        "name": "Suppression"
+        "name": "Suppression",
+        "subbranches": [
+          {
+            "id": "suppression-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "suppression-path-1",
+            "nameKey": "ability.heavy-ultimate.name",
+            "name": "Foundry Overture"
+          },
+          {
+            "id": "suppression-path-2",
+            "nameKey": "ability.heavy-q.name",
+            "name": "Suppressing Cone"
+          }
+        ]
       },
       {
         "id": "endurance",
-        "name": "Endurance"
+        "name": "Endurance",
+        "subbranches": [
+          {
+            "id": "endurance-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "endurance-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "endurance-path-2",
+            "nameKey": "shieldPath.heavy.name",
+            "name": "Reserve Plating"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -143,15 +245,66 @@
     "branches": [
       {
         "id": "breaching",
-        "name": "Breaching"
+        "name": "Breaching",
+        "subbranches": [
+          {
+            "id": "breaching-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "breaching-path-1",
+            "nameKey": "stat.extraShots",
+            "name": "extraShots"
+          },
+          {
+            "id": "breaching-path-2",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          }
+        ]
       },
       {
         "id": "protection",
-        "name": "Protection"
+        "name": "Protection",
+        "subbranches": [
+          {
+            "id": "protection-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "protection-path-1",
+            "nameKey": "ability.tank-ultimate.name",
+            "name": "The City Holds"
+          },
+          {
+            "id": "protection-path-2",
+            "nameKey": "ability.tank-q.name",
+            "name": "Protective Wall"
+          }
+        ]
       },
       {
         "id": "bastion",
-        "name": "Bastion"
+        "name": "Bastion",
+        "subbranches": [
+          {
+            "id": "bastion-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "bastion-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "bastion-path-2",
+            "nameKey": "shieldPath.tank.name",
+            "name": "Citadel Lining"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -207,15 +360,66 @@
     "branches": [
       {
         "id": "chemistry",
-        "name": "Chemistry"
+        "name": "Chemistry",
+        "subbranches": [
+          {
+            "id": "chemistry-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "chemistry-path-1",
+            "nameKey": "stat.healOnHit",
+            "name": "healOnHit"
+          },
+          {
+            "id": "chemistry-path-2",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          }
+        ]
       },
       {
         "id": "triage",
-        "name": "Triage"
+        "name": "Triage",
+        "subbranches": [
+          {
+            "id": "triage-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "triage-path-1",
+            "nameKey": "ability.medic-ultimate.name",
+            "name": "Names Returned"
+          },
+          {
+            "id": "triage-path-2",
+            "nameKey": "ability.medic-q.name",
+            "name": "Healing Field"
+          }
+        ]
       },
       {
         "id": "recovery",
-        "name": "Recovery"
+        "name": "Recovery",
+        "subbranches": [
+          {
+            "id": "recovery-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "recovery-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "recovery-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -252,12 +456,12 @@
       "radius": 240,
       "damage": 35,
       "effects": {
-        "reviveFraction": 0.6,
+        "reviveFraction": 0.25,
         "heal": 40,
         "cleanse": true,
         "soloShield": 40
       },
-      "description": "After a one-second channel, revive nearby downed or eliminated allies at 60% health, heal living allies for 40, cleanse effects and strike nearby enemies for 35. Solo also gains 40 shield."
+      "description": "After a one-second channel, revive nearby downed or eliminated allies according to the selected difficulty. Heal living allies for 40, cleanse effects and deal 35 damage nearby. Solo also gains 40 shield."
     }
   },
   {
@@ -273,15 +477,66 @@
     "branches": [
       {
         "id": "hexcraft",
-        "name": "Hexcraft"
+        "name": "Hexcraft",
+        "subbranches": [
+          {
+            "id": "hexcraft-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "hexcraft-path-1",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          },
+          {
+            "id": "hexcraft-path-2",
+            "nameKey": "stat.extraShots",
+            "name": "extraShots"
+          }
+        ]
       },
       {
         "id": "control",
-        "name": "Control"
+        "name": "Control",
+        "subbranches": [
+          {
+            "id": "control-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "control-path-1",
+            "nameKey": "ability.mage-ultimate.name",
+            "name": "Silent Twelfth"
+          },
+          {
+            "id": "control-path-2",
+            "nameKey": "ability.mage-q.name",
+            "name": "Binding Sigil"
+          }
+        ]
       },
       {
         "id": "warding",
-        "name": "Warding"
+        "name": "Warding",
+        "subbranches": [
+          {
+            "id": "warding-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "warding-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "warding-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -338,15 +593,66 @@
     "branches": [
       {
         "id": "demolitions",
-        "name": "Demolitions"
+        "name": "Demolitions",
+        "subbranches": [
+          {
+            "id": "demolitions-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "demolitions-path-1",
+            "nameKey": "stat.turretDamage",
+            "name": "turretDamage"
+          },
+          {
+            "id": "demolitions-path-2",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          }
+        ]
       },
       {
         "id": "constructs",
-        "name": "Constructs"
+        "name": "Constructs",
+        "subbranches": [
+          {
+            "id": "constructs-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "constructs-path-1",
+            "nameKey": "ability.engineer-ultimate.name",
+            "name": "Impossible Machine"
+          },
+          {
+            "id": "constructs-path-2",
+            "nameKey": "ability.engineer-q.name",
+            "name": "Rivet Turret"
+          }
+        ]
       },
       {
         "id": "repair",
-        "name": "Repair"
+        "name": "Repair",
+        "subbranches": [
+          {
+            "id": "repair-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "repair-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "repair-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -403,15 +709,66 @@
     "branches": [
       {
         "id": "precision",
-        "name": "Precision"
+        "name": "Precision",
+        "subbranches": [
+          {
+            "id": "precision-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "precision-path-1",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          },
+          {
+            "id": "precision-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
       },
       {
         "id": "ambush",
-        "name": "Ambush"
+        "name": "Ambush",
+        "subbranches": [
+          {
+            "id": "ambush-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "ambush-path-1",
+            "nameKey": "ability.assassin-ultimate.name",
+            "name": "Unwritten Passage"
+          },
+          {
+            "id": "ambush-path-2",
+            "nameKey": "ability.assassin-q.name",
+            "name": "Invisibility"
+          }
+        ]
       },
       {
         "id": "evasion",
-        "name": "Evasion"
+        "name": "Evasion",
+        "subbranches": [
+          {
+            "id": "evasion-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "evasion-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "evasion-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
       }
     ],
     "abilities": [
@@ -453,6 +810,580 @@
         "untargetable": true
       },
       "description": "For 5 seconds gain three free empowered Shadow Steps, 100% critical chance and untargetability to new aimed attacks. Existing hazards remain dangerous outside dodge invulnerability."
+    }
+  },
+  {
+    "id": "bard",
+    "name": "Bard",
+    "survivor": "Iven Cair",
+    "health": 100,
+    "speed": 225,
+    "color": "#cfad69",
+    "weapon": "bard-0",
+    "role": "Cadenced note fire, close support and selective projectile control.",
+    "lore": "Iven Cair spent years moving scenery for other people's performances. Newly admitted to the Bard discipline, he is learning to leave a pause long enough for someone else to answer.",
+    "branches": [
+      {
+        "id": "notecraft",
+        "name": "Notecraft",
+        "subbranches": [
+          {
+            "id": "notecraft-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "notecraft-path-1",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          },
+          {
+            "id": "notecraft-path-2",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          }
+        ]
+      },
+      {
+        "id": "performance",
+        "name": "Performance",
+        "subbranches": [
+          {
+            "id": "performance-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "performance-path-1",
+            "nameKey": "ability.bard-ultimate.name",
+            "name": "Encore"
+          },
+          {
+            "id": "performance-path-2",
+            "nameKey": "ability.bard-q.name",
+            "name": "Resolving Phrase"
+          }
+        ]
+      },
+      {
+        "id": "company",
+        "name": "Company",
+        "subbranches": [
+          {
+            "id": "company-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "company-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "company-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "bard-q",
+        "slot": "q",
+        "kind": "resolving-phrase",
+        "name": "Resolving Phrase",
+        "cooldown": 12,
+        "duration": 1.5,
+        "radius": 145,
+        "damage": 20,
+        "description": "Spend up to 3 cadence for three moving pulses, 0.75 seconds apart. Each deals 20 + 5 per cadence damage, slows ordinary enemies by 25%, and refreshes nearby allies' shield to 6 + 3 per cadence for 2 seconds. Shields use the strongest value and respect difficulty limits."
+      },
+      {
+        "id": "bard-e",
+        "slot": "e",
+        "kind": "cut-in",
+        "name": "Cut In",
+        "cooldown": 15,
+        "duration": 0.25,
+        "radius": 210,
+        "damage": 65,
+        "description": "Strike along a narrow line toward the aim point, stopping at cover. Deal 65 damage and erase up to 8 hostile projectiles on that line. Warnings, beams, fields and already chosen attack positions are unchanged."
+      }
+    ],
+    "ultimate": {
+      "id": "bard-ultimate",
+      "slot": "ultimate",
+      "name": "Encore",
+      "kind": "encore",
+      "cooldown": 90,
+      "duration": 6,
+      "radius": 205,
+      "damage": 36,
+      "effects": {
+        "pulses": 6,
+        "allyShield": 18,
+        "ordinaryEnemySlow": 0.75
+      },
+      "description": "Spend cadence to place a six-pulse performance at your feet. One pulse each second deals 36 + 4 per cadence damage and refreshes 18 + 2 per cadence shield for nearby allies. The stage stays in place. It does not heal, revive, erase hazards or stack identical shields."
+    }
+  },
+  {
+    "id": "swordsman",
+    "name": "Swordsman",
+    "survivor": "Dara Flint",
+    "health": 130,
+    "speed": 240,
+    "color": "#b77d62",
+    "weapon": "swordsman-0",
+    "role": "Committed sword cuts, measured advances and bounded frontal counters.",
+    "lore": "Dara worked at a grinding bench before beginning sword training. She can judge an edge more easily than she can admit she has misjudged a distance.",
+    "branches": [
+      {
+        "id": "edgework",
+        "name": "Edgework",
+        "subbranches": [
+          {
+            "id": "edgework-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "edgework-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "edgework-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
+      },
+      {
+        "id": "measure",
+        "name": "Measure",
+        "subbranches": [
+          {
+            "id": "measure-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "measure-path-1",
+            "nameKey": "ability.swordsman-ultimate.name",
+            "name": "Long Measure"
+          },
+          {
+            "id": "measure-path-2",
+            "nameKey": "ability.swordsman-q.name",
+            "name": "Measured Cut"
+          }
+        ]
+      },
+      {
+        "id": "footwork",
+        "name": "Footwork",
+        "subbranches": [
+          {
+            "id": "footwork-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "footwork-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "footwork-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "swordsman-q",
+        "slot": "q",
+        "kind": "measured-cut",
+        "name": "Measured Cut",
+        "cooldown": 10,
+        "duration": 0.2,
+        "radius": 130,
+        "damage": 75,
+        "description": "Commit for 0.2 seconds on the chosen aim, then advance up to 90 units through clear ground and cut for 75 damage within 130 units. Cover blocks the movement and blade. Dodging cancels the committed cut; this grants no invulnerability."
+      },
+      {
+        "id": "swordsman-e",
+        "slot": "e",
+        "kind": "frontal-guard",
+        "name": "Frontal Guard",
+        "cooldown": 9,
+        "duration": 0.36666666666666664,
+        "radius": 30,
+        "damage": 0,
+        "description": "Hold the chosen frontal guard for 11 ticks, stopping at most 3 incoming projectiles at the blade. A real parry opens a 3-second counter: the next committed primary cut deals 60% more damage. Beams, fields, melee damage and existing warnings remain dangerous. Dodging cancels the guard."
+      }
+    ],
+    "ultimate": {
+      "id": "swordsman-ultimate",
+      "slot": "ultimate",
+      "kind": "long-measure",
+      "name": "Long Measure",
+      "cooldown": 85,
+      "duration": 7,
+      "radius": 40,
+      "damage": 0,
+      "effects": {
+        "cuts": 3,
+        "weaponDamageMultiplier": 1.35
+      },
+      "description": "For 7 seconds, the next 3 committed primary cuts gain 40 reach and 35% damage. Misses and cancelled cuts spend their charge. This is an attack stance, not automatic damage, projectile reflection or invulnerability."
+    }
+  },
+  {
+    "id": "summoner",
+    "name": "Summoner",
+    "survivor": "Joss Merrow",
+    "health": 105,
+    "speed": 245,
+    "color": "#9fbf8e",
+    "weapon": "summoner-0",
+    "role": "Call a bounded retinue, mark its work and keep its members alive through orders and physical recall.",
+    "lore": "Joss organized market deliveries before entering Summoner training. He remembers promises more easily than he remembers to leave enough time to keep them.",
+    "branches": [
+      {
+        "id": "beaconwork",
+        "name": "Beaconwork",
+        "subbranches": [
+          {
+            "id": "beaconwork-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "beaconwork-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "beaconwork-path-2",
+            "nameKey": "stat.criticalChance",
+            "name": "criticalChance"
+          }
+        ]
+      },
+      {
+        "id": "bonds",
+        "name": "Bonds",
+        "subbranches": [
+          {
+            "id": "bonds-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "bonds-path-1",
+            "nameKey": "ability.summoner-ultimate.name",
+            "name": "Open Muster"
+          },
+          {
+            "id": "bonds-path-2",
+            "nameKey": "ability.summoner-q.name",
+            "name": "Call Retinue"
+          }
+        ]
+      },
+      {
+        "id": "waykeeping",
+        "name": "Waykeeping",
+        "subbranches": [
+          {
+            "id": "waykeeping-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "waykeeping-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "waykeeping-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "summoner-q",
+        "slot": "q",
+        "kind": "retinue-call",
+        "name": "Call Retinue",
+        "cooldown": 8,
+        "duration": 0,
+        "radius": 68,
+        "damage": 0,
+        "description": "Call one Tatterhound and one Lanternwing into clear nearby space, up to four permanent companions. Existing companions keep their health. A full or blocked call spends no cooldown. Companions have real health, movement and attacks; they disappear with their owner or encounter."
+      },
+      {
+        "id": "summoner-e",
+        "slot": "e",
+        "kind": "retinue-gather",
+        "name": "Gather",
+        "cooldown": 12,
+        "duration": 4,
+        "radius": 45,
+        "damage": 0,
+        "description": "For four seconds, send the living retinue physically back to you at 40% extra movement speed. Each companion present at the cast can recover 12 base health once after arriving. No teleport, resurrection, repeated-arrival healing or invulnerability."
+      }
+    ],
+    "ultimate": {
+      "id": "summoner-ultimate",
+      "slot": "ultimate",
+      "kind": "open-muster",
+      "name": "Open Muster",
+      "cooldown": 95,
+      "duration": 16,
+      "radius": 540,
+      "damage": 0,
+      "effects": {
+        "companions": 2,
+        "damageMultiplier": 1.25
+      },
+      "description": "Call up to two temporary Wickerwards for 16 seconds and strengthen retinue damage by 25% for that interval. Bodies obey the same health, cover, orders and eight-companion owner limit. Expiration removes temporary forms without an explosion or refund."
+    }
+  },
+  {
+    "id": "ranger",
+    "name": "Ranger",
+    "survivor": "Nela Venn",
+    "health": 105,
+    "speed": 245,
+    "color": "#82998a",
+    "weapon": "ranger-0",
+    "role": "Aim-locked bow draws, prepared triplines and limited firing positions.",
+    "lore": "Nela copied water-survey routes before beginning Ranger training. She is learning that a path drawn on paper can still fail the person who has to use it.",
+    "branches": [
+      {
+        "id": "bowcraft",
+        "name": "Bowcraft",
+        "subbranches": [
+          {
+            "id": "bowcraft-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "bowcraft-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "bowcraft-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
+      },
+      {
+        "id": "fieldcraft",
+        "name": "Fieldcraft",
+        "subbranches": [
+          {
+            "id": "fieldcraft-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "fieldcraft-path-1",
+            "nameKey": "ability.ranger-ultimate.name",
+            "name": "Surveyor's Circuit"
+          },
+          {
+            "id": "fieldcraft-path-2",
+            "nameKey": "ability.ranger-q.name",
+            "name": "Drawn Line"
+          }
+        ]
+      },
+      {
+        "id": "trailkeeping",
+        "name": "Trailkeeping",
+        "subbranches": [
+          {
+            "id": "trailkeeping-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "trailkeeping-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "trailkeeping-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "ranger-q",
+        "slot": "q",
+        "kind": "drawn-line",
+        "name": "Drawn Line",
+        "cooldown": 11,
+        "duration": 0.4,
+        "radius": 980,
+        "damage": 95,
+        "description": "Spend one ready arrow and hold the chosen aim for 0.4 seconds, moving at 55% speed. Release a real 95-damage arrow with 2 pierce and 980 range. Dodging cancels the release without refunding the arrow or cooldown. Cover stops the arrow."
+      },
+      {
+        "id": "ranger-e",
+        "slot": "e",
+        "kind": "tripline",
+        "name": "Tripline",
+        "cooldown": 13,
+        "duration": 20,
+        "radius": 154,
+        "damage": 45,
+        "description": "Place a finite cable through legal ground. After 0.8 seconds it can catch an actual enemy crossing, deal 45 damage and slow ordinary enemies by 40% for 3 seconds. A cable lasts 20 active seconds; at most 2 are placed initially. Bosses take damage without a root or attack cancellation. Full or blocked placements spend no cooldown."
+      }
+    ],
+    "ultimate": {
+      "id": "ranger-ultimate",
+      "slot": "ultimate",
+      "kind": "survey-circuit",
+      "name": "Surveyor's Circuit",
+      "cooldown": 90,
+      "duration": 8,
+      "radius": 34,
+      "damage": 0,
+      "effects": {
+        "positions": 2,
+        "chargesPerPosition": 3,
+        "weaponDamageBonus": 0.6,
+        "pierce": 1
+      },
+      "description": "Prepare up to two legal fixed firing positions for 8 seconds. Within 34 units, each position empowers 3 committed primary arrows with 60% damage and 1 pierce. Spend the nearest position's charge when drawing, including cancelled shots. Moving away gives no boost; casting alone deals no damage or invulnerability."
+    }
+  },
+  {
+    "id": "alchemist",
+    "name": "Alchemist",
+    "survivor": "Perrin Moss",
+    "health": 110,
+    "speed": 230,
+    "color": "#b69b72",
+    "weapon": "alchemist-0",
+    "role": "Prepare finite recipes, place delayed flasks and combine your own mixtures.",
+    "lore": "Perrin worked in a dyehouse before entering Alchemist training. They trust a repeatable result more readily than a confident explanation, and still keep notes on the batches that went wrong.",
+    "branches": [
+      {
+        "id": "reagents",
+        "name": "Reagents",
+        "subbranches": [
+          {
+            "id": "reagents-foundation",
+            "nameKey": "stat.weaponDamage",
+            "name": "weaponDamage"
+          },
+          {
+            "id": "reagents-path-1",
+            "nameKey": "stat.fireRate",
+            "name": "fireRate"
+          },
+          {
+            "id": "reagents-path-2",
+            "nameKey": "stat.pierce",
+            "name": "pierce"
+          }
+        ]
+      },
+      {
+        "id": "mixtures",
+        "name": "Mixtures",
+        "subbranches": [
+          {
+            "id": "mixtures-foundation",
+            "nameKey": "stat.abilityPotency",
+            "name": "abilityPotency"
+          },
+          {
+            "id": "mixtures-path-1",
+            "nameKey": "ability.alchemist-ultimate.name",
+            "name": "Standard Batch"
+          },
+          {
+            "id": "mixtures-path-2",
+            "nameKey": "ability.alchemist-q.name",
+            "name": "Small Batch"
+          }
+        ]
+      },
+      {
+        "id": "dyehouse",
+        "name": "Dyehouse",
+        "subbranches": [
+          {
+            "id": "dyehouse-foundation",
+            "nameKey": "stat.maxHealth",
+            "name": "maxHealth"
+          },
+          {
+            "id": "dyehouse-path-1",
+            "nameKey": "stat.dodgeCooldown",
+            "name": "dodgeCooldown"
+          },
+          {
+            "id": "dyehouse-path-2",
+            "nameKey": "stat.reviveRate",
+            "name": "reviveRate"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "id": "alchemist-q",
+        "slot": "q",
+        "kind": "brew-mixture",
+        "name": "Small Batch",
+        "cooldown": 4,
+        "duration": 0.4,
+        "radius": 0,
+        "damage": 0,
+        "description": "Reserve the selected recipe ingredients and brew for 0.4 seconds at 80% movement. Keep up to two recipe-locked vials. Dodging cancels the brew without refund. Flare costs cinder and chalk; Binding costs chalk and sap; Mending costs cinder and sap. Each costs one of both ingredients."
+      },
+      {
+        "id": "alchemist-e",
+        "slot": "e",
+        "kind": "cast-flask",
+        "name": "Cast Flask",
+        "cooldown": 6,
+        "duration": 0.5,
+        "radius": 300,
+        "damage": 55,
+        "description": "Throw the oldest prepared vial at a chosen point up to 300 units away, including close or self placement. It lands after 0.5 seconds. Flare deals 55 damage; its eight-second pool adds five 4-damage pulses, one every 1.5 seconds. Binding deals 25 and slows ordinary enemies by 40% for three seconds, with five brief slow refreshes in its eight-second pool. Mending restores 18 missing health. Cover blocks placement and splash. Your Flare can consume your Binding pool for 30 extra impact damage; Mending can consume your fire pool without extra healing, forfeiting its remaining pulses."
+      }
+    ],
+    "ultimate": {
+      "id": "alchemist-ultimate",
+      "slot": "ultimate",
+      "kind": "standard-batch",
+      "name": "Standard Batch",
+      "cooldown": 95,
+      "duration": 14,
+      "radius": 0,
+      "damage": 0,
+      "description": "Restore one of each combat ingredient, up to six each. For fourteen seconds your next three actual throws gain 50% potency and 25% radius. Begin with prepared vials and a ready throw to use the full batch at base cooldown. A miss spends its charge. Casting alone deals no damage and grants no invulnerability."
     }
   }
 ]

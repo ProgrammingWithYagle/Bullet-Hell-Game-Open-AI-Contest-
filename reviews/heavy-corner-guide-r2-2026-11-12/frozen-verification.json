@@ -1,0 +1,1004 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-12T22:57:43.868Z",
+  "sourceCommit": "21f490af74c2a05c59fa94e1bf3ce6f8614c9279",
+  "protocol": 76,
+  "contentRevision": "345593d5c0275ad0d5c4a794e08cc1e7d7646e8ae8c597644d47f40540376848",
+  "runtimeSourceSha256": "9b128e2971f9e6bb4b4b2beec94bf5ef3f3c0a787713ba35f206c40821ed3390",
+  "sourceSnapshotSha256": "2377924075d17b61b8eb448d980e2fed86f6e9668cb4e63a40ae5674e8d2a8a2",
+  "tests": {
+    "tests": 2331,
+    "pass": 2331,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "sourceChecks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 81138
+    },
+    {
+      "name": "Playable main-story word count",
+      "passed": true,
+      "elapsedMs": 142
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2897
+    },
+    {
+      "name": "Early chapter build feasibility",
+      "passed": true,
+      "elapsedMs": 538
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 809919
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 8010
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 1717
+    }
+  ],
+  "exactSourcePushAndPRJobsStepsLogsAndOwnArtifacts": true,
+  "originalAttempt": {
+    "sourceCommit": "a9a2a0394aae0c3141ae16cfa30e385996cae0f5",
+    "scope": "reviews/heavy-corner-guide-2026-11-12",
+    "sourceCI": "reviews/heavy-corner-guide-2026-11-12/ci-source-failed-1794521393446.json",
+    "originalLocalTests": 2330,
+    "originalTestingNativePassed": true,
+    "originalPublicNativePassed": false,
+    "quantizationReproduction": "quantization-reproduction26.json",
+    "inputPacingCorrection": "traffic-correction29.json",
+    "retiredScope": "reviews/storage-corner-guide-attempt-2026-11-12",
+    "originalFailuresPreserved": true
+  },
+  "sourceByteBinding": "reviews/heavy-corner-guide-r2-2026-11-12/source-binding.json",
+  "ci": "reviews/heavy-corner-guide-r2-2026-11-12/source-ci.json",
+  "rows": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5394/",
+      "endpoint": "http://127.0.0.1:2770",
+      "filesHashed": 2065,
+      "nativeCases": 7,
+      "httpChecks": 52,
+      "manifestSha256": "821d34d8f537e7258a22653733246cbf90767944ee5b962722e23fdf54ecafed",
+      "servedWorkerSha256": "143706fca9f20fd60d8b847075890217f74ac4a23e5c355f6fb480567961e5c3",
+      "backendSha256": "b13e6c90303991f7509044ce161d31c547cbff7a1d434d6e0771d7f6e4202a60",
+      "emittedEmblems": [
+        {
+          "path": "assets/heavy-linework-1-DtPDXBng.png",
+          "bytes": 1032600,
+          "sha256": "5fe9f7dd36f9998af4685d6dfd36bdbec177f0023187958277c2ed319fcad7e9"
+        },
+        {
+          "path": "assets/heavy-linework-yoke-1-C2dn46IY.png",
+          "bytes": 1457875,
+          "sha256": "884af66a7ac33a22a859d0e405b1a87d4c94584b504683087f406a84aa5b3c66"
+        },
+        {
+          "path": "assets/heavy-linework-sheave-1-BXommnj2.png",
+          "bytes": 1315841,
+          "sha256": "f3cb55d9068ae0608cd28d0bf186e882a6f71f71a282cf43437750e833a6c254"
+        },
+        {
+          "path": "assets/heavy-linework-reserve-1-uruZGiy_.png",
+          "bytes": 925627,
+          "sha256": "89c733485811142f120d35aa1435ac083242fece8bd37e3811354c31c4936edf"
+        },
+        {
+          "path": "assets/heavy-linework-guide-1-DMZx13of.png",
+          "bytes": 849431,
+          "sha256": "e6ffdf83f0ad7bf848eb40f2726d24c403b69e8c83896b5423c2bf2c5aee80fb"
+        }
+      ],
+      "cases": [
+        {
+          "transport": "worker",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 57.000000000000064,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 352,
+                "endTick": 358,
+                "commands": 5,
+                "elapsedMs": 200,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 366,
+                "endTick": 389,
+                "commands": 22,
+                "elapsedMs": 759,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 391,
+                "endTick": 401,
+                "commands": 9,
+                "elapsedMs": 325,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 830.1726461540585,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.53849088928757,
+            "originalUntil": 510,
+            "redirectedUntil": 510,
+            "originalRecovery": 600,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 56.73330578889211
+          },
+          "logSha256": "0159c5f4c2ce3637b61bbc401e7ab55afbf72fef9802323bbf5358f04e344161",
+          "receiptSha256": "52d0c07e262118ea734f4118c032d6efa6116bcfedc9228f22a2695f20335a93"
+        },
+        {
+          "transport": "worker",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 57.000000000000064,
+          "paidPrimaryProjectiles": 3,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 351,
+                "endTick": 357,
+                "commands": 5,
+                "elapsedMs": 201,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 365,
+                "endTick": 388,
+                "commands": 22,
+                "elapsedMs": 761,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 390,
+                "endTick": 400,
+                "commands": 9,
+                "elapsedMs": 325,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 830.1726461540585,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.53849088928757,
+            "originalUntil": 509,
+            "redirectedUntil": 509,
+            "originalRecovery": 599,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 56.73330578889211
+          },
+          "logSha256": "ba7f07713ce456628dde6e0796e90742c4b81d25af3916e0ffb799c8882d0fe7",
+          "receiptSha256": "a6db03d5c8aab8c35a2d351accfa8bff1199f43ac1348e5c4c8cb19d90dee7ca"
+        },
+        {
+          "transport": "worker",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 57.000000000000064,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 353,
+                "endTick": 360,
+                "commands": 6,
+                "elapsedMs": 216,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 368,
+                "endTick": 391,
+                "commands": 22,
+                "elapsedMs": 775,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 393,
+                "endTick": 403,
+                "commands": 9,
+                "elapsedMs": 324,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 830.1726461540585,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.53849088928757,
+            "originalUntil": 512,
+            "redirectedUntil": 512,
+            "originalRecovery": 602,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 56.73330578889211
+          },
+          "logSha256": "0c80b20781dedac26a3f3df566fccf25bc163937da674eec0b3c694632585156",
+          "receiptSha256": "2aee79952ee49b4a72cb501a2669b918a6ce43718ebf70822ea89f2493cf7e73"
+        },
+        {
+          "transport": "peer",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 50.75554156936955,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 539,
+                "endTick": 550,
+                "commands": 5,
+                "elapsedMs": 357,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 560,
+                "endTick": 588,
+                "commands": 14,
+                "elapsedMs": 928,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 590,
+                "endTick": 601,
+                "commands": 5,
+                "elapsedMs": 372,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 831.8361219934394,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695.1197459408309,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695.1197459408309,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.5,
+            "originalUntil": 704,
+            "redirectedUntil": 704,
+            "originalRecovery": 794,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 50.53894615033589
+          },
+          "logSha256": "2cce99510ebf3631a1d6496f4d0d171342e241dedfd26cfd02b3939d40c229ce",
+          "receiptSha256": "9ca606238a53d966a65004a218afcbdddcc3b23f47a1661c2825cc4622cbae97"
+        },
+        {
+          "transport": "peer",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 62.79978105057374,
+          "paidPrimaryProjectiles": 2,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 548,
+                "endTick": 555,
+                "commands": 3,
+                "elapsedMs": 246,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 565,
+                "endTick": 589,
+                "commands": 12,
+                "elapsedMs": 805,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 593,
+                "endTick": 606,
+                "commands": 6,
+                "elapsedMs": 434,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 833.079233387788,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 694.9866972383496,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 694.9866972383496,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.75,
+            "originalUntil": 709,
+            "redirectedUntil": 709,
+            "originalRecovery": 799,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 62.48291536104142
+          },
+          "logSha256": "c07859aaa6cc3d196358d537d06a5a99010c16fb3b5bf327ed9f5a42765e8763",
+          "receiptSha256": "6e4f43b743074e51eae503e75370e65da0ed69594653de74fa7b171ce62730f8"
+        },
+        {
+          "transport": "peer",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 69.7862808867187,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 467,
+                "endTick": 479,
+                "commands": 6,
+                "elapsedMs": 415,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 488,
+                "endTick": 514,
+                "commands": 13,
+                "elapsedMs": 868,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 519,
+                "endTick": 531,
+                "commands": 6,
+                "elapsedMs": 432,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 832.2069005966213,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695.0452847215605,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695.0452847215605,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 63.5,
+            "originalUntil": 632,
+            "redirectedUntil": 632,
+            "originalRecovery": 722,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 69.4217478274422
+          },
+          "logSha256": "1aed1ff843e076a4270958bfd7149849b8c72d7cfd80ccf7177a334a53ee8cf4",
+          "receiptSha256": "6da48dff2ccf73bc35543691565ba818413b6ff4ff22e5e1782ffaee6f84194f"
+        }
+      ]
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5395/",
+      "endpoint": "http://127.0.0.1:2771",
+      "filesHashed": 2065,
+      "nativeCases": 7,
+      "httpChecks": 52,
+      "manifestSha256": "3fb645bc4958f63ab867d03a5c9a7b970cd77d35579a265779a5e69c3f20caf7",
+      "servedWorkerSha256": "18be136d015f18135addc8cfb9ec92aa8e70df1146041a7ca160165978d2b60b",
+      "backendSha256": "b13e6c90303991f7509044ce161d31c547cbff7a1d434d6e0771d7f6e4202a60",
+      "emittedEmblems": [
+        {
+          "path": "assets/heavy-linework-1-DtPDXBng.png",
+          "bytes": 1032600,
+          "sha256": "5fe9f7dd36f9998af4685d6dfd36bdbec177f0023187958277c2ed319fcad7e9"
+        },
+        {
+          "path": "assets/heavy-linework-yoke-1-C2dn46IY.png",
+          "bytes": 1457875,
+          "sha256": "884af66a7ac33a22a859d0e405b1a87d4c94584b504683087f406a84aa5b3c66"
+        },
+        {
+          "path": "assets/heavy-linework-sheave-1-BXommnj2.png",
+          "bytes": 1315841,
+          "sha256": "f3cb55d9068ae0608cd28d0bf186e882a6f71f71a282cf43437750e833a6c254"
+        },
+        {
+          "path": "assets/heavy-linework-reserve-1-uruZGiy_.png",
+          "bytes": 925627,
+          "sha256": "89c733485811142f120d35aa1435ac083242fece8bd37e3811354c31c4936edf"
+        },
+        {
+          "path": "assets/heavy-linework-guide-1-DMZx13of.png",
+          "bytes": 849431,
+          "sha256": "e6ffdf83f0ad7bf848eb40f2726d24c403b69e8c83896b5423c2bf2c5aee80fb"
+        }
+      ],
+      "cases": [
+        {
+          "transport": "worker",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 46.74000000000043,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 333,
+                "endTick": 341,
+                "commands": 7,
+                "elapsedMs": 269,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 349,
+                "endTick": 378,
+                "commands": 28,
+                "elapsedMs": 974,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 380,
+                "endTick": 393,
+                "commands": 12,
+                "elapsedMs": 424,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 830.6217036377499,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.32000000000062,
+            "originalUntil": 493,
+            "redirectedUntil": 493,
+            "originalRecovery": 583,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 46.54828474447973
+          },
+          "logSha256": "b84ad177a4b43c5eaeb23ab3ffeca3266213686a2dec6b18f573edeed1320bdf",
+          "receiptSha256": "3dc13a973005e3af1ea985fbe20cf25907cbc9b0aade4cd2f9e3b09d11ea0f42"
+        },
+        {
+          "transport": "worker",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 46.74000000000043,
+          "paidPrimaryProjectiles": 2,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 334,
+                "endTick": 343,
+                "commands": 8,
+                "elapsedMs": 278,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 351,
+                "endTick": 380,
+                "commands": 28,
+                "elapsedMs": 964,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 382,
+                "endTick": 395,
+                "commands": 12,
+                "elapsedMs": 418,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 830.6217036377499,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.32000000000062,
+            "originalUntil": 495,
+            "redirectedUntil": 495,
+            "originalRecovery": 585,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 46.54828474447973
+          },
+          "logSha256": "de930b8bd97a5e94f5cd7497a790b5ebd62f944e7ae845ef745d8dabf5c1f687",
+          "receiptSha256": "928eb72e54664e7fbbd082cf386167d9c3165da123935643c0d5538fff3d8f1f"
+        },
+        {
+          "transport": "worker",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 46.74000000000043,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 333,
+                "endTick": 341,
+                "commands": 7,
+                "elapsedMs": 263,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 349,
+                "endTick": 378,
+                "commands": 28,
+                "elapsedMs": 960,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 380,
+                "endTick": 393,
+                "commands": 12,
+                "elapsedMs": 427,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 830.6217036377499,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.32000000000062,
+            "originalUntil": 493,
+            "redirectedUntil": 493,
+            "originalRecovery": 583,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 46.54828474447973
+          },
+          "logSha256": "978dc3620f1a2546c23d37b9cf9ef2fb2dfa766968e9476b9e8f86ff057b0a56",
+          "receiptSha256": "088f8acd3011d32bd4280d9be2eacff0b84dd626675107a867ca00d5a097eb1e"
+        },
+        {
+          "transport": "peer",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 6,
+          "walked": 50.53958844312051,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 479,
+                "endTick": 486,
+                "commands": 3,
+                "elapsedMs": 248,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 496,
+                "endTick": 519,
+                "commands": 12,
+                "elapsedMs": 807,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 523,
+                "endTick": 535,
+                "commands": 6,
+                "elapsedMs": 434,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 831.9892118670559,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 694.9893840728474,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 694.9893840728474,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 63.25,
+            "originalUntil": 640,
+            "redirectedUntil": 640,
+            "originalRecovery": 730,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 50.33306966772729
+          },
+          "logSha256": "d6abdc92345b640d37059c4945f84bdac4f28b55d366fc8e942a4ff40edb7048",
+          "receiptSha256": "9617e8a51421823179e4f43a82936946a78df3d43f481adf0c25036836d5cb16"
+        },
+        {
+          "transport": "peer",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 69.50719387228922,
+          "paidPrimaryProjectiles": 2,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 264,
+                "endTick": 272,
+                "commands": 3,
+                "elapsedMs": 249,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 282,
+                "endTick": 310,
+                "commands": 14,
+                "elapsedMs": 932,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 313,
+                "endTick": 324,
+                "commands": 5,
+                "elapsedMs": 373,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 832.0218725693514,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 694.9172126597612,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 694.9172126597612,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 62.5,
+            "originalUntil": 426,
+            "redirectedUntil": 426,
+            "originalRecovery": 516,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 69.12693140651724
+          },
+          "logSha256": "a4588c262c59891e31cd389ae6db3e77c78b5f882a097989bdde51af2c4699a8",
+          "receiptSha256": "67d006bba44ca75572d2b1a0b4b64ff505b8c8c6ffa4ae076cccceff857e4f0b"
+        },
+        {
+          "transport": "peer",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9,
+            15
+          ],
+          "spent": 8,
+          "walked": 69.79478848739353,
+          "paidPrimaryProjectiles": 0,
+          "guide": {
+            "walkObservations": [
+              {
+                "target": {
+                  "x": 695,
+                  "y": 731.5999999999999
+                },
+                "startTick": 514,
+                "endTick": 521,
+                "commands": 3,
+                "elapsedMs": 246,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 861.5999999999999
+                },
+                "startTick": 531,
+                "endTick": 556,
+                "commands": 13,
+                "elapsedMs": 866,
+                "completed": true
+              },
+              {
+                "target": {
+                  "x": 695,
+                  "y": 813.5999999999999
+                },
+                "startTick": 560,
+                "endTick": 569,
+                "commands": 4,
+                "elapsedMs": 294,
+                "completed": true
+              }
+            ],
+            "firstAnchor": {
+              "x": 832.0218725693514,
+              "y": 890.5999999999999
+            },
+            "guide": {
+              "x": 695.1224317781192,
+              "y": 878.5999999999999
+            },
+            "masonryFoot": {
+              "x": 695.1224317781192,
+              "y": 890.5999999999999
+            },
+            "paidGuideRounds": 1,
+            "firstHaul": 63.5,
+            "originalUntil": 675,
+            "redirectedUntil": 675,
+            "originalRecovery": 765,
+            "pausedRedirectDiscarded": true,
+            "towardOriginal": 69.42811544172098
+          },
+          "logSha256": "d198bc5cc3e4c6dd5b5cf9760680513ff53de6da940a3d047b0a1c2f5dc59c6a",
+          "receiptSha256": "d6c93b12e18a653965e500432b7e1c37498cb46f174883d4d1819efdb922a2b0"
+        }
+      ]
+    }
+  ],
+  "previousVerifiedReview": "reviews/heavy-reserve-anchor-ci-2026-11-12/frozen-verification.json",
+  "previousSourceCommit": "6a75d36a32875c71a47a139dd32426612cd8c59d",
+  "previousRollbackArchiveSha256": "ee9576a5bbca3ec6659c48e6947f57a2fde23ff03a8984ff0f1388e542e889fc",
+  "nativeAttempt": "native27",
+  "controlledBuildSets": 2298,
+  "controlledGeometryCases": 43,
+  "seededShortTrials": 24,
+  "actualSeededGuidePurchasesAndBothLegs": 10,
+  "preexistingPrivateSQLiteRelatedFilesVerified": 213,
+  "privateHashesRemainLocalOnly": true,
+  "serviceYardWipExact": true,
+  "processIdentities": "reviews/heavy-corner-guide-r2-2026-11-12/process-identities.json",
+  "retentionPromotionPending": true,
+  "scope": "Fresh native HTTP plus three whole served worker and three real non-host peer Short acquisitions per audience. Each guide purchase follows two clears and both paid hauls are observed. Human, rendered, device, language, listening, motion and final balance acceptance remain open."
+}

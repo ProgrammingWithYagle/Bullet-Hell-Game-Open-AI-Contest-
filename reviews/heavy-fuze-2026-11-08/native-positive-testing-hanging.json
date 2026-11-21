@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-11-08T03:45:46.143Z",
+  "sourceCommit": "c56ae850ee9c487202379a4e093811c376bec3b1",
+  "protocol": 68,
+  "contentRevision": "172934435baf5582387756d83e3bfc10872847bbd3e74087497b1206656bcf2c",
+  "audience": "testing",
+  "group": "room",
+  "variant": "positive-hanging",
+  "passed": true,
+  "handling": "hanging",
+  "ordinaryMode": "short",
+  "ordinaryStartingSP": 3,
+  "actualTwoClears": true,
+  "actualEarnedAfterFirstClear": 9,
+  "actualEarnedAfterSecondClear": 15,
+  "manualRejectedAtActual9Earned": true,
+  "actualRequiredSkillPurchases": 5,
+  "spentSkillSP": 11,
+  "remainingSPAtHandlingAcquisition": 4,
+  "clears": [
+    {
+      "clear": 1,
+      "boss": "constable",
+      "combatTicks": 198,
+      "actualEarnedSP": 9
+    },
+    {
+      "clear": 2,
+      "boss": "stitchwright",
+      "combatTicks": 365,
+      "actualEarnedSP": 15
+    }
+  ],
+  "observedClocks": [
+    {
+      "encounter": 1,
+      "phase": "mutationVote",
+      "rawPhaseRemainingTicks": 599,
+      "bossDefeatRemainingTicks": 149,
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 1,
+      "phase": "contractVote",
+      "rawPhaseRemainingTicks": 450,
+      "bossDefeatRemainingTicks": 0,
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 1,
+      "phase": "shop",
+      "rawPhaseRemainingTicks": 750,
+      "bossDefeatRemainingTicks": 0,
+      "remainingTicks": 750,
+      "maximumIssuedTicks": 750
+    },
+    {
+      "encounter": 1,
+      "phase": "loading",
+      "rawPhaseRemainingTicks": 150,
+      "bossDefeatRemainingTicks": 0,
+      "remainingTicks": 150,
+      "maximumIssuedTicks": 150
+    },
+    {
+      "encounter": 2,
+      "phase": "mutationVote",
+      "rawPhaseRemainingTicks": 600,
+      "bossDefeatRemainingTicks": 150,
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 2,
+      "phase": "contractVote",
+      "rawPhaseRemainingTicks": 450,
+      "bossDefeatRemainingTicks": 0,
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 2,
+      "phase": "shop",
+      "rawPhaseRemainingTicks": 750,
+      "bossDefeatRemainingTicks": 0,
+      "remainingTicks": 750,
+      "maximumIssuedTicks": 750
+    },
+    {
+      "encounter": 2,
+      "phase": "loading",
+      "rawPhaseRemainingTicks": 150,
+      "bossDefeatRemainingTicks": 0,
+      "remainingTicks": 150,
+      "maximumIssuedTicks": 150
+    }
+  ],
+  "positiveInterceptionWitness": {
+    "passed": true,
+    "handling": "hanging",
+    "audience": "testing",
+    "policySourceSha256": "e77d16fd4766a049cf0dd6d2e05784158b6954899df74175b9ff86f418e4107c",
+    "actualPositiveSharedContact": true,
+    "actualContacts": 3,
+    "sharedActualCue": {
+      "kind": "heavy-flak-burst",
+      "id": 305,
+      "owner": "c2z0qypCM",
+      "x": 882.3869858047648,
+      "y": 672.246410655888,
+      "at": 726,
+      "until": 732,
+      "radius": 90,
+      "arc": 1.2217304763960306,
+      "aim": -2.8358863959969898,
+      "contacts": [
+        {
+          "x": 828.4205700188845,
+          "y": 646.1692336506871
+        },
+        {
+          "x": 831.5073575366036,
+          "y": 638.9111544459206
+        },
+        {
+          "x": 823.7801840956413,
+          "y": 652.5469126490061
+        }
+      ]
+    },
+    "actualPaidCarrier": {
+      "id": 304,
+      "initial": {
+        "id": 304,
+        "owner": "c2z0qypCM",
+        "x": 1011.1276609034973,
+        "y": 712.8769235141162,
+        "vx": -429.1355836624415,
+        "vy": -135.43504286075927,
+        "radius": 3,
+        "damage": 0,
+        "expires": 740,
+        "pierce": 0,
+        "visual": "flak"
+      },
+      "born": 716,
+      "until": 740,
+      "recovery": 956,
+      "aim": -2.8358863959969898,
+      "planned": {
+        "aim": -2.8358863959969898,
+        "steps": 10,
+        "score": 10,
+        "point": {
+          "x": 868.2048054458528,
+          "y": 667.8549857130803
+        }
+      }
+    },
+    "observedCarrierBursts": [
+      {
+        "kind": "heavy-flak-burst",
+        "id": 305,
+        "owner": "c2z0qypCM",
+        "x": 882.3869858047648,
+        "y": 672.246410655888,
+        "at": 726,
+        "until": 732,
+        "radius": 90,
+        "arc": 1.2217304763960306,
+        "aim": -2.8358863959969898,
+        "contacts": [
+          {
+            "x": 828.4205700188845,
+            "y": 646.1692336506871
+          },
+          {
+            "x": 831.5073575366036,
+            "y": 638.9111544459206
+          },
+          {
+            "x": 823.7801840956413,
+            "y": 652.5469126490061
+          }
+        ]
+      }
+    ],
+    "combinedOriginalQuotaConserved": true,
+    "allRealPeersSawExactFiniteContactGeometry": true,
+    "realPeerCount": 3,
+    "noCheckpointOrTestingOrStateInjection": true,
+    "sourceAndDeadlinesUnchanged": true,
+    "progress": "C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)/reviews/heavy-fuze-2026-11-08/positive03-testing-hanging-progress.json"
+  },
+  "ownerOnlyFriendlyStreamsAndStoppedUpdates": true,
+  "ownerOnlyFriendlyRemovals": true,
+  "sharedFiniteActualBurstGeometry": true,
+  "lateObserverWithoutOwnership": true,
+  "noCheckpointUploaded": true,
+  "noCheckpointOrBudgetHealthPositionInjection": true,
+  "limits": [
+    "Separate actual Short two-clear progression, not the issued Raid12→20acquisition flow. Starting3,firstclear9,secondclear15are actual observed earned budgets. Both actual bosses/clears and ordinary contract index0 votes are retained.",
+    "No opening-boss override, hidden contract identity, injected resources/health/position/hazards, forced clear, checkpoint, testing command, altered deadline/timeout or score upload. Actual positive authoritative contact cues must reach all three real peers."
+  ]
+}

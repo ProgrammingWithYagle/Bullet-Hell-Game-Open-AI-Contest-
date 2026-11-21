@@ -1,0 +1,36 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {spawn} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const stage=path.dirname(fileURLToPath(import.meta.url)),root='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)',scope='reviews/heavy-clutch-stat-scaling-2026-11-10';process.chdir(root);
+const audience=process.argv[2];assert(['testing','public'].includes(audience));
+const read=f=>JSON.parse(fs.readFileSync(f,'utf8')),sha=b=>createHash('sha256').update(b).digest('hex'),prep=read(stage+'/entry-reporting-preparation04.json'),source=prep.sourceCommit;
+for(const f of prep.files)assert.equal(sha(fs.readFileSync(stage+'/'+f.file)),f.sha256,f.file);
+for(const f of ['native04-'+audience+'.json','native04-'+audience+'-partial.json','native04-'+audience+'-timing.json'])assert(!fs.existsSync(scope+'/'+f),f);
+const original=read(scope+'/native-'+audience+'.json');assert(original.passed&&original.sourceCommit===source&&original.cases===106&&original.invocations===44);
+const checks=original.checks.filter(c=>!/^\b(?:worker|room)-traverse-/.test(c.label)).map(c=>({...c,originalExecutionRetained:true}));assert.equal(checks.length,38);
+const reportOverrides={};let watched=Date.now(),maximumObservedTimerGapMs=0;const timerGaps=[];
+const timer=setInterval(()=>{const now=Date.now(),gap=now-watched;maximumObservedTimerGapMs=Math.max(maximumObservedTimerGapMs,gap);if(gap>2000)timerGaps.push({from:new Date(watched).toISOString(),to:new Date(now).toISOString(),gapMs:gap});watched=now;},1000);
+async function run(group,mode){
+  const label=group+'-traverse-'+mode,log=scope+'/native04-'+audience+'-'+label+'.log';assert(!fs.existsSync(log));
+  for(const f of prep.files)assert.equal(sha(fs.readFileSync(stage+'/'+f.file)),f.sha256,f.file);
+  const out=fs.createWriteStream(log,{flags:'wx'}),child=spawn(process.execPath,['--import','tsx',stage+'/native-probe04.mts',audience,group,'traverse-'+mode],{stdio:['ignore','pipe','pipe']});
+  child.stdout.on('data',c=>out.write(c));child.stderr.on('data',c=>out.write(c));
+  const status=await new Promise((resolve,reject)=>{child.on('error',reject);child.on('close',resolve);});await new Promise(resolve=>out.end(resolve));
+  const row={label,cases:1,passed:status===0,log,attempt:'native04',originalExecutionRetained:false,logSha256:sha(fs.readFileSync(log))};checks.push(row);
+  console.log(JSON.stringify({audience,label,passed:row.passed}));assert.equal(status,0,label);
+  const report=scope+'/native04-'+group+'-'+audience+'-traverse-'+mode+'.json',r=read(report);
+  assert(r.passed&&r.sourceCommit===source&&r.statContextAtStrokeStart&&Array.isArray(r.statContextAtStrokeStart.skills)&&Array.isArray(r.statContextAtStrokeStart.mutations)&&r.shots.length===4&&r.shots.every(s=>Number.isFinite(s.damage)&&s.damage>0));
+  reportOverrides[label]=report;
+}
+try{
+  const runs=await Promise.allSettled(['worker','room'].map(async group=>{for(const mode of ['loose','spade','floating'])await run(group,mode);}));for(const r of runs)if(r.status==='rejected')throw r.reason;
+  const ordered=original.checks.map(old=>{const c=checks.find(c=>c.label===old.label);assert(c?.passed);return c;});assert.equal(ordered.length,44);assert.equal(ordered.reduce((n,c)=>n+c.cases,0),106);
+  const attemptHistory=[...original.attemptHistory,{attempt:'native03',report:scope+'/native-'+audience+'.json',sha256:sha(fs.readFileSync(scope+'/native-'+audience+'.json'))}];
+  const report={...original,checkedAt:new Date().toISOString(),checks:ordered,attemptHistory,reportOverrides,driverSha256:prep.driverSha256,originalProbeAndResultsPreserved:true,entryReportingPreparation:prep,retainedOriginalPassedInvocations:38,newInvocations:6,entryCasesReportActualContextAndShotCopies:true,existingDriverAndSourceBytesUnchanged:true,limits:original.limits+' Native04 reruns the six entry worker/peer cases to report actual pre-stroke stat context and copies of actual shot values; the previous six successful entry executions remain in native03 history without retroactive fields. Gameplay, assertions, original timeouts and policies are unchanged. The original native probe and all earlier raw reports remain untouched.'};
+  fs.writeFileSync(scope+'/native04-'+audience+'.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+  console.log(JSON.stringify({passed:true,audience,cases:106,invocations:44,groups:4,retainedOriginalInvocations:38,newContextEntryInvocations:6,allEarlierAttemptsPreserved:true}));
+}catch(error){fs.writeFileSync(scope+'/native04-'+audience+'-partial.json',JSON.stringify({passed:false,checkedAt:new Date().toISOString(),sourceCommit:source,checks,reportOverrides,error:String(error),originalAttemptsPreserved:true},null,2)+'\n',{flag:'wx'});throw error;}
+finally{clearInterval(timer);fs.writeFileSync(scope+'/native04-'+audience+'-timing.json',JSON.stringify({checkedAt:new Date().toISOString(),maximumObservedTimerGapMs,timerGaps,readOnlyParentTimerObservation:true,sourceOrTimeoutChanges:false,limits:'Read-only parent scheduling observations do not diagnose child Game/server state.'},null,2)+'\n',{flag:'wx'});}

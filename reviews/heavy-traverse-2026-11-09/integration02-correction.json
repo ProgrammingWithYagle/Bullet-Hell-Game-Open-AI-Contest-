@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-09T00:53:28.726Z",
+  "firstHelperFailed": true,
+  "partialWriteObserved": [
+    "tests/heavy-traverse-presentation.test.ts copied before the exact-source replacement assertion"
+  ],
+  "notWritten": [
+    "displaced-post beforeMove change",
+    "three appended Game tests"
+  ],
+  "sourceReplacementReason": "Prettier kept the original condition on one line; the helper expected a multiline fragment. Exact occurrence guard stopped it.",
+  "firstTestRun": {
+    "pass": 12,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "poseTestReason": "The fixture submitted aim+PI outside validInput’s original [-PI,PI] range. Correct by normalizing only that test aim; do not change production input validation.",
+  "preservedFailureSources": [
+    "finish-source-integration.mjs",
+    "heavy-traverse-presentation.test.ts"
+  ]
+}

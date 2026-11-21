@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-10T02:29:14.113Z",
+  "baseSourceCommit": "18da7f9267710090ea9566fc49728d44c8f26dbe",
+  "protocol": 72,
+  "buildId": "2026.11.09-heavy-clutch-handling",
+  "registeredTechniques": 63,
+  "expectedTests": 2149,
+  "changedSourcePaths": [
+    "tests/helpers/heavy-clutch-handling-flow.ts",
+    "tests/heavy-clutch-handling-round-proof.test.ts"
+  ],
+  "originalHelperSha256": "a1844dc6ca8442923fa52d6db3df478e8352f6bfd093f01ac161360a3bc2ebe2",
+  "correctedHelperBeforeFormattingSha256": "20bba96f303e83df55bb36469873de7a194450fa78cd894c56758934452601d1",
+  "originalNativeReviewFailures": [
+    {
+      "audience": "testing",
+      "invocationsExecuted": 42,
+      "casesExecuted": 104,
+      "passedCases": 103,
+      "failedCases": 1,
+      "remainingUnexecutedCases": 2,
+      "sourceCommit": "18da7f9267710090ea9566fc49728d44c8f26dbe",
+      "partialReceipt": "reviews/heavy-clutch-handling-2026-11-09/native01-testing-partial.json"
+    },
+    {
+      "audience": "public",
+      "invocationsExecuted": 42,
+      "casesExecuted": 104,
+      "passedCases": 103,
+      "failedCases": 1,
+      "remainingUnexecutedCases": 2,
+      "sourceCommit": "18da7f9267710090ea9566fc49728d44c8f26dbe",
+      "partialReceipt": "reviews/heavy-clutch-handling-2026-11-09/native01-public-partial.json"
+    }
+  ],
+  "reproducedIronRainRoundToProjectileRatio": [
+    1,
+    2
+  ],
+  "correctedRegressionBeforeAdmission": {
+    "pass": 2,
+    "fail": 0,
+    "allThreeCarriagesAndDelayedDelivery": true
+  },
+  "newRegressionCasesAfterSeparatingCarriages": 4,
+  "originalSixSecondWaitAndGameplayDeadlinesUnchanged": true,
+  "gameplayAndContentChanges": false,
+  "naturalReplayExecutionProvenanceUnchanged": true,
+  "sourceBearingProgressRegenerated": false,
+  "previousFrozenRootsPreserved": true,
+  "privateSQLiteUploaded": false,
+  "processCleanupPerformed": false,
+  "goalContinues": true
+}

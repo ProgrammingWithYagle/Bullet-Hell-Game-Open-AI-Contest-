@@ -1,0 +1,62 @@
+✖ Real peers retain owned course/brake state, show a late observer the same state and freeze it on host pause (7427.5189ms)
+✖ Actual public optimized Solo worker turns and brakes an owned dodge without replaying paused input (701.2972ms)
+✖ Actual testing optimized Solo worker turns and brakes an owned dodge without replaying paused input (715.8749ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9986.7384
+
+✖ failing tests:
+
+test at tests\foundation-network.test.ts:1:537
+✖ Real peers retain owned course/brake state, show a late observer the same state and freeze it on host pause (7427.5189ms)
+  AssertionError [ERR_ASSERTION]: replicated turn
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\foundation-network.test.ts:7:94)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\foundation-network.test.ts:19:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\foundation-worker.test.ts:1:832
+✖ Actual public optimized Solo worker turns and brakes an owned dodge without replaying paused input (701.2972ms)
+  AssertionError [ERR_ASSERTION]: The paused release/movement never reached the game
+  
+  false !== true
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\foundation-worker.test.ts:26:227)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\foundation-worker.test.ts:1:832
+✖ Actual testing optimized Solo worker turns and brakes an owned dodge without replaying paused input (715.8749ms)
+  AssertionError [ERR_ASSERTION]: The paused release/movement never reached the game
+  
+  false !== true
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\foundation-worker.test.ts:26:227)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

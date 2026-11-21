@@ -1,0 +1,88 @@
+✔ issued65profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (5.0853ms)
+✔ issued65records retain exact historical identity while wrong editions and verified claims remain excluded (0.3717ms)
+✔ Prepared Withdrawal is an actual27earned6SP one-capstone operation after Field Rest (5.0741ms)
+✔ both empty positions settle independently, retain their original clocks and create no ammunition, recovery, cover or shield (28.0574ms)
+✔ a nearer B retains issued recall behavior instead of granting a second site (7.9867ms)
+✔ B with two sites recalls the whole plan and spends no round/recovery (11.9405ms)
+✔ only an actual separate technique1 release arms the other original position (16.0212ms)
+✔ only an actual separate technique2 release arms the other original position (14.177ms)
+✔ actual walking back and one paid return extends spent C recovery, then requires another manual release with its real firing origin (18.4019ms)
+✔ second empty setup must finish before first claim; a later completion cannot retroactively earn a pair (8.6303ms)
+✔ ordinary offsite C uses its original settling and cannot earn a return from an unclaimed pair (10.3172ms)
+✔ an unreleased first paid opportunity expires without earning or refreshing the other site (12.6007ms)
+✔ first paid primary cancellation earns no fallback and never refunds its round/recovery (8.9257ms)
+✔ first paid damage cancellation earns no fallback and never refunds its round/recovery (11.5616ms)
+✔ first paid reload cancellation earns no fallback and never refunds its round/recovery (8.4781ms)
+✔ first paid dodge cancellation earns no fallback and never refunds its round/recovery (8.4181ms)
+✔ first paid e cancellation earns no fallback and never refunds its round/recovery (8.7784ms)
+✖ first paid ultimate cancellation earns no fallback and never refunds its round/recovery (10.8533ms)
+✔ Clear on first claim returns the one actual reserved round, consumes R and earns no fallback (7.651ms)
+✔ Clear on the actual paid return keeps the extended recovery debt and never restores a site or right (9.2716ms)
+✔ Carry moves the paid return only with full new settling inside its original paid deadline (8.6975ms)
+✔ armed return empty rejection keeps its original finite site/right and spends nothing (9.7538ms)
+✔ armed return pool rejection keeps its original finite site/right and spends nothing (14.7801ms)
+✔ armed return reload rejection keeps its original finite site/right and spends nothing (9.4261ms)
+✔ armed return channel rejection keeps its original finite site/right and spends nothing (8.5682ms)
+✔ armed return overdrive rejection keeps its original finite site/right and spends nothing (9.5962ms)
+✔ a failed first manual emission retains its paid opportunity but cannot arm before an actual accepted shot (13.1271ms)
+✔ later damage or ordinary primary does not erase an already earned settled return position (8.3902ms)
+✔ armed B recalls instead of planting another partner, preventing a recursive plan chain (7.0443ms)
+✔ a spent return cannot arm another, and genuinely new sites still require normally available C (12.1579ms)
+✔ expiry removes the old return right without re-timing its site or shooting automatically (23.1782ms)
+✔ capstone loss keeps one issued base Field Rest but cancels paid during-recovery preparation without refund (18.4889ms)
+✔ capstone loss from an unspent pair drops only the extra point and keeps the original base point exact (5.7207ms)
+✔ rest loss removes actual positions/unfinished rights while retaining rostered spent recovery (8.8616ms)
+✔ weapon loss removes actual positions/unfinished rights while retaining rostered spent recovery (6.6147ms)
+✔ disconnect loss removes actual positions/unfinished rights while retaining rostered spent recovery (6.797ms)
+✔ shared empty positions expose only geometry/finite setup clocks, not pending/payment/return proof (7.7882ms)
+✖ the issued three-shot Breach Cadence commitment finishes before a fresh empty setup can start (4.2904ms)
+✔ full legal route budgets remain15/17SP and leave purposeful General alternatives within27SP (4.5728ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 37
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1195.3636
+
+✖ failing tests:
+
+test at tests\soldier-sniper-withdrawal.test.ts:1:8622
+✖ first paid ultimate cancellation earns no fallback and never refunds its round/recovery (10.8533ms)
+  AssertionError [ERR_ASSERTION]: ordinary primary/E may spend their issued ammunition, but cancelled C never refunds
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-withdrawal.test.ts:19:616)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper-withdrawal.test.ts:1:15992
+✖ the issued three-shot Breach Cadence commitment finishes before a fresh empty setup can start (4.2904ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-withdrawal.test.ts:33:331)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

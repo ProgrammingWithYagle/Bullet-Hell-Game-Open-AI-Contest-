@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-31T22:10:17.902Z",
+  "tests": 1010,
+  "failures": 0,
+  "buildId": "2026.10.31-general-sp-sync",
+  "protocol": 45,
+  "contentRevision": "fd77a95b869f368f49ce988f613db276385c45843e0152c69c3c67e13683a97b",
+  "runtimeSourceSha256": "f37665db93783b0816f3ef37ecdb1f99a468b16719f2d27a51ea4b252dbef78a",
+  "sourceSnapshotSha256": "6221f08dc7ba333d72171bd87d553541418e9ebe9082522139b68171ffc5e6f5",
+  "checks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 3215
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 1709
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 66471
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 4330
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 666
+    }
+  ],
+  "fix": "The room serializer now uses Game.skillCost for both class and General purchases, matching the purchase authority.",
+  "evidence": "Actual owner/observer Raid peers receive3SP after Sprint+Double Dash and9SP after Sprint alone.",
+  "limits": [
+    "Existing frozen previews retain their original source; next cumulative review will include this fix.",
+    "No production deployment or human acceptance claim."
+  ]
+}

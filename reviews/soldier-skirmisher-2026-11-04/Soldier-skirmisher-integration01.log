@@ -1,0 +1,83 @@
+✔ Inspecting an acquired-action or ultimate evolution shows actual alternate keyboard and gamepad bindings in both map and reading view (608.9819ms)
+✔ The owned kit starts with three issued actions and reveals only purchased actions with the same evolved names used in combat (1132.4143ms)
+✔ Breach Casings explains both placement-triggered and remote firing controls instead of implying it is only action 1 (249.6809ms)
+✔ The optional control guide keeps its open state across route and reading changes without spending or showing unowned late actions (315.7687ms)
+✔ Soldier shows only the implemented authored fork, its General reference and real exclusion navigation (2.0012ms)
+✖ native map and reading view inspect real controls without buying and hide unimplemented routes (368.105ms)
+✔ owned Soldier controls reveal only the earned action and preserve fold state through reading redraw (807.7488ms)
+✖ normal starting SP purchases through native General reference and guarded specialization confirmation (234.2966ms)
+✔ HUD action is owned, has a finite earned window and never invents an action from inspection (25.1994ms)
+✖ original footwork audio is finite and bounded at common native rates (2.4876ms)
+✔ real peers receive owner-only follow-through and paused host exit clears it for a late observer (505.9191ms)
+✔ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (23.313ms)
+✔ unearned, expired and directionless follow-through requests spend no opening or recovery (8.6298ms)
+✔ a wall across the whole footprint rejects a step without spending its earned opening (2.3532ms)
+✔ bounds and a crossed lava circle reject the entire step before any recovery is spent (2.8449ms)
+✔ new obstruction, displacement and a real dodge cancel unfinished work without an arrival shot or refund (12.4543ms)
+✔ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (2.5082ms)
+✔ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (2.0722ms)
+✔ Rear Guard cannot intercept through cover or remove another player's shot (1.8426ms)
+✔ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (2.8011ms)
+✔ disconnect and host end immediately remove windows and motion; reconnect cannot resume it (4.1316ms)
+✔ the early fork uses the same authoritative exclusion for purchases and restored boundaries (0.884ms)
+✔ issued protocol54 preserves legitimate Builder ownership but cannot invent Soldier techniques (4.999ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 20
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4991.6549
+
+✖ failing tests:
+
+test at tests\soldier-skirmisher-integration.test.ts:1:3220
+✖ native map and reading view inspect real controls without buying and hide unimplemented routes (368.105ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.host.querySelector('img[src="passing.png"]'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher-integration.test.ts:27:5)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-skirmisher-integration.test.ts:1:5121
+✖ normal starting SP purchases through native General reference and guarded specialization confirmation (234.2966ms)
+  TypeError [Error]: Cannot read properties of null (reading 'getAttribute')
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher-integration.test.ts:38:149)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests\soldier-skirmisher-integration.test.ts:1:6963
+✖ original footwork audio is finite and bounded at common native rates (2.4876ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + -0
+  - 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher-integration.test.ts:51:218)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -0,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

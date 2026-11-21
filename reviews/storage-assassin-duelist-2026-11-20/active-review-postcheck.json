@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-21T18:07:38.4586184Z",
+  "stage": "after",
+  "currentScope": "reviews/assassin-duelist-2026-11-20",
+  "rollbackScope": "reviews/mage-volatile-spellwork-2026-11-20",
+  "rollbackSha256": "50928501f3c1a0a8de36ba2d2e4f87d4c7f31f996795a2e45d2c2de4312be1be",
+  "previews": [
+    {
+      "scope": "reviews/assassin-duelist-2026-11-20",
+      "audience": "testing",
+      "source": "cc72b0044650d7980a306c478bc285caa8f36384",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 41552,
+          "port": 5424,
+          "processUtc": "2026-11-21T17:35:16.0368950Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-assassin-duelist-2026-11-20-testing-cc72b00 --host 127.0.0.1 --port 5424 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 41804,
+          "port": 2800,
+          "processUtc": "2026-11-21T17:35:16.0202100Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-assassin-duelist-2026-11-20-cc72b00.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T17:35:16.53Z",
+        "uptimeSeconds": 1934.9688011,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 90,
+        "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/assassin-duelist-2026-11-20/processes-testing.json"
+    },
+    {
+      "scope": "reviews/assassin-duelist-2026-11-20",
+      "audience": "public",
+      "source": "cc72b0044650d7980a306c478bc285caa8f36384",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 15760,
+          "port": 5425,
+          "processUtc": "2026-11-21T17:35:15.4243670Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-assassin-duelist-2026-11-20-public-cc72b00 --host 127.0.0.1 --port 5425 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 14456,
+          "port": 2801,
+          "processUtc": "2026-11-21T17:35:15.4092880Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-assassin-duelist-2026-11-20-cc72b00.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T17:35:15.948Z",
+        "uptimeSeconds": 1938.1687732,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 90,
+        "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/assassin-duelist-2026-11-20/processes-public.json"
+    },
+    {
+      "scope": "reviews/mage-volatile-spellwork-2026-11-20",
+      "audience": "testing",
+      "source": "27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5422,
+          "originallyRecordedPid": 17824,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2798,
+          "originallyRecordedPid": 37900,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/mage-volatile-spellwork-2026-11-20/processes-resumed-testing.json"
+    },
+    {
+      "scope": "reviews/mage-volatile-spellwork-2026-11-20",
+      "audience": "public",
+      "source": "27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5423,
+          "originallyRecordedPid": 39948,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2799,
+          "originallyRecordedPid": 26384,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/mage-volatile-spellwork-2026-11-20/processes-resumed-public.json"
+    }
+  ]
+}

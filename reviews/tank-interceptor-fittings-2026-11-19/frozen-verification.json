@@ -1,0 +1,304 @@
+{
+  "passed": true,
+  "sourceCommit": "6c811bfa5e6ca3c5fe92cafaa27f3ff2b7866850",
+  "protocol": 82,
+  "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49",
+  "checkedAt": "2026-11-19T20:08:06.062Z",
+  "driverSha256": "3fe566f985cdce39e60489b2a29092e1d7aa60549ec51e6bfd9e16f918f983e7",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "6c811bfa5e6ca3c5fe92cafaa27f3ff2b7866850",
+      "protocol": 82,
+      "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49",
+      "url": "http://127.0.0.1:5408/",
+      "endpoint": "http://127.0.0.1:2784",
+      "backendStartedAt": "2026-11-19T19:53:49.400Z",
+      "files": 2080,
+      "manifestSha256": "6ed5d9e3412d6944c3df6a320d6c5a3d4c55c4b74567d97c4e6394f6dcff0f4d",
+      "backendSha256": "ddb76b3c4b722936c9c6f79481f8c8deead69d7030c360343d9c8f211cf9b664",
+      "httpPath": "reviews/tank-interceptor-fittings-2026-11-19/smoke-testing.json",
+      "httpSha256": "6a2b0d5e9882f5c446c3329a1cd46f5d6ac5d238410a83b96aa3b92f615f6589",
+      "emblems": [
+        {
+          "path": "assets/tank-interceptor-1-CulW2ez_.png",
+          "bytes": 368099,
+          "sha256": "c779c299c201960838228275541e9cacaceb9a5ea03a025743df33a362429ce1"
+        },
+        {
+          "path": "assets/tank-interceptor-crossing-1-DUAbOe8k.png",
+          "bytes": 314369,
+          "sha256": "d8ce2604050898f5b7a677868210b087da56069ff76bc75e3beedc2b2055a975"
+        },
+        {
+          "path": "assets/tank-interceptor-standfast-1-DOI8EcEb.png",
+          "bytes": 386822,
+          "sha256": "b795e968e40552426ede7f4b39f1eb27d2ded43e014dd735ddff1b81bf507dcd"
+        },
+        {
+          "path": "assets/tank-interceptor-return-crossing-1-BFOV5I5k.png",
+          "bytes": 547425,
+          "sha256": "921ad95dcd249c41e2efc33204efb213d3db2156a130ecc0491e94192ea5e864"
+        },
+        {
+          "path": "assets/tank-interceptor-offset-brace-1-Bvx-j4p-.png",
+          "bytes": 396848,
+          "sha256": "58152b595e2379a8cace52ac5b6e09ffdcd730c8437770cac27315ff683f010c"
+        }
+      ],
+      "caseCount": 11,
+      "cases": [
+        {
+          "choice": "forward",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-forward.log",
+          "logSha256": "3f9a474d7c308ef4c77cc71735c45b56eea6a07657f430d5c310edd00562c974",
+          "result": "testing-worker-forward.json",
+          "resultSha256": "06b98b6fe37aa8a91361e97b48dde954450cb255d64d1bd29fba7564369913d1"
+        },
+        {
+          "choice": "crossing",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-crossing.log",
+          "logSha256": "1f7df61739440792fb02586395109eba3e6122424d7a1e6e6aabed2ab676b36d",
+          "result": "testing-worker-crossing.json",
+          "resultSha256": "022d1c1d2bddd48f2ed9fdf55365e68153ef34d25b034547e0f08323ae8ccf17"
+        },
+        {
+          "choice": "standfast",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-standfast.log",
+          "logSha256": "4e9cf4bbb808463e5b5e7245f0d63684ee0fad46c96e5318fc85e44c65e3ac62",
+          "result": "testing-worker-standfast.json",
+          "resultSha256": "ce09078c818c8529f2d309bd3319423ba3853b11f197f3b44934fbbbb2d2d6ac"
+        },
+        {
+          "choice": "returning",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-returning.log",
+          "logSha256": "29b36f098f5beb0a4dc43a40323611f0935744b16d8f6d6d0e270d41e6aae7a0",
+          "result": "testing-worker-returning.json",
+          "resultSha256": "61e21dc00e0ca832f09f3b8da97f66adf60ff40ea27a9f0ac944240c609430f4"
+        },
+        {
+          "choice": "offset",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-offset.log",
+          "logSha256": "c5b062315c6457b5944c3bbb835d5dc1005a8dbdc3fd76af77f4727f84108b9a",
+          "result": "testing-worker-offset.json",
+          "resultSha256": "7c6dc73be3d769e3919bac36fb1cae1ee2dc5ed1b4b9fd6ab74dae35fca3abd1"
+        },
+        {
+          "choice": "forward",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-forward.log",
+          "logSha256": "c0067a84a47e4950887155862b57f7578b7ce92e7219e7fcbb963185ce239968",
+          "result": "testing-peer-forward.json",
+          "resultSha256": "367ff90ee9162b946b6aec41fb14779f5512e25457ce6680f2811fdc4cef701a"
+        },
+        {
+          "choice": "crossing",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-crossing.log",
+          "logSha256": "5c60902012523e15112c4824d7f06bb41402b6fae7cd089a9e415101b006c768",
+          "result": "testing-peer-crossing.json",
+          "resultSha256": "d4ec0cc3df1d01d4fae70f1613893c79c4663bfffa71f182f6101ea8f856886b"
+        },
+        {
+          "choice": "standfast",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-standfast.log",
+          "logSha256": "74c84488be07035182635d2569f06dd8044efaa21a22a2fe0596ced6b24a8e36",
+          "result": "testing-peer-standfast.json",
+          "resultSha256": "14a1aef2b7f56c7f2b98b018e088e652b575ed0a09427981c1cadd0874dd429d"
+        },
+        {
+          "choice": "returning",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-returning.log",
+          "logSha256": "fee7fc01170d2f8b8c2ffead0e5fd2f5a10007d667b409240b1a683941918eef",
+          "result": "testing-peer-returning.json",
+          "resultSha256": "acbbe22b60b6a42b899d8c32c9922f5c069f15dcc58a7a9b85089a833e5a0c0b"
+        },
+        {
+          "choice": "offset",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-offset.log",
+          "logSha256": "a02bd21ded10216bf76161935ecdde03efc1f7905979141e57a85013b6c67bc0",
+          "result": "testing-peer-offset.json",
+          "resultSha256": "9c15231a3ebc0c15f360f7420677f0a12c3f604d00671aa630089cb5f6c369c2"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "6c811bfa5e6ca3c5fe92cafaa27f3ff2b7866850",
+      "protocol": 82,
+      "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49",
+      "url": "http://127.0.0.1:5409/",
+      "endpoint": "http://127.0.0.1:2785",
+      "backendStartedAt": "2026-11-19T19:53:49.407Z",
+      "files": 2080,
+      "manifestSha256": "b1e4c6af3c72208a0bffb1459d1d2d0a2214cd26b80ddb04ef0a099252f0585b",
+      "backendSha256": "ddb76b3c4b722936c9c6f79481f8c8deead69d7030c360343d9c8f211cf9b664",
+      "httpPath": "reviews/tank-interceptor-fittings-2026-11-19/smoke-public.json",
+      "httpSha256": "da696b4b094d1e584a1e4b0dfae57f140fbe78abf6251353c345b9e7a67cd93f",
+      "emblems": [
+        {
+          "path": "assets/tank-interceptor-1-CulW2ez_.png",
+          "bytes": 368099,
+          "sha256": "c779c299c201960838228275541e9cacaceb9a5ea03a025743df33a362429ce1"
+        },
+        {
+          "path": "assets/tank-interceptor-crossing-1-DUAbOe8k.png",
+          "bytes": 314369,
+          "sha256": "d8ce2604050898f5b7a677868210b087da56069ff76bc75e3beedc2b2055a975"
+        },
+        {
+          "path": "assets/tank-interceptor-standfast-1-DOI8EcEb.png",
+          "bytes": 386822,
+          "sha256": "b795e968e40552426ede7f4b39f1eb27d2ded43e014dd735ddff1b81bf507dcd"
+        },
+        {
+          "path": "assets/tank-interceptor-return-crossing-1-BFOV5I5k.png",
+          "bytes": 547425,
+          "sha256": "921ad95dcd249c41e2efc33204efb213d3db2156a130ecc0491e94192ea5e864"
+        },
+        {
+          "path": "assets/tank-interceptor-offset-brace-1-Bvx-j4p-.png",
+          "bytes": 396848,
+          "sha256": "58152b595e2379a8cace52ac5b6e09ffdcd730c8437770cac27315ff683f010c"
+        }
+      ],
+      "caseCount": 11,
+      "cases": [
+        {
+          "choice": "forward",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-forward.log",
+          "logSha256": "0ae78c71ba1670a7cc44436fb0d499d6024e12c092de37bfc32e05577aa55de1",
+          "result": "public-worker-forward.json",
+          "resultSha256": "818a6a057a4b714cc9173fdfa2a4d1a4362f31fbc444736755bdb8872ecc434e"
+        },
+        {
+          "choice": "crossing",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-crossing.log",
+          "logSha256": "8b79770e7bddbbcaab30ef32e197ea8ac5929a88b0d2fc026f331a7f62609240",
+          "result": "public-worker-crossing.json",
+          "resultSha256": "e08d00fae4e769c8405a92525a0fdc391dcfd6d6a5e68401d9959f87835ee0d8"
+        },
+        {
+          "choice": "standfast",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-standfast.log",
+          "logSha256": "9d9c605166eee4597e28f8a2d91253ac8015e5f5171e4ae76a9c9ca01ee22d95",
+          "result": "public-worker-standfast.json",
+          "resultSha256": "68971b02d3e7ae557fa81fb3a6fdcdbadede551d55690146013ad18190529c58"
+        },
+        {
+          "choice": "returning",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-returning.log",
+          "logSha256": "22ebbe63ec337295325e6e17cb58697760c957d29c74e92fac82461688e6b3d4",
+          "result": "public-worker-returning.json",
+          "resultSha256": "2fb3d0e8b1acb0f820155dc8de04cff8ce5b410617e254392576ffb9d20a27ee"
+        },
+        {
+          "choice": "offset",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-offset.log",
+          "logSha256": "0ab5082398a63b29b6a7726d92452c087708368b2fd2c674120333aeaa92b3d9",
+          "result": "public-worker-offset.json",
+          "resultSha256": "1e0838c5fd1e2456ff703d4f3251fa172eea7147d7687ea8555fcf1eee89e586"
+        },
+        {
+          "choice": "forward",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-forward.log",
+          "logSha256": "4b7613c88f5d0bcb3bf7ca292b854778f4c390005294e1d8d644b7e253cb7cb9",
+          "result": "public-peer-forward.json",
+          "resultSha256": "804729219cf9b39ae96272ab3f0a957197176dfbac795dad04f4a05812ad360d"
+        },
+        {
+          "choice": "crossing",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-crossing.log",
+          "logSha256": "fff54bf634d83aec0419e7ef6c7d81c9f126baf76a2fd3db0a159b22281cfe1f",
+          "result": "public-peer-crossing.json",
+          "resultSha256": "737a9b61b7b14ff472032410cd6e355d45790924a5c4994f8cbeff1f9b00a10f"
+        },
+        {
+          "choice": "standfast",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-standfast.log",
+          "logSha256": "7bdb99807f2e9d1a78aad5bbadd062844399efb6edc57abf4e5f2b5a4c543d85",
+          "result": "public-peer-standfast.json",
+          "resultSha256": "adee69b0c3e74d0e028e973e5181519843b77a88ca40c53e390fd3914032c438"
+        },
+        {
+          "choice": "returning",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-returning.log",
+          "logSha256": "060b206f321c3591675c0e7899a1e9222d0fbcec2c256511ce7fe28e6ce967f7",
+          "result": "public-peer-returning.json",
+          "resultSha256": "16b1e0bdacfabb34aa6bab967eb3454036e755c88527cbee255992903ddc2049"
+        },
+        {
+          "choice": "offset",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-offset.log",
+          "logSha256": "1b802eae0ddb1e1fc38d6f5893560808127fa19f20e0eecc2e2629bd4b0604d4",
+          "result": "public-peer-offset.json",
+          "resultSha256": "725b9f0b64ee42b045736dcd94ad51b0b74f5980dea55da179469f893cd42a68"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

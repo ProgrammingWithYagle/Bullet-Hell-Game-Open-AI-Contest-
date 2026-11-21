@@ -1,0 +1,27 @@
+import fs from'node:fs';import assert from'node:assert/strict';
+const stage=new URL('./',import.meta.url),old=new URL('../heavy-clutch-handling-rounds-stage/',stage),oldScope='reviews/heavy-clutch-handling-rounds-2026-11-09',scope='reviews/heavy-clutch-handling-movement-2026-11-09';
+const files=['prepare-source01.mjs','commit-source01.mjs','push-source01.mjs','freeze-reviews.mjs','launch-reviews.ps1','await-review-readiness.mjs','capture-identities.ps1','check-ci.mjs','native-probe.mts','run-reviews.mjs','verify-frozen.mjs','earned-menu-flow.mts',...fs.readdirSync(old).filter(n=>/^retained-.*\.mts$/.test(n))];
+for(const name of files){let s=fs.readFileSync(new URL(name,old),'utf8');
+ s=s.replaceAll(oldScope,scope).replaceAll('Heavy-clutch-handling-rounds-','Heavy-clutch-handling-movement-').replaceAll('output/heavy-clutch-handling-rounds-','output/heavy-clutch-handling-movement-').replaceAll('2149','2151').replaceAll('5376','5378').replaceAll('2752','2754').replaceAll('5377','5379').replaceAll('2753','2755').replaceAll('18da7f9267710090ea9566fc49728d44c8f26dbe','d2386943ce6d2fbf077ee1a2aa40a55b8bc7f8e2');
+ if(['prepare-source01.mjs','commit-source01.mjs'].includes(name))s=s.replace("oldScope = 'reviews/heavy-clutch-handling-2026-11-09'","oldScope = '"+oldScope+"'");
+ if(name==='prepare-source01.mjs'){
+  s=s.replace('sourceExecutionCommit: base','sourceExecutionCommit: read(oldScope + "/natural-replay-provenance.json").sourceExecutionCommit').replace("originalReport: oldScope + '/natural-replay-summary.json'","originalReport: read(oldScope + '/natural-replay-provenance.json').originalReport").replace('newRegressionCases: 4','newRegressionCases: 2');
+  const line=s.split('\n').find(l=>l.startsWith("fs.appendFileSync('handoff/NEXT_CHAT.md'"));assert(line);
+  const paragraph='\n\n### Active movement-proof correction\n\nSource d2386943 passes2,149/all7and both exact-source CI runs. Its public5377/2753review passes all106cases; testing5376/2752preserves105passes/one final OpenFloatingmovement-distance assertion failure. The original failed debuff snapshot is not retained. Controlled existing slow reproduces4.23pxbefore the early pause, below the unchanged5pxrequirement. The corrected helper chooses current body-radius9/C-radius4cover and waits for observed positive forward progress while the feed remains lifted, before firing primary. It keeps the final movement assertion, original6-secondwait,31-tickwindow and allotherclocks. Two new actual-slow/recoil cases and the four existing round/debt regressions pass. Current full gate passes2,151/all7with unchanged runtime9703aee1/contentcc0f9202/protocol72/build2026.11.09-heavy-clutch-handling. No source-bearing progress, gameplay, deadline or timeout change. Natural/replay72reports retain original18da7f9execution provenance and identical runtime. New source commit/CI and fresh5378/2754and5379/2755reviews remain pending. Preserve61registered predecessor roots plus the failed unregisteredSeamroot, privateSQLite and112prior identities. Development continues; only the user decides completion.\n';
+  s=s.replace(line,"fs.appendFileSync('handoff/NEXT_CHAT.md',"+JSON.stringify(paragraph)+');');
+ }
+ if(name==='commit-source01.mjs'){
+  s=s.replaceAll('tests/heavy-clutch-handling-round-proof.test.ts','tests/heavy-clutch-handling-slow-walk.test.ts').replace('Correct Open Feed proof for actual rounds and Iron Rain pellets','Observe actual lifted walking through slow and paid recoil');
+  const at="git('commit', '-m',";assert(s.includes(at));
+  s=s.replace(at,"for(const f of logs)assert.equal(sha(execFileSync('git',['-c','core.bare=false','show',':'+f],{maxBuffer:32*1024*1024})),sha(fs.readFileSync(f)),f);\n"+at);
+ }
+ if(name==='capture-identities.ps1')s=s.replace('reviews/heavy-clutch-handling-2026-11-09/process-identities.json',oldScope+'/process-identities.json').replaceAll('108','112').replaceAll("-notmatch 'heavy-clutch-handling-rounds-2026-11-09'","-notmatch 'heavy-clutch-handling-movement-2026-11-09'");
+ if(name==='freeze-reviews.mjs')s=s.replace('registeredPredecessorRoots:59','registeredPredecessorRoots:61').replace('priorRecordedProcessIdentities:108','priorRecordedProcessIdentities:112');
+ if(name==='verify-frozen.mjs'){
+  const last="...['testing','public'].map(audience=>({scope:'reviews/heavy-clutch-handling-2026-11-09',audience}))]";assert(s.includes(last));s=s.replace(last,"...['testing','public'].map(audience=>({scope:'reviews/heavy-clutch-handling-2026-11-09',audience})),...['testing','public'].map(audience=>({scope:'"+oldScope+"',audience}))]");
+  s=s.replaceAll('preserved.length,59','preserved.length,61').replaceAll('All59older','All61older').replaceAll('olderRegisteredRootsPreserved:59','olderRegisteredRootsPreserved:61').replaceAll('olderRecordedCount===108','olderRecordedCount===112');
+  const at="assert.deepEqual(r.actualEarnedSequence,[3,9,15]);";assert(s.includes(at));s=s.replace(at,"const w=r.actualLiftedManualWalkingProof;assert(w&&w.feedLifted&&w.minimumRequired===5&&w.forwardProgress>5&&w.tick<w.originalUntil);assert(Math.abs((w.to.x-w.from.x)*w.direction.x+(w.to.y-w.from.y)*w.direction.y-w.forwardProgress)<1e-6);"+at);
+ }
+ assert(!fs.existsSync(new URL(name,stage)),name);fs.writeFileSync(new URL(name,stage),s.trimEnd()+'\n',{flag:'wx'});
+}
+console.log(JSON.stringify({prepared:files.length,tests:2151,priorRegisteredRoots:61,priorRecordedIdentities:112,sourceRuntimeUnchanged:true,noCanonicalWrites:true}));

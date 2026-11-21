@@ -1,0 +1,50 @@
+✖ actual music changes from equipment through all66boss themes and back with hold API missing (107.7283ms)
+✔ actual music changes from equipment through all66boss themes and back with hold API supported (90.3373ms)
+✖ actual music changes from equipment through all66boss themes and back with hold API throws (26.0134ms)
+✔ leaving during decode cancels the pending theme instead of starting music on the menu (20.6812ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 839.1344
+
+✖ failing tests:
+
+test at tests\audio-browser.test.ts:1:227
+✖ actual music changes from equipment through all66boss themes and back with hold API missing (107.7283ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /slow-wick/. Input:
+  
+  '../../assets/production/audio/delivery/city-wake.mp3'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\audio-browser.test.ts:13:46)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '../../assets/production/audio/delivery/city-wake.mp3',
+    expected: /slow-wick/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\audio-browser.test.ts:1:227
+✖ actual music changes from equipment through all66boss themes and back with hold API throws (26.0134ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /slow-wick/. Input:
+  
+  '../../assets/production/audio/delivery/city-wake.mp3'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\audio-browser.test.ts:13:46)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '../../assets/production/audio/delivery/city-wake.mp3',
+    expected: /slow-wick/,
+    operator: 'match',
+    diff: 'simple'
+  }

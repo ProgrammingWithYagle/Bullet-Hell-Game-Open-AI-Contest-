@@ -1,0 +1,4713 @@
+{
+  "startedAt": "2026-10-30T22:22:57.120Z",
+  "finishedAt": "2026-10-30T22:23:58.288Z",
+  "passed": false,
+  "freeze": {
+    "createdAt": "2026-10-30T22:18:42.390Z",
+    "reviewedHead": "496f1a148373be1a0618deeecf3de451732657f7",
+    "runtimeSourceCommit": null,
+    "candidateSourceBoundByFingerprints": true,
+    "buildId": "2026.10.30-shared-network",
+    "protocol": 43,
+    "runtimeSourceSha256": "304201daf7b7fa97e8cbaba26754b24fc7226b89b7915206ac272227c83a2c37",
+    "sourceSnapshotSha256": "515bddae39d47550300e9ed49ea472c2059f926d554959cfee9473c07f891e30",
+    "additionalSourceBinding": {
+      "sha256": "7a34e42dec89d518de89445f6c8a3620c7d158be6ddc87fba48c5b25fa72287d",
+      "files": 178,
+      "bytes": 64962792
+    },
+    "bundles": [
+      {
+        "name": "server.mjs",
+        "bytes": 2890405,
+        "sha256": "61a857561eb6a4fac77dce059b2df9774760cee94d7b2a4c2c9d95f196dfea9a"
+      },
+      {
+        "name": "probe.mjs",
+        "bytes": 2385378,
+        "sha256": "bcba1fff3bdde886003933a43a4da89864da0787f1ddbc7b72e18723607bcdea"
+      }
+    ],
+    "harnessSources": [
+      {
+        "path": "reviews/shared-network-2026-10-30/freeze-progression.mjs",
+        "sha256": "e683ac02f09a9c0d6a041d3cefb3769b926cb6b8391774c94880ce170fb5a4bc"
+      },
+      {
+        "path": "reviews/shared-network-2026-10-30/server.mts",
+        "sha256": "94ed71ef97e8dc57d0e6dd890e3f4882489d81675d601df2b46f25db5733b363"
+      },
+      {
+        "path": "reviews/shared-network-2026-10-30/probe.mts",
+        "sha256": "6f14020935ff38f714e77f84c857339f6460b359b3ab1456bcca14c20f3d5181"
+      }
+    ],
+    "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\shared-network-2026-10-30\\frozen-r01",
+    "limits": [
+      "Pre-commit candidate bound to complete local gate fingerprints. Final publication resolves the source commit separately.",
+      "External pinned project node_modules required; IPC-only QA authority. No production entry point or preview changed."
+    ]
+  },
+  "cases": [
+    {
+      "size": 50,
+      "mode": "endless",
+      "visibility": "public",
+      "difficulty": "normal",
+      "serverPid": 61608,
+      "sourceCommit": null,
+      "reviewedHead": "496f1a148373be1a0618deeecf3de451732657f7",
+      "passed": false,
+      "steps": [
+        {
+          "stage": "waiting room",
+          "connected": 50,
+          "allSevenClasses": true,
+          "fullRoomRejectedOrQueued": true,
+          "privateListingCorrect": true
+        },
+        {
+          "stage": "purchases",
+          "mixedEarnedBuilds": true,
+          "duplicateSuccessAcknowledgedTwice": true,
+          "duplicateChargedOnce": true
+        }
+      ],
+      "encounters": [],
+      "syntheticQAClears": true,
+      "fixtureProtection": true,
+      "phaseDeadlinesAccelerated": true,
+      "renderedClients": 0,
+      "network": "loopback",
+      "error": "MatchMakeError\n    at SessionClient.createMatchMakeRequest (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+sdk@0.18.6_@colyseus+core@0.18.21_typescript@7.0.2/node_modules/@colyseus/sdk/build/Client.mjs:249:23)\n    at async SessionClient.joinById (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/node_modules/.pnpm/@colyseus+sdk@0.18.6_@colyseus+core@0.18.21_typescript@7.0.2/node_modules/@colyseus/sdk/build/Client.mjs:124:16)\n    at async Session.connect (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/shared-network-2026-10-30/frozen-r01/probe.mjs:38312:23)\n    at async run (file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/shared-network-2026-10-30/frozen-r01/probe.mjs:83971:9)\n    at async file:///C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI%20Multiplayer%20Game%20Contest%20(Bullet%20Hell)/output/shared-network-2026-10-30/frozen-r01/probe.mjs:84209:40",
+      "failureSnapshot": {
+        "phase": "combat",
+        "tick": 1526,
+        "combatTick": 1390,
+        "phaseEnds": 0,
+        "encounter": 0,
+        "seed": 2307923383,
+        "owner": "MIFPGA_q5",
+        "paused": false,
+        "clients": 43,
+        "capacity": {
+          "reservedSlots": 49,
+          "instanceLimit": 50,
+          "rooms": 1,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        },
+        "arena": "ossuary-works",
+        "boss": {
+          "id": "ragpicker-kite",
+          "health": 57185.99999999999,
+          "maxHealth": 57185.99999999999,
+          "defeatedAt": 0
+        },
+        "mutations": [],
+        "mutationCards": [],
+        "contractCards": [],
+        "votes": [],
+        "players": [
+          {
+            "id": "ePtn5xaCD",
+            "name": "QA 日本語 0",
+            "classId": "soldier",
+            "status": "active",
+            "connected": false,
+            "expired": true,
+            "coins": 30,
+            "skills": [
+              "soldier-ballistics-1",
+              "soldier-ballistics-path-1-1"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 31,
+            "health": 110,
+            "shield": 16,
+            "x": 1440.9992585822577,
+            "y": 972.9731217732289,
+            "qAt": 487,
+            "eAt": 277
+          },
+          {
+            "id": "MIFPGA_q5",
+            "name": "QA हिन्दी 2",
+            "classId": "heavy",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-ordnance-path-2-1",
+              "heavy-ordnance-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 140,
+            "shield": 70,
+            "x": 1440.9997421364424,
+            "y": 874.000462187807,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "sRqQMKucM",
+            "name": "QA 한국어 3",
+            "classId": "tank",
+            "status": "active",
+            "connected": false,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-protection-1",
+              "tank-protection-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 36,
+            "health": 170,
+            "shield": 170,
+            "x": 1440.9997312726925,
+            "y": 874.0003395079332,
+            "qAt": 973,
+            "eAt": 293
+          },
+          {
+            "id": "3lCo158kI",
+            "name": "QA 日本語 4",
+            "classId": "mage",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-control-path-1-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 85,
+            "shield": 0,
+            "x": 1440.9999355560708,
+            "y": 874.0005001647395,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "RrRAW7jjJ",
+            "name": "QA العربية 5",
+            "classId": "engineer",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-constructs-path-2-1",
+              "engineer-constructs-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 105,
+            "shield": 0,
+            "x": 1438.985485944817,
+            "y": 874.000544493212,
+            "qAt": 530,
+            "eAt": 1854
+          },
+          {
+            "id": "igxliYKL6",
+            "name": "QA हिन्दी 6",
+            "classId": "assassin",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-evasion-1",
+              "assassin-evasion-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 112,
+            "shield": 0,
+            "x": 1267.2510884230455,
+            "y": 874.0006072579257,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "niJqaKpuV",
+            "name": "QA العربية 1",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-chemistry-path-1-1",
+              "medic-chemistry-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 100,
+            "shield": 0,
+            "x": 1440.999585230144,
+            "y": 874.000420873679,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "H0qCUuFku",
+            "name": "QA 日本語 8",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-recovery-path-2-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 105,
+            "shield": 0,
+            "x": 1287.248395303831,
+            "y": 874.0004243849165,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "Cwz8mCaXC",
+            "name": "QA 한국어 7",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-survival-path-1-1",
+              "soldier-survival-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 110,
+            "shield": 16,
+            "x": 1352.3072471207659,
+            "y": 874.0005177222777,
+            "qAt": 997,
+            "eAt": 1660
+          },
+          {
+            "id": "BskC0L3mg",
+            "name": "QA العربية 9",
+            "classId": "heavy",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-ordnance-1",
+              "heavy-ordnance-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 140,
+            "shield": 70,
+            "x": 1127.2381135291225,
+            "y": 874.0001947860528,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "BAu6YIjkO",
+            "name": "QA 日本語 12",
+            "classId": "engineer",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-constructs-1"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 105,
+            "shield": 0,
+            "x": 849.1665392878946,
+            "y": 874.0002278190437,
+            "qAt": 535,
+            "eAt": 1858
+          },
+          {
+            "id": "qTxo69VY9",
+            "name": "QA हिन्दी 10",
+            "classId": "tank",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-breaching-path-1-1",
+              "tank-breaching-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 170,
+            "shield": 170,
+            "x": 979.7783064443727,
+            "y": 874.000206418552,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "fyfufPwaS",
+            "name": "QA 한국어 11",
+            "classId": "mage",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-hexcraft-path-2-1",
+              "mage-hexcraft-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 85,
+            "shield": 0,
+            "x": 1013.003281803467,
+            "y": 874.0003433211401,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "WXM93LqBd",
+            "name": "QA हिन्दी 14",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-command-path-2-1",
+              "soldier-command-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 110,
+            "shield": 16,
+            "x": 657.2696056719346,
+            "y": 872.0169950918372,
+            "qAt": 981,
+            "eAt": 1651
+          },
+          {
+            "id": "K75N3Ig0e",
+            "name": "QA العربية 13",
+            "classId": "assassin",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-ambush-path-1-1",
+              "assassin-ambush-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 90,
+            "shield": 0,
+            "x": 592.752404053585,
+            "y": 674.8992028185701,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "lVlFmz_y5",
+            "name": "QA हिन्दी 18",
+            "classId": "mage",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-hexcraft-1",
+              "mage-hexcraft-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 85,
+            "shield": 0,
+            "x": 410.62991271519263,
+            "y": 991,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "nG9LKGnW-",
+            "name": "QA العربية 17",
+            "classId": "tank",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-bastion-path-2-1",
+              "tank-bastion-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 40,
+            "health": 181,
+            "shield": 181,
+            "x": 305.822002630138,
+            "y": 956.7646044357831,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "rDuX0mXIz",
+            "name": "QA 日本語 16",
+            "classId": "heavy",
+            "status": "active",
+            "connected": false,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-endurance-path-1-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 36,
+            "health": 140,
+            "shield": 70,
+            "x": 670.3406617351511,
+            "y": 894.3749666178437,
+            "qAt": 877,
+            "eAt": 548
+          },
+          {
+            "id": "G6DywHmBx",
+            "name": "QA 한국어 15",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-recovery-1",
+              "medic-recovery-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 122,
+            "shield": 0,
+            "x": 390.31669519267786,
+            "y": 878.2700371856256,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "8Yugz-FyB",
+            "name": "QA हिन्दी 22",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-triage-path-1-1",
+              "medic-triage-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 100,
+            "shield": 0,
+            "x": 551.3453170506962,
+            "y": 991,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "OYwRTQUnL",
+            "name": "QA 한국어 19",
+            "classId": "engineer",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-demolitions-path-1-1",
+              "engineer-demolitions-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 105,
+            "shield": 0,
+            "x": 353.6997313025608,
+            "y": 991,
+            "qAt": 548,
+            "eAt": 1870
+          },
+          {
+            "id": "OVWs1l_QI",
+            "name": "QA 日本語 24",
+            "classId": "tank",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-bastion-1"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 180,
+            "shield": 180,
+            "x": 660.6094113485642,
+            "y": 991,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "Q9zSx6wEn",
+            "name": "QA 日本語 20",
+            "classId": "assassin",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-precision-path-2-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 90,
+            "shield": 0,
+            "x": 254.3630701946218,
+            "y": 838.3370670741429,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "Y12jSA0ZC",
+            "name": "QA العربية 21",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-command-1",
+              "soldier-command-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 110,
+            "shield": 16,
+            "x": 440.935713476025,
+            "y": 991,
+            "qAt": 973,
+            "eAt": 1647
+          },
+          {
+            "id": "ETGEGNhqD",
+            "name": "QA 한국어 23",
+            "classId": "heavy",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-suppression-path-2-1",
+              "heavy-suppression-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 140,
+            "shield": 70,
+            "x": 676.5743443673174,
+            "y": 991,
+            "qAt": 865,
+            "eAt": 1912
+          },
+          {
+            "id": "S1n3MYKo2",
+            "name": "QA العربية 25",
+            "classId": "mage",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-warding-path-1-1",
+              "mage-warding-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 85,
+            "shield": 0,
+            "x": 611.1216831741978,
+            "y": 991,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "qFJ1asHZY",
+            "name": "QA 한국어 27",
+            "classId": "assassin",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-precision-1",
+              "assassin-precision-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 90,
+            "shield": 0,
+            "x": 741.5851120260562,
+            "y": 874.0176228385991,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "GMEeU3tti",
+            "name": "QA العربية 29",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-chemistry-path-2-1",
+              "medic-chemistry-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 100,
+            "shield": 0,
+            "x": 1440.999420285733,
+            "y": 991,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "lwL3lz2lw",
+            "name": "QA हिन्दी 26",
+            "classId": "engineer",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-repair-path-2-1",
+              "engineer-repair-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 116,
+            "shield": 0,
+            "x": 853.9551713441375,
+            "y": 991,
+            "qAt": 548,
+            "eAt": 1870
+          },
+          {
+            "id": "ZAACPbL3x",
+            "name": "QA 日本語 28",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-ballistics-path-1-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 110,
+            "shield": 16,
+            "x": 1157.6208632250932,
+            "y": 991,
+            "qAt": 997,
+            "eAt": 1660
+          },
+          {
+            "id": "GHpish711",
+            "name": "QA हिन्दी 30",
+            "classId": "heavy",
+            "status": "active",
+            "connected": false,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-suppression-1",
+              "heavy-suppression-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 36,
+            "health": 140,
+            "shield": 70,
+            "x": 1418.9087168620301,
+            "y": 991,
+            "qAt": 859,
+            "eAt": 521
+          },
+          {
+            "id": "a3D6O2v6v",
+            "name": "QA 한국어 31",
+            "classId": "tank",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-protection-path-1-1",
+              "tank-protection-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 170,
+            "shield": 170,
+            "x": 1440.999449616877,
+            "y": 991,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "nSBvwbtGW",
+            "name": "QA 日本語 32",
+            "classId": "mage",
+            "status": "active",
+            "connected": false,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-control-path-2-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 36,
+            "health": 85,
+            "shield": 0,
+            "x": 1440.9992114646443,
+            "y": 991,
+            "qAt": 872,
+            "eAt": 540
+          },
+          {
+            "id": "ddsKq8nfn",
+            "name": "QA 한국어 35",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-survival-path-2-1",
+              "soldier-survival-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 121,
+            "shield": 18,
+            "x": 1440.9993002784004,
+            "y": 923.7179631186071,
+            "qAt": 997,
+            "eAt": 1660
+          },
+          {
+            "id": "1au3004s7",
+            "name": "QA 日本語 36",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-chemistry-1"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 100,
+            "shield": 0,
+            "x": 1440.9993548214386,
+            "y": 874.000345868439,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "6HHAz9E5R",
+            "name": "QA العربية 33",
+            "classId": "engineer",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-repair-1",
+              "engineer-repair-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 127,
+            "shield": 0,
+            "x": 1440.999315009691,
+            "y": 990.749906063304,
+            "qAt": 548,
+            "eAt": 1870
+          },
+          {
+            "id": "k_O9SYOda",
+            "name": "QA हिन्दी 34",
+            "classId": "assassin",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-evasion-path-1-1",
+              "assassin-evasion-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 90,
+            "shield": 0,
+            "x": 1305.5795373664844,
+            "y": 874.0118565861459,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "lq04EDJl0",
+            "name": "QA العربية 37",
+            "classId": "heavy",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-ordnance-path-1-1",
+              "heavy-ordnance-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 140,
+            "shield": 70,
+            "x": 1440.9995832130817,
+            "y": 874.0003525775691,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "fED5Lq0KK",
+            "name": "QA 日本語 40",
+            "classId": "engineer",
+            "status": "active",
+            "connected": false,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-constructs-path-1-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 36,
+            "health": 105,
+            "shield": 0,
+            "x": 1440.9995974942165,
+            "y": 874.0003652923641,
+            "qAt": 548,
+            "eAt": 488
+          },
+          {
+            "id": "fORxil6Z2",
+            "name": "QA العربية 41",
+            "classId": "assassin",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-ambush-path-2-1",
+              "assassin-ambush-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 40,
+            "health": 90,
+            "shield": 0,
+            "x": 1297.4423570742795,
+            "y": 874.0005205050161,
+            "qAt": 981,
+            "eAt": 1680
+          },
+          {
+            "id": "IIuGvItsS",
+            "name": "QA 한국어 39",
+            "classId": "mage",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-control-1",
+              "mage-control-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 85,
+            "shield": 0,
+            "x": 1440.9996170744846,
+            "y": 874.0004840149147,
+            "qAt": 859,
+            "eAt": 1903
+          },
+          {
+            "id": "tZshXELqD",
+            "name": "QA हिन्दी 38",
+            "classId": "tank",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-breaching-path-2-1",
+              "tank-breaching-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 170,
+            "shield": 170,
+            "x": 1440.9996123314465,
+            "y": 874.0003972889382,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "ZpgwFuFN-",
+            "name": "QA हिन्दी 42",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-survival-1",
+              "soldier-survival-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 132,
+            "shield": 19,
+            "x": 1440.9999730908855,
+            "y": 874.0005324188224,
+            "qAt": 997,
+            "eAt": 1660
+          },
+          {
+            "id": "9u4KiLdI0",
+            "name": "QA العربية 45",
+            "classId": "tank",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "tank-breaching-1",
+              "tank-breaching-2"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 170,
+            "shield": 170,
+            "x": 1310.8804261412054,
+            "y": 874.0001321396771,
+            "qAt": 997,
+            "eAt": 1690
+          },
+          {
+            "id": "hFmXZcoNF",
+            "name": "QA 日本語 44",
+            "classId": "heavy",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "heavy-endurance-path-2-1"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 145,
+            "shield": 72,
+            "x": 1405.0706152328562,
+            "y": 874.0003593667313,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "UGKxPbO5m",
+            "name": "QA 日本語 48",
+            "classId": "assassin",
+            "status": "active",
+            "connected": false,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "assassin-ambush-1"
+            ],
+            "upgrades": {},
+            "supplies": [
+              {
+                "id": "medkit",
+                "count": 1
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 36,
+            "health": 90,
+            "shield": 0,
+            "x": 1143.4676868966212,
+            "y": 874.0001871978759,
+            "qAt": 985,
+            "eAt": 301
+          },
+          {
+            "id": "8xoYvhEcx",
+            "name": "QA 한국어 43",
+            "classId": "medic",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "medic-recovery-path-1-1",
+              "medic-recovery-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 100,
+            "shield": 0,
+            "x": 1434.1001279598781,
+            "y": 874.0005864151083,
+            "qAt": 997,
+            "eAt": 1750
+          },
+          {
+            "id": "A8Cf3lkp6",
+            "name": "QA 한국어 47",
+            "classId": "engineer",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "engineer-demolitions-path-2-1",
+              "engineer-demolitions-path-2-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 40,
+            "health": 105,
+            "shield": 0,
+            "x": 1198.9477326983758,
+            "y": 874.0005006187614,
+            "qAt": 548,
+            "eAt": 1870
+          },
+          {
+            "id": "d1Q8Omgjv",
+            "name": "QA हिन्दी 46",
+            "classId": "mage",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "mage-hexcraft-path-1-1",
+              "mage-hexcraft-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 85,
+            "shield": 0,
+            "x": 1265.414594898351,
+            "y": 874.0006056768611,
+            "qAt": 877,
+            "eAt": 1930
+          },
+          {
+            "id": "_naLfAXhJ",
+            "name": "QA العربية 49",
+            "classId": "soldier",
+            "status": "active",
+            "connected": true,
+            "expired": false,
+            "coins": 30,
+            "skills": [
+              "soldier-command-path-1-1",
+              "soldier-command-path-1-2"
+            ],
+            "upgrades": {
+              "damage": 1
+            },
+            "supplies": [
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              },
+              {
+                "id": "",
+                "count": 0
+              }
+            ],
+            "ack": 39,
+            "health": 110,
+            "shield": 16,
+            "x": 903.5140960630092,
+            "y": 874.0003194673096,
+            "qAt": 997,
+            "eAt": 1660
+          }
+        ],
+        "telemetry": {
+          "acceptedInputs": 1924,
+          "rejectedInputs": 0,
+          "encodedOutboundBytes": 20887972,
+          "peakProjectiles": 182,
+          "tickSamples": [
+            0.8749000000000251,
+            0.1289000000000442,
+            0.2726000000000113,
+            0.1634999999999991,
+            0.11059999999997672,
+            0.15209999999990487,
+            0.19729999999992742,
+            0.07789999999999964,
+            0.18610000000001037,
+            0.15830000000005384,
+            0.08490000000006148,
+            0.30299999999999727,
+            0.23099999999999454,
+            0.15029999999990196,
+            0.16160000000013497,
+            0.16020000000003165,
+            0.18610000000012406,
+            0.19470000000001164,
+            0.20039999999994507,
+            0.20630000000005566,
+            0.41259999999988395,
+            0.19110000000000582,
+            0.19020000000000437,
+            0.2697000000000571,
+            0.16679999999996653,
+            0.15660000000002583,
+            0.19010000000002947,
+            0.1470000000001619,
+            0.20180000000004839,
+            0.21720000000004802,
+            0.11790000000019063,
+            0.3546000000001186,
+            0.19640000000003965,
+            0.664299999999912,
+            0.5028999999999542,
+            0.422800000000052,
+            0.3668999999999869,
+            0.26720000000000255,
+            0.12400000000002365,
+            0.22100000000000364,
+            0.4377999999999247,
+            0.25490000000013424,
+            0.350400000000036,
+            0.29330000000004475,
+            0.28559999999970387,
+            0.1698999999998705,
+            0.29739999999992506,
+            0.4881999999997788,
+            0.48270000000002256,
+            0.7386000000001332,
+            0.708100000000286,
+            0.4857999999999265,
+            0.4598999999998341,
+            0.30960000000004584,
+            0.2660999999998239,
+            0.1716999999998734,
+            0.44299999999975626,
+            0.8180999999999585,
+            0.5493999999998778,
+            0.2258999999999105,
+            0.4618000000000393,
+            0.22269999999980428,
+            0.22319999999990614,
+            0.7393999999999323,
+            0.34209999999984575,
+            0.23870000000033542,
+            0.3106999999999971,
+            0.16240000000016153,
+            0.35399999999981446,
+            0.21889999999984866,
+            0.258900000000267,
+            0.4946999999997388,
+            0.4720999999999549,
+            0.6298999999999069,
+            0.7858999999998559,
+            0.7409999999999854,
+            0.6382999999996173,
+            0.5707999999999629,
+            0.4902999999999338,
+            0.6345999999998639,
+            0.696100000000115,
+            0.49749999999994543,
+            0.74120000000039,
+            0.36000000000012733,
+            0.3712999999997919,
+            0.44459999999980937,
+            0.30929999999989377,
+            0.9463999999998123,
+            0.647099999999682,
+            0.4202999999997701,
+            0.6720000000000255,
+            0.4754000000002634,
+            0.38499999999976353,
+            0.8074999999998909,
+            0.33339999999998327,
+            0.43640000000004875,
+            0.44270000000005894,
+            0.4576999999999316,
+            0.3207999999999629,
+            0.2739000000001397,
+            0.3071999999997388,
+            0.2258999999999105,
+            0.29890000000023065,
+            0.3045000000001892,
+            0.18920000000025539,
+            0.36220000000002983,
+            0.31079999999928987,
+            0.36629999999968277,
+            0.279700000000048,
+            0.30199999999967986,
+            0.34609999999975116,
+            0.25830000000041764,
+            0.34510000000045693,
+            0.24030000000038854,
+            0.32110000000011496,
+            0.3032999999995809,
+            0.5100999999995111,
+            0.3682999999991807,
+            0.30529999999998836,
+            0.28579999999965366,
+            0.18890000000010332,
+            0.27260000000023865,
+            0.31079999999928987,
+            0.29539999999997235,
+            0.1782999999995809,
+            0.3721000000005006,
+            0.3106999999999971,
+            0.28880000000026484,
+            0.3143000000000029,
+            0.19020000000000437,
+            0.3057999999991807,
+            0.37190000000009604,
+            0.32740000000012515,
+            0.20910000000003492,
+            0.4106999999994514,
+            0.4377999999996973,
+            12.299800000000687,
+            1.5692000000008193,
+            1.7218000000002576,
+            1.2622000000001208,
+            1.8612999999995736,
+            1.8064999999996871,
+            11.364999999999782,
+            26.426399999999376,
+            5.548999999999978,
+            7.474099999999453,
+            7.038700000000063,
+            5.589500000000044,
+            4.99159999999938,
+            4.828899999999521,
+            3.061399999999594,
+            4.000799999999799,
+            4.6971999999996115,
+            4.406799999999748,
+            2.6869000000006054,
+            4.521899999999732,
+            5.617200000000594,
+            3.087899999999536,
+            2.959000000000742,
+            4.1865999999999985,
+            3.3661000000001877,
+            4.289499999999862,
+            5.478100000000268,
+            4.100199999999859,
+            3.1383999999998196,
+            3.794099999999162,
+            4.544200000000274,
+            3.0649999999996,
+            2.63169999999991,
+            5.123999999999796,
+            4.296099999999569,
+            3.4729999999999563,
+            3.404399999999441,
+            5.635599999999613,
+            3.0702000000001135,
+            3.3947000000007392,
+            2.9119000000000597,
+            3.512200000000121,
+            3.9954000000007,
+            3.9539000000004307,
+            3.0406999999995605,
+            2.4909999999999854,
+            2.959799999999632,
+            3.4026999999996406,
+            3.350499999999556,
+            3.1796000000003914,
+            3.582900000000336,
+            4.414300000000367,
+            3.396099999999933,
+            4.545199999999568,
+            9.121500000000196,
+            3.986699999999473,
+            5.751100000000406,
+            4.328000000000429,
+            2.782700000000659,
+            10.969499999999243,
+            6.742799999999988,
+            4.707300000000032,
+            6.835200000000441,
+            6.596999999999753,
+            9.012099999999919,
+            14.864999999999782,
+            5.1228000000000975,
+            8.001800000000003,
+            4.9713999999994485,
+            5.442900000000009,
+            3.3090000000001965,
+            3.397100000000137,
+            3.542899999999463,
+            5.047499999999673,
+            3.7885999999998603,
+            4.35779999999977,
+            4.347400000000562,
+            5.341300000000047,
+            5.262399999999616,
+            6.291999999999462,
+            3.896099999999933,
+            4.451000000000022,
+            3.2935999999999694,
+            3.1693999999997686,
+            3.2161999999998443,
+            8.245599999999286,
+            3.6733000000003813,
+            6.609300000000076,
+            5.2676000000001295,
+            7.222400000000562,
+            3.4148999999997613,
+            8.186499999999796,
+            11.171699999998964,
+            5.836100000000442,
+            4.655399999999645,
+            4.166799999999057,
+            4.924300000000585,
+            5.107200000000375,
+            5.078499999999622,
+            4.613699999999881,
+            6.001699999998891,
+            4.477999999999156,
+            5.4333000000005995,
+            3.374599999999191,
+            5.163300000000163,
+            3.0625,
+            3.1512999999995372,
+            3.229699999999866,
+            4.230499999999665,
+            3.9932000000007974,
+            4.310600000000704,
+            6.125400000000809,
+            6.216000000000349,
+            7.597400000000562,
+            6.05199999999968,
+            6.302200000000084,
+            6.5063999999983935,
+            7.146999999999025,
+            13.387500000000728,
+            9.168100000000777,
+            7.966499999998632,
+            5.392299999999523,
+            3.3233999999993102,
+            3.101199999999153,
+            2.8276999999998225,
+            3.1424000000006345,
+            3.5489999999990687,
+            5.465099999999438,
+            7.977999999999156,
+            7.01720000000023,
+            7.574000000000524,
+            5.507599999999002,
+            4.703300000001036,
+            3.846400000000358,
+            3.076999999999316,
+            5.29490000000078,
+            4.0614000000005035,
+            6.569900000000416,
+            9.151700000000346,
+            3.4924000000009983,
+            5.9760000000005675,
+            3.339400000000751,
+            6.193199999999706,
+            3.7749000000003434,
+            4.604499999999462,
+            4.709499999999025,
+            4.246799999998984,
+            3.3680999999996857,
+            3.1243999999987864,
+            4.136400000001231,
+            4.066600000000108,
+            7.159800000001269,
+            2.7739000000001397,
+            3.033000000001266,
+            7.552000000001499,
+            6.071800000001531,
+            4.681200000000899,
+            3.4593999999997322,
+            6.510600000001432,
+            11.24369999999908,
+            9.093800000000556,
+            4.94550000000163,
+            2.9821999999985565,
+            6.815200000000914,
+            7.647600000000239,
+            7.193799999999101,
+            7.417099999998754,
+            10.214700000000448,
+            8.52889999999934,
+            6.216099999999642,
+            4.564399999999296,
+            4.394200000000637,
+            4.1358000000000175,
+            5.01260000000002,
+            3.1123999999999796,
+            2.90940000000046,
+            5.495299999998679,
+            3.2150999999994383,
+            3.2598000000016327,
+            2.913300000000163,
+            3.473599999999351,
+            4.274400000000242,
+            2.7202999999990425,
+            3.173400000001493,
+            3.0916999999990367,
+            3.976599999999962,
+            4.718700000001263,
+            2.4479000000010274,
+            2.391200000000026,
+            2.504900000001726,
+            2.012300000000323,
+            2.5003000000015163,
+            1.7259999999987485,
+            2.319499999999607,
+            1.807199999999284,
+            3.2164000000011583,
+            1.7945999999992637,
+            2.304200000000492,
+            2.2723000000005413,
+            1.8888000000006286,
+            2.0135000000009313,
+            2.433999999999287,
+            2.169499999999971,
+            2.440099999999802,
+            1.4039000000011583,
+            1.8865999999998166,
+            1.7084999999988213,
+            1.497400000000198,
+            1.60609999999906,
+            2.1010000000005675,
+            1.9308000000000902,
+            1.6833999999998923,
+            1.5097999999998137,
+            2.25800000000163,
+            2.285600000001068,
+            1.83980000000156,
+            1.8482999999996537,
+            2.8167000000012195,
+            2.4871000000002823,
+            1.596799999999348,
+            1.9372999999995955,
+            1.6617999999998574,
+            1.6123000000006869,
+            3.2538000000004104,
+            2.758300000001327,
+            1.257500000001528,
+            1.4806999999982509,
+            1.5006999999986874,
+            2.5257000000001426,
+            1.9570000000003347,
+            2.154100000001563,
+            1.860899999999674,
+            2.394900000001144,
+            2.366700000000492,
+            1.7679000000007363,
+            2.044099999999162,
+            1.5985000000000582,
+            2.6206999999994878,
+            1.8290999999990163,
+            4.19629999999961,
+            2.3510000000005675,
+            2.2593999999990046,
+            2.3140999999995984,
+            2.1552000000010594,
+            2.1207000000013068,
+            2.2304000000003725,
+            2.569999999999709,
+            2.8328999999994267,
+            1.6422999999995227,
+            1.756600000000617,
+            1.7180000000007567,
+            1.78650000000016,
+            1.5456000000012864,
+            1.5679000000000087,
+            1.3105999999988853,
+            1.1847999999990861,
+            1.1965000000000146,
+            1.4634000000005472,
+            1.9681000000000495,
+            1.6746000000002823,
+            1.19590000000062,
+            1.9501000000000204,
+            1.6792000000004919,
+            1.8171000000002095,
+            1.3598000000001775,
+            1.2976999999991676,
+            1.9508999999998196,
+            2.678299999999581,
+            3.7190000000009604,
+            6.634399999999005,
+            2.037500000000364,
+            1.6198000000003958,
+            1.6432000000004336,
+            1.5226000000002387,
+            1.7455000000009022,
+            2.1340000000000146,
+            2.431699999999182,
+            2.390000000001237,
+            2.074000000000524,
+            1.265399999998408,
+            1.2140999999992346,
+            2.410200000000259,
+            1.7473000000009051,
+            1.230199999999968,
+            2.0890999999992346,
+            2.017700000000332,
+            1.3249999999989086,
+            2.7538000000004104,
+            2.9025000000001455,
+            2.9359999999996944,
+            1.6576999999997497,
+            1.1875,
+            1.619699999999284,
+            1.8942000000006374,
+            1.180900000001202,
+            0.9869999999991705,
+            1.8105999999988853,
+            3.7313999999987573,
+            4.087199999999939,
+            2.459899999999834,
+            3.4364999999997963,
+            2.1887000000006083,
+            2.92029999999977,
+            3.0903999999991356,
+            2.0778000000009342,
+            2.8008999999983644,
+            2.620199999999386,
+            1.8443999999999505,
+            1.2754000000004453,
+            1.6008999999994558,
+            1.8744999999998981,
+            1.567799999998897,
+            2.1356999999989057,
+            2.0917000000008557,
+            1.677799999999479,
+            2.25039999999899,
+            1.3760999999994965,
+            1.5745000000006257,
+            1.5874000000003434,
+            1.6208999999998923,
+            1.4624000000003434,
+            1.3684999999986758,
+            5.423300000000381,
+            3.104400000000169,
+            3.834600000000137,
+            2.932599999998274,
+            1.8261999999995169,
+            1.274199999999837,
+            1.3764000000010128,
+            3.182699999999386,
+            2.3562000000001717,
+            1.8958000000002357,
+            1.9611999999997352,
+            1.7782999999999447,
+            2.32300000000032,
+            1.8042999999997846,
+            1.682200000001103,
+            3.3773000000001048,
+            1.9821000000010827,
+            1.7762000000002445,
+            2.735499999998865,
+            2.107899999999063,
+            1.4927999999999884,
+            1.7703000000001339,
+            1.4477000000006228,
+            1.3299000000006345,
+            4.213400000000547,
+            2.209900000001653,
+            2.89429999999993,
+            3.7630000000026484,
+            2.7589999999981956,
+            1.7734000000018568,
+            2.1414000000004307,
+            0.7106999999996333,
+            0.47300000000177533,
+            0.7374000000017986,
+            0.7111000000004424,
+            0.6474999999991269,
+            0.9747999999999593,
+            0.9891999999999825,
+            0.9390999999995984,
+            0.9587999999966996,
+            1.1481999999996333,
+            0.6700000000018917,
+            0.5171000000009371,
+            0.7871999999988475,
+            0.6051000000006752,
+            0.8316999999988184,
+            0.6471999999994296,
+            0.9622999999992317,
+            0.7124000000003434,
+            0.6153999999987718,
+            0.9311000000016065,
+            0.9356000000007043,
+            0.9709000000002561,
+            0.6906999999991967,
+            2.1779999999998836,
+            0.8862999999983003,
+            0.7923999999984517,
+            0.9121999999988475,
+            1.1497999999992317,
+            1.0329000000019732,
+            1.0760000000009313,
+            0.9913000000015018,
+            1.2193999999981315,
+            0.8547999999973399,
+            1.0358999999989464,
+            0.9576000000015483,
+            0.8220000000001164,
+            0.8276000000005297,
+            0.5390999999981432,
+            0.7332000000023982,
+            0.6185999999979686,
+            0.6185000000004948,
+            1.2368999999998778,
+            1.6052999999992608,
+            1.5020000000004075,
+            1.10740000000078,
+            1.858699999997043,
+            3.0509000000020023,
+            2.800599999998667,
+            2.314300000001822,
+            1.6571999999978289,
+            3.03689999999915,
+            1.0935000000026776,
+            1.766299999999319,
+            1.6440000000002328,
+            2.592400000001362,
+            1.4434000000001106,
+            2.161000000000058,
+            2.2074000000029628,
+            2.637800000000425,
+            3.000500000001921,
+            1.1538000000000466,
+            1.9578000000001339,
+            1.9104000000006636,
+            1.5931999999993423,
+            2.0754000000015367,
+            3.048800000000483,
+            3.0372999999999593,
+            1.1792999999997846,
+            1.7361999999993714,
+            2.991699999998673,
+            2.2115999999987253,
+            2.5861000000004424,
+            2.74040000000241,
+            3.9675999999999476,
+            1.6574000000000524,
+            2.5513000000028114,
+            1.8909000000021479,
+            1.435300000001007,
+            1.905800000000454,
+            2.752700000000914,
+            1.4586999999992258,
+            1.5610999999989872,
+            1.9917999999997846,
+            3.4909999999981665,
+            3.4822000000021944,
+            3.0288000000000466,
+            2.186600000000908,
+            2.550199999997858,
+            2.154099999999744,
+            2.5332000000016706,
+            2.566500000000815,
+            2.9681999999993423,
+            2.404400000003079,
+            1.7389000000002852,
+            1.36620000000039,
+            2.1784000000006927,
+            1.6261000000013155,
+            1.9444000000003143,
+            2.0095000000001164,
+            2.214799999997922,
+            1.4709000000002561,
+            2.1820000000006985,
+            1.742999999998574,
+            1.2888000000020838,
+            1.5597000000016124,
+            1.978899999998248,
+            2.2744999999995343,
+            1.7632999999987078,
+            1.4696999999978289,
+            3.009200000000419,
+            1.2425999999977648,
+            1.266700000000128,
+            1.5049999999973807,
+            2.6621000000013737,
+            1.9305999999996857,
+            0.9773000000022876,
+            3.1994999999988067,
+            1.7664000000004307,
+            1.22269999999844,
+            2.2933000000011816,
+            1.8568000000013853,
+            2.6827999999986787,
+            2.157200000001467,
+            1.6530000000020664,
+            1.556300000000192,
+            3.735099999998056,
+            2.2910999999985506,
+            1.4197000000021944,
+            2.006600000000617,
+            1.789600000000064,
+            1.2093999999997322,
+            2.5455000000001746,
+            2.0018999999992957,
+            2.344999999997526,
+            0.7956999999987602,
+            1.9079000000019732,
+            1.3296000000009371,
+            0.5753000000004249,
+            0.83889999999883,
+            0.3797000000013213,
+            0.4026000000012573,
+            0.4658999999992375,
+            0.6078000000015891,
+            0.47190000000045984,
+            0.5848000000005413,
+            0.4036999999989348,
+            0.5541999999986729,
+            0.4223999999994703,
+            0.4688000000023749,
+            0.5881000000008498,
+            0.37329999999928987,
+            0.43329999999696156,
+            0.6166999999986729,
+            0.3482999999978347,
+            0.6810999999979686,
+            0.4485999999997148,
+            0.41419999999925494,
+            0.5300999999999476,
+            0.38399999999819556,
+            0.6791000000011991,
+            0.5624000000025262,
+            0.403600000001461,
+            0.4933000000019092,
+            0.4238000000004831,
+            0.6931000000004133,
+            0.586699999999837,
+            0.3760000000002037,
+            0.41379999999844586,
+            0.48909999999887077,
+            0.7245000000002619,
+            0.8134999999965657,
+            0.5043000000005122,
+            0.9554000000025553,
+            1.036500000001979,
+            0.6952000000019325,
+            0.4796999999998661,
+            0.3425000000024738,
+            0.5002999999996973,
+            0.5900000000001455,
+            0.4246999999995751,
+            1.7476999999998952,
+            0.6162999999978638,
+            1.2050000000017462,
+            0.6947000000000116,
+            0.6489000000001397,
+            0.5819000000010419,
+            0.5698000000011234,
+            0.34979999999995925,
+            0.65139999999883,
+            0.4845000000022992,
+            1.1980000000003201,
+            0.37779999999838765,
+            0.5620000000017171,
+            0.47370000000228174,
+            0.4121000000013737,
+            0.5532000000021071,
+            0.6772000000019034,
+            0.5620000000017171,
+            0.5321000000003551,
+            0.6028999999980442,
+            0.2798999999977241,
+            0.5370000000002619,
+            0.7439999999987776,
+            0.4963999999999942,
+            0.4768000000003667,
+            0.45529999999780557,
+            0.7199000000000524,
+            0.7445000000006985,
+            0.42400000000270666,
+            0.5244999999995343,
+            0.6313999999983935,
+            0.5038999999997031,
+            0.48440000000118744,
+            0.46190000000206055,
+            0.8885000000009313,
+            0.5181000000011409,
+            0.41820000000006985,
+            0.4886999999980617,
+            0.48140000000057626,
+            0.6152000000001863,
+            0.47590000000127475,
+            0.314699999998993,
+            0.5892000000021653,
+            0.4760999999998603,
+            0.4628999999986263,
+            0.9373999999988882,
+            0.3764000000010128,
+            0.43729999999777647,
+            0.25279999999838765,
+            0.5104999999966822,
+            0.5442000000002736,
+            0.3580000000001746,
+            0.632499999999709,
+            0.7438000000001921,
+            2.2076000000015483,
+            3.2334999999984575,
+            1.3060999999979686,
+            1.7849999999998545,
+            5.820700000000215,
+            4.557999999997264,
+            2.297099999999773,
+            1.6741000000001804,
+            2.204600000000937,
+            2.4364999999997963,
+            2.6730999999999767,
+            2.500500000001921,
+            2.6453999999976077,
+            2.3699999999989814,
+            3.03440000000046,
+            2.0247999999992317,
+            2.10649999999805,
+            3.192299999998795,
+            1.6450000000004366,
+            1.605200000001787,
+            2.2923999999984517,
+            2.117500000000291,
+            1.6559999999990396,
+            1.5718999999990046,
+            1.472299999997631,
+            3.7374999999992724,
+            8.786199999998644,
+            3.943699999999808,
+            5.383900000000722,
+            4.009500000000116,
+            3.172999999998865,
+            3.7914999999993597,
+            4.692699999999604,
+            4.094800000002579,
+            3.9125999999996566,
+            4.04399999999805,
+            3.210799999997107,
+            4.136399999999412,
+            3.1320999999989,
+            2.2766999999985273,
+            5.109700000000885,
+            3.0169999999998254,
+            3.9193000000013853,
+            2.0689000000020314,
+            2.7344000000011874,
+            2.977100000000064,
+            3.91280000000188,
+            3.2022999999971944,
+            3.8464999999996508,
+            2.656200000001263,
+            2.978399999999965,
+            3.05279999999766,
+            5.5011000000013155,
+            3.1111999999993714,
+            3.845600000000559,
+            4.493800000000192,
+            3.454299999997602,
+            5.299399999999878,
+            6.88839999999982,
+            6.568700000003446,
+            3.423399999999674,
+            3.8166999999994005,
+            3.903600000001461,
+            4.787000000000262,
+            4.707000000002154,
+            3.203299999997398,
+            3.077400000001944,
+            3.172900000001391,
+            4.188399999999092,
+            4.059700000001612,
+            3.2192999999970198,
+            2.279399999999441,
+            3.5540000000000873,
+            3.207699999999022,
+            3.5385999999998603,
+            4.117099999999482,
+            2.1244000000006054,
+            3.80449999999837,
+            3.4958000000005995,
+            4.078899999996793,
+            2.556799999998475,
+            4.629300000000512,
+            2.8166000000019267,
+            4.3870999999999185,
+            5.034199999998236,
+            2.9539999999979045,
+            3.6208000000005995,
+            5.275399999998626,
+            4.073899999999412,
+            4.612599999996746,
+            3.480999999999767,
+            3.8765000000021246,
+            3.137399999999616,
+            3.0630999999993946,
+            2.3888999999981024,
+            2.896100000001752,
+            2.839299999999639,
+            2.6677999999992608,
+            1.90139999999883,
+            2.069099999996979,
+            2.414700000001176,
+            2.7993999999998778,
+            2.4386000000013155,
+            2.7543000000005122,
+            2.1206999999994878,
+            2.5380999999979394,
+            2.9660000000003492,
+            2.5406000000002678,
+            3.105200000001787,
+            4.71140000000014,
+            2.7127000000000407,
+            4.120700000003126,
+            4.08009999999922,
+            4.781599999998434,
+            4.3703999999997905,
+            2.2338999999992666,
+            2.953800000002957,
+            3.0397999999986496,
+            3.186600000000908,
+            3.34599999999773,
+            4.203600000000733,
+            3.5401999999994587,
+            2.261099999999715,
+            4.236400000001595,
+            3.617999999998574,
+            3.0499999999992724,
+            3.2972000000008848,
+            2.820400000000518,
+            2.9262999999991735,
+            2.78519999999844,
+            2.9851999999991676,
+            3.7346999999972468,
+            3.0627000000022235,
+            2.1921999999976833,
+            1.9097000000001572,
+            2.417600000000675,
+            2.2868000000016764,
+            2.8266999999977998,
+            4.130000000001019,
+            2.759300000001531,
+            2.9089999999996508,
+            2.393100000001141,
+            2.155399999999645,
+            2.2427999999999884,
+            2.7207999999991443,
+            3.1257000000005064,
+            2.422599999998056,
+            2.5979000000006636,
+            3.537000000000262,
+            2.709599999998318,
+            2.430099999997765,
+            2.123199999998178,
+            4.202299999997194,
+            3.3941000000013446,
+            2.314299999998184,
+            3.6875,
+            2.4271999999982654,
+            2.070499999997992,
+            3.6362000000008265,
+            3.4187000000019907,
+            3.131199999999808,
+            2.7631000000001222,
+            2.319100000000617,
+            3.220499999999447,
+            3.9527999999991152,
+            4.00879999999961,
+            2.8614999999990687,
+            3.6281999999991967,
+            4.360200000002806,
+            3.72269999999844,
+            5.476599999998143,
+            3.3425999999999476,
+            2.477999999999156,
+            2.1991999999991094,
+            2.2419000000008964,
+            3.530399999999645,
+            4.341799999998329,
+            2.4605000000010477,
+            3.1005000000004657,
+            2.23410000000149,
+            2.210399999999936,
+            2.771199999999226,
+            3.491599999997561,
+            2.423000000002503,
+            3.5300999999999476,
+            2.859500000002299,
+            5.376799999998184,
+            2.81079999999929,
+            3.15230000000156,
+            12.248900000002322,
+            5.087299999999232,
+            2.442699999999604,
+            1.8896999999997206,
+            2.3417000000008557,
+            2.4681999999993423,
+            2.6578000000008615,
+            4.285700000000361,
+            4.962400000000343,
+            5.810700000001816,
+            3.7330000000001746,
+            2.4657999999981257,
+            3.566000000002532,
+            3.7687000000005355,
+            2.58889999999883,
+            5.346000000001368,
+            4.261099999999715,
+            2.0406999999977415,
+            1.2960999999995693,
+            1.2472999999990861,
+            2.680100000001403,
+            1.2451000000000931,
+            2.2167999999983294,
+            1.3928999999989173,
+            1.1313999999983935,
+            1.4157000000013795,
+            1.115799999999581,
+            1.6088999999992666,
+            1.6156000000009954,
+            1.360899999999674,
+            1.1373999999996158,
+            1.2286000000021886,
+            1.254000000000815,
+            1.0216999999975087,
+            1.320900000002439,
+            2.4122999999999593,
+            1.5529000000024098,
+            2.713400000000547,
+            1.177400000000489,
+            0.9990000000034343,
+            1.1127999999989697,
+            1.8082000000031258,
+            1.3733999999967637,
+            0.8809999999975844,
+            1.0401999999994587,
+            1.1622999999999593,
+            1.178299999999581,
+            1.1475000000027649,
+            1.2026000000005297,
+            2.465299999999843,
+            1.4101000000009662,
+            1.361800000002404,
+            1.0185999999994237,
+            1.786499999998341,
+            1.0544999999983702,
+            1.0121999999973923,
+            1.2380000000048312,
+            1.2180000000007567,
+            1.0950000000011642,
+            1.7449000000051456,
+            1.2834000000002561,
+            1.151000000005297,
+            1.8424999999988358,
+            1.1673999999984517,
+            1.5446999999985565,
+            1.0785000000032596,
+            1.41639999999461,
+            1.3528000000005704,
+            1.8698999999978696,
+            0.8821000000025379,
+            0.78519999999844,
+            1.146999999997206,
+            0.9497000000046683,
+            0.7454999999972642,
+            0.8891999999977998,
+            0.9663999999975204,
+            1.3047000000005937,
+            0.8694000000032247,
+            1.3135000000038417,
+            1.6520000000018626,
+            1.4496999999973923,
+            0.9259000000020023,
+            0.9922999999980675,
+            0.7941000000064378,
+            1.692799999997078,
+            0.8367999999973108,
+            1.0544999999983702,
+            0.8732000000018161,
+            1.305000000000291,
+            0.743399999999383,
+            1.2841999999945983,
+            1.1450000000040745,
+            1.0846000000019558,
+            0.891300000002957,
+            0.9752000000007683,
+            0.996899999998277,
+            0.890399999996589,
+            1.1178999999974621,
+            0.8787000000011176,
+            1.1908000000039465,
+            2.485000000000582,
+            1.2376000000003842,
+            1.129400000005262,
+            1.4752999999982421,
+            1.1644999999989523,
+            1.0507999999972526,
+            1.088000000003376,
+            1.2934000000022934,
+            1.4301999999952386,
+            1.0486999999993714,
+            0.7926000000006752,
+            1.2517000000007101,
+            1.0498999999981606,
+            1.1485000000029686,
+            1.6802000000025146,
+            1.230199999998149,
+            1.1259999999965657,
+            1.0956999999980326,
+            0.9504999999990105,
+            1.1467999999949825,
+            1.4583999999958905,
+            1.2364999999990687,
+            1.4427000000068801,
+            1.3656000000046333,
+            1.8893000000025495,
+            1.7369000000035157,
+            2.039700000001176,
+            1.7214999999996508,
+            1.438800000003539,
+            2.5025000000023283,
+            1.8822000000000116,
+            1.2373999999981606,
+            1.7240999999994528,
+            2.2026000000041677,
+            1.1785000000018044,
+            2.030299999998533,
+            1.2995000000009895,
+            1.8050999999977648,
+            2.6076000000030035,
+            1.2471000000005006,
+            1.7284999999974389,
+            2.190199999997276,
+            1.0072999999974854,
+            1.2534000000014203,
+            1.032999999995809,
+            1.770700000000943,
+            1.2815999999947962,
+            1.1085999999995693,
+            0.9887000000016997,
+            0.8234000000011292,
+            1.3989000000001397,
+            1.2095999999946798,
+            1.8905000000013388,
+            1.757499999999709,
+            1.306399999994028,
+            1.4205999999976484,
+            1.356999999996333,
+            1.0866000000023632,
+            0.8522000000011758,
+            2.551500000001397,
+            1.6838000000061584,
+            1.900999999998021,
+            1.809900000000198,
+            1.3595000000059372,
+            1.149199999999837,
+            1.2240999999994528,
+            1.3243000000002212,
+            1.3795000000027358,
+            0.8950000000040745,
+            0.9731000000028871,
+            3.235000000000582,
+            1.013599999998405,
+            2.297500000000582,
+            0.9715999999971245,
+            1.4254000000000815,
+            3.302300000003015,
+            1.2063000000052853,
+            0.9961000000039348,
+            1.1699999999982538,
+            1.6332000000038533,
+            1.2481999999945401,
+            2.8096000000005006,
+            1.1652000000030966,
+            1.2468000000008033,
+            0.9832999999998719,
+            0.7252999999982421,
+            1.420799999999872,
+            1.3303999999989173,
+            1.8259000000034575,
+            2.921699999998964,
+            0.9117000000042026,
+            1.286100000004808,
+            1.0038999999960652,
+            4.808900000003632,
+            3.228900000001886,
+            0.8952999999964959,
+            1.1163999999989755,
+            1.1627999999982421,
+            1.4498999999996158,
+            1.2806999999957043,
+            1.8256000000037602,
+            0.9648999999990338,
+            0.7436000000016065,
+            1.0394999999989523,
+            1.03519999999844,
+            1.3989999999976135,
+            2.2656000000060885,
+            1.5632999999943422,
+            1.220099999998638,
+            1.0440999999991618,
+            1.0738999999957741,
+            0.8826000000044587,
+            1.0071000000025379,
+            1.2567000000053667,
+            3.229800000000978,
+            0.8963999999978114,
+            0.7726999999940745,
+            1.4998000000050524,
+            1.0063000000009197,
+            1.5285000000003492,
+            1.2137000000002445,
+            1.1318000000028405,
+            0.9201000000030035,
+            1.110899999999674,
+            1.6252000000022235,
+            1.1961999999984982,
+            0.7283999999999651,
+            1.1856999999945401,
+            1.10389999999461,
+            1.2237999999997555,
+            1.3412000000025728,
+            1.4654999999984284,
+            1.6273000000001048,
+            0.98240000000078,
+            0.9100000000034925,
+            0.6968999999953667,
+            1.07039999999688,
+            1.5521999999982654,
+            1.3089000000036322,
+            1.111799999998766,
+            1.0124999999970896,
+            0.8657999999995809,
+            1.7699999999967986,
+            1.237699999997858,
+            1.398800000002666,
+            1.2223999999987427,
+            0.7584999999962747,
+            1.2235000000000582,
+            1.2321000000010827,
+            0.8323999999993248,
+            0.9943999999959487,
+            0.7802999999985332,
+            0.8996000000042841,
+            0.7956000000049244,
+            1.0141999999977998,
+            0.9266999999963446,
+            0.7211000000024796,
+            1.0789000000004307,
+            1.0852999999988242,
+            1.0895999999993364,
+            0.6928999999945518,
+            1.166800000006333,
+            0.9512999999933527,
+            1.3484000000025844,
+            1.4032999999981257,
+            1.2256999999954132,
+            1.1541999999972177,
+            0.970499999995809,
+            0.8999000000039814,
+            1.1961999999984982,
+            1.0183000000033644,
+            1.1647000000011758,
+            0.9025999999939813,
+            1.0976000000009662,
+            0.8348000000041793,
+            0.9129000000029919,
+            0.8878000000040629,
+            0.7076000000015483,
+            0.8945999999996275,
+            2.1389000000053784,
+            2.224400000006426,
+            1.0002999999996973,
+            0.9967000000033295,
+            1.060299999997369,
+            2.0169000000023516,
+            0.9508999999961816,
+            1.3266999999977998,
+            1.2551999999996042,
+            2.60740000000078,
+            1.0728999999992084,
+            1.874100000000908,
+            1.7620999999999185,
+            1.2848999999987427,
+            1.1194000000032247,
+            0.9924000000028173,
+            1.3563999999969383,
+            1.209499999997206,
+            0.9040999999997439,
+            1.6516999999948894,
+            1.703300000001036,
+            1.0939999999973224,
+            1.228900000001886,
+            1.8814000000056694,
+            1.1978000000017346,
+            0.9116999999969266,
+            1.0423999999984517,
+            1.6286000000036438,
+            1.2192999999970198,
+            0.8437000000049011,
+            1.783899999994901,
+            2.022899999996298,
+            1.4796999999962281,
+            1.2462000000014086,
+            1.630699999994249,
+            1.3373999999967054,
+            0.7926000000006752,
+            0.6158999999970547,
+            1.4574999999967986,
+            1.173000000002503,
+            1.2463999999963562,
+            1.0011999999987893,
+            2.0478000000002794,
+            1.98859999999695,
+            1.1010999999998603,
+            1.0506999999997788,
+            0.813399999999092,
+            2.219700000001467,
+            1.1869000000006054,
+            1.3205999999991036,
+            1.7674000000042724,
+            1.0633000000016182,
+            1.2240999999994528,
+            1.0172999999995227,
+            1.1400999999968917,
+            1.0257000000055996,
+            1.8123000000050524,
+            1.6031000000002678,
+            1.3548000000009779,
+            1.0307000000029802,
+            2.3856999999989057,
+            1.208200000000943,
+            1.056299999996554,
+            1.6993000000002212,
+            1.1660000000047148,
+            1.8567000000039116,
+            1.449399999997695,
+            1.144800000001851,
+            1.2427999999999884,
+            1.1638999999995576,
+            1.2087000000028638,
+            1.062900000004447,
+            1.7335999999995693,
+            1.0445000000036089,
+            1.0791000000026543,
+            2.0037000000011176,
+            1.0844000000070082,
+            1.2083999999958905,
+            1.1629000000029919,
+            1.229299999999057,
+            2.7445999999981723,
+            1.1798000000053435,
+            1.9470000000001164,
+            1.2605000000039581,
+            1.1503000000011525,
+            1.449399999997695,
+            1.2759000000005472,
+            1.3985000000029686,
+            1.435700000001816,
+            0.8870999999999185,
+            1.3730999999970663,
+            2.757099999995262,
+            1.5864000000001397,
+            0.9457000000038533,
+            1.1405000000013388,
+            0.9268000000010943,
+            1.053299999999581,
+            0.9485999999960768,
+            1.1207999999969616,
+            0.9658000000054017,
+            0.7402000000001863,
+            1.201099999998405,
+            1.271099999998114,
+            0.974900000001071,
+            1.2076999999990221,
+            0.9464000000007218,
+            0.9926999999952386,
+            1.44539999999688,
+            1.845099999998638,
+            1.0959000000002561,
+            0.879399999997986,
+            0.875,
+            0.85740000000078,
+            1.1679999999978463,
+            1.3427999999985332,
+            1.1980000000039581,
+            0.9447000000000116,
+            0.8879999999990105,
+            1.0214999999952852,
+            0.7485000000015134,
+            0.953799999995681,
+            0.9614999999976135,
+            0.975799999992887,
+            0.9349999999976717,
+            1.1028999999980442,
+            1.1222999999954482,
+            1.3730999999970663,
+            1.1705000000001746,
+            1.1823000000003958,
+            1.2670999999972992,
+            1.5332999999955064,
+            0.901400000002468,
+            1.1380999999964843,
+            1.1195000000006985,
+            1.4085999999952037,
+            0.9518000000025495,
+            1.3179000000018277,
+            1.1097000000008848,
+            0.9242000000012922,
+            0.9665000000022701,
+            1.4033999999955995,
+            0.813399999999092,
+            2.342099999994389,
+            1.3565999999991618,
+            2.049300000006042,
+            1.1837000000014086,
+            0.9334999999991851,
+            0.8630000000048312,
+            1.1769999999960419,
+            0.993399999999383,
+            0.7512999999962631,
+            1.1699999999982538,
+            1.0400000000008731,
+            1.4404999999969732,
+            0.8127999999996973,
+            1.2048000000067987,
+            1.0177000000039698,
+            1.1213000000061584,
+            1.7735000000029686,
+            0.6857999999992899,
+            0.939700000002631,
+            1.1869999999980791,
+            1.0098999999972875,
+            1.7350999999980559,
+            1.2881999999954132,
+            1.3544000000038068,
+            0.8259000000034575,
+            1.230199999998149,
+            0.995599999994738,
+            1.0411999999996624,
+            0.6537000000025728,
+            1.5898999999990338,
+            1.0509999999994761,
+            0.7757000000055996,
+            1.1882000000041444,
+            1.1491000000023632,
+            1.4469000000026426,
+            0.9858000000022002,
+            1.142200000002049,
+            0.9620999999970081,
+            0.9012999999977183,
+            2.620999999999185,
+            1.5066999999980908,
+            1.057699999997567,
+            0.780800000000454,
+            1.091099999997823,
+            1.7016999999977998,
+            0.9033999999955995,
+            1.149699999994482,
+            1.72620000000461,
+            0.9950000000026193,
+            1.8257999999987078,
+            1.374599999995553,
+            1.2180000000007567,
+            1.1674999999959255,
+            1.5103999999992084,
+            1.255299999997078,
+            2.1322000000000116,
+            0.8178999999945518,
+            1.1270000000004075,
+            1.0692999999955646,
+            0.893499999998312,
+            1.565100000007078,
+            1.07220000000234,
+            1.3014000000039232,
+            1.2897999999986496,
+            0.9370000000053551,
+            1.000899999999092,
+            1.1033000000024913,
+            1.8374000000039814,
+            1.1642999999967287,
+            1.3176999999996042,
+            1.1381000000037602,
+            0.9560000000055879,
+            1.1376999999993131,
+            1.1379000000015367,
+            1.154900000001362,
+            1.3073000000003958,
+            0.9369000000006054,
+            1.0754000000015367,
+            1.0903000000034808,
+            1.2703000000037719,
+            2.3015999999988708,
+            2.062100000002829,
+            1.0226999999940745,
+            0.8571000000010827,
+            1.5037999999985914,
+            1.2292000000015832,
+            1.3614999999990687,
+            0.9701999999961117,
+            1.0597000000052503,
+            1.8718000000008033,
+            1.5010000000038417,
+            1.2770999999993364,
+            1.5311000000001513,
+            2.306799999998475,
+            1.6394000000000233,
+            1.324800000002142,
+            1.1231000000043423,
+            1.6930999999967753,
+            3.0898999999990338,
+            1.1753000000026077,
+            1.0935000000026776,
+            1.1653000000005704,
+            1.064299999998184,
+            1.5309999999954016,
+            0.9757000000026892,
+            0.8862000000008265,
+            2.9175000000032014,
+            2.283900000002177,
+            1.0126999999993131,
+            1.0210000000006403,
+            1.474499999996624,
+            1.7678000000014435,
+            1.736300000004121,
+            1.6384000000034575,
+            2.2589000000007218,
+            1.2780999999959022,
+            0.9011000000027707,
+            0.6623999999937951,
+            0.9426999999996042,
+            1.186600000000908,
+            1.0664000000033411,
+            2.7185000000026776,
+            1.379400000005262,
+            1.5860000000029686,
+            1.084499999997206,
+            0.8739999999961583,
+            0.9808999999950174,
+            0.9570000000021537,
+            1.622400000000198,
+            1.36710000000312,
+            1.2158000000054017,
+            1.24380000000383,
+            1.5859999999956926,
+            1.2825000000011642,
+            1.0414999999993597,
+            1.1924999999973807,
+            0.9118999999991502,
+            0.5186000000030617,
+            2.0393000000040047,
+            1.606999999996333,
+            0.9657999999981257,
+            0.93399999999383,
+            1.0636999999987893,
+            0.7977000000028056,
+            1.1612999999997555,
+            0.8004000000000815,
+            1.0348999999987427,
+            1.1581000000005588,
+            1.2424000000028173,
+            1.0249000000039814,
+            1.1097000000008848,
+            1.878499999998894,
+            0.9048000000038883,
+            3.3476000000009662,
+            1.1675000000032014,
+            1.5014000000010128,
+            1.1690999999991618,
+            1.6353999999992084,
+            1.929599999995844,
+            1.4203999999954249,
+            1.5346999999965192,
+            1.647900000003574,
+            1.1533999999955995,
+            1.5,
+            1.1710999999995693,
+            1.3225000000020373,
+            1.6123999999981606,
+            1.2564999999958673,
+            0.989400000005844,
+            1.1492999999973108,
+            1.338499999998021,
+            1.196700000000419,
+            0.9413999999960652,
+            0.9157000000050175,
+            1.1858999999967637,
+            1.0077000000019325,
+            1.8548999999984517,
+            1.407999999995809,
+            0.9510000000009313,
+            0.8350999999966007,
+            1.1365000000005239,
+            1.0269000000043889,
+            1.1563000000023749,
+            0.9109000000025844,
+            1.3258999999961816,
+            0.8305000000036671,
+            1.7730999999985215,
+            1.0469999999986612,
+            0.8738999999986845,
+            1.631600000000617,
+            2.6652000000030966,
+            0.9235000000044238,
+            0.9135000000023865,
+            1.0302000000010594,
+            1.9179000000003725,
+            1.4501000000018394,
+            1.3085999999966589,
+            0.9804999999978463,
+            1.510600000001432,
+            1.3502999999982421,
+            1.0190000000002328,
+            2.050199999997858,
+            1.4465000000054715,
+            1.747800000004645,
+            1.0777999999991152,
+            1.0552999999999884,
+            0.9467000000004191,
+            0.8251000000018394,
+            0.9645999999993364,
+            0.9542999999976018,
+            1.7493000000031316,
+            1.020700000000943,
+            1.193199999994249,
+            0.9624000000039814,
+            0.759699999995064,
+            0.9241000000038184,
+            1.2053000000014435,
+            1.178699999996752,
+            1.5550999999977648,
+            2.388299999998708,
+            1.2269999999989523,
+            1.1530000000057044,
+            1.5118000000002212,
+            2.102100000003702,
+            1.7172999999966123,
+            2.2062000000005355,
+            1.052400000000489,
+            1.3796000000002095,
+            5.3980999999985215,
+            1.3793000000005122,
+            1.375399999997171,
+            1.1739999999990687,
+            3.0349999999962165,
+            2.316399999996065,
+            1.9876000000003842,
+            1.8831000000063796,
+            1.2377999999953317,
+            1.2526999999972759,
+            1.5973999999987427,
+            1.2715000000025611,
+            1.1045000000012806,
+            1.3717999999935273,
+            1.342899999996007,
+            1.3104999999995925,
+            1.3867999999929452,
+            1.4581000000034692,
+            1.6750000000029104,
+            1.456899999997404,
+            1.1799000000028173,
+            1.023300000000745,
+            1.8421999999991385,
+            1.4677000000010594,
+            2.408799999997427,
+            1.8249000000068918,
+            0.8739000000059605,
+            1.601699999999255,
+            1.2739000000001397,
+            1.3184000000037486,
+            1.1679999999978463,
+            1.1486000000004424,
+            0.8352000000013504,
+            1.235499999995227,
+            1.0095000000001164,
+            1.1229999999995925,
+            1.1137000000016997,
+            1.374099999993632,
+            1.2039000000004307,
+            1.0138000000006286,
+            0.9766999999992549,
+            0.8538000000044121,
+            1.3070000000006985,
+            1.3904999999940628,
+            1.0512999999991735,
+            0.9530000000013388,
+            1.4576000000015483,
+            2.403200000000652,
+            1.6834000000017113,
+            0.9329999999972642,
+            2.504399999997986,
+            1.1226999999998952,
+            0.9457000000038533,
+            1.6673999999984517,
+            1.1283999999941443,
+            1.0420999999987544,
+            1.0095000000001164,
+            1.635099999999511,
+            1.367099999995844,
+            2.4666999999972177,
+            2.7295999999987544,
+            7.736600000003818
+          ]
+        }
+      },
+      "clientCoordinator": {
+        "cpu": {
+          "user": 48328000,
+          "system": 5375000
+        },
+        "eventLoop": {
+          "idle": 1889.8856,
+          "active": 54535.11460003319,
+          "utilization": 0.9665062367159922
+        },
+        "delayMs": {
+          "maximum": 19176.357887,
+          "mean": 290.82288296907217,
+          "p99": 6593.445887
+        },
+        "memory": {
+          "rss": 313819136,
+          "heapTotal": 241942528,
+          "heapUsed": 164022768,
+          "external": 7708064,
+          "arrayBuffers": 1135739
+        },
+        "requests": [
+          {
+            "at": "2026-10-30T22:22:57.652Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 23.629500000000007
+          },
+          {
+            "at": "2026-10-30T22:22:57.678Z",
+            "method": "POST",
+            "route": "/api/admission/create",
+            "status": 200,
+            "elapsedMs": 4.8689999999999145
+          },
+          {
+            "at": "2026-10-30T22:22:57.685Z",
+            "method": "POST",
+            "route": "/matchmake/create/grave",
+            "status": 200,
+            "elapsedMs": 49.89549999999997
+          },
+          {
+            "at": "2026-10-30T22:22:57.776Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 19.170499999999947
+          },
+          {
+            "at": "2026-10-30T22:22:57.776Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 9.838499999999954
+          },
+          {
+            "at": "2026-10-30T22:22:57.777Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 11.043499999999995
+          },
+          {
+            "at": "2026-10-30T22:22:57.778Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 11.239900000000034
+          },
+          {
+            "at": "2026-10-30T22:22:57.779Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 12.471599999999967
+          },
+          {
+            "at": "2026-10-30T22:22:57.780Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 13.664499999999975
+          },
+          {
+            "at": "2026-10-30T22:22:57.787Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 9.876899999999978
+          },
+          {
+            "at": "2026-10-30T22:22:57.789Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 8.892400000000066
+          },
+          {
+            "at": "2026-10-30T22:22:57.790Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 8.55970000000002
+          },
+          {
+            "at": "2026-10-30T22:22:57.792Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 8.442999999999984
+          },
+          {
+            "at": "2026-10-30T22:22:57.794Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 7.403400000000033
+          },
+          {
+            "at": "2026-10-30T22:22:57.795Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 7.597300000000018
+          },
+          {
+            "at": "2026-10-30T22:22:57.797Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 7.091100000000097
+          },
+          {
+            "at": "2026-10-30T22:22:57.798Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 6.939799999999991
+          },
+          {
+            "at": "2026-10-30T22:22:57.799Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 7.312600000000089
+          },
+          {
+            "at": "2026-10-30T22:22:57.801Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 6.128100000000018
+          },
+          {
+            "at": "2026-10-30T22:22:57.802Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.841099999999983
+          },
+          {
+            "at": "2026-10-30T22:22:57.803Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.698200000000043
+          },
+          {
+            "at": "2026-10-30T22:22:57.885Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.2402000000000726
+          },
+          {
+            "at": "2026-10-30T22:22:57.885Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.622799999999984
+          },
+          {
+            "at": "2026-10-30T22:22:57.885Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.314300000000003
+          },
+          {
+            "at": "2026-10-30T22:22:57.885Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.45920000000001
+          },
+          {
+            "at": "2026-10-30T22:22:57.885Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.7258999999999105
+          },
+          {
+            "at": "2026-10-30T22:22:57.886Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.694099999999935
+          },
+          {
+            "at": "2026-10-30T22:22:57.887Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.4279999999999973
+          },
+          {
+            "at": "2026-10-30T22:22:57.888Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.059200000000033
+          },
+          {
+            "at": "2026-10-30T22:22:57.889Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.9372999999999365
+          },
+          {
+            "at": "2026-10-30T22:22:57.889Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.77150000000006
+          },
+          {
+            "at": "2026-10-30T22:22:57.890Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.0289000000000215
+          },
+          {
+            "at": "2026-10-30T22:22:57.890Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.1322999999999865
+          },
+          {
+            "at": "2026-10-30T22:22:57.891Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.726499999999987
+          },
+          {
+            "at": "2026-10-30T22:22:57.892Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.371199999999931
+          },
+          {
+            "at": "2026-10-30T22:22:57.893Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.749700000000075
+          },
+          {
+            "at": "2026-10-30T22:22:57.895Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.684600000000046
+          },
+          {
+            "at": "2026-10-30T22:22:57.895Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 8.023199999999974
+          },
+          {
+            "at": "2026-10-30T22:22:57.896Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 8.108400000000074
+          },
+          {
+            "at": "2026-10-30T22:22:57.976Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.1404999999999745
+          },
+          {
+            "at": "2026-10-30T22:22:57.976Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.630300000000034
+          },
+          {
+            "at": "2026-10-30T22:22:57.977Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 5.107899999999972
+          },
+          {
+            "at": "2026-10-30T22:22:57.977Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 5.842999999999847
+          },
+          {
+            "at": "2026-10-30T22:22:57.978Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.217399999999998
+          },
+          {
+            "at": "2026-10-30T22:22:57.978Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.613200000000006
+          },
+          {
+            "at": "2026-10-30T22:22:57.980Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.933499999999867
+          },
+          {
+            "at": "2026-10-30T22:22:57.980Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.824499999999944
+          },
+          {
+            "at": "2026-10-30T22:22:57.981Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.376400000000103
+          },
+          {
+            "at": "2026-10-30T22:22:57.981Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.459100000000035
+          },
+          {
+            "at": "2026-10-30T22:22:57.983Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.349500000000035
+          },
+          {
+            "at": "2026-10-30T22:22:57.983Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.3694000000000415
+          },
+          {
+            "at": "2026-10-30T22:22:57.985Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.971700000000055
+          },
+          {
+            "at": "2026-10-30T22:22:57.985Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.701499999999896
+          },
+          {
+            "at": "2026-10-30T22:22:57.986Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.326599999999871
+          },
+          {
+            "at": "2026-10-30T22:22:57.987Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.579600000000028
+          },
+          {
+            "at": "2026-10-30T22:22:57.988Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.164800000000014
+          },
+          {
+            "at": "2026-10-30T22:22:57.989Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.889099999999871
+          },
+          {
+            "at": "2026-10-30T22:22:58.078Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.858600000000024
+          },
+          {
+            "at": "2026-10-30T22:22:58.078Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.435899999999947
+          },
+          {
+            "at": "2026-10-30T22:22:58.078Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 6.766100000000051
+          },
+          {
+            "at": "2026-10-30T22:22:58.078Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.607600000000048
+          },
+          {
+            "at": "2026-10-30T22:22:58.079Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 7.070999999999913
+          },
+          {
+            "at": "2026-10-30T22:22:58.079Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 5.2719999999999345
+          },
+          {
+            "at": "2026-10-30T22:22:58.082Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.830500000000029
+          },
+          {
+            "at": "2026-10-30T22:22:58.083Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.718599999999924
+          },
+          {
+            "at": "2026-10-30T22:22:58.083Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.123299999999972
+          },
+          {
+            "at": "2026-10-30T22:22:58.084Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.654099999999971
+          },
+          {
+            "at": "2026-10-30T22:22:58.085Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.024400000000014
+          },
+          {
+            "at": "2026-10-30T22:22:58.086Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.076000000000022
+          },
+          {
+            "at": "2026-10-30T22:22:58.086Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.882800000000088
+          },
+          {
+            "at": "2026-10-30T22:22:58.088Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.9759999999998854
+          },
+          {
+            "at": "2026-10-30T22:22:58.088Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.7626999999999953
+          },
+          {
+            "at": "2026-10-30T22:22:58.089Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.6861999999998716
+          },
+          {
+            "at": "2026-10-30T22:22:58.089Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.840099999999893
+          },
+          {
+            "at": "2026-10-30T22:22:58.090Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.6779999999998836
+          },
+          {
+            "at": "2026-10-30T22:22:58.174Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.3326999999999316
+          },
+          {
+            "at": "2026-10-30T22:22:58.174Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.7554999999999836
+          },
+          {
+            "at": "2026-10-30T22:22:58.174Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.052199999999857
+          },
+          {
+            "at": "2026-10-30T22:22:58.174Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.861599999999953
+          },
+          {
+            "at": "2026-10-30T22:22:58.175Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.2291000000000167
+          },
+          {
+            "at": "2026-10-30T22:22:58.175Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.9897000000000844
+          },
+          {
+            "at": "2026-10-30T22:22:58.177Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 2.513400000000047
+          },
+          {
+            "at": "2026-10-30T22:22:58.177Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 2.8402000000000953
+          },
+          {
+            "at": "2026-10-30T22:22:58.178Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.0150000000001
+          },
+          {
+            "at": "2026-10-30T22:22:58.178Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.230399999999918
+          },
+          {
+            "at": "2026-10-30T22:22:58.178Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.1854000000000724
+          },
+          {
+            "at": "2026-10-30T22:22:58.179Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.4667000000001735
+          },
+          {
+            "at": "2026-10-30T22:22:58.179Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.7889999999999873
+          },
+          {
+            "at": "2026-10-30T22:22:58.180Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.113099999999804
+          },
+          {
+            "at": "2026-10-30T22:22:58.181Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 18.385499999999865
+          },
+          {
+            "at": "2026-10-30T22:22:58.181Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 18.642500000000155
+          },
+          {
+            "at": "2026-10-30T22:22:58.182Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 18.749599999999873
+          },
+          {
+            "at": "2026-10-30T22:22:58.183Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 18.35719999999992
+          },
+          {
+            "at": "2026-10-30T22:22:58.280Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.1631999999999607
+          },
+          {
+            "at": "2026-10-30T22:22:58.280Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.572200000000066
+          },
+          {
+            "at": "2026-10-30T22:22:58.280Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.221599999999853
+          },
+          {
+            "at": "2026-10-30T22:22:58.280Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.525700000000143
+          },
+          {
+            "at": "2026-10-30T22:22:58.280Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 2.5238999999999123
+          },
+          {
+            "at": "2026-10-30T22:22:58.280Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.4420000000000073
+          },
+          {
+            "at": "2026-10-30T22:22:58.282Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.5095000000001164
+          },
+          {
+            "at": "2026-10-30T22:22:58.283Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.702299999999923
+          },
+          {
+            "at": "2026-10-30T22:22:58.283Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 5.077200000000175
+          },
+          {
+            "at": "2026-10-30T22:22:58.284Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.753500000000031
+          },
+          {
+            "at": "2026-10-30T22:22:58.284Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.95049999999992
+          },
+          {
+            "at": "2026-10-30T22:22:58.285Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 6.490399999999909
+          },
+          {
+            "at": "2026-10-30T22:22:58.286Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.314099999999826
+          },
+          {
+            "at": "2026-10-30T22:22:58.287Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.661600000000135
+          },
+          {
+            "at": "2026-10-30T22:22:58.288Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.9633000000001175
+          },
+          {
+            "at": "2026-10-30T22:22:58.289Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 5.166299999999865
+          },
+          {
+            "at": "2026-10-30T22:22:58.290Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.948000000000093
+          },
+          {
+            "at": "2026-10-30T22:22:58.292Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 19.902000000000044
+          },
+          {
+            "at": "2026-10-30T22:22:58.376Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.302500000000009
+          },
+          {
+            "at": "2026-10-30T22:22:58.376Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 5.933800000000019
+          },
+          {
+            "at": "2026-10-30T22:22:58.377Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.447200000000066
+          },
+          {
+            "at": "2026-10-30T22:22:58.377Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.357099999999946
+          },
+          {
+            "at": "2026-10-30T22:22:58.377Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 5.121799999999894
+          },
+          {
+            "at": "2026-10-30T22:22:58.377Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 6.001999999999953
+          },
+          {
+            "at": "2026-10-30T22:22:58.380Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.774599999999964
+          },
+          {
+            "at": "2026-10-30T22:22:58.380Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.706700000000183
+          },
+          {
+            "at": "2026-10-30T22:22:58.381Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.2215000000001055
+          },
+          {
+            "at": "2026-10-30T22:22:58.382Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 1.9644000000000688
+          },
+          {
+            "at": "2026-10-30T22:22:58.383Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.41599999999994
+          },
+          {
+            "at": "2026-10-30T22:22:58.383Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.559600000000046
+          },
+          {
+            "at": "2026-10-30T22:22:58.384Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.7934999999999945
+          },
+          {
+            "at": "2026-10-30T22:22:58.384Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.762399999999843
+          },
+          {
+            "at": "2026-10-30T22:22:58.385Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.35349999999994
+          },
+          {
+            "at": "2026-10-30T22:22:58.386Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.2612000000001444
+          },
+          {
+            "at": "2026-10-30T22:22:58.386Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.9075000000000273
+          },
+          {
+            "at": "2026-10-30T22:22:58.387Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.316500000000133
+          },
+          {
+            "at": "2026-10-30T22:22:58.489Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.384999999999991
+          },
+          {
+            "at": "2026-10-30T22:22:58.489Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.9383000000000266
+          },
+          {
+            "at": "2026-10-30T22:22:58.490Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 3.628500000000031
+          },
+          {
+            "at": "2026-10-30T22:22:58.490Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.76260000000002
+          },
+          {
+            "at": "2026-10-30T22:22:58.490Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 5.016000000000076
+          },
+          {
+            "at": "2026-10-30T22:22:58.491Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 4.034599999999955
+          },
+          {
+            "at": "2026-10-30T22:22:58.493Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.2362000000000535
+          },
+          {
+            "at": "2026-10-30T22:22:58.493Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.3512000000000626
+          },
+          {
+            "at": "2026-10-30T22:22:58.494Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.578499999999849
+          },
+          {
+            "at": "2026-10-30T22:22:58.495Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 3.7513000000001284
+          },
+          {
+            "at": "2026-10-30T22:22:58.495Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.216899999999896
+          },
+          {
+            "at": "2026-10-30T22:22:58.496Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 4.231700000000046
+          },
+          {
+            "at": "2026-10-30T22:22:58.496Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.786100000000033
+          },
+          {
+            "at": "2026-10-30T22:22:58.497Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.383800000000065
+          },
+          {
+            "at": "2026-10-30T22:22:58.498Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.33809999999994
+          },
+          {
+            "at": "2026-10-30T22:22:58.499Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.076000000000022
+          },
+          {
+            "at": "2026-10-30T22:22:58.500Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 3.578800000000001
+          },
+          {
+            "at": "2026-10-30T22:22:58.500Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 4.1422999999999774
+          },
+          {
+            "at": "2026-10-30T22:22:58.612Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 1.4186999999999443
+          },
+          {
+            "at": "2026-10-30T22:22:58.614Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 0.9083000000000538
+          },
+          {
+            "at": "2026-10-30T22:22:58.615Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 1.5994999999998072
+          },
+          {
+            "at": "2026-10-30T22:22:58.744Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 1.4731999999999061
+          },
+          {
+            "at": "2026-10-30T22:22:58.746Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 1.4827999999999975
+          },
+          {
+            "at": "2026-10-30T22:23:21.967Z",
+            "method": "GET",
+            "route": "/api/health",
+            "status": 200,
+            "elapsedMs": 480.2590999999993
+          },
+          {
+            "at": "2026-10-30T22:23:22.448Z",
+            "method": "POST",
+            "route": "/api/admission/join",
+            "status": 200,
+            "elapsedMs": 1849.7753000000012
+          },
+          {
+            "at": "2026-10-30T22:23:24.298Z",
+            "method": "POST",
+            "route": "/matchmake/joinById/:id",
+            "status": 200,
+            "elapsedMs": 8420.808799999995
+          },
+          {
+            "at": "2026-10-30T22:23:51.797Z",
+            "method": "POST",
+            "route": "/matchmake/reconnect/gpy4EIKvv",
+            "error": "AbortError: ui.errorNetwork",
+            "elapsedMs": 1778.2639999999956
+          },
+          {
+            "at": "2026-10-30T22:23:51.800Z",
+            "method": "POST",
+            "route": "/matchmake/reconnect/gpy4EIKvv",
+            "error": "AbortError: ui.errorNetwork",
+            "elapsedMs": 1775.104499999994
+          },
+          {
+            "at": "2026-10-30T22:23:51.802Z",
+            "method": "POST",
+            "route": "/matchmake/reconnect/gpy4EIKvv",
+            "error": "AbortError: ui.errorNetwork",
+            "elapsedMs": 1773.7028999999966
+          },
+          {
+            "at": "2026-10-30T22:23:51.803Z",
+            "method": "POST",
+            "route": "/matchmake/reconnect/gpy4EIKvv",
+            "error": "AbortError: ui.errorNetwork",
+            "elapsedMs": 1772.6970999999976
+          },
+          {
+            "at": "2026-10-30T22:23:51.804Z",
+            "method": "POST",
+            "route": "/matchmake/reconnect/gpy4EIKvv",
+            "error": "AbortError: ui.errorNetwork",
+            "elapsedMs": 1771.5483999999997
+          },
+          {
+            "at": "2026-10-30T22:23:51.805Z",
+            "method": "POST",
+            "route": "/matchmake/reconnect/gpy4EIKvv",
+            "error": "AbortError: ui.errorNetwork",
+            "elapsedMs": 1770.3269
+          }
+        ]
+      },
+      "stderr": ""
+    }
+  ],
+  "limits": [
+    "Separate-process loopback software evidence with real SDK Sessions and isolated SQLite results. Zero rendered or human players.",
+    "Fixture-only invulnerability and boss health clears; intermission deadlines accelerated after a real five-second defeat interval. These are not legitimate qualifying scores or encounter-balance/endurance/WAN/device acceptance.",
+    "No active preview, player room, hosted service, personal save, deployment or published release is modified."
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "checkedAt": "2026-11-04T03:58:39.903Z",
+  "playableSourceCommit": "233e9143300989f43f986fdd5fe800975c3f88db",
+  "runtimeSourceSha256": "6bcbc0d192fce70539cb3abe400229ef72c185b2f1384064f97afb57978bf0ae",
+  "build": "2026.11.04-engineer-kit-guide",
+  "protocol": 54,
+  "policyFile": "traps-control-policy.mts",
+  "policySha256": "33914eb61e6037dca5b0fcdb52c6ef9cf1c95f264087349fea7bac4be4bad111",
+  "reports": [
+    {
+      "file": "Traps-control-play-v5-baby.json",
+      "sha256": "ed132e50bf224a9217fec4d9925d273316e99ddb4ac98e08fdc3d5dda868c833"
+    },
+    {
+      "file": "Traps-control-play-v5-baby-restored.json",
+      "sha256": "af696674e1064e8e4564aa9f86f69bdfa886729e27049c4fd80fae0c2dd7abb2"
+    },
+    {
+      "file": "Traps-control-comparison-v5-baby.json",
+      "sha256": "88d1090a5d42798b5f5c31af416b8ac0ba3467f267715eddd8f83ff307a81af1"
+    },
+    {
+      "file": "Traps-control-play-v5-normal.json",
+      "sha256": "00d1ec472feb2ac16292e190740cab64964a3f61568f0010b5bc76a4f7268873"
+    },
+    {
+      "file": "Traps-control-play-v5-normal-restored.json",
+      "sha256": "4d5b3e37f0a71896c6fd9692f7232b7e550070781158fc1e8c8fa0ced15b794e"
+    },
+    {
+      "file": "Traps-control-comparison-v5-normal.json",
+      "sha256": "fe1cbb976432497b594bbe3e020a8bbdcf4c4b2e02f7d8572044174853452f5d"
+    }
+  ],
+  "rows": [
+    {
+      "difficulty": "baby",
+      "route": "wire",
+      "phase": "victory",
+      "completedEncounters": 5,
+      "combatSeconds": 190.63333333333333,
+      "earnedSP": 27,
+      "spentSP": 27,
+      "signalCounts": {
+        "setup-start": 5,
+        "deployed": 11,
+        "engineer-wire": 2,
+        "ready-pair": 2,
+        "automatic-fuse": 4,
+        "setup-timeout": 1,
+        "remote-fuse": 2,
+        "engineer-haul": 2,
+        "engineer-jet": 5,
+        "engineer-jet-impact": 5,
+        "engineer-corridor": 1,
+        "engineer-corridor-impact": 1
+      },
+      "restoredBoundaryCount": 17,
+      "measuredOutcomeAndActionsMatch": true
+    },
+    {
+      "difficulty": "baby",
+      "route": "switch",
+      "phase": "victory",
+      "completedEncounters": 5,
+      "combatSeconds": 177.23333333333332,
+      "earnedSP": 27,
+      "spentSP": 27,
+      "signalCounts": {
+        "setup-start": 5,
+        "deployed": 10,
+        "hold": 4,
+        "ready-pair": 4,
+        "release": 3,
+        "remote-fuse": 4,
+        "engineer-haul": 2,
+        "engineer-jet": 5,
+        "engineer-jet-impact": 5,
+        "engineer-corridor": 1,
+        "engineer-corridor-impact": 1
+      },
+      "restoredBoundaryCount": 17,
+      "measuredOutcomeAndActionsMatch": true
+    },
+    {
+      "difficulty": "normal",
+      "route": "wire",
+      "phase": "defeat",
+      "completedEncounters": 4,
+      "combatSeconds": 221.06666666666666,
+      "earnedSP": 27,
+      "spentSP": 27,
+      "signalCounts": {
+        "setup-start": 5,
+        "deployed": 11,
+        "engineer-wire": 2,
+        "ready-pair": 2,
+        "automatic-fuse": 5,
+        "setup-timeout": 2,
+        "engineer-haul": 2,
+        "engineer-jet": 4,
+        "remote-fuse": 2,
+        "engineer-jet-impact": 4
+      },
+      "restoredBoundaryCount": 17,
+      "measuredOutcomeAndActionsMatch": true
+    },
+    {
+      "difficulty": "normal",
+      "route": "switch",
+      "phase": "defeat",
+      "completedEncounters": 4,
+      "combatSeconds": 198.7,
+      "earnedSP": 27,
+      "spentSP": 27,
+      "signalCounts": {
+        "setup-start": 5,
+        "deployed": 11,
+        "hold": 4,
+        "ready-pair": 4,
+        "release": 3,
+        "automatic-fuse": 4,
+        "remote-fuse": 3,
+        "engineer-haul": 2,
+        "engineer-jet": 4,
+        "engineer-jet-impact": 4,
+        "engineer-corridor": 1,
+        "engineer-corridor-impact": 1
+      },
+      "restoredBoundaryCount": 17,
+      "measuredOutcomeAndActionsMatch": true
+    }
+  ],
+  "priorAttemptsPreservedInChat": [
+    {
+      "file": "Traps-control-play-v2-normal.json",
+      "sha256": "84c5b6cf58ee8759b2feb5c45fd1cf4af95eca2229da3d0627b263501ce2c4ec",
+      "results": [
+        {
+          "route": "wire",
+          "phase": "defeat",
+          "completedEncounters": 4,
+          "combatSeconds": 274.6
+        },
+        {
+          "route": "switch",
+          "phase": "defeat",
+          "completedEncounters": 4,
+          "combatSeconds": 262.03333333333336
+        }
+      ]
+    },
+    {
+      "file": "Traps-control-play-v3-normal.json",
+      "sha256": "04e82903b63edd933bf2e2fdbc35800879aa3da7cd524ee90e80c8a0f32e9b1e",
+      "results": [
+        {
+          "route": "wire",
+          "phase": "defeat",
+          "completedEncounters": 4,
+          "combatSeconds": 280.8333333333333
+        },
+        {
+          "route": "switch",
+          "phase": "defeat",
+          "completedEncounters": 2,
+          "combatSeconds": 131.4
+        }
+      ]
+    },
+    {
+      "file": "Traps-control-play-v4-baby-restored.json",
+      "sha256": "d250ab1e1bc57ad0308b792dc986f4321e98fd9e19c5b712d8adcc13e990dee8",
+      "results": [
+        {
+          "route": "wire",
+          "phase": "defeat",
+          "completedEncounters": 3,
+          "combatSeconds": 253.76666666666668
+        },
+        {
+          "route": "switch",
+          "phase": "victory",
+          "completedEncounters": 5,
+          "combatSeconds": 183.83333333333334
+        }
+      ]
+    },
+    {
+      "file": "Traps-control-play-v4-baby.json",
+      "sha256": "6913767e2454e8cc1ed578804baa462e2e35647eb36f7e2c8eda25b96d0f2c69",
+      "results": [
+        {
+          "route": "wire",
+          "phase": "defeat",
+          "completedEncounters": 3,
+          "combatSeconds": 253.76666666666668
+        },
+        {
+          "route": "switch",
+          "phase": "victory",
+          "completedEncounters": 5,
+          "combatSeconds": 183.83333333333334
+        }
+      ]
+    },
+    {
+      "file": "Traps-control-play-v4-normal.json",
+      "sha256": "fb92fb33c4b7aa67cf6a4b2bde1f0c1ef8042382a3eded413379b25602b710fd",
+      "results": [
+        {
+          "route": "wire",
+          "phase": "defeat",
+          "completedEncounters": 4,
+          "combatSeconds": 280.8333333333333
+        },
+        {
+          "route": "switch",
+          "phase": "defeat",
+          "completedEncounters": 2,
+          "combatSeconds": 131.4
+        }
+      ]
+    }
+  ],
+  "conclusions": [
+    "Purposeful preparation uses a real two-plate Tripwire, full held-pair release, charge haul, shaped jets and a coordinated Corridor commitment/impact. Buying a technique alone is not counted as using it.",
+    "Both final easiest-difficulty builds naturally clear five encounters. Both final Normal builds lose at the fifth. These policy outcomes do not rank the builds or establish human enjoyment, combat fairness or final balance.",
+    "All four safe-restored counterparts match baseline measured actions/outcomes, each at 17 boundaries; terminal phases are outside the loop. Runtime, content, prices, protocol and ownership were not changed for these trials.",
+    "Earlier policies and their losses remain preserved. V1 sent an unnormalized aim; V3 restored-client input sequences eventually exceeded the authority window after checkpoint ack reset. V2 normalizes aim; V4 reseeds the restored client from p.ack. V5 keeps preparation movement near the first plate instead of chasing the far side of the boss. These are harness corrections, not game fixes.",
+    "Current Engineer implementation/reference checks are sufficient to proceed to one Soldier slice. Human/rendered/device/native-language/listening/motion/final-balance acceptance remains open, alongside broader map/seed/difficulty/co-op quality assessment. No new class is exposed by this report."
+  ],
+  "limits": "Native fixed-step shared-Game trials on Short/seed2209/fixed Gatehouse, using real input, damage, rewards, purchases and intermission clocks. No health/SP/currency injection, forced enemy completion, boss-timer edit, invulnerability or score submission. Public cues establish observed operations, not isolated per-technique damage attribution. No browser, device or human acceptance is inferred."
+}

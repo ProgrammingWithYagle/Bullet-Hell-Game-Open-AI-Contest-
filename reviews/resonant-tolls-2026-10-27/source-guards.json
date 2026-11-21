@@ -1,0 +1,69 @@
+{
+  "createdAt": "2026-10-28T02:57:56.599Z",
+  "passed": true,
+  "main": {
+    "sha": "c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1",
+    "protected": true
+  },
+  "draftPr": {
+    "number": 14,
+    "head": "6d90118568b5d867f52bb9beeb492d5a60046fba",
+    "draft": true,
+    "state": "open"
+  },
+  "ruleset": {
+    "id": 25692180,
+    "name": "Protect main",
+    "enforcement": "active",
+    "bypassActors": [],
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "refs/heads/main"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "required_linear_history"
+      },
+      {
+        "type": "pull_request",
+        "parameters": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews_on_push": true,
+          "required_reviewers": [],
+          "require_code_owner_review": false,
+          "require_last_push_approval": false,
+          "required_review_thread_resolution": true,
+          "require_extra_approval_for_unattributed_changes": true,
+          "allowed_merge_methods": [
+            "merge",
+            "squash",
+            "rebase"
+          ]
+        }
+      },
+      {
+        "type": "required_status_checks",
+        "parameters": {
+          "strict_required_status_checks_policy": true,
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "verify"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "readOnly": true
+}

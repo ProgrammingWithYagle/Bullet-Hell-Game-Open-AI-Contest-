@@ -1,0 +1,24 @@
+$ErrorActionPreference='Stop'
+$taskRepo='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)'
+$taskRecorded=Get-Content -Raw -LiteralPath (Join-Path $taskRepo 'reviews/heavy-clutch-stat-scaling-2026-11-10/process-identities.json')|ConvertFrom-Json
+$taskInventory=@{};foreach($taskProcess in (Get-CimInstance Win32_Process)){$taskInventory[[int]$taskProcess.ProcessId]=$taskProcess}
+$taskListeners=@(Get-NetTCPConnection -State Listen)
+$taskCurrent=@();$taskOlder=@();$taskLaunchers=@()
+foreach($taskGroup in @('identities','olderRecordedIdentities','launchers')){
+ foreach($taskExpected in $taskRecorded.$taskGroup){
+  $taskLive=$taskInventory[[int]$taskExpected.pid]
+  $taskSame=$taskLive -and $taskLive.CommandLine -ceq $taskExpected.commandLine -and $taskLive.CreationDate.ToUniversalTime().Ticks -eq ([DateTimeOffset]$taskExpected.createdAt).UtcDateTime.Ticks
+  $taskListener=$taskSame -and [bool]($taskListeners|Where-Object {$_.LocalPort -eq $taskExpected.port -and $_.OwningProcess -eq $taskExpected.pid})
+  $taskRow=[ordered]@{pid=[int]$taskExpected.pid;port=$taskExpected.port;createdAt=$taskExpected.createdAt;recordedGameCommand=$taskExpected.commandLine;sameRecordedIdentityLive=[bool]$taskSame;listenerStillOwned=[bool]$taskListener;cleanupPerformed=$false}
+  if($taskGroup -eq 'identities'){$taskRow.audience=$taskExpected.audience;$taskRow.role=$taskExpected.role;if(!$taskSame -or !$taskListener){throw 'Exact current recorded identity/listener differs.'};$taskCurrent+=$taskRow}
+  elseif($taskGroup -eq 'launchers'){if(!$taskSame){throw 'Exact recorded hidden launcher differs.'};$taskLaunchers+=$taskRow}
+  else{$taskOlder+=$taskRow}
+ }
+}
+if($taskCurrent.Count -ne 4 -or $taskOlder.Count -ne 116 -or $taskLaunchers.Count -ne 2){throw 'Unexpected recorded inventory.'}
+$taskLiveOlder=@($taskOlder|Where-Object sameRecordedIdentityLive).Count
+$taskResult=[ordered]@{checkedAt=[DateTime]::UtcNow.ToString('o');sourceCommit=$taskRecorded.sourceCommit;currentExactLiveCount=4;olderRecordedCount=116;olderExactLiveCount=$taskLiveOlder;olderNonmatchingOrAbsentCount=116-$taskLiveOlder;identities=$taskCurrent;launchers=$taskLaunchers;olderRecordedIdentities=$taskOlder;cleanupPerformed=$false;comparison='Exact recorded full command and UTC from the verified capture, not a newly resolved executable path.';limits='Unrelated commands from any reused PID are never recorded. The frozen capture remains unchanged; this current observation is outside Git. Private SQLite and all services remain untouched.'}
+$taskOutput='C:/Users/yigal/Documents/Codex/2026-11-05/continue-grave-accord-in-the-same/outputs/Heavy-clutch-stat-scaling-before-metadata-identities.json'
+if(Test-Path -LiteralPath $taskOutput){throw 'Preserve the existing final observation.'}
+$taskResult|ConvertTo-Json -Depth 8|Set-Content -LiteralPath $taskOutput -Encoding utf8NoBOM
+Write-Output ('Verified4current + '+$taskLiveOlder+' older exact identities; '+(116-$taskLiveOlder)+' older nonmatching/absent. No cleanup.')

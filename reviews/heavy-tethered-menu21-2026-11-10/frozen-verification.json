@@ -1,0 +1,1384 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-12T00:15:35.559Z",
+  "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "protocol": 73,
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+  "sourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+  "nativeAttempt": "native04-composed",
+  "rows": [
+    {
+      "audience": "testing",
+      "scope": "reviews/heavy-tethered-menu21-2026-11-10",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "url": "http://127.0.0.1:5384/",
+      "endpoint": "http://127.0.0.1:2760",
+      "filesHashed": 2060,
+      "groups": 4,
+      "cases": 147,
+      "invocations": 62,
+      "currentSourceCaseCoverage": 105,
+      "currentSourceInvocations": 20,
+      "native04NewlyExecutedCases": 4,
+      "native03PassingInvocationsRetained": 16,
+      "retainedOriginalSource30fbCases": 42,
+      "originalProvenanceNotRelabelled": true,
+      "wholeExactServedOptimizedWorkerCases": 30,
+      "realPeerCases": 30,
+      "newPostShortWorkerCases": 9,
+      "newPostShortNonhostPeerCases": 9,
+      "sourceBoundUIControlCases": 86,
+      "servedWorkerSha256": "f120989dd0f108b9122a3af2a5e0dba4aa80e88d2204d4a62f4fa6918a2cc161"
+    },
+    {
+      "audience": "public",
+      "scope": "reviews/heavy-tethered-menu21-2026-11-10",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "url": "http://127.0.0.1:5385/",
+      "endpoint": "http://127.0.0.1:2761",
+      "filesHashed": 2060,
+      "groups": 4,
+      "cases": 147,
+      "invocations": 62,
+      "currentSourceCaseCoverage": 105,
+      "currentSourceInvocations": 20,
+      "native04NewlyExecutedCases": 6,
+      "native03PassingInvocationsRetained": 14,
+      "retainedOriginalSource30fbCases": 42,
+      "originalProvenanceNotRelabelled": true,
+      "wholeExactServedOptimizedWorkerCases": 30,
+      "realPeerCases": 30,
+      "newPostShortWorkerCases": 9,
+      "newPostShortNonhostPeerCases": 9,
+      "sourceBoundUIControlCases": 86,
+      "servedWorkerSha256": "f13b3744bbb9c90d1864314dba1c5e03bdb490559434118eb2003cce2e9d997e"
+    }
+  ],
+  "postCounts": [
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-standard-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 699.4657215667503,
+          "y": 750.6453381728127
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 10.66666666666665,
+        "tick": 817,
+        "originalUntil": 843,
+        "minimumRequired": 5
+      },
+      "originalUntil": 843,
+      "originalRecovery": 1052
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-standard-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 695,
+          "y": 752
+        },
+        "to": {
+          "x": 701.060622126304,
+          "y": 750.1615303773884
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 6.333333333333333,
+        "tick": 816,
+        "originalUntil": 843,
+        "minimumRequired": 5
+      },
+      "originalUntil": 843,
+      "originalRecovery": 1052
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-standard-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 699.4657215667503,
+          "y": 750.6453381728127
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 10.66666666666665,
+        "tick": 780,
+        "originalUntil": 806,
+        "minimumRequired": 5
+      },
+      "originalUntil": 806,
+      "originalRecovery": 1015
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-keyed-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 699.4657215667503,
+          "y": 750.6453381728127
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 10.66666666666665,
+        "tick": 816,
+        "originalUntil": 842,
+        "minimumRequired": 5
+      },
+      "originalUntil": 842,
+      "originalRecovery": 1051
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-keyed-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 695,
+          "y": 752
+        },
+        "to": {
+          "x": 701.060622126304,
+          "y": 750.1615303773884
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 6.333333333333333,
+        "tick": 781,
+        "originalUntil": 808,
+        "minimumRequired": 5
+      },
+      "originalUntil": 808,
+      "originalRecovery": 1017
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-keyed-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 699.4657215667503,
+          "y": 750.6453381728127
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 10.66666666666665,
+        "tick": 781,
+        "originalUntil": 807,
+        "minimumRequired": 5
+      },
+      "originalUntil": 807,
+      "originalRecovery": 1016
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-open-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 699.4657215667503,
+          "y": 750.6453381728127
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 10.66666666666665,
+        "tick": 817,
+        "originalUntil": 843,
+        "minimumRequired": 5
+      },
+      "originalUntil": 843,
+      "originalRecovery": 1052
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-open-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 695,
+          "y": 752
+        },
+        "to": {
+          "x": 701.060622126304,
+          "y": 750.1615303773884
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 6.333333333333333,
+        "tick": 817,
+        "originalUntil": 844,
+        "minimumRequired": 5
+      },
+      "originalUntil": 844,
+      "originalRecovery": 1053
+    },
+    {
+      "audience": "testing",
+      "group": "worker",
+      "variant": "post-open-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 699.4657215667503,
+          "y": 750.6453381728127
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 10.66666666666665,
+        "tick": 780,
+        "originalUntil": 806,
+        "minimumRequired": 5
+      },
+      "originalUntil": 806,
+      "originalRecovery": 1015
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-standard-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 723.75,
+          "y": 753.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 1585,
+        "originalUntil": 1609,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1609,
+      "originalRecovery": 1818
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-standard-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 725,
+          "y": 752
+        },
+        "to": {
+          "x": 733,
+          "y": 744
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 11.31370849898476,
+        "tick": 1436,
+        "originalUntil": 1458,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1458,
+      "originalRecovery": 1667
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-standard-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 728.25,
+          "y": 748.75
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 12.727922061357855,
+        "tick": 1139,
+        "originalUntil": 1162,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1162,
+      "originalRecovery": 1371
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-keyed-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 723.75,
+          "y": 753.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 1107,
+        "originalUntil": 1131,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1131,
+      "originalRecovery": 1340
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-keyed-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 725,
+          "y": 752
+        },
+        "to": {
+          "x": 728.75,
+          "y": 748.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 5.303300858899107,
+        "tick": 1140,
+        "originalUntil": 1164,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1164,
+      "originalRecovery": 1373
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-keyed-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 723.75,
+          "y": 753.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 1225,
+        "originalUntil": 1248,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1248,
+      "originalRecovery": 1457
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-open-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 730,
+          "y": 747
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 15.202795795510772,
+        "tick": 1132,
+        "originalUntil": 1156,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1156,
+      "originalRecovery": 1365
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-open-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 725,
+          "y": 752
+        },
+        "to": {
+          "x": 734,
+          "y": 743
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 12.727922061357855,
+        "tick": 648,
+        "originalUntil": 672,
+        "minimumRequired": 5
+      },
+      "originalUntil": 672,
+      "originalRecovery": 881
+    },
+    {
+      "audience": "testing",
+      "group": "room",
+      "variant": "post-open-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 728.25,
+          "y": 748.75
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 12.727922061357855,
+        "tick": 1150,
+        "originalUntil": 1172,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1172,
+      "originalRecovery": 1381
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-standard-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 697.2838976012808,
+          "y": 751.3071872369528
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 8.386666666666649,
+        "tick": 864,
+        "originalUntil": 890,
+        "minimumRequired": 5
+      },
+      "originalUntil": 890,
+      "originalRecovery": 1099
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-standard-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 695,
+          "y": 752
+        },
+        "to": {
+          "x": 699.9697101435693,
+          "y": 750.4924549094585
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 5.1933333333333325,
+        "tick": 861,
+        "originalUntil": 888,
+        "minimumRequired": 5
+      },
+      "originalUntil": 888,
+      "originalRecovery": 1097
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-standard-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 697.2838976012808,
+          "y": 751.3071872369528
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 8.386666666666649,
+        "tick": 860,
+        "originalUntil": 886,
+        "minimumRequired": 5
+      },
+      "originalUntil": 886,
+      "originalRecovery": 1095
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-keyed-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 697.2838976012808,
+          "y": 751.3071872369528
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 8.386666666666649,
+        "tick": 861,
+        "originalUntil": 887,
+        "minimumRequired": 5
+      },
+      "originalUntil": 887,
+      "originalRecovery": 1096
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-keyed-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 695,
+          "y": 752
+        },
+        "to": {
+          "x": 699.9697101435693,
+          "y": 750.4924549094585
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 5.1933333333333325,
+        "tick": 863,
+        "originalUntil": 890,
+        "minimumRequired": 5
+      },
+      "originalUntil": 890,
+      "originalRecovery": 1099
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-keyed-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 697.2838976012808,
+          "y": 751.3071872369528
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 8.386666666666649,
+        "tick": 862,
+        "originalUntil": 888,
+        "minimumRequired": 5
+      },
+      "originalUntil": 888,
+      "originalRecovery": 1097
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-open-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 697.2838976012808,
+          "y": 751.3071872369528
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 8.386666666666649,
+        "tick": 864,
+        "originalUntil": 890,
+        "minimumRequired": 5
+      },
+      "originalUntil": 890,
+      "originalRecovery": 1099
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-open-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 695,
+          "y": 752
+        },
+        "to": {
+          "x": 699.9697101435693,
+          "y": 750.4924549094585
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 5.1933333333333325,
+        "tick": 863,
+        "originalUntil": 890,
+        "minimumRequired": 5
+      },
+      "originalUntil": 890,
+      "originalRecovery": 1099
+    },
+    {
+      "audience": "public",
+      "group": "worker",
+      "variant": "post-open-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 689.2583579856067,
+          "y": 753.7417080635269
+        },
+        "to": {
+          "x": 696.2899555725669,
+          "y": 751.6086962550611
+        },
+        "direction": {
+          "x": 0.9569403357322088,
+          "y": -0.29028467725446244
+        },
+        "forwardProgress": 7.347999999999901,
+        "tick": 870,
+        "originalUntil": 896,
+        "minimumRequired": 5
+      },
+      "originalUntil": 896,
+      "originalRecovery": 1105
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-standard-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 723.75,
+          "y": 753.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 1052,
+        "originalUntil": 1075,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1075,
+      "originalRecovery": 1284
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-standard-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 725,
+          "y": 752
+        },
+        "to": {
+          "x": 730.25,
+          "y": 746.75
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 7.424621202458749,
+        "tick": 1248,
+        "originalUntil": 1271,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1271,
+      "originalRecovery": 1480
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-standard-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 724.75,
+          "y": 752.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 7.7781745930520225,
+        "tick": 1130,
+        "originalUntil": 1152,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1152,
+      "originalRecovery": 1361
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-keyed-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 723.25,
+          "y": 753.75
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 5.65685424949238,
+        "tick": 1364,
+        "originalUntil": 1387,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1387,
+      "originalRecovery": 1596
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-keyed-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 725,
+          "y": 752
+        },
+        "to": {
+          "x": 729.5,
+          "y": 747.5
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 986,
+        "originalUntil": 1010,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1010,
+      "originalRecovery": 1219
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-keyed-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 723.75,
+          "y": 753.25
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 493,
+        "originalUntil": 517,
+        "minimumRequired": 5
+      },
+      "originalUntil": 517,
+      "originalRecovery": 726
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-open-loose",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 728.25,
+          "y": 748.75
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 12.727922061357855,
+        "tick": 1005,
+        "originalUntil": 1029,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1029,
+      "originalRecovery": 1238
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-open-spade",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 725,
+          "y": 752
+        },
+        "to": {
+          "x": 729.5,
+          "y": 747.5
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 6.363961030678928,
+        "tick": 1144,
+        "originalUntil": 1168,
+        "minimumRequired": 5
+      },
+      "originalUntil": 1168,
+      "originalRecovery": 1377
+    },
+    {
+      "audience": "public",
+      "group": "room",
+      "variant": "post-open-floating",
+      "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "actualCrounds": 4,
+      "actualForfeitedSlots": 0,
+      "actualPostedWalking": {
+        "from": {
+          "x": 719.25,
+          "y": 757.75
+        },
+        "to": {
+          "x": 728.25,
+          "y": 748.75
+        },
+        "direction": {
+          "x": 0.7071067811865474,
+          "y": -0.7071067811865477
+        },
+        "forwardProgress": 12.727922061357855,
+        "tick": 862,
+        "originalUntil": 885,
+        "minimumRequired": 5
+      },
+      "originalUntil": 885,
+      "originalRecovery": 1094
+    }
+  ],
+  "sourceByteBinding": {
+    "checkedAt": "2026-11-11T04:21:59.259Z",
+    "passed": true,
+    "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+    "coreFiles": 796,
+    "allWorkingAndCommittedCoreBytesExact": true,
+    "allCoreSourceBytesLF": true,
+    "differingFiles": [],
+    "boundedRawGitObjectBatchRead": true,
+    "rawGitObjectBytes": 6851498,
+    "workingRuntimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "workingSourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+    "committedRuntimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "committedSourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+    "verificationDriverSha256": "207175ba295b17adf64bb9c63c7d00df507c4f0142faf9bcac7ea83dcf66e09b",
+    "olderRawExecutionProvenanceRetained": true,
+    "gitConfigurationChanged": false
+  },
+  "sourceCIAllJobsStepsDecoded2211Pass": true,
+  "ownRunArtifactsVerified": true,
+  "originalNativeFailuresPreserved": true,
+  "native03SevenFailuresPreserved": true,
+  "native03And04CurrentSourceCompositionExplicit": true,
+  "verificationDriver": {
+    "file": "verify-frozen05.mjs",
+    "sha256": "a6ecb3751d05e9e81a3e4f61ef81f9482aa5fa7613409debbf05c29564f7d20d"
+  },
+  "newPauseAdapterFailurePreserved": true,
+  "runtimeRetainedExecutionBinding": "reviews/heavy-tethered-menu21-2026-11-10/runtime-retained-execution-binding.json",
+  "currentExpandedPairExact": true,
+  "rollbackArchiveExact": true,
+  "rollbackScope": "reviews/heavy-clutch-stat-scaling-2026-11-10",
+  "rollbackSourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "rollbackArchiveSha256": "21ceabead7c881c906b2828ac85c5043ba7169ce442abad808eeb73f9b38dd32",
+  "privateSQLiteRelatedFilesExact": 213,
+  "privateHashesRemainLocalOnly": true,
+  "unchangedRuntimeContentAssetsLocalesFiles": 3490,
+  "serviceYardWipExact": true,
+  "processIdentities": {
+    "checkedAt": "2026-11-12T00:13:27.8738072Z",
+    "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+    "identities": [
+      {
+        "scope": "reviews/heavy-tethered-menu21-launch03-2026-11-11",
+        "audience": "testing",
+        "role": "backend",
+        "pid": 11840,
+        "port": 2760,
+        "createdAt": "2026-11-11T16:38:31.3704590Z",
+        "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-tethered-menu21-2026-11-10-dd2ae75.mjs\"",
+        "sameProcessStillLive": true,
+        "listenerStillOwned": true
+      },
+      {
+        "scope": "reviews/heavy-tethered-menu21-launch03-2026-11-11",
+        "audience": "testing",
+        "role": "client",
+        "pid": 38920,
+        "port": 5384,
+        "createdAt": "2026-11-11T16:38:31.3972220Z",
+        "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-tethered-menu21-2026-11-10-testing-dd2ae75 --host 127.0.0.1 --port 5384 --strictPort",
+        "sameProcessStillLive": true,
+        "listenerStillOwned": true
+      },
+      {
+        "scope": "reviews/heavy-tethered-menu21-launch03-2026-11-11",
+        "audience": "public",
+        "role": "backend",
+        "pid": 32208,
+        "port": 2761,
+        "createdAt": "2026-11-11T16:38:31.3704530Z",
+        "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-tethered-menu21-2026-11-10-dd2ae75.mjs\"",
+        "sameProcessStillLive": true,
+        "listenerStillOwned": true
+      },
+      {
+        "scope": "reviews/heavy-tethered-menu21-launch03-2026-11-11",
+        "audience": "public",
+        "role": "client",
+        "pid": 2944,
+        "port": 5385,
+        "createdAt": "2026-11-11T16:38:31.3972170Z",
+        "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-tethered-menu21-2026-11-10-public-dd2ae75 --host 127.0.0.1 --port 5385 --strictPort",
+        "sameProcessStillLive": true,
+        "listenerStillOwned": true
+      }
+    ],
+    "currentExactLiveCount": 4,
+    "cleanupPerformed": false,
+    "priorIdentityReceipt": "reviews/heavy-tethered-menu21-2026-11-10/process-identities.json",
+    "originalLaunchAndHistoricalRecordsUnchanged": true
+  },
+  "retiredHistoricalRootsNotRecreated": true,
+  "retirementLedger": "reviews/storage-retention-2026-11-10/retention-result.json",
+  "limits": [
+    "Composite147cases/62invocations per audience retain42 original unaffected source30fb worker/peer executions, with exact worker/backend bytes and original helper/endpoint/timestamp/raw-log provenance. New source tests are not attributed to those original executions.",
+    "The105current-source cases per audience, composed from successful native03 and native04 executions, comprise HTTP1,source UI/control/prediction/Scene/sound86 and18new post transports. All nine combinations per whole exact-served worker/nonhost Heavy peer earn Short3→9→15→21.",
+    "Gameplay, content, runtime, deadlines and the verification driver remain exact. Natural/replay evidence remains original; allMeasuredFieldsMatch remains false and original comparison helpers retain exit1.",
+    "The bounded retention policy replaces historical65/67-root loops. The current pair, one verified rollback archive, original receipts and213original private SQLite-related files are checked. No retired build is recreated.",
+    "Human/rendered/device/native-language/listening/motion/final-balance and class/game completion remain open."
+  ]
+}

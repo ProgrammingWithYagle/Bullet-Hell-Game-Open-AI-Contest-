@@ -1,0 +1,280 @@
+/* The two workbooks share materials, while General retains its issued graph. */
+.foundation-workbook {
+  --foundation-ink: #294333;
+  border: 1px solid #87916f;
+  border-radius: 12px;
+  overflow: clip;
+  background: #e9dfbd;
+  color: var(--foundation-ink);
+  box-shadow: 0 3px 14px #182e2224;
+}
+.foundation-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border-bottom: 3px double #b69b5b;
+  background: linear-gradient(115deg, #1c352e, #314b39);
+  color: #f0dfb6;
+}
+.foundation-heading .eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cfbd8c;
+}
+.foundation-heading h3 {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.foundation-heading p:last-child {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  max-width: 66ch;
+  color: #e2ddc5;
+}
+.foundation-seal {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  border: 3px double #b69b5b;
+  border-radius: 50%;
+  color: #e0ca8c;
+}
+.foundation-seal .ink-icon {
+  width: 38px;
+  height: 38px;
+}
+.foundation-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.7rem 0.9rem;
+  margin: 0;
+  border-bottom: 1px solid #b7ac88;
+  background: #ded5b3;
+}
+.foundation-workbook .skill-map-toolbar {
+  padding: 0.65rem 0.9rem;
+  margin: 0;
+  background: #e5dcbb;
+  border-bottom: 1px solid #b7ac88;
+}
+.foundation-workbook .skill-map-toolbar button {
+  min-height: 44px;
+  background: #eee6ca;
+  color: #294333;
+  border: 1px solid #9d9877;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+}
+.foundation-workbook .skill-map-toolbar button[aria-pressed="true"] {
+  background: #294333;
+  color: #f8eccb;
+}
+.foundation-workbook .skill-map-viewport {
+  background: #e9dfbd;
+}
+.foundation-workbook .skill-map-canvas {
+  background:
+    radial-gradient(ellipse at 45% 20%, #f6efd6b3, transparent 62%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      #8a977311 40px
+    );
+}
+.foundation-workbook .skill-map-group {
+  width: 600px;
+  padding: 0.35rem 1rem;
+  border: 0;
+  border-bottom: 3px double #b3a270;
+  background: transparent;
+  font-family: var(--display-font);
+  font-size: 1.25rem;
+}
+.foundation-workbook .skill-map-path {
+  color: #53614b;
+  font-size: 0.82rem;
+}
+.foundation-workbook .skill-map-node {
+  width: 196px;
+}
+.foundation-workbook .skill-map-node small {
+  max-height: 4.05em;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  margin-top: 10px;
+  background: transparent;
+  color: #294333;
+}
+.foundation-workbook .skill-node {
+  opacity: 1;
+  border: 2px solid #9c9069 !important;
+  background: radial-gradient(circle at 45% 30%, #f4eacb, #c9b987) !important;
+  box-shadow:
+    0 0 0 4px #e9dfbd,
+    0 0 0 5px #b9ae89,
+    0 4px 8px #32422c24;
+  padding: 5px;
+}
+.foundation-workbook .skill-node .item-art {
+  object-fit: contain;
+}
+.foundation-workbook .skill-node.unavailable:not(.owned) :is(.item-art, .ink-icon) {
+  opacity: .65;
+  filter: saturate(.5);
+}
+.foundation-workbook .skill-node.owned :is(.item-art, .ink-icon) {
+  opacity: 1;
+  filter: none;
+}
+.foundation-workbook .skill-node.owned {
+  border-color: #a77d29 !important;
+  box-shadow:
+    0 0 0 4px #e9dfbd,
+    0 0 0 6px #b58b40;
+}
+.foundation-workbook .skill-node.available {
+  border-color: #50785e !important;
+}
+.foundation-workbook .skill-node.inspected {
+  border-color: #24584c !important;
+  outline: 3px solid #2c685b;
+  outline-offset: 5px;
+}
+.foundation-workbook .node-grade {
+  top: auto;
+  left: -7px;
+  bottom: -5px;
+  right: auto;
+  transform: none;
+  padding: 0.1rem 0.3rem;
+  min-width: 22px;
+  border: 1px solid #b0a377;
+  border-radius: 3px;
+  background: #efe4c2;
+  color: #3c4b32;
+  font-size: 0.66rem;
+}
+.foundation-workbook .skill-node:focus-visible {
+  outline: 3px solid #24584c;
+  outline-offset: 5px;
+}
+.shared-foundations {
+  padding: 1rem;
+}
+.foundation-intro {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  max-width: 74ch;
+}
+.shared-techniques {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+  gap: 1rem;
+}
+.shared-technique {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid #b6ac88;
+  border-radius: 6px;
+  background: #eee5c9;
+}
+.shared-technique .skill-node {
+  width: 76px;
+  height: 76px;
+}
+.shared-technique h4 {
+  margin: 0 0 0.3rem;
+  font-family: var(--display-font);
+  font-size: 1.1rem;
+}
+.shared-technique p {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.foundation-status {
+  font-size: 0.72rem !important;
+  color: #53614b;
+}
+.foundation-reading {
+  max-height: 65dvh;
+  padding: 1rem;
+  overflow: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr));
+}
+.foundation-reading h4 {
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 2px solid #ac9c6b;
+  font-family: var(--display-font);
+  font-size: 1.1rem;
+}
+.foundation-reading ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.foundation-reading li {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid #c3b994;
+}
+.foundation-reading .skill-node {
+  width: 64px;
+  height: 64px;
+}
+.foundation-reading strong {
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .foundation-heading {
+    padding: 1rem;
+    gap: 0.65rem;
+  }
+  .foundation-heading h3 {
+    font-size: 1.25rem;
+  }
+  .foundation-seal {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+  .shared-technique {
+    padding: 0.8rem;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .shared-technique .skill-node {
+    width: 64px;
+    height: 64px;
+  }
+}
+@media (forced-colors: active) {
+  .foundation-workbook .skill-node {
+    border-color: ButtonText !important;
+  }
+  .foundation-workbook .skill-map-edges path {
+    stroke: CanvasText;
+  }
+}

@@ -1,0 +1,70 @@
+✔ only the admitted post event has a finite bounded non-firing clamp cue with silent boundaries (2.3661ms)
+✔ the actual post cue clamps volume and disconnects both native audio nodes exactly when it ends (1.0802ms)
+✔ the body-centred carried-bearing marker yields to the actual fixed gun once posted, across both optional handlings and all carriages (55.3082ms)
+✔ issued72profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (9.1289ms)
+✖ issued72records retain exact historical identity while wrong editions and verified claims remain excluded (6.5587ms)
+✔ exact issued72 local checkpoints preserve all twelve class identities and actual old ownership, including the issued Sniper capstone, without acquiring a new Siege capstone (24.7911ms)
+✔ issued72 rejects future Tethered Traverse ownership and wrong/online envelopes before current-edition restoration (1.3103ms)
+✔ exact issued72 admits every one of the sixty-three issued techniques with its actual affordable prerequisite ownership (52.7771ms)
+✔ known69through72content cannot fall through to protocol47 historical roster admission; every exact class row remains portable (1.1653ms)
+✔ the admitted capstone preserves every source72 catalog value and all63 issued techniques exactly (15.503ms)
+✔ twenty-seven controlled late-Endless builds make actual source purchases for exactly27SP and one capstone, with idempotent transaction retries (54.9912ms)
+✔ actual starting Raid12 rejects the19-earned gate on all three carriages despite enough unspent SP (1.4952ms)
+✔ the issued one-capstone limit, required Clutch, class and Campaign restrictions admit no owned benefit on rejection (1.2751ms)
+✔ all fifteen catalogs retain every earlier message value and the new English pilot copy has no empty owned label (110.4167ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2417.4635
+
+✖ failing tests:
+
+test at tests\heavy-post-profile.test.ts:1:2132
+✖ issued72records retain exact historical identity while wrong editions and verified claims remain excluded (6.5587ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        accords: 0,
+        classId: 'soldier',
+        combatTicks: 6000,
+  ...
+      },
+  +   {
+  +     accords: 0,
+  +     classId: 'soldier',
+  +     combatTicks: 6000,
+  +     completedEncounters: 5,
+  +     contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4',
+  +     difficulty: 'normal',
+  +     id: 'wrong-edition-72',
+  +     memorial: false,
+  +     mode: 'short',
+  +     practiceOnly: true,
+  +     protocol: 72,
+  +     schemaVersion: 1,
+  +     secret: 'locked',
+  +     verified: false
+  +   }
+    ]
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-post-profile.test.ts:103:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { schemaVersion: 1, id: 'issued72-soldier', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'soldier', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-medic', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'medic', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-heavy', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'heavy', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-tank', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'tank', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-mage', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'mage', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-engineer', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'engineer', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-assassin', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'assassin', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-bard', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'bard', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-swordsman', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'swordsman', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-summoner', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'summoner', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-ranger', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'ranger', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-alchemist', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'alchemist', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'wrong-edition-72', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'soldier', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false } ],
+    expected: [ { schemaVersion: 1, id: 'issued72-soldier', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'soldier', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-medic', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'medic', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-heavy', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'heavy', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-tank', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'tank', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-mage', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'mage', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-engineer', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'engineer', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-assassin', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'assassin', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-bard', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'bard', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-swordsman', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'swordsman', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-summoner', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'summoner', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-ranger', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'ranger', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false }, { schemaVersion: 1, id: 'issued72-alchemist', practiceOnly: true, verified: false, contentRevision: 'cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4', protocol: 72, mode: 'short', difficulty: 'normal', classId: 'alchemist', completedEncounters: 5, accords: 0, combatTicks: 6000, secret: 'locked', memorial: false } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

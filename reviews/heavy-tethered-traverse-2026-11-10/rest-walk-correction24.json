@@ -1,0 +1,22 @@
+{
+  "correctedAt": "2026-11-10T21:25:10.251Z",
+  "file": "tests/helpers/sniper-rest-flow.ts",
+  "beforeFileSha256": "342a022c8060467014642129f9d9401a04f6f3dd0fc69595957ec81353bca5f6",
+  "afterFileSha256": "742597f52b340185d91319187bd397f8614f4f3e20957677ed979c884a12ee7e",
+  "before": {
+    "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "sourceSnapshotSha256": "4711d58fa9c7a9385649e1f84909c4d555133262cf0bb5a1adca6e487a55b687"
+  },
+  "after": {
+    "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+    "sourceSnapshotSha256": "565333e00e8cf875e4be37b6e7f5a12ef55a9835f578a441ea1b442dea1c59c8"
+  },
+  "actualFailingEvidence": "withdrawal-load22.json",
+  "actualFailingAssertion": "distance(p(), origin) <= 6 after walk returned",
+  "correction": "Recheck actual acknowledged stopped position and correct with ordinary inputs until the original1.7px arrival contract is met.",
+  "existing5500msWalkAnd6000msAcknowledgementBoundsUnchanged": true,
+  "noAssertionRelaxed": true,
+  "gameplayBytesExact": true,
+  "separateFullGateWithdrawalFailureCauseStillUnproven": true,
+  "originalFailedGatesAndIsolatedPassPreserved": true
+}

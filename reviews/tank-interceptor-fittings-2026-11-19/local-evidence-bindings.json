@@ -1,0 +1,279 @@
+{
+  "protocol": 82,
+  "buildId": "2026.11.19-tank-interceptor-fittings",
+  "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49",
+  "runtimeSourceSha256": "bbd6dbce3d7857af9707d61c7b1c67d621312abf9d12100824c7d6d09271649c",
+  "sourceSnapshotSha256": "ee06ca515e1ddf7f7146989fb3e6c5316074a1b5e2625423b84275ba26a1db11",
+  "tests": 2651,
+  "checks": 7,
+  "short": [
+    {
+      "choice": "returning",
+      "runs": 36,
+      "versions": {
+        "issued": {
+          "victories": 8,
+          "defeats": 4,
+          "launches": 19,
+          "uses": 0,
+          "contacts": 19
+        },
+        "owned-unused": {
+          "victories": 8,
+          "defeats": 4,
+          "launches": 19,
+          "uses": 0,
+          "contacts": 19
+        },
+        "active": {
+          "victories": 9,
+          "defeats": 3,
+          "launches": 25,
+          "uses": 8,
+          "contacts": 38
+        }
+      },
+      "shopReplayPairs": 4
+    },
+    {
+      "choice": "offset",
+      "runs": 36,
+      "versions": {
+        "issued": {
+          "victories": 9,
+          "defeats": 3,
+          "launches": 13,
+          "uses": 0,
+          "contacts": 18
+        },
+        "owned-unused": {
+          "victories": 9,
+          "defeats": 3,
+          "launches": 13,
+          "uses": 0,
+          "contacts": 18
+        },
+        "active": {
+          "victories": 10,
+          "defeats": 2,
+          "launches": 18,
+          "uses": 8,
+          "contacts": 33
+        }
+      },
+      "shopReplayPairs": 4
+    }
+  ],
+  "standard": [
+    {
+      "name": "standard-solo.json",
+      "cohort": "solo",
+      "followup": false,
+      "runs": 24,
+      "victories": 15,
+      "reached27SP": 16,
+      "gateCasts": 17,
+      "claims": 17,
+      "teammateClaims": 0,
+      "screens": 8,
+      "reversals": 0,
+      "offsets": 1,
+      "impactIntervals": 11,
+      "defeats": [
+        {
+          "seed": 41,
+          "fitting": "split",
+          "policy": "screen",
+          "boss": "city-eater",
+          "clears": 9
+        },
+        {
+          "seed": 73,
+          "fitting": "plain",
+          "policy": "ordinary",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "plain",
+          "policy": "gate",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "split",
+          "policy": "ordinary",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "split",
+          "policy": "gate",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "split",
+          "policy": "screen",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "corner",
+          "policy": "ordinary",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "corner",
+          "policy": "gate",
+          "boss": "matron",
+          "clears": 1
+        },
+        {
+          "seed": 73,
+          "fitting": "corner",
+          "policy": "screen",
+          "boss": "matron",
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "name": "standard-party.json",
+      "cohort": "party",
+      "followup": false,
+      "runs": 24,
+      "victories": 24,
+      "reached27SP": 24,
+      "gateCasts": 21,
+      "claims": 20,
+      "teammateClaims": 0,
+      "screens": 7,
+      "reversals": 0,
+      "offsets": 1,
+      "impactIntervals": 12,
+      "defeats": []
+    },
+    {
+      "name": "standard-solo-shared-charge.json",
+      "cohort": "solo",
+      "followup": true,
+      "runs": 4,
+      "victories": 4,
+      "reached27SP": 4,
+      "gateCasts": 0,
+      "claims": 0,
+      "teammateClaims": 0,
+      "screens": 0,
+      "reversals": 0,
+      "offsets": 0,
+      "impactIntervals": 0,
+      "defeats": []
+    },
+    {
+      "name": "standard-party-shared-charge.json",
+      "cohort": "party",
+      "followup": true,
+      "runs": 4,
+      "victories": 4,
+      "reached27SP": 4,
+      "gateCasts": 0,
+      "claims": 0,
+      "teammateClaims": 0,
+      "screens": 0,
+      "reversals": 0,
+      "offsets": 0,
+      "impactIntervals": 0,
+      "defeats": []
+    }
+  ],
+  "standardDrivers": {
+    "standard-review.mts": "56d76d60547a00b50a40590d7c57a10bc4a31a7d04a5637e6d11de15c80e1fe6",
+    "standard-review-shared-e.mts": "0b3a858a95b674e71fc9b9136ca2854dc2390b7726b9cc268fcbac472bfd9e4d",
+    "triple-hybrid.mts": "6e293565f9d2f309d3ab7401a28d6965d7a4f1eb113ce1e3c91a1c4b15917504"
+  },
+  "files": [
+    {
+      "path": "source-verification.json",
+      "bytes": 386902,
+      "sha256": "7fedbe33a84b6f48dcd08ab1f65bcb85144798429cb93d7308f73c9587168b5b"
+    },
+    {
+      "path": "build-census.json",
+      "bytes": 2635182,
+      "sha256": "105b005187518856da8431bcc715c41cd6abe32ad0248be61a9f8dbe000b359e"
+    },
+    {
+      "path": "return-short.json",
+      "bytes": 79015,
+      "sha256": "e8f531bbfa5028c60e4d41a3498c8a0b0570a289e21e6b1ee6604c6a131aae4b"
+    },
+    {
+      "path": "offset-short.json",
+      "bytes": 71363,
+      "sha256": "f792ce5cc006de22add53b0ffea2505373764dbc738ceec4f6436b88c9bbe06c"
+    },
+    {
+      "path": "return-safe-shop.json",
+      "bytes": 40121,
+      "sha256": "f6033e19540417409acac9359002d5deee7097c1d8de888737018e1c6d2ff0ca"
+    },
+    {
+      "path": "offset-safe-shop.json",
+      "bytes": 37159,
+      "sha256": "f09d0a3f5c9231d683868d43385a192db771badff14ad79b1129a750643c4f9e"
+    },
+    {
+      "path": "source-transport.log",
+      "bytes": 6056,
+      "sha256": "99bb29cd5fe027b8f44ba6fce6ac56f17d85ea8783c186398449b7edb7846b00"
+    },
+    {
+      "path": "source-offset-solo.json",
+      "bytes": 4169,
+      "sha256": "3888f862bdf42708bd1bd88c509d9f0a24afdd95f7fc0dcac104a8d099e466db"
+    },
+    {
+      "path": "source-return-nonhost.json",
+      "bytes": 4518,
+      "sha256": "98a6e67112b921e352dc079356da0c8f081a402be41c9ed46710b0fcf3b9d098"
+    },
+    {
+      "path": "triple-hybrid-controls.json",
+      "bytes": 4877,
+      "sha256": "daab38f9b4d37373ebb6b04ed5b36956812a1a90a1e6052077a4f35efb824647"
+    },
+    {
+      "path": "standard-solo.json",
+      "bytes": 271242,
+      "sha256": "c4a3900e20e980730ad110fa79130f871f351559b07d8c6c47e695ccadef4115"
+    },
+    {
+      "path": "standard-party.json",
+      "bytes": 518693,
+      "sha256": "d9bef9818cabf92b5c433fa1d55f6c6538d073d6d28068f19692985c2afdeeaf"
+    },
+    {
+      "path": "standard-solo-shared-charge.json",
+      "bytes": 62180,
+      "sha256": "0ebde09748ccfba74ebccf64d669e2ad5bba4a86e58970d7484b7b37a4854c0c"
+    },
+    {
+      "path": "standard-party-shared-charge.json",
+      "bytes": 84501,
+      "sha256": "b005cdb8b41b41019f50490958c36d5b5670112ac10fb3d5fd5a1bbace464e5f"
+    },
+    {
+      "path": "protocol81-metadata-ci.json",
+      "bytes": 1571,
+      "sha256": "d71f191a181f708115f1e6f6b420df28d94444897a117a4f3a34187ba6722fe2"
+    }
+  ]
+}

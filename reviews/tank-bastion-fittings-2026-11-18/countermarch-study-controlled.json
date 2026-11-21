@@ -1,0 +1,346 @@
+{
+  "manifest": {
+    "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+    "profile": "candidate",
+    "sourceRuntimeSha256": "0fb2ca15df788de36ad3b87fa61bcd75026164771af736921df639a7a48688f2",
+    "bundleSha256": "023ca5e1729d8193bf2f3fcf295ec133d9d8099a7172b1318b7538fb22ff6517",
+    "studyCatalogAdditions": [
+      "tank-gate-signal-countermarch-1",
+      "tank-gate-signal-relief-1"
+    ],
+    "publishedCatalogAdditions": [],
+    "overlays": {
+      "content/catalog.json": "7a86ff3a1005d3b55da6d37555c6c04bcf53d82b39afaa44976e72abfa4de26c",
+      "src/shared/tank-bastion.ts": "adaa44b810ed78b43118145506929dda8ed456178263318e67783d0ee3a4a7e6",
+      "src/shared/game.ts": "e66eb6876bd0882f44d8e81dfe40afeec7aed01d26b2f65e807960296428054a"
+    }
+  },
+  "scope": "Copied Game. First two encounters and 15 SP use ordinary live rules. Third encounter uses a controlled boss stagger while actual walking and commands exercise the station.",
+  "rows": [
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "corner",
+      "variation": "solo",
+      "passed": true,
+      "earned": [
+        {
+          "encounter": 1,
+          "clears": 1,
+          "earned": 9,
+          "tick": 1181
+        },
+        {
+          "encounter": 2,
+          "clears": 2,
+          "earned": 15,
+          "tick": 2233
+        }
+      ],
+      "transactions": [
+        {
+          "earned": 3,
+          "before": 3,
+          "after": 3,
+          "ok": false,
+          "reason": "prerequisite"
+        },
+        {
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "ok": false,
+          "reason": "insufficientPoints"
+        },
+        {
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "ok": true
+        }
+      ],
+      "initial": {
+        "kind": "tank-gate-signal",
+        "id": 581,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 2234,
+        "until": 2474,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": -1.5707963267948966,
+            "half": "whole",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "current": {
+        "kind": "tank-gate-signal",
+        "id": 581,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 2234,
+        "until": 2474,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": 1.5707963267948968,
+            "half": "whole",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "observed": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 1,
+          "until": 2474,
+          "tick": 2249
+        }
+      ],
+      "recovery": 5084,
+      "shield": 0,
+      "armor": 0.35
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "baby",
+      "seed": 73,
+      "fitting": "corner",
+      "variation": "peer",
+      "passed": true,
+      "earned": [
+        {
+          "encounter": 1,
+          "clears": 1,
+          "earned": 9,
+          "tick": 871
+        },
+        {
+          "encounter": 2,
+          "clears": 2,
+          "earned": 15,
+          "tick": 1342
+        }
+      ],
+      "transactions": [
+        {
+          "earned": 3,
+          "before": 3,
+          "after": 3,
+          "ok": false,
+          "reason": "prerequisite"
+        },
+        {
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "ok": false,
+          "reason": "insufficientPoints"
+        },
+        {
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "ok": true
+        }
+      ],
+      "initial": {
+        "kind": "tank-gate-signal",
+        "id": 635,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1348,
+        "until": 1588,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": -1.5707963267948966,
+            "half": "whole",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "current": {
+        "kind": "tank-gate-signal",
+        "id": 635,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1348,
+        "until": 1588,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": 1.5707963267948968,
+            "half": "whole",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "observed": [
+        {
+          "owner": "tank",
+          "target": "peer",
+          "entrance": 1,
+          "until": 1588,
+          "tick": 1367
+        }
+      ],
+      "recovery": 4198,
+      "shield": 111,
+      "armor": 0.35
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "corner",
+      "variation": "new-crossing-waits",
+      "passed": true,
+      "earned": [
+        {
+          "encounter": 1,
+          "clears": 1,
+          "earned": 9,
+          "tick": 1217
+        },
+        {
+          "encounter": 2,
+          "clears": 2,
+          "earned": 15,
+          "tick": 1600
+        }
+      ],
+      "transactions": [
+        {
+          "earned": 3,
+          "before": 3,
+          "after": 3,
+          "ok": false,
+          "reason": "prerequisite"
+        },
+        {
+          "earned": 9,
+          "before": 4,
+          "after": 4,
+          "ok": false,
+          "reason": "insufficientPoints"
+        },
+        {
+          "earned": 15,
+          "before": 10,
+          "after": 7,
+          "ok": true
+        }
+      ],
+      "initial": {
+        "kind": "tank-gate-signal",
+        "id": 747,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1604,
+        "until": 1844,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": -1.5707963267948966,
+            "half": "whole",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "current": {
+        "kind": "tank-gate-signal",
+        "id": 747,
+        "owner": "tank",
+        "x": 1141.2,
+        "y": 775.2,
+        "at": 1604,
+        "until": 1844,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": 1.5707963267948968,
+            "half": "whole",
+            "open": true
+          }
+        ],
+        "center": {
+          "x": 1141.2,
+          "y": 775.2
+        }
+      },
+      "observed": [
+        {
+          "owner": "tank",
+          "target": "peer",
+          "entrance": 1,
+          "until": 1844,
+          "tick": 1620
+        }
+      ],
+      "recovery": 4454,
+      "shield": 47,
+      "armor": 0.35
+    }
+  ],
+  "failures": 0
+}

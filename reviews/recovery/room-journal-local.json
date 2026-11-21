@@ -1,0 +1,26 @@
+{
+  "createdAt": "2026-10-23T20:37:27.840Z",
+  "sourceSnapshotSha256": "311ac8f9e62bf0101f7d2cf762a5cc7812ac70dc941a19d718ee4a3c2661a46d",
+  "fullVerificationPassed": true,
+  "fullTestCount": 74,
+  "evidence": [
+    "tests/room-journal.test.ts",
+    "tests/room-journal-network.test.ts"
+  ],
+  "outcomes": [
+    "Acknowledged boundaries and combat-start precede simulation",
+    "Safe phase clocks and gameplay mutations freeze during checkpoint writes",
+    "A real joining WebSocket client waits and enters the next checkpoint",
+    "A frozen purchase cannot spend coins",
+    "Combat continues during lease refresh; failed recovery stays unavailable",
+    "Terminal runs finalize; disposal cannot start combat after a delayed response",
+    "Checkpoint status is sent only to ready clients"
+  ],
+  "limitations": [
+    "Local SQLite and actual loopback WebSockets; no deployed D1 recovery",
+    "Synthetic timing, victories and outages; no human or device evidence",
+    "Server-only factory disabled in normal/public execution",
+    "Participant credentials, stable transport bindings and individually durable command acknowledgements remain unfinished",
+    "New UI messages are authored in 15 locales, without browser/native-speaker review"
+  ]
+}

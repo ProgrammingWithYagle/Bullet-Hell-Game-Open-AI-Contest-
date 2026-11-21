@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-11T02:49:17.846588+00:00",
+  "scope": "Actual user-authorized storage retention, replacing earlier keep-every-frozen-root instructions.",
+  "beforeLogicalBytes": 94025408881,
+  "afterLogicalBytes": 9607279343,
+  "reclaimedLogicalBytes": 84418129538,
+  "groups": [
+    {
+      "path": "output",
+      "bytes": 3637387384,
+      "files": 8245
+    },
+    {
+      "path": ".git",
+      "bytes": 1845132869,
+      "files": 6436
+    },
+    {
+      "path": "assets",
+      "bytes": 1779259999,
+      "files": 2890
+    },
+    {
+      "path": "node_modules",
+      "bytes": 940323606,
+      "files": 17438
+    },
+    {
+      "path": "release",
+      "bytes": 852578027,
+      "files": 12
+    },
+    {
+      "path": "reviews",
+      "bytes": 392347279,
+      "files": 8612
+    },
+    {
+      "path": "tmp",
+      "bytes": 55776593,
+      "files": 1096
+    },
+    {
+      "path": "outputs",
+      "bytes": 47372023,
+      "files": 1
+    },
+    {
+      "path": "docs",
+      "bytes": 19628328,
+      "files": 305
+    },
+    {
+      "path": ".wiki-checkout",
+      "bytes": 18800990,
+      "files": 869
+    },
+    {
+      "path": "locales",
+      "bytes": 7111835,
+      "files": 124
+    },
+    {
+      "path": "src",
+      "bytes": 3657294,
+      "files": 384
+    },
+    {
+      "path": "tests",
+      "bytes": 3079517,
+      "files": 405
+    },
+    {
+      "path": "content",
+      "bytes": 3022498,
+      "files": 89
+    },
+    {
+      "path": "tools",
+      "bytes": 1427175,
+      "files": 264
+    },
+    {
+      "path": "(root files)",
+      "bytes": 333322,
+      "files": 13
+    },
+    {
+      "path": "handoff",
+      "bytes": 38059,
+      "files": 5
+    },
+    {
+      "path": ".github",
+      "bytes": 1506,
+      "files": 1
+    },
+    {
+      "path": "services",
+      "bytes": 905,
+      "files": 2
+    },
+    {
+      "path": ".openai",
+      "bytes": 134,
+      "files": 1
+    }
+  ],
+  "removedExpandedBuildDirectories": 108,
+  "removedBackendBundles": 56,
+  "stoppedOlderExactProcesses": 52,
+  "currentFourServicesAndListenersPreserved": true,
+  "current": [
+    {
+      "audience": "testing",
+      "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+      "url": "http://127.0.0.1:5382/",
+      "endpoint": "http://127.0.0.1:2758",
+      "files": 2060,
+      "allBoundBytesExact": true,
+      "httpSourceIdentityMatches": true
+    },
+    {
+      "audience": "public",
+      "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+      "url": "http://127.0.0.1:5383/",
+      "endpoint": "http://127.0.0.1:2759",
+      "files": 2060,
+      "allBoundBytesExact": true,
+      "httpSourceIdentityMatches": true
+    }
+  ],
+  "rollback": {
+    "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+    "path": "output/review-rollback.zip",
+    "archiveBytes": 791971124,
+    "sha256": "21ceabead7c881c906b2828ac85c5043ba7169ce442abad808eeb73f9b38dd32",
+    "fullyRestoredAndHashVerifiedFiles": 4107,
+    "uniqueObjects": 2059
+  },
+  "privateFiles": {
+    "count": 213,
+    "allStillPresentAndByteExact": true,
+    "contentsOrPrivateManifestUploaded": false
+  },
+  "originalSourceAssetsReviewReceiptsReleaseAndDependenciesOutsideDeletionScope": true,
+  "retiredBuildsAreNotClaimedStillPresent": true,
+  "gameplayFeatureDevelopmentPaused": true,
+  "newestNativeReviewStillIncomplete": true,
+  "directoryReparsePointsExcludedFromSizeTotals": 378
+}

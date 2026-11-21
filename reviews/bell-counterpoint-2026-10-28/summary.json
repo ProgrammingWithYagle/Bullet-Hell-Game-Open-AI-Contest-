@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-28T03:58:01.857137+00:00",
+  "sourceCommit": "abf50298c289fa1ca883d310d962913cc193fe19",
+  "buildId": "2026.10.28-bell-counterpoint",
+  "protocol": 35,
+  "tests": 708,
+  "newTests": 7,
+  "contentRevision": "7266df2511e22b94f34915a97c0b4a61e2881778de5cfddff4011a41c2f29fe2",
+  "runtimeSourceSha256": "0c2b66a1bd29ed0c0f572934650b3c433463e2221caaf633103acfed7bfe0580",
+  "localSnapshotSha256": "7848593d11a244e5d8992bb94b39936fc73a4f9eae4a331b6b3240552bb1cdea",
+  "committedSnapshotSha256": "1f33d2bce74925bb752ff74d99fc70d6431816132797173b4182fb4c1a4768d6",
+  "sourceCI": [
+    {
+      "id": 122620388796,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40628905469/job/122620388796"
+    },
+    {
+      "id": 122620342476,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/40628891268/job/122620342476"
+    }
+  ],
+  "bothExactSourceCILogs708Pass708Fail0": true,
+  "sourceLocalRawLogs": 15,
+  "sourceCIRawLogs": [
+    {
+      "path": "reviews/bell-counterpoint-2026-10-28/source-ci-122620388796.log",
+      "bytes": 139338,
+      "sha256": "8a49b6a56ea4e46be1eed3da00360aa771f9a91f8c11fa7188eefd6ca2eca391"
+    },
+    {
+      "path": "reviews/bell-counterpoint-2026-10-28/source-ci-122620342476.log",
+      "bytes": 139083,
+      "sha256": "7c2877007e2b77bfe237b5b83587ee6ead87c818cac4fcdbfbcca663e630816f"
+    }
+  ],
+  "testingPreview": {
+    "url": "http://127.0.0.1:5206/",
+    "root": "C:\\Users\\yigal\\Documents\\Codex\\2026-10-25\\continue-grave-accord-in-this-same\\work\\playtest-bell-counterpoint-abf5029",
+    "pid": 51424,
+    "files": 1685,
+    "bytes": 722649767,
+    "rawHTTPChecks": 60,
+    "endpoint": "http://127.0.0.1:2580"
+  },
+  "publicStylePreview": {
+    "url": "http://127.0.0.1:5207/",
+    "root": "C:\\Users\\yigal\\Documents\\Codex\\2026-10-25\\continue-grave-accord-in-this-same\\work\\playtest-bell-counterpoint-public-abf5029",
+    "pid": 68536,
+    "files": 1685,
+    "bytes": 722644412,
+    "rawHTTPChecks": 8,
+    "endpoint": "http://127.0.0.1:2581",
+    "notAPublicDeployment": true
+  },
+  "backends": {
+    "createdAt": "2026-10-28T03:51:21.2068934Z",
+    "sourceCommit": "abf50298c289fa1ca883d310d962913cc193fe19",
+    "protocol": 35,
+    "root": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bell-counterpoint-abf5029",
+    "bundle": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bell-counterpoint-abf5029\\server.mjs",
+    "bundleSha256": "740febcc9c5ab9dd8c40c70ef3597da3bfc97d60790015e1f7e0edfdc957a5c8",
+    "bundleBytes": 2649152,
+    "dependencyLockSha256": "3028b32abd942c9f972d278c1b9ed685e32ce9418ed849224e7e803794702de2",
+    "dependencies": "External pinned packages resolve from existing checkout node_modules. Local development helper, not a portable release.",
+    "processes": [
+      {
+        "audience": "testing",
+        "endpoint": "http://127.0.0.1:2580",
+        "port": 2580,
+        "pid": 24520,
+        "origins": "http://127.0.0.1:5206",
+        "sourceCommit": "abf50298c289fa1ca883d310d962913cc193fe19",
+        "bundle": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bell-counterpoint-abf5029\\server.mjs",
+        "hidden": true
+      },
+      {
+        "audience": "public",
+        "endpoint": "http://127.0.0.1:2581",
+        "port": 2581,
+        "pid": 29452,
+        "origins": "http://127.0.0.1:5207",
+        "sourceCommit": "abf50298c289fa1ca883d310d962913cc193fe19",
+        "bundle": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bell-counterpoint-abf5029\\server.mjs",
+        "hidden": true
+      }
+    ],
+    "allPriorFrozenClientsAndBackendsPreserved": true,
+    "noExistingProcessStopped": true
+  },
+  "priorFrozen": {
+    "roots": 28,
+    "files": 47040,
+    "bytes": 19944592864,
+    "availablePorts": [
+      5198,
+      5199,
+      5200,
+      5201,
+      5202,
+      5203,
+      5204,
+      5205
+    ],
+    "unavailablePorts": [
+      5178,
+      5179,
+      5180,
+      5181,
+      5182,
+      5183,
+      5184,
+      5185,
+      5186,
+      5187,
+      5188,
+      5189,
+      5190,
+      5191,
+      5192,
+      5193,
+      5194,
+      5195,
+      5196,
+      5197
+    ],
+    "allPriorFrozenDiskBytesPreserved": true,
+    "oldPinnedBackendPortsCurrentlyUnavailable": [
+      2568,
+      2569,
+      2570,
+      2571
+    ],
+    "noOldHelperStoppedOrRestarted": true
+  },
+  "wiki": {
+    "sourceCommit": "abf50298c289fa1ca883d310d962913cc193fe19",
+    "publishedCommit": "8489685e70521cf71a44fc707badcc619d22442c",
+    "pages": 18,
+    "images": 34,
+    "publicImageHashes": 34
+  },
+  "sequences": {
+    "passed": true,
+    "protocol": 35,
+    "contentRevision": "7266df2511e22b94f34915a97c0b4a61e2881778de5cfddff4011a41c2f29fe2",
+    "cases": 408,
+    "observedTicks": 145894,
+    "maximumCaseTicks": 649,
+    "walkVertices": 3684,
+    "activeWalkTicks": 21177,
+    "stationaryWalkTicks": 0,
+    "openingWitnesses": 2400,
+    "totalOverlapTicks": 66088,
+    "totalEchoOverlapTicks": 27692,
+    "totalClapperOverlapTicks": 9396,
+    "peakActiveFronts": 10,
+    "peakCues": 12,
+    "hostileProjectiles": 0
+  },
+  "newProductionArt": false,
+  "all2080ExistingAssetBlobsUnchanged": true,
+  "emittedSelectedAtlasesVerified": 71,
+  "bosses": 66,
+  "ordinary": 65,
+  "secret": 1,
+  "remainingOrdinary": 85,
+  "qualityImplemented": 12,
+  "qualityRemaining": 48,
+  "wholeBossHumanAccepted": 0,
+  "phaseContinuityPending": true,
+  "alchemistCrazedPending": true,
+  "stitchwrightCandidateUnintegrated": true,
+  "main": "c3f60ca4125bea31d94c9d3f6ea0c9d3f0853df1",
+  "prDraft": 14,
+  "fullGoalActive": true,
+  "limits": [
+    "No rendered or personally played clear acceptance; browser control remains disabled in Work settings.",
+    "Invulnerable scores and local openings do not prove every human route, final balance, performance/capacity or device acceptance.",
+    "Metallic audio scheduling and AI-authored localization remain separate from native listening/language review.",
+    "Phase-attack continuity and Mold Alchemist Crazed tuning are pending and not implemented here.",
+    "Hosted recovery/trusted rankings/WAN/endurance/capacity/coordinated release and85ordinary/48quality additions remain.",
+    "Old public protocol4 Site and immutable protocol13 Windows development release stay separate and unchanged."
+  ]
+}

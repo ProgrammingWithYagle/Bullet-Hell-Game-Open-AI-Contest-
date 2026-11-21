@@ -1,0 +1,68 @@
+✖ actual music changes from equipment through all66boss themes and back with hold API missing (190.3324ms)
+✖ actual music changes from equipment through all66boss themes and back with hold API supported (36.2048ms)
+✖ actual music changes from equipment through all66boss themes and back with hold API throws (27.8973ms)
+✔ leaving during decode cancels the pending theme instead of starting music on the menu (23.4608ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1043.8483
+
+✖ failing tests:
+
+test at tests\audio-browser.test.ts:1:227
+✖ actual music changes from equipment through all66boss themes and back with hold API missing (190.3324ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /slow-wick/. Input:
+  
+  '../../assets/production/audio/delivery/city-wake.mp3'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\audio-browser.test.ts:12:46)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '../../assets/production/audio/delivery/city-wake.mp3',
+    expected: /slow-wick/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\audio-browser.test.ts:1:227
+✖ actual music changes from equipment through all66boss themes and back with hold API supported (36.2048ms)
+  AssertionError [ERR_ASSERTION]: one surviving loop after the fade
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\audio-browser.test.ts:13:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\audio-browser.test.ts:1:227
+✖ actual music changes from equipment through all66boss themes and back with hold API throws (27.8973ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /slow-wick/. Input:
+  
+  '../../assets/production/audio/delivery/city-wake.mp3'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\audio-browser.test.ts:12:46)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '../../assets/production/audio/delivery/city-wake.mp3',
+    expected: /slow-wick/,
+    operator: 'match',
+    diff: 'simple'
+  }

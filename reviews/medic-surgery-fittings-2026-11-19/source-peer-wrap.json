@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "protocol": 84,
+  "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+  "transport": "peer",
+  "fitting": "wrap",
+  "bought": [
+    {
+      "item": "medic-triage-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "medic-field-dressing-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "medic-surgery-set-aside-1",
+      "earned": 9,
+      "clears": 1
+    },
+    {
+      "item": "medic-surgery-wrapped-dressing-1",
+      "earned": 15,
+      "clears": 2
+    }
+  ],
+  "patient": "actual-teammate",
+  "opening": {
+    "boss": "pallbearer",
+    "tick": 909
+  },
+  "before": {
+    "health": 55.79999923706055,
+    "tick": 1547,
+    "qAt": 0,
+    "x": 820.75,
+    "y": 652.75
+  },
+  "recoveryAt": 2036,
+  "preparationAttempts": 1,
+  "doses": 2,
+  "physical": [
+    {
+      "kind": "medic-dressing",
+      "id": 285,
+      "owner": "g5ObMwt63",
+      "patient": "2adlbGt_a",
+      "x": 820.7659584778813,
+      "y": 652.6913295501769,
+      "toX": 812.543269853189,
+      "toY": 692.6955460750262,
+      "radius": 15,
+      "at": 1568,
+      "until": 1574
+    }
+  ],
+  "manoeuvre": {
+    "heldUntil": 1581,
+    "resumedStart": 1552,
+    "resumedFinish": 1568,
+    "expectedPatient": "2adlbGt_a",
+    "ammunitionSpent": 1
+  },
+  "witnessed": {
+    "nonHost": true,
+    "sharedCue": 285,
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "firstObservation": {
+    "tick": 1568,
+    "owner": {
+      "x": 820.75,
+      "y": 652.75
+    },
+    "patient": {
+      "x": 812.5,
+      "y": 692.75
+    },
+    "remainingWound": 10.099998474121094,
+    "status": {
+      "phase": "applying",
+      "patient": "2adlbGt_a",
+      "startedAt": 1552,
+      "nextAt": 1574,
+      "doses": 1,
+      "ready": true,
+      "canHold": false
+    },
+    "privateDoses": 1
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "testedAudience": "public"
+}

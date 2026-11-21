@@ -1,0 +1,8 @@
+export function applySniperHandling(c){
+ const entry='soldier-sniper-1',carry='soldier-sniper-carry-1',clear='soldier-sniper-clear-1';
+ c.specializationSkills=c.specializationSkills.filter(s=>![carry,clear].includes(s.id));
+ for(const[id,name,description]of[
+  [carry,'Careful Carry','Movement can carry the same paid Settled Shot round within its original three-second preparation. Every actual displacement moves the sight to your current position, recenters its bearing and restarts the full0.7-second settle. Stop and settle before separately releasing; there is no moving release, extra speed, protection or deadline extension. Fresh preparation still requires a planted body. Reload, dodge, actual health loss, channel, burst, overdrive or a new primary press after release still abandons the round. Choose this handling instead of Clear Chamber.'],
+  [clear,'Clear Chamber','During valid Settled Shot preparation, press Reload to return exactly its one reserved round into available magazine space. This cancels preparation and keeps the spent recovery; that press clears the chamber rather than starting an ordinary reload. A full magazine rejects the clear and preserves the paid preparation and original deadline. A later Reload without preparation works normally. Firing, expiry, movement or another interruption returns nothing. Choose this handling instead of Careful Carry.']
+ ])c.specializationSkills.push({id,classId:'soldier',branchId:'soldier-pathways',branchName:'Specializations',subbranchId:entry,subbranchName:'Sniper',subbranchNameKey:'pathway.'+entry+'.name',name,nameKey:'skill.'+id+'.name',sourceSkillId:id,grade:'D',depth:2,cost:2,freePlaySpRequired:5,prerequisite:entry,capstone:false,role:'evolution',effects:{},description});
+}

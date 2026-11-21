@@ -1,0 +1,63 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { createHash } from 'node:crypto';
+import art from "../assets/production/motion/heavy-post-2026-11-10/library.json";
+import { fixture } from "./helpers/heavy-post-game-fixture.ts";
+import { keyedId, openId } from "../src/shared/heavy-traverse.ts";
+import { SurvivorActionClock } from "../src/client/survivor-action-presentation.ts";
+import { nativePostedTextureDefinitions, postedRenderPlan, PostedWeaponLayer, type DrawnSprite } from "../src/client/heavy-post-renderer.ts";
+import { viewOf } from "../src/shared/view.ts";
+const near = (a: number, b: number) => assert(Math.abs(a-b) < 1e-6, `${a} != ${b}`);
+const actual = (f: ReturnType<typeof fixture>) => { const v = viewOf(f.g, f.ally.id); return { v, p: v.players.find(p => p.id === f.p.id)! }; };
+
+test('seven native PNGs bind44 body frames and the inspected actual muzzle without editing image pixels', () => {
+  assert.equal(art.registered, true); assert.equal(art.imagePixelsChanged, false); assert.equal(art.imageResizedOrBackgroundProcessed, false);
+  const textures = nativePostedTextureDefinitions(); assert.equal(textures.length, 7);
+  assert.equal(art.textures.reduce((n,t) => n+t.frames.length,0),44);
+  for (const t of [...art.textures, art.weapon]) assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../' + t.file, import.meta.url))).digest('hex'),t.sha256);
+  for (const t of textures) for (const f of Object.values(t.atlas.frames)) { assert(f.frame.w>0&&f.frame.h>0); assert(f.frame.x>=0&&f.frame.y>=0); assert(f.frame.x+f.frame.w<=t.atlas.meta.size.w); assert(f.frame.y+f.frame.h<=t.atlas.meta.size.h); }
+});
+
+test('all nine real carriage/handling combinations render one fixed actual muzzle and a hands-free walking body, never a predicted shot', () => {
+  for (const mode of ['loose','spade','floating'] as const) for (const handling of [undefined,keyedId,openId]) {
+    const f=fixture(mode,true,handling); f.post();
+    for(let tick=5;tick<=12;tick++) {
+      f.step({moveY:1,aim:0.5}); const {v,p}=actual(f), before=structuredClone(p);
+      const plan=postedRenderPlan(p,v,p.id,{moving:true,facing:'east',combatTick:v.combatTick})!;
+      assert(plan&&plan.body.texture==='hux-free-walk-east'); assert.equal(plan.weapon.at.x,f.status().heavyLanyardX); assert.equal(plan.weapon.at.y,f.status().heavyLanyardY);
+      near(plan.weapon.rotation,f.status().heavyTraverseAim); assert.notEqual(plan.weapon.rotation,p.aim);
+      assert.equal(plan.body.at.y,p.y); assert(plan.localControlLine); assert.notEqual(plan.body.at.y,plan.weapon.at.y);
+      const gun=art.weapon;
+      near((gun.nativeMuzzle[0]-plan.weapon.origin[0]*gun.nativeSize[0])*plan.weapon.scale,0);
+      near((gun.nativeMuzzle[1]-plan.weapon.origin[1]*gun.nativeSize[1])*plan.weapon.scale,0);
+      assert.equal(plan.actualPaidFiringFrame,v.combatTick===11);
+      if(v.combatTick===11){const s=f.shots.find((s:any)=>s.at===11&&Math.abs(Math.hypot(s.vx,s.vy)-1050)<1e-6); assert(s); near(s.x,plan.weapon.at.x);near(s.y,plan.weapon.at.y);}
+      assert.deepEqual(p,before);
+    }
+  }
+});
+
+test('actual health loss selects body-only hurt art; reduced motion keeps one native idle pose without inventing a body attack', () => {
+  const f=fixture('spade'), clock=new LanyardSurvivorActionClock(); f.post(); let {v,p}=actual(f); clock.observe(v);
+  f.g.damage(f.p,5); f.step(); ({v,p}=actual(f)); clock.observe(v);
+  const action=clock.pose(p,v,false)!; assert.equal(action.action,'hurt');
+  const hurt=postedRenderPlan(p,v,p.id,{moving:false,facing:'north',combatTick:v.combatTick,action})!;
+  assert.equal(hurt.body.texture,'hux-free-hurt'); assert.equal(hurt.body.frame,art.facings.indexOf(action.facing));
+  const reduced=postedRenderPlan(p,v,p.id,{moving:true,facing:'west',combatTick:500,reduceMotion:true})!;
+  assert.equal(reduced.body.texture,'hux-free-idle'); assert.equal(reduced.body.frame,3); assert(!reduced.actualPaidFiringFrame);
+});
+
+test('actual public weapon presentation has no foreign control line, reuses one sprite and removes it when actual post authority ends', () => {
+  const f=fixture('spade'); f.post(); f.step({moveY:1}); const {v,p}=actual(f);
+  const local=postedRenderPlan(p,v,p.id,{moving:true,facing:'south',combatTick:5,drawnBody:{id:p.id,x:p.x,y:p.y+1}})!;
+  assert.equal(local.body.at.y,p.y+1); assert.equal(local.localControlLine![0].y,p.y+1);
+  const foreign=postedRenderPlan(p,v,f.ally.id,{moving:true,facing:'south',combatTick:5,drawnBody:{id:p.id,x:p.x,y:p.y+1}})!;
+  assert.equal(foreign.localControlLine,undefined); assert.equal(foreign.body.at.y,p.y);
+  let created=0,destroyed=0,lines=0; const calls:any[]=[];
+  const create=()=>{created++; const s={} as DrawnSprite; for(const k of['setTexture','setPosition','setOrigin','setScale','setRotation','setDepth'] as const)s[k]=((...a:any[])=>{calls.push([k,...a]);return s;}) as any;s.destroy=()=>{destroyed++;};return s;};
+  const layer=new PostedWeaponLayer(create);layer.sync([local],()=>lines++);layer.sync([foreign],()=>lines++);
+  assert.equal(created,1);assert.equal(lines,1);assert(calls.some(c=>c[0]==='setPosition'&&c[1]===foreign.weapon.at.x&&c[2]===foreign.weapon.at.y));
+  f.step({technique1:true}); const ended=actual(f); assert.equal(postedRenderPlan(ended.p,ended.v,p.id,{moving:false,facing:'south',combatTick:ended.v.combatTick}),undefined);
+  layer.sync([],()=>assert.fail()); assert.equal(destroyed,1);layer.clear();assert.equal(destroyed,1);
+});

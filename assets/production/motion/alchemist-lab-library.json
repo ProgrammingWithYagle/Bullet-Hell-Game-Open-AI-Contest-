@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "entry": {
+    "id": "alchemist-action",
+    "bossId": "alchemist",
+    "role": "boss",
+    "name": "Alchemist · signature",
+    "family": "bosses",
+    "kind": "animation",
+    "atlas": "assets/production/motion/alchemist-action-walk-v2-atlas.png",
+    "atlasSha256": "cc2c197aa0c7d97e2a5cb76e202510d1d4c814651ee70d72b9477c784caafde1",
+    "source": "assets/production/generated/alchemist-lab-2026-10-27/alchemist-walk-v1-native.png",
+    "sourceSha256": "2e19bfef74996bcf6192774e90430d33a9fb25f9184f6fa52bd644772fad2da9",
+    "cellSize": 384,
+    "columns": 4,
+    "frames": 16,
+    "labels": [
+      "Idle",
+      "Prepare",
+      "Lift",
+      "Anticipation",
+      "Release",
+      "Channel",
+      "Recovery",
+      "Defeat",
+      "Walk 1",
+      "Walk 2",
+      "Walk 3",
+      "Walk 4",
+      "Walk 5",
+      "Walk 6",
+      "Walk 7",
+      "Walk 8"
+    ],
+    "origin": [
+      0.5,
+      0.8333333333333334
+    ],
+    "displayHeight": 150,
+    "displayCell": 337.83783783783787,
+    "fps": 10,
+    "frameDurationsMs": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125
+    ],
+    "status": "Eight preserved action poses plus eight newly drawn walking poses; native and technical packing reviewed. Rendered/human gait and full directional acceptance remain open.",
+    "notes": "Original first eight action frames are pixel-exact. New walk uses one uniform scale, fixed row-level source anchors and whole-cell alpha-preserving placement. No mirrored/repainted/puppet frames."
+  },
+  "walkStartFrame": 8,
+  "walkFrames": 8,
+  "walkFps": 8,
+  "preservedActionFrames": 8,
+  "preservedActionAtlas": "assets/production/motion/alchemist-action-v1-atlas.png",
+  "preservedActionAtlasSha256": "83551def6cf54bb99e551f342316ba04f80cd12dc03c660c5f3fd857d4db0fc2",
+  "nativeSource": "assets/production/generated/alchemist-lab-2026-10-27/alchemist-walk-v1-native.png",
+  "request": "assets/production/generated/alchemist-lab-2026-10-27/walk-v1-request.json",
+  "requestSha256": "045fe12e8db8eb6be520f71ca9a4589c2d2e7321f05a545942c324e5e73cd778",
+  "nativeSha256": "2e19bfef74996bcf6192774e90430d33a9fb25f9184f6fa52bd644772fad2da9",
+  "nativeSize": [
+    1774,
+    887
+  ],
+  "recipes": [
+    {
+      "index": 0,
+      "atlasFrame": 8,
+      "sourceCanvas": [
+        0,
+        0,
+        444,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        239,
+        239
+      ],
+      "offset": [
+        73,
+        97
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "3200efe9760e0f89af307d7c2a82f8289f35db15d613799ebf686f1d96a335cc"
+    },
+    {
+      "index": 1,
+      "atlasFrame": 9,
+      "sourceCanvas": [
+        444,
+        0,
+        887,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        238,
+        239
+      ],
+      "offset": [
+        73,
+        97
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "60c088ea0a696b672de4ac1475e7607d8f42229c0807e97068f82731ca837846"
+    },
+    {
+      "index": 2,
+      "atlasFrame": 10,
+      "sourceCanvas": [
+        887,
+        0,
+        1330,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        238,
+        239
+      ],
+      "offset": [
+        73,
+        97
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "01b8c898a5a07af65fcc41c59ab3121fbe2df17e5a89695443344a449958b0d1"
+    },
+    {
+      "index": 3,
+      "atlasFrame": 11,
+      "sourceCanvas": [
+        1330,
+        0,
+        1774,
+        444
+      ],
+      "sourceAnchor": [
+        221.75,
+        414
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        239,
+        239
+      ],
+      "offset": [
+        73,
+        97
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "1716e255444db84ec1e6d8e6efdf83e67ebaf7dd8a0fe980f831c488f9c48857"
+    },
+    {
+      "index": 4,
+      "atlasFrame": 12,
+      "sourceCanvas": [
+        0,
+        444,
+        444,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        394
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        239,
+        238
+      ],
+      "offset": [
+        73,
+        108
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "ff54ed45fa0fe7657f694ae94d6d8ae10446beba8482e0dcf045fe5834ef0dcd"
+    },
+    {
+      "index": 5,
+      "atlasFrame": 13,
+      "sourceCanvas": [
+        444,
+        444,
+        887,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        394
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        238,
+        238
+      ],
+      "offset": [
+        73,
+        108
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "73bacf058a97cbc79658d7a110485fd267e7622916dea5d4f9a42593e4626455"
+    },
+    {
+      "index": 6,
+      "atlasFrame": 14,
+      "sourceCanvas": [
+        887,
+        444,
+        1330,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        394
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        238,
+        238
+      ],
+      "offset": [
+        73,
+        108
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "22340818257f390b6d982dc603622a02753173b22edf1b47a4c3b23b67945fa3"
+    },
+    {
+      "index": 7,
+      "atlasFrame": 15,
+      "sourceCanvas": [
+        1330,
+        444,
+        1774,
+        887
+      ],
+      "sourceAnchor": [
+        221.75,
+        394
+      ],
+      "uniformScale": 0.5375,
+      "resizedSize": [
+        239,
+        238
+      ],
+      "offset": [
+        73,
+        108
+      ],
+      "targetAnchor": [
+        192,
+        320
+      ],
+      "packedRgbaSha256": "53db150283c763c69859289bfd2046fe79b32960f2184029fa4b6e48979af77e"
+    }
+  ],
+  "preview": "assets/production/motion/alchemist-walk-v1-preview.gif",
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "alphaEdgeNote": "Original native 1774x887 is divided with rounded quarter/half canvases. Visible alpha >=16 clears every cell edge. Faint edge pixels are retained, not erased. Row-level baselines correct sheet-row placement while preserving within-row gait offsets.",
+  "review": {
+    "identity": "Hood, skull, teal coat, bone sleeves, canisters, boots and ladle retained in all eight native poses.",
+    "motion": "Distinct boot contacts/passes and coat/arm follow-through are drawn. Gait continuity was reviewed as static native poses; no rendered-playback acceptance.",
+    "composition": "Visible complete figures and props clear their assigned source canvases; full alpha owned by the recorded canvases is packed without creative edits."
+  }
+}

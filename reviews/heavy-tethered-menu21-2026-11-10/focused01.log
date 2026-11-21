@@ -1,0 +1,42 @@
+✔ actual menuAcquirer admits controlled21SP, submits one authoritative capstone purchase, and rejects a duplicate (1118.1348ms)
+{"mode":"loose","acquisition":"short","actualClear":{"boss":"constable","combatTicks":192,"actualEarnedSP":9}}
+{"mode":"loose","acquisition":"short","actualClear":{"boss":"stitchwright","combatTicks":147,"actualEarnedSP":15}}
+{"mode":"loose","acquisition":"short","actualClear":{"boss":"pallbearer","combatTicks":469,"actualEarnedSP":21}}
+{"actualTerminalContext":{"mode":"loose","handling":"omitted","acquisition":"short","phase":"combat","tick":6682,"combatTick":810,"encounter":3,"boss":{"id":"wire-harpist","x":800,"y":332,"health":5495.827536092018},"owner":{"id":"solo","ack":869,"status":"active","x":695,"y":752,"health":127.5,"ammo":52,"skills":["heavy-ordnance-1","heavy-traverse-1","heavy-traverse-clutch-1","heavy-traverse-lanyard-1"],"upgrades":{"damage":3,"health":3,"fire-rate":2,"reload":2,"magazine":2},"kit":{"chargeUntil":0,"veilUntil":0,"passageUntil":0,"stepCharges":0,"shield":0,"shieldUntil":0,"armor":0,"armorUntil":0,"technique1At":0,"technique2At":0,"heavyLanyardAt":0,"heavyLanyardSequence":0,"heavyLanyardUntil":0,"heavyLanyardX":695,"heavyLanyardY":752,"heavyLanyardRemaining":0,"heavyTraverseShotPosted":false,"heavyTraverseShotX":695,"heavyTraverseShotY":752,"heavyClutchConverted":0,"heavyClutchAt":0,"heavyClutchSequence":0,"heavyClutchBlocked":true,"heavyClutchLifted":false,"heavyClutchUsed":false,"heavyClutchForfeited":0,"heavyClutchSlotsRemaining":0,"heavyPrimaryAt":0,"heavyPrimaryAim":0,"heavyTraverseBornAt":0,"heavyTraverseSequence":0,"heavyTraversePostX":695,"heavyTraversePostY":752,"heavyTraverseUntil":0,"heavyTraverseNextAt":0,"heavyTraverseRounds":0,"heavyTraverseAim":0,"heavyTraverseMode":"loose","heavyTraverseCastAt":0,"heavyTraverseShotRequiresClutch":false,"heavyTraverseShotAt":0,"heavyTraverseShotAim":0,"heavyTraverseBlocked":false}},"mutations":[{"id":"open-veins","remaining":1},{"id":"last-rites","remaining":2},{"id":"panic-drill","remaining":3}]},"noTimeoutOrPolicyChange":true}
+✖ whole unmodified optimized Short worker earns3→9→15→21 through three clears and buys/posts via the actual menuAcquirer (229054.15ms)
+✔ controlled source MenuDOM respects the19-earned gate, makes one real capstone purchase at21, and retains five independently remapped owned rows across nine combinations (24140.2073ms)
+{"mode":"loose","acquisition":"raid","actualClear":{"boss":"chain-colossus","combatTicks":195,"actualEarnedSP":20}}
+✔ real nonhost Heavy earns Raid12→20 and stakes loose / original Clutch with actual owner streams and host cleanup (74795.6612ms)
+{"mode":"spade","handling":"heavy-traverse-keyed-1","acquisition":"raid","actualClear":{"boss":"chain-colossus","combatTicks":195,"actualEarnedSP":20}}
+✔ real nonhost Heavy earns Raid12→20 and stakes spade / heavy-traverse-keyed-1 with actual owner streams and host cleanup (76470.5531ms)
+{"mode":"floating","handling":"heavy-traverse-open-1","acquisition":"raid","actualClear":{"boss":"chain-colossus","combatTicks":196,"actualEarnedSP":20}}
+✔ real nonhost Heavy earns Raid12→20 and stakes floating / heavy-traverse-open-1 with actual owner streams and host cleanup (76283.085ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231389.8455
+
+✖ failing tests:
+
+test at tests\heavy-post-acquisition.test.ts:1:1924
+✖ whole unmodified optimized Short worker earns3→9→15→21 through three clears and buys/posts via the actual menuAcquirer (229054.15ms)
+  AssertionError [ERR_ASSERTION]: actual pre-post pause
+      at heavyWait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-flak-flow.ts:44:5)
+      at async heavyPostOperation (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-flow.ts:21:23)
+      at async runEarnedPostFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-earned-flow.ts:196:21)
+      at async earnedPostFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-earned-flow.ts:242:16)
+      at async earnedPostWorkerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-post-worker-flow.ts:105:20)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-post-acquisition.test.ts:88:20)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,58 @@
+✔ existing eleven-field profiles retain progress, controls and language while adding the layout default (6.4502ms)
+✔ both panel choices persist and invalid layout values cannot replace a valid profile (1.4144ms)
+✔ all fifteen catalogs contain the exact authored equipment/ability layout labels (42.654ms)
+✔ Real peers receive owned carriage orders and extra-action cooldowns; host pause freezes a committed rail and rejects queued use (2604.8608ms)
+✔ Normal Free Play encounter rewards admit Machinery in stages and preserve an affordable 27-SP paired late build (77.1361ms)
+✔ The two earned actions support remapped keyboard, gamepad and touch pulses, with blur and blocked-input suppression (5.1767ms)
+✔ Machinery grows from three starter actions to four and five while earned-SP gates protect late abilities (31.9729ms)
+✔ Anchor is a reversible owned command, preserves deployment cooldown and resets bracing rather than banking fire (4.9849ms)
+✔ Survey captures a fixed legal waypoint, keeps paired formation, rejects all blocked/lava/edge orders without charging recovery (2.6264ms)
+✔ A ready Q still deploys, and controls cannot alter another owner’s machinery, siege engines or legacy turrets (18.317ms)
+✔ Coil Lance commits a machine and a fixed aim, fires only after charge, then resumes normal work with a finite cooldown (3.8827ms)
+✔ Prism changes firing geometry and sequence; Rail Convergence changes coordination and warned impact at SS+ (6.4739ms)
+✔ Coil cover clipping and real ordinary/boss damage use owned simulation credit; no boss clocks are slowed (10.7215ms)
+✔ Destroyed or expired machines, owner death/disconnect and intermission cancel channels and their collapse (18.3283ms)
+✔ Salvage is a fifth owned utility action: consumes nearby idle carriages once, recovers bounded deployment time, grants no resources (4.1925ms)
+✔ Extra inputs are strict pulses, ignore unowned/other-class use and are consumed once by the authoritative tick (2.3059ms)
+✔ Exact protocol-49/50 boundaries preserve twelve identities and old choices; invented new nodes and online old revisions are rejected (11.6069ms)
+✔ Issued A6 practice records retain their original revision and protocol without granting proof or deleting protocol-49 history (0.7858ms)
+✔ The authored tree exposes every real technique once, follows direct parents, and provides a reading view with guarded purchases (497.2159ms)
+✔ Prism previews its actual pending lanes and exposes only public cue geometry (2.1993ms)
+✔ A convergence collapse needs a rail to reach its mark; fully blocked machinery cannot produce a remote impact (3.2244ms)
+✔ A fading carriage does not prevent a surviving one from firing; HUD availability agrees with the finite charge requirement (4.0408ms)
+✔ Engineer sound events follow successful owned actions and actual finite ray releases (1.599ms)
+✔ Real peers buy contrasting pathways with owned spending; a late observer receives the current charge and bracing machine (1692.4345ms)
+✔ Both tree views inspect the same Engineer pathways, explain conflicts, preserve keyboard buttons and gate actual purchases (1013.8134ms)
+✖ Original Engineer cues are distinct finite mono waveforms with quiet, click-free envelopes (6.8886ms)
+✔ Each Engineer sound starts one bounded source and releases its voice and gain exactly once (6.0939ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6183.6443
+
+✖ failing tests:
+
+test at tests\engineer-sound.test.ts:1:296
+✖ Original Engineer cues are distinct finite mono waveforms with quiet, click-free envelopes (6.8886ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + -0
+  - 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-sound.test.ts:30:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -0,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

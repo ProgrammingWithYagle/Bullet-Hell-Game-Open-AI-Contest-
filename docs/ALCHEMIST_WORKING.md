@@ -1,0 +1,11 @@
+# Alchemist implementation notes
+
+The release candidate is now verified and pushed as source 62030d335f97bb1db4285462beb9fefa543bf621, build2026.11.02-alchemist/protocol 48. Read [ALCHEMIST](ALCHEMIST.md) for mechanics, [IMPLEMENTATION_STATE](IMPLEMENTATION_STATE.md) for exact gate/CI/frozen evidence, and [NEXT_CHAT](../handoff/NEXT_CHAT.md) to continue. Testing5312/2688 and public 5313/2689 both pass their probes. Prior Ranger5310/5311 and all older services/private databases are preserved.
+
+The full gate02passes1,238 tests, TypeScript,15 draft catalogs,144 early-Campaign cases and production/art contracts. All 36 Alchemist tests pass. Earlier candidate attempts, including the stale equipment-copy assertion and eight outdated roster/story contracts in gate01, remain workspace evidence. The final gate log is retained byte-for-byte under reviews/alchemist-2026-11-02. Source CI41475492836/job 125379836671 passes every step.
+
+Two timing changes are intentional design fixes: Standard Batch lasts14seconds so three base-cooldown throws fit; friendly fields last8seconds with five 1.5-second pulses so the six-second E permits actual combinations. Real Game tests use ordinary cooldowns and actual damage/healing rather than forged pool or charge state.
+
+Sixteen retained natives produce32 clips/94 poses,18 icons and portrait/reference candidates. Whole-component/full-RGBA reconstruction passes; rejected figures and wrong facings/equipment remain recorded. No mirroring or repainting is used. Fifteen mechanical translations are AI-authored drafts. Native/static/source evidence is separate from motion, rendered, device, language, listening, literary and human balance acceptance.
+
+Perrin and Heda have an English ward-porch scene with custody/timeline constraints in story-continuity/ONE_PLACE_LEFT.md. No personal arc is complete. The optional letter is excluded from the main-story count. The five-million-English-word ambition, later learning, persistent characters/materials, wider ordinary objectives and further boss work remain unfinished. Campaign keeps slow learning/proofs and zeroSP; Free Play keeps rapidSP and mutations. Continue the full user goal without declaring the roster checkpoint to be the finished game. Browser automation and subagents remain disabled; do not upload private databases.

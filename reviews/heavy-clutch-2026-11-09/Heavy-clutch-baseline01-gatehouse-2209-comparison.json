@@ -1,0 +1,138 @@
+{
+  "checkedAt": "2026-11-09T13:36:47.274Z",
+  "runtimeSourceSha256": "350926b9a9469f9a5632510fb6e56651894a1922a4ff08d2fc9f8ee452f62a18",
+  "policySourceSha256": "691e83937959c91926c41acdb970f4fb9241ad6c29c9c68aa6bf364fa969de35",
+  "seed": 2209,
+  "map": "gatehouse",
+  "passed": true,
+  "allMeasuredFieldsMatch": false,
+  "combatAndProgressionFieldsMatch": true,
+  "comparisons": [
+    {
+      "route": "loose-mantlet",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "loose-vents",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "loose-split",
+      "safeRestores": 18,
+      "mismatches": [
+        "endingShield"
+      ],
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 40.75,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": true,
+      "passed": true
+    },
+    {
+      "route": "spade-mantlet",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "spade-vents",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "spade-split",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "floating-mantlet",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "floating-vents",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "floating-split",
+      "safeRestores": 18,
+      "mismatches": [],
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Actual source71 native Game, ordinary purchases/rewards/health, normal difficulty, terminal wins and losses. No checkpoint is imported for natural execution, no forced clear/resource/health/position/hazard injection or deadline/timeout edit.",
+    "One visible-state steering policy uses conservative18px clearance against the actual9px body. It predicts current velocities, selects manual aim and decides when to stop a vulnerable stroke; production gains no targeting or hazard forecast.",
+    "All3carriages pair with3General plans. Each plan fits27SP/onecapstone, but losses and unacquired/unused techniques remain. Loose spends its remaining3SP on Sprint; fitted plans spend their remaining1SP on Padded Harness. These different spending/policy choices do not rank builds.",
+    "Safe local noncombat restores preserve ownership and actual histories. They intentionally omit transient shield. Every combat/progression field including combat-exit shield is compared. Raw terminal shield differences require an explicitly observed final secretOffer shield reset; otherwise a mismatch fails. Restore observations and counts stay separate.",
+    "Native source/policy hashes bind this new execution; earlier Flak natural/replay reports retain their original provenance. No rendered/browser/device/native-language/listening/motion/human/final balance acceptance is claimed."
+  ]
+}

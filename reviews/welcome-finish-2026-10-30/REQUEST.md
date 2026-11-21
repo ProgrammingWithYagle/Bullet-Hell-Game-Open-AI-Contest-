@@ -1,0 +1,7 @@
+# Final language-screen adjustment
+
+The human reports that the first language screen is nice and the automatic name follows the intended rule in testing5252. They ask whether to translate the game title and what the orange strip between choices and Continue is. Keep Grave Accord as the consistent game title; translate the interface. The strip is an empty live-status paragraph inheriting the global warning-box padding, background and border. Scope that paragraph to plain status text while keeping its live-region semantics and actual loading/error messages. Human comparison of the styling fix remains open.
+
+Preserve the completed controls source cb0ca6d, records head71e47d2, 915-test source/CI/native review and testing5254/public5255. Current larger-team software probes have passed8,16and50 clients. An earlier50-client join timeout remains preserved; the standalone instrumented run and exact16-then50 repeat pass without extending timeouts. This is QA with protected players, accelerated clears/deadlines, isolated SQLite scores and no rendered clients. Never claim ordinary balance, WAN/endurance/device or human acceptance from it.
+
+Source/Wiki/draft/local synchronization is authorized. No merge, deploy, release replacement, contest submission, new content, new checkout, delegation or browser automation. Current product changes are only the language-screen styling and matching update/progress metadata.

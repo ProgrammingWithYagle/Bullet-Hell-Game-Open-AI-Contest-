@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "tests": 818,
+  "passedTests": 818,
+  "failedTests": 0,
+  "fullGate": "reviews/interface-clarity-2026-10-29/gate-02/runtime-verification.json",
+  "runtimeSourceSha256": "96daf8afbc18cc9a700ccb164c63fe210d895b99b9528b488e2300bbf70622b6",
+  "sourceSnapshotSha256": "337e816f86adca116e24bb7fc8f4d37d00c307ed2b8c6ba1c4a11a8fd90b291c",
+  "focused": {
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "log": "focused-03.log",
+    "subsequentSmallChangesCoveredByFullGate": true
+  },
+  "corrections": [
+    "First focused run retained an old protocol assertion and sampled a transient reconnect status. Record the status event instead.",
+    "Second focused run used a fixture SP value outside the real earned budget; use a valid complete save.",
+    "First full gate detected the new keys missing from canonical source composition. Connect the same source to generation and verification; keep strict key parity."
+  ],
+  "rawLogs": [
+    {
+      "path": "reviews/interface-clarity-2026-10-29/focused-01.log",
+      "bytes": 3506,
+      "sha256": "8de83035375a09763653656cbe5f9cc8c8499b06a7879134d94ca1067b6bb4f6"
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/focused-02.log",
+      "bytes": 3708,
+      "sha256": "b21023c7ad4e9665b4a90a9a421044be7f286022881a10222917812fb7be0075"
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/focused-03.log",
+      "bytes": 2792,
+      "sha256": "5e5c868c8667352b3e7fc8311d2fd946cf64cba05c7f41904bdf485d0dc3826f"
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/full-gate-01.log",
+      "bytes": 2512,
+      "sha256": "77ff637bcc18726150b37409587b7047144f2e26f90dd07a1bd52cd138d3315a"
+    },
+    {
+      "path": "reviews/interface-clarity-2026-10-29/full-gate-02.log",
+      "bytes": 101536,
+      "sha256": "c53f56d2dce06c6b992f60dbacc395de66fbdbb4e9667164b0464ccb1f0b7abd"
+    }
+  ],
+  "limits": [
+    "Native software and local transport only; no browser, rendered/human, listening, native-language, physical-device or WAN acceptance."
+  ]
+}

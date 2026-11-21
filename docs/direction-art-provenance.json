@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "tool": "Built-in image_gen.imagegen",
+  "reportedModel": null,
+  "modelSelectionExposed": false,
+  "qualitySelectionExposed": false,
+  "transparentBackground": true,
+  "status": "Historical reference/seed provenance. Limited four-frame north/south walk strips are now integrated; see direction-walk-requests.json and assets/proofs/directions/walk-normalization.json. Full action library remains pending.",
+  "entries": [
+    {
+      "classId": "soldier",
+      "prompt": "Use case: identity-preserve. Asset type: a four-direction survivor reference sheet for Grave Accord. The supplied image is the identity and finish authority. Mara Rook, the SAME woman in the reference: navy watch cap, short brown hair, navy long watch coat with worn ochre badge, brown belt and boots, compact antique service pistol. Preserve her face, body proportions, costume and palette. Create a clean 1024 by 1024 transparent sheet divided into four equal 512 by 512 cells, with no visible grid or labels. Top-left: facing south toward the viewer; top-right: facing east in right profile; bottom-left: facing north, unmistakably rear view with the back of head/hood and coat; bottom-right: facing west in left profile. Each complete figure stands in a ready pose, weapon pointing in its facing direction with correct foreshortening. Fixed scale, figure height about 365 pixels in each cell, both feet rest on baseline y=438 within the cell and body centered x=256. Use a slightly elevated top-down game-camera view consistently, not an overhead map view. Original hand-ink contours and matte gouache, quiet broad clothing planes, clean silhouette, selective face/hand/weapon detail, no visual noise. No scenery, platform, shadow backdrop, particles, text, arrows or frame. Actual transparent background. Four clear views of one unchanged survivor, exactly one figure per cell.",
+      "source": "assets/proofs/animation/soldier-run-atlas.png",
+      "generatedNative": "exec-6d037e8e-11ee-4fae-bb85-3a30965082d5.png",
+      "preserved": "assets/proofs/directions/soldier-reference-v1.png",
+      "review": "Four legible views, subject identity broadly retained. Requires finish consistency, shared-scale and in-motion approval before production use."
+    },
+    {
+      "classId": "medic",
+      "prompt": "Use case: identity-preserve. Asset type: a four-direction survivor reference sheet for Grave Accord. The supplied image is the identity and finish authority. Iona Vale, the SAME blonde woman in the reference: ivory hooded long coat, dark trousers and brown boots, red satchel with two diagonal ivory bandage motifs, dark gloves, brass injector carbine with red serum chamber. Preserve face, outfit, hood, satchel, weapon and proportions. Keep the diagonal bandage motifs, no crosses. Create a clean 1024 by 1024 transparent sheet divided into four equal 512 by 512 cells, with no visible grid or labels. Top-left: facing south toward the viewer; top-right: facing east in right profile; bottom-left: facing north, unmistakably rear view with the back of head/hood and coat; bottom-right: facing west in left profile. Each complete figure stands in a ready pose, weapon pointing in its facing direction with correct foreshortening. Fixed scale, figure height about 365 pixels in each cell, both feet rest on baseline y=438 within the cell and body centered x=256. Use a slightly elevated top-down game-camera view consistently, not an overhead map view. Original hand-ink contours and matte gouache, quiet broad clothing planes, clean silhouette, selective face/hand/weapon detail, no visual noise. No scenery, platform, shadow backdrop, particles, text, arrows or frame. Actual transparent background. Four clear views of one unchanged survivor, exactly one figure per cell.",
+      "source": "assets/prototype/medic-source-v2.png",
+      "generatedNative": "exec-24bf9346-00ae-4711-a57d-45b9f0e17d07.png",
+      "preserved": "assets/proofs/directions/medic-reference-rejected-v1.png",
+      "review": "Rejected as animation seed: cramped/cropped layout and insufficient north/south aiming."
+    },
+    {
+      "classId": "medic",
+      "prompt": "Edit this four-direction Iona Vale reference sheet only to correct the layout and the up/down aim. Preserve her exact illustrated identity, ivory hooded coat, blonde hair, brass/red injector carbine, brown boots and red bag with diagonal bandage marks. Use a 1024 by 1024 square transparent canvas divided into four equal 512 by 512 cells with no drawn grid. Every complete figure and the ENTIRE weapon must fit strictly inside its own cell with at least 48 pixels empty margin from all four edges. Fixed figure height 365 pixels, centered horizontally x=256 and feet at local y=438. Upper-left front south-facing: torso, face, and foreshortened weapon point toward the viewer. Upper-right east-facing: right profile, gun points right and muzzle has generous padding. Lower-left north-facing: true rear body and hood view, aim goes away from viewer, weapon mostly foreshortened and obscured ahead of her body. Lower-right west-facing: left profile, gun points left, entire weapon and body fully visible. Quiet matte gouache and original ink contours. No scenery, shadow backdrop, labels, text, arrows, colored fringe, particles or border. Actual transparent background.",
+      "source": "assets/proofs/directions/medic-reference-rejected-v1.png",
+      "generatedNative": "exec-0d3c8d69-0987-4674-b71f-f4a88f89ab65.png",
+      "preserved": "assets/proofs/directions/medic-reference-v1.png",
+      "review": "Corrected sheet retains full figures and weapons. North carbine remains partly side-on and edge color/fringing needs inspection. Provisional reference, not approved production animation."
+    }
+  ],
+  "normalization": "tools/prepare-direction-seeds.py preserves native PNGs and extracts/normalizes 8 transparent seeds. Each class shares one uniform scale across its four cells; pivots [0.5,0.90625]. No painting or recoloring.",
+  "nextStep": "Continue full animation contracts only after the first-loop architecture gate. Preserve all native generations and exact requests; inspect complete cycles and gameplay scale."
+}

@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "stageOnly": true,
+  "protocol": 87,
+  "revision": "3a77cf3d6bb196bbff0743e988a18928e39bf4acf899dfc4a3c1b24103b7c3b1",
+  "driver": "47eb458bc0514c49388dded8934937a4866028f34288dc5c1b4f26e5dfefacc2",
+  "worker": "1d71d1bfc72f2d64cb62d3e60c973a0d275839612d96cc09134acff56d406022",
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "path": "native-scratch02/worker-entry.json",
+      "sha256": "938be6d69a3553ac4aaf381d371613298fac3cc1cbeb74c1115c5acd032ae5ae",
+      "boss": "ragpicker-kite",
+      "earned": 3,
+      "contactEvents": 1
+    },
+    {
+      "transport": "worker",
+      "fitting": "fixed",
+      "path": "native-scratch02/worker-fixed.json",
+      "sha256": "4ecc5e1ffc29d153afc21586a362bf32847213bb71951fefc8f02a524d9e9542",
+      "boss": "stitchwright",
+      "earned": 9,
+      "contactEvents": 1
+    },
+    {
+      "transport": "worker",
+      "fitting": "reverse",
+      "path": "native-scratch02/worker-reverse.json",
+      "sha256": "ce5833d4d3b10695f98f1d166c0a736b79fb7153edbdb72ee515dda45ee30ec1",
+      "boss": "stitchwright",
+      "earned": 9,
+      "contactEvents": 1
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "path": "native-scratch02/peer-entry.json",
+      "sha256": "e948b4c2b66b7208278503a66626064a329cb38deb2ddaf37aaf65dbebd97ae9",
+      "boss": "quarantine-clerk",
+      "earned": 3,
+      "contactEvents": 1
+    },
+    {
+      "transport": "peer",
+      "fitting": "fixed",
+      "path": "native-scratch02/peer-fixed.json",
+      "sha256": "5225e60b9670c2382aa70f039a1759af0fdc7d9f1e7eced21773a2350b152e64",
+      "boss": "stitchwright",
+      "earned": 9,
+      "contactEvents": 1
+    },
+    {
+      "transport": "peer",
+      "fitting": "reverse",
+      "path": "native-scratch02/peer-reverse.json",
+      "sha256": "6dd1190ab1f2f085af9f276b296d8ea3c60bf8bffc1537c09cec825e92577a33",
+      "boss": "stitchwright",
+      "earned": 9,
+      "contactEvents": 1
+    }
+  ],
+  "initial": {
+    "result": "Three worker cases passed and all three joined Mage cases lacked the private kit state",
+    "expectedRepair": "Use the Mage join and rejoin paths to register the existing owner-filtered kit view",
+    "previousServer": "d9a89e59e503f86aa687b662e44ddb3ef68ed6c8d62d1499cefeb8f41b56dec1",
+    "correctedServer": "8308e406e5e352ccc6b47616a5ff0aaf52796556ad4644ebc71b32946cb78f5b"
+  }
+}

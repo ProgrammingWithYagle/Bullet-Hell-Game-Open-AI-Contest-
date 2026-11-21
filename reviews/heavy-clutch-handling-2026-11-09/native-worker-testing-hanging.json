@@ -1,0 +1,124 @@
+{
+  "checkedAt": "2026-11-10T01:37:47.222Z",
+  "audience": "testing",
+  "sourceCommit": "18da7f9267710090ea9566fc49728d44c8f26dbe",
+  "protocol": 72,
+  "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+  "group": "worker",
+  "variant": "hanging",
+  "passed": true,
+  "handling": "hanging",
+  "pattern": "compact",
+  "ordinaryStartingSP": 12,
+  "disabledAtActual12Earned": true,
+  "actualFirstBossClear": true,
+  "firstBoss": "chain-colossus",
+  "firstCombatTicks": 174,
+  "earnedAfterActualClear": 20,
+  "actualRequiredSkillPurchases": 5,
+  "spentSkillSP": 11,
+  "remainingSP": 9,
+  "acceptedPurchases": [
+    {
+      "kind": "skill",
+      "item": "heavy-ordnance-1"
+    },
+    {
+      "kind": "skill",
+      "item": "heavy-flak-1"
+    },
+    {
+      "kind": "skill",
+      "item": "heavy-flak-compact-1"
+    },
+    {
+      "kind": "skill",
+      "item": "heavy-flak-command-1"
+    },
+    {
+      "kind": "weapon",
+      "item": "heavy-3"
+    },
+    {
+      "kind": "skill",
+      "item": "heavy-flak-hanging-1"
+    }
+  ],
+  "normalVotesShopDeploymentClocks": true,
+  "observedClocks": [
+    {
+      "phase": "mutationVote",
+      "remainingTicks": 450,
+      "bossDefeatRemainingTicks": 150,
+      "rawPhaseRemainingTicks": 600,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "phase": "contractVote",
+      "remainingTicks": 450,
+      "bossDefeatRemainingTicks": 0,
+      "rawPhaseRemainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "phase": "shop",
+      "remainingTicks": 750,
+      "bossDefeatRemainingTicks": 0,
+      "rawPhaseRemainingTicks": 750,
+      "maximumIssuedTicks": 750
+    },
+    {
+      "phase": "loading",
+      "remainingTicks": 150,
+      "bossDefeatRemainingTicks": 0,
+      "rawPhaseRemainingTicks": 150,
+      "maximumIssuedTicks": 150
+    }
+  ],
+  "oneActualAdmittedCarrierId": 114,
+  "actualRoundSpentOnce": true,
+  "originalFuse": 187,
+  "originalRecovery": 415,
+  "actualStoppedSameIdUpdate": {
+    "id": 114,
+    "x": 723.7082100719663,
+    "y": 743.2914596823662,
+    "vx": 0,
+    "vy": 0,
+    "expires": 187
+  },
+  "actualBursts": [
+    {
+      "kind": "heavy-flak-burst",
+      "id": 115,
+      "owner": "solo",
+      "x": 723.7082100719663,
+      "y": 743.2914596823662,
+      "at": 179,
+      "until": 185,
+      "radius": 60,
+      "arc": 6.283185307179586,
+      "aim": -0.2945243112740432,
+      "contacts": []
+    }
+  ],
+  "combinedActualInterceptions": 0,
+  "combinedOriginalQuotaConserved": true,
+  "pauseFreezesFlightAndRecovery": true,
+  "pauseDiscardsRequests": true,
+  "actualSeparateSecondHangingCommand": true,
+  "oneCastCountDespiteStopUpdate": true,
+  "spentRecoveryRetained": true,
+  "noCheckpointOrBudgetHealthPositionInjection": true,
+  "limits": [
+    "Actual ordinary first-clear acquisition and input. The test-only steering policy projects observed current velocities as fallible guesses; actual authoritative burst contact marks supply the interception counts.",
+    "One acquired case does not establish human balance, rendered UI, device/language/listening/motion or whole-class completion."
+  ],
+  "workerPatched": false,
+  "wholeOptimizedWorkerExecuted": true,
+  "wholeExactServedOptimizedWorker": true,
+  "servedWorker": {
+    "path": "assets/offline.worker-CUkWoxzZ.js",
+    "sha256": "3e4f9c0b5b3acb81595f0e908e68cee778eb45a00a755b61051b7ca2bec6628f"
+  }
+}

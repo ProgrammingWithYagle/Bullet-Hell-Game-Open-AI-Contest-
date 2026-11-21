@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-11-07T17:47:15.351Z",
+  "runtimeSourceSha256": "6f05a8f209592c263cf4e367e6cd0ebcedbce1d193483a620bf15f35b0ac86d5",
+  "policySourceSha256": "f67247558c83836137124867ca05eb33f0787d9c4a05b1201395c98c21865c17",
+  "seed": 2209,
+  "map": "gatehouse",
+  "passed": true,
+  "allMeasuredFieldsMatch": false,
+  "combatAndProgressionFieldsMatch": true,
+  "comparisons": [
+    {
+      "route": "base-mantlet",
+      "safeRestores": 13,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 61.2,
+        "restored": 61.2
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "base-vents",
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [
+        "endingShield"
+      ],
+      "terminalShield": {
+        "natural": 34.75,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": true,
+      "passed": true
+    },
+    {
+      "route": "base-split",
+      "safeRestores": 13,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 80,
+        "restored": 80
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "compact-mantlet",
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": false,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [
+        "endingShield"
+      ],
+      "terminalShield": {
+        "natural": 8.656000000000004,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": true,
+      "passed": true
+    },
+    {
+      "route": "compact-vents",
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "compact-split",
+      "safeRestores": 18,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 0,
+        "restored": 0
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "frontal-mantlet",
+      "safeRestores": 5,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 75,
+        "restored": 75
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "frontal-vents",
+      "safeRestores": 5,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 75,
+        "restored": 75
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    },
+    {
+      "route": "frontal-split",
+      "safeRestores": 5,
+      "allMeasuredFieldsMatch": true,
+      "combatAndProgressionFieldsMatch": true,
+      "mismatches": [],
+      "terminalShield": {
+        "natural": 75,
+        "restored": 75
+      },
+      "expectedTerminalShieldNormalization": false,
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Original policy01 failed comparisons remain. This measurement revision retains raw terminal shield and explicitly checks the existing Practice reset; it does not alter gameplay, steering, purchases or deadlines."
+  ]
+}

@@ -1,0 +1,23 @@
+{"mode":"floating","handling":"heavy-traverse-open-1","acquisition":"short","actualClear":{"boss":"constable","combatTicks":199,"actualEarnedSP":9}}
+{"mode":"floating","handling":"heavy-traverse-open-1","acquisition":"short","actualClear":{"boss":"stitchwright","combatTicks":282,"actualEarnedSP":15}}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(Math.hypot(moved.x - origin.x, moved.y - origin.y) > 5)
+
+    at heavyClutchHandlingOperation (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-clutch-handling-flow.ts:165:3)
+    at async earnedClutchHandlingFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-clutch-handling-earned-flow.ts:194:21)
+    at async Module.earnedClutchHandlingPeerFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\heavy-clutch-handling-peer-flow.ts:130:20)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-05\continue-grave-accord-in-the-same\work\heavy-clutch-handling-rounds-stage\native-probe.mts:29:24) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

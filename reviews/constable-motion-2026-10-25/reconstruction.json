@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "verifier": "tools/verify-constable-motion.py",
+  "verifierSha256": "2020e6da5a600e84a73b8b07c5a8ef134f4d33e3d3e476bcb45d0bd4dddadf67",
+  "contractSha256": "1953fe709ca7a0b59a028d44147f9c772634c3f41fb1b3e3cb3f70390f7bf192",
+  "nativeReturns": 4,
+  "newCompletePoses": 19,
+  "retainedAttackPoses": 8,
+  "clips": [
+    {
+      "clip": "idle",
+      "frames": 4,
+      "everyNativeRgbaPixelConserved": true,
+      "allPackedRgbaPixelsReconstructed": true,
+      "oneScaleForWholeClip": true
+    },
+    {
+      "clip": "hurt",
+      "frames": 3,
+      "everyNativeRgbaPixelConserved": true,
+      "allPackedRgbaPixelsReconstructed": true,
+      "oneScaleForWholeClip": true
+    },
+    {
+      "clip": "stagger",
+      "frames": 4,
+      "everyNativeRgbaPixelConserved": true,
+      "allPackedRgbaPixelsReconstructed": true,
+      "oneScaleForWholeClip": true
+    },
+    {
+      "clip": "defeat",
+      "frames": 8,
+      "everyNativeRgbaPixelConserved": true,
+      "allPackedRgbaPixelsReconstructed": true,
+      "oneScaleForWholeClip": true
+    }
+  ],
+  "staggerSharesUprightIdleSourceScale": true,
+  "attackAtlasAndMetadataBytesUnchanged": true,
+  "renderedAccepted": false,
+  "limits": [
+    "Independent native and packed RGBA verification only.",
+    "Natural collapsed silhouettes retain one upright-calibrated scale and a fixed horizontal ground origin.",
+    "Assistant contact-sheet review is separate from rendered/device/human acceptance."
+  ]
+}

@@ -1,0 +1,29 @@
+✖ a cosmetic profile refresh keeps an unrelated pending language choice active (617.5019ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2253.3439
+
+✖ failing tests:
+
+test at tests\language-navigation.test.ts:1:8687
+✖ a cosmetic profile refresh keeps an unrelated pending language choice active (617.5019ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'en' !== 'fr'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\language-navigation.test.ts:88:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'en',
+    expected: 'fr',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

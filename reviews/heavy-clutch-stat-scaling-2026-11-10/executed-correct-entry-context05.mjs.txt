@@ -1,0 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+const stage=path.dirname(fileURLToPath(import.meta.url)),root='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)',scope=root+'/reviews/heavy-clutch-stat-scaling-2026-11-10';
+const sha=b=>createHash('sha256').update(b).digest('hex'),files=new Map();
+for(const a of ['testing','public']){const p=JSON.parse(fs.readFileSync(scope+'/native04-'+a+'-partial.json','utf8'));assert(!p.passed&&p.error&&p.checks.filter(c=>c.attempt==='native04').length===2&&p.checks.every(c=>c.passed));}
+let flow=fs.readFileSync(stage+'/retained-traverse-flow04.mts','utf8');
+const old='mutations:p().mutations';assert.equal(flow.split(old).length,2);flow=flow.replace(old,'mutations:v().mutations.map(m=>({...m}))');
+assert.equal(flow.split('const v=()=>').length,2);flow=flow.replace('const v=()=>','const v=():View=>');
+let relative=path.relative(stage,root+'/src/shared/view.ts').replaceAll('\\','/');if(!relative.startsWith('.'))relative='./'+relative;
+flow='import type{View}from'+JSON.stringify(relative)+';\n'+flow;files.set('retained-traverse-flow05.mts',flow);
+for(const group of ['worker','peer'])files.set('retained-traverse-'+group+'05.mts',fs.readFileSync(stage+'/retained-traverse-'+group+'04.mts','utf8').replace('retained-traverse-flow04.mts','retained-traverse-flow05.mts'));
+let probe=fs.readFileSync(stage+'/native-probe04.mts','utf8').replaceAll('retained-traverse-worker04.mts','retained-traverse-worker05.mts').replaceAll('retained-traverse-peer04.mts','retained-traverse-peer05.mts').replace("scope+'/native04-'+group","scope+'/native05-'+group");files.set('native-probe05.mts',probe);
+let verify=fs.readFileSync(stage+'/verify-frozen04.mjs','utf8').replaceAll("'/native04-'","'/native05-'").replace('n.attemptHistory.length===3','n.attemptHistory.length===4').replace("['native01','native02','native03','native04'].map(a=>","['native01','native02','native03','native04','native05'].map(a=>");
+verify=verify.replace("h.attempt==='native03'?p.passed&&p.checks.every(c=>c.passed):!p.passed&&p.checks.some(c=>!c.passed)","h.attempt==='native03'?p.passed&&p.checks.every(c=>c.passed):h.attempt==='native04'?!p.passed&&p.error&&p.checks.every(c=>c.passed):!p.passed&&p.checks.some(c=>!c.passed)");files.set('verify-frozen05.mjs',verify);
+let run=fs.readFileSync(stage+'/resume-entry-reviews04.mjs','utf8').replaceAll('entry-reporting-preparation04.json','entry-reporting-preparation05.json').replaceAll('native-probe04.mts','native-probe05.mts').replaceAll("'native04'","'native05'").replaceAll("'/native04-'","'/native05-'").replaceAll("'native04-'","'native05-'");
+const history="{attempt:'native03',report:scope+'/native-'+audience+'.json',sha256:sha(fs.readFileSync(scope+'/native-'+audience+'.json'))}";assert.equal(run.split(history).length,2);run=run.replace(history,history+",{attempt:'native04',report:scope+'/native04-'+audience+'-partial.json',sha256:sha(fs.readFileSync(scope+'/native04-'+audience+'-partial.json'))}");
+run=run.replace('Native04 reruns','Native05 reruns').replace('the previous six successful entry executions remain in native03 history without retroactive fields.','the previous six successful entry executions remain in native03 history without retroactive fields. Native04 transport assertions passed for four loose cases but its post-run context audit stopped because it read mutations from the player rather than the full view; all original partial reports remain.');files.set('resume-entry-reviews05.mjs',run);
+const prep={preparedAt:new Date().toISOString(),sourceCommit:fs.readFileSync(stage+'/source-commit.txt','utf8').trim(),priorReportingStop:'Native04 passed four loose transport invocations, then its post-run reporting audit stopped: active mutations are a View field, not a PlayerView field. No failed context is relabelled as complete.',changes:['Capture actual v().mutations, matching the canonical source helper.','Explicitly type the copied view as View so this field error is caught by strict checking.','No input, assertion, timeout, policy, gameplay or source changes.'],files:[...files].filter(([f])=>f!=='resume-entry-reviews05.mjs').map(([file,raw])=>({file,sha256:sha(raw)})),driverSha256:sha(probe),requiredReruns:12};
+const config={extends:root+'/tsconfig.json',compilerOptions:{types:['node'],typeRoots:[root+'/node_modules/@types']},include:[],files:['retained-traverse-flow05.mts']};files.set('tsconfig-entry05.json',JSON.stringify(config,null,2)+'\n');
+for(const [f]of files)assert(!fs.existsSync(stage+'/'+f),f);
+for(const [f,raw]of files)fs.writeFileSync(stage+'/'+f,raw,{flag:'wx'});
+fs.writeFileSync(stage+'/entry-reporting-preparation05.json',JSON.stringify(prep,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({prepared:true,typedView:true,requiredReruns:12,originalPartialReportsPreserved:true}));

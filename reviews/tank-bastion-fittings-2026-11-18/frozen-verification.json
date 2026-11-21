@@ -1,0 +1,304 @@
+{
+  "passed": true,
+  "sourceCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+  "protocol": 80,
+  "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+  "checkedAt": "2026-11-19T01:26:23.339Z",
+  "driverSha256": "86dce9800dd5a1b2ba7f6bd1cc446b12eaf95aca5aa4d935c4a05c1048516b49",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+      "protocol": 80,
+      "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+      "url": "http://127.0.0.1:5404/",
+      "endpoint": "http://127.0.0.1:2780",
+      "backendStartedAt": "2026-11-19T01:15:17.080Z",
+      "files": 2076,
+      "manifestSha256": "cc6dbcbcde4e01c0e95cb875c9f96d25e69c18b34d2058b871c316529d0062d4",
+      "backendSha256": "3a9fde965bd6c9c139f4ef0d10e0e9061844e77939be8adb72d983b1071efb87",
+      "httpPath": "reviews/tank-bastion-fittings-2026-11-18/smoke-testing.json",
+      "httpSha256": "1844fb09165ce95f63b44d5a95d5279fbc6dcf97aa0dfed6ad364d75efab3318",
+      "emblems": [
+        {
+          "path": "assets/tank-gate-signal-1-CH-4UPY-.png",
+          "bytes": 690103,
+          "sha256": "34e50431d051fd8acd629189e1f5e9225a486f608c5ffb942f50a11936ec3576"
+        },
+        {
+          "path": "assets/tank-gate-signal-split-1-Dh0gdsMV.png",
+          "bytes": 720874,
+          "sha256": "a475bc1a27f4d2f13bc0e3ed11a36818a5fdfb3f1d2d7edcff7f0f55c0f0a4cc"
+        },
+        {
+          "path": "assets/tank-gate-signal-corner-1-CbVhmLtG.png",
+          "bytes": 496385,
+          "sha256": "e8a14ed1f5cd8ee1a2880903c14c94d5f17f3fb55e8e4aab88bf595b88477407"
+        },
+        {
+          "path": "assets/tank-gate-signal-relief-1-BoqhOIhc.png",
+          "bytes": 785700,
+          "sha256": "4bbefe498220ebad089141ac50aacf41f3c7cbe70ec95f5f778934b6fe44cf0a"
+        },
+        {
+          "path": "assets/tank-gate-signal-countermarch-1-kJ7QKVlN.png",
+          "bytes": 793793,
+          "sha256": "e0188b3e15321259e7d19f714fe1ec8e9c39de51c9aeb67612a41c1349c32c05"
+        }
+      ],
+      "caseCount": 11,
+      "cases": [
+        {
+          "choice": "plain",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-plain.log",
+          "logSha256": "2d21471085ca90b6442ade75380d7af892274bfe3b9b7f42af434d87de335ee6",
+          "result": "testing-worker-plain.json",
+          "resultSha256": "c74f3903f6c63cf7b313c83ea71b891fcd614716b0eab248550740ed6ea62ae8"
+        },
+        {
+          "choice": "split",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-split.log",
+          "logSha256": "3ce93baf9a54ade3daec8d850d6d088edf4009647e8a72290164bb67bd2e6928",
+          "result": "testing-worker-split.json",
+          "resultSha256": "4a494477851b7c162c6e76968afcbe37ad6ae1044ea37821c6ff5ef4a7b2ec66"
+        },
+        {
+          "choice": "corner",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-corner.log",
+          "logSha256": "9355bb8b1242ea937490fbdf186abfcef30942c691153df8c6aa693d4887914e",
+          "result": "testing-worker-corner.json",
+          "resultSha256": "d6bd02ff374047fe413b6cdcbe517d9d3bcf450c47dab263c4c484c5d9c0a3fe"
+        },
+        {
+          "choice": "relief",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-relief.log",
+          "logSha256": "299ceaa211906000f72d7c0d89b9d32b8a1a15b4997c7033bac8e585cd7f8f9b",
+          "result": "testing-worker-relief.json",
+          "resultSha256": "517fabb7df7b5ffee0eade7cc967504191d9004b2e565127b8819e16e86c59fc"
+        },
+        {
+          "choice": "countermarch",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-countermarch.log",
+          "logSha256": "6d98f76e50b3a07d430720f32007a9d3dd4e6ba4bd9a8b15d2938033ce0ee6e4",
+          "result": "testing-worker-countermarch.json",
+          "resultSha256": "db1d3b6e98f32e3e4e1f5f2edb9d4ccbdb68492cc59ad9e383c23e57e64ca713"
+        },
+        {
+          "choice": "plain",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-plain.log",
+          "logSha256": "2a498aea3d43e53a6f845c00f937a632d331f6df2b7cf1ef8de5e100b7978008",
+          "result": "testing-peer-plain.json",
+          "resultSha256": "832b43cf37654a50448fab33e53bd2d6225d52f4e70b430c55cb1c2edc9dcc6d"
+        },
+        {
+          "choice": "split",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-split.log",
+          "logSha256": "1e1a96a2734eb96e509dcd19d56ac04503833fb1e61cfab55053c7452eb450ca",
+          "result": "testing-peer-split.json",
+          "resultSha256": "ce73fe3e5eb1c12fd488c999112938a72af8553e0e3751cd06041dab95c84d78"
+        },
+        {
+          "choice": "corner",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-corner.log",
+          "logSha256": "485da4612fe9655bd5200b1f8dfc21777969e919f1492f68162a497f0287dfa2",
+          "result": "testing-peer-corner.json",
+          "resultSha256": "7d86da0fb9a534cf2a5bf858f8d42704efc6fe2076becee747119f46a83d65ee"
+        },
+        {
+          "choice": "relief",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-relief.log",
+          "logSha256": "13e8d925e498d4d1c0409339995a171a0d1b2fe0dd9f37d6c5dd5f30e51e79ae",
+          "result": "testing-peer-relief.json",
+          "resultSha256": "4e97fb3bb0d49d22215512d4d77faa862a7b075695de7f82543219b1e814e7b9"
+        },
+        {
+          "choice": "countermarch",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-countermarch.log",
+          "logSha256": "741cdccf80ce5d712b134dbd8ff1c3549b53e55550b8ede8aa46e1de78e4cf82",
+          "result": "testing-peer-countermarch.json",
+          "resultSha256": "f939bb2f4417320cc6c18b6c8ae6b38c22ef462430cc88e6348d258ae7847b34"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+      "protocol": 80,
+      "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+      "url": "http://127.0.0.1:5405/",
+      "endpoint": "http://127.0.0.1:2781",
+      "backendStartedAt": "2026-11-19T01:15:18.452Z",
+      "files": 2076,
+      "manifestSha256": "8dfdab08d8cd7610d11f25169928c98920be9e98f6b083e26c8f09aa179b680d",
+      "backendSha256": "3a9fde965bd6c9c139f4ef0d10e0e9061844e77939be8adb72d983b1071efb87",
+      "httpPath": "reviews/tank-bastion-fittings-2026-11-18/smoke-public.json",
+      "httpSha256": "2d7f44f0b9dc3a69fdee94b92e5212f2e6392dd5d9976544a989beeb8226d6a0",
+      "emblems": [
+        {
+          "path": "assets/tank-gate-signal-1-CH-4UPY-.png",
+          "bytes": 690103,
+          "sha256": "34e50431d051fd8acd629189e1f5e9225a486f608c5ffb942f50a11936ec3576"
+        },
+        {
+          "path": "assets/tank-gate-signal-split-1-Dh0gdsMV.png",
+          "bytes": 720874,
+          "sha256": "a475bc1a27f4d2f13bc0e3ed11a36818a5fdfb3f1d2d7edcff7f0f55c0f0a4cc"
+        },
+        {
+          "path": "assets/tank-gate-signal-corner-1-CbVhmLtG.png",
+          "bytes": 496385,
+          "sha256": "e8a14ed1f5cd8ee1a2880903c14c94d5f17f3fb55e8e4aab88bf595b88477407"
+        },
+        {
+          "path": "assets/tank-gate-signal-relief-1-BoqhOIhc.png",
+          "bytes": 785700,
+          "sha256": "4bbefe498220ebad089141ac50aacf41f3c7cbe70ec95f5f778934b6fe44cf0a"
+        },
+        {
+          "path": "assets/tank-gate-signal-countermarch-1-kJ7QKVlN.png",
+          "bytes": 793793,
+          "sha256": "e0188b3e15321259e7d19f714fe1ec8e9c39de51c9aeb67612a41c1349c32c05"
+        }
+      ],
+      "caseCount": 11,
+      "cases": [
+        {
+          "choice": "plain",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-plain.log",
+          "logSha256": "bb3250e33c74bb4b824e03d71498b43671958cedcc5678f4441ae4b0aef91a68",
+          "result": "public-worker-plain.json",
+          "resultSha256": "ba3c47e6883e26511b06d2bc0886cde66a2217173c189cb0febcbc5f0e2f3ccd"
+        },
+        {
+          "choice": "split",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-split.log",
+          "logSha256": "0cffe277fbc285abbf2188c4a371ae80585dedfb0df294278629772409964310",
+          "result": "public-worker-split.json",
+          "resultSha256": "753432e22342ef5b5cef4ac02dffa298ec1d061593b3f94b57eabbb56cd8da62"
+        },
+        {
+          "choice": "corner",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-corner.log",
+          "logSha256": "61e35d1a7283a0db01c6a9464e14971930a68c68f78cd78fbd5c9e2fcd3259a1",
+          "result": "public-worker-corner.json",
+          "resultSha256": "3a099eab9b46d5d092a3577b6ee59d6b78445c35f3fd458f242187138a2ee701"
+        },
+        {
+          "choice": "relief",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-relief.log",
+          "logSha256": "31f4073113a2e6cd714c96e35cfd08a86d1850ec589e790f6f19889a77abe8f1",
+          "result": "public-worker-relief.json",
+          "resultSha256": "030321a619d039ae7834eb30cbb0543a01535f87d676b019922edaf753d33d74"
+        },
+        {
+          "choice": "countermarch",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-countermarch.log",
+          "logSha256": "25f727d01c0ac8f5a99213f3c2eddf7c37c4039ddda136fb6f5beb506791ec83",
+          "result": "public-worker-countermarch.json",
+          "resultSha256": "be29726d41d6def15ca83bafa1d02014c04af6a9c4b10ab49e3e03b16ece3cab"
+        },
+        {
+          "choice": "plain",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-plain.log",
+          "logSha256": "bfcac8fecd7b06dbdff1678cb7caaffe623f393518df85143ebe27ff373f9590",
+          "result": "public-peer-plain.json",
+          "resultSha256": "d88c96683edb1b51f8c82a0b80a11e35fe849f1dd89d8032b905decac297ac49"
+        },
+        {
+          "choice": "split",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-split.log",
+          "logSha256": "931bf5f5ed05317a471ff5cc3df8229fdf0404b09289463f6d5127f460cbedc0",
+          "result": "public-peer-split.json",
+          "resultSha256": "41f8c8278a20edee8e3f7a55ec40cd96ddcbbc566fd337f1d4e2a3c5bfdf2af1"
+        },
+        {
+          "choice": "corner",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-corner.log",
+          "logSha256": "a404cd4b63bce062f1843698d47ceb187d5c5378b5e9529a32414deb88390e0b",
+          "result": "public-peer-corner.json",
+          "resultSha256": "599a679f4d3fca2ccd7777cdf52059f07b00c6a35fd082dfc6e34be51039054b"
+        },
+        {
+          "choice": "relief",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-relief.log",
+          "logSha256": "90a534b2dd59f2fdd82d81a8515c1c14b63106b5dce4ffb17455723eb390ad6d",
+          "result": "public-peer-relief.json",
+          "resultSha256": "052d75c7bee4a155873128c5e5783ed86213e1f952862194a6f267db0495578a"
+        },
+        {
+          "choice": "countermarch",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-countermarch.log",
+          "logSha256": "d4574554dfaf253c4d1eb0ad06b3064e8b4cdc0c8b8a3f258f0774ca463fa851",
+          "result": "public-peer-countermarch.json",
+          "resultSha256": "95a932c826c2d837a4a303c0040f5fae17aa565d4c6659a1ab3ee113bb46c915"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+✔ the actual launch, mechanical command and finite burst have distinct bounded native PCM at three common rates (21.9522ms)
+✔ Heavy sound playback uses the selected finite buffer and releases its audio nodes once ended (3.1592ms)
+✔ the Heavy graph contains exactly its four actual techniques, one General reference and the real optional exclusion (2.0865ms)
+✔ ordinary Short3SP inspects map/list and remapped controls without buying, then makes exactly two actual affordable purchases (855.6925ms)
+✔ heavy-flak-compact-1 and Manual Fuze are real independent Raid purchases with valid remapped C/B (644.1734ms)
+✔ heavy-flak-frontal-1 and Manual Fuze are real independent Raid purchases with valid remapped C/B (725.6548ms)
+✖ Heavy action presentation follows actual live flight, acquired command and spent recovery (1016.5132ms)
+✔ physical flak, the issued canister tag and ordinary shots remain distinct through real binary projectile transport (2.3423ms)
+✔ unknown projectile visual tags remain rejected by the exact current decoder (0.6317ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3943.8699
+
+✖ failing tests:
+
+test at tests\heavy-flak-ui.test.ts:1:5975
+✖ Heavy action presentation follows actual live flight, acquired command and spent recovery (1016.5132ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(!actions.extras[1].blocked)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\heavy-flak-ui.test.ts:234:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

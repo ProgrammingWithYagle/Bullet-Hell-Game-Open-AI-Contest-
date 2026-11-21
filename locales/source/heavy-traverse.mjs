@@ -1,0 +1,2 @@
+import{applyHeavyTraverse,copy}from'../../content/source/heavy-traverse.mjs';
+export function heavyTraverseMessages(){const c={specializationSkills:[],rules:{}};applyHeavyTraverse(c);return{...copy,...Object.fromEntries(c.specializationSkills.flatMap(s=>[[s.nameKey,s.name],['skill.'+s.id+'.description',s.description]])),'ui.heavy.manualHelp':'Choose a defensive flak round or a paid firing stroke. Ordinary gunfire, Braced Firing and Suppressing Cone keep their own roles.'};}

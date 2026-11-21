@@ -1,0 +1,96 @@
+✖ switching equipment tabs retains focus on the current selected tab (282.7677ms)
+✖ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (167.5635ms)
+✖ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (163.5299ms)
+✖ disposed equipment ignores old connected controls and cannot submit a purchase (149.6408ms)
+✖ purchase errors remain in the current equipment status and clear on a fresh item choice (159.4337ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2611.9419
+
+✖ failing tests:
+
+test at tests\equipment-navigation.test.ts:1:1157
+✖ switching equipment tabs retains focus on the current selected tab (282.7677ms)
+  AssertionError [ERR_ASSERTION]: Focus must move to the live gear tab
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\equipment-navigation.test.ts:15:2)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\equipment-navigation.test.ts:1:1651
+✖ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (167.5635ms)
+  AssertionError [ERR_ASSERTION]: Focus must move to the live branch tab
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\equipment-navigation.test.ts:19:2)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\equipment-navigation.test.ts:1:2200
+✖ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (163.5299ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(prevented)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\equipment-navigation.test.ts:22:191)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\equipment-navigation.test.ts:1:2843
+✖ disposed equipment ignores old connected controls and cannot submit a purchase (149.6408ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\equipment-navigation.test.ts:26:175)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\equipment-navigation.test.ts:1:3139
+✖ purchase errors remain in the current equipment status and clear on a fresh item choice (159.4337ms)
+  AssertionError [ERR_ASSERTION]: Equipment needs its own purchase status
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\equipment-navigation.test.ts:29:221)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

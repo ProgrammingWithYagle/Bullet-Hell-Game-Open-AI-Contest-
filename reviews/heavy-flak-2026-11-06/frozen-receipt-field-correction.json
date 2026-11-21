@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-11-08T01:57:25.447Z",
+  "firstAggregatorFailed": true,
+  "cause": "The cover flow reports actualWalkingToRuntimeCover, actualPhysicalCoverContact and pauseDiscardsRequests, but does not report pauseFreezesFlightAndRecovery. The aggregator incorrectly required that absent field for every variant.",
+  "correction": "Require actual walking/contact/one finite burst for cover, and require flight/recovery pause for every other variant. All common one-round/payment/no-injection assertions remain.",
+  "nativeTestsAndRuntimeChanged": false,
+  "originalAggregatorPreserved": true,
+  "deadlineOrTimeoutChanges": false
+}

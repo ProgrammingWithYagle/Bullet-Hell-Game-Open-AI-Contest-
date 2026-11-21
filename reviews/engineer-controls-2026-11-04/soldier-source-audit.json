@@ -1,0 +1,151 @@
+{
+  "checkedAt": "2026-11-04T03:58:39.903Z",
+  "sourceCommit": "233e9143300989f43f986fdd5fe800975c3f88db",
+  "runtimeSourceSha256": "6bcbc0d192fce70539cb3abe400229ef72c185b2f1384064f97afb57978bf0ae",
+  "classId": "soldier",
+  "survivor": "Mara Rook",
+  "abilities": [
+    {
+      "id": "soldier-q",
+      "slot": "q",
+      "kind": "rally",
+      "name": "Rally Field",
+      "cooldown": 16,
+      "duration": 6,
+      "radius": 170,
+      "damage": 0,
+      "description": "Allies in the field gain 20% weapon damage and 10% movement speed."
+    },
+    {
+      "id": "soldier-e",
+      "slot": "e",
+      "kind": "burst",
+      "name": "Precision Burst",
+      "cooldown": 9,
+      "duration": 0,
+      "radius": 0,
+      "damage": 45,
+      "description": "Fire three accurate piercing rounds toward the aim point."
+    }
+  ],
+  "ultimate": {
+    "id": "soldier-ultimate",
+    "slot": "ultimate",
+    "name": "Last Roll Call",
+    "kind": "roll-call",
+    "cooldown": 80,
+    "duration": 8,
+    "radius": 260,
+    "damage": 0,
+    "effects": {
+      "allyWeaponDamage": 0.35,
+      "instantReload": true,
+      "clearProjectilesOnCast": true
+    },
+    "description": "Reload allies instantly, clear nearby hostile projectiles once and grant 35% weapon damage in the rally field for 8 seconds."
+  },
+  "existingGeneralNodeCount": 54,
+  "existingGeneralNodeIds": [
+    "soldier-ballistics-1",
+    "soldier-ballistics-2",
+    "soldier-ballistics-3",
+    "soldier-ballistics-4",
+    "soldier-ballistics-5",
+    "soldier-ballistics-6",
+    "soldier-ballistics-path-1-1",
+    "soldier-ballistics-path-1-2",
+    "soldier-ballistics-path-1-3",
+    "soldier-ballistics-path-1-4",
+    "soldier-ballistics-path-1-5",
+    "soldier-ballistics-path-1-6",
+    "soldier-ballistics-path-2-1",
+    "soldier-ballistics-path-2-2",
+    "soldier-ballistics-path-2-3",
+    "soldier-ballistics-path-2-4",
+    "soldier-ballistics-path-2-5",
+    "soldier-ballistics-path-2-6",
+    "soldier-command-1",
+    "soldier-command-2",
+    "soldier-command-3",
+    "soldier-command-4",
+    "soldier-command-5",
+    "soldier-command-6",
+    "soldier-command-path-1-1",
+    "soldier-command-path-1-2",
+    "soldier-command-path-1-3",
+    "soldier-command-path-1-4",
+    "soldier-command-path-1-5",
+    "soldier-command-path-1-6",
+    "soldier-command-path-2-1",
+    "soldier-command-path-2-2",
+    "soldier-command-path-2-3",
+    "soldier-command-path-2-4",
+    "soldier-command-path-2-5",
+    "soldier-command-path-2-6",
+    "soldier-survival-1",
+    "soldier-survival-2",
+    "soldier-survival-3",
+    "soldier-survival-4",
+    "soldier-survival-5",
+    "soldier-survival-6",
+    "soldier-survival-path-1-1",
+    "soldier-survival-path-1-2",
+    "soldier-survival-path-1-3",
+    "soldier-survival-path-1-4",
+    "soldier-survival-path-1-5",
+    "soldier-survival-path-1-6",
+    "soldier-survival-path-2-1",
+    "soldier-survival-path-2-2",
+    "soldier-survival-path-2-3",
+    "soldier-survival-path-2-4",
+    "soldier-survival-path-2-5",
+    "soldier-survival-path-2-6"
+  ],
+  "issuedTransformations": [
+    {
+      "nodeId": "soldier-command-3",
+      "name": "Shared Bearings",
+      "transform": "breach-cadence",
+      "cost": 3,
+      "prerequisite": "soldier-command-2"
+    },
+    {
+      "nodeId": "soldier-command-path-1-3",
+      "name": "Shared Bearings · Last Roll Call",
+      "transform": "supply-line",
+      "cost": 3,
+      "prerequisite": "soldier-command-path-1-2"
+    },
+    {
+      "nodeId": "soldier-command-path-2-3",
+      "name": "Shared Bearings · Rally Field",
+      "transform": "marching-colors",
+      "cost": 3,
+      "prerequisite": "soldier-command-path-2-2"
+    }
+  ],
+  "existingWeapons": [
+    {
+      "id": "soldier-0",
+      "name": "Service Pistol",
+      "tier": 0
+    },
+    {
+      "id": "soldier-1",
+      "name": "Watch Carbine",
+      "tier": 1
+    },
+    {
+      "id": "soldier-2",
+      "name": "Threefold Rifle",
+      "tier": 2
+    },
+    {
+      "id": "soldier-3",
+      "name": "Last Watch",
+      "tier": 3
+    }
+  ],
+  "implementedSpecializationCount": 0,
+  "limits": "Read-only current-source inventory. Proposed Soldier specializations are not implemented; no issued identity, node, transformation or equipment is changed."
+}

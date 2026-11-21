@@ -1,0 +1,314 @@
+{
+  "passed": true,
+  "verifiedAt": "2026-11-18T02:49:06.773Z",
+  "sourceCommit": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+  "protocol": 78,
+  "contentRevision": "6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647",
+  "buildId": "2026.11.17-tank-interceptor",
+  "runtimeSourceSha256": "1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f",
+  "sourceSnapshotSha256": "15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d",
+  "verificationDriverSha256": "5339069df1bc0ee829e5853286a777053ea4b0db1b51eaf16dde7278e43546c5",
+  "tests": {
+    "tests": 2586,
+    "pass": 2586,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "checks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 63309
+    },
+    {
+      "name": "Playable main-story word count",
+      "passed": true,
+      "elapsedMs": 129
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2208
+    },
+    {
+      "name": "Early chapter build feasibility",
+      "passed": true,
+      "elapsedMs": 439
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 784906
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 5854
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 1133
+    }
+  ],
+  "exactSourceCI": "reviews/tank-interceptor-2026-11-17/source-ci.json",
+  "allSourceCIJobsStepsDecodedLogsAndOwnArtifactsPass": true,
+  "sourceBinding": "reviews/tank-interceptor-2026-11-17/source-binding.json",
+  "sourceBindingSha256": "4b2954ecee4ccfd8d952d51c4c535949c3e1a378cb729fff934428069ced4625",
+  "testingLoopbackGate": {
+    "passed": true,
+    "sourceCommit": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+    "endpoint": "http://127.0.0.1:2776",
+    "audience": "testing",
+    "counts": {
+      "tests": 2586,
+      "pass": 2586,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "checks": [
+      {
+        "name": "Stage 1 authored content",
+        "passed": true,
+        "elapsedMs": 67657
+      },
+      {
+        "name": "Playable main-story word count",
+        "passed": true,
+        "elapsedMs": 128
+      },
+      {
+        "name": "TypeScript",
+        "passed": true,
+        "elapsedMs": 2526
+      },
+      {
+        "name": "Early chapter build feasibility",
+        "passed": true,
+        "elapsedMs": 492
+      },
+      {
+        "name": "Headless rules and real-network integration",
+        "passed": true,
+        "elapsedMs": 788861
+      },
+      {
+        "name": "Production client build",
+        "passed": true,
+        "elapsedMs": 6247
+      },
+      {
+        "name": "Emitted encounter atlas contracts",
+        "passed": true,
+        "elapsedMs": 1124
+      }
+    ],
+    "boundReportSha256": "4f87773d576f656affd860d0d2b4550f4fb53581b64ed997ee3e9e075e711a59",
+    "logSha256": "bba7b24ddd03c92214aaf22f7433716079d9226268902b8ca299a56e1b945034",
+    "producedFiles": 2070,
+    "allOptimizedOutputBytesExact": true
+  },
+  "sourceAndCommittedCoreBytesExact": true,
+  "rows": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5400/",
+      "endpoint": "http://127.0.0.1:2776",
+      "filesHashed": 2071,
+      "manifestSha256": "1434b404314aacef551c11c9aecc50046cb658232b6bddc6490ff96567d51d2e",
+      "backendBundleSha256": "b8a6ce14912d6a2c658d064d152c75342ea0fad325eed5e9dc91287985b270db",
+      "nativeCases": 7,
+      "httpReport": "reviews/tank-interceptor-2026-11-17/smoke-testing.json",
+      "httpReportSha256": "a06749728290eef99c02455a744992616d22f8ed9f5d3420a17b27babe4dd033",
+      "nativeOriginalReceipt": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\tank-interceptor-stage/native96-testing-result.json",
+      "nativeOriginalReceiptSha256": "1ae44c88d97475a7b740063eec4131c51b015063c0fcff93ecd75ca9ac255212",
+      "initialAttempt": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\tank-interceptor-stage/native89-testing-result.json",
+      "initialAttemptSha256": "b734d876a3f38b917e843f96a835a347641ad840bdf20d1c1979cdf1cde1489e",
+      "cases": [
+        {
+          "transport": "worker",
+          "choice": "forward",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 179.9999999999995,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "worker",
+          "choice": "crossing",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 179.9999999999995,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "worker",
+          "choice": "standfast",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 0,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "peer",
+          "choice": "forward",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 180,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "peer",
+          "choice": "crossing",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 180.00017361102738,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "peer",
+          "choice": "standfast",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 0,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        }
+      ],
+      "threeEarnedShortWorkerChoices": true,
+      "threeEarnedNonHostChoices": true,
+      "noCheckpointImports": true,
+      "allNativeCasesPassed": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5401/",
+      "endpoint": "http://127.0.0.1:2777",
+      "filesHashed": 2071,
+      "manifestSha256": "1d4ad57e1ad986761c38501b6fec8bae1f80391518354f4e1493cdf382b89a55",
+      "backendBundleSha256": "b8a6ce14912d6a2c658d064d152c75342ea0fad325eed5e9dc91287985b270db",
+      "nativeCases": 7,
+      "httpReport": "reviews/tank-interceptor-2026-11-17/smoke-public.json",
+      "httpReportSha256": "8d2bbad9c41d996d63e5243efdff75116ecaa95047c9c287df048fd132ab5f00",
+      "nativeOriginalReceipt": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\tank-interceptor-stage/native96-public-result.json",
+      "nativeOriginalReceiptSha256": "74e1e74236b99929303ceb0ebd24002edf6b4b3413fc9f014ff75a5dabd6b67b",
+      "initialAttempt": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-10\\continue-grave-accord-in-the-same\\work\\tank-interceptor-stage/native89-public-result.json",
+      "initialAttemptSha256": "36c5c9d901eaf8a989445f9955b68566068a626997bb1d086ec423d7c5999ae3",
+      "cases": [
+        {
+          "transport": "worker",
+          "choice": "forward",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 179.9999999999995,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "worker",
+          "choice": "crossing",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 179.9999999999995,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "worker",
+          "choice": "standfast",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 0,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "peer",
+          "choice": "forward",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 180,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "peer",
+          "choice": "crossing",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 180.2311016445275,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        },
+        {
+          "transport": "peer",
+          "choice": "standfast",
+          "earned": [
+            3,
+            9
+          ],
+          "distance": 0,
+          "earlyImpactSounds": 0,
+          "laterImpactSounds": 0
+        }
+      ],
+      "threeEarnedShortWorkerChoices": true,
+      "threeEarnedNonHostChoices": true,
+      "noCheckpointImports": true,
+      "allNativeCasesPassed": true
+    }
+  ],
+  "processIdentities": "reviews/tank-interceptor-2026-11-17/process-identities.json",
+  "processIdentitiesSha256": "4f5115bae00d9760ab1d4a3a989907c69f7521cb90bcc25e67dd9ea73f2b398b",
+  "preexistingPrivateSQLiteRelatedFilesVerified": 213,
+  "privateHashesRemainLocalOnly": true,
+  "serviceYardExact": true,
+  "rollbackArchiveSha256": "d963fda3c0c5d7404cd8916703c2a8716d8c16927a68d294b1d5144c283c81d3",
+  "boundedStorage": {
+    "priorPairRetainedAtVerification": true,
+    "pendingPairCount": 1,
+    "expandedRoots": 4,
+    "promotionPending": true
+  },
+  "humanAcceptance": false,
+  "openAcceptance": [
+    "human",
+    "rendered",
+    "device",
+    "native-language",
+    "listening",
+    "motion",
+    "final-balance"
+  ]
+}

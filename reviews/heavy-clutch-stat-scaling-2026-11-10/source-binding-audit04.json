@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T14:09:07.935Z",
+  "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "workingRuntimeSourceSha256": "9703aee1a5b0a2b1691ccfa24b703fc8d6c022c838ea833d8f386a3fa19f113f",
+  "workingSourceSnapshotSha256": "13a917a96504b02c86d4c19d3b9678d775adeaa893d7169fa458c5f141ed8552",
+  "committedRuntimeSourceSha256": "f1f0a5ce43e7d052a10586742d7123106f48263eb073a892de953fa302c25275",
+  "committedSourceSnapshotSha256": "8d5872b490a07d95ac56861acaae80de97fd6baefef7b1960e47b07f75130121",
+  "verificationDriverSha256": "207175ba295b17adf64bb9c63c7d00df507c4f0142faf9bcac7ea83dcf66e09b",
+  "workingAndCommittedDriverBytesExact": true,
+  "trackedSnapshotFiles": 768,
+  "differences": [
+    {
+      "file": "pnpm-workspace.yaml",
+      "workingSha256": "335534662c23cdcd4e44349005f16cca25d6207c572fda5c3f054b5cd723440d",
+      "committedSha256": "ef2867fd9755f2c806749e078a32baded484eb9755cb3187cd385637d6e646da",
+      "onlyCRLFNormalization": true,
+      "semanticComparison": "LF-only nonruntime text"
+    },
+    {
+      "file": "src/client/story/dialogue.json",
+      "workingSha256": "7e0c8afe1de8268e5993ebe05a8429b9bb39fe3a94bdc78aba66a88f925a6b8d",
+      "committedSha256": "4aa3a2e854ffe2c4487a96dff26bc3cb03fc3e5d03e2d4190294d15608512e06",
+      "onlyCRLFNormalization": true,
+      "semanticComparison": "Parsed JSON values exactly equal"
+    },
+    {
+      "file": "src/client/story/translations/ar.json",
+      "workingSha256": "303b1fb315b49ac3165b0f02f8b949880d674104b9ae862d19a8af992b196452",
+      "committedSha256": "59c7e6698896dcaaa9c3f85340595df57871e27b8712fd9f40c19555658c6586",
+      "onlyCRLFNormalization": true,
+      "semanticComparison": "Parsed JSON values exactly equal"
+    },
+    {
+      "file": "src/client/story/translations/es.json",
+      "workingSha256": "5ed6987a178b2e7732d5beee4d1f47e6fb1d72ef33dbca99ecdbe3213a3261d2",
+      "committedSha256": "2db3c9fd928af37419f5a81cc27ad3ccbb18d0fa0f4cd801b1358d0d5396f44a",
+      "onlyCRLFNormalization": true,
+      "semanticComparison": "Parsed JSON values exactly equal"
+    },
+    {
+      "file": "src/client/style.css",
+      "workingSha256": "707060e7b079049676ec9e17e0dc95b479bcf389c03f4ccafa14758333462de4",
+      "committedSha256": "5288983dfc26184f09d112ee88b615b8477ea6f0181a4e73ef7e5d61dca7b33e",
+      "onlyCRLFNormalization": true,
+      "semanticComparison": "Emitted css exactly equal"
+    },
+    {
+      "file": "src/shared/public-run.ts",
+      "workingSha256": "efc1a74bf988fd793a93a1ba3be1feebcbae0131a993b314c45f1d8315b6636b",
+      "committedSha256": "dcaedea702590d0e0d3757e42e79835cd7de6e56c835a66355f3f9e813c56f96",
+      "onlyCRLFNormalization": true,
+      "semanticComparison": "Emitted ts exactly equal"
+    }
+  ],
+  "allDifferencesOnlyCRLF": true,
+  "allRuntimeParsedJSONOrEmittedCodeExact": true,
+  "committedRuntimeBytesExactSinceOriginal18daFeature": true,
+  "checkoutFilesModified": false,
+  "gitConfigurationModified": false,
+  "originalNaturalExecutionRuntimeHashRetained": true,
+  "limits": "The local exact-served build/natural execution keep their actual raw Windows source hashes. Successful Linux CI is verified against exact committed Git bytes. These are distinct raw hashes with fully enumerated CRLF-only differences and equal parsed data/emitted code; neither execution is relabelled."
+}

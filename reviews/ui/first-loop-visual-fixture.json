@@ -1,0 +1,84 @@
+{
+  "createdAt": "2026-10-23T18:24:32.450Z",
+  "protocolVersion": 4,
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "completed": true,
+  "events": [
+    {
+      "at": "2026-10-23T18:21:09.708Z",
+      "command": "observed-state",
+      "phase": "lobby",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:21:40.773Z",
+      "command": "shop",
+      "phase": "shop",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:21:40.773Z",
+      "command": "observed-state",
+      "phase": "shop",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:22:29.023Z",
+      "command": "combat",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:22:29.023Z",
+      "command": "observed-state",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:22:38.257Z",
+      "command": "hurt",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:23:01.262Z",
+      "command": "south",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:23:21.761Z",
+      "command": "north",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:23:36.847Z",
+      "command": "walls",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:23:55.300Z",
+      "command": "hold-vote",
+      "phase": "combat",
+      "bossPhase": 1
+    },
+    {
+      "at": "2026-10-23T18:23:55.346Z",
+      "command": "observed-state",
+      "phase": "mutationVote",
+      "bossPhase": 2
+    },
+    {
+      "at": "2026-10-23T18:24:32.371Z",
+      "command": "done",
+      "phase": "mutationVote",
+      "bossPhase": 2
+    }
+  ],
+  "limits": [
+    "Assistant-operated browser and two scripted clients. No human playtest.",
+    "Damage suppressed; selected positions, boss HP and shop currency explicitly injected. Hold-vote freezes that review timer only. Not performance evidence."
+  ]
+}

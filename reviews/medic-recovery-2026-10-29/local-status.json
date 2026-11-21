@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-29T19:32:10.651Z",
+  "buildId": "2026.10.29-medic-recovery",
+  "protocol": 40,
+  "tests": {
+    "tests": 808,
+    "pass": 808,
+    "fail": 0
+  },
+  "focused": {
+    "tests": 191,
+    "pass": 191,
+    "fail": 0
+  },
+  "runtimeSourceSha256": "c41db777e01007ed6a0b99e748d9ac9affe421e9878eb8ee75b960d33665afa4",
+  "sourceSnapshotSha256": "504b7d217a584b6c11a3f82d007b90224ea4fba34523295edaff38c027f54bd9",
+  "additionalSourceBindingSha256": "74fee00ed666aecc682d4553da53f97bb5efcc2ecffb7972c4dc66ea34bb10f6",
+  "gate": "gate-05/runtime-verification.json",
+  "issuedReceiptsPreserved": 8,
+  "mapCheckpoint": "0feaf34b9a4221346157fb0d7a50798290bd9205",
+  "mapCombinations": 36,
+  "classDifficultyStartingShieldCases": 42,
+  "corrections": [
+    "Initial focused expectations used the old Medic25% value and asserted a second peer before its downed patch arrived; waits now observe the peer’s actual state.",
+    "Initial full gate01 found the old core Medic value and a5000ms network wait against the new5000ms fall. Encounter and Warden next-choice waits now derive from BOSS_DEFEAT_TICKS with2500ms transport allowance; the gameplay scene remains five seconds.",
+    "Gate02 stopped on a transient Windows/OneDrive report-open failure. Generated text now uses same-directory atomic replacement; original issued receipt bytes are preserved by the gate wrapper.",
+    "Gate03 exposed18 old damage/ability fixtures that assumed no base starting shield or injected more shield than the new shared cap. Damage fixtures explicitly isolate unshielded contact; real shield expectations use the new capacity. Hellish poison includes its ordinary unshielded impact. Separate tests verify all42actual starts.",
+    "Gate04 passed807/808 with only the Warden next-choice timeout left. Gate05 is the complete corrected source gate."
+  ],
+  "futureOnly": "Tank/Heavy maximum-shield branches and selective attack blocking: docs/FUTURE_DESIGN_IDEAS.md",
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "limits": [
+    "Native rules, asset reconstruction, two-/seven-client transport and production build only. Static36map review is asset composition, not a browser screenshot.",
+    "Final class balance, current human/rendered/listening/native-language/device/WAN/endurance acceptance remain open. No merge, deployment, new Windows release or contest submission."
+  ]
+}

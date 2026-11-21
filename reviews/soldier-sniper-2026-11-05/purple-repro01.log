@@ -1,0 +1,112 @@
+✔ ordinary Short buys a distinct affordable Grenadier discipline and symmetric conflicts preserve issued choices (5.6459ms)
+✔ prime starts one finite recovery without ammo or E, and a separate manual throw retains the cooked fuse (20.0698ms)
+✔ a held primary trigger stays blocked through preparation, while a later deliberate trigger press cancels the hand (4.4679ms)
+✔ holding to fuse expiry vents safely, keeps recovery and cannot create blasts, ammo or healing credit (13.5537ms)
+✔ a real body grounds a plain canister before cover and receives only the later finite blast (14.5857ms)
+✔ Contact Case explodes at its first real cover contact and cover occludes the far side (4.2837ms)
+✔ one real skimming bank uses only remaining tick travel, loses actual speed, and a second wall grounds it (6.9481ms)
+✔ physical body contact beats a later skimming wall, and impact blast damage samples the actual body time (4.8086ms)
+✔ each skimming leg passes only its own moving-body time interval (1.8842ms)
+✔ blast supplies its actual explosion origin to armor and never hits a boss core through independent weak bodies (1.9573ms)
+✔ Underhand Cast is acquired, shortens physical travel and uses the same charge/recovery without magazine spending (7.6949ms)
+✔ full pool rejects a fresh prime or short cast, while failed release keeps its paid finite hand and recovery (8.8402ms)
+✔ Re-pin stores exactly one remaining fuse through a bounded pocket and ordinary Reload remains separate (5.2295ms)
+✔ pocket expiry does not throw, refresh recovery or block ordinary firing while secured (15.0846ms)
+✔ optional preparation alternatives are exclusive and have real20SP versus19SP complete-build costs (1.8156ms)
+✔ Clipped Sling preserves the running fuse through the actual issued burst while the ordinary hand cancels (3.4742ms)
+✔ reload/dodge/channel/overdrive reject new requests without spending and incompatible actions cancel only the live hand (6.1654ms)
+✖ actual health loss cancels an unsecured hand, absorbed damage and living-owner flight do not (10.1061ms)
+✔ Toe Roll requires nearby clear ground, moves the same canister once and preserves its original fuse/recovery (5.1992ms)
+✔ Live Return catches once with an actual removal, keeps remaining fuse and cannot reset spent handling rights (7.3986ms)
+✔ a fuse too close to expiry cannot be caught, and bounds ground at the first real crossing (9.3788ms)
+✔ disconnect, downing, required-technique loss and host exit remove actual flight without rostered recovery refunds (7.4674ms)
+✔ exact issued60 preserves old ownership and all four General choices while rejecting future grenades and online envelopes (5.604ms)
+✔ recycling a canister projectile cannot relabel an ordinary primary or another owner projectile (1.4151ms)
+✖ purple percentage health loss immediately cancels a live Grenadier hand even if a later real heal restores health; a re-pinned fuse stays stored (2.2573ms)
+✔ ordinary Short buys the actual first Sniper operation with two purchases and symmetric discipline conflicts (5.2408ms)
+✔ one actual round is reserved on stationary preparation; settling never fires and manual release spends it only once (21.6819ms)
+✔ early release rejection keeps the paid preparation, original deadline and recovery (2.5695ms)
+✔ a small deliberate re-aim retains settling; recentering restarts it without extending total preparation (6.8744ms)
+✔ settled bearings wrap across pi without an invented full turn or automatic release (1.7145ms)
+✔ preparation expiry loses the reserved round, retains recovery and creates no shot or ammunition refund (12.2567ms)
+✔ held primary stays blocked, while release then a fresh trigger abandons the paid preparation (3.9481ms)
+✔ actual movement abandons the paid point without rooting or protecting the player (3.7394ms)
+✔ body displacement and actual health loss cancel; absorbed damage does not lose the prepared round (4.5225ms)
+✔ busy/empty/incompatible fresh requests spend no round or recovery, and incompatible held actions retain paid costs (14.3365ms)
+✔ a full actual friendly pool rejects preparation and preserves an already paid release opportunity (9.0769ms)
+✔ a released direct shot travels physically, stops at actual cover and never banks to a target beyond it (6.4819ms)
+✔ a released shot uses the actual firing origin for armor even when its living owner moves before impact (7.1992ms)
+✔ disconnect, downing, weapon/technique loss and host exit remove actual flight without rostered recovery refunds (21.2407ms)
+✔ exact issued61 preserves late Grenadier ownership and all General choices while rejecting future Sniper and online envelopes (5.497ms)
+✔ already issued Breach Cadence completes its three actual shots before Sniper settling; rejected setup spends nothing (3.1699ms)
+✖ purple percentage health loss immediately abandons the paid Sniper round even if a later real heal restores health (3.8678ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 39
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 630.3777
+
+✖ failing tests:
+
+test at tests\soldier-grenadier.test.ts:1:13558
+✖ actual health loss cancels an unsecured hand, absorbed damage and living-owner flight do not (10.1061ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(q.p.health<healthBeforeFlightHit)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-grenadier.test.ts:487:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-grenadier.test.ts:1:19066
+✖ purple percentage health loss immediately cancels a live Grenadier hand even if a later real heal restores health; a re-pinned fuse stays stored (2.2573ms)
+  AssertionError [ERR_ASSERTION]: a restored health total cannot erase the actual loss event
+  
+  true !== false
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-grenadier.test.ts:644:559)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-sniper.test.ts:1:12250
+✖ purple percentage health loss immediately abandons the paid Sniper round even if a later real heal restores health (3.8678ms)
+  AssertionError [ERR_ASSERTION]: the actual loss event survives a subsequent heal
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper.test.ts:457:402)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,31 @@
+✔ actual Heavy flak launches and ordinary primary reports select the actual firing bearing in all four directions (59.2264ms)
+✔ acquired Manual Fuze and actual interception do not restart the launch firing cycle (5.0428ms)
+✔ an empty or rejected flak request does not invent a firing pose (2.0926ms)
+✔ a late Heavy observer reads actual launch age and a stale/ended report cannot restart motion (11.1706ms)
+✔ Tank actions retain twenty distinct directional clips, 88 drawn poses and every immutable native/request binding (285.2304ms)
+✔ actual weapon shots trigger a complete stationary firing cycle without repeated snapshots restarting it (24.335ms)
+✔ damage interrupts a shot, recovers, and keeps movement available rather than replaying stale hit poses (4.8189ms)
+✔ a real dodge follows movement direction, completes every drawn frame within the authoritative interval and wins over hurt (6.8832ms)
+✔ downed motion locks its facing, holds the resting frame, and revival clears attack/hurt history (4.5744ms)
+✔ late observers of an existing fall, reduced motion, waiting participants and other classes have explicit stable poses (3.8518ms)
+✔ new runs, encounter boundaries, backward clocks and removed participants cannot inherit action state (2.6512ms)
+✔ Engineer actions preserve twenty independent clips, all 23 returns and their exact input bindings (192.7428ms)
+✔ Engineer and Tank presentation cues stay independent through fire, fall, revive and a class identity change (4.9886ms)
+✔ Mage actions preserve twenty complete clips, all 25 native attempts and exact reference bindings (233.1067ms)
+✔ real Mage primary casts select the corresponding independent staff clip in all four aim directions (8.3508ms)
+✔ heavy actions retain all native attempts, exact bindings and complete padded directional clips (168.5785ms)
+✔ heavy authority-fired primary shots select the correct independent attack facing (11.7547ms)
+✔ assassin actions retain all native attempts, exact bindings and complete padded directional clips (195.1327ms)
+✔ assassin authority-fired primary shots select the correct independent attack facing (7.33ms)
+✔ soldier actions retain all native attempts, exact bindings and complete padded directional clips (205.512ms)
+✔ soldier authority-fired primary shots select the correct independent attack facing (12.7418ms)
+✔ medic actions retain all native attempts, exact bindings and complete padded directional clips (188.8493ms)
+✔ medic authority-fired primary shots select the correct independent attack facing (10.4882ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2262.0442

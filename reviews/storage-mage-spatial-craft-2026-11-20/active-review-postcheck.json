@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-21T01:49:40.7276167Z",
+  "stage": "after",
+  "currentScope": "reviews/mage-spatial-craft-2026-11-20",
+  "rollbackScope": "reviews/mage-binding-2026-11-20",
+  "rollbackSha256": "156b5ece7efeb851ba11e96dad14eb66a1d54540a01e336129b08224f591363a",
+  "previews": [
+    {
+      "scope": "reviews/mage-spatial-craft-2026-11-20",
+      "audience": "testing",
+      "source": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 43340,
+          "port": 5420,
+          "processUtc": "2026-11-21T01:18:45.8815910Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-mage-spatial-craft-2026-11-20-testing-b696361 --host 127.0.0.1 --port 5420 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 46580,
+          "port": 2796,
+          "processUtc": "2026-11-21T01:18:45.8633990Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-mage-spatial-craft-2026-11-20-b696361.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T01:18:46.455Z",
+        "uptimeSeconds": 1849.0026545,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 88,
+        "contentRevision": "c5ceaa2e26561436fec7c715bbe32d4031ff3ee6195cb758a1b8bd464d2fa022",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/mage-spatial-craft-2026-11-20/processes-testing.json"
+    },
+    {
+      "scope": "reviews/mage-spatial-craft-2026-11-20",
+      "audience": "public",
+      "source": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 31516,
+          "port": 5421,
+          "processUtc": "2026-11-21T01:18:45.1395050Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-mage-spatial-craft-2026-11-20-public-b696361 --host 127.0.0.1 --port 5421 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 37824,
+          "port": 2797,
+          "processUtc": "2026-11-21T01:18:45.1196600Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-mage-spatial-craft-2026-11-20-b696361.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T01:18:45.76Z",
+        "uptimeSeconds": 1851.8722825,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 88,
+        "contentRevision": "c5ceaa2e26561436fec7c715bbe32d4031ff3ee6195cb758a1b8bd464d2fa022",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/mage-spatial-craft-2026-11-20/processes-public.json"
+    },
+    {
+      "scope": "reviews/mage-binding-2026-11-20",
+      "audience": "testing",
+      "source": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5418,
+          "originallyRecordedPid": 40396,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2794,
+          "originallyRecordedPid": 42164,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/mage-binding-2026-11-20/processes-resumed-testing.json"
+    },
+    {
+      "scope": "reviews/mage-binding-2026-11-20",
+      "audience": "public",
+      "source": "61bf282b6b115617d83cd3cb1f68f25dd87a7517",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5419,
+          "originallyRecordedPid": 42228,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2795,
+          "originallyRecordedPid": 44212,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/mage-binding-2026-11-20/processes-resumed-public.json"
+    }
+  ]
+}

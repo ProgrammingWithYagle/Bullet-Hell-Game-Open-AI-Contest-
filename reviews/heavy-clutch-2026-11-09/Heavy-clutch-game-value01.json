@@ -1,0 +1,765 @@
+{
+  "checkedAt": "2026-11-09T02:05:43.868Z",
+  "registered": false,
+  "canonicalFilesWritten": false,
+  "onlineProof": false,
+  "countsAs2044Tests": false,
+  "sourceBinding": {
+    "createdAt": "2026-11-09T02:05:42.449Z",
+    "baseSourceCommit": "5316ead6b5c573d74d058eba870f18ff4bffc86c",
+    "baseGameSha256": "5d9f127153de5363c6ae160d1fef5dc07a8c3fb05ea5db6377e6d89f6485c59d",
+    "derivedGameSha256": "641549880bca9a6bf48215797ceef8e1655cab9de8d36951c011b849b157962d",
+    "candidateSha256": "c16ea2cf46d6dca33c1def280ace7d7a895993d69713f7dfc3771c26909379da",
+    "canonicalFilesWritten": false,
+    "registered": false,
+    "onlineProof": false,
+    "controlledPrototypeOwnershipOnly": true,
+    "patches": [
+      "Replace only the actual Game controller import with the workspace candidate",
+      "Resolve only the proposed Clutch id to empty effects for controlled ownership; no purchase or progression claim"
+    ]
+  },
+  "fixtures": [
+    "Controlled boss health/stagger/position, body positions and one real rectangular wall",
+    "Actual admitted minion, actual Game input/movement/pool/shots/cover/body damage/credit; proposed ownership is represented only in the derived bundle",
+    "Ordinary C cancellation may fire actual ordinary primary after release; no claim that the new operation universally wins or ranks builds"
+  ],
+  "rows": [
+    {
+      "mode": "loose",
+      "strategy": "keep",
+      "actualPaidStrokeRounds": 4,
+      "strokeAdmissionTicks": [
+        1,
+        11,
+        21,
+        31
+      ],
+      "actualPrimaryRounds": 0,
+      "actualAmmoSpent": 4,
+      "actualTargetDamage": 0,
+      "actualCreditedDamage": 0,
+      "operations": [],
+      "finalBody": {
+        "x": 568,
+        "y": 600
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 592,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 21,
+          "x": 584,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 26,
+          "x": 576,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 576,
+          "y": 600,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 600
+        },
+        {
+          "tick": 21,
+          "x": 584,
+          "y": 600
+        },
+        {
+          "tick": 31,
+          "x": 576,
+          "y": 600
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "loose",
+      "strategy": "cancel-primary",
+      "actualPaidStrokeRounds": 1,
+      "strokeAdmissionTicks": [
+        1
+      ],
+      "actualPrimaryRounds": 14,
+      "actualAmmoSpent": 15,
+      "actualTargetDamage": 64.79999999999973,
+      "actualCreditedDamage": 64.8,
+      "operations": [
+        {
+          "id": "heavy-traverse-release",
+          "at": 6
+        }
+      ],
+      "finalBody": {
+        "x": 592,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 592,
+          "y": 606.3333333333334,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 638.0000000000002,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 21,
+          "x": 592,
+          "y": 701.3333333333339,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 26,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "loose",
+      "strategy": "clutch",
+      "actualPaidStrokeRounds": 2,
+      "strokeAdmissionTicks": [
+        1,
+        31
+      ],
+      "actualPrimaryRounds": 0,
+      "actualAmmoSpent": 2,
+      "actualTargetDamage": 48.60000000000002,
+      "actualCreditedDamage": 48.6,
+      "operations": [
+        {
+          "id": "heavy-clutch-lift",
+          "at": 6
+        },
+        {
+          "id": "heavy-clutch-engage",
+          "at": 26
+        }
+      ],
+      "finalBody": {
+        "x": 584,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 592,
+          "y": 606.3333333333334,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 638.0000000000002,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 21,
+          "x": 592,
+          "y": 701.3333333333339,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 26,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 31,
+          "x": 592,
+          "y": 726.6666666666674
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "spade",
+      "strategy": "keep",
+      "actualPaidStrokeRounds": 4,
+      "strokeAdmissionTicks": [
+        1,
+        11,
+        21,
+        31
+      ],
+      "actualPrimaryRounds": 0,
+      "actualAmmoSpent": 4,
+      "actualTargetDamage": 0,
+      "actualCreditedDamage": 0,
+      "operations": [],
+      "finalBody": {
+        "x": 600,
+        "y": 600
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 11,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 21,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 26,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 11,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 21,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 31,
+          "x": 600,
+          "y": 600
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "spade",
+      "strategy": "cancel-primary",
+      "actualPaidStrokeRounds": 1,
+      "strokeAdmissionTicks": [
+        1
+      ],
+      "actualPrimaryRounds": 14,
+      "actualAmmoSpent": 15,
+      "actualTargetDamage": 64.79999999999973,
+      "actualCreditedDamage": 64.8,
+      "operations": [
+        {
+          "id": "heavy-traverse-release",
+          "at": 6
+        }
+      ],
+      "finalBody": {
+        "x": 600,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 600,
+          "y": 606.3333333333334,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 11,
+          "x": 600,
+          "y": 638.0000000000002,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 21,
+          "x": 600,
+          "y": 701.3333333333339,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 26,
+          "x": 600,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 600,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "spade",
+      "strategy": "clutch",
+      "actualPaidStrokeRounds": 2,
+      "strokeAdmissionTicks": [
+        1,
+        31
+      ],
+      "actualPrimaryRounds": 0,
+      "actualAmmoSpent": 2,
+      "actualTargetDamage": 48.60000000000002,
+      "actualCreditedDamage": 48.6,
+      "operations": [
+        {
+          "id": "heavy-clutch-lift",
+          "at": 6
+        },
+        {
+          "id": "heavy-clutch-engage",
+          "at": 26
+        }
+      ],
+      "finalBody": {
+        "x": 600,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 600,
+          "y": 606.3333333333334,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 11,
+          "x": 600,
+          "y": 638.0000000000002,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 21,
+          "x": 600,
+          "y": 701.3333333333339,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 26,
+          "x": 600,
+          "y": 726.6666666666674,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 600,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 31,
+          "x": 600,
+          "y": 726.6666666666674
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "floating",
+      "strategy": "keep",
+      "actualPaidStrokeRounds": 4,
+      "strokeAdmissionTicks": [
+        1,
+        11,
+        21,
+        31
+      ],
+      "actualPrimaryRounds": 0,
+      "actualAmmoSpent": 4,
+      "actualTargetDamage": 48.60000000000002,
+      "actualCreditedDamage": 48.6,
+      "operations": [],
+      "finalBody": {
+        "x": 568,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 592,
+          "y": 606.3333333333334,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 638.0000000000002,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 21,
+          "x": 584,
+          "y": 701.3333333333339,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 26,
+          "x": 576,
+          "y": 726.6666666666674,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 576,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 638.0000000000002
+        },
+        {
+          "tick": 21,
+          "x": 584,
+          "y": 701.3333333333339
+        },
+        {
+          "tick": 31,
+          "x": 576,
+          "y": 726.6666666666674
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "floating",
+      "strategy": "cancel-primary",
+      "actualPaidStrokeRounds": 1,
+      "strokeAdmissionTicks": [
+        1
+      ],
+      "actualPrimaryRounds": 14,
+      "actualAmmoSpent": 15,
+      "actualTargetDamage": 64.79999999999973,
+      "actualCreditedDamage": 64.8,
+      "operations": [
+        {
+          "id": "heavy-traverse-release",
+          "at": 6
+        }
+      ],
+      "finalBody": {
+        "x": 592,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 592,
+          "y": 606.3333333333334,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 638.0000000000002,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 21,
+          "x": 592,
+          "y": 701.3333333333339,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 26,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        }
+      ],
+      "originalRecovery": 241
+    },
+    {
+      "mode": "floating",
+      "strategy": "clutch",
+      "actualPaidStrokeRounds": 2,
+      "strokeAdmissionTicks": [
+        1,
+        31
+      ],
+      "actualPrimaryRounds": 0,
+      "actualAmmoSpent": 2,
+      "actualTargetDamage": 48.60000000000002,
+      "actualCreditedDamage": 48.6,
+      "operations": [
+        {
+          "id": "heavy-clutch-lift",
+          "at": 6
+        },
+        {
+          "id": "heavy-clutch-engage",
+          "at": 26
+        }
+      ],
+      "finalBody": {
+        "x": 584,
+        "y": 726.6666666666674
+      },
+      "positionsAtKeySteps": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 6,
+          "x": 592,
+          "y": 606.3333333333334,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 11,
+          "x": 592,
+          "y": 638.0000000000002,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 21,
+          "x": 592,
+          "y": 701.3333333333339,
+          "feedUntil": 32,
+          "lifted": true
+        },
+        {
+          "tick": 26,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 32,
+          "lifted": false
+        },
+        {
+          "tick": 31,
+          "x": 592,
+          "y": 726.6666666666674,
+          "feedUntil": 0,
+          "lifted": false
+        }
+      ],
+      "realProjectileMuzzleOrigins": [
+        {
+          "tick": 1,
+          "x": 600,
+          "y": 600
+        },
+        {
+          "tick": 31,
+          "x": 592,
+          "y": 726.6666666666674
+        }
+      ],
+      "originalRecovery": 241
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,6288 @@
+{
+  "scope": "Scratch copies of the live Game, with two candidate cards and treatment implementation overlaid. Ordinary Short buys the early option at 9 SP and the owned later fitting at 15. Compare issued path, later fitting unused and later fitting attempted against visible threats and firing opportunities. The follow-up keeps the reserved Q available during a wrapped treatment and spends an ordinary shot from steady ground while a tied dose is pending.",
+  "cohort": "party",
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 5017,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1065
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1418
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 1834
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 2355
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2470,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2485,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2486,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2502,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2508,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000009
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2970,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2986,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2992,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4675,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4690,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4691,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4707,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4713,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4719,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4719,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1757,
+          "until": 1937,
+          "radius": 140,
+          "encounter": 2
+        },
+        {
+          "at": 3613,
+          "until": 3793,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 5175,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 6,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 12,
+      "treatedAllies": 6,
+      "totalDressing": 143.60000000000014,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 341.875,
+          "dealt": 28358.83905154963,
+          "healed": 528.279999999994,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 306.25,
+          "dealt": 30378.917254139502,
+          "healed": 85,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "ffd674e386c85050b25486d5e82f7b050a1c0ab1c8d1245334ff8119156fb154"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 5017,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1065
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1418
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 1834
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 2355
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2470,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2485,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2486,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2502,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2508,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000009
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2970,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2986,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2992,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4675,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4690,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4691,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4707,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4713,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4719,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4719,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1757,
+          "until": 1937,
+          "radius": 140,
+          "encounter": 2
+        },
+        {
+          "at": 3613,
+          "until": 3793,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 5175,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 6,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 12,
+      "treatedAllies": 6,
+      "totalDressing": 143.60000000000014,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 341.875,
+          "dealt": 28358.83905154963,
+          "healed": 528.279999999994,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 306.25,
+          "dealt": 30378.917254139502,
+          "healed": 85,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "ffd674e386c85050b25486d5e82f7b050a1c0ab1c8d1245334ff8119156fb154"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 5017,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1065
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1418
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 1834
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 2355
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2470,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2485,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2486,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2502,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2508,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000009
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2970,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2986,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2992,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4675,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4690,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4691,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4707,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4713,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4719,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4719,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1757,
+          "until": 1937,
+          "radius": 140,
+          "encounter": 2
+        },
+        {
+          "at": 3613,
+          "until": 3793,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 5175,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 6,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 12,
+      "treatedAllies": 6,
+      "totalDressing": 143.60000000000014,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 341.875,
+          "dealt": 28358.83905154963,
+          "healed": 528.279999999994,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 306.25,
+          "dealt": 30378.917254139502,
+          "healed": 85,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "ffd674e386c85050b25486d5e82f7b050a1c0ab1c8d1245334ff8119156fb154"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 5007,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1065
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1418
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 1834
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 2355
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2470,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2485,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2486,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2502,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2508,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2509,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2511,
+          "state": "resume",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 8.799999999999997
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2970,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2986,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2992,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2993,
+          "state": "hold",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2995,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4104,
+          "state": "hold",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4106,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4675,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4690,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4691,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4707,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4713,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4714,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4715,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1757,
+          "until": 1937,
+          "radius": 140,
+          "encounter": 2
+        },
+        {
+          "at": 3613,
+          "until": 3793,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 5175,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 6,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 11,
+      "treatedAllies": 6,
+      "totalDressing": 127.2000000000001,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 314.375,
+          "dealt": 28417.771420728022,
+          "healed": 500.77999999999395,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 278.75,
+          "dealt": 30319.984884961115,
+          "healed": 85,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "00191d0296ba90b56c94ae41b9c2e9d2241be8185cfde744a2e5f0e2ab832acf"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 5007,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1065
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1418
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 1834
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 2355
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2470,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2485,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2486,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2502,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2508,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000001
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2509,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2511,
+          "state": "resume",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 8.799999999999997
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2514,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2970,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2986,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2992,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.599999999999994
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2993,
+          "state": "hold",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2995,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2998,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4104,
+          "state": "hold",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4106,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.800000000000011
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4109,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4675,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4690,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4691,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4707,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4713,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4714,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4715,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1757,
+          "until": 1937,
+          "radius": 140,
+          "encounter": 2
+        },
+        {
+          "at": 3613,
+          "until": 3793,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 5175,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 6,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 11,
+      "treatedAllies": 6,
+      "totalDressing": 127.2000000000001,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 314.375,
+          "dealt": 28417.771420728022,
+          "healed": 500.77999999999395,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 278.75,
+          "dealt": 30319.984884961115,
+          "healed": 85,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "00191d0296ba90b56c94ae41b9c2e9d2241be8185cfde744a2e5f0e2ab832acf"
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 5005,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1065
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1418
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 1834
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 2355
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2470,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2481,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2483,
+          "state": "resume",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2485,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2486,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2497,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2499,
+          "state": "resume",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2504,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 10
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 2504,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3613,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3624,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3626,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3628,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3629,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3640,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3642,
+          "state": "resume",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3647,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 10
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 3647,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4115,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4126,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4128,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4133,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4139,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4145,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4145,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4675,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4686,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4688,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4690,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4691,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4702,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4704,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4709,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4715,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4721,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 12.600000000000023
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 4721,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1757,
+          "until": 1937,
+          "radius": 140,
+          "encounter": 2
+        },
+        {
+          "at": 2973,
+          "until": 3153,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 5177,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [
+        {
+          "state": "wrap",
+          "tick": 2481,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 2486,
+          "recovery": 2225
+        },
+        {
+          "state": "shot",
+          "tick": 2482,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 2483,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "wrap",
+          "plannedAt": 2486,
+          "recovery": 2225
+        },
+        {
+          "state": "wrap",
+          "tick": 2497,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 2502,
+          "recovery": 2225
+        },
+        {
+          "state": "shot",
+          "tick": 2498,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 2499,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "wrap",
+          "plannedAt": 2502,
+          "recovery": 2225
+        },
+        {
+          "state": "dose",
+          "tick": 2504,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "wrap",
+          "plannedAt": 2504,
+          "actualDose": 2504,
+          "patient": "medic",
+          "recovery": 2972
+        },
+        {
+          "state": "wrap",
+          "tick": 3624,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 3629,
+          "recovery": 3441
+        },
+        {
+          "state": "shot",
+          "tick": 3625,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 3626,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 3629,
+          "recovery": 3441
+        },
+        {
+          "state": "wrap",
+          "tick": 3640,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 3645,
+          "recovery": 3441
+        },
+        {
+          "state": "shot",
+          "tick": 3641,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 3642,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "wrap",
+          "plannedAt": 3645,
+          "recovery": 3441
+        },
+        {
+          "state": "dose",
+          "tick": 3647,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "wrap",
+          "plannedAt": 3647,
+          "actualDose": 3647,
+          "patient": "medic",
+          "recovery": 4115
+        },
+        {
+          "state": "wrap",
+          "tick": 4126,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 4131,
+          "recovery": 4115
+        },
+        {
+          "state": "shot",
+          "tick": 4127,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 4128,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4131,
+          "recovery": 4115
+        },
+        {
+          "state": "dose",
+          "tick": 4133,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4133,
+          "actualDose": 4133,
+          "patient": "ally",
+          "recovery": 4601
+        },
+        {
+          "state": "dose",
+          "tick": 4139,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4139,
+          "actualDose": 4139,
+          "patient": "ally",
+          "recovery": 4601
+        },
+        {
+          "state": "dose",
+          "tick": 4145,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4145,
+          "actualDose": 4145,
+          "patient": "ally",
+          "recovery": 4601
+        },
+        {
+          "state": "wrap",
+          "tick": 4686,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 4691,
+          "recovery": 4601
+        },
+        {
+          "state": "shot",
+          "tick": 4687,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 4688,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4691,
+          "recovery": 4601
+        },
+        {
+          "state": "wrap",
+          "tick": 4702,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 4707,
+          "recovery": 4601
+        },
+        {
+          "state": "shot",
+          "tick": 4703,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 4704,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4707,
+          "recovery": 4601
+        },
+        {
+          "state": "dose",
+          "tick": 4709,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4709,
+          "actualDose": 4709,
+          "patient": "ally",
+          "recovery": 5177
+        },
+        {
+          "state": "dose",
+          "tick": 4715,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4715,
+          "actualDose": 4715,
+          "patient": "ally",
+          "recovery": 5177
+        },
+        {
+          "state": "dose",
+          "tick": 4721,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 4721,
+          "actualDose": 4721,
+          "patient": "ally",
+          "recovery": 5177
+        }
+      ],
+      "safeWindows": 7,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 8,
+      "treatedAllies": 6,
+      "totalDressing": 95.60000000000014,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 314.375,
+          "dealt": 28607.81505154964,
+          "healed": 453.78000000000014,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 278.75,
+          "dealt": 30129.9412541395,
+          "healed": 85,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "426f6cd34d8624532ee3d037ba623aaf75cce2ce0c1adc55ebc3a9d3b85e57a6"
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 3,
+      "tick": 8198,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1196
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 2283
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3698
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 4089,
+          "until": 4269,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 4569,
+          "until": 4749,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5049,
+          "until": 5229,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5529,
+          "until": 5709,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6009,
+          "until": 6189,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6489,
+          "until": 6669,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6969,
+          "until": 7149,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7449,
+          "until": 7629,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7929,
+          "until": 8109,
+          "radius": 140,
+          "encounter": 3
+        }
+      ],
+      "usedQAt": 8397,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 110,
+          "damage": 377.9250000000001,
+          "dealt": 9916.794020728013,
+          "healed": 671.0999999999939,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 120,
+          "damage": 329.1500000000001,
+          "dealt": 9612.144000000038,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "fcbaa7fb860dfa82271b3627cfbaf948d14b8c199e988cced043bb7b31fdd194"
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 3,
+      "tick": 8198,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1196
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 2283
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3698
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 4089,
+          "until": 4269,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 4569,
+          "until": 4749,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5049,
+          "until": 5229,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5529,
+          "until": 5709,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6009,
+          "until": 6189,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6489,
+          "until": 6669,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6969,
+          "until": 7149,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7449,
+          "until": 7629,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7929,
+          "until": 8109,
+          "radius": 140,
+          "encounter": 3
+        }
+      ],
+      "usedQAt": 8397,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 110,
+          "damage": 377.9250000000001,
+          "dealt": 9916.794020728013,
+          "healed": 671.0999999999939,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 120,
+          "damage": 329.1500000000001,
+          "dealt": 9612.144000000038,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "fcbaa7fb860dfa82271b3627cfbaf948d14b8c199e988cced043bb7b31fdd194"
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 3,
+      "tick": 8198,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1196
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 2283
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3698
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 4089,
+          "until": 4269,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 4569,
+          "until": 4749,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5049,
+          "until": 5229,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5529,
+          "until": 5709,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6009,
+          "until": 6189,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6489,
+          "until": 6669,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6969,
+          "until": 7149,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7449,
+          "until": 7629,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7929,
+          "until": 8109,
+          "radius": 140,
+          "encounter": 3
+        }
+      ],
+      "usedQAt": 8397,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 110,
+          "damage": 377.9250000000001,
+          "dealt": 9916.794020728013,
+          "healed": 671.0999999999939,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 120,
+          "damage": 329.1500000000001,
+          "dealt": 9612.144000000038,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "fcbaa7fb860dfa82271b3627cfbaf948d14b8c199e988cced043bb7b31fdd194"
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 3,
+      "tick": 8198,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1196
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 2283
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3698
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 4089,
+          "until": 4269,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 4569,
+          "until": 4749,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5049,
+          "until": 5229,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5529,
+          "until": 5709,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6009,
+          "until": 6189,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6489,
+          "until": 6669,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6969,
+          "until": 7149,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7449,
+          "until": 7629,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7929,
+          "until": 8109,
+          "radius": 140,
+          "encounter": 3
+        }
+      ],
+      "usedQAt": 8397,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 110,
+          "damage": 377.9250000000001,
+          "dealt": 9916.794020728013,
+          "healed": 671.0999999999939,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 120,
+          "damage": 329.1500000000001,
+          "dealt": 9612.144000000038,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "fcbaa7fb860dfa82271b3627cfbaf948d14b8c199e988cced043bb7b31fdd194"
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 3,
+      "tick": 8198,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1196
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 2283
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3698
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 4089,
+          "until": 4269,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 4569,
+          "until": 4749,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5049,
+          "until": 5229,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5529,
+          "until": 5709,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6009,
+          "until": 6189,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6489,
+          "until": 6669,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6969,
+          "until": 7149,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7449,
+          "until": 7629,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7929,
+          "until": 8109,
+          "radius": 140,
+          "encounter": 3
+        }
+      ],
+      "usedQAt": 8397,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 110,
+          "damage": 377.9250000000001,
+          "dealt": 9916.794020728013,
+          "healed": 671.0999999999939,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 120,
+          "damage": 329.1500000000001,
+          "dealt": 9612.144000000038,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "fcbaa7fb860dfa82271b3627cfbaf948d14b8c199e988cced043bb7b31fdd194"
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "defeat",
+      "clears": 3,
+      "tick": 8198,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1196
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 2283
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3698
+        }
+      ],
+      "observations": [],
+      "fields": [
+        {
+          "at": 4089,
+          "until": 4269,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 4569,
+          "until": 4749,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5049,
+          "until": 5229,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 5529,
+          "until": 5709,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6009,
+          "until": 6189,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6489,
+          "until": 6669,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 6969,
+          "until": 7149,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7449,
+          "until": 7629,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7929,
+          "until": 8109,
+          "radius": 140,
+          "encounter": 3
+        }
+      ],
+      "usedQAt": 8397,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 0,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 0,
+      "treatedAllies": 0,
+      "totalDressing": 0,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 110,
+          "damage": 377.9250000000001,
+          "dealt": 9916.794020728013,
+          "healed": 671.0999999999939,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 120,
+          "damage": 329.1500000000001,
+          "dealt": 9612.144000000038,
+          "healed": 0,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "fcbaa7fb860dfa82271b3627cfbaf948d14b8c199e988cced043bb7b31fdd194"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "hard",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 7278,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1267
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1990
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3193
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 4481
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.857499999999987
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5739,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5754,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5755,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5771,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5777,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5783,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.715000000000003
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5783,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6801,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6816,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6817,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6833,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6839,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6845,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.715000000000032
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6845,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1697,
+          "until": 1877,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 4613,
+          "until": 4793,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 6240,
+          "until": 6420,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 7301,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 5,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 8,
+      "treatedAllies": 5,
+      "totalDressing": 134.06250000000003,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 328.5,
+          "dealt": 33599.247400444896,
+          "healed": 529.9749999999991,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 302.5,
+          "dealt": 34908.57235109782,
+          "healed": 53.625,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "2955ab0e1b2b0b057e7167be8943dcb05d0426e2d43874726e779e6af28afcac"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "hard",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 7278,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1267
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1990
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3193
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 4481
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.857499999999987
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5739,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5754,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5755,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5771,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5777,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5783,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.715000000000003
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5783,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6801,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6816,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6817,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6833,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6839,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6845,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.715000000000032
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6845,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1697,
+          "until": 1877,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 4613,
+          "until": 4793,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 6240,
+          "until": 6420,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 7301,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 5,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 8,
+      "treatedAllies": 5,
+      "totalDressing": 134.06250000000003,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 328.5,
+          "dealt": 33599.247400444896,
+          "healed": 529.9749999999991,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 302.5,
+          "dealt": 34908.57235109782,
+          "healed": 53.625,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "2955ab0e1b2b0b057e7167be8943dcb05d0426e2d43874726e779e6af28afcac"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "hard",
+      "seed": 73,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 7278,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1267
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1990
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3193
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 4481
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.857499999999987
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5739,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5754,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5755,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5771,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5777,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5783,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.715000000000003
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5783,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6801,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6816,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6817,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6833,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6839,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6845,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.715000000000032
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6845,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1697,
+          "until": 1877,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 4613,
+          "until": 4793,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 6240,
+          "until": 6420,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 7301,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 5,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 8,
+      "treatedAllies": 5,
+      "totalDressing": 134.06250000000003,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 328.5,
+          "dealt": 33599.247400444896,
+          "healed": 529.9749999999991,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 302.5,
+          "dealt": 34908.57235109782,
+          "healed": 53.625,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "2955ab0e1b2b0b057e7167be8943dcb05d0426e2d43874726e779e6af28afcac"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "hard",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 7273,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1267
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1990
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3193
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 4481
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.857499999999987
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5739,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5754,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5755,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5771,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5777,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5778,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5779,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6801,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6816,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6817,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6833,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6839,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6840,
+          "state": "hold",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6841,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1697,
+          "until": 1877,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 4613,
+          "until": 4793,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 6240,
+          "until": 6420,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 7301,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 5,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 6,
+      "treatedAllies": 4,
+      "totalDressing": 98.6325,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 328.5,
+          "dealt": 33787.15300044489,
+          "healed": 577.3749999999991,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 302.5,
+          "dealt": 34720.66675109782,
+          "healed": 53.625,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "8b3edcedd0cddc13b082f7ae7161ef7fa8006a47dfdabd274442b2d3c9c5a4a4"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "hard",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 7273,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1267
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1990
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3193
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 4481
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5097,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.857499999999987
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5103,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5739,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5754,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5755,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5771,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5777,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5778,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5779,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6801,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6816,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6817,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6833,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6839,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6840,
+          "state": "hold",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6841,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1697,
+          "until": 1877,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 4613,
+          "until": 4793,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 6240,
+          "until": 6420,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 7301,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 5,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 6,
+      "treatedAllies": 4,
+      "totalDressing": 98.6325,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 328.5,
+          "dealt": 33787.15300044489,
+          "healed": 577.3749999999991,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 302.5,
+          "dealt": 34720.66675109782,
+          "healed": 53.625,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "8b3edcedd0cddc13b082f7ae7161ef7fa8006a47dfdabd274442b2d3c9c5a4a4"
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "hard",
+      "seed": 73,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 7275,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 1267
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 1990
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 3193
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 4481
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5081,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5092,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5094,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5099,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.955000000000013
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5105,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 8.857499999999987
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5105,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5739,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5750,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5752,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5754,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5755,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5766,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 5767,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6102,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6113,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6115,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6117,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6118,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6129,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6131,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6136,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6142,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6148,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.714999999999975
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6148,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6801,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6812,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6814,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6816,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6817,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6828,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6830,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6835,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6841,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.954999999999984
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6847,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.715000000000032
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6847,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 1697,
+          "until": 1877,
+          "radius": 140,
+          "encounter": 1
+        },
+        {
+          "at": 4613,
+          "until": 4793,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 7303,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [
+        {
+          "state": "wrap",
+          "tick": 5092,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 5097,
+          "recovery": 5081
+        },
+        {
+          "state": "shot",
+          "tick": 5093,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 5094,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 5097,
+          "recovery": 5081
+        },
+        {
+          "state": "dose",
+          "tick": 5099,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 5099,
+          "actualDose": 5099,
+          "patient": "ally",
+          "recovery": 5567
+        },
+        {
+          "state": "dose",
+          "tick": 5105,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 5105,
+          "actualDose": 5105,
+          "patient": "ally",
+          "recovery": 5567
+        },
+        {
+          "state": "wrap",
+          "tick": 5750,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 5755,
+          "recovery": 5567
+        },
+        {
+          "state": "shot",
+          "tick": 5751,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 5752,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 5755,
+          "recovery": 5567
+        },
+        {
+          "state": "wrap",
+          "tick": 5766,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 5771,
+          "recovery": 5567
+        },
+        {
+          "state": "shot",
+          "tick": 5767,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "wrap",
+          "tick": 6113,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 6118,
+          "recovery": 5567
+        },
+        {
+          "state": "shot",
+          "tick": 6114,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 6115,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6118,
+          "recovery": 5567
+        },
+        {
+          "state": "wrap",
+          "tick": 6129,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 6134,
+          "recovery": 5567
+        },
+        {
+          "state": "shot",
+          "tick": 6130,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 6131,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6134,
+          "recovery": 5567
+        },
+        {
+          "state": "dose",
+          "tick": 6136,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6136,
+          "actualDose": 6136,
+          "patient": "ally",
+          "recovery": 6604
+        },
+        {
+          "state": "dose",
+          "tick": 6142,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6142,
+          "actualDose": 6142,
+          "patient": "ally",
+          "recovery": 6604
+        },
+        {
+          "state": "dose",
+          "tick": 6148,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6148,
+          "actualDose": 6148,
+          "patient": "ally",
+          "recovery": 6604
+        },
+        {
+          "state": "wrap",
+          "tick": 6812,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 6817,
+          "recovery": 6604
+        },
+        {
+          "state": "shot",
+          "tick": 6813,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 6814,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6817,
+          "recovery": 6604
+        },
+        {
+          "state": "wrap",
+          "tick": 6828,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 6833,
+          "recovery": 6604
+        },
+        {
+          "state": "shot",
+          "tick": 6829,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 6830,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6833,
+          "recovery": 6604
+        },
+        {
+          "state": "dose",
+          "tick": 6835,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6835,
+          "actualDose": 6835,
+          "patient": "ally",
+          "recovery": 7303
+        },
+        {
+          "state": "dose",
+          "tick": 6841,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6841,
+          "actualDose": 6841,
+          "patient": "ally",
+          "recovery": 7303
+        },
+        {
+          "state": "dose",
+          "tick": 6847,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6847,
+          "actualDose": 6847,
+          "patient": "ally",
+          "recovery": 7303
+        }
+      ],
+      "safeWindows": 7,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 8,
+      "treatedAllies": 8,
+      "totalDressing": 134.06249999999994,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 328.5,
+          "dealt": 33678.426525000104,
+          "healed": 577.3749999999991,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 302.5,
+          "dealt": 34829.3932265426,
+          "healed": 53.625,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "edc73240d36d1dcde8cccb2633c04676ae98a9a34da22c45278cd77324bdb3b3"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 9700,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 2470
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 3507
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 4994
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 6421
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6536,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6551,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6552,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6568,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6569,
+          "state": "step",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6574,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6580,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.19999999999999
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6580,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7706,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7721,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7722,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7738,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7744,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7750,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.19999999999996
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7750,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 5964,
+          "until": 6144,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7037,
+          "until": 7217,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8207,
+          "until": 8387,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8795,
+          "until": 8975,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 9264,
+          "until": 9444,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 9732,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 4,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 6,
+      "treatedAllies": 0,
+      "totalDressing": 109.99999999999997,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 380.725,
+          "dealt": 28667.066705689354,
+          "healed": 588.1249999999998,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 311,
+          "dealt": 30164.193599999944,
+          "healed": 91,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "3ab0206621ed7cc5c472ad5c703069db1df9d8278c0ae7b5ccbb6bf0ff5fbd8e"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 9700,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 2470
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 3507
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 4994
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 6421
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6536,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6551,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6552,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6568,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6569,
+          "state": "step",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6574,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6580,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.19999999999999
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6580,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7706,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7721,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7722,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7738,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7744,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7750,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.19999999999996
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7750,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 5964,
+          "until": 6144,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7037,
+          "until": 7217,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8207,
+          "until": 8387,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8795,
+          "until": 8975,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 9264,
+          "until": 9444,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 9732,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 4,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 6,
+      "treatedAllies": 0,
+      "totalDressing": 109.99999999999997,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 380.725,
+          "dealt": 28667.066705689354,
+          "healed": 588.1249999999998,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 311,
+          "dealt": 30164.193599999944,
+          "healed": 91,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "3ab0206621ed7cc5c472ad5c703069db1df9d8278c0ae7b5ccbb6bf0ff5fbd8e"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "step",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 9700,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 2470
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 3507
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 4994
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 6421
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6536,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6551,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6552,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6568,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6569,
+          "state": "step",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6570,
+          "state": "tie",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6574,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6574,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7706,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7721,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7722,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7738,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7744,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7750,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 17.19999999999996
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7750,
+          "state": "finish",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 5964,
+          "until": 6144,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7037,
+          "until": 7217,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8207,
+          "until": 8387,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8795,
+          "until": 8975,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 9264,
+          "until": 9444,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 9732,
+      "purchase": {
+        "node": "medic-surgery-steady-step-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-tie-off-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [
+        {
+          "state": "tie",
+          "tick": 6570,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 6574,
+          "recovery": 7036
+        },
+        {
+          "state": "shot",
+          "tick": 6571,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "tie",
+          "held": false
+        },
+        {
+          "state": "dose",
+          "tick": 6574,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "tie",
+          "plannedAt": 6574,
+          "actualDose": 6574,
+          "patient": "medic",
+          "recovery": 7036
+        }
+      ],
+      "safeWindows": 4,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 5,
+      "treatedAllies": 0,
+      "totalDressing": 92.79999999999998,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 380.725,
+          "dealt": 28686.036305689355,
+          "healed": 588.1249999999998,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 311,
+          "dealt": 30145.223999999944,
+          "healed": 91,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "f283f0536176e8a69be7fd6e3bb508fb93eb90a9a60329f7a3cbc8c937202a45"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "parent",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 9697,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 2470
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 3507
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 4994
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 6421
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6536,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6551,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6552,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6568,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6574,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6575,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6576,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7706,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7721,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7722,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7738,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7744,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7745,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7746,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 5964,
+          "until": 6144,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7037,
+          "until": 7217,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8207,
+          "until": 8387,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8795,
+          "until": 8975,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 9264,
+          "until": 9444,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 9732,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "lateUses": [],
+      "safeWindows": 4,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 4,
+      "treatedAllies": 0,
+      "totalDressing": 75.60000000000002,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 380.725,
+          "dealt": 28734.676274867845,
+          "healed": 588.1249999999986,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 311,
+          "dealt": 30096.584030821454,
+          "healed": 91,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "472e3d003e3f70166b718dd6caa63cf2294333d65ce059033277295b4a0c88ac"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "late-unused",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 9697,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 2470
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 3507
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 4994
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 6421
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6536,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6551,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6552,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6568,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6574,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6575,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6576,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7706,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7721,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7722,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7738,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7744,
+          "state": "dose",
+          "patient": "medic",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7745,
+          "state": "hold",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7746,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 5964,
+          "until": 6144,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 7037,
+          "until": 7217,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8207,
+          "until": 8387,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 8795,
+          "until": 8975,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 9264,
+          "until": 9444,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 9732,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [],
+      "safeWindows": 4,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 4,
+      "treatedAllies": 0,
+      "totalDressing": 75.60000000000002,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 380.725,
+          "dealt": 28734.676274867845,
+          "healed": 588.1249999999986,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 311,
+          "dealt": 30096.584030821454,
+          "healed": 91,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "472e3d003e3f70166b718dd6caa63cf2294333d65ce059033277295b4a0c88ac"
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 41,
+      "fitting": "aside",
+      "policy": "late-active",
+      "cohort": "party",
+      "outcome": "victory",
+      "clears": 5,
+      "tick": 9688,
+      "progression": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "t": 2470
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "t": 3507
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "t": 4994
+        },
+        {
+          "encounter": 4,
+          "earned": 27,
+          "clears": 4,
+          "t": 6421
+        }
+      ],
+      "observations": [
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6536,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6547,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6549,
+          "state": "resume",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6551,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6552,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6563,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6564,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6926,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6937,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6939,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6941,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6942,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6953,
+          "state": "wrap",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 6954,
+          "state": "stop",
+          "patient": "medic",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7706,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7717,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7719,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7721,
+          "state": "stop",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7722,
+          "state": "prepare",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7733,
+          "state": "wrap",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7735,
+          "state": "resume",
+          "patient": "ally",
+          "amount": 0
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7740,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7746,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 18.900000000000006
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7752,
+          "state": "dose",
+          "patient": "ally",
+          "amount": 17.19999999999999
+        },
+        {
+          "encounter": 4,
+          "boss": "city-eater",
+          "tick": 7752,
+          "state": "finish",
+          "patient": "ally",
+          "amount": 0
+        }
+      ],
+      "fields": [
+        {
+          "at": 5964,
+          "until": 6144,
+          "radius": 140,
+          "encounter": 3
+        },
+        {
+          "at": 8795,
+          "until": 8975,
+          "radius": 140,
+          "encounter": 4
+        },
+        {
+          "at": 9264,
+          "until": 9444,
+          "radius": 140,
+          "encounter": 4
+        }
+      ],
+      "usedQAt": 9732,
+      "purchase": {
+        "node": "medic-surgery-set-aside-1",
+        "earned": 9,
+        "clears": 1
+      },
+      "latePurchase": {
+        "node": "medic-surgery-wrapped-dressing-1",
+        "earned": 15,
+        "clears": 2
+      },
+      "lateUses": [
+        {
+          "state": "wrap",
+          "tick": 6547,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 6552,
+          "recovery": 6432
+        },
+        {
+          "state": "shot",
+          "tick": 6548,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 6549,
+          "boss": "city-eater",
+          "near": "medic",
+          "fitting": "wrap",
+          "plannedAt": 6552,
+          "recovery": 6432
+        },
+        {
+          "state": "wrap",
+          "tick": 6563,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 6568,
+          "recovery": 6432
+        },
+        {
+          "state": "shot",
+          "tick": 6564,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "wrap",
+          "tick": 6937,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 6942,
+          "recovery": 6432
+        },
+        {
+          "state": "shot",
+          "tick": 6938,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 6939,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 6942,
+          "recovery": 6432
+        },
+        {
+          "state": "wrap",
+          "tick": 6953,
+          "boss": "city-eater",
+          "near": "medic",
+          "plannedAt": 6958,
+          "recovery": 6432
+        },
+        {
+          "state": "shot",
+          "tick": 6954,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "wrap",
+          "tick": 7717,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 7722,
+          "recovery": 6432
+        },
+        {
+          "state": "shot",
+          "tick": 7718,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 7719,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 7722,
+          "recovery": 6432
+        },
+        {
+          "state": "wrap",
+          "tick": 7733,
+          "boss": "city-eater",
+          "near": "ally",
+          "plannedAt": 7738,
+          "recovery": 6432
+        },
+        {
+          "state": "shot",
+          "tick": 7734,
+          "boss": "city-eater",
+          "spent": 1,
+          "fitting": "wrap",
+          "held": true
+        },
+        {
+          "state": "resume",
+          "tick": 7735,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 7738,
+          "recovery": 6432
+        },
+        {
+          "state": "dose",
+          "tick": 7740,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 7740,
+          "actualDose": 7740,
+          "patient": "ally",
+          "recovery": 8208
+        },
+        {
+          "state": "dose",
+          "tick": 7746,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 7746,
+          "actualDose": 7746,
+          "patient": "ally",
+          "recovery": 8208
+        },
+        {
+          "state": "dose",
+          "tick": 7752,
+          "boss": "city-eater",
+          "near": "ally",
+          "fitting": "wrap",
+          "plannedAt": 7752,
+          "actualDose": 7752,
+          "patient": "ally",
+          "recovery": 8208
+        }
+      ],
+      "safeWindows": 6,
+      "blockedWindows": 0,
+      "interruptedForDanger": 0,
+      "doses": 3,
+      "treatedAllies": 3,
+      "totalDressing": 55,
+      "metrics": [
+        {
+          "id": "medic",
+          "health": 120,
+          "damage": 380.725,
+          "dealt": 28789.801105689356,
+          "healed": 588.1249999999973,
+          "rescues": 0,
+          "status": "active"
+        },
+        {
+          "id": "ally",
+          "health": 130,
+          "damage": 311,
+          "dealt": 30076.459199999943,
+          "healed": 91,
+          "rescues": 0,
+          "status": "active"
+        }
+      ],
+      "trajectory": "7bb4f9e650da9755df7a264eb1d39684567acc0c35833f301a8d22111117a7e0"
+    }
+  ],
+  "mismatches": [],
+  "baseline": {
+    "name": "issued01",
+    "scratchOnly": true,
+    "baseRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+    "contentRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+    "game": "624e86c05d35a5a27cb674581ecc91063b15171fa1e4eeeff21e8629c84dc229",
+    "bundle": "c0e619565ddc9a83de2b5df58a9f28b1ba024653f8381f2bb52ac143a01304ce",
+    "files": []
+  },
+  "stage": {
+    "name": "pilot01",
+    "scratchOnly": true,
+    "baseRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+    "contentRevision": "dbe99726003c3ec86dc35264eb5b73390ebbe2466b8f0b1b6e59549d1e56ed33",
+    "game": "624e86c05d35a5a27cb674581ecc91063b15171fa1e4eeeff21e8629c84dc229",
+    "bundle": "c77d94a3af3a17fff40b62481fa233940a1a2cc6231e34affc8ba7e8efd7793e",
+    "files": [
+      {
+        "path": "src/shared/medic-field-surgery.ts",
+        "sha256": "14b6cf4b08c7ee7cf0fb4b673191be61b4abfedd7dc5a3622aa629dc1b7de5c2"
+      },
+      {
+        "path": "content/catalog.json",
+        "sha256": "dbe99726003c3ec86dc35264eb5b73390ebbe2466b8f0b1b6e59549d1e56ed33"
+      },
+      {
+        "path": "content/revision.json",
+        "sha256": "45283b7a32994c18be7535ba9c0ab8d6c6cd6a145d4b9855902f46c06aeda4fa"
+      }
+    ]
+  }
+}

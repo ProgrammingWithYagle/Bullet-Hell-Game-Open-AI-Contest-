@@ -1,0 +1,147 @@
+{
+  "passed": true,
+  "protocol": 88,
+  "contentRevision": "c5ceaa2e26561436fec7c715bbe32d4031ff3ee6195cb758a1b8bd464d2fa022",
+  "runtimeSourceSha256": "0c09b4f5d5d1ba721e3afeadce4d18230d0701db757b226e23c7620fca3fe517",
+  "sourceSnapshotSha256": "a7b532ecf085c0395d7304f5e0b0f56f4966b19d05bfd81235234d22615a6042",
+  "tests": 2766,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "ragpicker-kite",
+      "sp": 3,
+      "walked": 150.00000000000037
+    },
+    {
+      "transport": "worker",
+      "fitting": "hold",
+      "boss": "stitchwright",
+      "sp": 9,
+      "walked": 142.5000000000003
+    },
+    {
+      "transport": "worker",
+      "fitting": "side",
+      "boss": "stitchwright",
+      "sp": 9,
+      "walked": 141.44999999999973
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "cobble-crab",
+      "sp": 3,
+      "walked": 150
+    },
+    {
+      "transport": "peer",
+      "fitting": "hold",
+      "boss": "stitchwright",
+      "sp": 9,
+      "walked": 149.99999999999991
+    },
+    {
+      "transport": "peer",
+      "fitting": "side",
+      "boss": "stitchwright",
+      "sp": 9,
+      "walked": 148.49999999999963
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate01/generated/reviews/runtime-verification.json",
+      "sha256": "dbee16706df018100cc094432d1d458cce97b86f0c376cfc0628e8b1b43f8333"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "21abda95c1c9b980382d7f3e94a9606024b4ac22bcce8457d6dc7ec3353fb56a"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "7f57e0326b2d8f4864dfcc4e695e67b30ad77871808d13453b38299b7ae6850c"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "9e1efdf2ab4e57e606a9701b7f310642cf2916852f54e3931e294c84d646161a"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "a2d5aa9e68d14747550cdddec4ddaacbf79ea15843fd67c29d390eb5db149e87"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "86ae154e6b8115135ab5efe8298597c76ff4252ac91b58cb5d31a1f080a69a9f"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "local-migration-proof01.json",
+      "sha256": "cfe9604be09235ecd364db6526d9ba4ca1c0087f975b0d109cdc1d13de3a00e8"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source02/worker-entry.json",
+      "sha256": "5d2a744a759cc37aff597fafd6267029484f5fe3d95126981f765f3087a49f5e"
+    },
+    {
+      "path": "source-worker-hold.json",
+      "from": "native-source02/worker-hold.json",
+      "sha256": "9c4986f13fdca786c3ae9373c502d4cce5eee2d8e31bdac758cfb739bc3b3ffa"
+    },
+    {
+      "path": "source-worker-side.json",
+      "from": "native-source02/worker-side.json",
+      "sha256": "2fab106f73f20c46921913ef0070edd426270937125623c77e3b8b42ceb64393"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source02/peer-entry.json",
+      "sha256": "b84c611295b4744dc41c0d0267975c63b067af12bc37138095e4bbe88084a7fc"
+    },
+    {
+      "path": "source-peer-hold.json",
+      "from": "native-source02/peer-hold.json",
+      "sha256": "ed87bdcb167c437db30aad7403413639c2d8d3e2819293cc8094f0b9f9a47dd9"
+    },
+    {
+      "path": "source-peer-side.json",
+      "from": "native-source02/peer-side.json",
+      "sha256": "a9f758435d838b3b552fcd08ef7a53e4419d1200b0d15775f245ae2f0bca2240"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo02.json",
+      "sha256": "aace958d10fbcb2d385534081e6e990fc45bd531e46fe67212f589564c4693ed"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party02.json",
+      "sha256": "5e027790fa768cf328c5bac347a552dacd5cd2dbb6e5119d335d5cb43470f14d"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo02.json",
+      "sha256": "5da0df990e081ededcfbc4335be744fe742c5556498d019036c9974f6ff218cc"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party02.json",
+      "sha256": "94673ca6ff831aca2cbf9d7832149990aad9b9e64dd03cdb84166d4ff1326e1b"
+    }
+  ],
+  "documents": [
+    "docs/MAGE_SPATIAL_CRAFT.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

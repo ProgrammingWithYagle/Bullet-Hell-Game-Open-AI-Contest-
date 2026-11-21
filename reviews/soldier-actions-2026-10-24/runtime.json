@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "classId": "soldier",
+  "buildId": "2026.10.25-soldier-medic-actions",
+  "protocol": 13,
+  "sourceSnapshotSha256": "f423a97462d28913bf99a434f9c1b9d4a824f4a746b242fe6fa63d6542b020f5",
+  "runtimeSourceSha256": "221df6e7be7675c2bb28f7228e6907bbbfb6d54d4a948c741943f3f2b86a7575",
+  "fullPipeline": {
+    "tests": 304,
+    "failed": 0,
+    "outputFiles": 1582,
+    "logSha256": "0d75742342b5341044118782dbdfdb5682599e0d00998852c8ec7f53378721d8"
+  },
+  "art": {
+    "newActionClips": 20,
+    "newActionPoses": 88,
+    "actualActionNativeReturns": 20,
+    "newSideRunClips": 2,
+    "newSideRunPoses": 16,
+    "actualSideRunNativeReturns": 2,
+    "retainedNorthSouthClips": 2,
+    "retainedNorthSouthPoses": 8,
+    "totalSelectedClassPoses": 112,
+    "wholePoseActionMasks": 1,
+    "wholePoseRunMasks": 0,
+    "independentActionVerificationSha256": "1f10e895546adce0ec4b6e6e21ae4e23bede0eb12712a57db5931e384417b552",
+    "independentRunVerificationSha256": "075c5ce5588c89e7af29f4df981f0a9ce4acc69b9414c4e5d8433f7f7e9426c3",
+    "actionProvenanceSha256": "d8a74ae9f4a14ecbffe540729038fde11a721d3f99dc73e7e0ebf13423fbec9e",
+    "runProvenanceSha256": "5168e5f29aab55dd88d6a71cb66179b8a2b4827288e531f580762ae2d3bc5831",
+    "creativePixelEdits": false,
+    "sourceAlphaErasure": false,
+    "facingMirrors": false,
+    "priorNorthSouthNativeBytesUnchanged": true
+  },
+  "preservedIterations": [
+    {
+      "path": "reviews/soldier-actions-2026-10-24/packing-first.log",
+      "sha256": "22819753b94b15ee251f558d1173e9383f6e3e392ab53ac433a973be78ec739a"
+    },
+    {
+      "path": "reviews/soldier-actions-2026-10-24/gutter-inspection.json",
+      "sha256": "aeb8353d6d8a7ec6a6009d09758f674b516d2267d0af1467dfcfdb9d35c40da7"
+    }
+  ],
+  "noImageToolErrors": 0,
+  "previousFiveClassVerificationBytesUnchanged": true,
+  "wiki": {
+    "images": 17,
+    "previousFifteenImageHashesUnchanged": true,
+    "added": [
+      "images/soldier-actions.jpg",
+      "images/medic-actions.jpg"
+    ]
+  },
+  "checks": [
+    "Actual primary shots consume ammo and select the independent matching attack in all four aim directions.",
+    "Run loops follow authored eight- or ten-fps timing, stable reduced/stopped/waiting fallbacks and one shared calibrated body scale.",
+    "Previous authoritative hit interruption, dodge, downed holds, revival and participant/class/run isolation tests remain passing."
+  ],
+  "limits": [
+    "Native/contact-sheet and software state evidence only. Rendered Phaser transitions, physical-device and human acceptance remain open.",
+    "Basic seven-survivor motion sets are drawn; special-ability and remaining boss action production continues.",
+    "Published Windows archive and frozen endurance timings retain their separate earlier source identities."
+  ]
+}

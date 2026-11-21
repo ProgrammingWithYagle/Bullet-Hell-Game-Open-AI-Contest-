@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "tests": 827,
+  "pass": 827,
+  "fail": 0,
+  "runtimeSourceSha256": "54723b032322d0e209bf2a9b922802ef772476b5ebf1ca22a15327edba6a3069",
+  "sourceSnapshotSha256": "c8d66eedeb9157dd695dfeecb5229293cfb2e508af4d09b15908157ed7c9df62",
+  "gate": "reviews/chat-confirmation-2026-10-29/gate-01/runtime-verification.json",
+  "focused": [
+    {
+      "log": "focused-01.log",
+      "tests": 23,
+      "pass": 23
+    },
+    {
+      "log": "focused-02.log",
+      "tests": 12,
+      "pass": 12
+    }
+  ],
+  "baseline": {
+    "log": "history-baseline-01.log",
+    "result": "Actual two-peer history toggle reproduction failed before its fix; preserved."
+  },
+  "publication": {
+    "sourceUploadApproved": false,
+    "questionStillPending": true,
+    "doNotRetryRejectedPush": true,
+    "sourceCI": "Not run; source publication awaits approval",
+    "wiki": "Already authorized but pending corresponding source upload"
+  },
+  "limits": [
+    "Native software/transport only; no rendered, human, listening, native-language, device or WAN acceptance."
+  ]
+}

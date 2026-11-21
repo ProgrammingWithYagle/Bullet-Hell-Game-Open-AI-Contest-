@@ -1,0 +1,169 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-29T13:06:55.075Z",
+  "buildId": "2026.10.29-boss-defeat",
+  "protocol": 38,
+  "localTests": 787,
+  "gate": "gate-03",
+  "runtimeSourceSha256": "252f0f851ded2dc877d6cca112d2ed6c9923d07587d45a6fe4b17b9af3805e92",
+  "sourceSnapshotSha256": "4df8dc839fbcedbb434596204bd16dccdea94c040e423e34274a9155e1852305",
+  "defeatDurationMs": 2000,
+  "fullFalls": [
+    {
+      "bossId": "courier",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "ratcatcher",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "quarantine-clerk",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "tollkeeper",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "chain-marshal",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "gate-widow",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "black-ambulance",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "ashen-usher",
+      "frames": 4,
+      "durationMs": 800
+    },
+    {
+      "bossId": "brass-toad",
+      "frames": 4,
+      "durationMs": 800
+    },
+    {
+      "bossId": "ragpicker-kite",
+      "frames": 4,
+      "durationMs": 800
+    },
+    {
+      "bossId": "candle-snail",
+      "frames": 4,
+      "durationMs": 800
+    },
+    {
+      "bossId": "cobble-crab",
+      "frames": 4,
+      "durationMs": 800
+    },
+    {
+      "bossId": "mourning-kettle",
+      "frames": 4,
+      "durationMs": 800
+    },
+    {
+      "bossId": "constable",
+      "frames": 8,
+      "durationMs": 1000
+    },
+    {
+      "bossId": "lantern-warden",
+      "frames": 8,
+      "durationMs": 1000
+    }
+  ],
+  "settledPoses": [
+    "matron",
+    "alchemist",
+    "bellringer",
+    "stitchwright",
+    "glass-surgeon",
+    "ash-baker",
+    "sluice-keeper",
+    "stationmaster",
+    "lamplighter",
+    "anatomist",
+    "plague-gardener",
+    "choir",
+    "red-abbess",
+    "vesper-judge",
+    "pallbearer",
+    "cinder-foreman",
+    "canal-diver",
+    "clockmender",
+    "wire-seamstress",
+    "gravedigger",
+    "ink-notary",
+    "spore-beekeeper",
+    "ice-custodian",
+    "bridge-ferryman",
+    "porcelain-mourner",
+    "boiler-tender",
+    "mirror-undertaker",
+    "chalk-magistrate",
+    "wire-harpist",
+    "crow-shepherd",
+    "ledger-leech",
+    "engine",
+    "regent",
+    "salt-patriarch",
+    "chain-colossus",
+    "ossuary-leviathan",
+    "bell-triplets",
+    "quarantine-heart",
+    "crown-procession",
+    "city-eater",
+    "last-breath-saint",
+    "hourglass-widow",
+    "unlit-astronomer",
+    "folded-man",
+    "red-comet",
+    "memory-taxer",
+    "choir-of-moths",
+    "zero-hour-conductor",
+    "walking-district",
+    "last-knocker",
+    "uncounted"
+  ],
+  "checks": [
+    "Full fall duration fits before next choices",
+    "No repeat rewards or added combat score time",
+    "Full vote and optional extra-fight offer time",
+    "Shared two-peer server clock",
+    "Remaining fall and position restored in Solo and trusted room boundaries",
+    "Older saves accepted; invalid fall coordinates/times rejected",
+    "Reduced motion uses final pose and static message"
+  ],
+  "preservedFailedGates": [
+    {
+      "gate": "gate-01",
+      "tests": 786,
+      "pass": 772,
+      "fail": 14
+    },
+    {
+      "gate": "gate-02",
+      "tests": 787,
+      "pass": 784,
+      "fail": 3
+    }
+  ],
+  "limits": [
+    "Software checks; no current rendered/human/device/listening/native-language acceptance",
+    "Only fifteen existing multiframe falls; fifty-one existing final poses",
+    "Prior Windows review remains a separately versioned predecessor"
+  ]
+}

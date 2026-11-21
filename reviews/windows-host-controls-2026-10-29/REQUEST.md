@@ -1,0 +1,5 @@
+# Matching host-control Windows review
+
+Prepare a new public portable review from source **b108b5f4c77168413255d5f60b8d1fdb79856aac**, runtime/test-equivalent to verified gameplay source3991fdae3cc8aaddaea00be8d43ec668e15533e9. Build2026.10.29-host-controls/protocol43; reuse the exact passing859-test scoped gate. No runtime edits or new content are needed for packaging.
+
+The builder requires a clean committed checkout, fresh client compilation and the matching source/test fingerprint. Use a new package and archive name, then verify every file on original, fresh deep extraction and independent PowerShell Copy-Item copy in a Japanese path. Run actual packaged offline and bundled-authority LAN fixtures on all three copies and rehash packages afterwards. Preserve every older archive/sidecar/report. These are native software diagnostics, separate from human/rendered/listening/language/device/second-machine/WAN acceptance. No hosted release replacement, deployment, main merge or contest submission.

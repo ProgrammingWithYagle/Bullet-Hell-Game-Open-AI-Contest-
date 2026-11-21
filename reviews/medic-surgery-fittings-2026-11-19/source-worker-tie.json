@@ -1,0 +1,133 @@
+{
+  "passed": true,
+  "protocol": 84,
+  "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+  "transport": "worker",
+  "fitting": "tie",
+  "bought": [
+    {
+      "item": "medic-triage-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "medic-field-dressing-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "medic-surgery-steady-step-1",
+      "earned": 9,
+      "clears": 1
+    },
+    {
+      "item": "medic-surgery-tie-off-1",
+      "earned": 15,
+      "clears": 2
+    }
+  ],
+  "patient": "self",
+  "opening": {
+    "boss": "pallbearer",
+    "tick": 1131
+  },
+  "before": {
+    "health": 92.35874999999999,
+    "tick": 1455,
+    "qAt": 0,
+    "x": 755.6284528600626,
+    "y": 699.3660399531423
+  },
+  "recoveryAt": 1940,
+  "preparationAttempts": 1,
+  "doses": 2,
+  "physical": [
+    {
+      "kind": "medic-dressing",
+      "id": 188,
+      "owner": "solo",
+      "patient": "solo",
+      "x": 755.6284528600626,
+      "y": 699.3660399531423,
+      "toX": 755.6284528600626,
+      "toY": 699.3660399531423,
+      "radius": 15,
+      "at": 1472,
+      "until": 1478
+    },
+    {
+      "kind": "medic-dressing",
+      "id": 191,
+      "owner": "solo",
+      "patient": "solo",
+      "x": 752.2671628324264,
+      "y": 687.534229890852,
+      "toX": 752.2671628324264,
+      "toY": 687.534229890852,
+      "radius": 15,
+      "at": 1478,
+      "until": 1484
+    }
+  ],
+  "manoeuvre": {
+    "walked": 12.300000000000008,
+    "knot": {
+      "kind": "medic-dressing-knot",
+      "id": 189,
+      "owner": "solo",
+      "patient": "solo",
+      "x": 752.2671628324264,
+      "y": 687.534229890852,
+      "toX": 752.2671628324264,
+      "toY": 687.534229890852,
+      "radius": 24,
+      "at": 1474,
+      "until": 1478
+    },
+    "kept": {
+      "kind": "medic-dressing",
+      "id": 191,
+      "owner": "solo",
+      "patient": "solo",
+      "x": 752.2671628324264,
+      "y": 687.534229890852,
+      "toX": 752.2671628324264,
+      "toY": 687.534229890852,
+      "radius": 15,
+      "at": 1478,
+      "until": 1484
+    },
+    "shotTick": 1475,
+    "observedShotTick": 1475,
+    "ammunitionSpent": 1
+  },
+  "firstObservation": {
+    "tick": 1472,
+    "owner": {
+      "x": 755.6284528600626,
+      "y": 699.3660399531423
+    },
+    "patient": {
+      "x": 755.6284528600626,
+      "y": 699.3660399531423
+    },
+    "remainingWound": 10.001250000000013,
+    "status": {
+      "phase": "applying",
+      "patient": "solo",
+      "startedAt": 1456,
+      "nextAt": 1478,
+      "doses": 1,
+      "ready": true,
+      "canHold": false,
+      "stepRemaining": 32
+    },
+    "privateDoses": 1
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "e37e356f0769d51c019278bfa2e398b90bc6bf336fab255df45fbd99a84bc8ad",
+  "testedAudience": "public"
+}

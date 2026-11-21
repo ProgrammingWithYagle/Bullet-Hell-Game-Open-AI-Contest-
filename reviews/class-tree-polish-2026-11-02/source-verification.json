@@ -1,0 +1,440 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-03T04:29:04.432Z",
+  "baselineMetadata": "fd817ec0a0045d5ce5dfb1d12dc874a310b3babb",
+  "baselinePlayableSource": "ab8e4b37b65c9dee32c95dfb643207009c590674",
+  "buildId": "2026.11.02-class-tree-polish",
+  "protocol": 50,
+  "contentRevision": "a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f",
+  "runtimeSourceSha256": "3abaf4336dbfa9164c116aca02edba90ca99724923b967f763431d086584d332",
+  "sourceSnapshotSha256": "dc50e4f6de59719cee876e03ceb47c0b198a2af4b15eda7d3d51c5e1124abbe7",
+  "fullGateLog": "reviews/class-tree-polish-2026-11-02/full-gate01.log",
+  "fullGateSha256": "afcaaa4fdc383fd742a5a59a48a33b67d3f6587a6fa5da7e0b3594c1f291d073",
+  "testsPassed": 1272,
+  "checks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 72816
+    },
+    {
+      "name": "Playable main-story word count",
+      "passed": true,
+      "elapsedMs": 758
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2606
+    },
+    {
+      "name": "Early chapter build feasibility",
+      "passed": true,
+      "elapsedMs": 1040
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 136386
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 5949
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 1569
+    }
+  ],
+  "allIssuedCatalogDataPreserved": true,
+  "classNodes": 648,
+  "generalNodes": 2,
+  "specializationNodes": 2,
+  "existingTransformInventory": [
+    {
+      "classId": "soldier",
+      "id": "soldier-command-3",
+      "transform": "breach-cadence",
+      "prerequisite": "soldier-command-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "soldier",
+      "id": "soldier-command-path-1-3",
+      "transform": "supply-line",
+      "prerequisite": "soldier-command-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "soldier",
+      "id": "soldier-command-path-2-3",
+      "transform": "marching-colors",
+      "prerequisite": "soldier-command-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "heavy",
+      "id": "heavy-suppression-3",
+      "transform": "shoulder-mantlet",
+      "prerequisite": "heavy-suppression-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "heavy",
+      "id": "heavy-suppression-path-1-3",
+      "transform": "furnace-vents",
+      "prerequisite": "heavy-suppression-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "heavy",
+      "id": "heavy-suppression-path-2-3",
+      "transform": "split-suppression",
+      "prerequisite": "heavy-suppression-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "tank",
+      "id": "tank-protection-3",
+      "transform": "wake-guard",
+      "prerequisite": "tank-protection-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "tank",
+      "id": "tank-protection-path-1-3",
+      "transform": "procession",
+      "prerequisite": "tank-protection-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "tank",
+      "id": "tank-protection-path-2-3",
+      "transform": "cornerstone",
+      "prerequisite": "tank-protection-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "medic",
+      "id": "medic-triage-3",
+      "transform": "serum-relay",
+      "prerequisite": "medic-triage-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "medic",
+      "id": "medic-triage-path-1-3",
+      "transform": "second-breath",
+      "prerequisite": "medic-triage-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "medic",
+      "id": "medic-triage-path-2-3",
+      "transform": "field-triage",
+      "prerequisite": "medic-triage-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "mage",
+      "id": "mage-control-3",
+      "transform": "ward-echo",
+      "prerequisite": "mage-control-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "mage",
+      "id": "mage-control-path-1-3",
+      "transform": "orbit-requiem",
+      "prerequisite": "mage-control-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "mage",
+      "id": "mage-control-path-2-3",
+      "transform": "twin-sigils",
+      "prerequisite": "mage-control-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "engineer",
+      "id": "engineer-constructs-3",
+      "transform": "return-current",
+      "prerequisite": "engineer-constructs-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "engineer",
+      "id": "engineer-constructs-path-1-3",
+      "transform": "foundry-relay",
+      "prerequisite": "engineer-constructs-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "engineer",
+      "id": "engineer-constructs-path-2-3",
+      "transform": "crossfire-pair",
+      "prerequisite": "engineer-constructs-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "assassin",
+      "id": "assassin-ambush-3",
+      "transform": "aftercut",
+      "prerequisite": "assassin-ambush-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "assassin",
+      "id": "assassin-ambush-path-1-3",
+      "transform": "unwritten-traps",
+      "prerequisite": "assassin-ambush-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "assassin",
+      "id": "assassin-ambush-path-2-3",
+      "transform": "decoy-veil",
+      "prerequisite": "assassin-ambush-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "bard",
+      "id": "bard-performance-3",
+      "transform": "held-note",
+      "prerequisite": "bard-performance-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "bard",
+      "id": "bard-performance-path-1-3",
+      "transform": "travelling-chorus",
+      "prerequisite": "bard-performance-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "bard",
+      "id": "bard-performance-path-2-3",
+      "transform": "borrowed-cue",
+      "prerequisite": "bard-performance-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "swordsman",
+      "id": "swordsman-measure-3",
+      "transform": "return-step",
+      "prerequisite": "swordsman-measure-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "swordsman",
+      "id": "swordsman-measure-path-1-3",
+      "transform": "open-circle",
+      "prerequisite": "swordsman-measure-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "swordsman",
+      "id": "swordsman-measure-path-2-3",
+      "transform": "second-watch",
+      "prerequisite": "swordsman-measure-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "summoner",
+      "id": "summoner-bonds-3",
+      "transform": "running-pack",
+      "prerequisite": "summoner-bonds-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "summoner",
+      "id": "summoner-bonds-path-1-3",
+      "transform": "closed-ranks",
+      "prerequisite": "summoner-bonds-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "summoner",
+      "id": "summoner-bonds-path-2-3",
+      "transform": "patient-company",
+      "prerequisite": "summoner-bonds-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "ranger",
+      "id": "ranger-fieldcraft-3",
+      "transform": "crosswind",
+      "prerequisite": "ranger-fieldcraft-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "ranger",
+      "id": "ranger-fieldcraft-path-1-3",
+      "transform": "linked-stakes",
+      "prerequisite": "ranger-fieldcraft-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "ranger",
+      "id": "ranger-fieldcraft-path-2-3",
+      "transform": "long-survey",
+      "prerequisite": "ranger-fieldcraft-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "alchemist",
+      "id": "alchemist-mixtures-3",
+      "transform": "split-pour",
+      "prerequisite": "alchemist-mixtures-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "alchemist",
+      "id": "alchemist-mixtures-path-1-3",
+      "transform": "settled-batch",
+      "prerequisite": "alchemist-mixtures-path-1-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    },
+    {
+      "classId": "alchemist",
+      "id": "alchemist-mixtures-path-2-3",
+      "transform": "second-extraction",
+      "prerequisite": "alchemist-mixtures-path-2-2",
+      "presentation": "General; no purchase duplicated or effect migrated"
+    }
+  ],
+  "localeChanges": [
+    {
+      "locale": "en",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "zh-Hant",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "ja",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "es",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "fr",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "de",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "pt-BR",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "ru",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "hi",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "ar",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "bn",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "id",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "ur",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    },
+    {
+      "locale": "ko",
+      "changedKeys": [
+        "ui.pathwayHelp",
+        "skill.engineer-machinery-1.description"
+      ]
+    }
+  ],
+  "noNewLocaleKeys": true,
+  "localMigration": {
+    "issuedProtocol": 49,
+    "issuedContent": "a6a17f1935ebd8e91d8d5916a7c8ee920190e13bc42a07e09dec98723e94390f",
+    "classes": 12,
+    "ownedEngineerChoicesPreserved": true,
+    "onlineVersionRemainsStrict": true,
+    "existingSoloSessionMappingPreserved": true
+  },
+  "wip": {
+    "patchSha256": "e177656a3359b44f71c28d9359706547b36e25e2a21761f0a4b483564554d5cf",
+    "logSha256": "2231e14f55482e30b382648ae13f4dd3de84fb29228718c99fee350b987b347f",
+    "forwardCheckPassed": true,
+    "applied": false
+  },
+  "completionLedgerUnchanged": true,
+  "mainStoryWords": 5741,
+  "personalArcsComplete": 0,
+  "limits": [
+    "This is the General/Specializations structure and sentry-aiming fix, not the finished three-path Engineer tree.",
+    "Field Works, internal pathway forks, other class pathways and Campaign acquisition remain unimplemented.",
+    "Human fun/rendered/device/native-language/listening/motion/literary/final-balance acceptance remains separate.",
+    "No production deployment, main merge, Windows replacement, private database upload or changes to earlier review services."
+  ]
+}
