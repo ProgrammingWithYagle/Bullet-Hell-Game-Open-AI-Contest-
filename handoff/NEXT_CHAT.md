@@ -4,25 +4,29 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Protocol 90 Assassin Duelist candidate
+## Current exact protocol 90 Assassin Duelist review
 
-Protocol 90 adds Duelist with Called Opening, Passing Cut and Counterturn. The exact local gate and six purchased operations passed. Volatile Spellwork remains the retained preview while Duelist proceeds through publication. [Duelist](../docs/ASSASSIN_DUELIST.md).
+Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. Testing uses [5424](http://127.0.0.1:5424/) with backend 2800. Public review uses [5425](http://127.0.0.1:5425/) with backend 2801. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).
 
-## Current exact protocol 89 Mage Volatile Spellwork review
+The protocol 89 Mage Volatile Spellwork pair is the verified rollback in `output/review-rollback.zip`. All 4,289 restored files match their archived bytes. Archive SHA-256 50928501f3c1a0a8de36ba2d2e4f87d4c7f31f996795a2e45d2c2de4312be1be. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-duelist-2026-11-20/retention-result.json).
 
-Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. Testing uses [5422](http://127.0.0.1:5422/) with backend 2798. Public review uses [5423](http://127.0.0.1:5423/) with backend 2799. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).
+Continue with Assassin Infiltrator, then Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Duelist](../docs/ASSASSIN_DUELIST.md).
 
-The protocol 88 Mage Spatial Craft pair is the verified rollback in `output/review-rollback.zip`. All 4,263 restored files match their archived bytes. Archive SHA-256 51884863b268bdef09833f760a44f578b6df2a901ce7ac79d4eb913119d1a0fa. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-volatile-spellwork-2026-11-20/retention-result.json).
+## Protocol 89 Mage Volatile Spellwork rollback review
 
-Continue with Assassin Duelist. Read the scoped Mage review for the current class evidence. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Volatile Spellwork](../docs/MAGE_VOLATILE_SPELLWORK.md).
+Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. The 5422/2798 and 5423/2799 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).
+
+The protocol 88 Mage Spatial Craft pair served as the rollback during the protocol 89 review in `output/review-rollback.zip`. All 4,263 restored files match their archived bytes. Archive SHA-256 51884863b268bdef09833f760a44f578b6df2a901ce7ac79d4eb913119d1a0fa. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-volatile-spellwork-2026-11-20/retention-result.json).
+
+Mage Volatile Spellwork remains available in the verified rollback. [Volatile Spellwork](../docs/MAGE_VOLATILE_SPELLWORK.md).
 
 ## Scoped Mage run review
 
 The scoped Mage review covers eight fitting combinations in 96 Standard runs, twelve exact replays and two focused mixed fights. The first whole-run policy missed the Fuse Seal window. The revised comparison included all three pathways. Human acceptance and final balance remain open. [Mage run review](../docs/MAGE_RUN_REVIEW.md) · [Evidence](../reviews/mage-whole-review-2026-11-20/whole-mage-bindings.json).
 
-## Protocol 88 Mage Spatial Craft rollback review
+## Historical protocol 88 Mage Spatial Craft review
 
-Source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6**, build **2026.11.20-mage-spatial-craft**, protocol **88**, catalog **101**. The local suite and both GitHub workflows passed 2,766 tests and seven checks. Each frozen audience binds 2,130 files and passed seven checks. The 5420/2796 and 5421/2797 listeners had stopped before promotion. The archived pair is the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849542955) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849562092) · [Frozen checks](../reviews/mage-spatial-craft-2026-11-20/frozen-verification.json).
+Source **b69636150e788e83dd2725b38c1b3d42c6ca1ad6**, build **2026.11.20-mage-spatial-craft**, protocol **88**, catalog **101**. The local suite and both GitHub workflows passed 2,766 tests and seven checks. Each frozen audience binds 2,130 files and passed seven checks. The 5420/2796 and 5421/2797 listeners had stopped before promotion. The complete pair served as the rollback during the protocol 89 review. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849542955) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44849562092) · [Frozen checks](../reviews/mage-spatial-craft-2026-11-20/frozen-verification.json).
 
 The protocol 87 Mage Binding pair served as the rollback during the protocol 88 review in `output/review-rollback.zip`. All 4,243 restored files match their archived bytes. Archive SHA-256 156b5ece7efeb851ba11e96dad14eb66a1d54540a01e336129b08224f591363a. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-spatial-craft-2026-11-20/retention-result.json).
 

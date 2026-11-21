@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0** has 104 techniques. The Mage has Binding, Spatial Craft and Volatile Spellwork. [Volatile Spellwork](MAGE_VOLATILE_SPELLWORK.md).
+Current verified source **cc72b0044650d7980a306c478bc285caa8f36384** has 107 techniques. Assassin Duelist adds Called Opening and two exclusive fittings. [Duelist](ASSASSIN_DUELIST.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -149,4 +149,4 @@ Spatial Craft passed its Short and Standard study and is available in both froze
 
 Volatile Spellwork passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
 
-Protocol 90 adds Duelist with Called Opening, Passing Cut and Counterturn. The exact local gate and six purchased operations passed. Volatile Spellwork remains the retained preview while Duelist proceeds through publication. [Duelist](ASSASSIN_DUELIST.md).
+Duelist is available in both frozen previews. Continue with Assassin Infiltrator, then Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Duelist](ASSASSIN_DUELIST.md).

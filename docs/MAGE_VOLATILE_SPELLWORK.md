@@ -20,11 +20,11 @@ The initial study used 80 runs to check the three charged shapes. On the integra
 
 Across the integrated runs, 102 seals were paid, 20 were shifted, and 18 second strokes were released. The adaptive Standard follow-ups included 11 shunts and 7 second strokes. 95 vent intervals recorded positive Mage damage. That metric includes any ordinary Mage projectile that hit within the same interval. The controlled cases separately verified the exact hit and one-hit limits. [Run study](../reviews/mage-volatile-spellwork-2026-11-20/study-summary.json) · [Replays](../reviews/mage-volatile-spellwork-2026-11-20/practice-replays.json).
 
-## Current protocol 89 review
+## Protocol 89 rollback review
 
-Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. Testing uses [5422](http://127.0.0.1:5422/) with backend 2798. Public review uses [5423](http://127.0.0.1:5423/) with backend 2799. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).
+Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. The 5422/2798 and 5423/2799 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).
 
-The protocol 88 Mage Spatial Craft pair is the verified rollback in `output/review-rollback.zip`. All 4,263 restored files match their archived bytes. Archive SHA-256 51884863b268bdef09833f760a44f578b6df2a901ce7ac79d4eb913119d1a0fa. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-volatile-spellwork-2026-11-20/retention-result.json).
+The protocol 88 Mage Spatial Craft pair served as the rollback during the protocol 89 review in `output/review-rollback.zip`. All 4,263 restored files match their archived bytes. Archive SHA-256 51884863b268bdef09833f760a44f578b6df2a901ce7ac79d4eb913119d1a0fa. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-mage-volatile-spellwork-2026-11-20/retention-result.json).
 
 ## Verification
 

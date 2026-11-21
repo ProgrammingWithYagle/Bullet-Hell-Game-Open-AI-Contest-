@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+  "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+  "protocol": 90,
+  "checkedAt": "2026-11-21T17:38:49.501Z",
+  "nativeDriverSha256": "24fbb720327946dd800c410f2947959672953859d55db3277775ee2ab02d72ac",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+      "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+      "protocol": 90,
+      "url": "http://127.0.0.1:5424/",
+      "endpoint": "http://127.0.0.1:2800",
+      "files": 2153,
+      "manifestSha256": "9cdf06eebdb11c268e7ce39744da57030fa2bf2d6df1e245b973e0f2209405e6",
+      "backendSha256": "e0e12296f349b85d79686df505963431fdf3c5338c274319c7f5e65705d9f0b5",
+      "backendStartedAt": "2026-11-21T17:35:16.530Z",
+      "worker": {
+        "path": "assets/offline.worker-cMcvtLhw.js",
+        "bytes": 1635529,
+        "sha256": "b0df6b9ddf451f689029551186acdf037f7dd92e3b7ba315a462309afa005ba2"
+      },
+      "sampledNewAssets": 13,
+      "httpSha256": "d1dcb4e6046c41aab5441e9fa0e8562045035e28d1cf2ae71540384029cffd89",
+      "httpLogSha256": "3a131762d62b98e3eb7d77cdb80d902cc3a66a74ff92bc8621b73d21dbc90a41",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "753833c2daf70af80782c7e1f535cf98ac6cb7c0e3d39aad503df29a516c43aa",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "0dbee767ff46ad55aefe0e069163af6be58582c4853723c48d5273253b7c20aa",
+          "backendStartedAt": "2026-11-21T17:35:16.530Z"
+        },
+        {
+          "fitting": "passing",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-passing.log",
+          "logSha256": "217ad43aa4bd9f15655ac7051a4ecba8ed84bc5d3e7ae203480cbcb36c4d7490",
+          "raw": "testing-worker-passing.json",
+          "resultSha256": "960896a95ce5e6ef572c1c02c83d147fc595f3d66ddc4af253e6aeff3efcb878",
+          "backendStartedAt": "2026-11-21T17:35:16.530Z"
+        },
+        {
+          "fitting": "counter",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-counter.log",
+          "logSha256": "8b41de1892d566b4b4305ee1accc15ef3eb15662112225e1c0594ed7ca7c1a5b",
+          "raw": "testing-worker-counter.json",
+          "resultSha256": "ef700dcce99327896778760c2c9d409a0102a5eae8f03ccfc73eecaffac1db57",
+          "backendStartedAt": "2026-11-21T17:35:16.530Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "14ddcdf9ff0dabc11f5db7aec63942500f0b772eb0c2885fcb43b0b9781e7967",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "c588e360e976ee39bf84c63006c8b68649f0236a45b45f85c060d5c21c1cb1af",
+          "backendStartedAt": "2026-11-21T17:35:16.530Z"
+        },
+        {
+          "fitting": "passing",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-passing.log",
+          "logSha256": "c0f42dbb50f1ce9560a0240b10db1e73884b24364b06f0166f56992e350b7d4c",
+          "raw": "testing-peer-passing.json",
+          "resultSha256": "1d8d118f4b1976f918481e3c79416ac61dd648b7de8e54bab65314009d61bc8c",
+          "backendStartedAt": "2026-11-21T17:35:16.530Z"
+        },
+        {
+          "fitting": "counter",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-counter.log",
+          "logSha256": "47aa76a377c6ab5557b50d9efb65af288abfa39ccd621869c89cb60b2037ecc9",
+          "raw": "testing-peer-counter.json",
+          "resultSha256": "3d4331ffcc6e9a8f682f18494de38ce6284f77616d2ece6364d2720e676953bf",
+          "backendStartedAt": "2026-11-21T17:35:16.530Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+      "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+      "protocol": 90,
+      "url": "http://127.0.0.1:5425/",
+      "endpoint": "http://127.0.0.1:2801",
+      "files": 2153,
+      "manifestSha256": "22f0d093b252201afeb6dd38e3d2a7a6e16e8b97184144fcfbfa7369cda69a23",
+      "backendSha256": "e0e12296f349b85d79686df505963431fdf3c5338c274319c7f5e65705d9f0b5",
+      "backendStartedAt": "2026-11-21T17:35:15.948Z",
+      "worker": {
+        "path": "assets/offline.worker-C0wH9STK.js",
+        "bytes": 1635626,
+        "sha256": "0f7c946ff94dfa3429e4c4123ab1645dcde2eb79aed285b8c2d6b15bdfd9217d"
+      },
+      "sampledNewAssets": 13,
+      "httpSha256": "add9e223040ec599c65b7ac6d2a5809b355de0137e916ef2a6af00dddfcac0b1",
+      "httpLogSha256": "00c6a7a47b09db7f75a577ca739e74e0409f834b8738876a00ab29e4fb14784f",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "8ff8904599bbb56f1d486380520e57950b74d531121c0b98ba89f09eb4d5556c",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "b9fb80683b5ef9b8deafedd306bddf4751d72d30a6c20b46d3c99256d62bca0e",
+          "backendStartedAt": "2026-11-21T17:35:15.948Z"
+        },
+        {
+          "fitting": "passing",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-passing.log",
+          "logSha256": "0774281fc04db01fa1a0d71d2d8e4deee79bc6b92ac4b21b1cd844c757ddcaf5",
+          "raw": "public-worker-passing.json",
+          "resultSha256": "a0a7cc2541b82d4e2ee6e690828b872969d32944908a48e17dfefe5d6373e1c6",
+          "backendStartedAt": "2026-11-21T17:35:15.948Z"
+        },
+        {
+          "fitting": "counter",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-counter.log",
+          "logSha256": "961f2550806488a4d3dd97b69fdbaaae8c57b849d7235fb7e23217edd69759c6",
+          "raw": "public-worker-counter.json",
+          "resultSha256": "923c0f90f3b051e4f653afb85d4d15b0c44a02bbaf98c4c997042ff9a743f1f4",
+          "backendStartedAt": "2026-11-21T17:35:15.948Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "cfcb858d4ec2246ca85007e2c5ba75a0e0c47f8cd939986ba50af1d8400863da",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "eb3cda95a51a9babe576b5c0eb84dcfe6720e751b2252d860337d01e444e873f",
+          "backendStartedAt": "2026-11-21T17:35:15.948Z"
+        },
+        {
+          "fitting": "passing",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-passing.log",
+          "logSha256": "731a6ed6a1318fd6488c12730652f40ff3dade77733a85eeb8dfa9a10c649ccb",
+          "raw": "public-peer-passing.json",
+          "resultSha256": "9f4de4e6ab623ba5eece0f3608694f73c55ef8b11d822060c354893b62e092f4",
+          "backendStartedAt": "2026-11-21T17:35:15.948Z"
+        },
+        {
+          "fitting": "counter",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-counter.log",
+          "logSha256": "5cf8cbaaee548da29468e1600da08a708507a7109c01650075f48accf8be602e",
+          "raw": "public-peer-counter.json",
+          "resultSha256": "924c24a273d92245ed6918788c8f23db72ce705ae4145395929f8a2328b68300",
+          "backendStartedAt": "2026-11-21T17:35:15.948Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

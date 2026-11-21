@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. Testing uses [5422](http://127.0.0.1:5422/) with backend 2798. Public review uses [5423](http://127.0.0.1:5423/) with backend 2799. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).
+Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. Testing uses [5424](http://127.0.0.1:5424/) with backend 2800. Public review uses [5425](http://127.0.0.1:5425/) with backend 2801. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -119,4 +119,4 @@ Spatial Craft is available in both frozen previews. [Run study](MAGE_SPATIAL_CRA
 
 Volatile Spellwork is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
 
-Protocol 90 adds Duelist with Called Opening, Passing Cut and Counterturn. The exact local gate and six purchased operations passed. Volatile Spellwork remains the retained preview while Duelist proceeds through publication. [Duelist](ASSASSIN_DUELIST.md).
+Duelist is available in both frozen previews. Continue with Assassin Infiltrator, then Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Duelist](ASSASSIN_DUELIST.md).

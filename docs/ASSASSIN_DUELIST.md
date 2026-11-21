@@ -20,6 +20,12 @@ The integrated comparison used 80 Short and Standard runs. The policies banked S
 
 The runs recorded 480 marks, 384 paid strikes, 377 landed strikes and 7 guarded strikes. That includes 126 Passing Cuts and 102 strikes after a Counterturn. The unfitted policy won three fewer cases than the banked control in this sample. This navigation policy is one automated comparison. [Run study](../reviews/assassin-duelist-2026-11-20/study-summary.json) · [Replays](../reviews/assassin-duelist-2026-11-20/practice-replays.json).
 
+## Current protocol 90 review
+
+Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. Testing uses [5424](http://127.0.0.1:5424/) with backend 2800. Public review uses [5425](http://127.0.0.1:5425/) with backend 2801. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).
+
+The protocol 89 Mage Volatile Spellwork pair is the verified rollback in `output/review-rollback.zip`. All 4,289 restored files match their archived bytes. Archive SHA-256 50928501f3c1a0a8de36ba2d2e4f87d4c7f31f996795a2e45d2c2de4312be1be. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-duelist-2026-11-20/retention-result.json).
+
 ## Verification
 
 The 27-SP census bought 243 Assassin builds with Duelist, including 78 with each fitting and 207 using at least one issued Assassin transformation. The earlier 12,924 configurations remained legal. All 4,196 Volatile Spellwork-era Practice fixtures restored, including 2,557 Fuse Seal builds. Both HUD layouts, all three remaps and all fifteen dictionaries passed. [Census](../reviews/assassin-duelist-2026-11-20/build-census.json) · [Save bindings](../tests/fixtures/assassin-issued89-bindings.json).
