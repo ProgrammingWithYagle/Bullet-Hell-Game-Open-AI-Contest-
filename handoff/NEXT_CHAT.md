@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 90 Assassin Duelist candidate
+
+Protocol 90 adds Duelist with Called Opening, Passing Cut and Counterturn. The exact local gate and six purchased operations passed. Volatile Spellwork remains the retained preview while Duelist proceeds through publication. [Duelist](../docs/ASSASSIN_DUELIST.md).
+
 ## Current exact protocol 89 Mage Volatile Spellwork review
 
 Source **27bc2d33ca43c4a78ade74279f39dd87aeb1a6f0**, build **2026.11.20-mage-volatile-spellwork**, protocol **89**, catalog **104**. The local suite and both GitHub workflows passed 2,784 tests and seven checks. Each frozen audience binds 2,143 files and passed seven checks. Testing uses [5422](http://127.0.0.1:5422/) with backend 2798. Public review uses [5423](http://127.0.0.1:5423/) with backend 2799. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854827757) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44854846080) · [Frozen checks](../reviews/mage-volatile-spellwork-2026-11-20/frozen-verification.json).

@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Assassin Duelist
+
+The protocol 90 census purchased 243 Duelist configurations in 27-SP shops. Each fitting has 78 legal configurations. All 12,924 earlier sets remained legal. [Census](../reviews/assassin-duelist-2026-11-20/build-census.json) · [Run study](ASSASSIN_DUELIST.md).
+
 ## Mage Volatile Spellwork
 
 The protocol 89 census purchased 3,647 legal Mage configurations in 27-SP shops. 1,166 carry all three pathways, with all 1,090 prior Mage configurations preserved. [Census](../reviews/mage-volatile-spellwork-2026-11-20/build-census.json) · [Run study](MAGE_VOLATILE_SPELLWORK.md).

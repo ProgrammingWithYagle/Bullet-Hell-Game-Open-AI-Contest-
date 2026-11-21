@@ -118,3 +118,5 @@ The scoped Mage review covers eight fitting combinations in 96 Standard runs, tw
 Spatial Craft is available in both frozen previews. [Run study](MAGE_SPATIAL_CRAFT.md).
 
 Volatile Spellwork is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
+
+Protocol 90 adds Duelist with Called Opening, Passing Cut and Counterturn. The exact local gate and six purchased operations passed. Volatile Spellwork remains the retained preview while Duelist proceeds through publication. [Duelist](ASSASSIN_DUELIST.md).

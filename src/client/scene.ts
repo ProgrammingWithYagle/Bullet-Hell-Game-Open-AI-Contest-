@@ -886,6 +886,28 @@ export class CombatScene extends Phaser.Scene {
       }
     }
     for (const cue of view.classCues) {
+      if (cue.kind === 'assassin-duel-focus' || cue.kind === 'assassin-duel-strike') {
+        if (now >= cue.until) continue;
+        const local = cue.owner === this.localId;
+        const edge = this.highContrast ? 0xffffff : 0xedb2ad;
+        const age = Math.min(1, Math.max(0, (cue.until - now) / Math.max(1, cue.until - cue.at)));
+        if (cue.kind === 'assassin-duel-strike') {
+          h.lineStyle(cue.radius * 2, 0x392033, (local ? .50 : .30) * age)
+            .lineBetween(cue.x, cue.y, cue.toX, cue.toY);
+          h.lineStyle(cue.passing ? 3 : 2, edge, (cue.landed ? .94 : .50) * age)
+            .lineBetween(cue.x, cue.y, cue.toX, cue.toY);
+          continue;
+        }
+        const { x, y, radius } = cue;
+        h.lineStyle(cue.opened ? 2.8 : 1.8, edge, local ? .9 : .38).beginPath()
+          .arc(x, y, radius, -Math.PI / 2, -Math.PI / 2 + age * Math.PI * 2).strokePath();
+        for (const side of [-1, 1]) {
+          const px = x + side * (radius - 3), span = cue.opened ? 7 : 4;
+          h.lineBetween(px, y - span, px, y + span);
+          if (cue.countering) h.lineBetween(px, y, px - side * 5, y + 4);
+        }
+        continue;
+      }
       if (cue.kind === 'mage-fuse-point' || cue.kind === 'mage-fuse-vent') {
         if (now >= cue.until) continue;
         const energy = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));

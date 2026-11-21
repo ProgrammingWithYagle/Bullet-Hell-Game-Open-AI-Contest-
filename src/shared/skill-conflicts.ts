@@ -1,3 +1,4 @@
+import { duelistIds } from './assassin-called-opening.ts';
 import { mageVolatileIds } from './mage-fuse-seal.ts';
 import { mageSpatialIds } from './mage-waymark-return.ts';
 import { mageBindingIds } from './mage-pivot-sigil.ts';
@@ -13,6 +14,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherDuel = candidate === duelistIds.passing ? duelistIds.counter :
+    candidate === duelistIds.counter ? duelistIds.passing : undefined;
+  if (otherDuel && owned.includes(otherDuel)) return otherDuel;
   const otherFuse = candidate === mageVolatileIds.shunt ? mageVolatileIds.twin :
     candidate === mageVolatileIds.twin ? mageVolatileIds.shunt : undefined;
   if (otherFuse && owned.includes(otherFuse)) return otherFuse;

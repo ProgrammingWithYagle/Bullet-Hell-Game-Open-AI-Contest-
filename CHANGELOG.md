@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.20-mage-volatile-spellwork**, protocol 89. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.20-assassin-duelist**, protocol 90. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-20 — Call the opening
+
+### Assassin Duelist
+
+- Called Opening measures a single enemy through real sideways footwork and spends Shadow Step recovery on the strike.
+- Passing Cut preserves the walking stride. Counterturn earns a new line by measuring back across the original opening.
 
 ## 2026-11-20 — Light the fuse
 
