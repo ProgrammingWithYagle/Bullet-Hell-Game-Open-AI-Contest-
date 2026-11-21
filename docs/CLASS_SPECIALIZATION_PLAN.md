@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **cc72b0044650d7980a306c478bc285caa8f36384** has 107 techniques. Assassin Duelist adds Called Opening and two exclusive fittings. [Duelist](ASSASSIN_DUELIST.md).
+Current verified source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3** has 110 techniques. Assassin Infiltrator adds Slip Route and two exclusive fittings. [Infiltrator](ASSASSIN_INFILTRATOR.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -149,6 +149,6 @@ Spatial Craft passed its Short and Standard study and is available in both froze
 
 Volatile Spellwork passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
 
-Duelist is available in both frozen previews. Continue with Assassin Infiltrator, then Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Duelist](ASSASSIN_DUELIST.md).
+The verified Duelist previews are available in the rollback. [Duelist](ASSASSIN_DUELIST.md).
 
-Protocol 91 adds Infiltrator with Slip Route, Footstep Relay and Threshold Echo. The exact local gate and six purchased operations passed. Duelist remains the retained preview while Infiltrator proceeds through publication. [Infiltrator](ASSASSIN_INFILTRATOR.md).
+Infiltrator is available in both frozen previews. Continue with Assassin Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Infiltrator](ASSASSIN_INFILTRATOR.md).

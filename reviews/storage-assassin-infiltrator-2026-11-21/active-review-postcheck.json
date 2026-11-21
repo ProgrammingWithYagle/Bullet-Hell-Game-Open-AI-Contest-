@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-21T19:03:38.4620279Z",
+  "stage": "after",
+  "currentScope": "reviews/assassin-infiltrator-2026-11-21",
+  "rollbackScope": "reviews/assassin-duelist-2026-11-20",
+  "rollbackSha256": "73898a9b2a47c682bd4111797047f11c0227d902ad56a082cf094d072c1ba817",
+  "previews": [
+    {
+      "scope": "reviews/assassin-infiltrator-2026-11-21",
+      "audience": "testing",
+      "source": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 39264,
+          "port": 5426,
+          "processUtc": "2026-11-21T18:30:56.9271310Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-assassin-infiltrator-2026-11-21-testing-a24d3bd --host 127.0.0.1 --port 5426 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 29384,
+          "port": 2802,
+          "processUtc": "2026-11-21T18:30:56.9105360Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-assassin-infiltrator-2026-11-21-a24d3bd.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T18:30:57.58Z",
+        "uptimeSeconds": 1951.432471,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 91,
+        "contentRevision": "448522105b115dd46ff6f8c80d25c980f988c7bade981dc66abd4326832ce461",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/assassin-infiltrator-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/assassin-infiltrator-2026-11-21",
+      "audience": "public",
+      "source": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 35128,
+          "port": 5427,
+          "processUtc": "2026-11-21T18:30:57.6098530Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-assassin-infiltrator-2026-11-21-public-a24d3bd --host 127.0.0.1 --port 5427 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 42688,
+          "port": 2803,
+          "processUtc": "2026-11-21T18:30:57.5892350Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-assassin-infiltrator-2026-11-21-a24d3bd.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-21T18:30:58.225Z",
+        "uptimeSeconds": 1953.8650771,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 91,
+        "contentRevision": "448522105b115dd46ff6f8c80d25c980f988c7bade981dc66abd4326832ce461",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/assassin-infiltrator-2026-11-21/processes-public.json"
+    },
+    {
+      "scope": "reviews/assassin-duelist-2026-11-20",
+      "audience": "testing",
+      "source": "cc72b0044650d7980a306c478bc285caa8f36384",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5424,
+          "originallyRecordedPid": 41552,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2800,
+          "originallyRecordedPid": 41804,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/assassin-duelist-2026-11-20/processes-testing.json"
+    },
+    {
+      "scope": "reviews/assassin-duelist-2026-11-20",
+      "audience": "public",
+      "source": "cc72b0044650d7980a306c478bc285caa8f36384",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5425,
+          "originallyRecordedPid": 15760,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2801,
+          "originallyRecordedPid": 14456,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/assassin-duelist-2026-11-20/processes-public.json"
+    }
+  ]
+}

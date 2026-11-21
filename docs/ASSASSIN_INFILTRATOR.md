@@ -20,6 +20,14 @@ The early entry study used 48 Short and Standard runs across four opening arenas
 
 The integrated comparison recorded 246 paid marks, 231 echoes, 71 completed relays and 65 watched entrances. It recorded 0 automatic threshold deployments under those policies. In eight focused co-op follow-ups, a teammate guided a hostile toward the entrance and produced 1 automatic deployment. The controlled fight also observed the actual crossing. [Run study](../reviews/assassin-infiltrator-2026-11-21/study-summary.json) · [Replays](../reviews/assassin-infiltrator-2026-11-21/practice-replays.json).
 
+## Current protocol 91 review
+
+Source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3**, build **2026.11.21-assassin-infiltrator**, protocol **91**, catalog **110**. The local suite and both GitHub workflows passed 2,813 tests and seven checks. Each frozen audience binds 2,164 files and passed seven checks. Testing uses [5426](http://127.0.0.1:5426/) with backend 2802. Public review uses [5427](http://127.0.0.1:5427/) with backend 2803. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936152181) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936166121) · [Frozen checks](../reviews/assassin-infiltrator-2026-11-21/frozen-verification.json).
+
+The protocol 90 Assassin Duelist pair is the verified rollback in `output/review-rollback.zip`. All 4,309 restored files match their archived bytes. Archive SHA-256 73898a9b2a47c682bd4111797047f11c0227d902ad56a082cf094d072c1ba817. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-infiltrator-2026-11-21/retention-result.json).
+
+The first public Solo Threshold Echo probe timed out before placing the echo. The same unmodified public worker passed on its repeat. Both attempts are in the publication archive.
+
 ## Verification
 
 The 27-SP census bought 1,090 legal Assassin builds, including 598 with both Duelist and Infiltrator. All 13,167 earlier builds remained legal. All 4,442 Duelist-era Practice fixtures restored, including 243 Duelist builds. Both HUD layouts, all three remaps and all fifteen original dictionaries passed. [Census](../reviews/assassin-infiltrator-2026-11-21/build-census.json) · [Save bindings](../tests/fixtures/assassin-issued90-bindings.json).

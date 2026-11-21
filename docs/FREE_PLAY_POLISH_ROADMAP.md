@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. Testing uses [5424](http://127.0.0.1:5424/) with backend 2800. Public review uses [5425](http://127.0.0.1:5425/) with backend 2801. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).
+Source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3**, build **2026.11.21-assassin-infiltrator**, protocol **91**, catalog **110**. The local suite and both GitHub workflows passed 2,813 tests and seven checks. Each frozen audience binds 2,164 files and passed seven checks. Testing uses [5426](http://127.0.0.1:5426/) with backend 2802. Public review uses [5427](http://127.0.0.1:5427/) with backend 2803. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936152181) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936166121) · [Frozen checks](../reviews/assassin-infiltrator-2026-11-21/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -119,6 +119,6 @@ Spatial Craft is available in both frozen previews. [Run study](MAGE_SPATIAL_CRA
 
 Volatile Spellwork is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
 
-Duelist is available in both frozen previews. Continue with Assassin Infiltrator, then Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Duelist](ASSASSIN_DUELIST.md).
+The verified Duelist previews are available in the rollback. [Duelist](ASSASSIN_DUELIST.md).
 
-Protocol 91 adds Infiltrator with Slip Route, Footstep Relay and Threshold Echo. The exact local gate and six purchased operations passed. Duelist remains the retained preview while Infiltrator proceeds through publication. [Infiltrator](ASSASSIN_INFILTRATOR.md).
+Infiltrator is available in both frozen previews. Continue with Assassin Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Infiltrator](ASSASSIN_INFILTRATOR.md).
