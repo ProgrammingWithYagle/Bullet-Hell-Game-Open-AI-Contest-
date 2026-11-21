@@ -106,9 +106,9 @@ export function splitBulwarkKit(kit:KitStatus){
 }
 export function splitLineworkKit(kit: KitStatus) {
   const base=splitBulwarkKit(kit);
-  if (kit.fieldDressing !== undefined || kit.rapidResponse !== undefined || kit.precautionWrap !== undefined || kit.pivotSigil !== undefined) {
-    const { fieldDressing, rapidResponse, precautionWrap, pivotSigil, ...shared } = base.shared;
-    return { shared, owner: { ...base.owner, fieldDressing, rapidResponse, precautionWrap, pivotSigil } };
+  if (kit.fieldDressing !== undefined || kit.rapidResponse !== undefined || kit.precautionWrap !== undefined || kit.pivotSigil !== undefined || kit.waymark !== undefined) {
+    const { fieldDressing, rapidResponse, precautionWrap, pivotSigil, waymark, ...shared } = base.shared;
+    return { shared, owner: { ...base.owner, fieldDressing, rapidResponse, precautionWrap, pivotSigil, waymark } };
   }
   if (kit.lineworkRecovery === undefined) return base;
   const { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked, ...shared } = base.shared;

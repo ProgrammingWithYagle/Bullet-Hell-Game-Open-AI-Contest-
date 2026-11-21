@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Mage Spatial Craft
+
+The protocol 88 census purchased 1,090 legal Mage configurations in 27-SP shops, including 598 two-path builds. All 249 earlier Binding configurations are present. [Census](../reviews/mage-spatial-craft-2026-11-20/build-census.json) · [Run study](MAGE_SPATIAL_CRAFT.md).
+
 ## Mage Binding
 
 The protocol 87 census purchased 249 legal Binding configurations using the existing 27-SP budget. It included the issued Mage transformations and four General mobility skills. There are 81 Fixed Angle and 81 Reverse Face configurations. [Census](../reviews/mage-binding-2026-11-20/build-census.json) · [Run study](MAGE_BINDING.md).

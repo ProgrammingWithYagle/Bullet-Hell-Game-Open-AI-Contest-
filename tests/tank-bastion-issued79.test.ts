@@ -1,3 +1,4 @@
+import spatialEdition from './fixtures/mage-issued87-bindings.json';
 import mageEdition from './fixtures/mage-issued86-bindings.json';
 import preventiveEdition from './fixtures/medic-issued85-bindings.json';
 import responseEdition from './fixtures/medic-issued84-bindings.json';
@@ -21,7 +22,7 @@ const issued = JSON.parse(bytes);
 const digest = (value: string) => createHash('sha256').update(value).digest('hex');
 
 test('the exact issued Bastion edition restores all 207 local build fixtures', () => {
-  assert.equal(PROTOCOL, 87);
+  assert.equal(PROTOCOL, 88);
   assert.equal(issued.protocol, 79);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -82,7 +83,7 @@ test('issued 79 preserves both HUD layouts, saved remaps and all twelve local re
 
 test('late-fittings copy preserves all fifteen issued 79 message dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...bulwarkFittings.addedLocaleKeys,...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...bulwarkFittings.addedLocaleKeys,...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
   for (const [id, sha256] of Object.entries(issued.dictionaries)) {
     const locale = JSON.parse(readFileSync(new URL('../locales/' + id + '.json', import.meta.url), 'utf8'));
     for (const key of appended) assert(Object.hasOwn(locale.messages, key), key);

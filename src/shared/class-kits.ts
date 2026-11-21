@@ -1,3 +1,4 @@
+import type { WaymarkCue, WaymarkStatus } from './mage-waymark-return.ts';
 import type { PivotStatus, PivotCue } from './mage-pivot-sigil.ts';
 import type { PrecautionCue, PrecautionStatus } from './medic-preventive-care.ts';
 import type { RapidResponseCue, RapidResponseStatus } from './medic-rapid-response.ts';
@@ -42,6 +43,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   rapidResponse?: RapidResponseStatus;
   precautionWrap?: PrecautionStatus;
   pivotSigil?: PivotStatus;
+  waymark?: WaymarkStatus;
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
@@ -119,7 +121,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
-  | FieldDressingCue | RapidResponseCue | PrecautionCue | PivotCue
+  | FieldDressingCue | RapidResponseCue | PrecautionCue | PivotCue | WaymarkCue
   | BastionCue
   | InterceptorScreenCue
   | FlakBurstCue

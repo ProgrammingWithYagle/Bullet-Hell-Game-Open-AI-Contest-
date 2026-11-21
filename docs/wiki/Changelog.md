@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.20-mage-binding**, protocol 87. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.20-mage-spatial-craft**, protocol 88. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-20 — Mark the way back
+
+### Mage Spatial Craft
+
+- Waymark Return spends Ward Detonation recovery to follow a recent walked trail through clear floor.
+- Hold the Trace pauses a paid return for one action. Side Landing redirects the last leg once while keeping its original time and distance budget.
 
 ## 2026-11-20 — Draw the line
 

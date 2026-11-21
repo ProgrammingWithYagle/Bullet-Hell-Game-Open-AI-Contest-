@@ -144,3 +144,5 @@ Tank mobile bulwark research includes the retained carry study and corrected Bra
 Tank has eleven techniques across Mobile Bulwark, Interceptor and Bastion. Relief Watch and Countermarch extend the two early Bastion fittings and have actual 15-SP Solo and non-host room evidence. Continue the class checklist and broader acceptance before treating the class as finished. [Bastion](TANK_BASTION_DESIGN.md) Next work continues with Tank and the remaining class routes before the boss pass.
 
 Continue Mage with Spatial Craft and Volatile Spellwork. The scoped Mage review follows those pathways. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Mage Binding](MAGE_BINDING.md).
+
+Protocol 88 adds Spatial Craft with Waymark Return, Hold the Trace and Side Landing. All six purchased operations passed from the exact installed source. The retained Binding pair serves review while Spatial Craft proceeds through publication. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).

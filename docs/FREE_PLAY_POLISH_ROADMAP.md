@@ -114,3 +114,5 @@ Preventive Care’s two fittings were exercised at the earned 9-SP Short shop th
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
 Continue Mage with Spatial Craft and Volatile Spellwork. The scoped Mage review follows those pathways. Human play, rendered presentation, physical devices, listening, native-language review and final balance remain open. [Mage Binding](MAGE_BINDING.md).
+
+Protocol 88 adds Spatial Craft with Waymark Return, Hold the Trace and Side Landing. All six purchased operations passed from the exact installed source. The retained Binding pair serves review while Spatial Craft proceeds through publication. [Spatial Craft](MAGE_SPATIAL_CRAFT.md).

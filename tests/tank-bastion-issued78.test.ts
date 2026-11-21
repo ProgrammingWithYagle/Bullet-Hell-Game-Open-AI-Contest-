@@ -1,3 +1,4 @@
+import spatialEdition from './fixtures/mage-issued87-bindings.json';
 import mageEdition from './fixtures/mage-issued86-bindings.json';
 import preventiveEdition from './fixtures/medic-issued85-bindings.json';
 import responseEdition from './fixtures/medic-issued84-bindings.json';
@@ -23,7 +24,7 @@ const issued = JSON.parse(bytes);
 const sha = (value: string) => createHash('sha256').update(value).digest('hex');
 
 test('exact issued 78 restores all 156 local ownership cases without changing the original', () => {
-  assert.equal(PROTOCOL, 87);
+  assert.equal(PROTOCOL, 88);
   assert.equal(issued.protocol, 78);
   assert.equal(issued.contentRevision, binding.sourceRevision);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
@@ -88,7 +89,7 @@ test('the issued 78 boundary rejects new Bastion ownership, mismatched revisions
 
 test('all fifteen issued 78 dictionaries retain their exact previous messages', () => {
   assert.equal(Object.keys(issued.localeHashes).length, 15);
-  const added = new Set([...binding.addedLocaleKeys, ...lateBinding.addedLocaleKeys, ...bulwarkFittings.addedLocaleKeys,...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  const added = new Set([...binding.addedLocaleKeys, ...lateBinding.addedLocaleKeys, ...bulwarkFittings.addedLocaleKeys,...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
   for (const [id, hash] of Object.entries(issued.localeHashes)) {
     const locale = JSON.parse(readFileSync(new URL('../locales/' + id + '.json', import.meta.url), 'utf8'));
     for (const key of added) assert(Object.hasOwn(locale.messages, key), id + ' ' + key);

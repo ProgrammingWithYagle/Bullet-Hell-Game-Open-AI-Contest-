@@ -1,3 +1,4 @@
+import { mageSpatialIds } from './mage-waymark-return.ts';
 import { mageBindingIds } from './mage-pivot-sigil.ts';
 import { preventiveCareIds } from './medic-preventive-care.ts';
 import { rapidResponseIds } from './medic-rapid-response.ts';
@@ -11,6 +12,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherSpatial = candidate === mageSpatialIds.hold ? mageSpatialIds.side :
+    candidate === mageSpatialIds.side ? mageSpatialIds.hold : undefined;
+  if (otherSpatial && owned.includes(otherSpatial)) return otherSpatial;
   const otherPivot = candidate === mageBindingIds.fixed ? mageBindingIds.reverse :
     candidate === mageBindingIds.reverse ? mageBindingIds.fixed : undefined;
   if (otherPivot && owned.includes(otherPivot)) return otherPivot;

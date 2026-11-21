@@ -873,6 +873,20 @@ export class CombatScene extends Phaser.Scene {
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
     for (const cue of view.classCues) {
+      if (cue.kind === 'mage-waymark') {
+        if (now >= cue.until) continue;
+        const age = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));
+        const { x, y, radius, exit, resting, returning } = cue;
+        const edge = this.highContrast ? 0xffffff : 0xb4e3d6;
+        h.fillStyle(0x152b28, .58).fillCircle(x, y, radius - 5);
+        h.lineStyle(2, edge, exit ? .35 : .94).beginPath()
+          .moveTo(x, y - 8).lineTo(x + 10, y).lineTo(x, y + 8).lineTo(x - 10, y).closePath().strokePath();
+        h.lineStyle(returning ? 3 : 2, edge, .95).beginPath()
+          .arc(x, y, radius, -Math.PI / 2, -Math.PI / 2 + age * Math.PI * 2).strokePath();
+        if (resting) h.lineStyle(2, edge, .94).lineBetween(x - 2, y - 3, x - 2, y + 3).lineBetween(x + 2, y - 3, x + 2, y + 3);
+        if (exit) h.lineStyle(2, edge, .97).strokeRect(exit.x - 7, exit.y - 7, 14, 14);
+        continue;
+      }
       if (cue.kind === 'mage-pivot-mark' || cue.kind === 'mage-pivot-stroke') {
         if (now >= cue.until) continue;
         const remaining = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));

@@ -1,3 +1,4 @@
+import spatialEdition from './fixtures/mage-issued87-bindings.json';
 import mageEdition from './fixtures/mage-issued86-bindings.json';
 import preventiveEdition from './fixtures/medic-issued85-bindings.json';
 import responseEdition from './fixtures/medic-issued84-bindings.json';
@@ -18,7 +19,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 82 restores all 381 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 87);
+  assert.equal(PROTOCOL, 88);
   assert.equal(issued.protocol, 82);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -78,7 +79,7 @@ test('issued 82 preserves both HUD layouts, all three remaps and the full profil
 
 test('Field Surgery extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 19);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

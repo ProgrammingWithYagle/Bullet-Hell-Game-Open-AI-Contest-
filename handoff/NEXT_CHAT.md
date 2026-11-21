@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 88 Mage Spatial Craft candidate
+
+Protocol 88 adds Spatial Craft with Waymark Return, Hold the Trace and Side Landing. All six purchased operations passed from the exact installed source. The retained Binding pair serves review while Spatial Craft proceeds through publication. [Spatial Craft](../docs/MAGE_SPATIAL_CRAFT.md).
+
 ## Current exact protocol 87 Mage Binding review
 
 Source **61bf282b6b115617d83cd3cb1f68f25dd87a7517**, build **2026.11.20-mage-binding**, protocol **87**, catalog **98**. The local suite and both GitHub workflows passed 2,748 tests and seven checks. Each frozen audience binds 2,120 files and passed seven checks. Testing uses [5418](http://127.0.0.1:5418/) with backend 2794. Public review uses [5419](http://127.0.0.1:5419/) with backend 2795. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44781423345) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44781450554) · [Frozen checks](../reviews/mage-binding-2026-11-20/frozen-verification.json).
