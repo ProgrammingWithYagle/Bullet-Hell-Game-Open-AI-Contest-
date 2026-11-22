@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "sourceCommit": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+  "contentRevision": "8940e02bbe09ee2d1e2cf8e7859a578fb92b73837e9cfdcbb89f30105bf1331a",
+  "protocol": 94,
+  "checkedAt": "2026-11-22T16:54:50.761Z",
+  "nativeDriverSha256": "654e726c1a87ccf4eb3e8c5a9e8511921dad7aa9f3a3acd5ee61425a60cfd094",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+      "contentRevision": "8940e02bbe09ee2d1e2cf8e7859a578fb92b73837e9cfdcbb89f30105bf1331a",
+      "protocol": 94,
+      "url": "http://127.0.0.1:5432/",
+      "endpoint": "http://127.0.0.1:2808",
+      "files": 2194,
+      "manifestSha256": "d42171a75310a9d66123fab94ca1c5ebff75b1e790731f34abfdb232a0fe623b",
+      "backendSha256": "fceac3f429dc92955690b9eb58eabd761938aff3f5171455a5dbbb99cb691c54",
+      "backendStartedAt": "2026-11-22T16:48:59.528Z",
+      "worker": {
+        "path": "assets/offline.worker-CwvBBedx.js",
+        "bytes": 1684502,
+        "sha256": "75881b8a9aa520befe3d77b91f8a5afb204754bb4314a1f467547a14700d38de"
+      },
+      "sampledNewAssets": 20,
+      "httpSha256": "6b53f1c07070052cce3f7b95e31d9d1c2a3314e6d34277e095c39517b59fa2a2",
+      "httpLogSha256": "6326320803fc3e41b59f41552abc71e2f65bce1fa8080099621e926d37284c2c",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "e6c99a88ae9f596a4cd349a3d1b9b697d8737111f55dc986b78348f91e3c5265",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "501b2016dd99c2d0fd02834bc4c96c267e858566bf09ebd87a5e99dbbbd91eac",
+          "backendStartedAt": "2026-11-22T16:48:59.528Z"
+        },
+        {
+          "fitting": "cross",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-cross.log",
+          "logSha256": "5c02b94a8eb945dae96acf31efa2db6d9b97a0c5d44a696eeebd995c12f09ccd",
+          "raw": "testing-worker-cross.json",
+          "resultSha256": "f826d880ce5cfd53ef951ba7f0376b96b47f397d437772ba8a46712ea5ebbee9",
+          "backendStartedAt": "2026-11-22T16:48:59.528Z"
+        },
+        {
+          "fitting": "closing",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-closing.log",
+          "logSha256": "861c1b683ade3ba72df41929cc4ce4ebc725604fb5932da3496e28056612898e",
+          "raw": "testing-worker-closing.json",
+          "resultSha256": "8c1d2ed18de1d6c1f1dd452078f1c01b581f916532da40593693422595b68f76",
+          "backendStartedAt": "2026-11-22T16:48:59.528Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "9d7e126bbc8052c9323f54887b07539607155f4ab61cb7f01a9fba5eb48271ec",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "91a880bdb8e00b4e8a8634e0728233f213a3d62a7f9beef133dc47923fc3726e",
+          "backendStartedAt": "2026-11-22T16:48:59.528Z"
+        },
+        {
+          "fitting": "cross",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-cross.log",
+          "logSha256": "45539c9c80185ba393ffce7dc7227cdd496e3edc38b730dd78b9b104dced7734",
+          "raw": "testing-peer-cross.json",
+          "resultSha256": "dcdc2677d079c5db16a7bb84cf946f289d33e01ba3a32d850af98906e17b15fe",
+          "backendStartedAt": "2026-11-22T16:48:59.528Z"
+        },
+        {
+          "fitting": "closing",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-closing.log",
+          "logSha256": "16803327c09f608972ba2149cf06f0237192fc9b3a7082b361d0f3de8c29fd02",
+          "raw": "testing-peer-closing.json",
+          "resultSha256": "6706aebf67636129bfb0fcb43888f93b9ec02cc5bcb22505c29bb175ff6fa697",
+          "backendStartedAt": "2026-11-22T16:48:59.528Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+      "contentRevision": "8940e02bbe09ee2d1e2cf8e7859a578fb92b73837e9cfdcbb89f30105bf1331a",
+      "protocol": 94,
+      "url": "http://127.0.0.1:5433/",
+      "endpoint": "http://127.0.0.1:2809",
+      "files": 2194,
+      "manifestSha256": "fb8c15019fb3071aa007eb292425c7b6a6c6efd1e9922a812d9e3fad16192bc4",
+      "backendSha256": "fceac3f429dc92955690b9eb58eabd761938aff3f5171455a5dbbb99cb691c54",
+      "backendStartedAt": "2026-11-22T16:48:59.094Z",
+      "worker": {
+        "path": "assets/offline.worker-D4UrQ52a.js",
+        "bytes": 1684599,
+        "sha256": "afce72f40f2d508ffc5bdff176601c323cb15fae41d790cbaf243eb93c3f85fe"
+      },
+      "sampledNewAssets": 20,
+      "httpSha256": "c8b1abd99e099bb58f342528d826976f9437013e5d32935d73c3061dceb4099c",
+      "httpLogSha256": "2c9b3cbc246c54116cc4d4694a50e8dd8e47feca42c5c0b253dec3819166c355",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "e6c99a88ae9f596a4cd349a3d1b9b697d8737111f55dc986b78348f91e3c5265",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "d99cde0616427de9f308b543f4a2a9c2c8cb56b9cb0107bf5657879154e7c2f0",
+          "backendStartedAt": "2026-11-22T16:48:59.094Z"
+        },
+        {
+          "fitting": "cross",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-cross.log",
+          "logSha256": "55e1739aca6aeee677379c0f8fe6bca2ff2ae30522fc1c8af7e54b3e12ea7251",
+          "raw": "public-worker-cross.json",
+          "resultSha256": "0813ac9371084d42ad99dd863f1835ad039520e627ebb63dd78e7422351a453e",
+          "backendStartedAt": "2026-11-22T16:48:59.094Z"
+        },
+        {
+          "fitting": "closing",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-closing.log",
+          "logSha256": "5f4d8f881392a38f0664c1913114502367c9aeb2d8ebc00ea0f1f620087065eb",
+          "raw": "public-worker-closing.json",
+          "resultSha256": "52c6a84f6e3b892df9d8122b3a73ce55ee2aca96f15cacfe43c4d93ec6b55237",
+          "backendStartedAt": "2026-11-22T16:48:59.094Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "8c5e09b732e846e74f658cf1d36632fa31a32ded5457dcc2a65583b2f5dd1796",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "579810f72349d76c26d62cedd3e3ed26d3d73045204b185dbf4d64592449406b",
+          "backendStartedAt": "2026-11-22T16:48:59.094Z"
+        },
+        {
+          "fitting": "cross",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-cross.log",
+          "logSha256": "7295a262619db050641195bdafdfe4ec874cd41beddd7482d37ca63aeb36708c",
+          "raw": "public-peer-cross.json",
+          "resultSha256": "a52cfdae084b728774cbc20653d78eb651932cd2f6860cd93c310c3cf4d1d1f6",
+          "backendStartedAt": "2026-11-22T16:48:59.094Z"
+        },
+        {
+          "fitting": "closing",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-closing.log",
+          "logSha256": "779f07a6cda6b541b643235e76bbabada1a99927a3cc5ff7a4d8ace2d4470eb6",
+          "raw": "public-peer-closing.json",
+          "resultSha256": "91d8f139485e7d7071486a11bb17e6f1e4a7f17169a4bbfc413eb3e6b86f69ba",
+          "backendStartedAt": "2026-11-22T16:48:59.094Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

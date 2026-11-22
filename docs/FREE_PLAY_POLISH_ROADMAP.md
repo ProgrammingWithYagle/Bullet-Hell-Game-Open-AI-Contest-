@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1**, build **2026.11.21-bard-conductor**, protocol **93**, catalog **116**. The local suite and both GitHub workflows passed 2,841 tests and seven checks. Each frozen audience binds 2,186 files and passed seven checks. Testing uses [5430](http://127.0.0.1:5430/) with backend 2806. Public review uses [5431](http://127.0.0.1:5431/) with backend 2807. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974702977) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974715409) · [Frozen checks](../reviews/bard-conductor-2026-11-21/frozen-verification.json).
+Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. Testing uses [5432](http://127.0.0.1:5432/) with backend 2808. Public review uses [5433](http://127.0.0.1:5433/) with backend 2809. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -123,8 +123,8 @@ The historical Duelist review retains its original source, build and storage rec
 
 Infiltrator’s historical review preserves the original source, build and storage receipts. [Infiltrator](ASSASSIN_INFILTRATOR.md).
 
-The verified Mark Hunter previews are available in the rollback. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
+Mark Hunter’s historical review preserves its original source, build and storage receipts. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
 
-Conductor is available in both frozen previews. Continue with Bard Lament. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Conductor](BARD_CONDUCTOR.md).
+The verified Conductor previews are available in the rollback. [Bard Conductor](BARD_CONDUCTOR.md).
 
-Protocol 94 adds Bard Lament with Mourning Measure, Cross Verse and Closing Chord. The local gate and six ordinary transport cases passed. Conductor remains the retained review during Lament verification. [Bard Lament](BARD_LAMENT.md).
+Lament is available in both frozen previews. Continue with Bard Misdirection. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Lament](BARD_LAMENT.md).

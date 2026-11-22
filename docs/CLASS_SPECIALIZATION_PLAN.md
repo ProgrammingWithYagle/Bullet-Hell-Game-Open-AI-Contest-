@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1** has 116 techniques. Bard Conductor adds Call and Response with two exclusive fittings. [Bard Conductor](BARD_CONDUCTOR.md).
+Current verified source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f** has 119 techniques. Bard Lament adds Mourning Measure with two exclusive fittings. [Bard Lament](BARD_LAMENT.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -153,8 +153,8 @@ The historical Duelist review retains its original source, build and storage rec
 
 Infiltrator’s historical review preserves the original source, build and storage receipts. [Infiltrator](ASSASSIN_INFILTRATOR.md).
 
-The verified Mark Hunter previews are available in the rollback. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
+Mark Hunter’s historical review preserves its original source, build and storage receipts. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
 
-Conductor is available in both frozen previews. Continue with Bard Lament. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Conductor](BARD_CONDUCTOR.md).
+The verified Conductor previews are available in the rollback. [Bard Conductor](BARD_CONDUCTOR.md).
 
-Protocol 94 adds Bard Lament with Mourning Measure, Cross Verse and Closing Chord. The local gate and six ordinary transport cases passed. Conductor remains the retained review during Lament verification. [Bard Lament](BARD_LAMENT.md).
+Lament is available in both frozen previews. Continue with Bard Misdirection. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Lament](BARD_LAMENT.md).

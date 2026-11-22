@@ -4,25 +4,29 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Protocol 94 Bard Lament candidate
+## Current exact protocol 94 Bard Lament review
 
-Protocol 94 adds Bard Lament with Mourning Measure, Cross Verse and Closing Chord. The local gate and six ordinary transport cases passed. Conductor remains the retained review during Lament verification. [Bard Lament](../docs/BARD_LAMENT.md).
+Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. Testing uses [5432](http://127.0.0.1:5432/) with backend 2808. Public review uses [5433](http://127.0.0.1:5433/) with backend 2809. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
 
-## Current exact protocol 93 Bard Conductor review
+The protocol 93 Bard Conductor pair is the verified rollback in `output/review-rollback.zip`. All 4,375 restored files match their archived bytes. Archive SHA-256 0ba86b06e2f9b6070a3b9bbe57eb3211d40f0a742e4828d079d93c0ed95b04f2. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-lament-2026-11-21/retention-result.json).
 
-Source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1**, build **2026.11.21-bard-conductor**, protocol **93**, catalog **116**. The local suite and both GitHub workflows passed 2,841 tests and seven checks. Each frozen audience binds 2,186 files and passed seven checks. Testing uses [5430](http://127.0.0.1:5430/) with backend 2806. Public review uses [5431](http://127.0.0.1:5431/) with backend 2807. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974702977) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974715409) · [Frozen checks](../reviews/bard-conductor-2026-11-21/frozen-verification.json).
+Continue with Bard Misdirection. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Lament](../docs/BARD_LAMENT.md).
 
-The protocol 92 Assassin Mark Hunter pair is the verified rollback in `output/review-rollback.zip`. All 4,357 restored files match their archived bytes. Archive SHA-256 a830aeaa9220bea8ee113ca6f4298a734f98bad2be1c9211d5c6390ba1ad92ec. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-conductor-2026-11-21/retention-result.json).
+## Protocol 93 Bard Conductor rollback review
 
-Continue with Bard Lament. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Conductor](../docs/BARD_CONDUCTOR.md).
+Source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1**, build **2026.11.21-bard-conductor**, protocol **93**, catalog **116**. The local suite and both GitHub workflows passed 2,841 tests and seven checks. Each frozen audience binds 2,186 files and passed seven checks. The 5430/2806 and 5431/2807 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974702977) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974715409) · [Frozen checks](../reviews/bard-conductor-2026-11-21/frozen-verification.json).
 
-## Protocol 92 Assassin Mark Hunter rollback review
+The protocol 92 Assassin Mark Hunter pair served as the rollback during the protocol 93 review in `output/review-rollback.zip`. All 4,357 restored files match their archived bytes. Archive SHA-256 a830aeaa9220bea8ee113ca6f4298a734f98bad2be1c9211d5c6390ba1ad92ec. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-conductor-2026-11-21/retention-result.json).
 
-Source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859**, build **2026.11.21-assassin-mark-hunter**, protocol **92**, catalog **113**. The local suite and both GitHub workflows passed 2,826 tests and seven checks. Each frozen audience binds 2,177 files and passed seven checks. The 5428/2804 and 5429/2805 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968245789) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968259577) · [Frozen checks](../reviews/assassin-mark-hunter-2026-11-21/frozen-verification.json).
+The verified Conductor previews are available in the rollback. [Bard Conductor](../docs/BARD_CONDUCTOR.md).
+
+## Historical protocol 92 Assassin Mark Hunter review
+
+Source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859**, build **2026.11.21-assassin-mark-hunter**, protocol **92**, catalog **113**. The local suite and both GitHub workflows passed 2,826 tests and seven checks. Each frozen audience binds 2,177 files and passed seven checks. The 5428/2804 and 5429/2805 previews served as the rollback during the protocol 93 review. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968245789) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968259577) · [Frozen checks](../reviews/assassin-mark-hunter-2026-11-21/frozen-verification.json).
 
 The protocol 91 Assassin Infiltrator pair served as the rollback during the protocol 92 review in `output/review-rollback.zip`. All 4,331 restored files match their archived bytes. Archive SHA-256 7935251a4a5118cbae0125a772a2d521d93a2613975ee302cda6552b6e9d006b. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-mark-hunter-2026-11-21/retention-result.json).
 
-The verified Mark Hunter previews are available in the rollback. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
+Mark Hunter’s historical review preserves its original source, build and storage receipts. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
 
 ## Scoped Assassin run review
 
