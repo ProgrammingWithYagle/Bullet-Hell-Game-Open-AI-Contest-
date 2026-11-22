@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.21-bard-lament**, protocol 94. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.21-bard-misdirection**, protocol 95. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-21 — Set a false entrance
+
+### Bard Misdirection
+
+- Walk away from a paid False Entrance to draw off one nearby ordinary pursuer.
+- Wrong Door turns the same pursuer. Second Entrance can draw another after the first one arrives.
 
 ## 2026-11-21 — Hold the measure
 

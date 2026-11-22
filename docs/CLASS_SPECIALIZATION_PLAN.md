@@ -158,3 +158,5 @@ Mark Hunter’s historical review preserves its original source, build and stora
 The verified Conductor previews are available in the rollback. [Bard Conductor](BARD_CONDUCTOR.md).
 
 Lament is available in both frozen previews. Continue with Bard Misdirection. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Lament](BARD_LAMENT.md).
+
+Protocol 95 adds Bard Misdirection with False Entrance, Wrong Door and Second Entrance. The local gate and six ordinary transport cases passed. Lament remains the retained review during Misdirection verification. [Bard Misdirection](BARD_MISDIRECTION.md).

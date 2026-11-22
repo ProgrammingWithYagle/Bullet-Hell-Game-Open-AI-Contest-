@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  "bard-company-1": { x:500, y:75 },
+  "bard-false-entrance-1": { x:500, y:255 },
+  "bard-misdirection-wrong-door-1": { x:230, y:505 },
+  "bard-misdirection-second-entrance-1": { x:770, y:505 },
   "bard-notecraft-1": { x: 500, y: 75 },
   "bard-mourning-measure-1": { x: 500, y: 255 },
   "bard-lament-cross-verse-1": { x: 230, y: 505 },

@@ -1,3 +1,4 @@
+import { misdirectionIds } from './bard-misdirection.ts';
 import { lamentIds } from './bard-lament.ts';
 import { conductorIds } from './bard-kit.ts';
 import { markHunterIds } from './assassin-crossing-writ.ts';
@@ -18,6 +19,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherEntrance = candidate === misdirectionIds.wrong ? misdirectionIds.second :
+    candidate === misdirectionIds.second ? misdirectionIds.wrong : undefined;
+  if (otherEntrance && owned.includes(otherEntrance)) return otherEntrance;
   const otherLament = candidate === lamentIds.cross ? lamentIds.closing :
     candidate === lamentIds.closing ? lamentIds.cross : undefined;
   if (otherLament && owned.includes(otherLament)) return otherLament;

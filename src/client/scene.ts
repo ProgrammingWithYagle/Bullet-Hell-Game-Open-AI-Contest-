@@ -880,6 +880,13 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(1.5, edge, .47).lineBetween(interceptOwner.x, interceptOwner.y, stageGuide.x, stageGuide.y);
       h.lineStyle(2, edge, .86).strokeCircle(stageGuide.x, stageGuide.y, 10);
     }
+    const ruse=interceptOwner?.kit.misdirecting;
+    const ruseGuide=ruse?.alternative??(ruse?.phase==='idle'&&ruse.ready?ruse.point:undefined);
+    if(interceptOwner&&ruseGuide){
+      const edge=this.highContrast?0xffffff:0x9acfc2;
+      h.lineStyle(1.5,edge,.45).lineBetween(interceptOwner.x,interceptOwner.y,ruseGuide.x,ruseGuide.y);
+      h.lineStyle(2,edge,.78).beginPath().arc(ruseGuide.x,ruseGuide.y,12,-.4,Math.PI+.4).strokePath();
+    }
     const lament = interceptOwner?.kit.lamenting;
     if (lament?.lane && (lament.phase === 'idle' || lament.turn)) {
       const { from, to } = lament.lane;
@@ -1257,6 +1264,14 @@ export class CombatScene extends Phaser.Scene {
         h.lineBetween(cue.x + sideX, cue.y + sideY, cue.x2 + sideX, cue.y2 + sideY);
         h.lineBetween(cue.x - sideX, cue.y - sideY, cue.x2 - sideX, cue.y2 - sideY);
         h.strokeRect(cue.x2 - 4, cue.y2 - 4, 8, 8);
+        continue;
+      }
+      if (cue.kind === 'bard-false-entrance') {
+        const edge=this.highContrast?0xffffff:0xa2d7c5;
+        h.lineStyle(cue.target===undefined?2:3,edge,cue.armed ? .76 : .43).beginPath()
+          .arc(cue.x,cue.y,cue.radius,-.69,Math.PI+.69).strokePath();
+        h.lineStyle(1.5,edge,.7).lineBetween(cue.x-cue.radius*.52,cue.y+cue.radius*.56,cue.x+cue.radius*.52,cue.y+cue.radius*.56);
+        if(cue.repeats)h.lineBetween(cue.x-cue.radius*.38,cue.y+cue.radius*.81,cue.x+cue.radius*.38,cue.y+cue.radius*.81);
         continue;
       }
       if (cue.kind === 'bard-response-stage') {

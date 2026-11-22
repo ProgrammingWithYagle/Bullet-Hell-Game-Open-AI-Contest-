@@ -1,3 +1,4 @@
+import entranceEdition from './fixtures/bard-issued94-bindings.json';
 import lamentEdition from './fixtures/bard-issued93-bindings.json';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -15,7 +16,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 92 restores all 7,852 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 94);
+  assert.equal(PROTOCOL, 95);
   assert.equal(issued.protocol, 92);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -88,7 +89,7 @@ test('issued 92 preserves both HUD layouts, all three remaps and the full profil
 
 test('Conductor extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...lamentEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 23);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

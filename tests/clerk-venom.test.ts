@@ -477,7 +477,7 @@ test("only known protocol26 local Practice and profile state migrates, preservin
   old.protocolVersion = 26;
   old.contentRevision = revision;
   const after = Game.restoreOffline(old).offlineCheckpoint()!;
-  assert.equal(PROTOCOL, 94);
+  assert.equal(PROTOCOL, 95);
   assert.equal(after.contentRevision, CONTENT_REVISION);
   assert.deepEqual(after.player, save.player);
   assert.deepEqual(after.completedBossForms, save.completedBossForms);

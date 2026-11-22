@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Bard Misdirection
+
+The protocol 95 census bought 3,647 Bard configurations in 27-SP shops. Each Misdirection fitting appears in 799 builds and 1,166 builds own all three pathways. [Census](../reviews/bard-misdirection-2026-11-21/build-census.json) · [Run study](BARD_MISDIRECTION.md).
+
 ## Bard Lament
 
 The protocol 94 census bought 1,090 Bard configurations in 27-SP shops. Each Lament fitting appears in 268 builds and 598 builds own both routes. [Census](../reviews/bard-lament-2026-11-21/build-census.json) · [Run study](BARD_LAMENT.md).

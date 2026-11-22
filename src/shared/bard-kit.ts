@@ -1,3 +1,4 @@
+import { MisdirectionKit } from './bard-misdirection.ts';
 import { LamentKit } from './bard-lament.ts';
 import catalog from "../../content/catalog.json";
 import { hasTalent } from "./class-talents.ts";
@@ -85,6 +86,7 @@ function proposedStage(aim: number, origin: Vec) {
 /** Fixed-step performances. Only actual primary-weapon hits can earn cadence. */
 export class BardKit {
   readonly lament = new LamentKit();
+  readonly misdirection = new MisdirectionKit();
   private meters = new Map<string, { cadence: number; hitAt: number }>();
   private performances: Performance[] = [];
   private replies = new Map<string, Reply>();
@@ -92,6 +94,7 @@ export class BardKit {
   clear() {
     this.meters.clear();
     this.lament.clear();
+    this.misdirection.clear();
     this.replies.clear();
     this.performances = [];
     this.visible = [];

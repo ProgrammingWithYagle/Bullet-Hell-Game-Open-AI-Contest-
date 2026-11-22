@@ -1,3 +1,4 @@
+import { misdirectionIds } from './bard-misdirection.ts';
 import { lamentIds, lamentRules } from './bard-lament.ts';
 import { callAndResponseId, type BardPrimaryNote } from './bard-kit.ts';
 import { CrossingWrit, crossingWritId, type CrossingWritWorld } from './assassin-crossing-writ.ts';
@@ -322,7 +323,7 @@ export class Game {
   readonly marksman = new SoldierMarksman();
   kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.assassinWritStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...this.bardStatus(id),...(this.players.get(id)?.classId==='swordsman'?this.sword.status(id,this.combatTick):{}),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id: string, amount: number, contact?: 'direct') {
     const player = this.players.get(id);
@@ -604,7 +605,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
-    if(!connected){this.bastion.remove(id);this.fieldSurgery.drop(id);this.rapidResponse.drop(id);this.preventiveCare.drop(id);this.pivotSigil.drop(id);this.waymarkReturn.drop(id);this.fuseSeal.drop(id);this.calledOpening.drop(id);this.slipRoute.drop(id);this.crossingWrit.drop(id);this.bard.dropConductor(id);this.bard.lament.drop(id);}
+    if(!connected){this.bastion.remove(id);this.fieldSurgery.drop(id);this.rapidResponse.drop(id);this.preventiveCare.drop(id);this.pivotSigil.drop(id);this.waymarkReturn.drop(id);this.fuseSeal.drop(id);this.calledOpening.drop(id);this.slipRoute.drop(id);this.crossingWrit.drop(id);this.bard.dropConductor(id);this.bard.lament.drop(id);this.bard.misdirection.drop(id);}
     if(!connected)this.interceptor.forget(id,this.players.get(id),this.combatTick);
     if(!connected)this.classKits.dropTankWall(id);
     if(!connected)this.skirmisher.remove(id);
@@ -1352,6 +1353,9 @@ export class Game {
     this.brutalVolley.release(this.combatTick,(point,angle,speed,damage,radius)=>
       this.emitShot('hostile',point.x,point.y,angle,speed,damage,radius));
     } else this.skirmish.step({now:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lava:this.arena.lavaPits,targets:this.aimTargets(),actors:this.minions.actors,healthScale:this.difficulty.health,damageScale:this.difficulty.damage,speedScale:this.difficulty.speed,spawn:definition=>this.spawnMinion(definition)});
+    const misdirection = this.bard.misdirection;
+    const falseEntrance = misdirection.live ? this.bardContext() : undefined;
+    if (falseEntrance) misdirection.advance(falseEntrance);
     this.minions.step(
       this.combatTick,
       [...this.roster().filter((player) => player.status === 'active'),...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets()],
@@ -1359,6 +1363,7 @@ export class Game {
       (target, damage) => this.hurtTarget(target.id,damage),
       this.aimTargets(false),
       Boolean(this.skirmish)||this.boss.id==='matron',
+      falseEntrance && misdirection.live ? (actor,target) => misdirection.divert(actor,target,falseEntrance) : undefined,
     );
     if (this.pivotSigil.active) this.pivotSigil.advance(this.pivotWorld());
     this.classKits.step(this.kitContext());
@@ -1704,8 +1709,15 @@ export class Game {
         [environment, terrain, raidForce, earlyForce].every(force => Math.abs(force.x) + Math.abs(force.y) <= 1e-6)) {
       this.preventiveCare.recordWalk(p, final, now);
     }
+    const walkingRuse = this.bard.misdirection.ownsRuse(p.id) && len > 0 && !dash && !p.sprinting && p.x === p.oldX && p.y === p.oldY &&
+      [environment,terrain,raidForce,earlyForce].every(force => Math.abs(force.x) + Math.abs(force.y) <= 1e-6);
     p.x = final.x;
     p.y = final.y;
+    if (p.classId === 'bard' && (walkingRuse || i.technique3 && p.skills.includes(misdirectionIds.entry))) {
+      const context = this.bardContext();
+      if (walkingRuse) this.bard.misdirection.recordWalk(p,{x:p.oldX,y:p.oldY},context);
+      this.bard.misdirection.command(p,i,context,amount=>this.bard.spendCadence(p.id,amount));
+    }
     if (atGround && responseSpeed !== 1 && !dash && !traverseRecoil.x && !traverseRecoil.y &&
         [environment, terrain, raidForce, earlyForce].every(force => Math.abs(force.x) + Math.abs(force.y) <= 1e-6)) {
       this.rapidResponse.record(p, { x: p.oldX, y: p.oldY }, { x: mx, y: my });
@@ -2797,11 +2809,13 @@ export class Game {
     const meter = this.bard.status(id);
     const combat = this.phase === 'combat';
     const conduct = p.skills.includes(callAndResponseId), lament = p.skills.includes(lamentIds.entry);
-    if (!conduct && !lament) return meter;
+    const deception = p.skills.includes(misdirectionIds.entry);
+    if (!conduct && !lament && !deception) return meter;
     const context = this.bardContext();
     return { ...meter,
       ...(conduct ? { conducting:this.bard.conductorStatus(p,context,combat) } : {}),
       ...(lament ? { lamenting:this.bard.lament.status(p,context,combat,meter.cadence) } : {}),
+      ...(deception ? { misdirecting:this.bard.misdirection.status(p,context,combat,meter.cadence) } : {}),
     };
   }
 

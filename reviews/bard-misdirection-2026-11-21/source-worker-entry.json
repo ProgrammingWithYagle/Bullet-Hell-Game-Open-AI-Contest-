@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "protocol": 95,
+  "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "transport": "worker",
+  "fitting": "entry",
+  "bought": [
+    {
+      "item": "bard-company-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-false-entrance-1",
+      "earned": 3,
+      "clears": 0
+    }
+  ],
+  "firstClear": 0,
+  "next": {
+    "boss": "matron",
+    "arena": "ossuary-works",
+    "start": 0
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "matron",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "bard-false-entrance",
+        "x": 877.1095679727597,
+        "y": 206.68673904829654,
+        "owner": "solo",
+        "id": 21,
+        "at": 179,
+        "radius": 19,
+        "until": 305,
+        "armed": false
+      },
+      "last": {
+        "kind": "bard-false-entrance",
+        "x": 877.1095679727597,
+        "y": 206.68673904829654,
+        "owner": "solo",
+        "id": 21,
+        "at": 179,
+        "radius": 19,
+        "until": 305,
+        "armed": true,
+        "target": 17
+      },
+      "phases": [
+        {
+          "kind": "bard-false-entrance",
+          "x": 877.1095679727597,
+          "y": 206.68673904829654,
+          "owner": "solo",
+          "id": 21,
+          "at": 179,
+          "radius": 19,
+          "until": 305,
+          "armed": false
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 877.1095679727597,
+          "y": 206.68673904829654,
+          "owner": "solo",
+          "id": 21,
+          "at": 179,
+          "radius": 19,
+          "until": 305,
+          "armed": true,
+          "target": 17
+        }
+      ]
+    },
+    "targets": [
+      17
+    ],
+    "trace": [
+      {
+        "tick": 186,
+        "actor": 17,
+        "distance": 79.32346903832168,
+        "x": 914.1548421500719,
+        "y": 276.82845560414756
+      },
+      {
+        "tick": 187,
+        "actor": 17,
+        "distance": 76.65680237165499,
+        "x": 912.9094680003553,
+        "y": 274.47045765284884
+      },
+      {
+        "tick": 188,
+        "actor": 17,
+        "distance": 73.9901357049883,
+        "x": 911.6640938506388,
+        "y": 272.1124597015501
+      }
+    ],
+    "paid": {
+      "e": 0,
+      "u": 0
+    },
+    "sounds": [
+      "bard-entrance-set",
+      "bard-entrance-arm",
+      "bard-entrance-take"
+    ],
+    "plans": [
+      {
+        "action": "set",
+        "at": 178,
+        "from": {
+          "x": 1010.2859565237022,
+          "y": 282.006388095065
+        },
+        "point": {
+          "x": 877.1095679727597,
+          "y": 206.68673904829654
+        },
+        "escape": {
+          "x": 961.1278162660017,
+          "y": 319.78835795377194
+        },
+        "initialActor": 17
+      }
+    ],
+    "boss": "matron"
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "ede8119d5d955aa2f2c207b6c9d661c2c86ee5f38492b05fee105588b8eeec80",
+  "driverSha256": "9a5d944816debb334e6c3797aef4b740e5146e3d767a34217e5be84e4b5a2a2e",
+  "testedAudience": "public"
+}

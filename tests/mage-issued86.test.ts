@@ -1,3 +1,4 @@
+import entranceEdition from './fixtures/bard-issued94-bindings.json';
 import lamentEdition from './fixtures/bard-issued93-bindings.json';
 import conductorEdition from './fixtures/bard-issued92-bindings.json';
 import hunterEdition from './fixtures/assassin-issued91-bindings.json';
@@ -21,7 +22,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 86 restores all 540 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 94);
+  assert.equal(PROTOCOL, 95);
   assert.equal(issued.protocol, 86);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -88,7 +89,7 @@ test('issued 86 preserves both HUD layouts, all three remaps and the full profil
 
 test('Binding extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 24);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "protocol": 95,
+  "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "transport": "worker",
+  "fitting": "wrong",
+  "bought": [
+    {
+      "item": "bard-company-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-false-entrance-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-misdirection-wrong-door-1",
+      "earned": 5,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "matron",
+    "arena": "triage-yard",
+    "start": 1361
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "bard-false-entrance",
+        "x": 1018.1973292058178,
+        "y": 749.1352868088709,
+        "owner": "solo",
+        "id": 562,
+        "at": 1885,
+        "radius": 19,
+        "until": 2011,
+        "armed": false
+      },
+      "last": {
+        "kind": "bard-false-entrance",
+        "x": 1031.1492476984765,
+        "y": 692.8145366457342,
+        "owner": "solo",
+        "id": 562,
+        "at": 1885,
+        "radius": 19,
+        "until": 2011,
+        "armed": true,
+        "target": 460,
+        "moved": true
+      },
+      "phases": [
+        {
+          "kind": "bard-false-entrance",
+          "x": 1018.1973292058178,
+          "y": 749.1352868088709,
+          "owner": "solo",
+          "id": 562,
+          "at": 1885,
+          "radius": 19,
+          "until": 2011,
+          "armed": false
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 1018.1973292058178,
+          "y": 749.1352868088709,
+          "owner": "solo",
+          "id": 562,
+          "at": 1885,
+          "radius": 19,
+          "until": 2011,
+          "armed": true,
+          "target": 460
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 1031.1492476984765,
+          "y": 692.8145366457342,
+          "owner": "solo",
+          "id": 562,
+          "at": 1885,
+          "radius": 19,
+          "until": 2011,
+          "armed": true,
+          "target": 460,
+          "moved": true
+        }
+      ]
+    },
+    "targets": [
+      460
+    ],
+    "trace": [
+      {
+        "tick": 1893,
+        "actor": 460,
+        "distance": 52.08160270513663,
+        "x": 1081.3082982294825,
+        "y": 706.8346290193131
+      },
+      {
+        "tick": 1894,
+        "actor": 460,
+        "distance": 49.414936038469904,
+        "x": 1078.7400695050333,
+        "y": 706.1167764369361
+      },
+      {
+        "tick": 1895,
+        "actor": 460,
+        "distance": 46.74826937180322,
+        "x": 1076.171840780584,
+        "y": 705.3989238545593
+      }
+    ],
+    "paid": {
+      "e": 1806,
+      "u": 2702
+    },
+    "sounds": [
+      "bard-entrance-set",
+      "bard-entrance-arm",
+      "bard-entrance-take",
+      "bard-entrance-turn"
+    ],
+    "plans": [
+      {
+        "action": "set",
+        "at": 1884,
+        "from": {
+          "x": 1171.0979913819822,
+          "y": 754.6477731889431
+        },
+        "point": {
+          "x": 1018.1973292058178,
+          "y": 749.1352868088709
+        },
+        "escape": {
+          "x": 1148.9810816007703,
+          "y": 696.7267726646969
+        },
+        "initialActor": 460
+      },
+      {
+        "action": "turn",
+        "at": 1892,
+        "target": 460,
+        "point": {
+          "x": 1031.1492476984765,
+          "y": 692.8145366457342
+        }
+      }
+    ],
+    "boss": "matron"
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "ede8119d5d955aa2f2c207b6c9d661c2c86ee5f38492b05fee105588b8eeec80",
+  "driverSha256": "9a5d944816debb334e6c3797aef4b740e5146e3d767a34217e5be84e4b5a2a2e",
+  "testedAudience": "public"
+}

@@ -1,0 +1,238 @@
+{
+  "passed": true,
+  "protocol": 95,
+  "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "transport": "peer",
+  "fitting": "wrong",
+  "bought": [
+    {
+      "item": "bard-company-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-false-entrance-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-misdirection-wrong-door-1",
+      "earned": 5,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "matron",
+    "arena": "triage-yard",
+    "start": 2319
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "bard-false-entrance",
+        "x": 845.5195755980117,
+        "y": 449.8102516275452,
+        "owner": "Fxq3V0E67",
+        "id": 957,
+        "at": 2462,
+        "radius": 19,
+        "until": 2588,
+        "armed": false
+      },
+      "last": {
+        "kind": "bard-false-entrance",
+        "x": 885.1840130805474,
+        "y": 401.7132822832224,
+        "owner": "Fxq3V0E67",
+        "id": 957,
+        "at": 2462,
+        "radius": 19,
+        "until": 2588,
+        "armed": true,
+        "target": 955,
+        "moved": true
+      },
+      "phases": [
+        {
+          "kind": "bard-false-entrance",
+          "x": 845.5195755980117,
+          "y": 449.8102516275452,
+          "owner": "Fxq3V0E67",
+          "id": 957,
+          "at": 2462,
+          "radius": 19,
+          "until": 2588,
+          "armed": false
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 845.5195755980117,
+          "y": 449.8102516275452,
+          "owner": "Fxq3V0E67",
+          "id": 957,
+          "at": 2462,
+          "radius": 19,
+          "until": 2588,
+          "armed": true,
+          "target": 955
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 885.1840130805474,
+          "y": 401.7132822832224,
+          "owner": "Fxq3V0E67",
+          "id": 957,
+          "at": 2462,
+          "radius": 19,
+          "until": 2588,
+          "armed": true,
+          "target": 955,
+          "moved": true
+        }
+      ]
+    },
+    "targets": [
+      955
+    ],
+    "trace": [
+      {
+        "tick": 2470,
+        "actor": 955,
+        "distance": 78.675687619134,
+        "x": 838.5247192382812,
+        "y": 338.3668212890625
+      },
+      {
+        "tick": 2472,
+        "actor": 955,
+        "distance": 73.34235812582688,
+        "x": 841.6876831054688,
+        "y": 342.6610107421875
+      }
+    ],
+    "paid": {
+      "e": 2714,
+      "u": 2702
+    },
+    "sounds": [
+      "bard-entrance-set",
+      "bard-entrance-arm",
+      "bard-entrance-take",
+      "bard-entrance-turn"
+    ],
+    "plans": [
+      {
+        "action": "set",
+        "at": 2460,
+        "from": {
+          "x": 983.75,
+          "y": 528
+        },
+        "point": {
+          "x": 848.3546283013056,
+          "y": 456.74627502668795
+        },
+        "escape": {
+          "x": 988.929705932992,
+          "y": 466.2167446111187
+        },
+        "initialActor": 956
+      },
+      {
+        "action": "turn",
+        "at": 2469,
+        "target": 955,
+        "point": {
+          "x": 888.0190657838414,
+          "y": 408.64930568236514
+        }
+      }
+    ],
+    "boss": "matron"
+  },
+  "witnessed": {
+    "nonHost": true,
+    "shared": {
+      "first": {
+        "kind": "bard-false-entrance",
+        "x": 845.5195755980117,
+        "y": 449.8102516275452,
+        "owner": "Fxq3V0E67",
+        "id": 957,
+        "at": 2462,
+        "radius": 19,
+        "until": 2588,
+        "armed": false
+      },
+      "last": {
+        "kind": "bard-false-entrance",
+        "x": 885.1840130805474,
+        "y": 401.7132822832224,
+        "owner": "Fxq3V0E67",
+        "id": 957,
+        "at": 2462,
+        "radius": 19,
+        "until": 2588,
+        "armed": true,
+        "target": 955,
+        "moved": true
+      },
+      "phases": [
+        {
+          "kind": "bard-false-entrance",
+          "x": 845.5195755980117,
+          "y": 449.8102516275452,
+          "owner": "Fxq3V0E67",
+          "id": 957,
+          "at": 2462,
+          "radius": 19,
+          "until": 2588,
+          "armed": false
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 845.5195755980117,
+          "y": 449.8102516275452,
+          "owner": "Fxq3V0E67",
+          "id": 957,
+          "at": 2462,
+          "radius": 19,
+          "until": 2588,
+          "armed": true,
+          "target": 955
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 885.1840130805474,
+          "y": 401.7132822832224,
+          "owner": "Fxq3V0E67",
+          "id": 957,
+          "at": 2462,
+          "radius": 19,
+          "until": 2588,
+          "armed": true,
+          "target": 955,
+          "moved": true
+        }
+      ]
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "9a5d944816debb334e6c3797aef4b740e5146e3d767a34217e5be84e4b5a2a2e",
+  "testedAudience": "public"
+}
