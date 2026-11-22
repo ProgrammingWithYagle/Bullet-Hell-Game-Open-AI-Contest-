@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **bc63a14eaa8befd469d298e13d04269db3864e66**, build **2026.11.21-bard-misdirection**, protocol **95**, catalog **122**. The local suite and both GitHub workflows passed 2,870 tests and seven checks. Each frozen audience binds 2,203 files and passed seven checks. Testing uses [5434](http://127.0.0.1:5434/) with backend 2810. Public review uses [5435](http://127.0.0.1:5435/) with backend 2811. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073687535) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073703289) · [Frozen checks](../reviews/bard-misdirection-2026-11-21/frozen-verification.json).
+Source **a6682b50ba19e45e04a038365241b01a460b0eb0**, build **2026.11.22-swordsman-measured**, protocol **96**, catalog **125**. The local suite and both GitHub workflows passed 2,884 tests and seven checks. Each frozen audience binds 2,206 files and passed seven checks. Testing uses [5436](http://127.0.0.1:5436/) with backend 2812. Public review uses [5437](http://127.0.0.1:5437/) with backend 2813. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45081705537) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45081720382) · [Frozen checks](../reviews/swordsman-measured-2026-11-22/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -127,8 +127,8 @@ Mark Hunter’s historical review preserves its original source, build and stora
 
 Conductor’s historical review preserves its original source, build and storage receipts. [Bard Conductor](BARD_CONDUCTOR.md).
 
-The verified Lament previews are available in the rollback. [Bard Lament](BARD_LAMENT.md).
+Lament’s historical review preserves its original source, build and storage receipts. [Bard Lament](BARD_LAMENT.md).
 
-Misdirection is available in both frozen previews. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
+The verified Misdirection previews are available in the rollback. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
 
-Protocol 96 adds Swordsman Measured Stance with Held Edge, Turn the Edge and Second Line. The local gate and six ordinary transport cases passed. Misdirection remains the retained review during Measured Stance verification. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
+Measured Stance is available in both frozen previews. Continue with Swordsman Counterstroke. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).

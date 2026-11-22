@@ -4,29 +4,33 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Protocol 96 Swordsman Measured Stance candidate
+## Current exact protocol 96 Swordsman Measured Stance review
 
-Protocol 96 adds Swordsman Measured Stance with Held Edge, Turn the Edge and Second Line. The local gate and six ordinary transport cases passed. Misdirection remains the retained review during Measured Stance verification. [Measured Stance](../docs/SWORDSMAN_MEASURED_STANCE.md).
+Source **a6682b50ba19e45e04a038365241b01a460b0eb0**, build **2026.11.22-swordsman-measured**, protocol **96**, catalog **125**. The local suite and both GitHub workflows passed 2,884 tests and seven checks. Each frozen audience binds 2,206 files and passed seven checks. Testing uses [5436](http://127.0.0.1:5436/) with backend 2812. Public review uses [5437](http://127.0.0.1:5437/) with backend 2813. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45081705537) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45081720382) · [Frozen checks](../reviews/swordsman-measured-2026-11-22/frozen-verification.json).
 
-## Current exact protocol 95 Bard Misdirection review
+The protocol 95 Bard Misdirection pair is the verified rollback in `output/review-rollback.zip`. All 4,409 restored files match their archived bytes. Archive SHA-256 d8b9fbdac61dabddf44d17f8506106660861f7667fef744b1dd271828eca4bcc. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-swordsman-measured-2026-11-22/retention-result.json).
 
-Source **bc63a14eaa8befd469d298e13d04269db3864e66**, build **2026.11.21-bard-misdirection**, protocol **95**, catalog **122**. The local suite and both GitHub workflows passed 2,870 tests and seven checks. Each frozen audience binds 2,203 files and passed seven checks. Testing uses [5434](http://127.0.0.1:5434/) with backend 2810. Public review uses [5435](http://127.0.0.1:5435/) with backend 2811. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073687535) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073703289) · [Frozen checks](../reviews/bard-misdirection-2026-11-21/frozen-verification.json).
+Continue with Swordsman Counterstroke. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Measured Stance](../docs/SWORDSMAN_MEASURED_STANCE.md).
 
-The protocol 94 Bard Lament pair is the verified rollback in `output/review-rollback.zip`. All 4,391 restored files match their archived bytes. Archive SHA-256 46e3d815830fe4c4390b55ebc9fc6fe9dbcc07abe6d3e274677b35303132b44c. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-misdirection-2026-11-21/retention-result.json).
+## Protocol 95 Bard Misdirection rollback review
 
-Continue with Swordsman Measured Stance after reading the scoped Bard comparison. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](../docs/BARD_MISDIRECTION.md).
+Source **bc63a14eaa8befd469d298e13d04269db3864e66**, build **2026.11.21-bard-misdirection**, protocol **95**, catalog **122**. The local suite and both GitHub workflows passed 2,870 tests and seven checks. Each frozen audience binds 2,203 files and passed seven checks. The 5434/2810 and 5435/2811 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073687535) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073703289) · [Frozen checks](../reviews/bard-misdirection-2026-11-21/frozen-verification.json).
+
+The protocol 94 Bard Lament pair served as the rollback during the protocol 95 review in `output/review-rollback.zip`. All 4,391 restored files match their archived bytes. Archive SHA-256 46e3d815830fe4c4390b55ebc9fc6fe9dbcc07abe6d3e274677b35303132b44c. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-misdirection-2026-11-21/retention-result.json).
+
+The verified Misdirection previews are available in the rollback. [Bard Misdirection](../docs/BARD_MISDIRECTION.md).
 
 ## Scoped Bard run review
 
 The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. [Bard run review](../docs/BARD_RUN_REVIEW.md) · [Evidence](../reviews/bard-whole-review-2026-11-21/whole-bard-bindings.json).
 
-## Protocol 94 Bard Lament rollback review
+## Historical protocol 94 Bard Lament review
 
-Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. The 5432/2808 and 5433/2809 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
+Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. The 5432/2808 and 5433/2809 previews served as the rollback during the protocol 95 review. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
 
 The protocol 93 Bard Conductor pair served as the rollback during the protocol 94 review in `output/review-rollback.zip`. All 4,375 restored files match their archived bytes. Archive SHA-256 0ba86b06e2f9b6070a3b9bbe57eb3211d40f0a742e4828d079d93c0ed95b04f2. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-lament-2026-11-21/retention-result.json).
 
-The verified Lament previews are available in the rollback. [Bard Lament](../docs/BARD_LAMENT.md).
+Lament’s historical review preserves its original source, build and storage receipts. [Bard Lament](../docs/BARD_LAMENT.md).
 
 ## Historical protocol 93 Bard Conductor review
 

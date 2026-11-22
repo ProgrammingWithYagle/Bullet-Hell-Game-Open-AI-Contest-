@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-22T23:39:45.2795793Z",
+  "stage": "after",
+  "currentScope": "reviews/swordsman-measured-2026-11-22",
+  "rollbackScope": "reviews/bard-misdirection-2026-11-21",
+  "rollbackSha256": "d8b9fbdac61dabddf44d17f8506106660861f7667fef744b1dd271828eca4bcc",
+  "previews": [
+    {
+      "scope": "reviews/swordsman-measured-2026-11-22",
+      "audience": "testing",
+      "source": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 27400,
+          "port": 5436,
+          "processUtc": "2026-11-22T23:07:44.0241440Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-swordsman-measured-2026-11-22-testing-a6682b5 --host 127.0.0.1 --port 5436 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 52552,
+          "port": 2812,
+          "processUtc": "2026-11-22T23:07:44.0069630Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-swordsman-measured-2026-11-22-a6682b5.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T23:07:44.618Z",
+        "uptimeSeconds": 1913.1408131,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 96,
+        "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/swordsman-measured-2026-11-22/processes-testing.json"
+    },
+    {
+      "scope": "reviews/swordsman-measured-2026-11-22",
+      "audience": "public",
+      "source": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 24512,
+          "port": 5437,
+          "processUtc": "2026-11-22T23:07:44.4565290Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-swordsman-measured-2026-11-22-public-a6682b5 --host 127.0.0.1 --port 5437 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 46760,
+          "port": 2813,
+          "processUtc": "2026-11-22T23:07:44.4402980Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-swordsman-measured-2026-11-22-a6682b5.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T23:07:45.022Z",
+        "uptimeSeconds": 1915.4220736,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 96,
+        "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/swordsman-measured-2026-11-22/processes-public.json"
+    },
+    {
+      "scope": "reviews/bard-misdirection-2026-11-21",
+      "audience": "testing",
+      "source": "bc63a14eaa8befd469d298e13d04269db3864e66",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5434,
+          "originallyRecordedPid": 28808,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2810,
+          "originallyRecordedPid": 36592,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/bard-misdirection-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/bard-misdirection-2026-11-21",
+      "audience": "public",
+      "source": "bc63a14eaa8befd469d298e13d04269db3864e66",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5435,
+          "originallyRecordedPid": 41748,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2811,
+          "originallyRecordedPid": 10208,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/bard-misdirection-2026-11-21/processes-public.json"
+    }
+  ]
+}

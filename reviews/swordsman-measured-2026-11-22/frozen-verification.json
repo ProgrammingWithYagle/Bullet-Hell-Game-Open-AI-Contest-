@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "sourceCommit": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+  "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+  "protocol": 96,
+  "checkedAt": "2026-11-22T23:13:27.571Z",
+  "nativeDriverSha256": "97a75f7649055dc269c7ecb389d2b75f4ac7084e0495feb0de8ef6379eede89e",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+      "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+      "protocol": 96,
+      "url": "http://127.0.0.1:5436/",
+      "endpoint": "http://127.0.0.1:2812",
+      "files": 2206,
+      "manifestSha256": "c654ec0ed2ba6e3dc645158748204494eac23c62a09f6e274557200f88949125",
+      "backendSha256": "59b19fdca8d0915fc9f620dedb52788d4def673fd5f3fa630fe083bfbbebd478",
+      "backendStartedAt": "2026-11-22T23:07:44.618Z",
+      "worker": {
+        "path": "assets/offline.worker-6rQ47kJH.js",
+        "bytes": 1706334,
+        "sha256": "56ce90bcabe741bd7a90cb0e67f7a84315b788f39110439cc30efe67759509fe"
+      },
+      "sampledNewAssets": 27,
+      "httpSha256": "1508464c36029e38291245e8c5b960de0ad26afe729c07b6dbf44639b328c6c5",
+      "httpLogSha256": "1c57fd6c512fa2cbdc80918b3490462d16e496f9430ccc8b42673d455ed7a867",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "152ce3bbbd75d58d6337247b009d1424322fbc1f6f461dda03707c9ca6d9ddbb",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "e38ee4e03c573c838a1fb095d7aa67e71dc1ec85d5132b5042b983c499d725f8",
+          "backendStartedAt": "2026-11-22T23:07:44.618Z"
+        },
+        {
+          "fitting": "turn",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-turn.log",
+          "logSha256": "f1c267846f4147a21954253091f9ea798828286de8799b2f512d880f54bccc30",
+          "raw": "testing-worker-turn.json",
+          "resultSha256": "1b4087abf1bca491d8de5f56cb7dd27910429592fa789446be0747e8ebc1690b",
+          "backendStartedAt": "2026-11-22T23:07:44.618Z"
+        },
+        {
+          "fitting": "follow",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-follow.log",
+          "logSha256": "2dab576d7674396892c85b7360017d62661cc6680972ee7e164cf988e9612e71",
+          "raw": "testing-worker-follow.json",
+          "resultSha256": "50b0eb22f2085f0eb9e390d5db65059c3d4b8621c087201c31f2b1aa17b525bf",
+          "backendStartedAt": "2026-11-22T23:07:44.618Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "f5d32a57b632370fc0594b19fc0636372b1bbd63fc95004f189a262c247a8981",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "9e16b5296b08b6eda3848942477729b40db60a7395380b9ad5b382d6f3a42f91",
+          "backendStartedAt": "2026-11-22T23:07:44.618Z"
+        },
+        {
+          "fitting": "turn",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-turn.log",
+          "logSha256": "2234aa88ef5ca435d82e5de7624b3192cd16006f5776776b06c742ce1ea69c37",
+          "raw": "testing-peer-turn.json",
+          "resultSha256": "b9d065dd65eed150e30c89bcc78b12df595a7a2f4a83ed03375b63f0e07023e0",
+          "backendStartedAt": "2026-11-22T23:07:44.618Z"
+        },
+        {
+          "fitting": "follow",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-follow.log",
+          "logSha256": "6fe0eabfc3637e202843a8106502b9abaa66e866c649d284a69eadd4a9e2706d",
+          "raw": "testing-peer-follow.json",
+          "resultSha256": "c150da7ce5a832acc0990786fe7024aa06e98b88005c9124ef74cc492b8979c4",
+          "backendStartedAt": "2026-11-22T23:07:44.618Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "a6682b50ba19e45e04a038365241b01a460b0eb0",
+      "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+      "protocol": 96,
+      "url": "http://127.0.0.1:5437/",
+      "endpoint": "http://127.0.0.1:2813",
+      "files": 2206,
+      "manifestSha256": "e345feb46af5aa2f6a678b709680a88015eff8dbbcb57178fe52cdc0a91400e6",
+      "backendSha256": "59b19fdca8d0915fc9f620dedb52788d4def673fd5f3fa630fe083bfbbebd478",
+      "backendStartedAt": "2026-11-22T23:07:45.022Z",
+      "worker": {
+        "path": "assets/offline.worker-DSPVnUHl.js",
+        "bytes": 1706431,
+        "sha256": "07514f28dfc563a81f3b7a79eb65c608f0bd5a806f36eab7161b3f8e7261ae4a"
+      },
+      "sampledNewAssets": 27,
+      "httpSha256": "58abfdb7b2d910f962d2d9b725b0be10c27811afb00e791cb1c70bb8e88ccbd3",
+      "httpLogSha256": "90e2ab4e0511d416819363ff3a7ec35e1c3a08c6bcd33b6599095535eae49e1a",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "152ce3bbbd75d58d6337247b009d1424322fbc1f6f461dda03707c9ca6d9ddbb",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "557b54212572dae656e12b1cbf421a67809fed9cefd57b2e32b2e19703ec2a59",
+          "backendStartedAt": "2026-11-22T23:07:45.022Z"
+        },
+        {
+          "fitting": "turn",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-turn.log",
+          "logSha256": "706c414b73a0f31a09eeb01a7c54645c2eb7df7128fd033d9bb0a02db1b8245a",
+          "raw": "public-worker-turn.json",
+          "resultSha256": "833ac249620a7c97095d4ca6e5ff65531ecb0782508c5c40b0de6604982484a3",
+          "backendStartedAt": "2026-11-22T23:07:45.022Z"
+        },
+        {
+          "fitting": "follow",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-follow.log",
+          "logSha256": "d65d14c7b2536a42501c1bfff5259cfb63fb206408f9bc68349dee99f22b46ab",
+          "raw": "public-worker-follow.json",
+          "resultSha256": "41dcf758924be2e78616e9c78052de949abfc2daba4525dde3b42afe722a14d3",
+          "backendStartedAt": "2026-11-22T23:07:45.022Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "87bc2bcad0f74a360ef6731f17f3d961cf0e15da79d08297280ca73c1499b752",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "fe3c54b7259a7f81f8a4c703d8ea0f3150620aa992adb100104eeabee2b033b6",
+          "backendStartedAt": "2026-11-22T23:07:45.022Z"
+        },
+        {
+          "fitting": "turn",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-turn.log",
+          "logSha256": "a619c8cd9e0ff3b501f951b80c8d969c3349094d412a2063baf8585d395d5086",
+          "raw": "public-peer-turn.json",
+          "resultSha256": "2467f333e5a2c8ee572b8f3c014cf663bc7accd999a13ad6bf3cb2f23377af15",
+          "backendStartedAt": "2026-11-22T23:07:45.022Z"
+        },
+        {
+          "fitting": "follow",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-follow.log",
+          "logSha256": "0c3a8f84e76dc98f37485ccb8761715ab4ac890496945ac65e88bfc3a77f2185",
+          "raw": "public-peer-follow.json",
+          "resultSha256": "6947360022e395399b1885de23f7bb4977a9bd37f172df4135c59beb9324ed8a",
+          "backendStartedAt": "2026-11-22T23:07:45.022Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

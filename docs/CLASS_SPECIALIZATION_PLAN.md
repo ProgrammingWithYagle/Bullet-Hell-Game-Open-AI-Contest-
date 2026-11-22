@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **bc63a14eaa8befd469d298e13d04269db3864e66** has 122 techniques. Bard Misdirection adds False Entrance with two exclusive fittings. [Bard Misdirection](BARD_MISDIRECTION.md).
+Current verified source **a6682b50ba19e45e04a038365241b01a460b0eb0** has 125 techniques. Swordsman Measured Stance adds Held Edge with two exclusive fittings. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -157,8 +157,8 @@ Mark Hunter’s historical review preserves its original source, build and stora
 
 Conductor’s historical review preserves its original source, build and storage receipts. [Bard Conductor](BARD_CONDUCTOR.md).
 
-The verified Lament previews are available in the rollback. [Bard Lament](BARD_LAMENT.md).
+Lament’s historical review preserves its original source, build and storage receipts. [Bard Lament](BARD_LAMENT.md).
 
-Misdirection is available in both frozen previews. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
+The verified Misdirection previews are available in the rollback. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
 
-Protocol 96 adds Swordsman Measured Stance with Held Edge, Turn the Edge and Second Line. The local gate and six ordinary transport cases passed. Misdirection remains the retained review during Measured Stance verification. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
+Measured Stance is available in both frozen previews. Continue with Swordsman Counterstroke. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
