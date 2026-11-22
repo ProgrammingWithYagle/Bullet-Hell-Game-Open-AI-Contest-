@@ -1,4 +1,5 @@
-import { applyBardMisdirection, authoredDate as misdirectionAuthoredDate } from '../content/source/bard-misdirection.mjs';
+import { applySwordsmanMeasured, authoredDate as measuredAuthoredDate } from '../content/source/swordsman-measured.mjs';
+import { applyBardMisdirection } from '../content/source/bard-misdirection.mjs';
 import { applyBardLament } from '../content/source/bard-lament.mjs';
 import { applyBardConductor } from '../content/source/bard-conductor.mjs';
 import { applyAssassinMarkHunter } from '../content/source/assassin-mark-hunter.mjs';
@@ -336,6 +337,7 @@ applyAssassinMarkHunter(manifest);
 applyBardConductor(manifest);
 applyBardLament(manifest);
 applyBardMisdirection(manifest);
+applySwordsmanMeasured(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
@@ -537,5 +539,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:misdirectionAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:measuredAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));

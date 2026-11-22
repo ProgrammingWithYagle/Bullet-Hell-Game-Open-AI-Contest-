@@ -1,3 +1,4 @@
+import type { MeasuredStanceCue, MeasuredStanceStatus } from './swordsman-measured.ts';
 import type { MisdirectionCue, MisdirectionStatus } from './bard-misdirection.ts';
 import type { LamentCue, LamentStatus } from './bard-lament.ts';
 import type { CrossingWritCue, CrossingWritStatus } from './assassin-crossing-writ.ts';
@@ -86,6 +87,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   conducting?: ConductorStatus;
   lamenting?: LamentStatus;
   misdirecting?: MisdirectionStatus;
+  measuredStance?: MeasuredStanceStatus;
   chargeUntil: number;
   veilUntil: number;
   passageUntil: number;
@@ -150,6 +152,7 @@ export type KitCue =
   | AlchemyCue
   | RangerCue
   | SwordCue
+  | MeasuredStanceCue
   | BardCue
   | ConductorCue
   | LamentCue

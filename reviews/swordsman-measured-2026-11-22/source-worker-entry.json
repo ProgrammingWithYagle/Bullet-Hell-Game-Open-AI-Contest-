@@ -1,0 +1,174 @@
+{
+  "passed": true,
+  "protocol": 96,
+  "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+  "transport": "worker",
+  "fitting": "entry",
+  "bought": [
+    {
+      "item": "swordsman-measure-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-held-edge-1",
+      "earned": 3,
+      "clears": 0
+    }
+  ],
+  "firstClear": 0,
+  "next": {
+    "boss": "constable",
+    "arena": "gatehouse",
+    "start": 0
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "baby",
+    "arenaSelection": "route",
+    "openingArenaId": "gatehouse",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 41
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "sword-measured-stance",
+        "id": 105,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 172,
+        "arc": 1.8849555921538759,
+        "at": 822,
+        "until": 879,
+        "state": "preparing"
+      },
+      "last": {
+        "kind": "sword-measured-stance",
+        "id": 105,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 172,
+        "arc": 1.8849555921538759,
+        "at": 822,
+        "until": 879,
+        "state": "ready"
+      },
+      "phases": [
+        {
+          "kind": "sword-measured-stance",
+          "id": 105,
+          "owner": "solo",
+          "x": 576.8176241883453,
+          "y": 338.4324192143367,
+          "aim": -1.6634699502425196,
+          "radius": 172,
+          "arc": 1.8849555921538759,
+          "at": 822,
+          "until": 879,
+          "state": "preparing"
+        },
+        {
+          "kind": "sword-measured-stance",
+          "id": 105,
+          "owner": "solo",
+          "x": 576.8176241883453,
+          "y": 338.4324192143367,
+          "aim": -1.6634699502425196,
+          "radius": 172,
+          "arc": 1.8849555921538759,
+          "at": 822,
+          "until": 879,
+          "state": "ready"
+        }
+      ]
+    },
+    "first": {
+      "stance": 105,
+      "cue": {
+        "kind": "sword-measured-stance",
+        "id": 107,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 172,
+        "arc": 1.8849555921538759,
+        "at": 840,
+        "until": 847,
+        "state": "cut"
+      },
+      "snapshotTick": 840,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 1643.2559999999996,
+          "after": 1527.7559999999996
+        }
+      ],
+      "follow": false
+    },
+    "release": {
+      "cue": {
+        "kind": "sword-measured-stance",
+        "id": 107,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 172,
+        "arc": 1.8849555921538759,
+        "at": 840,
+        "until": 847,
+        "state": "cut"
+      },
+      "snapshotTick": 840,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 1643.2559999999996,
+          "after": 1527.7559999999996
+        }
+      ],
+      "follow": false
+    },
+    "turned": false,
+    "paid": {
+      "q": 1115,
+      "e": 382,
+      "u": 2581,
+      "ammo": 4
+    },
+    "sounds": [
+      "sword-held-edge-set",
+      "sword-held-edge-cut"
+    ],
+    "lastRequests": [
+      {
+        "at": 821,
+        "aim": -1.6634699502425196
+      },
+      {
+        "at": 839,
+        "aim": -1.6634699502425196,
+        "stance": 105,
+        "state": "ready"
+      }
+    ],
+    "boss": "matron"
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "fc3cc4b68c8c464b989aefe553669a535310935b78ec13eb9cadf9c29b511868",
+  "driverSha256": "97a75f7649055dc269c7ecb389d2b75f4ac7084e0495feb0de8ef6379eede89e",
+  "testedAudience": "public"
+}

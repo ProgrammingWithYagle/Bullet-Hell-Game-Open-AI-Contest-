@@ -160,3 +160,5 @@ Conductor’s historical review preserves its original source, build and storage
 The verified Lament previews are available in the rollback. [Bard Lament](BARD_LAMENT.md).
 
 Misdirection is available in both frozen previews. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
+
+Protocol 96 adds Swordsman Measured Stance with Held Edge, Turn the Edge and Second Line. The local gate and six ordinary transport cases passed. Misdirection remains the retained review during Measured Stance verification. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).

@@ -6,6 +6,11 @@ export const swordSoundSpecs = {
   'sword-guard': { frequency: 390, duration: 0.09, endRatio: 0.8, levels: [0.025, 0.01] },
   'sword-measure': { frequency: 196, duration: 0.23, endRatio: 1.35, levels: [0.035, 0.012] },
   'sword-recover': { frequency: 140, duration: 0.14, endRatio: 0.6, levels: [0.02, 0.008] },
+  'sword-held-edge-set': { frequency: 164, duration: 0.12, endRatio: 0.72, levels: [0.031, 0.009] },
+  'sword-held-edge-turn': { frequency: 232, duration: 0.104, endRatio: 0.86, levels: [0.028, 0.012] },
+  'sword-held-edge-cut': { frequency: 308, duration: 0.16, endRatio: 0.49, levels: [0.044, 0.016] },
+  'sword-held-edge-follow': { frequency: 405, duration: 0.086, endRatio: 1.16, levels: [0.018, 0.009] },
+  'sword-held-edge-second': { frequency: 355, duration: 0.12, endRatio: 0.63, levels: [0.031, 0.013] },
 } as const;
 export function isSwordSound(id: string): id is keyof typeof swordSoundSpecs {
   return Object.hasOwn(swordSoundSpecs, id);

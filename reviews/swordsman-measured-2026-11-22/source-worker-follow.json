@@ -1,0 +1,200 @@
+{
+  "passed": true,
+  "protocol": 96,
+  "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+  "transport": "worker",
+  "fitting": "follow",
+  "bought": [
+    {
+      "item": "swordsman-measure-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-held-edge-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-measured-second-line-1",
+      "earned": 5,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "matron",
+    "arena": "triage-yard",
+    "start": 428
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "baby",
+    "arenaSelection": "route",
+    "openingArenaId": "gatehouse",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 41
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "sword-measured-stance",
+        "id": 108,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 172,
+        "arc": 1.8849555921538759,
+        "at": 859,
+        "until": 916,
+        "state": "preparing"
+      },
+      "last": {
+        "kind": "sword-measured-stance",
+        "id": 108,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 132,
+        "arc": 1.2566370614359172,
+        "at": 859,
+        "until": 899,
+        "state": "following"
+      },
+      "phases": [
+        {
+          "kind": "sword-measured-stance",
+          "id": 108,
+          "owner": "solo",
+          "x": 576.8176241883453,
+          "y": 338.4324192143367,
+          "aim": -1.6634699502425196,
+          "radius": 172,
+          "arc": 1.8849555921538759,
+          "at": 859,
+          "until": 916,
+          "state": "preparing"
+        },
+        {
+          "kind": "sword-measured-stance",
+          "id": 108,
+          "owner": "solo",
+          "x": 576.8176241883453,
+          "y": 338.4324192143367,
+          "aim": -1.6634699502425196,
+          "radius": 172,
+          "arc": 1.8849555921538759,
+          "at": 859,
+          "until": 916,
+          "state": "ready"
+        },
+        {
+          "kind": "sword-measured-stance",
+          "id": 108,
+          "owner": "solo",
+          "x": 576.8176241883453,
+          "y": 338.4324192143367,
+          "aim": -1.6634699502425196,
+          "radius": 132,
+          "arc": 1.2566370614359172,
+          "at": 859,
+          "until": 899,
+          "state": "following"
+        }
+      ]
+    },
+    "first": {
+      "stance": 108,
+      "cue": {
+        "kind": "sword-measured-stance",
+        "id": 110,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.6634699502425196,
+        "radius": 172,
+        "arc": 1.8849555921538759,
+        "at": 877,
+        "until": 884,
+        "state": "cut"
+      },
+      "snapshotTick": 877,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 1539.32,
+          "after": 1423.82
+        }
+      ],
+      "follow": false
+    },
+    "release": {
+      "cue": {
+        "kind": "sword-measured-stance",
+        "id": 111,
+        "owner": "solo",
+        "x": 576.8176241883453,
+        "y": 338.4324192143367,
+        "aim": -1.1224178821242776,
+        "radius": 132,
+        "arc": 1.2566370614359172,
+        "at": 879,
+        "until": 886,
+        "state": "cut"
+      },
+      "snapshotTick": 879,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 1423.82,
+          "after": 1368.1699999999998
+        }
+      ],
+      "follow": true
+    },
+    "turned": false,
+    "paid": {
+      "q": 1152,
+      "e": 385,
+      "u": 2581,
+      "ammo": 4
+    },
+    "sounds": [
+      "sword-held-edge-set",
+      "sword-held-edge-cut",
+      "sword-held-edge-follow",
+      "sword-held-edge-second"
+    ],
+    "lastRequests": [
+      {
+        "at": 858,
+        "aim": -1.6634699502425196
+      },
+      {
+        "at": 876,
+        "aim": -1.6634699502425196,
+        "stance": 108,
+        "state": "ready"
+      },
+      {
+        "at": 878,
+        "aim": -1.1224178821242776,
+        "stance": 108,
+        "state": "following"
+      }
+    ],
+    "boss": "matron"
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "fc3cc4b68c8c464b989aefe553669a535310935b78ec13eb9cadf9c29b511868",
+  "driverSha256": "97a75f7649055dc269c7ecb389d2b75f4ac7084e0495feb0de8ef6379eede89e",
+  "testedAudience": "public"
+}

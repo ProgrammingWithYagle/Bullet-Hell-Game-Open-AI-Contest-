@@ -1,3 +1,4 @@
+import { MeasuredStance } from './swordsman-measured.ts';
 import rules from './sword-rules.json';
 import { swordGuardContact } from './sword-geometry.ts';
 import { HZ, type Vec } from './protocol.ts';
@@ -100,6 +101,7 @@ const active = (p: SwordFighter | undefined): p is SwordFighter =>
 
 /** Private combat-only sword state; learning, upgrades and actual collisions stay with Game. */
 export class SwordsmanKit {
+  readonly measured = new MeasuredStance();
   private states = new Map<string, SwordState>();
   private cuts: Cut[] = [];
   private guards = new Map<string, Guard>();
@@ -109,6 +111,7 @@ export class SwordsmanKit {
   }
   clear() {
     this.states.clear();
+    this.measured.clear();
     this.cuts = [];
     this.guards.clear();
     this.visible = [];

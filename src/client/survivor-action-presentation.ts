@@ -134,12 +134,13 @@ export class SurvivorActionClock {
       if (player.classId === 'swordsman' && view.phase === 'combat' && player.status === 'active') {
         const cut = view.classCues
           .filter(
-            (c) => c.owner === player.id && (c.kind === 'sword-windup' || c.kind === 'sword-cut'),
+            (c) => c.owner === player.id && (c.kind === 'sword-windup' || c.kind === 'sword-cut' ||
+              c.kind === 'sword-measured-stance' && c.state === 'cut'),
           )
           .sort((a, b) => b.id - a.id)[0];
         if (
           cut &&
-          (cut.kind === 'sword-windup' || cut.kind === 'sword-cut') &&
+          (cut.kind === 'sword-windup' || cut.kind === 'sword-cut' || cut.kind === 'sword-measured-stance') &&
           memory.swordCutId !== cut.id
         ) {
           memory.swordCutId = cut.id;

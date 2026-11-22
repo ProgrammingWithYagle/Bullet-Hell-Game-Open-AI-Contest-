@@ -1,0 +1,242 @@
+{
+  "passed": true,
+  "protocol": 96,
+  "contentRevision": "96fe83f44e28b32fdfdb0dd8dfdf5d4e826ed9506c1f28cb7750cc0ed1ed17a3",
+  "runtimeSourceSha256": "af9ddda63bd374fb3c1844b5145a6e7c4f2c658e0cbecf2aca18e3a149d0728e",
+  "sourceSnapshotSha256": "b293a564f91f2da934dcd91e70e7414b5104a67ddf89af1fe836ba6504e1886a",
+  "tests": 2884,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "matron",
+      "firstClear": 0,
+      "stage": 105,
+      "turned": false,
+      "firstHits": [
+        {
+          "id": "boss/matron",
+          "before": 1643.2559999999996,
+          "after": 1527.7559999999996
+        }
+      ],
+      "releaseHits": [
+        {
+          "id": "boss/matron",
+          "before": 1643.2559999999996,
+          "after": 1527.7559999999996
+        }
+      ]
+    },
+    {
+      "transport": "worker",
+      "fitting": "turn",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 108,
+      "turned": true,
+      "firstHits": [
+        {
+          "id": "boss/matron",
+          "before": 1613.5599999999997,
+          "after": 1498.0599999999997
+        }
+      ],
+      "releaseHits": [
+        {
+          "id": "boss/matron",
+          "before": 1613.5599999999997,
+          "after": 1498.0599999999997
+        }
+      ]
+    },
+    {
+      "transport": "worker",
+      "fitting": "follow",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 108,
+      "turned": false,
+      "firstHits": [
+        {
+          "id": "boss/matron",
+          "before": 1539.32,
+          "after": 1423.82
+        }
+      ],
+      "releaseHits": [
+        {
+          "id": "boss/matron",
+          "before": 1423.82,
+          "after": 1368.1699999999998
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 112,
+      "turned": false,
+      "firstHits": [
+        {
+          "id": "boss/constable",
+          "before": 495.5472106933594,
+          "after": 380.0472106933594
+        }
+      ],
+      "releaseHits": [
+        {
+          "id": "boss/constable",
+          "before": 495.5472106933594,
+          "after": 380.0472106933594
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "turn",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 180,
+      "turned": true,
+      "firstHits": [
+        {
+          "id": "boss/matron",
+          "before": 686.60400390625,
+          "after": 571.10400390625
+        }
+      ],
+      "releaseHits": [
+        {
+          "id": "boss/matron",
+          "before": 686.60400390625,
+          "after": 571.10400390625
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "follow",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 145,
+      "turned": false,
+      "firstHits": [
+        {
+          "id": "boss/matron",
+          "before": 3173.64404296875,
+          "after": 3058.14404296875
+        }
+      ],
+      "releaseHits": [
+        {
+          "id": "boss/matron",
+          "before": 3058.14404296875,
+          "after": 3002.493896484375
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate01/generated/reviews/runtime-verification.json",
+      "sha256": "ae6ca84217df8a5032bebaf67e1c2b513971c3b96dbd853677226d6f2ac426dd"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "6c5244c8debe8f4f294709c157633acb2c7c5e53e243e62797f0c0fd695c5971"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "c0d8a90d01164d3319adc3143b13df694178b327561d7c1e27796a754149b42e"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "ef51d8034cd7251e4c78d5167c55f538b79ed150ce4a3337ba90de2a83fec5b0"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "a25b10c5de7153217f419e20751cbbca805521e5552894bbd911de3bca4831b9"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "8843d1386c01d0db1d5a1d3077845a06524f60b0f06a96c4057f0d0c4d43da97"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "migration-proof01.json",
+      "sha256": "3db55f1f8ebcd364c6dcabaabddb37ea6c1ef4ca81f3c0f77d8ba5a8217beaa2"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof02.json",
+      "sha256": "15af2d1f508da32678763806cbf6eb07a7c203325b08894030c1c9c8d0d7f996"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo01.json",
+      "sha256": "39a6f9ba8b547b308682eea2d49e05776031348d6f85913dfddc48da5878eefa"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party01.json",
+      "sha256": "3ac6e340782281402d90f61c5761ef1eac98b54073cd9e08182ed03bd675d539"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo01.json",
+      "sha256": "257671d8543ee44ab1d765baecb57a90a8480c105570418c5672364175bb969f"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party01.json",
+      "sha256": "779ed8ced0191dec89a06c0dd0608e086af0ac0a4451e3ba5125c57d81252fbe"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source01/worker-entry.json",
+      "sha256": "a0080bb6a31299add98eb3b12b9e21ec16321cc14a14e5d94d164f56bd7a5089"
+    },
+    {
+      "path": "source-worker-turn.json",
+      "from": "native-source01/worker-turn.json",
+      "sha256": "58ef75cd15d6138cfb1f9c075766f72331aefb35cb8dd8cd7782509ee81b2d7a"
+    },
+    {
+      "path": "source-worker-follow.json",
+      "from": "native-source01/worker-follow.json",
+      "sha256": "bcd224d4ea0050fd87a005709aab8c577cb0c9cc8a8f0bc00b52cd07cfa91b78"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source01/peer-entry.json",
+      "sha256": "c8cc2f640ee83f90da99cf82c36713195cb23eb07e3f364dbdbd9fccb9a5cec9"
+    },
+    {
+      "path": "source-peer-turn.json",
+      "from": "native-source01/peer-turn.json",
+      "sha256": "464109870a8201bed3da4426e2e3e7353cba17cc3f48f95ecf7cc3bdd6690cc8"
+    },
+    {
+      "path": "source-peer-follow.json",
+      "from": "native-source01/peer-follow.json",
+      "sha256": "3200a8bd3468c321d45b34c205c61515e93dc2220fe015697c1cfdc2ae4cc9fb"
+    }
+  ],
+  "documents": [
+    "docs/SWORDSMAN_MEASURED_STANCE.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

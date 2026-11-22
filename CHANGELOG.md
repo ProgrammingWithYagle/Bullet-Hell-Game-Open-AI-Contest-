@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.21-bard-misdirection**, protocol 95. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.22-swordsman-measured**, protocol 96. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-22 — Set the held edge
+
+### Swordsman Measured Stance
+
+- Hold footing and release a prepared cut through the usual sword geometry.
+- Turn the Edge adjusts the heading once. Second Line follows a damaging cut with a narrower arc.
 
 ## 2026-11-21 — Set a false entrance
 

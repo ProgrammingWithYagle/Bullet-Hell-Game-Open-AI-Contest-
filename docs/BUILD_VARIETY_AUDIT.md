@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Swordsman Measured Stance
+
+The protocol 96 census bought 249 Swordsman configurations in 27-SP shops. Each Held Edge fitting appears in 81 builds and 213 also own an issued sword transformation. [Census](../reviews/swordsman-measured-2026-11-22/build-census.json) · [Run study](SWORDSMAN_MEASURED_STANCE.md).
+
 ## Bard Misdirection
 
 The protocol 95 census bought 3,647 Bard configurations in 27-SP shops. Each Misdirection fitting appears in 799 builds and 1,166 builds own all three pathways. [Census](../reviews/bard-misdirection-2026-11-21/build-census.json) · [Run study](BARD_MISDIRECTION.md).
