@@ -10,7 +10,11 @@ Source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859**, build **2026.11.21-assassin
 
 The protocol 91 Assassin Infiltrator pair is the verified rollback in `output/review-rollback.zip`. All 4,331 restored files match their archived bytes. Archive SHA-256 7935251a4a5118cbae0125a772a2d521d93a2613975ee302cda6552b6e9d006b. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-mark-hunter-2026-11-21/retention-result.json).
 
-Continue with the scoped whole-Assassin review, then Bard. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
+Continue with Bard Conductor after reading the scoped Assassin comparison. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
+
+## Scoped Assassin run review
+
+The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. [Assassin run review](../docs/ASSASSIN_RUN_REVIEW.md) · [Evidence](../reviews/assassin-whole-review-2026-11-21/whole-assassin-bindings.json).
 
 ## Protocol 91 Assassin Infiltrator rollback review
 

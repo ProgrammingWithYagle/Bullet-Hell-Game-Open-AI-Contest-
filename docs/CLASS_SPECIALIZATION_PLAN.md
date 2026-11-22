@@ -153,4 +153,4 @@ The historical Duelist review retains its original source, build and storage rec
 
 The verified Infiltrator previews are available in the rollback. [Infiltrator](ASSASSIN_INFILTRATOR.md).
 
-Mark Hunter is available in both frozen previews. Continue with the scoped whole-Assassin review, then Bard. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
+Mark Hunter is available in both frozen previews. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
