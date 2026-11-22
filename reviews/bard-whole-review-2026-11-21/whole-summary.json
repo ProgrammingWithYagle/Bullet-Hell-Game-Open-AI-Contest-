@@ -1,0 +1,423 @@
+{
+  "passed": true,
+  "stageOnly": true,
+  "protocol": 95,
+  "revision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "bundle": "66d2be48285955e7b851452dc3646f5fc089d761d3ab1776646383f18f9ad8ca",
+  "cases": 96,
+  "replays": 12,
+  "combined": {
+    "activeWins": 32,
+    "unusedWins": 39,
+    "activeFull": 46,
+    "unusedFull": 48,
+    "allThree": 9,
+    "afterFitting": 0
+  },
+  "studies": [
+    {
+      "cohort": "solo",
+      "path": "whole-solo01.json",
+      "sha256": "37baef159431f0a281daa5b27396c5fc2fcd863a26d7533ec4e54d66ea2dc4fd",
+      "active": {
+        "runs": 24,
+        "wins": 15,
+        "fitted": 22,
+        "allThree": 5,
+        "allThreeAfterFitting": 0,
+        "events": {
+          "bard-answer-call": 318,
+          "bard-answer-close": 7,
+          "bard-answer-proof": 305,
+          "bard-answer-release": 299,
+          "bard-answer-reprise": 9,
+          "bard-answer-shift": 22,
+          "bard-entrance-arm": 16,
+          "bard-entrance-arrive": 14,
+          "bard-entrance-second": 6,
+          "bard-entrance-set": 16,
+          "bard-entrance-take": 20,
+          "bard-entrance-turn": 7,
+          "bard-lament-chord": 69,
+          "bard-lament-end": 22,
+          "bard-lament-pulse": 734,
+          "bard-lament-start": 190,
+          "bard-lament-turn": 5
+        },
+        "lateEvents": {
+          "bard-answer-call": 193,
+          "bard-answer-close": 5,
+          "bard-answer-proof": 181,
+          "bard-answer-release": 177,
+          "bard-answer-reprise": 6,
+          "bard-answer-shift": 17,
+          "bard-lament-chord": 53,
+          "bard-lament-end": 8,
+          "bard-lament-pulse": 414,
+          "bard-lament-start": 111
+        }
+      },
+      "unused": {
+        "runs": 24,
+        "wins": 18,
+        "fitted": 24,
+        "allThree": 0,
+        "allThreeAfterFitting": 0,
+        "events": {},
+        "lateEvents": {}
+      }
+    },
+    {
+      "cohort": "party",
+      "path": "whole-party01.json",
+      "sha256": "6f4b9513e402b230d266baf98b683c3ecbad7056222a0931f96ce285226a43e3",
+      "active": {
+        "runs": 24,
+        "wins": 17,
+        "fitted": 24,
+        "allThree": 4,
+        "allThreeAfterFitting": 0,
+        "events": {
+          "bard-answer-call": 323,
+          "bard-answer-close": 10,
+          "bard-answer-proof": 308,
+          "bard-answer-release": 299,
+          "bard-answer-reprise": 2,
+          "bard-answer-shift": 20,
+          "bard-entrance-arm": 13,
+          "bard-entrance-arrive": 4,
+          "bard-entrance-second": 3,
+          "bard-entrance-set": 13,
+          "bard-entrance-take": 12,
+          "bard-entrance-turn": 4,
+          "bard-lament-chord": 81,
+          "bard-lament-end": 29,
+          "bard-lament-pulse": 840,
+          "bard-lament-start": 222,
+          "bard-lament-turn": 5
+        },
+        "lateEvents": {
+          "bard-answer-call": 207,
+          "bard-answer-close": 7,
+          "bard-answer-proof": 199,
+          "bard-answer-release": 191,
+          "bard-answer-reprise": 1,
+          "bard-answer-shift": 16,
+          "bard-lament-chord": 65,
+          "bard-lament-end": 12,
+          "bard-lament-pulse": 506,
+          "bard-lament-start": 138
+        }
+      },
+      "unused": {
+        "runs": 24,
+        "wins": 21,
+        "fitted": 24,
+        "allThree": 0,
+        "allThreeAfterFitting": 0,
+        "events": {},
+        "lateEvents": {}
+      }
+    }
+  ],
+  "support": [
+    {
+      "path": "cover-party-gatehouse01.json",
+      "sha256": "21cf059c0f5e685d664a701bcde1561cdf2133e105e16669312b69d40faee2de",
+      "type": "raid",
+      "cohort": "party",
+      "arena": "gatehouse",
+      "clears": 0,
+      "full": false,
+      "triple": true,
+      "fullTriple": false,
+      "openingTriple": true,
+      "counts": {
+        "bard-answer-call": 3,
+        "bard-answer-proof": 3,
+        "bard-answer-release": 3,
+        "bard-entrance-arm": 1,
+        "bard-entrance-set": 1,
+        "bard-entrance-take": 1,
+        "bard-lament-pulse": 10,
+        "bard-lament-start": 2
+      }
+    },
+    {
+      "path": "cover-party-ossuary-works01.json",
+      "sha256": "bc5b3af3831d1776aefc66413d966b906a5f8d56173c1cd2e93ee37dbc51161f",
+      "type": "raid",
+      "cohort": "party",
+      "arena": "ossuary-works",
+      "clears": 2,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 11,
+        "bard-answer-close": 1,
+        "bard-answer-proof": 10,
+        "bard-answer-release": 10,
+        "bard-lament-chord": 6,
+        "bard-lament-pulse": 37,
+        "bard-lament-start": 10
+      }
+    },
+    {
+      "path": "cover-party-sunken-chapel01.json",
+      "sha256": "e0687b96918b63036747970d6b43739d1f12ed1e23873033f209ac873ec245f7",
+      "type": "raid",
+      "cohort": "party",
+      "arena": "sunken-chapel",
+      "clears": 0,
+      "full": false,
+      "triple": true,
+      "fullTriple": false,
+      "openingTriple": true,
+      "counts": {
+        "bard-answer-call": 5,
+        "bard-answer-proof": 5,
+        "bard-answer-release": 5,
+        "bard-entrance-arm": 1,
+        "bard-entrance-set": 1,
+        "bard-entrance-take": 1,
+        "bard-lament-pulse": 20,
+        "bard-lament-start": 4
+      }
+    },
+    {
+      "path": "late-party-gatehouse01.json",
+      "sha256": "f1c1da305efdc29dfa9c951874dd4b58b531cb60a3a583aca0726ec3ab30fa25",
+      "type": "endless",
+      "cohort": "party",
+      "arena": "gatehouse",
+      "clears": 13,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 3,
+        "bard-answer-proof": 3,
+        "bard-answer-release": 3,
+        "bard-answer-shift": 1,
+        "bard-lament-chord": 2,
+        "bard-lament-pulse": 6,
+        "bard-lament-start": 2
+      }
+    },
+    {
+      "path": "late-party-gatehouse02.json",
+      "sha256": "104c9fb8e20dceadb1e44bba27d914e5497f7a675867a6f23811eb3c073b657f",
+      "type": "endless",
+      "cohort": "party",
+      "arena": "gatehouse",
+      "clears": 31,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 30,
+        "bard-answer-proof": 29,
+        "bard-answer-release": 29,
+        "bard-answer-shift": 3,
+        "bard-lament-chord": 16,
+        "bard-lament-end": 1,
+        "bard-lament-pulse": 48,
+        "bard-lament-start": 17
+      }
+    },
+    {
+      "path": "late-party-ossuary-works01.json",
+      "sha256": "182a3ffdc8212222aaafc20ca60d0d86b8e41171a9ab69297203fa81dfff3eeb",
+      "type": "endless",
+      "cohort": "party",
+      "arena": "ossuary-works",
+      "clears": 13,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 3,
+        "bard-answer-proof": 2,
+        "bard-answer-release": 2,
+        "bard-lament-chord": 2,
+        "bard-lament-end": 1,
+        "bard-lament-pulse": 7,
+        "bard-lament-start": 3
+      }
+    },
+    {
+      "path": "late-party-ossuary-works02.json",
+      "sha256": "44c26b18d696846b446aa2d1e69f984bcdd0d6cbfddb51c57c99e399b5f25b39",
+      "type": "endless",
+      "cohort": "party",
+      "arena": "ossuary-works",
+      "clears": 31,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 20,
+        "bard-answer-close": 1,
+        "bard-answer-proof": 18,
+        "bard-answer-release": 18,
+        "bard-lament-chord": 13,
+        "bard-lament-end": 2,
+        "bard-lament-pulse": 46,
+        "bard-lament-start": 16
+      }
+    },
+    {
+      "path": "late-solo-gatehouse01.json",
+      "sha256": "4e4353aedf562a54c5ef63d79d8a50dee14e7aa0f5ebb9205732f3971b57f27e",
+      "type": "endless",
+      "cohort": "solo",
+      "arena": "gatehouse",
+      "clears": 2,
+      "full": false,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 3,
+        "bard-answer-proof": 3,
+        "bard-answer-release": 3
+      }
+    },
+    {
+      "path": "late-solo-sunken-chapel01.json",
+      "sha256": "1b39ddc4f2606647470603bf3e00897eb5c63fbcd1a2d361b542f1497e5fa0af",
+      "type": "endless",
+      "cohort": "solo",
+      "arena": "sunken-chapel",
+      "clears": 13,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 6,
+        "bard-answer-proof": 6,
+        "bard-answer-release": 5,
+        "bard-lament-pulse": 20,
+        "bard-lament-start": 4
+      }
+    },
+    {
+      "path": "late-solo-sunken-chapel02.json",
+      "sha256": "297b214a7d8db0d80093e204354642d1c5106f726135efb6d6b7e9046b7dc34b",
+      "type": "endless",
+      "cohort": "solo",
+      "arena": "sunken-chapel",
+      "clears": 32,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 29,
+        "bard-answer-close": 1,
+        "bard-answer-proof": 28,
+        "bard-answer-release": 26,
+        "bard-lament-end": 3,
+        "bard-lament-pulse": 94,
+        "bard-lament-start": 21
+      }
+    },
+    {
+      "path": "raid-party-gatehouse01.json",
+      "sha256": "1cfe474f69e6fd8643482c7d0bbdceb51b9bd1597e3af3b82d6461e6743b86ac",
+      "type": "raid",
+      "cohort": "party",
+      "arena": "gatehouse",
+      "clears": 1,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 8,
+        "bard-answer-proof": 8,
+        "bard-answer-release": 8,
+        "bard-lament-chord": 1,
+        "bard-lament-end": 2,
+        "bard-lament-pulse": 10,
+        "bard-lament-start": 4
+      }
+    },
+    {
+      "path": "raid-party-ossuary-works01.json",
+      "sha256": "e1e6f3808913febd3637e09245a67a4c370b43b7fb053d2c1fd5dfbd5db87ceb",
+      "type": "raid",
+      "cohort": "party",
+      "arena": "ossuary-works",
+      "clears": 2,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 8,
+        "bard-answer-proof": 8,
+        "bard-answer-release": 8,
+        "bard-lament-chord": 4,
+        "bard-lament-pulse": 23,
+        "bard-lament-start": 7
+      }
+    },
+    {
+      "path": "raid-solo-gatehouse01.json",
+      "sha256": "b60ec1c53f88050bf3ead39d6de1a1b6150d50fc3900a6cb78a4358a5d0efad1",
+      "type": "raid",
+      "cohort": "solo",
+      "arena": "gatehouse",
+      "clears": 0,
+      "full": false,
+      "triple": true,
+      "fullTriple": false,
+      "openingTriple": true,
+      "counts": {
+        "bard-answer-call": 3,
+        "bard-answer-proof": 3,
+        "bard-answer-release": 3,
+        "bard-entrance-arm": 1,
+        "bard-entrance-set": 1,
+        "bard-entrance-take": 1,
+        "bard-lament-pulse": 10,
+        "bard-lament-start": 2
+      }
+    },
+    {
+      "path": "raid-solo-sunken-chapel01.json",
+      "sha256": "3bed57ec7d9f27153e1e3801d6840d56482023f9bf07d43ed2e4e800725c3dbe",
+      "type": "raid",
+      "cohort": "solo",
+      "arena": "sunken-chapel",
+      "clears": 1,
+      "full": true,
+      "triple": false,
+      "fullTriple": false,
+      "openingTriple": false,
+      "counts": {
+        "bard-answer-call": 4,
+        "bard-answer-close": 1,
+        "bard-answer-proof": 4,
+        "bard-answer-release": 3,
+        "bard-lament-end": 1,
+        "bard-lament-pulse": 14,
+        "bard-lament-start": 3
+      }
+    }
+  ],
+  "controls": {
+    "path": "controlled02.json",
+    "sha256": "496209673f2b85467c48d06b2b4fd03efe6aedb9ae04c71e1cc28f6fce5b29bc",
+    "cases": 2
+  },
+  "replaySha256": "f5505d841ededfd653a96f4b90e074c0f5a81cb53d8518be419bba5fd9f013bc"
+}

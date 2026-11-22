@@ -13,7 +13,7 @@ Finish one coherent area before opening the next. Use the public-release-era gam
 | Order | Focus | Concrete result needed before the next focus |
 | --- | --- | --- |
 | 1 — scoped reference checked | Class-tree structure and Engineer reference | Separate General and Specializations; build an honest, readable specialization graph; finish Engineer's three distinct pathways and their internal choices; verify the full build loop. |
-| 2 — active: Bard specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
+| 2 — active: Swordsman specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
 | 3 | Class balance and Free Play build variety | Compare complete legal builds across classes, weapons, mutations, difficulties, solo and co-op. Resolve dominant combinations, weak support paths and unclear interactions. |
 | 4 | Existing bosses, individually | Polish tells, movement, phases, hit rules, arenas, audio and difficulty identities. Work from early encounters toward late and secret encounters; do not start a second boss while the first has known major defects. |
 | 5 | The rest of Free Play | Finish the surrounding run loop: menus, objectives, rewards, pacing, readability, controls, networking, saves, performance and presentation. Address shared defects earlier when they block the current class or boss. |
@@ -129,4 +129,4 @@ Conductor’s historical review preserves its original source, build and storage
 
 The verified Lament previews are available in the rollback. [Bard Lament](BARD_LAMENT.md).
 
-Misdirection is available in both frozen previews. Continue with the scoped whole-Bard review, then Swordsman. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
+Misdirection is available in both frozen previews. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).

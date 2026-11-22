@@ -10,7 +10,11 @@ Source **bc63a14eaa8befd469d298e13d04269db3864e66**, build **2026.11.21-bard-mis
 
 The protocol 94 Bard Lament pair is the verified rollback in `output/review-rollback.zip`. All 4,391 restored files match their archived bytes. Archive SHA-256 46e3d815830fe4c4390b55ebc9fc6fe9dbcc07abe6d3e274677b35303132b44c. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-misdirection-2026-11-21/retention-result.json).
 
-Continue with the scoped whole-Bard review, then Swordsman. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](../docs/BARD_MISDIRECTION.md).
+Continue with Swordsman Measured Stance after reading the scoped Bard comparison. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](../docs/BARD_MISDIRECTION.md).
+
+## Scoped Bard run review
+
+The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. [Bard run review](../docs/BARD_RUN_REVIEW.md) · [Evidence](../reviews/bard-whole-review-2026-11-21/whole-bard-bindings.json).
 
 ## Protocol 94 Bard Lament rollback review
 
