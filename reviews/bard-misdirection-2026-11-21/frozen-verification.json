@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "sourceCommit": "bc63a14eaa8befd469d298e13d04269db3864e66",
+  "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "protocol": 95,
+  "checkedAt": "2026-11-22T22:10:11.065Z",
+  "nativeDriverSha256": "9a5d944816debb334e6c3797aef4b740e5146e3d767a34217e5be84e4b5a2a2e",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "bc63a14eaa8befd469d298e13d04269db3864e66",
+      "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+      "protocol": 95,
+      "url": "http://127.0.0.1:5434/",
+      "endpoint": "http://127.0.0.1:2810",
+      "files": 2203,
+      "manifestSha256": "e29ad67638617fc48348e8cdc200b19eeec9539f1da5e66ed72a4fa3075899a6",
+      "backendSha256": "5d7616e96e1104c67cbc905c8b4da60085503f9ddc5c194f74f15f8e782deb07",
+      "backendStartedAt": "2026-11-22T21:43:58.983Z",
+      "worker": {
+        "path": "assets/offline.worker-CQ6GiIFK.js",
+        "bytes": 1695802,
+        "sha256": "e0ec23e3f86a0fd65cc162101fc28e4a0e159549cb520ec721b697da5c7f04ad"
+      },
+      "sampledNewAssets": 24,
+      "httpSha256": "0a780b30cafa479bdc889687553d1119791434bb125aa3710cae2fa73162ffe9",
+      "httpLogSha256": "280843e9e8f5c6b7c6f2bcef8d4a579a74a162bfec4bb9906f3764cf0c88617b",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "88616feaa02c7324e0a85544b73d573515172c4cbd869f73bae819ac714d5145",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "3eab716573d027a249c42aa3e859e583935e399d1893e95ea2a24e9bf87c33bc",
+          "backendStartedAt": "2026-11-22T21:43:58.983Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "wrong",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-wrong.log",
+          "logSha256": "54b9b81df011406261bca54e8218c2a57fcd416e84a3325624f2c1b0a4bc0c82",
+          "raw": "testing-worker-wrong.json",
+          "resultSha256": "903c37b609e4394c0f31e294d332ae627f3e63c1ce8a097744e2ff51c447dc01",
+          "backendStartedAt": "2026-11-22T21:43:58.983Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "second",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-second.log",
+          "logSha256": "70d5fc88795c85235e1686fda1cad8855018cab0704f9b6a41fe085d2fa2f08c",
+          "raw": "testing-worker-second.json",
+          "resultSha256": "3c7a84b605bb7ac6f560431e446562feae2b874fa58ea617f26fc0c502814838",
+          "backendStartedAt": "2026-11-22T21:43:58.983Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "1d8b6e6c49242695714ea08b522dbd33d139ecc55ccc598d9f72cc85a258ad1c",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "28ff6cbbd6fbcfba588fca7447b98e61c43e327d5102def52e0433adad2ef905",
+          "backendStartedAt": "2026-11-22T21:43:58.983Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "wrong",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-wrong.log",
+          "logSha256": "49555f7a3bcedf00bd80cfeeacc5e8cc808ed62fb518938def6f5e2a6a5e438e",
+          "backendStartedAt": "2026-11-22T21:43:58.983Z",
+          "folder": "frozen04",
+          "raw": "testing-peer-wrong.json",
+          "resultSha256": "b1c1f408ac22c78b85ad8ddcc37407e08c44007716d9fb4f9a0e5c12e931c5d2"
+        },
+        {
+          "fitting": "second",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-second.log",
+          "logSha256": "95fea0773514e7bdcbe7fd16481c62880dd8013e0c952b6d56d14d362e156c99",
+          "raw": "testing-peer-second.json",
+          "resultSha256": "bfe32d9867ada19aaaf9660c4bed55f0b1e5f00295eb17d4732614fc5104ebaf",
+          "backendStartedAt": "2026-11-22T21:43:58.983Z",
+          "folder": "frozen02"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "bc63a14eaa8befd469d298e13d04269db3864e66",
+      "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+      "protocol": 95,
+      "url": "http://127.0.0.1:5435/",
+      "endpoint": "http://127.0.0.1:2811",
+      "files": 2203,
+      "manifestSha256": "8452d57cb82cc59eb387018fb6af2db00bc88ad278598734ab06d4636388edb1",
+      "backendSha256": "5d7616e96e1104c67cbc905c8b4da60085503f9ddc5c194f74f15f8e782deb07",
+      "backendStartedAt": "2026-11-22T21:44:00.962Z",
+      "worker": {
+        "path": "assets/offline.worker-BbbSd6Su.js",
+        "bytes": 1695899,
+        "sha256": "102f933ed23022721dd974d6c3ba102673d2464a78ede83272e32a40a095b88b"
+      },
+      "sampledNewAssets": 24,
+      "httpSha256": "12b84ca9a33f5180ac6bde5fbb327fb9e74795ab4ccc4cb30c818e50ca03265c",
+      "httpLogSha256": "c1c0ecdef0fdce483e9596d51aa5342faba4cc9b74af236a3c294c2018d860d2",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "88616feaa02c7324e0a85544b73d573515172c4cbd869f73bae819ac714d5145",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "2dcb33a83e950c1fb2af6fa4a9b82b646297766e0febb5c2ea06b3a74750b972",
+          "backendStartedAt": "2026-11-22T21:44:00.962Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "wrong",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-wrong.log",
+          "logSha256": "47406568fe66af3da6fd49f1252212bcafa3854f03e643385489b89790dbf63f",
+          "raw": "public-worker-wrong.json",
+          "resultSha256": "7b15a6a34817a22be8c1826125200e299b18e46660de8412bc4486173ac66eaf",
+          "backendStartedAt": "2026-11-22T21:44:00.962Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "second",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-second.log",
+          "logSha256": "5917adc203222933bfbc7293e6a82ff7d8e1a036a3a36e257b140f71796dd248",
+          "raw": "public-worker-second.json",
+          "resultSha256": "56476b32aa98687aa0cf71439395b1504900c47d51eef0515f5975760838af2f",
+          "backendStartedAt": "2026-11-22T21:44:00.962Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "1d8b6e6c49242695714ea08b522dbd33d139ecc55ccc598d9f72cc85a258ad1c",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "a9f90607603448e3ddaaddf28da0ebc05196e13e1da598ef4cb237ce94e59feb",
+          "backendStartedAt": "2026-11-22T21:44:00.962Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "wrong",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-wrong.log",
+          "logSha256": "d8428d52b1aafb52c412c91fc1d1ba1804b8e3936379581b81cad43b19f20313",
+          "raw": "public-peer-wrong.json",
+          "resultSha256": "14c7b8a29561b13c5c5aa4cf2f86ad600c58fa727ffaed2f57a1994d73a174f6",
+          "backendStartedAt": "2026-11-22T21:44:00.962Z",
+          "folder": "frozen02"
+        },
+        {
+          "fitting": "second",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-second.log",
+          "logSha256": "e734a57d7d929d70ad2cd8ace25163534fd88fe8648becddd6329d721b0a0ca1",
+          "raw": "public-peer-second.json",
+          "resultSha256": "4b5cf7304039d9cff85dc0947a32223ccb9f502205420515710543a8db2f5dfe",
+          "backendStartedAt": "2026-11-22T21:44:00.962Z",
+          "folder": "frozen02"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ],
+  "previousAttempt": "frozen03",
+  "httpEvidenceFolder": "frozen02",
+  "retryDriver": "retry-wrong-door.mts",
+  "retryDriverSha256": "4705a550dc01246bd454e251d42d5388b6abc8261c4e02e3943774af8606be3d",
+  "retriedCases": 1,
+  "retryHelpers": {
+    "wrong-door-retry-flow.mts": "409ccd387a5e14660f15295ef31bc7550b185967a9fb0fd7d62a9d8051f3f5de",
+    "wrong-door-retry-pilot.mjs": "8eda605f777995a88211d29ffeca45fe0ed67fdfc42e8f94bb4d96b0069020fe"
+  }
+}

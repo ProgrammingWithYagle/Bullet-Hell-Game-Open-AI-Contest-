@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. Testing uses [5432](http://127.0.0.1:5432/) with backend 2808. Public review uses [5433](http://127.0.0.1:5433/) with backend 2809. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
+Source **bc63a14eaa8befd469d298e13d04269db3864e66**, build **2026.11.21-bard-misdirection**, protocol **95**, catalog **122**. The local suite and both GitHub workflows passed 2,870 tests and seven checks. Each frozen audience binds 2,203 files and passed seven checks. Testing uses [5434](http://127.0.0.1:5434/) with backend 2810. Public review uses [5435](http://127.0.0.1:5435/) with backend 2811. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073687535) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45073703289) · [Frozen checks](../reviews/bard-misdirection-2026-11-21/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -125,8 +125,8 @@ Infiltrator’s historical review preserves the original source, build and stora
 
 Mark Hunter’s historical review preserves its original source, build and storage receipts. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
 
-The verified Conductor previews are available in the rollback. [Bard Conductor](BARD_CONDUCTOR.md).
+Conductor’s historical review preserves its original source, build and storage receipts. [Bard Conductor](BARD_CONDUCTOR.md).
 
-Lament is available in both frozen previews. Continue with Bard Misdirection. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Lament](BARD_LAMENT.md).
+The verified Lament previews are available in the rollback. [Bard Lament](BARD_LAMENT.md).
 
-Protocol 95 adds Bard Misdirection with False Entrance, Wrong Door and Second Entrance. The local gate and six ordinary transport cases passed. Lament remains the retained review during Misdirection verification. [Bard Misdirection](BARD_MISDIRECTION.md).
+Misdirection is available in both frozen previews. Continue with the scoped whole-Bard review, then Swordsman. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).

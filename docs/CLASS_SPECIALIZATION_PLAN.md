@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f** has 119 techniques. Bard Lament adds Mourning Measure with two exclusive fittings. [Bard Lament](BARD_LAMENT.md).
+Current verified source **bc63a14eaa8befd469d298e13d04269db3864e66** has 122 techniques. Bard Misdirection adds False Entrance with two exclusive fittings. [Bard Misdirection](BARD_MISDIRECTION.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -155,8 +155,8 @@ Infiltrator’s historical review preserves the original source, build and stora
 
 Mark Hunter’s historical review preserves its original source, build and storage receipts. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
 
-The verified Conductor previews are available in the rollback. [Bard Conductor](BARD_CONDUCTOR.md).
+Conductor’s historical review preserves its original source, build and storage receipts. [Bard Conductor](BARD_CONDUCTOR.md).
 
-Lament is available in both frozen previews. Continue with Bard Misdirection. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Lament](BARD_LAMENT.md).
+The verified Lament previews are available in the rollback. [Bard Lament](BARD_LAMENT.md).
 
-Protocol 95 adds Bard Misdirection with False Entrance, Wrong Door and Second Entrance. The local gate and six ordinary transport cases passed. Lament remains the retained review during Misdirection verification. [Bard Misdirection](BARD_MISDIRECTION.md).
+Misdirection is available in both frozen previews. Continue with the scoped whole-Bard review, then Swordsman. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).

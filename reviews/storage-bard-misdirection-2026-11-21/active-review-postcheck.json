@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-22T22:18:28.4678623Z",
+  "stage": "after",
+  "currentScope": "reviews/bard-misdirection-2026-11-21",
+  "rollbackScope": "reviews/bard-lament-2026-11-21",
+  "rollbackSha256": "46e3d815830fe4c4390b55ebc9fc6fe9dbcc07abe6d3e274677b35303132b44c",
+  "previews": [
+    {
+      "scope": "reviews/bard-misdirection-2026-11-21",
+      "audience": "testing",
+      "source": "bc63a14eaa8befd469d298e13d04269db3864e66",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 28808,
+          "port": 5434,
+          "processUtc": "2026-11-22T21:43:58.1813790Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-bard-misdirection-2026-11-21-testing-bc63a14 --host 127.0.0.1 --port 5434 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 36592,
+          "port": 2810,
+          "processUtc": "2026-11-22T21:43:58.1649010Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bard-misdirection-2026-11-21-bc63a14.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T21:43:58.983Z",
+        "uptimeSeconds": 2060.5112915,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 95,
+        "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "bc63a14eaa8befd469d298e13d04269db3864e66",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/bard-misdirection-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/bard-misdirection-2026-11-21",
+      "audience": "public",
+      "source": "bc63a14eaa8befd469d298e13d04269db3864e66",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 41748,
+          "port": 5435,
+          "processUtc": "2026-11-22T21:44:00.4047840Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-bard-misdirection-2026-11-21-public-bc63a14 --host 127.0.0.1 --port 5435 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 10208,
+          "port": 2811,
+          "processUtc": "2026-11-22T21:44:00.3875810Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bard-misdirection-2026-11-21-bc63a14.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T21:44:00.962Z",
+        "uptimeSeconds": 2061.4399582,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 95,
+        "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "bc63a14eaa8befd469d298e13d04269db3864e66",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/bard-misdirection-2026-11-21/processes-public.json"
+    },
+    {
+      "scope": "reviews/bard-lament-2026-11-21",
+      "audience": "testing",
+      "source": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5432,
+          "originallyRecordedPid": 24332,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2808,
+          "originallyRecordedPid": 39076,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/bard-lament-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/bard-lament-2026-11-21",
+      "audience": "public",
+      "source": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5433,
+          "originallyRecordedPid": 37944,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2809,
+          "originallyRecordedPid": 21616,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/bard-lament-2026-11-21/processes-public.json"
+    }
+  ]
+}

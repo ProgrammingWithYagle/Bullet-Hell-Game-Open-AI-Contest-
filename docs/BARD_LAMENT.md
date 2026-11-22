@@ -20,11 +20,11 @@ Either fitting costs 2 SP at 5 earned SP. Choose one over the course of a run.
 
 Across 80 runs, the pilots paid for 295 lanes and played 1198 pulses. Cross Verse turned 5 lanes. Closing Chord finished 83 lanes with a chord. Both controls matched in sixteen pairs. Twelve whole input and outcome traces matched on replay. [Run study](../reviews/bard-lament-2026-11-21/study-summary.json) · [Replays](../reviews/bard-lament-2026-11-21/practice-replays.json).
 
-## Current protocol 94 review
+## Protocol 94 rollback review
 
-Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. Testing uses [5432](http://127.0.0.1:5432/) with backend 2808. Public review uses [5433](http://127.0.0.1:5433/) with backend 2809. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
+Source **7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f**, build **2026.11.21-bard-lament**, protocol **94**, catalog **119**. The local suite and both GitHub workflows passed 2,855 tests and seven checks. Each frozen audience binds 2,194 files and passed seven checks. The 5432/2808 and 5433/2809 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046272992) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45046288918) · [Frozen checks](../reviews/bard-lament-2026-11-21/frozen-verification.json).
 
-The protocol 93 Bard Conductor pair is the verified rollback in `output/review-rollback.zip`. All 4,375 restored files match their archived bytes. Archive SHA-256 0ba86b06e2f9b6070a3b9bbe57eb3211d40f0a742e4828d079d93c0ed95b04f2. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-lament-2026-11-21/retention-result.json).
+The protocol 93 Bard Conductor pair served as the rollback during the protocol 94 review in `output/review-rollback.zip`. All 4,375 restored files match their archived bytes. Archive SHA-256 0ba86b06e2f9b6070a3b9bbe57eb3211d40f0a742e4828d079d93c0ed95b04f2. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-lament-2026-11-21/retention-result.json).
 
 ## Verification
 
