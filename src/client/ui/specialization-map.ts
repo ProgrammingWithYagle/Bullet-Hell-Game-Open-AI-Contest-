@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  "assassin-evasion-1": { x: 500, y: 75 },
+  "assassin-crossing-writ-1": { x: 500, y: 255 },
+  "assassin-mark-hunter-canted-cutoff-1": { x: 230, y: 505 },
+  "assassin-mark-hunter-transfer-writ-1": { x: 770, y: 505 },
   "assassin-ambush-1": { x: 500, y: 75 },
   "assassin-slip-route-1": { x: 500, y: 255 },
   "assassin-infiltrator-footstep-relay-1": { x: 230, y: 505 },

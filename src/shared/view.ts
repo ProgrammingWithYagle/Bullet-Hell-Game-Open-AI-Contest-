@@ -106,9 +106,9 @@ export function splitBulwarkKit(kit:KitStatus){
 }
 export function splitLineworkKit(kit: KitStatus) {
   const base=splitBulwarkKit(kit);
-  if (kit.fieldDressing !== undefined || kit.rapidResponse !== undefined || kit.precautionWrap !== undefined || kit.pivotSigil !== undefined || kit.waymark !== undefined || kit.fuseSeal !== undefined || kit.calledOpening !== undefined || kit.slipRoute !== undefined) {
-    const { fieldDressing, rapidResponse, precautionWrap, pivotSigil, waymark, fuseSeal, calledOpening, slipRoute, ...shared } = base.shared;
-    return { shared, owner: { ...base.owner, fieldDressing, rapidResponse, precautionWrap, pivotSigil, waymark, fuseSeal, calledOpening, slipRoute } };
+  if (kit.fieldDressing !== undefined || kit.rapidResponse !== undefined || kit.precautionWrap !== undefined || kit.pivotSigil !== undefined || kit.waymark !== undefined || kit.fuseSeal !== undefined || kit.calledOpening !== undefined || kit.slipRoute !== undefined || kit.crossingWrit !== undefined) {
+    const { fieldDressing, rapidResponse, precautionWrap, pivotSigil, waymark, fuseSeal, calledOpening, slipRoute, crossingWrit, ...shared } = base.shared;
+    return { shared, owner: { ...base.owner, fieldDressing, rapidResponse, precautionWrap, pivotSigil, waymark, fuseSeal, calledOpening, slipRoute, crossingWrit } };
   }
   if (kit.lineworkRecovery === undefined) return base;
   const { lineworkAnchor, lineworkConnection, lineworkFlight, lineworkGuideBlocked, ...shared } = base.shared;

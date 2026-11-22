@@ -873,6 +873,21 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(2, color, .65).strokeRoundedRect(x - 8, y - 25, 16, 10, 2);
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
+    const writ = interceptOwner?.kit.crossingWrit;
+    if (writ && now < (writ.until ?? now)) {
+      const edge = this.highContrast ? 0xffffff : 0xf2cc8f;
+      if (writ.pin) h.lineStyle(2, edge, .82).strokeRect(writ.pin.x - 4, writ.pin.y - 4, 8, 8);
+      if (writ.proposed) h.lineStyle(2, edge, .90).strokeRect(writ.proposed.x - 12, writ.proposed.y - 12, 24, 24);
+      if (writ.guide) {
+        const { from, to } = writ.guide;
+        h.lineStyle(1.5, edge, writ.ready ? .62 : .37);
+        for (let part = 0; part < 9; part++) {
+          const start = part / 9, end = start + .055;
+          h.lineBetween(from.x + (to.x - from.x) * start, from.y + (to.y - from.y) * start,
+            from.x + (to.x - from.x) * end, from.y + (to.y - from.y) * end);
+        }
+      }
+    }
     const slip = interceptOwner?.kit.slipRoute;
     if (interceptOwner && slip?.ground && now < (slip.until ?? now)) {
       const color = this.highContrast ? 0xffffff : 0xe4bac3;
@@ -907,6 +922,27 @@ export class CombatScene extends Phaser.Scene {
       }
     }
     for (const cue of view.classCues) {
+      if (cue.kind === 'assassin-writ-quarry' || cue.kind === 'assassin-writ-cutoff') {
+        if (now >= cue.until) continue;
+        const local = cue.owner === this.localId;
+        const edge = this.highContrast ? 0xffffff : 0xf2cc8f;
+        const time = Math.max(0, Math.min(1, (cue.until - now) / Math.max(1, cue.until - cue.at)));
+        if (cue.kind === 'assassin-writ-cutoff') {
+          const { from, to, outcome } = cue;
+          const alpha = (local ? .89 : .52) * (outcome ? time : 1);
+          h.lineStyle(outcome === 'strike' ? 10 : 6, 0x38271c, alpha * .72).lineBetween(from.x, from.y, to.x, to.y);
+          h.lineStyle(outcome === 'strike' ? 4 : 2, edge, alpha).lineBetween(from.x, from.y, to.x, to.y);
+          for (const end of [from, to]) h.strokeRect(end.x - 3, end.y - 3, 6, 6);
+        } else {
+          const { x, y, radius, confirmed, paid } = cue;
+          const top = y - radius;
+          h.lineStyle(confirmed ? 3 : 1.5, edge, local ? .94 : .48).beginPath()
+            .moveTo(x - 9, top - 4).lineTo(x, top + 5).lineTo(x + 9, top - 4).strokePath();
+          if (confirmed) h.lineBetween(x - 6, top - 9, x + 6, top - 9);
+          if (paid) h.lineBetween(x - 4, top - 13, x + 4, top - 13);
+        }
+        continue;
+      }
       if (cue.kind === 'assassin-duel-focus' || cue.kind === 'assassin-duel-strike') {
         if (now >= cue.until) continue;
         const local = cue.owner === this.localId;

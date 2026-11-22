@@ -1,0 +1,307 @@
+{
+  "passed": true,
+  "protocol": 92,
+  "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "transport": "peer",
+  "fitting": "transfer",
+  "bought": [
+    {
+      "item": "assassin-evasion-1",
+      "earned": 12,
+      "clears": 0
+    },
+    {
+      "item": "assassin-crossing-writ-1",
+      "earned": 12,
+      "clears": 0
+    },
+    {
+      "item": "assassin-mark-hunter-transfer-writ-1",
+      "earned": 12,
+      "clears": 0
+    }
+  ],
+  "firstClear": 0,
+  "next": {
+    "boss": "city-eater",
+    "arena": "crown-crypt",
+    "start": 2
+  },
+  "setup": {
+    "mode": "raid",
+    "difficulty": "normal",
+    "arenaSelection": "fixed",
+    "openingArenaId": "crown-crypt",
+    "freePlay": {
+      "openingBossId": "city-eater",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "paid": {
+      "id": 114,
+      "at": 468,
+      "until": 554,
+      "recovery": 3018
+    },
+    "original": 0,
+    "line": {
+      "x": 1221.8799355098467,
+      "y": 313.40354761807487,
+      "kind": "assassin-writ-cutoff",
+      "id": 114,
+      "owner": "wdMC6Eb6W",
+      "at": 468,
+      "until": 554,
+      "radius": 4,
+      "from": {
+        "x": 1150.4913413157783,
+        "y": 332.8886347103773
+      },
+      "to": {
+        "x": 1293.2685297039152,
+        "y": 293.91846052577245
+      },
+      "quarry": {
+        "x": 1210,
+        "y": 270,
+        "radius": 66
+      }
+    },
+    "newest": {
+      "x": 1221.8799355098467,
+      "y": 313.40354761807487,
+      "kind": "assassin-writ-cutoff",
+      "id": 114,
+      "owner": "wdMC6Eb6W",
+      "at": 468,
+      "until": 554,
+      "radius": 4,
+      "from": {
+        "x": 1150.4913413157783,
+        "y": 332.8886347103773
+      },
+      "to": {
+        "x": 1293.2685297039152,
+        "y": 293.91846052577245
+      },
+      "quarry": {
+        "x": 1048,
+        "y": 500,
+        "radius": 46
+      }
+    },
+    "transferred": true,
+    "effects": [
+      "assassin-writ-mark",
+      "assassin-writ-proof",
+      "assassin-writ-confirm",
+      "assassin-writ-set",
+      "assassin-writ-proposal",
+      "assassin-writ-transfer"
+    ],
+    "outcomes": [
+      {
+        "phase": "idle",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 3,
+        "status": {
+          "phase": "idle",
+          "ready": false,
+          "until": 0
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "marked",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 453,
+        "status": {
+          "phase": "marked",
+          "ready": false,
+          "proof": 0,
+          "until": 597
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "confirmed",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 467,
+        "status": {
+          "phase": "confirmed",
+          "ready": true,
+          "proof": 2,
+          "until": 597,
+          "guide": {
+            "from": {
+              "x": 1150.4913413157783,
+              "y": 332.8886347103773
+            },
+            "to": {
+              "x": 1293.2685297039152,
+              "y": 293.91846052577245
+            }
+          }
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "laid",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 468,
+        "status": {
+          "phase": "laid",
+          "ready": false,
+          "until": 554
+        },
+        "ultimateAt": 3018
+      },
+      {
+        "phase": "transfer",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 470,
+        "status": {
+          "phase": "transfer",
+          "ready": false,
+          "until": 554,
+          "proposed": {
+            "x": 1048,
+            "y": 500
+          }
+        },
+        "ultimateAt": 3018
+      },
+      {
+        "phase": "laid",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 474,
+        "status": {
+          "phase": "laid",
+          "ready": false,
+          "until": 554
+        },
+        "ultimateAt": 3018
+      }
+    ],
+    "plans": [
+      {
+        "kind": "set",
+        "tick": 467,
+        "boss": "city-eater",
+        "target": "boss",
+        "placement": {
+          "angle": -1.8372500701746322,
+          "center": {
+            "x": 1221.8490394480216,
+            "y": 313.4119829558525
+          },
+          "from": {
+            "x": 1150.4604452539531,
+            "y": 332.8970700481549
+          },
+          "to": {
+            "x": 1293.23763364209,
+            "y": 293.92689586355016
+          },
+          "ticks": 77,
+          "predicted": {
+            "id": "city-eater",
+            "hurtAt": 458,
+            "defeatedAt": 0,
+            "castAt": 450,
+            "castReleaseAt": 504,
+            "castEndsAt": 524,
+            "vulnerableUntil": 0,
+            "variant": "normal",
+            "x": 1210,
+            "y": 270,
+            "health": 34693.3359375,
+            "maxHealth": 34825.41796875,
+            "phase": 0,
+            "threat": 10,
+            "deadline": 7200,
+            "staggerUntil": 0,
+            "key": "boss",
+            "radius": 58,
+            "velocity": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          "score": 86.00000000000004
+        }
+      },
+      {
+        "kind": "proposal",
+        "tick": 468,
+        "boss": "city-eater",
+        "target": "prop:111"
+      }
+    ]
+  },
+  "witnessed": {
+    "nonHost": true,
+    "shared": {
+      "first": {
+        "x": 1221.8799355098467,
+        "y": 313.40354761807487,
+        "kind": "assassin-writ-cutoff",
+        "id": 114,
+        "owner": "wdMC6Eb6W",
+        "at": 468,
+        "until": 554,
+        "radius": 4,
+        "from": {
+          "x": 1150.4913413157783,
+          "y": 332.8886347103773
+        },
+        "to": {
+          "x": 1293.2685297039152,
+          "y": 293.91846052577245
+        },
+        "quarry": {
+          "x": 1210,
+          "y": 270,
+          "radius": 66
+        }
+      },
+      "last": {
+        "x": 1221.8799355098467,
+        "y": 313.40354761807487,
+        "kind": "assassin-writ-cutoff",
+        "id": 114,
+        "owner": "wdMC6Eb6W",
+        "at": 468,
+        "until": 554,
+        "radius": 4,
+        "from": {
+          "x": 1150.4913413157783,
+          "y": 332.8886347103773
+        },
+        "to": {
+          "x": 1293.2685297039152,
+          "y": 293.91846052577245
+        },
+        "quarry": {
+          "x": 1048,
+          "y": 500,
+          "radius": 46
+        }
+      }
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "9eb5b41c6805d6cfa7f2561fa6097cba65ca177a0446261b4021ee84d1cdd674",
+  "testedAudience": "public"
+}

@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 92 Assassin Mark Hunter candidate
+
+Protocol 92 adds Mark Hunter with Crossing Writ, Canted Cutoff and Transfer Writ. The exact local gate and six purchased operations passed. Infiltrator remains the retained preview while Mark Hunter proceeds through publication. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
+
 ## Current exact protocol 91 Assassin Infiltrator review
 
 Source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3**, build **2026.11.21-assassin-infiltrator**, protocol **91**, catalog **110**. The local suite and both GitHub workflows passed 2,813 tests and seven checks. Each frozen audience binds 2,164 files and passed seven checks. Testing uses [5426](http://127.0.0.1:5426/) with backend 2802. Public review uses [5427](http://127.0.0.1:5427/) with backend 2803. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936152181) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936166121) · [Frozen checks](../reviews/assassin-infiltrator-2026-11-21/frozen-verification.json).

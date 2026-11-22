@@ -1,9 +1,10 @@
+import { markHunterIds } from '../shared/assassin-crossing-writ.ts';
 import { infiltratorIds } from '../shared/assassin-slip-route.ts';
 import { duelistIds } from '../shared/assassin-called-opening.ts';
 import type { PlayerView } from '../shared/view.ts';
 import { t } from './i18n.ts';
 
-type AssassinAction = { key: 'technique1' | 'technique2'; id: string; at: number; blocked: boolean };
+type AssassinAction = { key: 'technique1' | 'technique2' | 'technique3'; id: string; at: number; blocked: boolean };
 
 export function assassinActions(player: PlayerView) {
   const extras: AssassinAction[] = [];
@@ -21,7 +22,25 @@ export function assassinActions(player: PlayerView) {
       extras.push({ key: 'technique2', id, at: route?.ready ? 0 : route?.until ?? player.qAt, blocked: !route?.ready });
     }
   }
+  if (player.classId === 'assassin' && !player.training && player.skills.includes(markHunterIds.entry)) {
+    const writ = player.kit.crossingWrit;
+    const id = writ?.phase === 'pinned' || writ?.phase === 'confirmed' && player.skills.includes(markHunterIds.canted)
+      ? markHunterIds.canted : writ?.phase === 'transfer' || writ?.phase === 'laid' && writ.ready ? markHunterIds.transfer : markHunterIds.entry;
+    extras.push({ key: 'technique3', id, at: writ?.ready ? 0 : writ?.until ?? player.ultimateAt, blocked: !writ?.ready });
+  }
   return { command: false, qNameKey: null, qAt: player.qAt, qBlocked: false, extras };
+}
+
+export function assassinWritLabel(player: PlayerView, now: number) {
+  const writ = player.kit.crossingWrit;
+  if (writ?.phase === 'marked') return t(writ.proof === 1 ? 'ui.assassin.writSecond' : 'ui.assassin.writFirst');
+  if (writ?.phase === 'transfer') return t('ui.assassin.writTransferHit');
+  if (writ?.phase === 'laid') return t(writ.ready ? 'ui.assassin.writOffer' : 'ui.assassin.writLead');
+  if (writ?.phase === 'confirmed' || writ?.phase === 'pinned') {
+    if (!writ.ready) return t('ui.assassin.writAim');
+    return t(writ.phase === 'confirmed' && player.skills.includes(markHunterIds.canted) ? 'ui.assassin.writPin' : 'ui.assassin.writSet');
+  }
+  return t(!writ?.ready && (writ?.until ?? player.ultimateAt) <= now ? 'ui.assassin.writFind' : 'ui.assassin.writStart');
 }
 
 export function assassinSlipLabel(player: PlayerView, now: number) {

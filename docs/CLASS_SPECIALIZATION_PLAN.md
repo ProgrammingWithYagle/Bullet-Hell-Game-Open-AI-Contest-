@@ -152,3 +152,5 @@ Volatile Spellwork passed its Short and Standard study and is available in both 
 The verified Duelist previews are available in the rollback. [Duelist](ASSASSIN_DUELIST.md).
 
 Infiltrator is available in both frozen previews. Continue with Assassin Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Infiltrator](ASSASSIN_INFILTRATOR.md).
+
+Protocol 92 adds Mark Hunter with Crossing Writ, Canted Cutoff and Transfer Writ. The exact local gate and six purchased operations passed. Infiltrator remains the retained preview while Mark Hunter proceeds through publication. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).

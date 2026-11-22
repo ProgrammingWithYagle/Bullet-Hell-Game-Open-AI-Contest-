@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.21-assassin-infiltrator**, protocol 91. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.21-assassin-mark-hunter**, protocol 92. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-21 — Cut off the quarry
+
+### Assassin Mark Hunter
+
+- Crossing Writ confirms a quarry with two primary hits, then spends Unwritten Passage recovery on one physical cutoff.
+- Canted Cutoff turns the line around a fixed pin. Transfer Writ changes quarry after a fresh hit on another hostile.
 
 ## 2026-11-21 — Walk behind cover
 

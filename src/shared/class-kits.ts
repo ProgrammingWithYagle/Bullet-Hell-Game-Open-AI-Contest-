@@ -1,3 +1,4 @@
+import type { CrossingWritCue, CrossingWritStatus } from './assassin-crossing-writ.ts';
 import { slipRouteRules, type SlipRouteStatus } from './assassin-slip-route.ts';
 import type { CalledOpeningCue, CalledOpeningStatus } from './assassin-called-opening.ts';
 import type { FuseCue, FuseStatus } from './mage-fuse-seal.ts';
@@ -50,6 +51,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   fuseSeal?: FuseStatus;
   calledOpening?: CalledOpeningStatus;
   slipRoute?: SlipRouteStatus;
+  crossingWrit?: CrossingWritStatus;
   heavyClutchConverted?:number;heavyClutchHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";heavyTraverseShotRequiresHandling?:"heavy-traverse-keyed-1"|"heavy-traverse-open-1";
   heavyLanyardAt?:number;heavyLanyardSequence?:number;heavyLanyardUntil?:number;heavyLanyardX?:number;heavyLanyardY?:number;heavyLanyardRemaining?:number;heavyTraverseShotPosted?:boolean;heavyTraverseShotX?:number;heavyTraverseShotY?:number;
   heavyClutchLifted?:boolean;heavyClutchUsed?:boolean;heavyClutchForfeited?:number;heavyClutchSlotsRemaining?:number;heavyClutchAt?:number;heavyClutchSequence?:number;heavyClutchBlocked?:boolean;heavyTraverseShotRequiresClutch?:boolean;
@@ -128,7 +130,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
-  | FieldDressingCue | RapidResponseCue | PrecautionCue | PivotCue | WaymarkCue | FuseCue | CalledOpeningCue
+  | FieldDressingCue | RapidResponseCue | PrecautionCue | PivotCue | WaymarkCue | FuseCue | CalledOpeningCue | CrossingWritCue
   | BastionCue
   | InterceptorScreenCue
   | FlakBurstCue

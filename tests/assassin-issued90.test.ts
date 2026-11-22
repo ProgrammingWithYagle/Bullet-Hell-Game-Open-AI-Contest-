@@ -1,3 +1,4 @@
+import hunterEdition from './fixtures/assassin-issued91-bindings.json';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -13,8 +14,8 @@ const raw = readFileSync(new URL('./fixtures/assassin-issued90.json', import.met
 const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
-test('issued 90 restores all 4,442 local ownership fixtures under protocol 91', () => {
-  assert.equal(PROTOCOL, 91);
+test('issued 90 restores all 4,442 local ownership fixtures under the current edition', () => {
+  assert.equal(PROTOCOL, 92);
   assert.equal(issued.protocol, 90);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -85,8 +86,8 @@ test('issued 90 preserves both HUD layouts, all three remaps and the full profil
 
 test('Infiltrator extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set(binding.addedLocaleKeys);
-  assert.equal(appended.size, 25);
+  const appended = new Set([...binding.addedLocaleKeys, ...hunterEdition.addedLocaleKeys]);
+  assert.equal(binding.addedLocaleKeys.length, 25);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));
     for (const key of appended) assert(Object.hasOwn(messages, key), key);

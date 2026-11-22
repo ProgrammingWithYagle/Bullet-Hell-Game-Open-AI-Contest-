@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Assassin Mark Hunter
+
+The protocol 92 census purchased 3,647 Assassin configurations in 27-SP shops. 1,166 use all three pathways, with all 1,090 issued Assassin configurations preserved. [Census](../reviews/assassin-mark-hunter-2026-11-21/build-census.json) · [Run study](ASSASSIN_MARK_HUNTER.md).
+
 ## Assassin Infiltrator
 
 The protocol 91 census purchased 1,090 Assassin configurations in 27-SP shops. 598 use both pathways, with all 243 issued Duelist configurations preserved. [Census](../reviews/assassin-infiltrator-2026-11-21/build-census.json) · [Run study](ASSASSIN_INFILTRATOR.md).
