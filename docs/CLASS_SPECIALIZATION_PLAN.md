@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859** has 113 techniques. Mark Hunter adds Crossing Writ with two exclusive fittings. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
+Current verified source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1** has 116 techniques. Bard Conductor adds Call and Response with two exclusive fittings. [Bard Conductor](BARD_CONDUCTOR.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -151,8 +151,8 @@ Volatile Spellwork passed its Short and Standard study and is available in both 
 
 The historical Duelist review retains its original source, build and storage receipts. [Duelist](ASSASSIN_DUELIST.md).
 
-The verified Infiltrator previews are available in the rollback. [Infiltrator](ASSASSIN_INFILTRATOR.md).
+Infiltrator’s historical review preserves the original source, build and storage receipts. [Infiltrator](ASSASSIN_INFILTRATOR.md).
 
-Mark Hunter is available in both frozen previews. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
+The verified Mark Hunter previews are available in the rollback. The scoped Assassin review covers eight fitting combinations across 96 Standard runs, twelve exact replays and two controlled fights. Seven runs completed a Duelist hit, an Infiltrator exchange and a Mark Hunter strike while all three were equipped. Continue with Bard Conductor. [Assassin run review](ASSASSIN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
 
-Protocol 93 adds Bard Conductor with Call and Response, Side Stage and Reprise. The local gate and six ordinary transport cases passed. The Mark Hunter pair remains the retained review during Conductor verification. [Bard Conductor](BARD_CONDUCTOR.md).
+Conductor is available in both frozen previews. Continue with Bard Lament. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Conductor](BARD_CONDUCTOR.md).

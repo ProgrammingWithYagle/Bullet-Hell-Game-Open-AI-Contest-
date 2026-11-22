@@ -20,6 +20,12 @@ Each fitting costs 2 SP and unlocks at 5 earned SP. Choose one for the run.
 
 Across 80 runs, the pilots placed 697 calls, proved 673 notes and released 633 replies. Side Stage moved 26 marks. Reprise returned 5 pulses, all in Standard runs. Both controls matched in sixteen pairs. Twelve full input and outcome traces matched on replay. [Run study](../reviews/bard-conductor-2026-11-21/study-summary.json) · [Replays](../reviews/bard-conductor-2026-11-21/practice-replays.json).
 
+## Current protocol 93 review
+
+Source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1**, build **2026.11.21-bard-conductor**, protocol **93**, catalog **116**. The local suite and both GitHub workflows passed 2,841 tests and seven checks. Each frozen audience binds 2,186 files and passed seven checks. Testing uses [5430](http://127.0.0.1:5430/) with backend 2806. Public review uses [5431](http://127.0.0.1:5431/) with backend 2807. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974702977) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974715409) · [Frozen checks](../reviews/bard-conductor-2026-11-21/frozen-verification.json).
+
+The protocol 92 Assassin Mark Hunter pair is the verified rollback in `output/review-rollback.zip`. All 4,357 restored files match their archived bytes. Archive SHA-256 a830aeaa9220bea8ee113ca6f4298a734f98bad2be1c9211d5c6390ba1ad92ec. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-bard-conductor-2026-11-21/retention-result.json).
+
 ## Verification
 
 The 27-SP census purchased 249 Bard configurations, including 81 for each fitting and 213 with an issued Bard transformation. All 16,571 earlier configurations remain legal. All 7,852 issued Mark Hunter Practice fixtures restored, including 2,557 Crossing Writ configurations. Both saved HUD layouts, all three remaps and all fifteen original dictionaries passed. [Census](../reviews/bard-conductor-2026-11-21/build-census.json) · [Save bindings](../tests/fixtures/bard-issued92-bindings.json).

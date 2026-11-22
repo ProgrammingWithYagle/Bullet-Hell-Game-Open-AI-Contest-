@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-22T16:25:58.0980602Z",
+  "stage": "after",
+  "currentScope": "reviews/bard-conductor-2026-11-21",
+  "rollbackScope": "reviews/assassin-mark-hunter-2026-11-21",
+  "rollbackSha256": "a830aeaa9220bea8ee113ca6f4298a734f98bad2be1c9211d5c6390ba1ad92ec",
+  "previews": [
+    {
+      "scope": "reviews/bard-conductor-2026-11-21",
+      "audience": "testing",
+      "source": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 48188,
+          "port": 5430,
+          "processUtc": "2026-11-22T02:07:50.5795290Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-bard-conductor-2026-11-21-testing-3c0b823 --host 127.0.0.1 --port 5430 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 47780,
+          "port": 2806,
+          "processUtc": "2026-11-22T02:07:50.5611670Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bard-conductor-2026-11-21-3c0b823.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T02:07:51.271Z",
+        "uptimeSeconds": 51479.0740697,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 93,
+        "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/bard-conductor-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/bard-conductor-2026-11-21",
+      "audience": "public",
+      "source": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 40412,
+          "port": 5431,
+          "processUtc": "2026-11-22T02:07:49.8558860Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-bard-conductor-2026-11-21-public-3c0b823 --host 127.0.0.1 --port 5431 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 36252,
+          "port": 2807,
+          "processUtc": "2026-11-22T02:07:49.8383670Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-bard-conductor-2026-11-21-3c0b823.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T02:07:50.496Z",
+        "uptimeSeconds": 51482.5703877,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 93,
+        "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/bard-conductor-2026-11-21/processes-public.json"
+    },
+    {
+      "scope": "reviews/assassin-mark-hunter-2026-11-21",
+      "audience": "testing",
+      "source": "c0cfa9a61800cb86c3cba0d9e057266f4e6ec859",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5428,
+          "originallyRecordedPid": 45748,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2804,
+          "originallyRecordedPid": 14156,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/assassin-mark-hunter-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/assassin-mark-hunter-2026-11-21",
+      "audience": "public",
+      "source": "c0cfa9a61800cb86c3cba0d9e057266f4e6ec859",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5429,
+          "originallyRecordedPid": 26764,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2805,
+          "originallyRecordedPid": 35028,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/assassin-mark-hunter-2026-11-21/processes-public.json"
+    }
+  ]
+}
