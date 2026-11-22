@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Bard Conductor
+
+The protocol 93 census bought 249 Bard configurations in 27-SP shops. Each fitting appears in 81 builds, and 213 builds combine Conductor with an issued transformation. [Census](../reviews/bard-conductor-2026-11-21/build-census.json) · [Run study](BARD_CONDUCTOR.md).
+
 ## Assassin Mark Hunter
 
 The protocol 92 census purchased 3,647 Assassin configurations in 27-SP shops. 1,166 use all three pathways, with all 1,090 issued Assassin configurations preserved. [Census](../reviews/assassin-mark-hunter-2026-11-21/build-census.json) · [Run study](ASSASSIN_MARK_HUNTER.md).

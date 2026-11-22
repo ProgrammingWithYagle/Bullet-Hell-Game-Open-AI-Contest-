@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.21-assassin-mark-hunter**, protocol 92. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.21-bard-conductor**, protocol 93. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-21 — Choose where to answer
+
+### Bard Conductor
+
+- Call and Response spends Resolving Phrase recovery, sets a reply stage and asks for a real note from that ground.
+- Side Stage moves the reply once. Reprise can return the finishing pulse to the original call site.
 
 ## 2026-11-21 — Cut off the quarry
 

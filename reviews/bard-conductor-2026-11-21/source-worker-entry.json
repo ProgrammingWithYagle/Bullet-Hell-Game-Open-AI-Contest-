@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "protocol": 93,
+  "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+  "transport": "worker",
+  "fitting": "entry",
+  "bought": [
+    {
+      "item": "bard-performance-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-call-and-response-1",
+      "earned": 3,
+      "clears": 0
+    }
+  ],
+  "firstClear": 0,
+  "next": {
+    "boss": "constable",
+    "arena": "gatehouse",
+    "start": 0
+  },
+  "setup": {
+    "mode": "short",
+    "difficulty": "baby",
+    "arenaSelection": "route",
+    "openingArenaId": "gatehouse",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 41
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "bard-response-stage",
+        "owner": "solo",
+        "id": 5,
+        "x": 795.3193068061302,
+        "y": 441.5947653072966,
+        "originX": 788.6627562863879,
+        "originY": 597.4526824471651,
+        "radius": 62,
+        "at": 32,
+        "until": 146,
+        "proof": false
+      },
+      "last": {
+        "kind": "bard-response-stage",
+        "owner": "solo",
+        "id": 5,
+        "x": 795.3193068061302,
+        "y": 441.5947653072966,
+        "originX": 788.6627562863879,
+        "originY": 597.4526824471651,
+        "radius": 62,
+        "at": 32,
+        "until": 146,
+        "proof": true
+      },
+      "phases": [
+        {
+          "kind": "bard-response-stage",
+          "owner": "solo",
+          "id": 5,
+          "x": 795.3193068061302,
+          "y": 441.5947653072966,
+          "originX": 788.6627562863879,
+          "originY": 597.4526824471651,
+          "radius": 62,
+          "at": 32,
+          "until": 146,
+          "proof": false
+        },
+        {
+          "kind": "bard-response-stage",
+          "owner": "solo",
+          "id": 5,
+          "x": 795.3193068061302,
+          "y": 441.5947653072966,
+          "originX": 788.6627562863879,
+          "originY": 597.4526824471651,
+          "radius": 62,
+          "at": 32,
+          "until": 146,
+          "proof": true
+        }
+      ],
+      "cooldown": 383
+    },
+    "call": {
+      "kind": "bard-phrase",
+      "id": 6,
+      "owner": "solo",
+      "x": 788.6627562863879,
+      "y": 597.4526824471651,
+      "radius": 145,
+      "at": 32,
+      "until": 46,
+      "cadence": 2,
+      "beat": 0,
+      "encore": false
+    },
+    "answer": {
+      "kind": "bard-phrase",
+      "id": 10,
+      "owner": "solo",
+      "x": 795.3193068061302,
+      "y": 441.5947653072966,
+      "radius": 145,
+      "at": 57,
+      "until": 71,
+      "cadence": 2,
+      "beat": 1,
+      "encore": false
+    },
+    "recovery": 383,
+    "shifted": false,
+    "returned": false,
+    "sounds": [
+      "bard-answer-call",
+      "bard-answer-proof",
+      "bard-answer-release"
+    ],
+    "plans": [
+      {
+        "action": "call",
+        "tick": 31,
+        "from": {
+          "x": 788.6627562863879,
+          "y": 597.4526824471651
+        },
+        "stage": {
+          "x": 795.3193068061302,
+          "y": 441.5947653072966
+        },
+        "cadence": 2
+      },
+      {
+        "action": "answer",
+        "tick": 56,
+        "at": {
+          "x": 795.3193068061302,
+          "y": 441.5947653072966
+        }
+      }
+    ],
+    "boss": "constable"
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "479c9607a59be45e5554b622d18b201f76a6993f445ea0e0d4c3d7060cb218e1",
+  "driverSha256": "d551ac69f0d13e138a6f971f66ba87728cbad3d4f26dd699f19c3b7fc18cc64b",
+  "testedAudience": "public"
+}

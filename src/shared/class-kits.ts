@@ -23,7 +23,7 @@ import {EngineerTraps,type TrapCue} from './engineer-traps.ts';
 import {EngineerMachinery,type MachineryOrder,type MachineryCue} from './engineer-machinery.ts';
 import { engineerRules as er, chargeLegal, type EngineerCharge } from './engineer-pathways.ts';
 import { hasTalent, type TalentId } from './class-talents.ts';
-import type { BardCue } from './bard-kit.ts';
+import type { BardCue, ConductorCue, ConductorStatus } from './bard-kit.ts';
 import type {RetinueOrder} from './summoner-kit.ts';
 import type { SwordCue } from './swordsman-kit.ts';
 import type { AlchemyCue, Recipe } from './alchemist-kit.ts';
@@ -81,6 +81,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   guardRemaining?: number;
   guardActive?: boolean;
   cadence?: number;
+  conducting?: ConductorStatus;
   chargeUntil: number;
   veilUntil: number;
   passageUntil: number;
@@ -146,6 +147,7 @@ export type KitCue =
   | RangerCue
   | SwordCue
   | BardCue
+  | ConductorCue
   | TalentCue
   | Construct
   | {

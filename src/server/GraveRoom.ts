@@ -266,7 +266,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   }
   private bindPrivateKitView(client: Client) {
     const player = this.state.players.get(client.sessionId);
-    if (!player || !['heavy','tank','medic','mage','assassin'].includes(player.classId)) return;
+    if (!player || !['heavy','tank','medic','mage','assassin','bard'].includes(player.classId)) return;
     client.view ??= new StateView();
     client.view.add(player);
   }
@@ -379,7 +379,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
         }
         if (hostile.length) shared.push({ type: 'remove', ids: hostile });
         for (const [owner, ids] of own) add(owner, { type: 'remove', ids });
-      } else if (event.type === 'sound' && (event.id.startsWith('weapon-')||event.id.startsWith('medic-dressing-')||event.id.startsWith('medic-response-')||event.id.startsWith('medic-precaution-')||event.id.startsWith('mage-pivot-')||event.id.startsWith('mage-waymark-')||event.id.startsWith('mage-fuse-')||event.id.startsWith('assassin-duel-')||event.id.startsWith('assassin-slip-')||event.id.startsWith('assassin-writ-')||event.id.startsWith('tank-intercept-')||event.id.startsWith('tank-gate-')||event.id==='tank-wall-set-folded'||event.id==='tank-wall-port-shift')) {
+      } else if (event.type === 'sound' && (event.id.startsWith('weapon-')||event.id.startsWith('medic-dressing-')||event.id.startsWith('medic-response-')||event.id.startsWith('medic-precaution-')||event.id.startsWith('mage-pivot-')||event.id.startsWith('mage-waymark-')||event.id.startsWith('mage-fuse-')||event.id.startsWith('assassin-duel-')||event.id.startsWith('assassin-slip-')||event.id.startsWith('assassin-writ-')||event.id.startsWith('bard-answer-')||event.id.startsWith('tank-intercept-')||event.id.startsWith('tank-gate-')||event.id==='tank-wall-set-folded'||event.id==='tank-wall-port-shift')) {
         if (event.owner) add(event.owner, event);
       } else shared.push(event);
     }

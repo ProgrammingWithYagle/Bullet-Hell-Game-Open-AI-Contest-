@@ -873,6 +873,13 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(2, color, .65).strokeRoundedRect(x - 8, y - 25, 16, 10, 2);
       h.lineBetween(x - 5, y - 23, x + 3, y - 18);
     }
+    const conducting = interceptOwner?.kit.conducting;
+    const stageGuide = conducting?.adjustment ?? (conducting?.phase === 'idle' ? conducting.stage : conducting?.returning ? conducting.answerAt : undefined);
+    if (interceptOwner && conducting?.ready && stageGuide) {
+      const edge = this.highContrast ? 0xffffff : 0xf2d990;
+      h.lineStyle(1.5, edge, .47).lineBetween(interceptOwner.x, interceptOwner.y, stageGuide.x, stageGuide.y);
+      h.lineStyle(2, edge, .86).strokeCircle(stageGuide.x, stageGuide.y, 10);
+    }
     const writ = interceptOwner?.kit.crossingWrit;
     if (writ && now < (writ.until ?? now)) {
       const edge = this.highContrast ? 0xffffff : 0xf2cc8f;
@@ -1226,6 +1233,22 @@ export class CombatScene extends Phaser.Scene {
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='sword-cut'||cue.kind==='sword-windup'||cue.kind==='sword-guard'||cue.kind==='sword-parry'||cue.kind==='sword-return'){drawSwordCue(h,cue,now,this.reduceMotion);continue;}
+      if (cue.kind === 'bard-response-stage') {
+        if (cue.until <= now) continue;
+        const edge = this.highContrast ? 0xffffff : 0xf2d990;
+        const own = cue.owner === this.localId;
+        const weight = own ? .85 : .46;
+        h.lineStyle(1.25, edge, weight * .34).lineBetween(cue.originX, cue.originY, cue.x, cue.y);
+        h.lineStyle(2, edge, weight * .69).strokeRect(cue.originX - 4, cue.originY - 4, 8, 8);
+        for (let quarter = 0; quarter < 4; quarter++) {
+          const angle = quarter * Math.PI / 2;
+          h.lineStyle(cue.proof ? 3 : 1.6, edge, weight).beginPath()
+            .arc(cue.x, cue.y, cue.radius, angle - .48, angle + .48).strokePath();
+        }
+        if (cue.proof) h.fillStyle(edge, weight).fillCircle(cue.x, cue.y, 4);
+        if (cue.shifted) h.lineStyle(1.5, edge, weight).strokeCircle(cue.x, cue.y, 10);
+        continue;
+      }
       if(cue.kind==='bard-phrase'||cue.kind==='bard-cut'){
         const color=cue.encore?0xe5c379:0xc4dcb9;
         if(cue.kind==='bard-cut')h.lineStyle(4,color,.8).lineBetween(cue.x,cue.y,cue.x2??cue.x,cue.y2??cue.y);
