@@ -20,6 +20,12 @@ Each fitting costs 2 SP and unlocks at 5 earned SP. They exclude each other.
 
 Across 80 runs, the active policies confirmed 257 writs, paid for 35 cutoffs and landed 23 strikes. Canted Cutoff landed 2 strikes from a pinned position. Each active policy won 9 of 16 runs. Each matched control won 11 of 16. The comparison recorded 0 transfers. Two focused co-op follow-ups produced 1 successful transfer with its original geometry and expiry. Twelve full input and result traces matched on replay. [Run study](../reviews/assassin-mark-hunter-2026-11-21/study-summary.json) · [Replays](../reviews/assassin-mark-hunter-2026-11-21/practice-replays.json).
 
+## Current protocol 92 review
+
+Source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859**, build **2026.11.21-assassin-mark-hunter**, protocol **92**, catalog **113**. The local suite and both GitHub workflows passed 2,826 tests and seven checks. Each frozen audience binds 2,177 files and passed seven checks. Testing uses [5428](http://127.0.0.1:5428/) with backend 2804. Public review uses [5429](http://127.0.0.1:5429/) with backend 2805. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968245789) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968259577) · [Frozen checks](../reviews/assassin-mark-hunter-2026-11-21/frozen-verification.json).
+
+The protocol 91 Assassin Infiltrator pair is the verified rollback in `output/review-rollback.zip`. All 4,331 restored files match their archived bytes. Archive SHA-256 7935251a4a5118cbae0125a772a2d521d93a2613975ee302cda6552b6e9d006b. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-mark-hunter-2026-11-21/retention-result.json).
+
 ## Verification
 
 The authoritative 27-SP census bought 3,647 distinct Assassin builds. 1,166 use all three pathways. All 14,014 earlier configurations remain legal across the seven audited classes. All 5,292 Infiltrator-era Practice fixtures restored, including 847 Infiltrator builds. Both HUD layouts, all three remaps and all fifteen original dictionaries passed. [Census](../reviews/assassin-mark-hunter-2026-11-21/build-census.json) · [Save bindings](../tests/fixtures/assassin-issued91-bindings.json).

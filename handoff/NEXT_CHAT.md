@@ -4,25 +4,29 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Protocol 92 Assassin Mark Hunter candidate
+## Current exact protocol 92 Assassin Mark Hunter review
 
-Protocol 92 adds Mark Hunter with Crossing Writ, Canted Cutoff and Transfer Writ. The exact local gate and six purchased operations passed. Infiltrator remains the retained preview while Mark Hunter proceeds through publication. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
+Source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859**, build **2026.11.21-assassin-mark-hunter**, protocol **92**, catalog **113**. The local suite and both GitHub workflows passed 2,826 tests and seven checks. Each frozen audience binds 2,177 files and passed seven checks. Testing uses [5428](http://127.0.0.1:5428/) with backend 2804. Public review uses [5429](http://127.0.0.1:5429/) with backend 2805. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968245789) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44968259577) · [Frozen checks](../reviews/assassin-mark-hunter-2026-11-21/frozen-verification.json).
 
-## Current exact protocol 91 Assassin Infiltrator review
+The protocol 91 Assassin Infiltrator pair is the verified rollback in `output/review-rollback.zip`. All 4,331 restored files match their archived bytes. Archive SHA-256 7935251a4a5118cbae0125a772a2d521d93a2613975ee302cda6552b6e9d006b. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-mark-hunter-2026-11-21/retention-result.json).
 
-Source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3**, build **2026.11.21-assassin-infiltrator**, protocol **91**, catalog **110**. The local suite and both GitHub workflows passed 2,813 tests and seven checks. Each frozen audience binds 2,164 files and passed seven checks. Testing uses [5426](http://127.0.0.1:5426/) with backend 2802. Public review uses [5427](http://127.0.0.1:5427/) with backend 2803. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936152181) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936166121) · [Frozen checks](../reviews/assassin-infiltrator-2026-11-21/frozen-verification.json).
+Continue with the scoped whole-Assassin review, then Bard. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](../docs/ASSASSIN_MARK_HUNTER.md).
 
-The protocol 90 Assassin Duelist pair is the verified rollback in `output/review-rollback.zip`. All 4,309 restored files match their archived bytes. Archive SHA-256 73898a9b2a47c682bd4111797047f11c0227d902ad56a082cf094d072c1ba817. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-infiltrator-2026-11-21/retention-result.json).
+## Protocol 91 Assassin Infiltrator rollback review
 
-Continue with Assassin Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Infiltrator](../docs/ASSASSIN_INFILTRATOR.md).
+Source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3**, build **2026.11.21-assassin-infiltrator**, protocol **91**, catalog **110**. The local suite and both GitHub workflows passed 2,813 tests and seven checks. Each frozen audience binds 2,164 files and passed seven checks. The 5426/2802 and 5427/2803 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936152181) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44936166121) · [Frozen checks](../reviews/assassin-infiltrator-2026-11-21/frozen-verification.json).
 
-## Protocol 90 Assassin Duelist rollback review
+The protocol 90 Assassin Duelist pair served as the rollback during the protocol 91 review in `output/review-rollback.zip`. All 4,309 restored files match their archived bytes. Archive SHA-256 73898a9b2a47c682bd4111797047f11c0227d902ad56a082cf094d072c1ba817. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-infiltrator-2026-11-21/retention-result.json).
 
-Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. The 5424/2800 and 5425/2801 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).
+Assassin Infiltrator remains available in the verified rollback. [Infiltrator](../docs/ASSASSIN_INFILTRATOR.md).
+
+## Historical protocol 90 Assassin Duelist review
+
+Source **cc72b0044650d7980a306c478bc285caa8f36384**, build **2026.11.20-assassin-duelist**, protocol **90**, catalog **107**. The local suite and both GitHub workflows passed 2,799 tests and seven checks. Each frozen audience binds 2,153 files and passed seven checks. The 5424/2800 and 5425/2801 previews served as the rollback during the protocol 91 review. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930935886) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44930952749) · [Frozen checks](../reviews/assassin-duelist-2026-11-20/frozen-verification.json).
 
 The protocol 89 Mage Volatile Spellwork pair served as the rollback during the protocol 90 review in `output/review-rollback.zip`. All 4,289 restored files match their archived bytes. Archive SHA-256 50928501f3c1a0a8de36ba2d2e4f87d4c7f31f996795a2e45d2c2de4312be1be. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-assassin-duelist-2026-11-20/retention-result.json).
 
-Assassin Duelist remains available in the verified rollback. [Duelist](../docs/ASSASSIN_DUELIST.md).
+The historical Duelist review retains its original source, build and storage receipts. [Duelist](../docs/ASSASSIN_DUELIST.md).
 
 ## Historical protocol 89 Mage Volatile Spellwork review
 

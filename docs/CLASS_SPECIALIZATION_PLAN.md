@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **a24d3bd9df2200ad32c4ea3126c06bef3d236fd3** has 110 techniques. Assassin Infiltrator adds Slip Route and two exclusive fittings. [Infiltrator](ASSASSIN_INFILTRATOR.md).
+Current verified source **c0cfa9a61800cb86c3cba0d9e057266f4e6ec859** has 113 techniques. Mark Hunter adds Crossing Writ with two exclusive fittings. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -149,8 +149,8 @@ Spatial Craft passed its Short and Standard study and is available in both froze
 
 Volatile Spellwork passed its Short and Standard study and is available in both frozen previews. [Run study](MAGE_VOLATILE_SPELLWORK.md).
 
-The verified Duelist previews are available in the rollback. [Duelist](ASSASSIN_DUELIST.md).
+The historical Duelist review retains its original source, build and storage receipts. [Duelist](ASSASSIN_DUELIST.md).
 
-Infiltrator is available in both frozen previews. Continue with Assassin Mark Hunter and the scoped whole-Assassin review. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Infiltrator](ASSASSIN_INFILTRATOR.md).
+The verified Infiltrator previews are available in the rollback. [Infiltrator](ASSASSIN_INFILTRATOR.md).
 
-Protocol 92 adds Mark Hunter with Crossing Writ, Canted Cutoff and Transfer Writ. The exact local gate and six purchased operations passed. Infiltrator remains the retained preview while Mark Hunter proceeds through publication. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
+Mark Hunter is available in both frozen previews. Continue with the scoped whole-Assassin review, then Bard. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Mark Hunter](ASSASSIN_MARK_HUNTER.md).
