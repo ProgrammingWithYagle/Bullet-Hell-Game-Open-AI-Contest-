@@ -1,3 +1,4 @@
+import lamentEdition from './fixtures/bard-issued93-bindings.json';
 import conductorEdition from './fixtures/bard-issued92-bindings.json';
 import hunterEdition from './fixtures/assassin-issued91-bindings.json';
 import infiltratorEdition from './fixtures/assassin-issued90-bindings.json';
@@ -18,7 +19,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 88 restores all 1,636 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 93);
+  assert.equal(PROTOCOL, 94);
   assert.equal(issued.protocol, 88);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -87,7 +88,7 @@ test('issued 88 preserves both HUD layouts, all three remaps and the full profil
 
 test('Volatile Spellwork extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 25);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

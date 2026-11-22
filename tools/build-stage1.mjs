@@ -1,4 +1,5 @@
-import { applyBardConductor, authoredDate as conductorAuthoredDate } from '../content/source/bard-conductor.mjs';
+import { applyBardLament, authoredDate as lamentAuthoredDate } from '../content/source/bard-lament.mjs';
+import { applyBardConductor } from '../content/source/bard-conductor.mjs';
 import { applyAssassinMarkHunter } from '../content/source/assassin-mark-hunter.mjs';
 import { applyAssassinInfiltrator } from '../content/source/assassin-infiltrator.mjs';
 import { applyAssassinDuelist } from '../content/source/assassin-duelist.mjs';
@@ -332,6 +333,7 @@ applyAssassinDuelist(manifest);
 applyAssassinInfiltrator(manifest);
 applyAssassinMarkHunter(manifest);
 applyBardConductor(manifest);
+applyBardLament(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
@@ -533,5 +535,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:conductorAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:lamentAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));

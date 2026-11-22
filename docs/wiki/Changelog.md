@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.21-bard-conductor**, protocol 93. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.21-bard-lament**, protocol 94. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-21 — Hold the measure
+
+### Bard Lament
+
+- Mourning Measure trades Cut In recovery and primary fire for up to five pulses along a sustained lane.
+- Cross Verse spends a pulse to turn. Closing Chord spends the remaining pulses at the far end after two damaging beats.
 
 ## 2026-11-21 — Choose where to answer
 

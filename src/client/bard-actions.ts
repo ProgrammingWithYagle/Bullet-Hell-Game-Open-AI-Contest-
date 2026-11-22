@@ -1,3 +1,4 @@
+import { lamentIds, lamentRules } from '../shared/bard-lament.ts';
 import { conductorIds, conductorRules } from '../shared/bard-kit.ts';
 import type { PlayerView } from '../shared/view.ts';
 import { t } from './i18n.ts';
@@ -6,7 +7,13 @@ export function bardActions(player: PlayerView) {
   const state = player.kit.conducting;
   const id = state?.adjustment ? conductorIds.side : state?.returning ? conductorIds.reprise : conductorIds.entry;
   const owned = player.classId === 'bard' && !player.training && player.skills.includes(conductorIds.entry);
-  const extras = owned ? [{ key: 'technique1' as const, id, at: state?.ready ? 0 : state?.until ?? player.qAt, blocked: !state?.ready }] : [];
+  const lament = player.kit.lamenting;
+  const lamentOwned = player.classId === 'bard' && !player.training && player.skills.includes(lamentIds.entry);
+  const measure = lament?.turn ? lamentIds.cross : lament?.closing ? lamentIds.closing : lamentIds.entry;
+  const extras = [
+    ...(owned ? [{ key:'technique1' as const, id, at:state?.ready ? 0 : state?.until ?? player.qAt, blocked:!state?.ready }] : []),
+    ...(lamentOwned ? [{ key:'technique2' as const, id:measure, at:lament?.ready ? 0 : lament?.until ?? player.eAt, blocked:!lament?.ready }] : []),
+  ];
   return { command: false, qNameKey: null, qAt: player.qAt, qBlocked: false, extras };
 }
 
@@ -20,4 +27,16 @@ export function bardHudLabel(player: PlayerView, now: number) {
   if (player.qAt > now) return t('skill.' + conductorIds.entry + '.name');
   if ((player.kit.cadence ?? 0) < conductorRules.cadence) return t('ui.bard.earnCadence');
   return t(state?.ready ? 'ui.bard.startCall' : 'ui.bard.findStage');
+}
+
+export function bardLamentLabel(player: PlayerView, now: number) {
+  const state = player.kit.lamenting;
+  if (state?.phase === 'sustain') {
+    if (state.turn) return t('ui.bard.lamentTurn');
+    if (state.closing) return t('ui.bard.lamentClose');
+    return t('ui.bard.lamentSustain');
+  }
+  if (player.eAt > now) return t('skill.' + lamentIds.entry + '.name');
+  if ((player.kit.cadence ?? 0) < lamentRules.cadence) return t('ui.bard.earnCadence');
+  return t(state?.ready ? 'ui.bard.lamentStart' : 'ui.bard.lamentAim');
 }

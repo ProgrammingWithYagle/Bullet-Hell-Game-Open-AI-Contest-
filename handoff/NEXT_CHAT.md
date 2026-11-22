@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 94 Bard Lament candidate
+
+Protocol 94 adds Bard Lament with Mourning Measure, Cross Verse and Closing Chord. The local gate and six ordinary transport cases passed. Conductor remains the retained review during Lament verification. [Bard Lament](../docs/BARD_LAMENT.md).
+
 ## Current exact protocol 93 Bard Conductor review
 
 Source **3c0b8238d686b15bbd37b75fa97b8c1318b451c1**, build **2026.11.21-bard-conductor**, protocol **93**, catalog **116**. The local suite and both GitHub workflows passed 2,841 tests and seven checks. Each frozen audience binds 2,186 files and passed seven checks. Testing uses [5430](http://127.0.0.1:5430/) with backend 2806. Public review uses [5431](http://127.0.0.1:5431/) with backend 2807. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974702977) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44974715409) · [Frozen checks](../reviews/bard-conductor-2026-11-21/frozen-verification.json).

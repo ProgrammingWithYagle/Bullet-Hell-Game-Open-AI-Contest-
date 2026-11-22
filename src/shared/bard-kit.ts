@@ -1,3 +1,4 @@
+import { LamentKit } from './bard-lament.ts';
 import catalog from "../../content/catalog.json";
 import { hasTalent } from "./class-talents.ts";
 import type { ClassKits, KitContext } from "./class-kits.ts";
@@ -83,18 +84,26 @@ function proposedStage(aim: number, origin: Vec) {
 
 /** Fixed-step performances. Only actual primary-weapon hits can earn cadence. */
 export class BardKit {
+  readonly lament = new LamentKit();
   private meters = new Map<string, { cadence: number; hitAt: number }>();
   private performances: Performance[] = [];
   private replies = new Map<string, Reply>();
   private visible: BardCue[] = [];
   clear() {
     this.meters.clear();
+    this.lament.clear();
     this.replies.clear();
     this.performances = [];
     this.visible = [];
   }
   status(id: string) {
     return { cadence: this.meters.get(id)?.cadence ?? 0 };
+  }
+  spendCadence(id: string, amount: number) {
+    const meter = this.meters.get(id);
+    if (!meter || meter.cadence < amount) return false;
+    meter.cadence -= amount;
+    return true;
   }
   dropConductor(id: string) { this.replies.delete(id); }
 
@@ -281,6 +290,7 @@ export class BardKit {
   }
 
   step(c: BardContext) {
+    this.lament.step(c);
     const active = new Map(
       c.players
         .filter(

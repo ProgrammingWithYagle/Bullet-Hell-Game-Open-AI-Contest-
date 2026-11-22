@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Bard Lament
+
+The protocol 94 census bought 1,090 Bard configurations in 27-SP shops. Each Lament fitting appears in 268 builds and 598 builds own both routes. [Census](../reviews/bard-lament-2026-11-21/build-census.json) · [Run study](BARD_LAMENT.md).
+
 ## Bard Conductor
 
 The protocol 93 census bought 249 Bard configurations in 27-SP shops. Each fitting appears in 81 builds, and 213 builds combine Conductor with an issued transformation. [Census](../reviews/bard-conductor-2026-11-21/build-census.json) · [Run study](BARD_CONDUCTOR.md).

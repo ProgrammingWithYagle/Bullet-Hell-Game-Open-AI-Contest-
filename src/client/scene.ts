@@ -880,6 +880,14 @@ export class CombatScene extends Phaser.Scene {
       h.lineStyle(1.5, edge, .47).lineBetween(interceptOwner.x, interceptOwner.y, stageGuide.x, stageGuide.y);
       h.lineStyle(2, edge, .86).strokeCircle(stageGuide.x, stageGuide.y, 10);
     }
+    const lament = interceptOwner?.kit.lamenting;
+    if (lament?.lane && (lament.phase === 'idle' || lament.turn)) {
+      const { from, to } = lament.lane;
+      const destination = lament.turn ?? to;
+      const color = this.highContrast ? 0xffffff : 0xdfbae9;
+      h.lineStyle(1.5, color, .54).lineBetween(from.x, from.y, destination.x, destination.y);
+      h.lineStyle(2, color, .8).strokeRect(destination.x - 5, destination.y - 5, 10, 10);
+    }
     const writ = interceptOwner?.kit.crossingWrit;
     if (writ && now < (writ.until ?? now)) {
       const edge = this.highContrast ? 0xffffff : 0xf2cc8f;
@@ -1233,6 +1241,24 @@ export class CombatScene extends Phaser.Scene {
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='sword-cut'||cue.kind==='sword-windup'||cue.kind==='sword-guard'||cue.kind==='sword-parry'||cue.kind==='sword-return'){drawSwordCue(h,cue,now,this.reduceMotion);continue;}
+      if (cue.kind === 'bard-lament-line' || cue.kind === 'bard-lament-pulse' || cue.kind === 'bard-lament-chord') {
+        const edge = this.highContrast ? 0xffffff : 0xe1bfe8;
+        if (cue.kind === 'bard-lament-chord') {
+          h.lineStyle(3, edge, .82).strokeCircle(cue.x2, cue.y2, cue.radius);
+          h.lineStyle(1.5, edge, .55).strokeCircle(cue.x2, cue.y2, cue.radius * .78);
+          continue;
+        }
+        const pulse = cue.kind === 'bard-lament-pulse';
+        const length = Math.hypot(cue.x2 - cue.x, cue.y2 - cue.y);
+        const sideX = (cue.y2 - cue.y) / length * cue.radius * .75;
+        const sideY = (cue.x - cue.x2) / length * cue.radius * .75;
+        if (pulse) h.lineStyle(3, edge, .8).lineBetween(cue.x, cue.y, cue.x2, cue.y2);
+        h.lineStyle(pulse ? 2 : 1.3, edge, pulse ? .60 : .36);
+        h.lineBetween(cue.x + sideX, cue.y + sideY, cue.x2 + sideX, cue.y2 + sideY);
+        h.lineBetween(cue.x - sideX, cue.y - sideY, cue.x2 - sideX, cue.y2 - sideY);
+        h.strokeRect(cue.x2 - 4, cue.y2 - 4, 8, 8);
+        continue;
+      }
       if (cue.kind === 'bard-response-stage') {
         if (cue.until <= now) continue;
         const edge = this.highContrast ? 0xffffff : 0xf2d990;

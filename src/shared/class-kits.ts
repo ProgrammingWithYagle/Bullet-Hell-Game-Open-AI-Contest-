@@ -1,3 +1,4 @@
+import type { LamentCue, LamentStatus } from './bard-lament.ts';
 import type { CrossingWritCue, CrossingWritStatus } from './assassin-crossing-writ.ts';
 import { slipRouteRules, type SlipRouteStatus } from './assassin-slip-route.ts';
 import type { CalledOpeningCue, CalledOpeningStatus } from './assassin-called-opening.ts';
@@ -82,6 +83,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   guardActive?: boolean;
   cadence?: number;
   conducting?: ConductorStatus;
+  lamenting?: LamentStatus;
   chargeUntil: number;
   veilUntil: number;
   passageUntil: number;
@@ -148,6 +150,7 @@ export type KitCue =
   | SwordCue
   | BardCue
   | ConductorCue
+  | LamentCue
   | TalentCue
   | Construct
   | {
