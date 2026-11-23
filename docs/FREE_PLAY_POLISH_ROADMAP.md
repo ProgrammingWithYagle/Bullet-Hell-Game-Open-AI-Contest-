@@ -13,7 +13,7 @@ Finish one coherent area before opening the next. Use the public-release-era gam
 | Order | Focus | Concrete result needed before the next focus |
 | --- | --- | --- |
 | 1 — scoped reference checked | Class-tree structure and Engineer reference | Separate General and Specializations; build an honest, readable specialization graph; finish Engineer's three distinct pathways and their internal choices; verify the full build loop. |
-| 2 — active: Swordsman specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
+| 2 — active: Summoner specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
 | 3 | Class balance and Free Play build variety | Compare complete legal builds across classes, weapons, mutations, difficulties, solo and co-op. Resolve dominant combinations, weak support paths and unclear interactions. |
 | 4 | Existing bosses, individually | Polish tells, movement, phases, hit rules, arenas, audio and difficulty identities. Work from early encounters toward late and secret encounters; do not start a second boss while the first has known major defects. |
 | 5 | The rest of Free Play | Finish the surrounding run loop: menus, objectives, rewards, pacing, readability, controls, networking, saves, performance and presentation. Address shared defects earlier when they block the current class or boss. |
@@ -135,4 +135,4 @@ Measured Stance’s historical review preserves its original source, build and s
 
 The verified Counterstroke previews are available in the rollback. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
 
-Flowing Pursuit is available in both frozen previews. Continue with the scoped whole-Swordsman review, then Summoner. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
+Flowing Pursuit is available in both frozen previews. The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. Continue with Summoner. [Swordsman run review](SWORDSMAN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).

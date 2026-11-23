@@ -10,7 +10,11 @@ Source **6f9e582d2c45babc99e0719b4e446c240fe6a56b**, build **2026.11.22-swordsma
 
 The protocol 97 Swordsman Counterstroke pair is the verified rollback in output/review-rollback.zip. All 4,421 restored files match the archive. Archive SHA-256 a83a0ae617a1b57fc4ea3fd7db2dc4126536287af28cc7485ae2eb1372c9366c. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-swordsman-pursuit-2026-11-22/retention-result.json).
 
-Continue with the scoped whole-Swordsman review, then Summoner. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](../docs/SWORDSMAN_FLOWING_PURSUIT.md).
+Continue with Summoner after reading the scoped Swordsman comparison. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](../docs/SWORDSMAN_FLOWING_PURSUIT.md).
+
+## Scoped Swordsman run review
+
+The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. [Swordsman run review](../docs/SWORDSMAN_RUN_REVIEW.md) · [Evidence](../reviews/swordsman-whole-review-2026-11-22/whole-swordsman-bindings.json).
 
 ## Protocol 97 Swordsman Counterstroke rollback review
 
