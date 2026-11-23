@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **1f7aea463436a14744bbc8ee7423c0dcac122030** has 128 techniques. Swordsman Counterstroke adds Drawn Reply with two exclusive fittings. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
+Current verified source **6f9e582d2c45babc99e0719b4e446c240fe6a56b** has 131 techniques. Swordsman Flowing Pursuit adds Passing Cut with two exclusive fittings. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -161,8 +161,8 @@ Lament’s historical review preserves its original source, build and storage re
 
 Misdirection’s historical review preserves its original source, build and storage receipts. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
 
-The verified Measured Stance previews are available in the rollback. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
+Measured Stance’s historical review preserves its original source, build and storage receipts. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
 
-Counterstroke is available in both frozen previews. Continue with Swordsman Flowing Pursuit. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
+The verified Counterstroke previews are available in the rollback. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
 
-Protocol 98 adds Swordsman Flowing Pursuit with Passing Cut, Through Step and Crossing Step. The local gate and six ordinary transport cases passed. Counterstroke remains the retained review during Flowing Pursuit verification. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
+Flowing Pursuit is available in both frozen previews. Continue with the scoped whole-Swordsman review, then Summoner. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).

@@ -1,6 +1,6 @@
 # Grave Accord — Free Play polish roadmap
 
-Source **1f7aea463436a14744bbc8ee7423c0dcac122030**, build **2026.11.22-swordsman-counterstroke**, protocol **97**, catalog **128**. The local suite and both GitHub workflows passed 2,898 tests and seven checks. Each frozen audience binds 2,209 files and passed seven checks. Testing uses [5438](http://127.0.0.1:5438/) with backend 2814. Public review uses [5439](http://127.0.0.1:5439/) with backend 2815. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109109203) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109123501) · [Frozen checks](../reviews/swordsman-counterstroke-2026-11-22/frozen-verification.json).
+Source **6f9e582d2c45babc99e0719b4e446c240fe6a56b**, build **2026.11.22-swordsman-pursuit**, protocol **98**, catalog **131**. The local suite and both GitHub workflows passed 2,912 tests and seven checks. Each frozen audience binds 2,212 files and passed seven checks. Testing uses [5440](http://127.0.0.1:5440/) with backend 2816. Public review uses [5441](http://127.0.0.1:5441/) with backend 2817. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117108255) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117129015) · [Frozen checks](../reviews/swordsman-pursuit-2026-11-22/frozen-verification.json).
 
 The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
 
@@ -131,8 +131,8 @@ Lament’s historical review preserves its original source, build and storage re
 
 Misdirection’s historical review preserves its original source, build and storage receipts. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
 
-The verified Measured Stance previews are available in the rollback. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
+Measured Stance’s historical review preserves its original source, build and storage receipts. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
 
-Counterstroke is available in both frozen previews. Continue with Swordsman Flowing Pursuit. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
+The verified Counterstroke previews are available in the rollback. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
 
-Protocol 98 adds Swordsman Flowing Pursuit with Passing Cut, Through Step and Crossing Step. The local gate and six ordinary transport cases passed. Counterstroke remains the retained review during Flowing Pursuit verification. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
+Flowing Pursuit is available in both frozen previews. Continue with the scoped whole-Swordsman review, then Summoner. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
