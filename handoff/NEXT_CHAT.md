@@ -4,29 +4,33 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Protocol 99 Summoner Cohort Commander candidate
+## Current exact protocol 99 Summoner Cohort Commander review
 
-Protocol 99 adds Summoner Cohort Commander with Cohort Drive, Cross Orders and Relay Orders. The local gate and six ordinary transport cases passed. Flowing Pursuit remains the retained review during Cohort Commander verification. [Cohort Commander](../docs/SUMMONER_COHORT_COMMANDER.md).
+Source **8ed11726363296b496b0420c6dada1c4e34854e9**, build **2026.11.23-summoner-cohort**, protocol **99**, catalog **134**. The local suite and both GitHub workflows passed 2,926 tests and seven checks. Each frozen audience binds 2,215 files and passed seven checks. Testing uses [5442](http://127.0.0.1:5442/) with backend 2818. Public review uses [5443](http://127.0.0.1:5443/) with backend 2819. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45218308457) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45218342917) · [Frozen checks](../reviews/summoner-cohort-2026-11-23/frozen-verification.json).
 
-## Current exact protocol 98 Swordsman Flowing Pursuit review
+The protocol 98 Swordsman Flowing Pursuit pair is the verified rollback in `output/review-rollback.zip`. All 4,427 restored files match the archive. Archive SHA-256 `e8d402761974933b240e396c6d157e826475212521c90a9cdca2f031d5f16d3c`. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-summoner-cohort-2026-11-23/retention-result.json).
 
-Source **6f9e582d2c45babc99e0719b4e446c240fe6a56b**, build **2026.11.22-swordsman-pursuit**, protocol **98**, catalog **131**. The local suite and both GitHub workflows passed 2,912 tests and seven checks. Each frozen audience binds 2,212 files and passed seven checks. Testing uses [5440](http://127.0.0.1:5440/) with backend 2816. Public review uses [5441](http://127.0.0.1:5441/) with backend 2817. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117108255) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117129015) · [Frozen checks](../reviews/swordsman-pursuit-2026-11-22/frozen-verification.json).
+Continue with Summoner Bonded Companion in the new chat. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Cohort Commander](../docs/SUMMONER_COHORT_COMMANDER.md).
 
-The protocol 97 Swordsman Counterstroke pair is the verified rollback in output/review-rollback.zip. All 4,421 restored files match the archive. Archive SHA-256 a83a0ae617a1b57fc4ea3fd7db2dc4126536287af28cc7485ae2eb1372c9366c. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-swordsman-pursuit-2026-11-22/retention-result.json).
+## Protocol 98 Swordsman Flowing Pursuit rollback review
 
-Continue with Summoner after reading the scoped Swordsman comparison. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](../docs/SWORDSMAN_FLOWING_PURSUIT.md).
+Source **6f9e582d2c45babc99e0719b4e446c240fe6a56b**, build **2026.11.22-swordsman-pursuit**, protocol **98**, catalog **131**. The local suite and both GitHub workflows passed 2,912 tests and seven checks. Each frozen audience binds 2,212 files and passed seven checks. The 5440/2816 and 5441/2817 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117108255) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117129015) · [Frozen checks](../reviews/swordsman-pursuit-2026-11-22/frozen-verification.json).
+
+The protocol 97 Swordsman Counterstroke pair served as the rollback during the protocol 98 review in output/review-rollback.zip. All 4,421 restored files match the archive. Archive SHA-256 a83a0ae617a1b57fc4ea3fd7db2dc4126536287af28cc7485ae2eb1372c9366c. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-swordsman-pursuit-2026-11-22/retention-result.json).
+
+The verified Flowing Pursuit previews are available in the rollback. [Flowing Pursuit](../docs/SWORDSMAN_FLOWING_PURSUIT.md).
 
 ## Scoped Swordsman run review
 
 The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. [Swordsman run review](../docs/SWORDSMAN_RUN_REVIEW.md) · [Evidence](../reviews/swordsman-whole-review-2026-11-22/whole-swordsman-bindings.json).
 
-## Protocol 97 Swordsman Counterstroke rollback review
+## Historical protocol 97 Swordsman Counterstroke review
 
-Source **1f7aea463436a14744bbc8ee7423c0dcac122030**, build **2026.11.22-swordsman-counterstroke**, protocol **97**, catalog **128**. The local suite and both GitHub workflows passed 2,898 tests and seven checks. Each frozen audience binds 2,209 files and passed seven checks. The 5438/2814 and 5439/2815 previews were archived as the verified rollback. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109109203) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109123501) · [Frozen checks](../reviews/swordsman-counterstroke-2026-11-22/frozen-verification.json).
+Source **1f7aea463436a14744bbc8ee7423c0dcac122030**, build **2026.11.22-swordsman-counterstroke**, protocol **97**, catalog **128**. The local suite and both GitHub workflows passed 2,898 tests and seven checks. Each frozen audience binds 2,209 files and passed seven checks. The 5438/2814 and 5439/2815 previews served as the rollback during the protocol 98 review. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109109203) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109123501) · [Frozen checks](../reviews/swordsman-counterstroke-2026-11-22/frozen-verification.json).
 
 The protocol 96 Swordsman Measured Stance pair served as the rollback during the protocol 97 review in output/review-rollback.zip. All 4,415 restored files match the archive. Archive SHA-256 b6d2aa3f6d77ffe80c00de3ee0cb694ffe611a63590d53001b8b9b8ac68c2d32. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-swordsman-counterstroke-2026-11-22/retention-result.json).
 
-The verified Counterstroke previews are available in the rollback. [Counterstroke](../docs/SWORDSMAN_COUNTERSTROKE.md).
+Counterstroke’s historical review preserves its original source and storage receipts. [Counterstroke](../docs/SWORDSMAN_COUNTERSTROKE.md).
 
 ## Historical protocol 96 Swordsman Measured Stance review
 

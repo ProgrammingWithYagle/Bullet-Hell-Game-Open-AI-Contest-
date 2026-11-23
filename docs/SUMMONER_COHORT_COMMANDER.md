@@ -20,6 +20,12 @@ The 72 Normal runs include 36 pairs with matching purchases. The three numbers i
 
 The active policies recorded 366 first orders, 667 observed companion attacks during assigned windows, 100 earned Relay openings and 99 second orders. Twelve runs replayed exactly. Standard balance remains open. [Study](../reviews/summoner-cohort-2026-11-23/study-summary.json) · [Replays](../reviews/summoner-cohort-2026-11-23/practice-replays.json).
 
+## Current protocol 99 review
+
+Source **8ed11726363296b496b0420c6dada1c4e34854e9**, build **2026.11.23-summoner-cohort**, protocol **99**, catalog **134**. The local suite and both GitHub workflows passed 2,926 tests and seven checks. Each frozen audience binds 2,215 files and passed seven checks. Testing uses [5442](http://127.0.0.1:5442/) with backend 2818. Public review uses [5443](http://127.0.0.1:5443/) with backend 2819. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45218308457) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45218342917) · [Frozen checks](../reviews/summoner-cohort-2026-11-23/frozen-verification.json).
+
+The protocol 98 Swordsman Flowing Pursuit pair is the verified rollback in `output/review-rollback.zip`. All 4,427 restored files match the archive. Archive SHA-256 `e8d402761974933b240e396c6d157e826475212521c90a9cdca2f031d5f16d3c`. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-summoner-cohort-2026-11-23/retention-result.json).
+
 ## Verification
 
 The 27-SP census preserved all 23,865 tracked builds and found 249 Summoner builds with Cohort Drive. Each fitting appears in 81 builds. The local suite passes 2,926 tests and seven checks. The new edition restores 15,164 issued Practice fixtures. [Census](../reviews/summoner-cohort-2026-11-23/build-census.json) · [Save bindings](../tests/fixtures/swordsman-issued98-bindings.json).

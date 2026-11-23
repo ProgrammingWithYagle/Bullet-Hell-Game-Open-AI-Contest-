@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **6f9e582d2c45babc99e0719b4e446c240fe6a56b** has 131 techniques. Swordsman Flowing Pursuit adds Passing Cut with two exclusive fittings. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
+Current verified source **8ed11726363296b496b0420c6dada1c4e34854e9** has 134 techniques. Summoner Cohort Commander adds Cohort Drive with two exclusive fittings. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -163,8 +163,8 @@ Misdirection’s historical review preserves its original source, build and stor
 
 Measured Stance’s historical review preserves its original source, build and storage receipts. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
 
-The verified Counterstroke previews are available in the rollback. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
+Counterstroke’s historical review preserves its original source and storage receipts. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
 
-Flowing Pursuit is available in both frozen previews. The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. Continue with Summoner. [Swordsman run review](SWORDSMAN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
+The verified Flowing Pursuit previews are available in the rollback. The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. [Swordsman run review](SWORDSMAN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
 
-Protocol 99 adds Summoner Cohort Commander with Cohort Drive, Cross Orders and Relay Orders. The local gate and six ordinary transport cases passed. Flowing Pursuit remains the retained review during Cohort Commander verification. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
+Cohort Commander is available in both frozen previews. Continue with Summoner Bonded Companion in the new chat. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
