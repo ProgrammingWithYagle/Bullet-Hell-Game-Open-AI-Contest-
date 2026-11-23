@@ -1,3 +1,4 @@
+import { pursuitIds, pursuitRules } from '../shared/swordsman-pursuit.ts';
 import { counterstrokeIds } from '../shared/swordsman-counterstroke.ts';
 import { measuredIds } from '../shared/swordsman-measured.ts';
 import type { PlayerView } from '../shared/view.ts';
@@ -22,10 +23,21 @@ export function swordsmanActions(player: PlayerView, now: number) {
   const ready=answering?reply?.canAnswer:!guarding&&reply?.canGuard;
   const replyAction=ownedReply?[{key:'technique2' as const,id:answering&&reply?.action!=='front'?reply?.fitting??counterstrokeIds.entry:counterstrokeIds.entry,
     at:answering?0:guarding?reply!.guardUntil:player.eAt,blocked:!ready}]:[];
-  return { command:false, qNameKey:null, qAt:player.qAt, qBlocked:false, extras:[...extras,...replyAction] };
+  const pursuit = player.kit.pursuit;
+  const ownsPursuit = player.classId === 'swordsman' && !player.training && player.skills.includes(pursuitIds.entry);
+  const following = !!pursuit?.fitting && pursuit.followUntil > now;
+  const pursuitAction = ownsPursuit ? [{
+    key:'technique3' as const,
+    id:following && pursuit.fitting ? pursuitIds[pursuit.fitting] : pursuitIds.entry,
+    at:following ? 0 : pursuit?.recoveryAt ?? 0,
+    blocked:!pursuit?.canStrike,
+  }] : [];
+  return { command:false, qNameKey:null, qAt:player.qAt, qBlocked:false, extras:[...extras,...replyAction,...pursuitAction] };
 }
 
-export function swordsmanHudLabel(player: PlayerView, now: number) {
+export function swordsmanHudLabel(player: PlayerView, now: number, key = 'technique1') {
+  if (key === 'technique2') return swordsmanCounterstrokeLabel(player, now);
+  if (key === 'technique3') return swordsmanPursuitLabel(player, now);
   const state = player.kit.measuredStance;
   if (state && state.until > now) {
     if (state.action === 'turn') return t('ui.sword.heldTurn');
@@ -44,4 +56,22 @@ export function swordsmanCounterstrokeLabel(player:PlayerView,now:number) {
   }
   if(state&&state.guardUntil>now) return t('ui.sword.replyWait');
   return t(state?.canGuard?'ui.sword.replyRaise':player.eAt>now?'ui.sword.replyRecover':'skill.'+counterstrokeIds.entry+'.name');
+}
+
+export function swordsmanPursuitLabel(player: PlayerView, now: number) {
+  const state = player.kit.pursuit;
+  const follow = state?.followUntil && state.followUntil > now ? state.fitting : undefined;
+  if (state?.canStrike) return t(follow ? 'skill.' + pursuitIds[follow] + '.name' : 'ui.sword.pursuitRelease');
+  if (!follow && (state?.recoveryAt ?? 0) > now) return t('ui.sword.pursuitRecover');
+  if (!player.ammo) return t('ui.sword.pursuitLoad');
+  const distance = follow ? state?.followStride ?? 0 : state?.stride ?? 0;
+  const goal = follow ? pursuitRules.followStride : pursuitRules.stride;
+  if (distance >= goal) {
+    if (state?.heading === undefined) return t('ui.sword.pursuitAlign');
+    const difference = player.aim - state.heading;
+    const angle = Math.abs(Math.atan2(Math.sin(difference), Math.cos(difference)));
+    return t(angle <= pursuitRules.aimAngle ? 'ui.swordRecovery' : 'ui.sword.pursuitAlign');
+  }
+  const key = follow === 'through' ? 'ui.sword.pursuitThrough' : follow === 'cross' ? 'ui.sword.pursuitCross' : 'ui.sword.pursuitStride';
+  return t(key, { distance:Math.floor(distance), goal });
 }

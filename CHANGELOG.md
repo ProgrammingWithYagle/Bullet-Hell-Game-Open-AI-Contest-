@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.22-swordsman-counterstroke**, protocol 97. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.22-swordsman-pursuit**, protocol 98. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-22 — Walk into a second cut
+
+### Swordsman Flowing Pursuit
+
+- Walk a real approach, then spend one primary charge on Passing Cut.
+- After a clean hit, Through Step continues along the line and Crossing Step opens a broad cut across it.
 
 ## 2026-11-22 — Answer one projectile
 

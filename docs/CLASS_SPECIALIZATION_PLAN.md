@@ -164,3 +164,5 @@ Misdirection’s historical review preserves its original source, build and stor
 The verified Measured Stance previews are available in the rollback. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
 
 Counterstroke is available in both frozen previews. Continue with Swordsman Flowing Pursuit. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
+
+Protocol 98 adds Swordsman Flowing Pursuit with Passing Cut, Through Step and Crossing Step. The local gate and six ordinary transport cases passed. Counterstroke remains the retained review during Flowing Pursuit verification. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).

@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Swordsman Flowing Pursuit
+
+The protocol 98 census bought 3,647 Swordsman configurations in 27-SP shops, including 1,166 that own all three routes. [Census](../reviews/swordsman-pursuit-2026-11-22/build-census.json) · [Run study](SWORDSMAN_FLOWING_PURSUIT.md).
+
 ## Swordsman Counterstroke
 
 The protocol 97 census bought 1,090 Swordsman configurations in 27-SP shops. Counterstroke appears in 841 builds, with both Swordsman entries in 598. [Census](../reviews/swordsman-counterstroke-2026-11-22/build-census.json) · [Run study](SWORDSMAN_COUNTERSTROKE.md).

@@ -1,4 +1,4 @@
-import { swordsmanActions, swordsmanHudLabel, swordsmanCounterstrokeLabel } from './sword-measured-actions.ts';
+import { swordsmanActions, swordsmanHudLabel } from './sword-measured-actions.ts';
 import { bardActions, bardHudLabel, bardLamentLabel, bardMisdirectionLabel } from './bard-actions.ts';
 import { assassinActions, assassinDuelLabel, assassinSlipLabel, assassinWritLabel } from './assassin-actions.ts';
 import { mageActions, mageBindingLabel, mageWaymarkLabel, mageFuseLabel } from './mage-actions.ts';
@@ -771,7 +771,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicHudLabel(p,a.key,view.combatTick):p.classId==='mage'?(a.key==='technique3'?mageFuseLabel(p,view.combatTick):a.key==='technique2'?mageWaymarkLabel(p,view.combatTick):mageBindingLabel(p,view.combatTick)):p.classId==='assassin'?(a.key==='technique3'?assassinWritLabel(p,view.combatTick):a.key==='technique2'?assassinSlipLabel(p,view.combatTick):assassinDuelLabel(p,view.combatTick)):p.classId==='bard'?(a.key==='technique3'?bardMisdirectionLabel(p,view.combatTick):a.key==='technique2'?bardLamentLabel(p,view.combatTick):bardHudLabel(p,view.combatTick)):p.classId==='swordsman'?(a.key==='technique2'?swordsmanCounterstrokeLabel(p,view.combatTick):swordsmanHudLabel(p,view.combatTick)):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicHudLabel(p,a.key,view.combatTick):p.classId==='mage'?(a.key==='technique3'?mageFuseLabel(p,view.combatTick):a.key==='technique2'?mageWaymarkLabel(p,view.combatTick):mageBindingLabel(p,view.combatTick)):p.classId==='assassin'?(a.key==='technique3'?assassinWritLabel(p,view.combatTick):a.key==='technique2'?assassinSlipLabel(p,view.combatTick):assassinDuelLabel(p,view.combatTick)):p.classId==='bard'?(a.key==='technique3'?bardMisdirectionLabel(p,view.combatTick):a.key==='technique2'?bardLamentLabel(p,view.combatTick):bardHudLabel(p,view.combatTick)):p.classId==='swordsman'?swordsmanHudLabel(p,view.combatTick,a.key):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

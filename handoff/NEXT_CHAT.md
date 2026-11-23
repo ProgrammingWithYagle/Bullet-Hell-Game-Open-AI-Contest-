@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 98 Swordsman Flowing Pursuit candidate
+
+Protocol 98 adds Swordsman Flowing Pursuit with Passing Cut, Through Step and Crossing Step. The local gate and six ordinary transport cases passed. Counterstroke remains the retained review during Flowing Pursuit verification. [Flowing Pursuit](../docs/SWORDSMAN_FLOWING_PURSUIT.md).
+
 ## Current exact protocol 97 Swordsman Counterstroke review
 
 Source **1f7aea463436a14744bbc8ee7423c0dcac122030**, build **2026.11.22-swordsman-counterstroke**, protocol **97**, catalog **128**. The local suite and both GitHub workflows passed 2,898 tests and seven checks. Each frozen audience binds 2,209 files and passed seven checks. Testing uses [5438](http://127.0.0.1:5438/) with backend 2814. Public review uses [5439](http://127.0.0.1:5439/) with backend 2815. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109109203) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45109123501) · [Frozen checks](../reviews/swordsman-counterstroke-2026-11-22/frozen-verification.json).

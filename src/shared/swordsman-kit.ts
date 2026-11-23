@@ -1,3 +1,4 @@
+import { FlowingPursuit } from './swordsman-pursuit.ts';
 import { Counterstroke } from './swordsman-counterstroke.ts';
 import { MeasuredStance } from './swordsman-measured.ts';
 import rules from './sword-rules.json';
@@ -106,6 +107,7 @@ const active = (p: SwordFighter | undefined): p is SwordFighter =>
 export class SwordsmanKit {
   readonly measured = new MeasuredStance();
   readonly counterstroke = new Counterstroke();
+  readonly pursuit = new FlowingPursuit();
   private states = new Map<string, SwordState>();
   private cuts: Cut[] = [];
   private guards = new Map<string, Guard>();
@@ -117,6 +119,7 @@ export class SwordsmanKit {
     this.states.clear();
     this.measured.clear();
     this.counterstroke.clear();
+    this.pursuit.clear();
     this.cuts = [];
     this.guards.clear();
     this.visible = [];
