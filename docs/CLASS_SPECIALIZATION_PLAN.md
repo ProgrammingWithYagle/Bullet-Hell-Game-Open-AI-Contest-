@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **a6682b50ba19e45e04a038365241b01a460b0eb0** has 125 techniques. Swordsman Measured Stance adds Held Edge with two exclusive fittings. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
+Current verified source **1f7aea463436a14744bbc8ee7423c0dcac122030** has 128 techniques. Swordsman Counterstroke adds Drawn Reply with two exclusive fittings. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -159,8 +159,8 @@ Conductor’s historical review preserves its original source, build and storage
 
 Lament’s historical review preserves its original source, build and storage receipts. [Bard Lament](BARD_LAMENT.md).
 
-The verified Misdirection previews are available in the rollback. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
+Misdirection’s historical review preserves its original source, build and storage receipts. The scoped Bard review covers eight fitting combinations across 96 Standard runs, twelve exact replays, seven Practice Raid openings and two controlled fights. Nine Standard runs used all three pathways before full fitting purchase. Three selected Matron openings used all three together. Misdirection’s late target availability carries into class balance. Continue with Swordsman Measured Stance. [Bard run review](BARD_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bard Misdirection](BARD_MISDIRECTION.md).
 
-Measured Stance is available in both frozen previews. Continue with Swordsman Counterstroke. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
+The verified Measured Stance previews are available in the rollback. [Measured Stance](SWORDSMAN_MEASURED_STANCE.md).
 
-Protocol 97 adds Swordsman Counterstroke with Drawn Reply, Needle Return and Back Answer. The local gate and six ordinary transport cases passed. Measured Stance remains the retained review during Counterstroke verification. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
+Counterstroke is available in both frozen previews. Continue with Swordsman Flowing Pursuit. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
