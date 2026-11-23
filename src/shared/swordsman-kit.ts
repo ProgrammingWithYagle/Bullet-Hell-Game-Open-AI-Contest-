@@ -1,3 +1,4 @@
+import { Counterstroke } from './swordsman-counterstroke.ts';
 import { MeasuredStance } from './swordsman-measured.ts';
 import rules from './sword-rules.json';
 import { swordGuardContact } from './sword-geometry.ts';
@@ -48,6 +49,7 @@ export type SwordContext = {
     training: boolean,
   ): void;
   sound(id: string, player: SwordFighter): void;
+  captureReply?(id: string, guard: number, velocity: Vec, damage: number): boolean;
 };
 type Cut = {
   id: number;
@@ -72,6 +74,7 @@ type Guard = {
   until: number;
   remaining: number;
   secondWatch: boolean;
+  reply?: boolean;
 };
 type SwordState = {
   counterUntil: number;
@@ -102,6 +105,7 @@ const active = (p: SwordFighter | undefined): p is SwordFighter =>
 /** Private combat-only sword state; learning, upgrades and actual collisions stay with Game. */
 export class SwordsmanKit {
   readonly measured = new MeasuredStance();
+  readonly counterstroke = new Counterstroke();
   private states = new Map<string, SwordState>();
   private cuts: Cut[] = [];
   private guards = new Map<string, Guard>();
@@ -112,6 +116,7 @@ export class SwordsmanKit {
   clear() {
     this.states.clear();
     this.measured.clear();
+    this.counterstroke.clear();
     this.cuts = [];
     this.guards.clear();
     this.visible = [];
@@ -257,6 +262,12 @@ export class SwordsmanKit {
     }
     return true;
   }
+  raiseReplyGuard(player: SwordFighter, id: number, aim: number, at: number, until: number) {
+    this.guards.set(player.id, { id,owner:player.id,aim,at,until,remaining:1,secondWatch:false,reply:true });
+  }
+  lowerReplyGuard(id: string) {
+    if (this.guards.get(id)?.reply) this.guards.delete(id);
+  }
   /** Probe contacts without spending a guard charge; Game compares nearer walls/bodies first. */
   guardContact(
     from: Vec,
@@ -270,6 +281,7 @@ export class SwordsmanKit {
     for (const guard of this.guards.values()) {
       const p = players.find((p) => p.id === guard.owner);
       if (!active(p) || now < p.dashUntil || !this.guardActive(guard, now)) continue;
+      if (guard.reply && from.x===to.x && from.y===to.y) continue;
       const time = swordGuardContact(
         from,
         to,
@@ -290,12 +302,13 @@ export class SwordsmanKit {
     }
     return best;
   }
-  parry(owner: string, c: SwordContext) {
+  parry(owner: string, c: SwordContext, shot?: {velocity:Vec;damage:number}) {
     const guard = this.guards.get(owner),
       p = c.players.find((p) => p.id === owner);
     if (!guard || !active(p) || !this.guardActive(guard, c.tick)) return false;
+    if (guard.reply && (!shot || !c.captureReply?.(owner,guard.id,shot.velocity,shot.damage))) return false;
     guard.remaining--;
-    this.state(owner).counterUntil = c.tick + rules.counterTicks;
+    if (!guard.reply) this.state(owner).counterUntil = c.tick + rules.counterTicks;
     this.visible.push({
       kind: 'sword-parry',
       id: c.id(),
@@ -307,10 +320,10 @@ export class SwordsmanKit {
       arc: 0,
       at: c.tick,
       until: c.tick + 6,
-      counter: true,
+      counter: !guard.reply,
       empowered: false,
     });
-    c.sound('sword-parry', p);
+    if (!guard.reply) c.sound('sword-parry', p);
     return true;
   }
   cues(players: SwordFighter[], now: number): SwordCue[] {

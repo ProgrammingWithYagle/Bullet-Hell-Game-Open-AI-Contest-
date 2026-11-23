@@ -26,7 +26,7 @@ test('The Measured Stance map shows an issued prerequisite and two exclusive fit
   assert.equal(specializationFocus(path, entry, 'ArrowUp'), 'swordsman-measure-1');
   assert.equal(specializationFocus(path, turn, 'ArrowRight'), follow);
   assert(path.nodes.every(node => overview.nodes.some(candidate => candidate.id === node.id)));
-  assert.equal(overview.nodes.filter(node=>!node.reference).length,3);
+  assert.equal(overview.nodes.filter(node=>!node.reference&&Object.values(measuredIds).some(id=>id===node.id)).length,3);
 });
 
 for (const expanded of [false, true]) test((expanded ? 'Expanded' : 'Compact') + ' Measured Stance shop purchases and explains each fitting', async t => {

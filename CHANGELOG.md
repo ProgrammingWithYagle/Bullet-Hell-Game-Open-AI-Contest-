@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.22-swordsman-measured**, protocol 96. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.22-swordsman-counterstroke**, protocol 97. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-22 — Answer one projectile
+
+### Swordsman Counterstroke
+
+- Stop one actual projectile with Drawn Reply and choose when to answer it.
+- Needle Return sends a short point back. Back Answer opens one choice between a forward cut and a flank sweep.
 
 ## 2026-11-22 — Set the held edge
 

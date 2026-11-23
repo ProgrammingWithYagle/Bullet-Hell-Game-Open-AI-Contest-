@@ -1,3 +1,4 @@
+import replyEdition from './fixtures/swordsman-issued96-bindings.json';
 import measuredEdition from './fixtures/bard-issued95-bindings.json';
 import entranceEdition from './fixtures/bard-issued94-bindings.json';
 import lamentEdition from './fixtures/bard-issued93-bindings.json';
@@ -17,7 +18,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 92 restores all 7,852 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 96);
+  assert.equal(PROTOCOL, 97);
   assert.equal(issued.protocol, 92);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -90,7 +91,7 @@ test('issued 92 preserves both HUD layouts, all three remaps and the full profil
 
 test('Conductor extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 23);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

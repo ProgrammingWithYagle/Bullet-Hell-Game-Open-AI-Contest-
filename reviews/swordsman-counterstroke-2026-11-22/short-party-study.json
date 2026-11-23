@@ -1,0 +1,3233 @@
+{
+  "stageOnly": true,
+  "bundle": "eaebe1955b6a3edeab798b5c8895bba258a8c8ab1c9e8bd879d1b0fb947722ff",
+  "revision": "0b33900c06c1a5462d849727489830438664c5bb408e2e03b90c38aaa33d6c14",
+  "mode": "short",
+  "cohort": "party",
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "banked",
+      "won": true,
+      "clears": 5,
+      "trace": "bd113b0c816ef39acfa6734bfdba4dbee9d4c1833cbe5701871ce24ca43ba731",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "unused",
+      "won": true,
+      "clears": 5,
+      "trace": "bd113b0c816ef39acfa6734bfdba4dbee9d4c1833cbe5701871ce24ca43ba731",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "reply",
+      "won": true,
+      "clears": 5,
+      "trace": "fb953df26c8eb361f5075d412d4ec50adac4143bb742f1451027a2d559252ff9",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 110,
+          "boss": "constable",
+          "before": {
+            "e": 0,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 121,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 40,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "state": "guard",
+              "aim": -2.112627617304577,
+              "radius": 30,
+              "arc": 0,
+              "at": 110,
+              "until": 121
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 114,
+          "boss": "constable",
+          "before": {
+            "e": 380,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 121,
+            "responseUntil": 142,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 40,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "state": "forward",
+              "aim": -2.112627617304577,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 110,
+              "until": 142
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 115,
+          "boss": "constable",
+          "before": {
+            "e": 380,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 42,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "aim": -2.003920778381711,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 115,
+              "until": 122
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 1057,
+          "boss": "pallbearer",
+          "before": {
+            "e": 380,
+            "damage": 4926.540159999997,
+            "x": 975.3307517587593,
+            "y": 674.8859904559426,
+            "ammo": 2
+          },
+          "paidUntil": 1327,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1068,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 224,
+              "owner": "solo",
+              "x": 975.3307517587593,
+              "y": 674.8859904559426,
+              "state": "guard",
+              "aim": -1.2947664250909807,
+              "radius": 30,
+              "arc": 0,
+              "at": 1057,
+              "until": 1068
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 1061,
+          "boss": "pallbearer",
+          "before": {
+            "e": 1327,
+            "damage": 4926.540159999997,
+            "x": 975.3307517587593,
+            "y": 674.8859904559426,
+            "ammo": 2
+          },
+          "paidUntil": 1327,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1068,
+            "responseUntil": 1089,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 224,
+              "owner": "solo",
+              "x": 975.3307517587593,
+              "y": 674.8859904559426,
+              "state": "forward",
+              "aim": -1.2947664250909807,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 1057,
+              "until": 1089
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 1062,
+          "boss": "pallbearer",
+          "before": {
+            "e": 1327,
+            "damage": 4926.540159999997,
+            "x": 975.3307517587593,
+            "y": 674.8859904559426,
+            "ammo": 2
+          },
+          "paidUntil": 1327,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 227,
+              "owner": "solo",
+              "x": 975.3307517587593,
+              "y": 674.8859904559426,
+              "aim": -1.211634352432957,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 1062,
+              "until": 1069
+            }
+          ]
+        }
+      ],
+      "purchases": []
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "needle",
+      "won": true,
+      "clears": 5,
+      "trace": "9d9bca5b1effd92221555e83cb3fa43ef18ab3a38b0b3796b1e7ecdce1e2ab69",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 110,
+          "boss": "constable",
+          "before": {
+            "e": 0,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 121,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 40,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "state": "guard",
+              "aim": -2.112627617304577,
+              "radius": 30,
+              "arc": 0,
+              "at": 110,
+              "until": 121
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 114,
+          "boss": "constable",
+          "before": {
+            "e": 380,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 121,
+            "responseUntil": 142,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 40,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "state": "forward",
+              "aim": -2.112627617304577,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 110,
+              "until": 142
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 115,
+          "boss": "constable",
+          "before": {
+            "e": 380,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 42,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "aim": -2.003920778381711,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 115,
+              "until": 122
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 1057,
+          "boss": "pallbearer",
+          "before": {
+            "e": 380,
+            "damage": 4926.540159999997,
+            "x": 975.3307517587593,
+            "y": 674.8859904559426,
+            "ammo": 2
+          },
+          "paidUntil": 1327,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1068,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 224,
+              "owner": "solo",
+              "x": 975.3307517587593,
+              "y": 674.8859904559426,
+              "state": "guard",
+              "aim": -1.2947664250909807,
+              "radius": 30,
+              "arc": 0,
+              "at": 1057,
+              "until": 1068
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 1061,
+          "boss": "pallbearer",
+          "before": {
+            "e": 1327,
+            "damage": 4926.540159999997,
+            "x": 975.3307517587593,
+            "y": 674.8859904559426,
+            "ammo": 2
+          },
+          "paidUntil": 1327,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1068,
+            "responseUntil": 1089,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 224,
+              "owner": "solo",
+              "x": 975.3307517587593,
+              "y": 674.8859904559426,
+              "state": "needle",
+              "aim": -1.3995334769619592,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 1057,
+              "until": 1089
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 1062,
+          "boss": "pallbearer",
+          "before": {
+            "e": 1327,
+            "damage": 4926.540159999997,
+            "x": 975.3307517587593,
+            "y": 674.8859904559426,
+            "ammo": 2
+          },
+          "paidUntil": 1327,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 228,
+              "owner": "solo",
+              "x": 975.3307517587593,
+              "y": 674.8859904559426,
+              "aim": -1.3995334769619592,
+              "radius": 188,
+              "arc": 0,
+              "at": 1062,
+              "until": 1069
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-needle-return-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "policy": "back",
+      "won": true,
+      "clears": 5,
+      "trace": "4017c98eefe4bd78b5798f1cec0269489568b60ef35ed53aec233a230cf01d4b",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 110,
+          "boss": "constable",
+          "before": {
+            "e": 0,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 121,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 40,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "state": "guard",
+              "aim": -2.112627617304577,
+              "radius": 30,
+              "arc": 0,
+              "at": 110,
+              "until": 121
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 114,
+          "boss": "constable",
+          "before": {
+            "e": 380,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 121,
+            "responseUntil": 142,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 40,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "state": "forward",
+              "aim": -2.112627617304577,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 110,
+              "until": 142
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 115,
+          "boss": "constable",
+          "before": {
+            "e": 380,
+            "damage": 429.288,
+            "x": 863.1313189409753,
+            "y": 468.5272803332486,
+            "ammo": 2
+          },
+          "paidUntil": 380,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 42,
+              "owner": "solo",
+              "x": 863.1313189409753,
+              "y": 468.5272803332486,
+              "aim": -2.003920778381711,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 115,
+              "until": 122
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-back-answer-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "banked",
+      "won": false,
+      "clears": 4,
+      "trace": "b1e0bbe6fc8aa0eae2f8f6bf5cfbb19443e6c11f9913c30c72aaf10ef76af5c3",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "unused",
+      "won": false,
+      "clears": 4,
+      "trace": "b1e0bbe6fc8aa0eae2f8f6bf5cfbb19443e6c11f9913c30c72aaf10ef76af5c3",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "reply",
+      "won": false,
+      "clears": 4,
+      "trace": "103d396e3ff608ea0b565b5fdf670ec5f1956691e0f25960cf217f3e6882c344",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 100,
+          "boss": "constable",
+          "before": {
+            "e": 0,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 111,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 36,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "state": "guard",
+              "aim": -0.05652246114000634,
+              "radius": 30,
+              "arc": 0,
+              "at": 100,
+              "until": 111
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 105,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 111,
+            "responseUntil": 133,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 36,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "state": "forward",
+              "aim": -0.05652246114000634,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 100,
+              "until": 133
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 106,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 38,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "aim": -0.12072019525881839,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 106,
+              "until": 113
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 431,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 442,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 140,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "state": "guard",
+              "aim": -2.718376016203938,
+              "radius": 30,
+              "arc": 0,
+              "at": 431,
+              "until": 442
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 434,
+          "boss": "constable",
+          "before": {
+            "e": 701,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 442,
+            "responseUntil": 462,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 140,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "state": "forward",
+              "aim": -2.718376016203938,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 431,
+              "until": 462
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 435,
+          "boss": "constable",
+          "before": {
+            "e": 701,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 142,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "aim": -2.4801656929693596,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 435,
+              "until": 442
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 1948,
+          "boss": "pallbearer",
+          "before": {
+            "e": 1012,
+            "damage": 6037.298399999997,
+            "x": 998.4092773098434,
+            "y": 393.67945602297146,
+            "ammo": 2
+          },
+          "paidUntil": 2218,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1959,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 644,
+              "owner": "solo",
+              "x": 998.4092773098434,
+              "y": 393.67945602297146,
+              "state": "guard",
+              "aim": 2.228706183544677,
+              "radius": 30,
+              "arc": 0,
+              "at": 1948,
+              "until": 1959
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 1954,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2218,
+            "damage": 6037.298399999997,
+            "x": 998.4092773098434,
+            "y": 393.67945602297146,
+            "ammo": 2
+          },
+          "paidUntil": 2218,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1959,
+            "responseUntil": 1982,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 644,
+              "owner": "solo",
+              "x": 998.4092773098434,
+              "y": 393.67945602297146,
+              "state": "forward",
+              "aim": 2.228706183544677,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 1948,
+              "until": 1982
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 1955,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2218,
+            "damage": 6037.298399999997,
+            "x": 998.4092773098434,
+            "y": 393.67945602297146,
+            "ammo": 2
+          },
+          "paidUntil": 2218,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 647,
+              "owner": "solo",
+              "x": 998.4092773098434,
+              "y": 393.67945602297146,
+              "aim": 2.496899655830081,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 1955,
+              "until": 1962
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 3234,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3065,
+            "damage": 11973.590820727988,
+            "x": 1144.7613681159528,
+            "y": 417.9923666040959,
+            "ammo": 4
+          },
+          "paidUntil": 3504,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3245,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 996,
+              "owner": "solo",
+              "x": 1144.7613681159528,
+              "y": 417.9923666040959,
+              "state": "guard",
+              "aim": -1.2460100365254452,
+              "radius": 30,
+              "arc": 0,
+              "at": 3234,
+              "until": 3245
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3240,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3504,
+            "damage": 11973.590820727988,
+            "x": 1144.7613681159528,
+            "y": 417.9923666040959,
+            "ammo": 4
+          },
+          "paidUntil": 3504,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3245,
+            "responseUntil": 3268,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 996,
+              "owner": "solo",
+              "x": 1144.7613681159528,
+              "y": 417.9923666040959,
+              "state": "forward",
+              "aim": -1.2460100365254452,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 3234,
+              "until": 3268
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 3241,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3504,
+            "damage": 11973.590820727988,
+            "x": 1144.7613681159528,
+            "y": 417.9923666040959,
+            "ammo": 4
+          },
+          "paidUntil": 3504,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 999,
+              "owner": "solo",
+              "x": 1144.7613681159528,
+              "y": 417.9923666040959,
+              "aim": -1.1646358133852837,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 3241,
+              "until": 3248
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 3572,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3504,
+            "damage": 14590.750820727984,
+            "x": 1150.7923191763002,
+            "y": 424.0955662819597,
+            "ammo": 3
+          },
+          "paidUntil": 3842,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3583,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1090,
+              "owner": "solo",
+              "x": 1150.7923191763002,
+              "y": 424.0955662819597,
+              "state": "guard",
+              "aim": -1.2028517572108566,
+              "radius": 30,
+              "arc": 0,
+              "at": 3572,
+              "until": 3583
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3578,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3842,
+            "damage": 14590.750820727984,
+            "x": 1150.7923191763002,
+            "y": 424.0955662819597,
+            "ammo": 3
+          },
+          "paidUntil": 3842,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3583,
+            "responseUntil": 3606,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1090,
+              "owner": "solo",
+              "x": 1150.7923191763002,
+              "y": 424.0955662819597,
+              "state": "forward",
+              "aim": -1.2028517572108566,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 3572,
+              "until": 3606
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 3579,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3842,
+            "damage": 14590.750820727984,
+            "x": 1150.7923191763002,
+            "y": 424.0955662819597,
+            "ammo": 3
+          },
+          "paidUntil": 3842,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 1093,
+              "owner": "solo",
+              "x": 1150.7923191763002,
+              "y": 424.0955662819597,
+              "aim": -1.2091595851258883,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 3579,
+              "until": 3586
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 4026,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3842,
+            "damage": 17758.950820727998,
+            "x": 1135.9576633375561,
+            "y": 421.3978227174067,
+            "ammo": 6
+          },
+          "paidUntil": 4296,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4037,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1219,
+              "owner": "solo",
+              "x": 1135.9576633375561,
+              "y": 421.3978227174067,
+              "state": "guard",
+              "aim": -1.1669695168662568,
+              "radius": 30,
+              "arc": 0,
+              "at": 4026,
+              "until": 4037
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 4032,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4296,
+            "damage": 17758.950820727998,
+            "x": 1135.9576633375561,
+            "y": 421.3978227174067,
+            "ammo": 6
+          },
+          "paidUntil": 4296,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4037,
+            "responseUntil": 4060,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1219,
+              "owner": "solo",
+              "x": 1135.9576633375561,
+              "y": 421.3978227174067,
+              "state": "forward",
+              "aim": -1.1669695168662568,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 4026,
+              "until": 4060
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 4033,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4296,
+            "damage": 17758.950820727998,
+            "x": 1135.9576633375561,
+            "y": 421.3978227174067,
+            "ammo": 6
+          },
+          "paidUntil": 4296,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 1222,
+              "owner": "solo",
+              "x": 1135.9576633375561,
+              "y": 421.3978227174067,
+              "aim": -1.1275794372703667,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 4033,
+              "until": 4040
+            }
+          ]
+        }
+      ],
+      "purchases": []
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "needle",
+      "won": false,
+      "clears": 4,
+      "trace": "36dedaa2f5890f9b16bbe317a3194e621744c28c7eec7da0ee45d6aadbf2b314",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 100,
+          "boss": "constable",
+          "before": {
+            "e": 0,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 111,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 36,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "state": "guard",
+              "aim": -0.05652246114000634,
+              "radius": 30,
+              "arc": 0,
+              "at": 100,
+              "until": 111
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 105,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 111,
+            "responseUntil": 133,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 36,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "state": "forward",
+              "aim": -0.05652246114000634,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 100,
+              "until": 133
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 106,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 38,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "aim": -0.12072019525881839,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 106,
+              "until": 113
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 431,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 442,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 140,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "state": "guard",
+              "aim": -2.718376016203938,
+              "radius": 30,
+              "arc": 0,
+              "at": 431,
+              "until": 442
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 434,
+          "boss": "constable",
+          "before": {
+            "e": 701,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 442,
+            "responseUntil": 462,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 140,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "state": "forward",
+              "aim": -2.718376016203938,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 431,
+              "until": 462
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 435,
+          "boss": "constable",
+          "before": {
+            "e": 701,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 142,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "aim": -2.4801656929693596,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 435,
+              "until": 442
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 1948,
+          "boss": "pallbearer",
+          "before": {
+            "e": 1012,
+            "damage": 6037.298399999997,
+            "x": 998.4092773098434,
+            "y": 393.67945602297146,
+            "ammo": 2
+          },
+          "paidUntil": 2218,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1959,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 644,
+              "owner": "solo",
+              "x": 998.4092773098434,
+              "y": 393.67945602297146,
+              "state": "guard",
+              "aim": 2.228706183544677,
+              "radius": 30,
+              "arc": 0,
+              "at": 1948,
+              "until": 1959
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 1954,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2218,
+            "damage": 6037.298399999997,
+            "x": 998.4092773098434,
+            "y": 393.67945602297146,
+            "ammo": 2
+          },
+          "paidUntil": 2218,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 1959,
+            "responseUntil": 1982,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 644,
+              "owner": "solo",
+              "x": 998.4092773098434,
+              "y": 393.67945602297146,
+              "state": "needle",
+              "aim": 2.48920707772716,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 1948,
+              "until": 1982
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 1955,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2218,
+            "damage": 6037.298399999997,
+            "x": 998.4092773098434,
+            "y": 393.67945602297146,
+            "ammo": 2
+          },
+          "paidUntil": 2218,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 648,
+              "owner": "solo",
+              "x": 998.4092773098434,
+              "y": 393.67945602297146,
+              "aim": 2.48920707772716,
+              "radius": 188,
+              "arc": 0,
+              "at": 1955,
+              "until": 1962
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 2926,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2218,
+            "damage": 10583.719210000007,
+            "x": 1205.00096,
+            "y": 343.26895845230104,
+            "ammo": 0
+          },
+          "paidUntil": 3196,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 2937,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 918,
+              "owner": "solo",
+              "x": 1205.00096,
+              "y": 343.26895845230104,
+              "state": "guard",
+              "aim": 1.6148071395119077,
+              "radius": 30,
+              "arc": 0,
+              "at": 2926,
+              "until": 2937
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 2932,
+          "boss": "pallbearer",
+          "before": {
+            "e": 3196,
+            "damage": 10583.719210000007,
+            "x": 1205.00096,
+            "y": 343.26895845230104,
+            "ammo": 0
+          },
+          "paidUntil": 3196,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 2937,
+            "responseUntil": 2960,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 918,
+              "owner": "solo",
+              "x": 1205.00096,
+              "y": 343.26895845230104,
+              "state": "needle",
+              "aim": 1.606406513695576,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 2926,
+              "until": 2960
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 2933,
+          "boss": "pallbearer",
+          "before": {
+            "e": 3196,
+            "damage": 10583.719210000007,
+            "x": 1205.00096,
+            "y": 343.26895845230104,
+            "ammo": 0
+          },
+          "paidUntil": 3196,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 922,
+              "owner": "solo",
+              "x": 1205.00096,
+              "y": 343.26895845230104,
+              "aim": 1.606406513695576,
+              "radius": 188,
+              "arc": 0,
+              "at": 2933,
+              "until": 2940
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 3227,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3196,
+            "damage": 11736.705460000006,
+            "x": 1149.7833234530294,
+            "y": 424.0914837009172,
+            "ammo": 5
+          },
+          "paidUntil": 3497,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3238,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 992,
+              "owner": "solo",
+              "x": 1149.7833234530294,
+              "y": 424.0914837009172,
+              "state": "guard",
+              "aim": -1.0516556616651476,
+              "radius": 30,
+              "arc": 0,
+              "at": 3227,
+              "until": 3238
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3231,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3497,
+            "damage": 11736.705460000006,
+            "x": 1149.7833234530294,
+            "y": 424.0914837009172,
+            "ammo": 5
+          },
+          "paidUntil": 3497,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3238,
+            "responseUntil": 3259,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 992,
+              "owner": "solo",
+              "x": 1149.7833234530294,
+              "y": 424.0914837009172,
+              "state": "needle",
+              "aim": -1.0937579622181595,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 3227,
+              "until": 3259
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 3232,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3497,
+            "damage": 11736.705460000006,
+            "x": 1149.7833234530294,
+            "y": 424.0914837009172,
+            "ammo": 5
+          },
+          "paidUntil": 3497,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 995,
+              "owner": "solo",
+              "x": 1149.7833234530294,
+              "y": 424.0914837009172,
+              "aim": -1.0937579622181595,
+              "radius": 188,
+              "arc": 0,
+              "at": 3232,
+              "until": 3239
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 3678,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3497,
+            "damage": 14055.865459999999,
+            "x": 1139.485814195429,
+            "y": 423.40231330367845,
+            "ammo": 4
+          },
+          "paidUntil": 3948,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3689,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1097,
+              "owner": "solo",
+              "x": 1139.485814195429,
+              "y": 423.40231330367845,
+              "state": "guard",
+              "aim": -1.2609452158289802,
+              "radius": 30,
+              "arc": 0,
+              "at": 3678,
+              "until": 3689
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3682,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3948,
+            "damage": 14055.865459999999,
+            "x": 1139.485814195429,
+            "y": 423.40231330367845,
+            "ammo": 4
+          },
+          "paidUntil": 3948,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3689,
+            "responseUntil": 3710,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1097,
+              "owner": "solo",
+              "x": 1139.485814195429,
+              "y": 423.40231330367845,
+              "state": "needle",
+              "aim": -1.2869831086505719,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 3678,
+              "until": 3710
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 4037,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3948,
+            "damage": 15626.545459999994,
+            "x": 1144.367892024709,
+            "y": 419.09088695992773,
+            "ammo": 9
+          },
+          "paidUntil": 4307,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4048,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1189,
+              "owner": "solo",
+              "x": 1144.367892024709,
+              "y": 419.09088695992773,
+              "state": "guard",
+              "aim": -1.1336554479255097,
+              "radius": 30,
+              "arc": 0,
+              "at": 4037,
+              "until": 4048
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 4043,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4307,
+            "damage": 15626.545459999994,
+            "x": 1144.367892024709,
+            "y": 419.09088695992773,
+            "ammo": 9
+          },
+          "paidUntil": 4307,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4048,
+            "responseUntil": 4071,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1189,
+              "owner": "solo",
+              "x": 1144.367892024709,
+              "y": 419.09088695992773,
+              "state": "needle",
+              "aim": -1.3292034687317769,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 4037,
+              "until": 4071
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 4044,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4307,
+            "damage": 15626.545459999994,
+            "x": 1144.367892024709,
+            "y": 419.09088695992773,
+            "ammo": 9
+          },
+          "paidUntil": 4307,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 1193,
+              "owner": "solo",
+              "x": 1144.367892024709,
+              "y": 419.09088695992773,
+              "aim": -1.3292034687317769,
+              "radius": 188,
+              "arc": 0,
+              "at": 4044,
+              "until": 4051
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 4501,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4307,
+            "damage": 18227.34546000001,
+            "x": 1346.827164708199,
+            "y": 140.67840069717158,
+            "ammo": 7
+          },
+          "paidUntil": 4771,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4512,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1316,
+              "owner": "solo",
+              "x": 1346.827164708199,
+              "y": 140.67840069717158,
+              "state": "guard",
+              "aim": 2.4581168569729934,
+              "radius": 30,
+              "arc": 0,
+              "at": 4501,
+              "until": 4512
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 4507,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4771,
+            "damage": 18227.34546000001,
+            "x": 1346.827164708199,
+            "y": 140.67840069717158,
+            "ammo": 7
+          },
+          "paidUntil": 4771,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4512,
+            "responseUntil": 4535,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1316,
+              "owner": "solo",
+              "x": 1346.827164708199,
+              "y": 140.67840069717158,
+              "state": "needle",
+              "aim": 2.284300183702288,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 4501,
+              "until": 4535
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 4508,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4771,
+            "damage": 18227.34546000001,
+            "x": 1346.827164708199,
+            "y": 140.67840069717158,
+            "ammo": 7
+          },
+          "paidUntil": 4771,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 1320,
+              "owner": "solo",
+              "x": 1346.827164708199,
+              "y": 140.67840069717158,
+              "aim": 2.284300183702288,
+              "radius": 188,
+              "arc": 0,
+              "at": 4508,
+              "until": 4515
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 4860,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 4771,
+            "damage": 20364.465460000032,
+            "x": 1153.1197950713636,
+            "y": 423.1340597768576,
+            "ammo": 8
+          },
+          "paidUntil": 5130,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4871,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1423,
+              "owner": "solo",
+              "x": 1153.1197950713636,
+              "y": 423.1340597768576,
+              "state": "guard",
+              "aim": -1.2329721189585887,
+              "radius": 30,
+              "arc": 0,
+              "at": 4860,
+              "until": 4871
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 4867,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 5130,
+            "damage": 20364.465460000032,
+            "x": 1153.1197950713636,
+            "y": 423.1340597768576,
+            "ammo": 8
+          },
+          "paidUntil": 5130,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 4871,
+            "responseUntil": 4895,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 1423,
+              "owner": "solo",
+              "x": 1153.1197950713636,
+              "y": 423.1340597768576,
+              "state": "needle",
+              "aim": -1.4329741738825612,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 4860,
+              "until": 4895
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 4868,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 5130,
+            "damage": 20364.465460000032,
+            "x": 1153.1197950713636,
+            "y": 423.1340597768576,
+            "ammo": 8
+          },
+          "paidUntil": 5130,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 1427,
+              "owner": "solo",
+              "x": 1153.1197950713636,
+              "y": 423.1340597768576,
+              "aim": -1.4329741738825612,
+              "radius": 188,
+              "arc": 0,
+              "at": 4868,
+              "until": 4875
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-needle-return-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "policy": "back",
+      "won": false,
+      "clears": 4,
+      "trace": "8613345e0db01bc9faef3824011be5676540f17c2d70209c60dfe18e73a3cab7",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 100,
+          "boss": "constable",
+          "before": {
+            "e": 0,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 111,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 36,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "state": "guard",
+              "aim": -0.05652246114000634,
+              "radius": 30,
+              "arc": 0,
+              "at": 100,
+              "until": 111
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 105,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 111,
+            "responseUntil": 133,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 36,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "state": "forward",
+              "aim": -0.05652246114000634,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 100,
+              "until": 133
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 106,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 154.056,
+            "x": 1042.4855177291126,
+            "y": 517.5310615619571,
+            "ammo": 6
+          },
+          "paidUntil": 370,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 38,
+              "owner": "solo",
+              "x": 1042.4855177291126,
+              "y": 517.5310615619571,
+              "aim": -0.12072019525881839,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 106,
+              "until": 113
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 431,
+          "boss": "constable",
+          "before": {
+            "e": 370,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 442,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 140,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "state": "guard",
+              "aim": -2.718376016203938,
+              "radius": 30,
+              "arc": 0,
+              "at": 431,
+              "until": 442
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 434,
+          "boss": "constable",
+          "before": {
+            "e": 701,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 442,
+            "responseUntil": 462,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 140,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "state": "forward",
+              "aim": -2.718376016203938,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 431,
+              "until": 462
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 435,
+          "boss": "constable",
+          "before": {
+            "e": 701,
+            "damage": 1102.8319999999997,
+            "x": 1239.176005243535,
+            "y": 567.652184713581,
+            "ammo": 6
+          },
+          "paidUntil": 701,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 142,
+              "owner": "solo",
+              "x": 1239.176005243535,
+              "y": 567.652184713581,
+              "aim": -2.4801656929693596,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 435,
+              "until": 442
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-back-answer-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 109,
+      "policy": "banked",
+      "won": false,
+      "clears": 4,
+      "trace": "c0469b96185d18c9ece34d731289db41ed9129150852baac40bb8f806689bafa",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 109,
+      "policy": "unused",
+      "won": false,
+      "clears": 4,
+      "trace": "c0469b96185d18c9ece34d731289db41ed9129150852baac40bb8f806689bafa",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 109,
+      "policy": "reply",
+      "won": false,
+      "clears": 4,
+      "trace": "c34018aba4a33ef5f3671e39f9f06a0cbc4fcbbf783d6bfc5fb2a97d591162f2",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 3117,
+          "boss": "pallbearer",
+          "before": {
+            "e": 0,
+            "damage": 6776.5815999999995,
+            "x": 1017.8758761907701,
+            "y": 567.6270384690968,
+            "ammo": 8
+          },
+          "paidUntil": 3387,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3128,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 975,
+              "owner": "solo",
+              "x": 1017.8758761907701,
+              "y": 567.6270384690968,
+              "state": "guard",
+              "aim": -2.645507618625331,
+              "radius": 30,
+              "arc": 0,
+              "at": 3117,
+              "until": 3128
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3122,
+          "boss": "pallbearer",
+          "before": {
+            "e": 3387,
+            "damage": 6776.5815999999995,
+            "x": 1017.8758761907701,
+            "y": 567.6270384690968,
+            "ammo": 8
+          },
+          "paidUntil": 3387,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3128,
+            "responseUntil": 3150,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 975,
+              "owner": "solo",
+              "x": 1017.8758761907701,
+              "y": 567.6270384690968,
+              "state": "forward",
+              "aim": -2.645507618625331,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 3117,
+              "until": 3150
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 3123,
+          "boss": "pallbearer",
+          "before": {
+            "e": 3387,
+            "damage": 6776.5815999999995,
+            "x": 1017.8758761907701,
+            "y": 567.6270384690968,
+            "ammo": 8
+          },
+          "paidUntil": 3387,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 977,
+              "owner": "solo",
+              "x": 1017.8758761907701,
+              "y": 567.6270384690968,
+              "aim": -2.7436520526687778,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 3123,
+              "until": 3130
+            }
+          ]
+        }
+      ],
+      "purchases": []
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 109,
+      "policy": "needle",
+      "won": false,
+      "clears": 4,
+      "trace": "aad05b70ffe65ee7c287f67def3fe4ef24b7013a09994d963c7e18f3a67ab027",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 3117,
+          "boss": "pallbearer",
+          "before": {
+            "e": 0,
+            "damage": 6776.5815999999995,
+            "x": 1017.8758761907701,
+            "y": 567.6270384690968,
+            "ammo": 8
+          },
+          "paidUntil": 3387,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3128,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 975,
+              "owner": "solo",
+              "x": 1017.8758761907701,
+              "y": 567.6270384690968,
+              "state": "guard",
+              "aim": -2.645507618625331,
+              "radius": 30,
+              "arc": 0,
+              "at": 3117,
+              "until": 3128
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3122,
+          "boss": "pallbearer",
+          "before": {
+            "e": 3387,
+            "damage": 6776.5815999999995,
+            "x": 1017.8758761907701,
+            "y": 567.6270384690968,
+            "ammo": 8
+          },
+          "paidUntil": 3387,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3128,
+            "responseUntil": 3150,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 975,
+              "owner": "solo",
+              "x": 1017.8758761907701,
+              "y": 567.6270384690968,
+              "state": "needle",
+              "aim": -2.6466365947857313,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 3117,
+              "until": 3150
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 3123,
+          "boss": "pallbearer",
+          "before": {
+            "e": 3387,
+            "damage": 6776.5815999999995,
+            "x": 1017.8758761907701,
+            "y": 567.6270384690968,
+            "ammo": 8
+          },
+          "paidUntil": 3387,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 978,
+              "owner": "solo",
+              "x": 1017.8758761907701,
+              "y": 567.6270384690968,
+              "aim": -2.6466365947857313,
+              "radius": 188,
+              "arc": 0,
+              "at": 3123,
+              "until": 3130
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-needle-return-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 109,
+      "policy": "back",
+      "won": false,
+      "clears": 4,
+      "trace": "c0469b96185d18c9ece34d731289db41ed9129150852baac40bb8f806689bafa",
+      "effects": [],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-back-answer-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 61,
+      "policy": "banked",
+      "won": true,
+      "clears": 5,
+      "trace": "72ba6ad5ff017807f247bae1303917eb99c6268cd5d3d898f94f2d04082d8636",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 61,
+      "policy": "unused",
+      "won": true,
+      "clears": 5,
+      "trace": "72ba6ad5ff017807f247bae1303917eb99c6268cd5d3d898f94f2d04082d8636",
+      "effects": [],
+      "purchases": []
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 61,
+      "policy": "reply",
+      "won": true,
+      "clears": 5,
+      "trace": "7e0754f272f779f522ddabaef65e87b1b30cb5a5ed87dd04389719d91c6756cd",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 2206,
+          "boss": "pallbearer",
+          "before": {
+            "e": 0,
+            "damage": 3442.1521599999996,
+            "x": 1114.999113075649,
+            "y": 656.2460320075551,
+            "ammo": 3
+          },
+          "paidUntil": 2476,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 2217,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 537,
+              "owner": "solo",
+              "x": 1114.999113075649,
+              "y": 656.2460320075551,
+              "state": "guard",
+              "aim": -2.125833714119439,
+              "radius": 30,
+              "arc": 0,
+              "at": 2206,
+              "until": 2217
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 2211,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2476,
+            "damage": 3442.1521599999996,
+            "x": 1114.999113075649,
+            "y": 656.2460320075551,
+            "ammo": 3
+          },
+          "paidUntil": 2476,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 2217,
+            "responseUntil": 2239,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 537,
+              "owner": "solo",
+              "x": 1114.999113075649,
+              "y": 656.2460320075551,
+              "state": "forward",
+              "aim": -2.125833714119439,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 2206,
+              "until": 2239
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 2212,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2476,
+            "damage": 3442.1521599999996,
+            "x": 1114.999113075649,
+            "y": 656.2460320075551,
+            "ammo": 3
+          },
+          "paidUntil": 2476,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 541,
+              "owner": "solo",
+              "x": 1114.999113075649,
+              "y": 656.2460320075551,
+              "aim": -2.0588962378975886,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 2212,
+              "until": 2219
+            }
+          ]
+        },
+        {
+          "action": "guard",
+          "at": 3030,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 2753,
+            "damage": 9464.332160000007,
+            "x": 1267.9717244849085,
+            "y": 211.5059526155697,
+            "ammo": 12
+          },
+          "paidUntil": 3300,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3041,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 735,
+              "owner": "solo",
+              "x": 1267.9717244849085,
+              "y": 211.5059526155697,
+              "state": "guard",
+              "aim": 2.4412211001545856,
+              "radius": 30,
+              "arc": 0,
+              "at": 3030,
+              "until": 3041
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3036,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3300,
+            "damage": 9464.332160000007,
+            "x": 1267.9717244849085,
+            "y": 211.5059526155697,
+            "ammo": 12
+          },
+          "paidUntil": 3300,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3041,
+            "responseUntil": 3064,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 735,
+              "owner": "solo",
+              "x": 1267.9717244849085,
+              "y": 211.5059526155697,
+              "state": "forward",
+              "aim": 2.4412211001545856,
+              "radius": 142,
+              "arc": 1.1868238913561442,
+              "at": 3030,
+              "until": 3064
+            }
+          ]
+        },
+        {
+          "action": "cut",
+          "at": 3037,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3300,
+            "damage": 9464.332160000007,
+            "x": 1267.9717244849085,
+            "y": 211.5059526155697,
+            "ammo": 12
+          },
+          "paidUntil": 3300,
+          "damage": 92,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 737,
+              "owner": "solo",
+              "x": 1267.9717244849085,
+              "y": 211.5059526155697,
+              "aim": 2.4412211001545856,
+              "radius": 142,
+              "arc": 1.53588974175501,
+              "at": 3037,
+              "until": 3044
+            }
+          ]
+        }
+      ],
+      "purchases": []
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 61,
+      "policy": "needle",
+      "won": true,
+      "clears": 5,
+      "trace": "fdb173622053c4ae5e9998e953ca2300720632b346873bf7624563a252f932c1",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 2206,
+          "boss": "pallbearer",
+          "before": {
+            "e": 0,
+            "damage": 3442.1521599999996,
+            "x": 1114.999113075649,
+            "y": 656.2460320075551,
+            "ammo": 3
+          },
+          "paidUntil": 2476,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 2217,
+            "responseUntil": 0,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 537,
+              "owner": "solo",
+              "x": 1114.999113075649,
+              "y": 656.2460320075551,
+              "state": "guard",
+              "aim": -2.125833714119439,
+              "radius": 30,
+              "arc": 0,
+              "at": 2206,
+              "until": 2217
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 2211,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2476,
+            "damage": 3442.1521599999996,
+            "x": 1114.999113075649,
+            "y": 656.2460320075551,
+            "ammo": 3
+          },
+          "paidUntil": 2476,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 2217,
+            "responseUntil": 2239,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-needle-return-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 537,
+              "owner": "solo",
+              "x": 1114.999113075649,
+              "y": 656.2460320075551,
+              "state": "needle",
+              "aim": -2.2425209370836887,
+              "radius": 188,
+              "arc": 1.1868238913561442,
+              "at": 2206,
+              "until": 2239
+            }
+          ]
+        },
+        {
+          "action": "needle",
+          "at": 2212,
+          "boss": "pallbearer",
+          "before": {
+            "e": 2476,
+            "damage": 3442.1521599999996,
+            "x": 1114.999113075649,
+            "y": 656.2460320075551,
+            "ammo": 3
+          },
+          "paidUntil": 2476,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "return",
+              "id": 542,
+              "owner": "solo",
+              "x": 1114.999113075649,
+              "y": 656.2460320075551,
+              "aim": -2.2425209370836887,
+              "radius": 188,
+              "arc": 0,
+              "at": 2212,
+              "until": 2219
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-needle-return-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 61,
+      "policy": "back",
+      "won": true,
+      "clears": 5,
+      "trace": "24c8d395489738b788993cd3c2e660d5f4d5486f7bf477f442a4d6f7cec4af9c",
+      "effects": [
+        {
+          "action": "guard",
+          "at": 3032,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 2758,
+            "damage": 9709.230812436801,
+            "x": 1291.7546423693136,
+            "y": 198.3833325954174,
+            "ammo": 12
+          },
+          "paidUntil": 3302,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3043,
+            "responseUntil": 3060,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-back-answer-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 733,
+              "owner": "solo",
+              "x": 1291.7546423693136,
+              "y": 198.3833325954174,
+              "state": "back",
+              "aim": 5.656448466012372,
+              "radius": 119,
+              "arc": 4.71238898038469,
+              "at": 3032,
+              "until": 3060
+            }
+          ]
+        },
+        {
+          "action": "catch",
+          "at": 3032,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 2758,
+            "damage": 9709.230812436801,
+            "x": 1291.7546423693136,
+            "y": 198.3833325954174,
+            "ammo": 12
+          },
+          "paidUntil": 3302,
+          "damage": 0,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 3043,
+            "responseUntil": 3060,
+            "canAnswer": false,
+            "fitting": "swordsman-counterstroke-back-answer-1"
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "id": 733,
+              "owner": "solo",
+              "x": 1291.7546423693136,
+              "y": 198.3833325954174,
+              "state": "back",
+              "aim": 5.656448466012372,
+              "radius": 119,
+              "arc": 4.71238898038469,
+              "at": 3032,
+              "until": 3060
+            }
+          ]
+        },
+        {
+          "action": "back",
+          "at": 3046,
+          "boss": "wire-harpist",
+          "before": {
+            "e": 3302,
+            "damage": 9709.230812436801,
+            "x": 1277.1615044800471,
+            "y": 252.77395498929994,
+            "ammo": 12
+          },
+          "paidUntil": 3302,
+          "damage": 90,
+          "state": {
+            "canGuard": false,
+            "guardUntil": 0,
+            "responseUntil": 0,
+            "canAnswer": false
+          },
+          "cues": [
+            {
+              "kind": "sword-drawn-reply",
+              "state": "cut",
+              "id": 736,
+              "owner": "solo",
+              "x": 1277.1615044800471,
+              "y": 252.77395498929994,
+              "aim": -2.8829313313595595,
+              "radius": 119,
+              "arc": 1.8500490071139892,
+              "at": 3046,
+              "until": 3053
+            }
+          ]
+        }
+      ],
+      "purchases": [
+        {
+          "id": "swordsman-counterstroke-back-answer-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "arena": "gatehouse",
+      "sameTrace": true
+    },
+    {
+      "arena": "sunken-chapel",
+      "sameTrace": true
+    },
+    {
+      "arena": "ossuary-works",
+      "sameTrace": true
+    },
+    {
+      "arena": "crown-crypt",
+      "sameTrace": true
+    }
+  ]
+}

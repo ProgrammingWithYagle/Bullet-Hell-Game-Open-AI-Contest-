@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "protocol": 97,
+  "contentRevision": "0b33900c06c1a5462d849727489830438664c5bb408e2e03b90c38aaa33d6c14",
+  "runtimeSourceSha256": "f57d8a2af1c447e839c1873c8b77c4eac2a80d7402645418028c7c683390bf85",
+  "sourceSnapshotSha256": "170860dc46d76ea80e2cd47a20b5867e9aea557158b6e0aab78f45f3a9e23f5b",
+  "tests": 2898,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 21,
+      "release": 23,
+      "angle": 0.007813799283354225,
+      "hits": [
+        {
+          "id": "boss/constable",
+          "before": 1789.9440000000002,
+          "after": 1697.9440000000002
+        }
+      ]
+    },
+    {
+      "transport": "worker",
+      "fitting": "needle",
+      "boss": "pallbearer",
+      "firstClear": 1,
+      "stage": 295,
+      "release": 298,
+      "angle": 0.032238125141199614,
+      "hits": [
+        {
+          "id": "boss/pallbearer",
+          "before": 5086.738129840002,
+          "after": 5045.231879840002
+        }
+      ]
+    },
+    {
+      "transport": "worker",
+      "fitting": "back",
+      "boss": "matron",
+      "firstClear": 0,
+      "stage": 39,
+      "release": 41,
+      "angle": 0.8453981633974484,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 3222.8740000000007,
+          "after": 3132.8740000000007
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 21,
+      "release": 23,
+      "angle": 0.038920337925411136,
+      "hits": [
+        {
+          "id": "boss/constable",
+          "before": 3150.743896484375,
+          "after": 3058.743896484375
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "needle",
+      "boss": "pallbearer",
+      "firstClear": 1,
+      "stage": 486,
+      "release": 489,
+      "angle": 0.1461505156676579,
+      "hits": [
+        {
+          "id": "boss/pallbearer",
+          "before": 6336.564453125,
+          "after": 6293.15673828125
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "back",
+      "boss": "matron",
+      "firstClear": 0,
+      "stage": 39,
+      "release": 41,
+      "angle": 0.8453981633974487,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 6087.12890625,
+          "after": 5997.12890625
+        }
+      ]
+    }
+  ],
+  "retries": [
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "earlierError": "native-source01/peer-entry-errors.log",
+      "earlierErrorSha256": "95d3af7ca15b08acaf154be354469d5766238dd339ea8ddeddf8ba0d866e9dc7",
+      "exactRerun": "native-source02/peer-entry.json"
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate01/generated/reviews/runtime-verification.json",
+      "sha256": "163027c7338b329b278355883053b8731464e6b53d677d253a0fbf0ccd4e5dec"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "8c7de2d23d16e9533b445084e59e3b1c5f8e87ce128face1fe1788f7a0f868b7"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "c83244f18286a9dfc4e8c599e7e0477d5e7b09b1f67f3ea7d8f3b0cf6eb2b234"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "084b766c341a47d98940d23a505113b5772e2b423cbc6468a4e87a6affd41448"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "c7c10cbaf8fda289bcdb606a38223144a39031182b7b01fad8f15e56e1f4e2c7"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "0ce4cdd5e036fa3890e53a8513cf8461e85d77028079610d8fc8c3ea5569f7fe"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "migration-proof01.json",
+      "sha256": "78bfd8bd7d2553dcd1e6777c041e3066fefa4b33a64b8d9b05b1b1136251d83b"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof02.json",
+      "sha256": "82cc28ca5fdab3c0c6996ae38020f603c6300c115cf50621d182355825f19561"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo02.json",
+      "sha256": "4d643091fdbebbbd4891111549ebefeed9b8d7bff175928d3d9c1d95fc827c0f"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party02.json",
+      "sha256": "b9ffccb64cd59efebae193258a6620f891f5969a92028b55dfe8bf7df4b09c0c"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo02.json",
+      "sha256": "0b691a3df4614f4b9e5cb92b3f77dd8ed32041bad8372af8489e9a904a27176d"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party02.json",
+      "sha256": "5c8996a1b62e7ccfa59aa7e2a99c550a4973653508aa899873b5ab603e8d4319"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source01/worker-entry.json",
+      "sha256": "c34c1172922f37122dc8a2b574bf7fff8aadd0f867f1d64e8852637aa1091785"
+    },
+    {
+      "path": "source-worker-needle.json",
+      "from": "native-source01/worker-needle.json",
+      "sha256": "898a7c43a4d8b04ecce55bb559ecc226ff368e05f1f5e6b53d15b25544df3ffb"
+    },
+    {
+      "path": "source-worker-back.json",
+      "from": "native-source01/worker-back.json",
+      "sha256": "ee8bfa1fcb71765d1af29601a59ae4c29d9529f2a2375d6f9cf72fab297f2c93"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source02/peer-entry.json",
+      "sha256": "4d18951ead604b9ae9ac5f19c2d622408143dabc6270df77b76b0bace864d464"
+    },
+    {
+      "path": "source-peer-needle.json",
+      "from": "native-source01/peer-needle.json",
+      "sha256": "7a3eb464d5e2a2d0c1d953eebbd0833e4d6d10befe4ec26ad7a6abfa1d43661d"
+    },
+    {
+      "path": "source-peer-back.json",
+      "from": "native-source01/peer-back.json",
+      "sha256": "6b2c6d4919e604a7ee04742b4669d4823734c8ca26aae4049ef1e743ea1c41d5"
+    }
+  ],
+  "documents": [
+    "docs/SWORDSMAN_COUNTERSTROKE.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

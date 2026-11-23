@@ -1,3 +1,4 @@
+import replyEdition from './fixtures/swordsman-issued96-bindings.json';
 import measuredEdition from './fixtures/bard-issued95-bindings.json';
 import entranceEdition from './fixtures/bard-issued94-bindings.json';
 import lamentEdition from './fixtures/bard-issued93-bindings.json';
@@ -32,7 +33,7 @@ const issued = JSON.parse(bytes);
 const sha = (value: string) => createHash('sha256').update(value).digest('hex');
 
 test('exact issued 78 restores all 156 local ownership cases without changing the original', () => {
-  assert.equal(PROTOCOL, 96);
+  assert.equal(PROTOCOL, 97);
   assert.equal(issued.protocol, 78);
   assert.equal(issued.contentRevision, binding.sourceRevision);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
@@ -97,7 +98,7 @@ test('the issued 78 boundary rejects new Bastion ownership, mismatched revisions
 
 test('all fifteen issued 78 dictionaries retain their exact previous messages', () => {
   assert.equal(Object.keys(issued.localeHashes).length, 15);
-  const added = new Set([...binding.addedLocaleKeys, ...lateBinding.addedLocaleKeys, ...bulwarkFittings.addedLocaleKeys,...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  const added = new Set([...binding.addedLocaleKeys, ...lateBinding.addedLocaleKeys, ...bulwarkFittings.addedLocaleKeys,...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
   for (const [id, hash] of Object.entries(issued.localeHashes)) {
     const locale = JSON.parse(readFileSync(new URL('../locales/' + id + '.json', import.meta.url), 'utf8'));
     for (const key of added) assert(Object.hasOwn(locale.messages, key), id + ' ' + key);

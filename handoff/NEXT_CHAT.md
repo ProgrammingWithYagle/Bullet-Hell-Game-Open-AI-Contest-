@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 97 Swordsman Counterstroke candidate
+
+Protocol 97 adds Swordsman Counterstroke with Drawn Reply, Needle Return and Back Answer. The local gate and six ordinary transport cases passed. Measured Stance remains the retained review during Counterstroke verification. [Counterstroke](../docs/SWORDSMAN_COUNTERSTROKE.md).
+
 ## Current exact protocol 96 Swordsman Measured Stance review
 
 Source **a6682b50ba19e45e04a038365241b01a460b0eb0**, build **2026.11.22-swordsman-measured**, protocol **96**, catalog **125**. The local suite and both GitHub workflows passed 2,884 tests and seven checks. Each frozen audience binds 2,206 files and passed seven checks. Testing uses [5436](http://127.0.0.1:5436/) with backend 2812. Public review uses [5437](http://127.0.0.1:5437/) with backend 2813. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45081705537) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45081720382) · [Frozen checks](../reviews/swordsman-measured-2026-11-22/frozen-verification.json).

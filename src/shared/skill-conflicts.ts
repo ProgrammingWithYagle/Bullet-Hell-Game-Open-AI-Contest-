@@ -1,3 +1,4 @@
+import { counterstrokeIds } from './swordsman-counterstroke.ts';
 import { measuredIds } from './swordsman-measured.ts';
 import { misdirectionIds } from './bard-misdirection.ts';
 import { lamentIds } from './bard-lament.ts';
@@ -20,6 +21,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherReply = candidate === counterstrokeIds.needle ? counterstrokeIds.back :
+    candidate === counterstrokeIds.back ? counterstrokeIds.needle : undefined;
+  if (otherReply && owned.includes(otherReply)) return otherReply;
   const otherMeasured = candidate === measuredIds.turn ? measuredIds.follow :
     candidate === measuredIds.follow ? measuredIds.turn : undefined;
   if (otherMeasured && owned.includes(otherMeasured)) return otherMeasured;

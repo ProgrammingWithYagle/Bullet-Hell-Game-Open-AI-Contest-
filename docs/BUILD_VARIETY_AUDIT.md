@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Swordsman Counterstroke
+
+The protocol 97 census bought 1,090 Swordsman configurations in 27-SP shops. Counterstroke appears in 841 builds, with both Swordsman entries in 598. [Census](../reviews/swordsman-counterstroke-2026-11-22/build-census.json) · [Run study](SWORDSMAN_COUNTERSTROKE.md).
+
 ## Swordsman Measured Stance
 
 The protocol 96 census bought 249 Swordsman configurations in 27-SP shops. Each Held Edge fitting appears in 81 builds and 213 also own an issued sword transformation. [Census](../reviews/swordsman-measured-2026-11-22/build-census.json) · [Run study](SWORDSMAN_MEASURED_STANCE.md).

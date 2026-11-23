@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "protocol": 97,
+  "contentRevision": "0b33900c06c1a5462d849727489830438664c5bb408e2e03b90c38aaa33d6c14",
+  "transport": "worker",
+  "fitting": "needle",
+  "bought": [
+    {
+      "item": "swordsman-edgework-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-drawn-reply-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-counterstroke-needle-return-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "triage-yard",
+    "start": 786
+  },
+  "setup": {
+    "mode": "short",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "sunken-chapel",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 73
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "sword-drawn-reply",
+        "id": 295,
+        "owner": "solo",
+        "x": 1033.9707867189888,
+        "y": 471.7403517528562,
+        "state": "guard",
+        "aim": 2.79934693350955,
+        "radius": 30,
+        "arc": 0,
+        "at": 1663,
+        "until": 1674
+      },
+      "last": {
+        "kind": "sword-drawn-reply",
+        "id": 295,
+        "owner": "solo",
+        "x": 1033.9707867189888,
+        "y": 471.7403517528562,
+        "state": "needle",
+        "aim": 2.8315850586507496,
+        "radius": 188,
+        "arc": 1.1868238913561442,
+        "at": 1663,
+        "until": 1695
+      },
+      "phases": [
+        {
+          "kind": "sword-drawn-reply",
+          "id": 295,
+          "owner": "solo",
+          "x": 1033.9707867189888,
+          "y": 471.7403517528562,
+          "state": "guard",
+          "aim": 2.79934693350955,
+          "radius": 30,
+          "arc": 0,
+          "at": 1663,
+          "until": 1674
+        },
+        {
+          "kind": "sword-drawn-reply",
+          "id": 295,
+          "owner": "solo",
+          "x": 1033.9707867189888,
+          "y": 471.7403517528562,
+          "state": "needle",
+          "aim": 2.8315850586507496,
+          "radius": 188,
+          "arc": 1.1868238913561442,
+          "at": 1663,
+          "until": 1695
+        }
+      ]
+    },
+    "release": {
+      "kind": "sword-drawn-reply",
+      "state": "return",
+      "id": 298,
+      "owner": "solo",
+      "x": 1033.9707867189888,
+      "y": 471.7403517528562,
+      "aim": 2.8315850586507496,
+      "radius": 188,
+      "arc": 0,
+      "at": 1668,
+      "until": 1675
+    },
+    "hits": [
+      {
+        "id": "boss/pallbearer",
+        "before": 5086.738129840002,
+        "after": 5045.231879840002
+      }
+    ],
+    "paid": {
+      "e": 1933,
+      "q": 1887,
+      "ammo": 4
+    },
+    "sounds": [
+      "sword-drawn-reply-guard",
+      "sword-drawn-reply-catch",
+      "sword-drawn-reply-needle"
+    ],
+    "boss": "pallbearer",
+    "traces": [
+      {
+        "stage": 295,
+        "release": {
+          "kind": "sword-drawn-reply",
+          "state": "return",
+          "id": 298,
+          "owner": "solo",
+          "x": 1033.9707867189888,
+          "y": 471.7403517528562,
+          "aim": 2.8315850586507496,
+          "radius": 188,
+          "arc": 0,
+          "at": 1668,
+          "until": 1675
+        },
+        "hits": [
+          {
+            "id": "boss/pallbearer",
+            "before": 5086.738129840002,
+            "after": 5045.231879840002
+          }
+        ]
+      }
+    ]
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "b4debe3c49862733b2529408f7adc97175d920ce376ffd760f2be50a3379b831",
+  "driverSha256": "45d4467a8977db2048306df5d6b50a16eec918c53f2f68ce61a0204efe108a1f",
+  "testedAudience": "public"
+}

@@ -1,3 +1,4 @@
+import { drawCounterstroke } from './sword-counterstroke-presentation.ts';
 import { drawMeasuredStance } from './sword-measured-presentation.ts';
 import { slipRouteRules } from '../shared/assassin-slip-route.ts';
 import { rapidResponseRules } from '../shared/medic-rapid-response.ts';
@@ -1248,6 +1249,7 @@ export class CombatScene extends Phaser.Scene {
       }
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
+      if (cue.kind === 'sword-drawn-reply') { drawCounterstroke(h,cue,now,this.reduceMotion); continue; }
       if (cue.kind === 'sword-measured-stance') { drawMeasuredStance(h,cue,now,this.reduceMotion); continue; }
       if(cue.kind==='sword-cut'||cue.kind==='sword-windup'||cue.kind==='sword-guard'||cue.kind==='sword-parry'||cue.kind==='sword-return'){drawSwordCue(h,cue,now,this.reduceMotion);continue;}
       if (cue.kind === 'bard-lament-line' || cue.kind === 'bard-lament-pulse' || cue.kind === 'bard-lament-chord') {

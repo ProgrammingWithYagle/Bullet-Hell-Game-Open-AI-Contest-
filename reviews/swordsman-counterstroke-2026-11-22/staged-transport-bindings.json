@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "protocol": 97,
+  "revision": "0b33900c06c1a5462d849727489830438664c5bb408e2e03b90c38aaa33d6c14",
+  "driver": "45d4467a8977db2048306df5d6b50a16eec918c53f2f68ce61a0204efe108a1f",
+  "worker": "b4debe3c49862733b2529408f7adc97175d920ce376ffd760f2be50a3379b831",
+  "bundle": "native-bundle02",
+  "attempt": "native02",
+  "cases": [
+    {
+      "path": "native02-worker-entry.json",
+      "sha256": "874cf8193ef44e0ffde312f7473dc4605418ea5631820e3ccbebb2184ca2a765",
+      "logSha256": "c0b182926ea88846bdfbf7e49d37651001c461e31cf21f9da917ff8da53665be",
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "constable",
+      "stage": 21,
+      "release": 23,
+      "angle": 0.007813799283354225,
+      "hits": [
+        {
+          "id": "boss/constable",
+          "before": 1789.9440000000002,
+          "after": 1697.9440000000002
+        }
+      ],
+      "firstClear": 0
+    },
+    {
+      "path": "native02-worker-needle.json",
+      "sha256": "f0d153dd944be8b8687f5148a80bb4a8f90df9cb5ecd684cc74455c3d53bd397",
+      "logSha256": "cdd55e44d1a07ea0ad59aaace759abb64a020fa0c15b8c1b3ac5f4c0d0b3a18f",
+      "transport": "worker",
+      "fitting": "needle",
+      "boss": "pallbearer",
+      "stage": 295,
+      "release": 298,
+      "angle": 0.041714706444417,
+      "hits": [
+        {
+          "id": "boss/pallbearer",
+          "before": 5150.58612984,
+          "after": 5109.079879839999
+        }
+      ],
+      "firstClear": 1
+    },
+    {
+      "path": "native02-worker-back.json",
+      "sha256": "35aafc10b924ed555ba81ba4200561218a96ab44b3fe7a1df9c46eb82a4f66f9",
+      "logSha256": "4f4291d4e3ab9e6ba98406eaac7d11b07659e8f51ca1a1f7afb67920219ffefd",
+      "transport": "worker",
+      "fitting": "back",
+      "boss": "matron",
+      "stage": 39,
+      "release": 41,
+      "angle": 0.8453981633974484,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 3222.8740000000007,
+          "after": 3132.8740000000007
+        }
+      ],
+      "firstClear": 0
+    },
+    {
+      "path": "native02-peer-entry.json",
+      "sha256": "a660afff9a7faaa0dbf5d60b721666ce421c39824a7e34d79c9d1c95424d2800",
+      "logSha256": "567dd09b3dde99204a34583fded91abb1787d576efb9fada3bc8d2c62fe25bc8",
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "stage": 21,
+      "release": 23,
+      "angle": 0.0350844213149602,
+      "hits": [
+        {
+          "id": "boss/constable",
+          "before": 3150.743896484375,
+          "after": 3058.743896484375
+        }
+      ],
+      "firstClear": 0
+    },
+    {
+      "path": "native02-peer-needle.json",
+      "sha256": "a1cecb2fc7e99c75ce17c7ca2d9cfb666b5edac03ab5fa477645351d81c5d0fb",
+      "logSha256": "cc805c8881e233aa331c73b10aee751ba356f3d09dfac74d848eb6284a536b9d",
+      "transport": "peer",
+      "fitting": "needle",
+      "boss": "pallbearer",
+      "stage": 577,
+      "release": 580,
+      "angle": 0.1483232766768241,
+      "hits": [
+        {
+          "id": "boss/pallbearer",
+          "before": 10529.4130859375,
+          "after": 10487.9072265625
+        }
+      ],
+      "firstClear": 1
+    },
+    {
+      "path": "native02-peer-back.json",
+      "sha256": "69b121d24f94e9bfdedcfd4a8919caf8b389eb1d02b007dd43a67ae09062199a",
+      "logSha256": "e07fd83b6bc3775293742101e84cca104471d744e379ccdffdfac336f97ea408",
+      "transport": "peer",
+      "fitting": "back",
+      "boss": "matron",
+      "stage": 39,
+      "release": 41,
+      "angle": 0.8453981633974486,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 6087.12890625,
+          "after": 5997.12890625
+        }
+      ],
+      "firstClear": 0
+    }
+  ],
+  "inputs": {
+    "src/shared/game.ts": "d329960011bfdf5ece0bbde2478a2e3ec7b6d615590ad4e5613ca2dda54e886e",
+    "src/shared/protocol.ts": "1016df5fc9a5f94b6c9429d621c1184f66781c4cd76c8c5836c67b2216f9409b",
+    "src/shared/view.ts": "f3b2c1644bda9f52b6a5d0c06da82ca8263f94bb341d1b791703c25648378702",
+    "content/revision.json": "a97dc591d15838fd63c56352de413dd254ea93ae19c6795d003e0756dcfe90e8",
+    "content/catalog.json": "7a7f7818fb77ff67dd71322ed7655ea54422b59c2cdda16bcd58b16904a32a22",
+    "src/shared/swordsman-counterstroke.ts": "98de832457bbdf97421b205efe8222418dee641892870c0cd3a8df0fe83da406",
+    "src/shared/bard-misdirection.ts": "0ff45672bc4724f0aeef4636cf089955e597a53004951e68b661e06fe2af86ee",
+    "src/shared/class-kits.ts": "28a6c564220cf414ef47dab403a865781d6a2d456b0efc0ea1fc0f57f671b900",
+    "src/shared/bard-lament.ts": "36c7e1057f03217a510e61c54633f4f31b33e5db7934e2e5791dc4b92d5b588f",
+    "src/shared/swordsman-measured.ts": "668d3d13a878b5ffeffee9fdcb09f1b099c950aa293208c1756988d67ef1fa41",
+    "src/shared/bard-kit.ts": "d9e7c91896b5304d6d5a7c92ecf2394d636290226d1a0e79d9d0bbee5b53cfbc",
+    "src/shared/swordsman-kit.ts": "7e942e14d3b89337e8fc7120befa6d25763a10166ffdd790e35fb37ad1383d21",
+    "src/shared/practice-migration.ts": "d1392e87819475dcff6d3b216b1941dd07d72f6ff81366f9f98ab4d0aab2d9e0",
+    "src/shared/skill-conflicts.ts": "129d33e73057319acacef2b692501d0c143debec19cd8c5dd665104cda14c8fa",
+    "src/shared/minions.ts": "dc27deb09ed7e48de5e6e8faa137dd0bacc5184937b9e2ab298a0114fe9cc9c3",
+    "src/server/GraveRoom.ts": "8024b48393b045359033e98f3960a98248919a52f035d5d4257cf6bb52b6ea99",
+    "src/client/progress.ts": "10368392e1a53c6518ef5138318a101101349229e99bfcb61bf0afd68b3a1d0c",
+    "src/client/profile.ts": "8bc8836a0c1f1b91b7a3fe220ad08181c61c09f3a7b286190ab8eee193f2614f"
+  },
+  "helpers": {
+    "native-counterstroke-flow.mts": "d61351061e72eefcee5a49608d5c0c9f23194de261574208866349c1aa14c668",
+    "native-back-opportunities.mjs": "e61c4acdf7fd99460ca044917a5891428abe0c6642d02c935915878b9fbb56ec",
+    "counterstroke-targeted-pilot.mjs": "bb7dbca745adcef0f1c18f6ec0ebbd1f1f209cb832c9320554c7a84ad71ec15e",
+    "../swordsman-measured/measured-pilot.mjs": "fdf61799672579ebf0b3784c2235aba4ce38903099ae194a3338b77df677fa49",
+    "../assassin-mark-hunter/native-writ-navigation.mjs": "d218e31f2217b9a445c8d77414501d91f432b9f06a28f28c4da1d90b5f276dec"
+  },
+  "preservedFirstAttempt": {
+    "native01-worker-back-errors.log": "ebf624dc11c3456b4c27a0be77beaafa36f3dc9b72110ac25cb428f600503932",
+    "native01-peer-back-errors.log": "011960e45fa0c0f23c76fd1f4e8a4c41e1bc49b1b95a5de2fe4ed707bec50063",
+    "native-driver-v1/input-bindings.json": "6bab33b8c0aa517b9f19a72b4bd6e0943a80a4a8511b940a9ab062a233972328"
+  }
+}

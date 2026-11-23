@@ -1,3 +1,4 @@
+import { counterstrokeIds, counterstrokeRules, type CounterstrokeContext } from './swordsman-counterstroke.ts';
 import { measuredIds, type MeasuredStanceContext } from './swordsman-measured.ts';
 import { misdirectionIds } from './bard-misdirection.ts';
 import { lamentIds, lamentRules } from './bard-lament.ts';
@@ -324,7 +325,7 @@ export class Game {
   readonly marksman = new SoldierMarksman();
   kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.assassinWritStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...this.bardStatus(id),...this.swordsmanStatus(id),...(this.players.get(id)?.classId==='summoner'?this.retinue.status(this.players.get(id)!,this.combatTick,this.summonerOptions(this.players.get(id)!)):{})};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?this.sword.measured.cues(this.combatTick):[]),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?[...this.sword.measured.cues(this.combatTick),...this.sword.counterstroke.cues(this.players,this.combatTick)]:[]),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id: string, amount: number, contact?: 'direct') {
     const player = this.players.get(id);
@@ -606,7 +607,7 @@ export class Game {
     return p;
   }
   setConnected(id: string, connected: boolean) {
-    if(!connected){this.bastion.remove(id);this.fieldSurgery.drop(id);this.rapidResponse.drop(id);this.preventiveCare.drop(id);this.pivotSigil.drop(id);this.waymarkReturn.drop(id);this.fuseSeal.drop(id);this.calledOpening.drop(id);this.slipRoute.drop(id);this.crossingWrit.drop(id);this.bard.dropConductor(id);this.bard.lament.drop(id);this.bard.misdirection.drop(id);this.sword.measured.drop(id);}
+    if(!connected){this.bastion.remove(id);this.fieldSurgery.drop(id);this.rapidResponse.drop(id);this.preventiveCare.drop(id);this.pivotSigil.drop(id);this.waymarkReturn.drop(id);this.fuseSeal.drop(id);this.calledOpening.drop(id);this.slipRoute.drop(id);this.crossingWrit.drop(id);this.bard.dropConductor(id);this.bard.lament.drop(id);this.bard.misdirection.drop(id);this.sword.measured.drop(id);this.sword.counterstroke.drop(id);this.sword.lowerReplyGuard(id);}
     if(!connected)this.interceptor.forget(id,this.players.get(id),this.combatTick);
     if(!connected)this.classKits.dropTankWall(id);
     if(!connected)this.skirmisher.remove(id);
@@ -1385,6 +1386,7 @@ export class Game {
     if (this.crossingWrit.active) this.crossingWrit.advance(this.players, this.crossingWritWorld());
     this.stepShots();
     if (this.sword.measured.active) this.sword.measured.advance(this.players,this.measuredStanceContext());
+    if (this.sword.counterstroke.active) this.sword.counterstroke.advance(this.players,this.counterstrokeContext());
     if (this.preventiveCare.active) this.preventiveCare.advance(this.precautionWorld());
     if (this.fuseSeal.active) this.fuseSeal.advance(this.players, this.fuseWorld());
     if (this.calledOpening.active) this.calledOpening.advance(this.players, this.calledOpeningWorld());
@@ -1726,6 +1728,10 @@ export class Game {
     }
     if (p.classId === 'swordsman' && (this.sword.measured.holding(p.id) || i.technique1 && p.skills.includes(measuredIds.entry))) {
       const suppressPrimary = this.sword.measured.command(p,i,len>0,this.measuredStanceContext());
+      if (suppressPrimary) i = { ...i, fire:false };
+    }
+    if (p.classId === 'swordsman' && (this.sword.counterstroke.engaged(p.id) || i.technique2 && p.skills.includes(counterstrokeIds.entry))) {
+      const suppressPrimary = this.sword.counterstroke.command(p,i,this.counterstrokeContext());
       if (suppressPrimary) i = { ...i, fire:false };
     }
     if (p.classId === 'medic' && i.technique3) this.preventiveCare.command(p, i, this.precautionWorld());
@@ -2789,8 +2795,37 @@ export class Game {
     const player = this.players.get(id);
     if (player?.classId !== 'swordsman') return {};
     const base = this.sword.status(id,this.combatTick);
-    if (!player.skills.includes(measuredIds.entry)) return base;
-    return { ...base, measuredStance: this.sword.measured.status(player,this.measuredStanceContext()) };
+    return { ...base,
+      ...(player.skills.includes(measuredIds.entry)?{measuredStance:this.sword.measured.status(player,this.measuredStanceContext())}:{}),
+      ...(player.skills.includes(counterstrokeIds.entry)?{counterstroke:this.sword.counterstroke.status(player,this.counterstrokeContext())}:{}),
+    };
+  }
+  private counterstrokeContext(): CounterstrokeContext {
+    const tick = this.combatTick;
+    return {
+      tick, active:this.phase==='combat', nextId:()=>this.id(),
+      canGuard: fighter=>{
+        const player=this.players.get(fighter.id);
+        return !!player&&tick>=player.eAt&&this.sword.canPrimary(player,tick)&&this.sword.status(player.id,tick).guardUntil===0;
+      },
+      payRecovery: fighter=>{
+        const player=this.players.get(fighter.id)!;
+        player.eAt=tick+ticks(swordRules.guardCooldown*this.stats(player).cooldown);
+      },
+      raiseGuard: (fighter,id,aim,until)=>this.sword.raiseReplyGuard(this.players.get(fighter.id)!,id,aim,tick,until),
+      lowerGuard: id=>this.sword.lowerReplyGuard(id),
+      cut: (fighter,aim,cut)=>{
+        const player=this.players.get(fighter.id)!;
+        this.swordContext().slash(player,aim,cut.reach,cut.arc,cut.damage*this.stats(player).ability,cut.ordinaryTargets,false);
+      },
+      needle: (fighter,aim,damage)=>{
+        const player=this.players.get(fighter.id)!;
+        const {needleSpeed,needleRadius,needleReach}=counterstrokeRules;
+        return Boolean(this.emitShot(player.id,player.x,player.y,aim,needleSpeed,damage*this.stats(player).ability,
+          needleRadius,0,needleReach/needleSpeed));
+      },
+      sound: (id,player)=>this.events.push({type:'sound',id,owner:player.id,x:player.x,y:player.y}),
+    };
   }
   private measuredStanceContext(): MeasuredStanceContext {
     const tick = this.combatTick;
@@ -2817,6 +2852,10 @@ export class Game {
   }
   private swordTalents(p:Player):SwordTalents{return {returnStep:hasTalent(p,'return-step'),openCircle:hasTalent(p,'open-circle'),secondWatch:hasTalent(p,'second-watch')};}
   private swordContext():SwordContext{return {
+    captureReply:(owner,id,velocity,damage)=>{
+      const p=this.players.get(owner);
+      return !!p&&this.sword.counterstroke.capture(p,id,velocity,damage,this.counterstrokeContext());
+    },
     tick:this.combatTick,players:this.roster(),id:()=>this.id(),
     sound:(id,source)=>this.events.push({type:'sound',id,owner:source.id,x:source.x,y:source.y}),
     move:(source,delta)=>{const p=this.players.get(source.id);if(!p)return;const next=moveBody(p,delta,rule.playerRadius,this.obstacles);p.x=next.x;p.y=next.y;},
@@ -3765,7 +3804,7 @@ export class Game {
       const interceptorHit=s.owner==='hostile'?this.interceptor.hit(old,next,s.radius,this.roster(),this.combatTick,hitTime):undefined;
       if(s.owner==='hostile'&&this.sword.guarding){
         const guard=this.sword.guardContact(old,next,s.radius,this.roster(),this.combatTick,Math.min(hitTime,interceptorHit?.t??hitTime));
-        if(guard&&this.sword.parry(guard.owner,this.swordContext())){this.removeShot(s);continue;}
+        if(guard&&this.sword.parry(guard.owner,this.swordContext(),{velocity:{x:s.vx,y:s.vy},damage:s.damage})){this.removeShot(s);continue;}
       }
       if(interceptorHit){this.interceptor.block(interceptorHit.owner,this.combatTick,s.id);this.removeShot(s);continue;}
       if (safeHit && safeZone)

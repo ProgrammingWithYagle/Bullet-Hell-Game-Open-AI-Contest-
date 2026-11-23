@@ -135,12 +135,12 @@ export class SurvivorActionClock {
         const cut = view.classCues
           .filter(
             (c) => c.owner === player.id && (c.kind === 'sword-windup' || c.kind === 'sword-cut' ||
-              c.kind === 'sword-measured-stance' && c.state === 'cut'),
+              (c.kind === 'sword-measured-stance'||c.kind === 'sword-drawn-reply') && c.state === 'cut'),
           )
           .sort((a, b) => b.id - a.id)[0];
         if (
           cut &&
-          (cut.kind === 'sword-windup' || cut.kind === 'sword-cut' || cut.kind === 'sword-measured-stance') &&
+          (cut.kind === 'sword-windup' || cut.kind === 'sword-cut' || cut.kind === 'sword-measured-stance'||cut.kind === 'sword-drawn-reply') &&
           memory.swordCutId !== cut.id
         ) {
           memory.swordCutId = cut.id;
