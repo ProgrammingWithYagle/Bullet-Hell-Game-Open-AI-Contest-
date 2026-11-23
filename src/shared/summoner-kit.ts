@@ -8,6 +8,7 @@ import {
   type Rect,
 } from "./geometry.ts";
 import { RatNavigator } from "./rat-navigation.ts";
+import { CohortDrive, cohortRules, type CohortFitting } from "./summoner-cohort.ts";
 
 export const retinueOrders = ["escort", "hold", "focus"] as const;
 export type RetinueOrder = (typeof retinueOrders)[number];
@@ -143,7 +144,7 @@ export type SummonerContext = {
     target: SummonTarget,
     damage: number,
     speed: number,
-  ): void;
+  ): number | void;
   sound(id: string, owner: SummonerOwner): void;
 };
 type OwnerState = {
@@ -181,6 +182,7 @@ const lineClear = (a: Vec, b: Vec, obstacles: Rect[], radius = 0) =>
 /** Deterministic combat-only entities. Game owns credited damage, transport and safe boundaries. */
 export class SummonerKit {
   readonly entities = new Map<number, SummonEntity>();
+  private readonly cohort = new CohortDrive();
   private states = new Map<string, OwnerState>();
   private fallen = new Map<number, { view: SummonView; until: number }>();
   private navigators = new Map<number, RatNavigator>();
@@ -236,6 +238,24 @@ export class SummonerKit {
       retinueUltimateUntil: s && now < s.ultimateUntil ? s.ultimateUntil : 0,
     };
   }
+  cohortStatus(p: SummonerOwner, c: SummonerContext, fitting: CohortFitting | undefined, blocked: boolean, canPay: boolean) {
+    const state = this.states.get(p.id);
+    const mark = state && c.tick < state.markUntil ? state.mark : "";
+    const unavailable = blocked || !controlled(p, c) || c.tick < (state?.gatherUntil ?? 0);
+    return this.cohort.status(p, this.owned(p.id), mark, fitting, unavailable, c, canPay);
+  }
+  commandCohort(p: SummonerOwner, c: SummonerContext, fitting: CohortFitting | undefined, canPay: boolean) {
+    if (!controlled(p, c)) return;
+    const state = this.states.get(p.id);
+    const mark = state && c.tick < state.markUntil ? state.mark : "";
+    return this.cohort.command(p, this.owned(p.id), mark, fitting, c.tick < (state?.gatherUntil ?? 0), c, canPay);
+  }
+  cohortProjectileHit(owner: string, shot: number, target: string, c: SummonerContext) {
+    this.cohort.projectileHit(owner, shot, target, c, this.entities);
+  }
+  cohortCues(now: number) {
+    return this.cohort.cues(now, this.entities);
+  }
   marked(owner: string, key: string, now: number) {
     const s = this.states.get(owner);
     return Boolean(s && s.mark === key && now < s.markUntil);
@@ -281,6 +301,7 @@ export class SummonerKit {
     }
     s.order = value;
     s.orderAt = c.tick + rules.orderCooldownTicks;
+    this.cohort.cancel(p.id);
     for (const e of this.owned(p.id)) {
       e.target = "";
       e.decisionAt = 0;
@@ -420,6 +441,7 @@ export class SummonerKit {
     if (!this.canCast(p, slot, c, o)) return false;
     const s = this.state(p);
     if (slot === "e") {
+      this.cohort.cancel(p.id);
       s.gatherUntil = c.tick + rules.gatherTicks;
       s.gatherToken++;
       s.gatherHealing = rules.gatherHealing * multiplier(o.potency);
@@ -618,11 +640,13 @@ export class SummonerKit {
     for (const [id, e] of this.fallen)
       if (e.view.owner === owner) this.fallen.delete(id);
     this.states.delete(owner);
+    this.cohort.cancel(owner);
   }
   clear() {
     this.entities.clear();
     this.fallen.clear();
     this.states.clear();
+    this.cohort.clear();
     for (const nav of this.navigators.values()) nav.clear();
     this.navigators.clear();
   }
@@ -685,6 +709,7 @@ export class SummonerKit {
     for (const [id, e] of this.fallen)
       if (e.until <= c.tick || !owners.has(e.view.owner))
         this.fallen.delete(id);
+    this.cohort.advance(c, this.entities);
     for (const e of this.entities.values()) {
       const p = owners.get(e.owner);
       if (!p || e.health <= 0 || (e.temporary && e.expires <= c.tick)) {
@@ -714,6 +739,7 @@ export class SummonerKit {
         c.tick < s.gatherUntil &&
         e.gatherToken === s.gatherToken &&
         !e.gatherHealed;
+      const marching = gathering ? undefined : this.cohort.assigned(e, c);
       let target = e.target ? c.target(e.target) : undefined;
       const anchor = s.order === "hold" ? s.anchor : p,
         leash =
@@ -725,6 +751,10 @@ export class SummonerKit {
       if (gathering) {
         e.target = "";
         target = undefined;
+      } else if (marching) {
+        e.target = "";
+        e.decisionAt = 0;
+        target = marching.target;
       } else if (
         c.tick >= e.decisionAt ||
         !target ||
@@ -738,7 +768,7 @@ export class SummonerKit {
       }
       const destination = gathering
           ? p
-          : (target ?? this.formation(e, p, s, c)),
+          : (target ?? marching?.destination ?? this.formation(e, p, s, c)),
         stop = target
           ? e.range + target.radius
           : gathering
@@ -770,7 +800,7 @@ export class SummonerKit {
           travel = Math.min(
             e.speed *
               DT *
-              (gathering ? rules.gatherSpeedMultiplier : 1) *
+              (gathering ? rules.gatherSpeedMultiplier : marching ? cohortRules.marchSpeed : 1) *
               Math.min(
                 c.tick < e.slowUntil ? 0.65 : 1,
                 c.tick < e.poisonUntil ? e.poisonSlowMultiplier : 1,
@@ -839,9 +869,13 @@ export class SummonerKit {
       const damage =
           e.damage * (c.tick < s.ultimateUntil ? s.ultimateMultiplier : 1),
         speed = rules.kinds[e.kind].projectileSpeed;
-      if (speed > 0) c.shoot(p, e, target, damage, speed);
-      else
-        c.strike(p, e, target, damage, this.marked(p.id, target.key, c.tick));
+      if (speed > 0) {
+        const shot = c.shoot(p, e, target, damage, speed);
+        if (marching) this.cohort.release(e, 0, shot, c, this.entities);
+      } else {
+        const actual = c.strike(p, e, target, damage, this.marked(p.id, target.key, c.tick));
+        if (marching) this.cohort.release(e, actual, undefined, c, this.entities);
+      }
     }
   }
 }

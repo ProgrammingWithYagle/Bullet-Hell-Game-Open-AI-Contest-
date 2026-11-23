@@ -1,5 +1,9 @@
 # Scoped build variety audit
 
+## Summoner Cohort Commander
+
+The protocol 99 census bought 249 Summoner configurations in 27-SP shops. All 23,865 tracked prior builds remain legal. [Census](../reviews/summoner-cohort-2026-11-23/build-census.json) · [Run study](SUMMONER_COHORT_COMMANDER.md).
+
 ## Swordsman Flowing Pursuit
 
 The protocol 98 census bought 3,647 Swordsman configurations in 27-SP shops, including 1,166 that own all three routes. [Census](../reviews/swordsman-pursuit-2026-11-22/build-census.json) · [Run study](SWORDSMAN_FLOWING_PURSUIT.md).

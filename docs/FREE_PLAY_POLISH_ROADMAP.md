@@ -136,3 +136,5 @@ Measured Stance’s historical review preserves its original source, build and s
 The verified Counterstroke previews are available in the rollback. [Counterstroke](SWORDSMAN_COUNTERSTROKE.md).
 
 Flowing Pursuit is available in both frozen previews. The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. Continue with Summoner. [Swordsman run review](SWORDSMAN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
+
+Protocol 99 adds Summoner Cohort Commander with Cohort Drive, Cross Orders and Relay Orders. The local gate and six ordinary transport cases passed. Flowing Pursuit remains the retained review during Cohort Commander verification. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).

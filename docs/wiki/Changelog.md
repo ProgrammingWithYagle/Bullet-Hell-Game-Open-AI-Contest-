@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.22-swordsman-pursuit**, protocol 98. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.23-summoner-cohort**, protocol 99. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-23 — Direct the retinue
+
+### Summoner Cohort Commander
+
+- Mark a target and send two living companions on a Cohort Drive.
+- Cross Orders separates their approaches. Relay Orders earns a second command from an actual damaging hit.
 
 ## 2026-11-22 — Walk into a second cut
 

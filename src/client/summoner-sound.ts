@@ -5,6 +5,9 @@ export const summonerSoundSpecs = {
   "summoner-gather": { tones: [330, 495], duration: 0.22, endRatio: 0.78 },
   "summoner-muster": { tones: [196, 588], duration: 0.32, endRatio: 1.2 },
   "summoner-rebind": { tones: [160, 480], duration: 0.12, endRatio: 0.7 },
+  "summoner-cohort-drive": { tones: [247, 494], duration: 0.18, endRatio: 0.91 },
+  "summoner-cohort-open": { tones: [418, 837], duration: 0.115, endRatio: 1.12 },
+  "summoner-cohort-relay": { tones: [311, 622], duration: 0.16, endRatio: 0.8 },
 } as const;
 export function isSummonerSound(
   id: string,

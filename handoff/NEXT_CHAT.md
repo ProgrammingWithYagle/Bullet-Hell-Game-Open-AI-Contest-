@@ -4,6 +4,10 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
+## Protocol 99 Summoner Cohort Commander candidate
+
+Protocol 99 adds Summoner Cohort Commander with Cohort Drive, Cross Orders and Relay Orders. The local gate and six ordinary transport cases passed. Flowing Pursuit remains the retained review during Cohort Commander verification. [Cohort Commander](../docs/SUMMONER_COHORT_COMMANDER.md).
+
 ## Current exact protocol 98 Swordsman Flowing Pursuit review
 
 Source **6f9e582d2c45babc99e0719b4e446c240fe6a56b**, build **2026.11.22-swordsman-pursuit**, protocol **98**, catalog **131**. The local suite and both GitHub workflows passed 2,912 tests and seven checks. Each frozen audience binds 2,212 files and passed seven checks. Testing uses [5440](http://127.0.0.1:5440/) with backend 2816. Public review uses [5441](http://127.0.0.1:5441/) with backend 2817. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117108255) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45117129015) · [Frozen checks](../reviews/swordsman-pursuit-2026-11-22/frozen-verification.json).

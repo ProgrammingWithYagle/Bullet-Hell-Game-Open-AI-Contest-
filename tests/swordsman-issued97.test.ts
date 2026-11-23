@@ -1,3 +1,4 @@
+import cohortEdition from './fixtures/swordsman-issued98-bindings.json';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -13,8 +14,8 @@ const raw = readFileSync(new URL('./fixtures/swordsman-issued97.json', import.me
 const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
-test('issued 97 restores all 12,604 local ownership fixtures under protocol 98', () => {
-  assert.equal(PROTOCOL, 98);
+test('issued 97 restores all 12,604 local ownership fixtures under the current edition', () => {
+  assert.equal(PROTOCOL, 99);
   assert.equal(issued.protocol, 97);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -94,8 +95,8 @@ test('issued 97 preserves both HUD layouts, all three remaps and the full profil
 
 test('Flowing Pursuit extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set(binding.addedLocaleKeys);
-  assert.equal(appended.size, 21);
+  const appended = new Set([...binding.addedLocaleKeys, ...cohortEdition.addedLocaleKeys]);
+  assert.equal(binding.addedLocaleKeys.length, 21);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));
     for (const key of appended) assert(Object.hasOwn(messages, key), key);

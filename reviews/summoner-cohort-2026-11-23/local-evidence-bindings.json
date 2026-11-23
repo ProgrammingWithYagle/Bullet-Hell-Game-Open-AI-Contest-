@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "protocol": 99,
+  "contentRevision": "5c7f09dd80f8c185f27002701284aea7411382831815b26c444e9f500a54547f",
+  "runtimeSourceSha256": "3b30e5a48f40e9dd26170c38fa54c2444bd8bea8e2dc36f18d7d414d7c369494",
+  "sourceSnapshotSha256": "817fb3d88d14e88c486d12d05a87c399c3e08ae50b03b86aa1a9347ac62012c1",
+  "tests": 2926,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "issued": 2,
+      "relay": false,
+      "damage": 11.400000000000091
+    },
+    {
+      "transport": "worker",
+      "fitting": "cross",
+      "boss": "matron",
+      "firstClear": 1,
+      "issued": 2,
+      "relay": false,
+      "damage": 15.240960000000086
+    },
+    {
+      "transport": "worker",
+      "fitting": "relay",
+      "boss": "matron",
+      "firstClear": 1,
+      "issued": 1,
+      "relay": true,
+      "damage": 26.671679999999924
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "issued": 2,
+      "relay": false,
+      "damage": 11.39990234375
+    },
+    {
+      "transport": "peer",
+      "fitting": "cross",
+      "boss": "matron",
+      "firstClear": 1,
+      "issued": 2,
+      "relay": false,
+      "damage": 15.24072265625
+    },
+    {
+      "transport": "peer",
+      "fitting": "relay",
+      "boss": "matron",
+      "firstClear": 1,
+      "issued": 1,
+      "relay": true,
+      "damage": 26.67138671875
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate02/generated/reviews/runtime-verification.json",
+      "sha256": "3c2da6033d0545c09f58dce37510693060e711bb3804597391564a99088f3053"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "5373288491d603e2ad8a7442266616ea62f3089943c364454421dd41dd1c1705"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "7e7959f9f9f31a8c9d2addfc72cda1e17d37c21f36e7219e72895254896b425c"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "7c43dbe104959e42d79be405a4011b3252d6df17c398257345d932ed6879bf34"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof01.json",
+      "sha256": "8ec9552462d3fc562a1b3c38d77ed627395a06dad52e38bcf64cb2bbc783df3d"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo01.json",
+      "sha256": "4ea3d674dbb1a6610e39b9c49249278e30b999af56fad72eb31104ab668cb2d5"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party01.json",
+      "sha256": "cd6d14c3e0b03e492ea7ac10803e035a9e1b572d497c731ca5ae1053085c1da6"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo01.json",
+      "sha256": "ab6c14c54fd375d7cc9340a4cfe1396ece2cc40918527a0fc3deee10daa7619c"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party01.json",
+      "sha256": "1faeddcb974de6b1e2a17d1e9556dd8d045b500e0202e7ad40fec048bb0e2bd1"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source03/worker-entry.json",
+      "sha256": "d146a6b58143e0f540ddd8d2da04f0eca95669a0427e233b1d0a19fc9132830e"
+    },
+    {
+      "path": "source-worker-cross.json",
+      "from": "native-source03/worker-cross.json",
+      "sha256": "6b5a2485ddc1fc5368e6e4891db5ad6975b69cb67934da779263b997e9ecc3f2"
+    },
+    {
+      "path": "source-worker-relay.json",
+      "from": "native-source03/worker-relay.json",
+      "sha256": "a320b1281a6765facbdb75430157cab242366838705f6c1f8ce9f7336aeb7250"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source03/peer-entry.json",
+      "sha256": "bd79e5eafcaef39d9e02ead7800e5aca52e013c8b5a2fac00130b665656dcb83"
+    },
+    {
+      "path": "source-peer-cross.json",
+      "from": "native-source03/peer-cross.json",
+      "sha256": "01b1f31fdce04bb97313712b7b017aae144718255260ced7c595f63e05807c85"
+    },
+    {
+      "path": "source-peer-relay.json",
+      "from": "native-source04/peer-relay.json",
+      "sha256": "374bc983b0f733919a57b07aaa01e3379303fa8d066577f77db18c92183a332a"
+    }
+  ],
+  "documents": [
+    "docs/SUMMONER_COHORT_COMMANDER.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ],
+  "nativeDriver": "native-study02.mts",
+  "nativeDriverSha256": "7fc5cd640eb1095cd97c41b53d39f2ae7f9817d6f513d1402ebd75c1a1c5afd5",
+  "ownerViewRegressionSha256": "e80f166cef9ed1cb47f4b849094d58c78a1a153c0c2c82568178f743d2461d1b",
+  "nativeSelectionSha256": "18a5a8d5abc9ec2ed302a2bce060d34d0c7749f96cd0a427e841b5a89f9d61cf"
+}

@@ -1,3 +1,4 @@
+import type { CohortCue, CohortStatus } from './summoner-cohort.ts';
 import type { PursuitCue, PursuitStatus } from './swordsman-pursuit.ts';
 import type { CounterstrokeCue, CounterstrokeStatus } from './swordsman-counterstroke.ts';
 import type { MeasuredStanceCue, MeasuredStanceStatus } from './swordsman-measured.ts';
@@ -79,6 +80,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
+  cohort?: CohortStatus;
   counterUntil?: number;
   swordUntil?: number;
   swordCuts?: number;
@@ -159,6 +161,7 @@ export type KitCue =
   | MeasuredStanceCue
   | CounterstrokeCue
   | PursuitCue
+  | CohortCue
   | BardCue
   | ConductorCue
   | LamentCue

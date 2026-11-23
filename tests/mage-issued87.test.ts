@@ -1,3 +1,4 @@
+import cohortEdition from './fixtures/swordsman-issued98-bindings.json';
 import pursuitEdition from './fixtures/swordsman-issued97-bindings.json';
 import replyEdition from './fixtures/swordsman-issued96-bindings.json';
 import measuredEdition from './fixtures/bard-issued95-bindings.json';
@@ -24,7 +25,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 87 restores all 792 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 98);
+  assert.equal(PROTOCOL, 99);
   assert.equal(issued.protocol, 87);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -92,7 +93,7 @@ test('issued 87 preserves both HUD layouts, all three remaps and the full profil
 
 test('Spatial Craft extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 23);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

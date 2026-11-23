@@ -4,6 +4,7 @@ import { createGameServer } from "../src/server/index.ts";
 import { liveRooms } from "../src/server/GraveRoom.ts";
 import { Session } from "../src/client/session.ts";
 import { idleInput, PROTOCOL } from "../src/shared/protocol.ts";
+import { cohortIds } from "../src/shared/summoner-cohort.ts";
 async function wait(check: () => boolean) {
   const end = Date.now() + 8000;
   while (!check()) {
@@ -35,6 +36,14 @@ test(
         { roomId: a.room!.roomId, kind: "freeplay" },
       );
       await wait(() => b.view?.players.length === 2);
+      for (const item of ["summoner-bonds-1", cohortIds.entry]) {
+        a.purchase({ kind: "skill", item });
+        await wait(() => a.view?.players.find((player) => player.id === a.id)?.skills.includes(item) === true);
+      }
+      await wait(() => Boolean(a.view?.players.find((player) => player.id === a.id)?.kit.cohort));
+      await wait(() => b.view?.players.find((player) => player.id === a.id)?.skills.includes(cohortIds.entry) === true);
+      assert.equal(b.view!.players.find((player) => player.id === a.id)!.kit.cohort, undefined);
+      assert(!b.room!.state.players.get(a.id)!.lineworkOwner);
       a.start();
       await wait(() => b.view?.phase === "combat");
       const room = liveRooms.get(a.room!.roomId)!,
@@ -112,11 +121,12 @@ test(
       );
       await wait(() => late.view?.retinue?.length === 2);
       assert(late.view!.retinue!.every((e) => e.owner === a.id));
+      assert.equal(late.view!.players.find((player) => player.id === a.id)!.kit.cohort, undefined);
       await a.close();
       await wait(() => !p.connected);
       await wait(() => b.view?.retinue?.length === 0);
       assert.equal(room.state.retinue.size, 0);
-      assert.equal(PROTOCOL, 98);
+      assert.equal(PROTOCOL, 99);
     } finally {
       await a.close();
       await b.close();
