@@ -139,4 +139,6 @@ The verified Flowing Pursuit previews are available in the rollback. The scoped 
 
 The Cohort Commander preview pair was the verified rollback during the protocol 100 review. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
 
-Formation Keeper is available on both verified previews. The whole-Summoner review covers two 96-run comparisons, 24 exact replays and 16 Practice continuations. Ranger Marksman is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Formation Keeper](SUMMONER_FORMATION_KEEPER.md) · [Summoner run review](SUMMONER_RUN_REVIEW.md).
+The Formation Keeper build is the verified rollback. [Summoner run review](SUMMONER_RUN_REVIEW.md).
+
+Ranger Marksman is available on both verified previews. Ranger Tracker is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Marksman](RANGER_MARKSMAN.md).

@@ -4,13 +4,21 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Current exact protocol 101 Summoner Formation Keeper review
+## Current exact protocol 102 Ranger Marksman review
+
+Source **a50e857eeb3df5d8de462540d1ae841e442afcdf**, build **2026.11.24-ranger-marksman**, protocol **102**, catalog **143**. The local gate and both GitHub workflows passed 2,974 tests and seven checks. Each frozen audience verified 2,224 files and passed seven checks. Testing uses [5448](http://127.0.0.1:5448/) with backend 2824. Public-audience review uses [5449](http://127.0.0.1:5449/) with backend 2825. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45415715150) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45415753395) · [Frozen checks](../reviews/ranger-marksman-2026-11-24/frozen-verification.json).
+
+Protocol 101 Summoner Formation Keeper is the verified rollback in `output/review-rollback.zip`. All 4,445 restored files matched the archive. Archive SHA-256 `bf6df48333dc80c13fc40ab2b075eea5afe39ad8ba998cfb10a0a79e2b6905a1`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-ranger-marksman-2026-11-24/retention-result.json).
+
+Ranger Tracker is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Marksman](../docs/RANGER_MARKSMAN.md).
+
+## Historical protocol 101 Summoner Formation Keeper review
 
 Source **d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2**, build **2026.11.23-summoner-formation**, protocol **101**, catalog **140**. The local gate and both GitHub workflows passed 2,960 tests and seven checks. Each frozen audience verified 2,221 files and passed seven checks. Testing uses [5446](http://127.0.0.1:5446/) with backend 2822. Public-audience review uses [5447](http://127.0.0.1:5447/) with backend 2823. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45324614750) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45324634286) · [Frozen checks](../reviews/summoner-formation-2026-11-23/frozen-verification.json).
 
 Protocol 100 Summoner Bonded Companion is the verified rollback in `output/review-rollback.zip`. All 4,439 restored files matched the archive. Archive SHA-256 `eee7fe163db923d14566799c51f7639d5790177d4afc89ccfc361c11a56f2daf`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-summoner-formation-2026-11-23/retention-result.json).
 
-The whole-Summoner review covers two 96-run comparisons, 24 exact replays and 16 Practice continuations. Ranger Marksman is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Formation Keeper](../docs/SUMMONER_FORMATION_KEEPER.md) · [Summoner run review](../docs/SUMMONER_RUN_REVIEW.md).
+The whole-Summoner review covers two 96-run comparisons, 24 exact replays and 16 Practice continuations. The protocol 101 preview pair now serves as the verified rollback. [Formation Keeper](../docs/SUMMONER_FORMATION_KEEPER.md) · [Summoner run review](../docs/SUMMONER_RUN_REVIEW.md).
 
 ## Historical protocol 100 Summoner Bonded Companion review
 

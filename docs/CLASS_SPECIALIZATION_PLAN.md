@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2** has 140 techniques. Formation Keeper adds Set the Line and two fittings. [Formation Keeper](SUMMONER_FORMATION_KEEPER.md).
+Current verified source **a50e857eeb3df5d8de462540d1ae841e442afcdf** has 143 techniques. Ranger Marksman adds Sight Draw and two fittings. [Ranger Marksman](RANGER_MARKSMAN.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -169,4 +169,6 @@ The verified Flowing Pursuit previews are available in the rollback. The scoped 
 
 The Cohort Commander preview pair was the verified rollback during the protocol 100 review. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
 
-Formation Keeper is available on both verified previews. The whole-Summoner review covers two 96-run comparisons, 24 exact replays and 16 Practice continuations. Ranger Marksman is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Formation Keeper](SUMMONER_FORMATION_KEEPER.md) · [Summoner run review](SUMMONER_RUN_REVIEW.md).
+The Formation Keeper build is the verified rollback. [Summoner run review](SUMMONER_RUN_REVIEW.md).
+
+Ranger Marksman is available on both verified previews. Ranger Tracker is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Marksman](RANGER_MARKSMAN.md).
