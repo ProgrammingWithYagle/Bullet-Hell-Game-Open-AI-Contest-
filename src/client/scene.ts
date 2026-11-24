@@ -1,3 +1,4 @@
+import { drawFormationCue } from './summoner-formation-presentation.ts';
 import { drawBondCue } from './summoner-bond-presentation.ts';
 import { drawCohortCue } from './summoner-cohort-presentation.ts';
 import { drawPursuit } from './sword-pursuit-presentation.ts';
@@ -1252,6 +1253,7 @@ export class CombatScene extends Phaser.Scene {
       }
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
+      if (cue.kind === 'summoner-formation') { drawFormationCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }
       if (cue.kind === 'summoner-bond') { drawBondCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }
       if (cue.kind === 'summoner-cohort') { drawCohortCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }
       if (cue.kind === 'sword-passing-cut') { drawPursuit(h,cue,now,this.reduceMotion); continue; }

@@ -1,3 +1,4 @@
+import formationEdition from '../fixtures/summoner-issued100-bindings.json';
 import bondEdition from '../fixtures/summoner-issued99-bindings.json';
 import cohortEdition from '../fixtures/swordsman-issued98-bindings.json';
 import pursuitEdition from '../fixtures/swordsman-issued97-bindings.json';
@@ -28,7 +29,7 @@ const issued = JSON.parse(
 );
 const ids = new Set<string>(issued.issuedSpecializationIds),
   rules = new Set<string>(issued.issuedRuleKeys),
-  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys,...bulwarkFittings.addedLocaleKeys,...bondEdition.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
+  newMessages = new Set<string>([...issued.introduced74MessageKeys,...tankEdition.introduced77MessageKeys,...interceptorEdition.introduced78MessageKeys,...bastionEdition.addedLocaleKeys,...lateBastionEdition.addedLocaleKeys,...bulwarkFittings.addedLocaleKeys,...formationEdition.addedLocaleKeys, ...bondEdition.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys,...interceptorFittings.addedLocaleKeys]);
 export const issuedAtOrBefore73 = (s: { id: string }) => ids.has(s.id);
 export function catalogAt73<
   T extends { rules: Record<string, unknown>; specializationSkills: readonly { id: string }[] },

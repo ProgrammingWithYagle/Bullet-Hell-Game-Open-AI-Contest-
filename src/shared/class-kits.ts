@@ -1,3 +1,4 @@
+import type { FormationCue, FormationStatus } from './summoner-formation.ts';
 import type { BondCue, BondStatus } from './summoner-bond.ts';
 import type { CohortCue, CohortStatus } from './summoner-cohort.ts';
 import type { PursuitCue, PursuitStatus } from './swordsman-pursuit.ts';
@@ -83,6 +84,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
   cohort?: CohortStatus;
   bond?: BondStatus;
+  formation?: FormationStatus;
   counterUntil?: number;
   swordUntil?: number;
   swordCuts?: number;
@@ -165,6 +167,7 @@ export type KitCue =
   | PursuitCue
   | CohortCue
   | BondCue
+  | FormationCue
   | BardCue
   | ConductorCue
   | LamentCue

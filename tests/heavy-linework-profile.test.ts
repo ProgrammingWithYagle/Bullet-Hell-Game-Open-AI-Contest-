@@ -46,7 +46,7 @@ test('issued73 fixture is actual captured64-technique/fourGeneral authority, nev
   assert.equal(issued.privateUserDataIncluded, false);
   assert.equal(issued.proposedCheckpointCreatedOrImported, false);
   assert.equal(issued.all64ActualIssuedTechniqueOwnerships.length, 64);
-  assert.equal(PROTOCOL, 100);
+  assert.equal(PROTOCOL, 101);
 });
 for (const classId of implementedClassIds)
   test(
@@ -173,5 +173,5 @@ test('actual current-edition purchases restore as local ownership without carryi
   const profile = freshProfile();
   assert.equal(profile.verified, false);
   assert.equal(profile.practiceOnly, true);
-  assert.equal(data.specializationSkills.length, 137);
+  assert.equal(data.specializationSkills.length, 140);
 });

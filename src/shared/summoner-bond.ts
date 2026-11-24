@@ -34,7 +34,7 @@ export type BondCue = Vec & {
   until: number;
 };
 
-type Block = 'busy' | 'gathering' | 'cohort';
+type Block = 'busy' | 'gathering' | 'cohort' | 'formation';
 type BondStage = Block | 'linked' | 'returning' | 'recovering' | 'companion' | 'mark' | 'focus' | 'ready';
 export type BondStatus = {
   stage: BondStage;

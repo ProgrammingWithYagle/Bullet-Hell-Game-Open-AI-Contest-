@@ -10,6 +10,10 @@ export const summonerSoundSpecs = {
   "summoner-cohort-relay": { tones: [311, 622], duration: 0.16, endRatio: 0.8 },
   "summoner-bond-cast": { tones: [294, 587], duration: 0.15, endRatio: 0.94 },
   "summoner-bond-mend": { tones: [370, 740], duration: 0.22, endRatio: 1.12 },
+  "summoner-formation-order": { tones: [216, 648], duration: 0.15, endRatio: 0.89 },
+  "summoner-formation-set": { tones: [288, 576], duration: 0.12, endRatio: 1.02 },
+  "summoner-formation-turn": { tones: [240, 480], duration: 0.19, endRatio: 1.17 },
+  "summoner-formation-catch": { tones: [157, 314], duration: 0.10, endRatio: 0.71 },
 } as const;
 export function isSummonerSound(
   id: string,

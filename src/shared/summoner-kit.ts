@@ -1,3 +1,4 @@
+import { FormationKeeper, formationRules, type FormationContact, type FormationFitting } from "./summoner-formation.ts";
 import { BondedCompanion, bondRules, type BondFitting } from "./summoner-bond.ts";
 import rules from "./summoner-rules.json";
 import { DT, type Vec } from "./protocol.ts";
@@ -186,6 +187,7 @@ export class SummonerKit {
   readonly entities = new Map<number, SummonEntity>();
   private readonly cohort = new CohortDrive();
   private readonly bond = new BondedCompanion();
+  private readonly formationKeeper = new FormationKeeper();
   private states = new Map<string, OwnerState>();
   private fallen = new Map<number, { view: SummonView; until: number }>();
   private navigators = new Map<number, RatNavigator>();
@@ -244,11 +246,11 @@ export class SummonerKit {
   cohortStatus(p: SummonerOwner, c: SummonerContext, fitting: CohortFitting | undefined, blocked: boolean, canPay: boolean) {
     const state = this.states.get(p.id);
     const mark = state && c.tick < state.markUntil ? state.mark : "";
-    const unavailable = blocked || !controlled(p, c) || c.tick < (state?.gatherUntil ?? 0) || this.bond.returning(p.id, c.tick);
+    const unavailable = blocked || !controlled(p, c) || c.tick < (state?.gatherUntil ?? 0) || this.bond.returning(p.id, c.tick) || this.formationKeeper.engaged(p.id);
     return this.cohort.status(p, this.owned(p.id), mark, fitting, unavailable, c, canPay);
   }
   commandCohort(p: SummonerOwner, c: SummonerContext, fitting: CohortFitting | undefined, canPay: boolean) {
-    if (!controlled(p, c) || this.bond.returning(p.id, c.tick)) return;
+    if (!controlled(p, c) || this.bond.returning(p.id, c.tick) || this.formationKeeper.engaged(p.id)) return;
     const state = this.states.get(p.id);
     const mark = state && c.tick < state.markUntil ? state.mark : "";
     return this.cohort.command(p, this.owned(p.id), mark, fitting, c.tick < (state?.gatherUntil ?? 0), c, canPay);
@@ -263,6 +265,7 @@ export class SummonerKit {
     if (busy || !controlled(p, c)) return 'busy';
     if (c.tick < (this.states.get(p.id)?.gatherUntil ?? 0)) return 'gathering';
     if (fitting === 'homeward' && this.cohort.active(p.id, c.tick)) return 'cohort';
+    if (fitting === 'homeward' && this.formationKeeper.engaged(p.id)) return 'formation';
   }
   private bondMark(p: SummonerOwner, now: number) {
     const state = this.states.get(p.id);
@@ -281,6 +284,27 @@ export class SummonerKit {
   }
   bondCues(now: number, owners: ReadonlyMap<string, SummonerOwner>) {
     return this.bond.cues(now, owners, this.entities);
+  }
+  private formationBlock(p: SummonerOwner, c: SummonerContext, busy: boolean) {
+    if (busy || !controlled(p, c)) return 'busy';
+    if (c.tick < (this.states.get(p.id)?.gatherUntil ?? 0)) return 'gathering';
+    if (this.cohort.active(p.id, c.tick)) return 'cohort';
+    if (this.bond.returning(p.id, c.tick)) return 'returning';
+  }
+  formationStatus(p: SummonerOwner, c: SummonerContext, fitting: FormationFitting | undefined, busy: boolean, canPay: boolean) {
+    return this.formationKeeper.status(p, this.entities, fitting, this.formationBlock(p, c, busy), canPay, c);
+  }
+  commandFormation(p: SummonerOwner, c: SummonerContext, fitting: FormationFitting | undefined, canPay: boolean) {
+    return this.formationKeeper.command(p, this.entities, fitting, this.formationBlock(p, c, false), canPay, c);
+  }
+  formationContact(from: Vec, to: Vec, limit: number, now: number) {
+    return this.formationKeeper.contact(from, to, limit, now, this.entities);
+  }
+  absorbFormation(contact: FormationContact, damage: number, now: number) {
+    return this.formationKeeper.claim(contact) && this.hit(contact.unit, damage, now) > 0;
+  }
+  formationCues(now: number) {
+    return this.formationKeeper.cues(now, this.entities);
   }
   marked(owner: string, key: string, now: number) {
     const s = this.states.get(owner);
@@ -330,6 +354,7 @@ export class SummonerKit {
     s.orderAt = c.tick + rules.orderCooldownTicks;
     this.cohort.cancel(p.id);
     this.bond.cancel(p.id);
+    this.formationKeeper.cancel(p.id);
     for (const e of this.owned(p.id)) {
       e.target = "";
       e.decisionAt = 0;
@@ -471,6 +496,7 @@ export class SummonerKit {
     if (slot === "e") {
       this.cohort.cancel(p.id);
       this.bond.cancel(p.id);
+      this.formationKeeper.cancel(p.id);
       s.gatherUntil = c.tick + rules.gatherTicks;
       s.gatherToken++;
       s.gatherHealing = rules.gatherHealing * multiplier(o.potency);
@@ -661,7 +687,10 @@ export class SummonerKit {
   }
   private remove(id: number) {
     const entity = this.entities.get(id);
-    if (entity) this.bond.lose(entity);
+    if (entity) {
+      this.bond.lose(entity);
+      this.formationKeeper.lose(entity);
+    }
     this.entities.delete(id);
     for (const navigator of this.navigators.values()) navigator.remove(id);
   }
@@ -673,6 +702,7 @@ export class SummonerKit {
     this.states.delete(owner);
     this.cohort.cancel(owner);
     this.bond.cancel(owner);
+    this.formationKeeper.cancel(owner);
   }
   clear() {
     this.entities.clear();
@@ -680,6 +710,7 @@ export class SummonerKit {
     this.states.clear();
     this.cohort.clear();
     this.bond.clear();
+    this.formationKeeper.clear();
     for (const nav of this.navigators.values()) nav.clear();
     this.navigators.clear();
   }
@@ -745,6 +776,7 @@ export class SummonerKit {
     this.cohort.advance(c, this.entities);
     const marked = (owner: string, key: string) => this.marked(owner, key, c.tick);
     this.bond.advance(c, owners, this.entities, marked);
+    this.formationKeeper.advance(c, owners, this.entities);
     for (const e of this.entities.values()) {
       const p = owners.get(e.owner);
       if (!p || e.health <= 0 || (e.temporary && e.expires <= c.tick)) {
@@ -775,7 +807,8 @@ export class SummonerKit {
         e.gatherToken === s.gatherToken &&
         !e.gatherHealed;
       const returning = this.bond.returning(p.id, c.tick, e.id);
-      const marching = gathering || returning ? undefined : this.cohort.assigned(e, c);
+      const post = this.formationKeeper.assigned(e);
+      const marching = gathering || returning || post ? undefined : this.cohort.assigned(e, c);
       let target = e.target ? c.target(e.target) : undefined;
       const anchor = s.order === "hold" ? s.anchor : p,
         leash =
@@ -784,8 +817,9 @@ export class SummonerKit {
             : s.order === "focus"
               ? rules.focusLeash
               : rules.escortLeash;
-      if (gathering || returning) {
+      if (gathering || returning || post) {
         e.target = "";
+        if (post) e.decisionAt = 0;
         target = undefined;
       } else if (marching) {
         e.target = "";
@@ -804,12 +838,12 @@ export class SummonerKit {
       }
       const destination = gathering || returning
           ? p
-          : (target ?? marching?.destination ?? this.formation(e, p, s, c)),
+          : (post ?? target ?? marching?.destination ?? this.formation(e, p, s, c)),
         stop = target
           ? e.range + target.radius
           : gathering
             ? rules.gatherArrivalRange - 2
-            : returning ? bondRules.arrival - 2 : 8;
+            : returning ? bondRules.arrival - 2 : post ? formationRules.arrival - 2 : 8;
       const clear = lineClear(
           e,
           destination,
@@ -836,7 +870,7 @@ export class SummonerKit {
           travel = Math.min(
             e.speed *
               DT *
-              (gathering || returning ? rules.gatherSpeedMultiplier : marching ? cohortRules.marchSpeed : 1) *
+              (gathering || returning ? rules.gatherSpeedMultiplier : marching ? cohortRules.marchSpeed : post ? formationRules.marchSpeed : 1) *
               Math.min(
                 c.tick < e.slowUntil ? 0.65 : 1,
                 c.tick < e.poisonUntil ? e.poisonSlowMultiplier : 1,
@@ -888,7 +922,7 @@ export class SummonerKit {
       }
       if (returning) this.bond.arrive(p, e, c);
       if (
-        gathering || returning ||
+        gathering || returning || post ||
         !target ||
         target.health <= 0 ||
         c.tick < e.attackAt ||
@@ -916,5 +950,6 @@ export class SummonerKit {
       }
     }
     this.bond.advance(c, owners, this.entities, marked);
+    this.formationKeeper.settle(c, owners, this.entities);
   }
 }

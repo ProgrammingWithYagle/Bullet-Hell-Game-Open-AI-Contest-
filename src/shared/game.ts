@@ -1,3 +1,4 @@
+import { formationFitting, formationIds, formationRules } from './summoner-formation.ts';
 import { bondFitting, bondIds, bondRules } from './summoner-bond.ts';
 import { pursuitIds, type PursuitContext } from './swordsman-pursuit.ts';
 import { counterstrokeIds, counterstrokeRules, type CounterstrokeContext } from './swordsman-counterstroke.ts';
@@ -328,7 +329,7 @@ export class Game {
   readonly marksman = new SoldierMarksman();
   kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.assassinWritStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...this.bardStatus(id),...this.swordsmanStatus(id),...this.summonerStatus(id)};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?[...this.sword.measured.cues(this.combatTick),...this.sword.counterstroke.cues(this.players,this.combatTick),...this.sword.pursuit.cues(this.players,this.combatTick)]:[]),...(this.phase==='combat'?[...this.retinue.cohortCues(this.combatTick),...this.retinue.bondCues(this.combatTick,this.players)]:[]),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?[...this.sword.measured.cues(this.combatTick),...this.sword.counterstroke.cues(this.players,this.combatTick),...this.sword.pursuit.cues(this.players,this.combatTick)]:[]),...(this.phase==='combat'?[...this.retinue.cohortCues(this.combatTick),...this.retinue.bondCues(this.combatTick,this.players),...this.retinue.formationCues(this.combatTick)]:[]),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id: string, amount: number, contact?: 'direct') {
     const player = this.players.get(id);
@@ -1744,7 +1745,7 @@ export class Game {
       if (suppressPrimary) i = { ...i, fire:false };
     }
     if (pursuitWalk && this.sword.pursuit.command(p, i, pursuitWalk, this.pursuitContext())) i = { ...i, fire:false };
-    if (p.classId === 'summoner' && (this.commandCohort(p, i) || this.commandBond(p, i))) i = { ...i, fire:false };
+    if (p.classId === 'summoner' && (this.commandCohort(p, i) || this.commandBond(p, i) || this.commandFormation(p, i))) i = { ...i, fire:false };
     if (p.classId === 'medic' && i.technique3) this.preventiveCare.command(p, i, this.precautionWorld());
     if (p.classId === 'mage' && (i.technique1 || this.pivotSigil.active)) this.pivotSigil.command(p, i, this.pivotWorld());
     if (p.classId === 'mage' && (i.technique3 || i.ultimate && this.fuseSeal.prepared(p.id))) {
@@ -2757,13 +2758,15 @@ export class Game {
     const status = this.retinue.status(player, this.combatTick, this.summonerOptions(player));
     const ownsCohort = player.skills.includes(cohortIds.entry);
     const ownsBond = player.skills.includes(bondIds.entry);
-    if (!ownsCohort && !ownsBond) return status;
+    const ownsFormation = player.skills.includes(formationIds.entry);
+    if (!ownsCohort && !ownsBond && !ownsFormation) return status;
     const context = this.retinueContext();
     const busy = this.retinueBusy(player);
     return {
       ...status,
       ...(ownsCohort ? { cohort: this.retinue.cohortStatus(player, context, cohortFitting(player.skills), busy, player.ammo > 0) } : {}),
       ...(ownsBond ? { bond: this.retinue.bondStatus(player, context, bondFitting(player.skills), busy, player.ammo >= bondRules.focus) } : {}),
+      ...(ownsFormation ? { formation: this.retinue.formationStatus(player, context, formationFitting(player.skills), busy, player.ammo >= formationRules.focus) } : {}),
     };
   }
   private retinueBusy(player: Player) {
@@ -2782,6 +2785,13 @@ export class Game {
     if (!this.retinue.commandBond(player, this.retinueContext(), bondFitting(player.skills))) return false;
     player.ammo -= bondRules.focus;
     return true;
+  }
+  private commandFormation(player: Player, input: InputFrame) {
+    if (!input.technique3 || !player.skills.includes(formationIds.entry) || this.retinueBusy(player) ||
+      input.technique1 || input.technique2 || input.q || input.e || input.ultimate || input.reload || input.dodge || input.sprint || input.supply >= 0) return false;
+    const order = this.retinue.commandFormation(player, this.retinueContext(), formationFitting(player.skills), player.ammo >= formationRules.focus);
+    if (order?.spentFocus) player.ammo -= formationRules.focus;
+    return order !== undefined;
   }
   private summonerOptions(p:Player):SummonerOptions {
     const s=this.stats(p),e=s.effects,w=data.weapons.find(w=>w.id===p.weapon)!;
@@ -3878,9 +3888,18 @@ export class Game {
         }
       }
       const interceptorHit=s.owner==='hostile'?this.interceptor.hit(old,next,s.radius,this.roster(),this.combatTick,hitTime):undefined;
+      const formationHit = s.owner === 'hostile' && s.damage > 0 ?
+        this.retinue.formationContact(old, next, interceptorHit?.t ?? hitTime, this.combatTick) : undefined;
       if(s.owner==='hostile'&&this.sword.guarding){
-        const guard=this.sword.guardContact(old,next,s.radius,this.roster(),this.combatTick,Math.min(hitTime,interceptorHit?.t??hitTime));
+        const guard=this.sword.guardContact(old,next,s.radius,this.roster(),this.combatTick,Math.min(hitTime,interceptorHit?.t??hitTime,formationHit?.t??hitTime));
         if(guard&&this.sword.parry(guard.owner,this.swordContext(),{velocity:{x:s.vx,y:s.vy},damage:s.damage})){this.removeShot(s);continue;}
+      }
+      if (formationHit && this.retinue.absorbFormation(formationHit, s.damage, this.combatTick)) {
+        const t = formationHit.t;
+        this.events.push({ type:'sound', id:'summoner-formation-catch', owner:formationHit.owner,
+          x:old.x+(next.x-old.x)*t, y:old.y+(next.y-old.y)*t });
+        this.removeShot(s);
+        continue;
       }
       if(interceptorHit){this.interceptor.block(interceptorHit.owner,this.combatTick,s.id);this.removeShot(s);continue;}
       if (safeHit && safeZone)

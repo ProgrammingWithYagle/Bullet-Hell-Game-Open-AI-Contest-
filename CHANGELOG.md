@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.23-summoner-bond**, protocol 100. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.23-summoner-formation**, protocol 101. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-23 — Set the retinue in formation
+
+### Summoner Formation Keeper
+
+- Aim and spend two Focus to set living companions on separate posts. Each can catch one incoming shot and takes its damage.
+- Walking Rank replants the line as you move. Quarter Turn redirects a formed line once.
 
 ## 2026-11-23 — Keep a companion in the fight
 

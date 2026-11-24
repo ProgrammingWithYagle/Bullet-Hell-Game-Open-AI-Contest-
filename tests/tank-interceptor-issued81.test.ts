@@ -1,3 +1,4 @@
+import formationEdition from './fixtures/summoner-issued100-bindings.json';
 import bondEdition from './fixtures/summoner-issued99-bindings.json';
 import cohortEdition from './fixtures/swordsman-issued98-bindings.json';
 import pursuitEdition from './fixtures/swordsman-issued97-bindings.json';
@@ -32,7 +33,7 @@ const issued=JSON.parse(raw);
 const sha=(text:string)=>createHash('sha256').update(text).digest('hex');
 
 test('the issued Bulwark fittings edition restores its 299 exact local builds',()=>{
-  assert.equal(PROTOCOL, 100);
+  assert.equal(PROTOCOL, 101);
   assert.equal(issued.protocol,81);
   assert.equal(issued.sourceCommit,binding.sourceCommit);
   assert.equal(issued.contentRevision,binding.sourceRevision);
@@ -97,7 +98,7 @@ test('issued 81 retains both HUD layouts, three remaps and all twelve local hist
 
 test('the Interceptor fittings extend all fifteen issued 81 dictionaries',()=>{
   assert.equal(Object.keys(issued.dictionaries).length,15);
-  const added=new Set([...binding.addedLocaleKeys,...bondEdition.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys]);
+  const added=new Set([...binding.addedLocaleKeys,...formationEdition.addedLocaleKeys, ...bondEdition.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys, ...infiltratorEdition.addedLocaleKeys, ...duelistEdition.addedLocaleKeys, ...volatileEdition.addedLocaleKeys, ...spatialEdition.addedLocaleKeys, ...mageEdition.addedLocaleKeys, ...preventiveEdition.addedLocaleKeys, ...responseEdition.addedLocaleKeys,...lateMedicEdition.addedLocaleKeys,...medicEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length,10);
   for(const [id,digest] of Object.entries(issued.dictionaries)){
     const locale=JSON.parse(readFileSync(new URL('../locales/'+id+'.json',import.meta.url),'utf8'));
