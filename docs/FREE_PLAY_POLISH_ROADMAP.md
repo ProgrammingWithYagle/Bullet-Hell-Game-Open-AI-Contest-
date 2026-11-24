@@ -13,7 +13,7 @@ Finish one coherent area before opening the next. Use the public-release-era gam
 | Order | Focus | Concrete result needed before the next focus |
 | --- | --- | --- |
 | 1 — scoped reference checked | Class-tree structure and Engineer reference | Separate General and Specializations; build an honest, readable specialization graph; finish Engineer's three distinct pathways and their internal choices; verify the full build loop. |
-| 2 — active: Summoner specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
+| 2 — active: Ranger specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
 | 3 | Class balance and Free Play build variety | Compare complete legal builds across classes, weapons, mutations, difficulties, solo and co-op. Resolve dominant combinations, weak support paths and unclear interactions. |
 | 4 | Existing bosses, individually | Polish tells, movement, phases, hit rules, arenas, audio and difficulty identities. Work from early encounters toward late and secret encounters; do not start a second boss while the first has known major defects. |
 | 5 | The rest of Free Play | Finish the surrounding run loop: menus, objectives, rewards, pacing, readability, controls, networking, saves, performance and presentation. Address shared defects earlier when they block the current class or boss. |
@@ -76,6 +76,8 @@ The order settles a durable reference before the five newer classes. A shared bl
 The inspected portraits vary in line weight, anatomy, saturation and rendering. Engineer is cleaner, brighter and more cartoon-like; Bard/Ranger are softer and more painted. Soldier also differs from Engineer within the original seven, so the mismatch is broader than a single seven-versus-five split. This is a visual judgment from inspected local assets, not a claim of player consensus.
 
 The recommended shared direction is the newer classes' grounded painted treatment, retaining readable silhouettes and class colors. Establish scale, outline, light, palette and detail rules on the current class before replacing assets. Any actual replacement needs provenance, animation compatibility and local image inspection. A published style guide and one coherent class are more useful than twelve simultaneous partial redraws. No replacement art is included in this roadmap.
+
+The user favored the Iven Cair Bard portrait concept. Use it as the reference for the next portrait review. Its shaped shadows, crisp contours, selective textures and practical backstage clothing anchor Iven in Lorn. The cast gives the newer leads different lines of work. Preserve individual faces and complexions and let tools, clothes and silhouettes tell those stories. The feedback covers the concept portrait. [Cast treatments](NEW_CLASS_CAST_TREATMENTS.md).
 
 ## Campaign remains the final phase
 
@@ -141,4 +143,6 @@ The Cohort Commander preview pair was the verified rollback during the protocol 
 
 The Formation Keeper build is the verified rollback. [Summoner run review](SUMMONER_RUN_REVIEW.md).
 
-Ranger Marksman is available on both verified previews. Ranger Tracker is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Marksman](RANGER_MARKSMAN.md).
+The Ranger Marksman build is the verified rollback. [Ranger Marksman](RANGER_MARKSMAN.md).
+
+Ranger Tracker is available on both verified previews. Ranger Field Controller is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Tracker](RANGER_TRACKER.md).
