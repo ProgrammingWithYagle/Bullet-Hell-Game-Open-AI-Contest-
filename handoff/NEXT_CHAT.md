@@ -4,13 +4,21 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Current exact protocol 99 Summoner Cohort Commander review
+## Current exact protocol 100 Summoner Bonded Companion review
+
+Source **0a9a5c083e844d431f751ea38fd5fddb59950da7**, build **2026.11.23-summoner-bond**, protocol **100**, catalog **137**. The local gate and both GitHub workflows passed 2,945 tests and seven checks. Each frozen audience verified 2,218 files and passed seven checks. Testing uses [5444](http://127.0.0.1:5444/) with backend 2820. Public-audience review uses [5445](http://127.0.0.1:5445/) with backend 2821. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45308910957) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45308930077) · [Frozen checks](../reviews/summoner-bond-2026-11-23/frozen-verification.json).
+
+Protocol 99 Summoner Cohort Commander is the verified rollback in `output/review-rollback.zip`. All 4,433 restored files matched the archive. Archive SHA-256 `7ca02d4f72def040db9916458bba2937bd429b96b86be73f68a216dd4a990ad7`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-summoner-bond-2026-11-23/retention-result.json).
+
+Continue with Summoner Formation Keeper, followed by the whole-Summoner trials. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bonded Companion](../docs/SUMMONER_BONDED_COMPANION.md).
+
+## Historical protocol 99 Summoner Cohort Commander review
 
 Source **8ed11726363296b496b0420c6dada1c4e34854e9**, build **2026.11.23-summoner-cohort**, protocol **99**, catalog **134**. The local suite and both GitHub workflows passed 2,926 tests and seven checks. Each frozen audience binds 2,215 files and passed seven checks. Testing uses [5442](http://127.0.0.1:5442/) with backend 2818. Public review uses [5443](http://127.0.0.1:5443/) with backend 2819. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45218308457) · [PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45218342917) · [Frozen checks](../reviews/summoner-cohort-2026-11-23/frozen-verification.json).
 
 The protocol 98 Swordsman Flowing Pursuit pair is the verified rollback in `output/review-rollback.zip`. All 4,427 restored files match the archive. Archive SHA-256 `e8d402761974933b240e396c6d157e826475212521c90a9cdca2f031d5f16d3c`. All 213 original private SQLite-related files match their inventory. [Rotation](../reviews/storage-summoner-cohort-2026-11-23/retention-result.json).
 
-Continue with Summoner Bonded Companion in the new chat. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Cohort Commander](../docs/SUMMONER_COHORT_COMMANDER.md).
+The protocol 99 preview pair now serves as the verified rollback. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Cohort Commander](../docs/SUMMONER_COHORT_COMMANDER.md).
 
 ## Protocol 98 Swordsman Flowing Pursuit rollback review
 

@@ -137,4 +137,6 @@ Counterstroke’s historical review preserves its original source and storage re
 
 The verified Flowing Pursuit previews are available in the rollback. The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. [Swordsman run review](SWORDSMAN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
 
-Cohort Commander is available in both frozen previews. Continue with Summoner Bonded Companion in the new chat. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
+The verified Cohort Commander preview pair is preserved as the protocol 99 rollback. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
+
+Bonded Companion is available on both verified previews. Continue with Summoner Formation Keeper, followed by the whole-Summoner trials. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bonded Companion](SUMMONER_BONDED_COMPANION.md).
