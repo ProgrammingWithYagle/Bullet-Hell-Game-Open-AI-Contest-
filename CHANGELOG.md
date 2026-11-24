@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.24-ranger-marksman**, protocol 102. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.24-ranger-tracker**, protocol 103. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-24 — Follow a Ranger arrow trail
+
+### Ranger Tracker
+
+- Read a real arrow contact and change shooting lanes to recover an arrow.
+- Trail Stakes can finish with a new Tripline. Backtrack rewards a return to the original firing point.
 
 ## 2026-11-24 — Hold a Ranger Sight Draw
 

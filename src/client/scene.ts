@@ -18,6 +18,7 @@ import {flakFlightBearing}from"./heavy-flak-presentation.ts";
 import {skirmisherRules}from"../shared/soldier-skirmisher.ts";
 import {drawAlchemyCue} from "./alchemy-presentation.ts";
 import {drawRangerCue} from "./ranger-presentation.ts";
+import { drawRangerTracks } from "./ranger-tracker-presentation.ts";
 import {drawSwordCue} from "./sword-presentation.ts";
 import {retinueArt,retinuePose} from "./retinue-presentation.ts";
 import {drawSkirmishWarnings,drawWardPatient} from "./skirmish-presentation.ts";
@@ -936,6 +937,8 @@ export class CombatScene extends Phaser.Scene {
       }
       if (slip.relayTo) h.lineStyle(2, color, .76).strokeRoundedRect(slip.relayTo.x - 7, slip.relayTo.y - 7, 14, 14, 3);
     }
+    const trail = interceptOwner?.kit.rangerTracker;
+    if (trail && view.phase === 'combat') drawRangerTracks(h, trail, now, this.highContrast);
     const fuse = interceptOwner?.kit.fuseSeal;
     if (fuse?.guide && now < (fuse.until ?? now)) {
       const edge = this.highContrast ? 0xffffff : 0xffd09a;

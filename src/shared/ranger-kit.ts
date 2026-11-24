@@ -8,6 +8,7 @@ import {
 } from "./geometry.ts";
 import type { Vec } from "./protocol.ts";
 import { RangerSightDraw, rangerSightRules, type RangerSightFitting } from './ranger-sight.ts';
+import { RangerTracker } from './ranger-tracker.ts';
 
 export type RangerOwner = Vec & {
   id: string;
@@ -88,7 +89,7 @@ export type RangerContext = {
   lava: readonly (Vec & { radius: number })[];
   targets: readonly RangerTarget[];
   id(): number;
-  arrow(arrow: RangerArrow): void;
+  arrow(arrow: RangerArrow, primary?: boolean): void;
   strike(
     owner: RangerOwner,
     target: RangerTarget,
@@ -96,6 +97,7 @@ export type RangerContext = {
     slowTicks: number,
     slowMultiplier: number,
     origin: Vec,
+    placedAt: number,
   ): number;
   sound(id: string, owner: RangerOwner): void;
 };
@@ -112,6 +114,7 @@ type Draw = {
   count: number;
   spread: number;
   training: boolean;
+  primary: boolean;
 };
 type Trap = {
   id: number;
@@ -120,6 +123,7 @@ type Trap = {
   y: number;
   x2: number;
   y2: number;
+  placedAt: number;
   at: number;
   until: number;
   remaining: number;
@@ -187,11 +191,13 @@ export function rangerTriplineContact(
 export class RangerKit {
   private draws = new Map<string, Draw>();
   private readonly sight = new RangerSightDraw();
+  readonly tracker = new RangerTracker();
   private traps = new Map<number, Trap>();
   private surveys = new Map<number, Survey>();
   private released: RangerCue[] = [];
   clear() {
     this.sight.clear();
+    this.tracker.clear();
     this.draws.clear();
     this.traps.clear();
     this.surveys.clear();
@@ -199,6 +205,7 @@ export class RangerKit {
   }
   removeOwner(owner: string) {
     this.sight.cancel(owner);
+    this.tracker.cancel(owner);
     this.draws.delete(owner);
     for (const [id, t] of this.traps)
       if (t.owner === owner) this.traps.delete(id);
@@ -358,6 +365,7 @@ export class RangerKit {
       damage: shot.damage * (1 + (point?.damageBonus ?? 0)),
       pierce: shot.pierce + (point?.pierce ?? 0),
       training: false,
+      primary: true,
       ticks: rules.primaryDrawTicks,
     });
   }
@@ -372,6 +380,7 @@ export class RangerKit {
       count: number;
       spread: number;
       training: boolean;
+      primary: boolean;
       ticks: number;
     },
   ) {
@@ -388,6 +397,7 @@ export class RangerKit {
       count: Math.floor(finite(shot.count, 1, 4)),
       spread: finite(shot.spread, 0, 0.5),
       training: shot.training,
+      primary: shot.primary,
     });
     c.sound("ranger-draw", p);
     return true;
@@ -411,6 +421,7 @@ export class RangerKit {
         count: o.talents.crosswind ? 3 : 1,
         spread: o.talents.crosswind ? rules.crosswindSpreadRadians : 0,
         training: true,
+        primary: false,
         ticks: rules.lineDrawTicks,
       });
     if (slot === "e") {
@@ -423,6 +434,7 @@ export class RangerKit {
         y: line.start.y,
         x2: line.end.x,
         y2: line.end.y,
+        placedAt: c.tick,
         at: c.tick + rules.trapArmingTicks,
         until:
           c.tick +
@@ -511,7 +523,7 @@ export class RangerKit {
           pierce: d.pierce,
           training: d.training,
           drawId: d.id,
-        });
+        }, d.primary);
       this.released.push({
         kind: "ranger-release",
         id: d.id,
@@ -558,6 +570,7 @@ export class RangerKit {
           target.kind === "ordinary" ? rules.trapSlowTicks : 0,
           rules.trapSlowMultiplier,
           { x: (t.x + t.x2) / 2, y: (t.y + t.y2) / 2 },
+          t.placedAt,
         );
         if (actual <= 0) continue;
         t.touched.add(target.key);

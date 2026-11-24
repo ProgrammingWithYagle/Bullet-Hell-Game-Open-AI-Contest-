@@ -80,6 +80,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   builderRepairUntil?:number;builderRepairTarget?:number;builderGroups?:number;builderGroupCapacity?:number;
   alchemySamplesCapacity?:number;alchemyRecipe?:Recipe;alchemyCinder?:number;alchemyChalk?:number;alchemySap?:number;alchemyPrepared?:Recipe[];alchemyCapacity?:number;alchemyBrewUntil?:number;alchemyBrewRecipe?:string;alchemyBrewMovement?:number;alchemyBatchUntil?:number;alchemyBatchCharges?:number;
   rangerSight?:import('./ranger-sight.ts').RangerSightStatus;
+  rangerTracker?:import('./ranger-tracker.ts').TrackerStatus;
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
