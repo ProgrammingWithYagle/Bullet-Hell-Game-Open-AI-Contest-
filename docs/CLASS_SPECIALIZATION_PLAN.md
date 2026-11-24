@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **8ed11726363296b496b0420c6dada1c4e34854e9** has 134 techniques. Summoner Cohort Commander adds Cohort Drive with two exclusive fittings. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
+Current verified source **d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2** has 140 techniques. Formation Keeper adds Set the Line and two fittings. [Formation Keeper](SUMMONER_FORMATION_KEEPER.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -167,6 +167,6 @@ Counterstroke’s historical review preserves its original source and storage re
 
 The verified Flowing Pursuit previews are available in the rollback. The scoped Swordsman review covers all eight fitting combinations in 96 Standard runs, twelve exact replays, two controlled hybrid fights and matching Practice continuations. Twenty-eight active runs used all three paths and 22 did so after acquiring every fitting. Six targeted Solo runs cleared Bridge Ferryman by the dry passage, and one finished all ten encounters. Solo Standard balance remains open. [Swordsman run review](SWORDSMAN_RUN_REVIEW.md). Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Flowing Pursuit](SWORDSMAN_FLOWING_PURSUIT.md).
 
-The verified Cohort Commander preview pair is preserved as the protocol 99 rollback. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
+The Cohort Commander preview pair was the verified rollback during the protocol 100 review. [Cohort Commander](SUMMONER_COHORT_COMMANDER.md).
 
-Bonded Companion is available on both verified previews. Continue with Summoner Formation Keeper, followed by the whole-Summoner trials. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Bonded Companion](SUMMONER_BONDED_COMPANION.md).
+Formation Keeper is available on both verified previews. The whole-Summoner review covers two 96-run comparisons, 24 exact replays and 16 Practice continuations. Ranger Marksman is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Formation Keeper](SUMMONER_FORMATION_KEEPER.md) · [Summoner run review](SUMMONER_RUN_REVIEW.md).

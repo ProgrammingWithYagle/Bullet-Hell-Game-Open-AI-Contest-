@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-24T13:42:51.765601+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/summoner-formation-2026-11-23",
+  "rollbackScope": "reviews/summoner-bond-2026-11-23",
+  "currentSourceCommit": "d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2",
+  "rollbackSourceCommit": "0a9a5c083e844d431f751ea38fd5fddb59950da7",
+  "keep": [
+    {
+      "path": "output/playtest-summoner-formation-2026-11-23-testing-d6ee0db",
+      "sourceCommit": "d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2",
+      "scope": "reviews/summoner-formation-2026-11-23",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\summoner-formation-2026-11-23-testing-files.json",
+      "manifestSha256": "9b1dd93e27fce3d6b14335eb58992853830d66c7bbacbbdad867d1bb2f8899cf",
+      "files": 2221,
+      "bytes": 940389419,
+      "treeStatSha256": "1ea27ca0aa512a1184aa9bc3e4f64df7296159df079d4d4cd9fcfca0f377ba0d"
+    },
+    {
+      "path": "output/playtest-summoner-formation-2026-11-23-public-d6ee0db",
+      "sourceCommit": "d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2",
+      "scope": "reviews/summoner-formation-2026-11-23",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\summoner-formation-2026-11-23-public-files.json",
+      "manifestSha256": "58f403f10c87bca0d66069705a3908da8cdcb884f058c025b9360d2f7a09a70e",
+      "files": 2221,
+      "bytes": 940384132,
+      "treeStatSha256": "8ccaf29492405117579de5bbfc8a4167133b12be131a30f28b14a0b978368b31"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-summoner-formation-2026-11-23-d6ee0db.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-summoner-bond-2026-11-23-public-0a9a5c0",
+      "files": 2218,
+      "bytes": 937094841,
+      "treeStatSha256": "c16348f0903941a8497598f219e3a2665eac9730e24eba44d69fae3b98047b43",
+      "identity": {
+        "sourceCommit": "0a9a5c083e844d431f751ea38fd5fddb59950da7",
+        "buildId": "2026.11.23-summoner-bond",
+        "protocol": 100,
+        "contentRevision": "e64b2e29a8b8c9eeadd62dd2771369d9c2c9c1167f376de27a58b0d9d50f743e",
+        "audience": "public",
+        "runtimeSourceSha256": "b7afde3563d29850b505a047204bbb645d6dfb57f11be58aee45dee40e2cc512",
+        "sourceSnapshotSha256": "1033b049ff78ef54720ea15b6fd6fffb6c1b0831394f6821d391f0aa07fa0681",
+        "endpoint": "http://127.0.0.1:2821"
+      },
+      "identitySha256": "9f3a73eeb3c7066fd8441c77c7875767ce0a2c75df2b540d77958cdba3635d8f"
+    },
+    {
+      "path": "output/playtest-summoner-bond-2026-11-23-testing-0a9a5c0",
+      "files": 2218,
+      "bytes": 937100128,
+      "treeStatSha256": "b277fb6ad8899313778ad0665bb6f1052f3e68bf1310ecb33b665c719f9e2744",
+      "identity": {
+        "sourceCommit": "0a9a5c083e844d431f751ea38fd5fddb59950da7",
+        "buildId": "2026.11.23-summoner-bond",
+        "protocol": 100,
+        "contentRevision": "e64b2e29a8b8c9eeadd62dd2771369d9c2c9c1167f376de27a58b0d9d50f743e",
+        "audience": "testing",
+        "runtimeSourceSha256": "b7afde3563d29850b505a047204bbb645d6dfb57f11be58aee45dee40e2cc512",
+        "sourceSnapshotSha256": "1033b049ff78ef54720ea15b6fd6fffb6c1b0831394f6821d391f0aa07fa0681",
+        "endpoint": "http://127.0.0.1:2820"
+      },
+      "identitySha256": "017544e7dcc5ccf32791e5a504ae6ea67a3fc01baaa797b3e861f00142828256"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-summoner-bond-2026-11-23-0a9a5c0.mjs",
+      "bytes": 4450823,
+      "sha256": "05f6b4e60722ca3ff1aa2287ed776038a19a9a8f70e09454c4b019357edd15cb"
+    }
+  ],
+  "retireDirectoryCount": 2,
+  "retireFileBytes": 1878645792,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": "7ca02d4f72def040db9916458bba2937bd429b96b86be73f68a216dd4a990ad7",
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true,
+  "reuseExistingVerifiedRollback": false,
+  "existingRollbackArchiveSha256": null
+}

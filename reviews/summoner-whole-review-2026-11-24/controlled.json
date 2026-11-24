@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "source": "d6ee0dbe7bef5c5ec0e8c3a8d474aa37cf2c50d2",
+  "protocol": 101,
+  "contentRevision": "07f4c1d5e236abd5b0af1dbfadc81f8ff06e120cdb9b4ca499b0dc72c6fbc976",
+  "driverSha256": "1ccf7af460769398953f5d5367088da7a52afde4de70cc4da6cb5800c959121d",
+  "files": {
+    "src/shared/game.ts": "83f6c35c5d8ac5ad6398ab6d608a01f3e2b06a0ed5530812a75f45f40e2f0eab",
+    "src/shared/summoner-kit.ts": "8e719fec09e6aa51d68fdf3dde836c06f97ac7fc14f69cb0a7f7f2985cf685a9",
+    "src/shared/summoner-cohort.ts": "d3fabd6373b75b39091927ffb9ca5d3548a9e61b27a6449e1792f09b2e370a07",
+    "src/shared/summoner-bond.ts": "5ce73f24c5f50bef09d41b11ebc8ee3d8d65c0339b6370ccf76d4e641259df20",
+    "src/shared/summoner-formation.ts": "ca23e916023ce835328d4b30669efd77a96f55f1b11ef69be41abd92ee4d2e17"
+  },
+  "cases": [
+    {
+      "case": "close-stitch, quarter turn and relay in one fight",
+      "repair": 9,
+      "realCatches": 2,
+      "relayLeaderAndFollowerDamagedMark": true,
+      "orderedFollowerImpact": {
+        "id": 12,
+        "damage": 9.450000000000001,
+        "at": 86
+      }
+    },
+    {
+      "case": "two owners, walking formation, and physical Homeward return",
+      "keptCue": 5,
+      "clearedCue": 6,
+      "bothOwnerScopesPrivate": true,
+      "partnerCaughtAfterOtherOwnerLeft": true,
+      "repaired": 9
+    },
+    {
+      "case": "running-pack",
+      "ownedKinds": [
+        "hound",
+        "hound"
+      ],
+      "livingTemporaryExcluded": 2,
+      "realFormationCatch": true
+    },
+    {
+      "case": "closed-ranks",
+      "ownedKinds": [
+        "hound",
+        "wing"
+      ],
+      "livingTemporaryExcluded": 2,
+      "realFormationCatch": true
+    },
+    {
+      "case": "patient-company",
+      "ownedKinds": [
+        "hound",
+        "wing"
+      ],
+      "livingTemporaryExcluded": 2,
+      "realFormationCatch": true
+    }
+  ]
+}
