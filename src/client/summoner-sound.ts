@@ -8,6 +8,8 @@ export const summonerSoundSpecs = {
   "summoner-cohort-drive": { tones: [247, 494], duration: 0.18, endRatio: 0.91 },
   "summoner-cohort-open": { tones: [418, 837], duration: 0.115, endRatio: 1.12 },
   "summoner-cohort-relay": { tones: [311, 622], duration: 0.16, endRatio: 0.8 },
+  "summoner-bond-cast": { tones: [294, 587], duration: 0.15, endRatio: 0.94 },
+  "summoner-bond-mend": { tones: [370, 740], duration: 0.22, endRatio: 1.12 },
 } as const;
 export function isSummonerSound(
   id: string,

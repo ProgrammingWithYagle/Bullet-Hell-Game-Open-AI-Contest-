@@ -1,3 +1,4 @@
+import { bondFitting, bondIds, bondRules } from './summoner-bond.ts';
 import { pursuitIds, type PursuitContext } from './swordsman-pursuit.ts';
 import { counterstrokeIds, counterstrokeRules, type CounterstrokeContext } from './swordsman-counterstroke.ts';
 import { measuredIds, type MeasuredStanceContext } from './swordsman-measured.ts';
@@ -327,7 +328,7 @@ export class Game {
   readonly marksman = new SoldierMarksman();
   kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.assassinWritStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine}:{}),...this.bardStatus(id),...this.swordsmanStatus(id),...this.summonerStatus(id)};}
   readonly transforms = new AbilityTransforms();
-  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?[...this.sword.measured.cues(this.combatTick),...this.sword.counterstroke.cues(this.players,this.combatTick),...this.sword.pursuit.cues(this.players,this.combatTick)]:[]),...(this.phase==='combat'?this.retinue.cohortCues(this.combatTick):[]),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
+  classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?[...this.sword.measured.cues(this.combatTick),...this.sword.counterstroke.cues(this.players,this.combatTick),...this.sword.pursuit.cues(this.players,this.combatTick)]:[]),...(this.phase==='combat'?[...this.retinue.cohortCues(this.combatTick),...this.retinue.bondCues(this.combatTick,this.players)]:[]),...this.ranger.cues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
   private hurtTarget(id: string, amount: number, contact?: 'direct') {
     const player = this.players.get(id);
@@ -1743,7 +1744,7 @@ export class Game {
       if (suppressPrimary) i = { ...i, fire:false };
     }
     if (pursuitWalk && this.sword.pursuit.command(p, i, pursuitWalk, this.pursuitContext())) i = { ...i, fire:false };
-    if (p.classId === 'summoner' && this.commandCohort(p, i)) i = { ...i, fire:false };
+    if (p.classId === 'summoner' && (this.commandCohort(p, i) || this.commandBond(p, i))) i = { ...i, fire:false };
     if (p.classId === 'medic' && i.technique3) this.preventiveCare.command(p, i, this.precautionWorld());
     if (p.classId === 'mage' && (i.technique1 || this.pivotSigil.active)) this.pivotSigil.command(p, i, this.pivotWorld());
     if (p.classId === 'mage' && (i.technique3 || i.ultimate && this.fuseSeal.prepared(p.id))) {
@@ -2754,23 +2755,37 @@ export class Game {
     const player = this.players.get(id);
     if (player?.classId !== 'summoner') return {};
     const status = this.retinue.status(player, this.combatTick, this.summonerOptions(player));
-    if (!player.skills.includes(cohortIds.entry)) return status;
-    const cohort = this.retinue.cohortStatus(player, this.retinueContext(), cohortFitting(player.skills), this.cohortBusy(player), player.ammo > 0);
-    return { ...status, cohort };
+    const ownsCohort = player.skills.includes(cohortIds.entry);
+    const ownsBond = player.skills.includes(bondIds.entry);
+    if (!ownsCohort && !ownsBond) return status;
+    const context = this.retinueContext();
+    const busy = this.retinueBusy(player);
+    return {
+      ...status,
+      ...(ownsCohort ? { cohort: this.retinue.cohortStatus(player, context, cohortFitting(player.skills), busy, player.ammo > 0) } : {}),
+      ...(ownsBond ? { bond: this.retinue.bondStatus(player, context, bondFitting(player.skills), busy, player.ammo >= bondRules.focus) } : {}),
+    };
   }
-  private cohortBusy(player: Player) {
+  private retinueBusy(player: Player) {
     return Boolean(player.reloadAt || player.channelUntil || player.sprinting || this.combatTick < player.dashUntil);
   }
   private commandCohort(player: Player, input: InputFrame) {
-    if (!input.technique1 || !player.skills.includes(cohortIds.entry) || this.cohortBusy(player) ||
+    if (!input.technique1 || !player.skills.includes(cohortIds.entry) || this.retinueBusy(player) ||
       input.technique2 || input.technique3 || input.q || input.e || input.ultimate || input.reload || input.dodge || input.sprint || input.supply >= 0) return false;
     const order = this.retinue.commandCohort(player, this.retinueContext(), cohortFitting(player.skills), player.ammo > 0);
     if (order?.spentFocus) player.ammo--;
     return order !== undefined;
   }
+  private commandBond(player: Player, input: InputFrame) {
+    if (!input.technique2 || !player.skills.includes(bondIds.entry) || player.ammo < bondRules.focus || this.retinueBusy(player) ||
+      input.technique1 || input.technique3 || input.q || input.e || input.ultimate || input.reload || input.dodge || input.sprint || input.supply >= 0) return false;
+    if (!this.retinue.commandBond(player, this.retinueContext(), bondFitting(player.skills))) return false;
+    player.ammo -= bondRules.focus;
+    return true;
+  }
   private summonerOptions(p:Player):SummonerOptions {
     const s=this.stats(p),e=s.effects,w=data.weapons.find(w=>w.id===p.weapon)!;
-    return {potency:s.ability*(1+('summonBond' in w?(w.summonBond??0):0)),healthBonus:e.summonHealth??0,damageBonus:(e.summonDamage??0)+Math.min(5,p.upgrades.damage??0)*data.rules.summoner.equipmentDamagePerLevel,speedBonus:e.summonSpeed??0,attackRateBonus:(e.summonAttackRate??0)+Math.min(5,p.upgrades['fire-rate']??0)*data.rules.summoner.equipmentAttackRatePerLevel,reachBonus:e.summonReach??0,capacityBonus:e.retinueCapacity??0,ultimateDurationBonus:ticks(e.ultimateDuration??0),ultimateExtraWarders:e.ultimateCharges??0,ultimatePotencyBonus:e.ultimatePotency??0,talents:{runningPack:hasTalent(p,'running-pack'),closedRanks:hasTalent(p,'closed-ranks'),patientCompany:hasTalent(p,'patient-company')}};
+    return {potency:s.ability*(1+('summonBond' in w?(w.summonBond??0):0)),healthBonus:e.summonHealth??0,damageBonus:(e.summonDamage??0)+Math.min(5,p.upgrades.damage??0)*data.rules.summoner.equipmentDamagePerLevel,speedBonus:e.summonSpeed??0,attackRateBonus:(e.summonAttackRate??0)+Math.min(5,p.upgrades['fire-rate']??0)*data.rules.summoner.equipmentAttackRatePerLevel,reachBonus:e.summonReach??0,capacityBonus:e.retinueCapacity??0,bonded:p.skills.includes(bondIds.entry),ultimateDurationBonus:ticks(e.ultimateDuration??0),ultimateExtraWarders:e.ultimateCharges??0,ultimatePotencyBonus:e.ultimatePotency??0,talents:{runningPack:hasTalent(p,'running-pack'),closedRanks:hasTalent(p,'closed-ranks'),patientCompany:hasTalent(p,'patient-company')}};
   }
   orderRetinue(id:string,order:unknown){const p=this.players.get(id);return !!p&&p.classId==='summoner'&&this.phase==='combat'&&this.retinue.order(p,order,this.retinueContext());}
   private clearOwnerRetinue(owner:string){
@@ -2810,8 +2825,14 @@ export class Game {
   }
   private retinueShotHit(shot:Shot,p:Player|undefined,key:string,actual:number){
     if(!p||p.classId!=='summoner'||!p.connected||p.status!=='active'||actual<=0)return;
-    if(this.summonerPrimaryShots.has(shot.id))this.retinue.mark(p,key,actual,this.retinueContext());
-    if (this.retinueShots.has(shot.id)) {
+    if (this.summonerPrimaryShots.has(shot.id)) {
+      const context = this.retinueContext();
+      this.retinue.bondHit(p, undefined, key, context);
+      this.retinue.mark(p, key, actual, context);
+    }
+    const retinueShot = this.retinueShots.get(shot.id);
+    if (retinueShot) {
+      if (p.skills.includes(bondIds.entry)) this.retinue.bondHit(p, retinueShot.unit, key, this.retinueContext());
       if (p.skills.includes(cohortIds.relay)) this.retinue.cohortProjectileHit(p.id, shot.id, key, this.retinueContext());
       if (key.startsWith('ordinary:') && this.retinue.marked(p.id, key, this.combatTick)) this.observeTraining(p, 'retinue-hit', actual);
     }

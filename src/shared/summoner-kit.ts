@@ -1,3 +1,4 @@
+import { BondedCompanion, bondRules, type BondFitting } from "./summoner-bond.ts";
 import rules from "./summoner-rules.json";
 import { DT, type Vec } from "./protocol.ts";
 import {
@@ -104,6 +105,7 @@ export type SummonerOptions = {
   ultimateDurationBonus: number;
   ultimateExtraWarders: number;
   ultimatePotencyBonus: number;
+  bonded?: boolean;
   talents: SummonerTalents;
 };
 export const baseSummonerOptions = (): SummonerOptions => ({
@@ -183,6 +185,7 @@ const lineClear = (a: Vec, b: Vec, obstacles: Rect[], radius = 0) =>
 export class SummonerKit {
   readonly entities = new Map<number, SummonEntity>();
   private readonly cohort = new CohortDrive();
+  private readonly bond = new BondedCompanion();
   private states = new Map<string, OwnerState>();
   private fallen = new Map<number, { view: SummonView; until: number }>();
   private navigators = new Map<number, RatNavigator>();
@@ -211,7 +214,7 @@ export class SummonerKit {
       rules.maximumPermanentCapacity,
       rules.baseCapacity +
         Math.max(0, Math.floor(number(options.capacityBonus, 0, 2))),
-    );
+    ) - (options.bonded ? bondRules.lostSlots : 0);
   }
   owned(id: string) {
     return [...this.entities.values()].filter(
@@ -241,11 +244,11 @@ export class SummonerKit {
   cohortStatus(p: SummonerOwner, c: SummonerContext, fitting: CohortFitting | undefined, blocked: boolean, canPay: boolean) {
     const state = this.states.get(p.id);
     const mark = state && c.tick < state.markUntil ? state.mark : "";
-    const unavailable = blocked || !controlled(p, c) || c.tick < (state?.gatherUntil ?? 0);
+    const unavailable = blocked || !controlled(p, c) || c.tick < (state?.gatherUntil ?? 0) || this.bond.returning(p.id, c.tick);
     return this.cohort.status(p, this.owned(p.id), mark, fitting, unavailable, c, canPay);
   }
   commandCohort(p: SummonerOwner, c: SummonerContext, fitting: CohortFitting | undefined, canPay: boolean) {
-    if (!controlled(p, c)) return;
+    if (!controlled(p, c) || this.bond.returning(p.id, c.tick)) return;
     const state = this.states.get(p.id);
     const mark = state && c.tick < state.markUntil ? state.mark : "";
     return this.cohort.command(p, this.owned(p.id), mark, fitting, c.tick < (state?.gatherUntil ?? 0), c, canPay);
@@ -255,6 +258,29 @@ export class SummonerKit {
   }
   cohortCues(now: number) {
     return this.cohort.cues(now, this.entities);
+  }
+  private bondBlock(p: SummonerOwner, c: SummonerContext, fitting: BondFitting | undefined, busy: boolean) {
+    if (busy || !controlled(p, c)) return 'busy';
+    if (c.tick < (this.states.get(p.id)?.gatherUntil ?? 0)) return 'gathering';
+    if (fitting === 'homeward' && this.cohort.active(p.id, c.tick)) return 'cohort';
+  }
+  private bondMark(p: SummonerOwner, now: number) {
+    const state = this.states.get(p.id);
+    return state && now < state.markUntil ? state.mark : '';
+  }
+  bondStatus(p: SummonerOwner, c: SummonerContext, fitting: BondFitting | undefined, busy: boolean, canPay: boolean) {
+    return this.bond.status(p, this.owned(p.id), this.bondMark(p, c.tick), fitting, this.bondBlock(p, c, fitting, busy), canPay, c);
+  }
+  commandBond(p: SummonerOwner, c: SummonerContext, fitting: BondFitting | undefined) {
+    return this.bond.start(p, this.owned(p.id), this.bondMark(p, c.tick), fitting, this.bondBlock(p, c, fitting, false), c);
+  }
+  bondHit(p: SummonerOwner, unit: number | undefined, key: string, c: SummonerContext) {
+    if (this.bond.engaged(p.id) && controlled(p, c)) {
+      this.bond.hit(p, unit, key, this.marked(p.id, key, c.tick), c, this.entities);
+    }
+  }
+  bondCues(now: number, owners: ReadonlyMap<string, SummonerOwner>) {
+    return this.bond.cues(now, owners, this.entities);
   }
   marked(owner: string, key: string, now: number) {
     const s = this.states.get(owner);
@@ -276,6 +302,7 @@ export class SummonerKit {
     )
       return false;
     const s = this.state(p);
+    this.bond.changeMark(p.id, key);
     s.mark = key;
     s.markUntil = c.tick + rules.markTicks;
     if (s.order === "focus")
@@ -302,6 +329,7 @@ export class SummonerKit {
     s.order = value;
     s.orderAt = c.tick + rules.orderCooldownTicks;
     this.cohort.cancel(p.id);
+    this.bond.cancel(p.id);
     for (const e of this.owned(p.id)) {
       e.target = "";
       e.decisionAt = 0;
@@ -442,6 +470,7 @@ export class SummonerKit {
     const s = this.state(p);
     if (slot === "e") {
       this.cohort.cancel(p.id);
+      this.bond.cancel(p.id);
       s.gatherUntil = c.tick + rules.gatherTicks;
       s.gatherToken++;
       s.gatherHealing = rules.gatherHealing * multiplier(o.potency);
@@ -631,6 +660,8 @@ export class SummonerKit {
       .concat([...this.fallen.values()].map((e) => ({ ...e.view })));
   }
   private remove(id: number) {
+    const entity = this.entities.get(id);
+    if (entity) this.bond.lose(entity);
     this.entities.delete(id);
     for (const navigator of this.navigators.values()) navigator.remove(id);
   }
@@ -641,12 +672,14 @@ export class SummonerKit {
       if (e.view.owner === owner) this.fallen.delete(id);
     this.states.delete(owner);
     this.cohort.cancel(owner);
+    this.bond.cancel(owner);
   }
   clear() {
     this.entities.clear();
     this.fallen.clear();
     this.states.clear();
     this.cohort.clear();
+    this.bond.clear();
     for (const nav of this.navigators.values()) nav.clear();
     this.navigators.clear();
   }
@@ -710,6 +743,8 @@ export class SummonerKit {
       if (e.until <= c.tick || !owners.has(e.view.owner))
         this.fallen.delete(id);
     this.cohort.advance(c, this.entities);
+    const marked = (owner: string, key: string) => this.marked(owner, key, c.tick);
+    this.bond.advance(c, owners, this.entities, marked);
     for (const e of this.entities.values()) {
       const p = owners.get(e.owner);
       if (!p || e.health <= 0 || (e.temporary && e.expires <= c.tick)) {
@@ -739,7 +774,8 @@ export class SummonerKit {
         c.tick < s.gatherUntil &&
         e.gatherToken === s.gatherToken &&
         !e.gatherHealed;
-      const marching = gathering ? undefined : this.cohort.assigned(e, c);
+      const returning = this.bond.returning(p.id, c.tick, e.id);
+      const marching = gathering || returning ? undefined : this.cohort.assigned(e, c);
       let target = e.target ? c.target(e.target) : undefined;
       const anchor = s.order === "hold" ? s.anchor : p,
         leash =
@@ -748,7 +784,7 @@ export class SummonerKit {
             : s.order === "focus"
               ? rules.focusLeash
               : rules.escortLeash;
-      if (gathering) {
+      if (gathering || returning) {
         e.target = "";
         target = undefined;
       } else if (marching) {
@@ -766,14 +802,14 @@ export class SummonerKit {
         e.target = target?.key ?? "";
         e.decisionAt = c.tick + rules.decisionTicks;
       }
-      const destination = gathering
+      const destination = gathering || returning
           ? p
           : (target ?? marching?.destination ?? this.formation(e, p, s, c)),
         stop = target
           ? e.range + target.radius
           : gathering
             ? rules.gatherArrivalRange - 2
-            : 8;
+            : returning ? bondRules.arrival - 2 : 8;
       const clear = lineClear(
           e,
           destination,
@@ -800,7 +836,7 @@ export class SummonerKit {
           travel = Math.min(
             e.speed *
               DT *
-              (gathering ? rules.gatherSpeedMultiplier : marching ? cohortRules.marchSpeed : 1) *
+              (gathering || returning ? rules.gatherSpeedMultiplier : marching ? cohortRules.marchSpeed : 1) *
               Math.min(
                 c.tick < e.slowUntil ? 0.65 : 1,
                 c.tick < e.poisonUntil ? e.poisonSlowMultiplier : 1,
@@ -850,8 +886,9 @@ export class SummonerKit {
         e.target = "";
         e.decisionAt = 0;
       }
+      if (returning) this.bond.arrive(p, e, c);
       if (
-        gathering ||
+        gathering || returning ||
         !target ||
         target.health <= 0 ||
         c.tick < e.attackAt ||
@@ -875,7 +912,9 @@ export class SummonerKit {
       } else {
         const actual = c.strike(p, e, target, damage, this.marked(p.id, target.key, c.tick));
         if (marching) this.cohort.release(e, actual, undefined, c, this.entities);
+        if (actual > 0 && this.bond.engaged(p.id)) this.bond.hit(p, e.id, target.key, marked(p.id, target.key), c, this.entities);
       }
     }
+    this.bond.advance(c, owners, this.entities, marked);
   }
 }

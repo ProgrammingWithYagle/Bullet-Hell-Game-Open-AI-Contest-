@@ -86,6 +86,10 @@ export class CohortDrive {
   private readonly orders = new Map<string, Order>();
   private readonly recovery = new Map<string, number>();
 
+  active(owner: string, now: number) {
+    return (this.orders.get(owner)?.until ?? 0) > now;
+  }
+
   cancel(owner: string) {
     this.orders.delete(owner);
   }

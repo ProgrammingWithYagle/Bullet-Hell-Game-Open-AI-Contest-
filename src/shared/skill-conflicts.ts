@@ -1,3 +1,4 @@
+import { bondIds } from './summoner-bond.ts';
 import { cohortIds } from './summoner-cohort.ts';
 import { pursuitIds } from './swordsman-pursuit.ts';
 import { counterstrokeIds } from './swordsman-counterstroke.ts';
@@ -23,6 +24,9 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherBond = candidate === bondIds.close ? bondIds.homeward :
+    candidate === bondIds.homeward ? bondIds.close : undefined;
+  if (otherBond && owned.includes(otherBond)) return otherBond;
   const otherCohort = candidate === cohortIds.cross ? cohortIds.relay :
     candidate === cohortIds.relay ? cohortIds.cross : undefined;
   if (otherCohort && owned.includes(otherCohort)) return otherCohort;

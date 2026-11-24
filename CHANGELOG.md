@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.23-summoner-cohort**, protocol 99. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.23-summoner-bond**, protocol 100. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-23 — Keep a companion in the fight
+
+### Summoner Bonded Companion
+
+- Mending Bond trades two permanent slots and two Focus for a chance to repair one living companion.
+- Close Stitch uses your beacon hit. Homeward Thread repairs a companion after it physically returns.
 
 ## 2026-11-23 — Direct the retinue
 

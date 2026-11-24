@@ -1,3 +1,4 @@
+import type { BondCue, BondStatus } from './summoner-bond.ts';
 import type { CohortCue, CohortStatus } from './summoner-cohort.ts';
 import type { PursuitCue, PursuitStatus } from './swordsman-pursuit.ts';
 import type { CounterstrokeCue, CounterstrokeStatus } from './swordsman-counterstroke.ts';
@@ -81,6 +82,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
   cohort?: CohortStatus;
+  bond?: BondStatus;
   counterUntil?: number;
   swordUntil?: number;
   swordCuts?: number;
@@ -162,6 +164,7 @@ export type KitCue =
   | CounterstrokeCue
   | PursuitCue
   | CohortCue
+  | BondCue
   | BardCue
   | ConductorCue
   | LamentCue

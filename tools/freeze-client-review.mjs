@@ -9,7 +9,7 @@ import {build} from 'esbuild';
 const [commit,audience,scope,clientPort,serverPort]=process.argv.slice(2);
 assert(/^[a-f0-9]{40}$/.test(commit??''));assert(['testing','public'].includes(audience));assert(/^reviews\/[a-z0-9-]+$/.test(scope??''));
 assert([clientPort,serverPort].every(p=>/^\d+$/.test(p)&&Number(p)>1024&&Number(p)<65536));
-const git=(...args)=>execFileSync('git',['-c','core.bare=false',...args],{maxBuffer:16*1024*1024}).toString().trim();
+const git=(...args)=>execFileSync('git',['-c','core.bare=false','--work-tree=.',...args],{maxBuffer:16*1024*1024}).toString().trim();
 assert.equal(git('rev-parse','HEAD'),commit);
 const walk=d=>fs.readdirSync(d).sort().flatMap(n=>{const f=d+'/'+n;assert(!fs.lstatSync(f).isSymbolicLink());return fs.statSync(f).isDirectory()?walk(f):[f];});
 const sha=b=>createHash('sha256').update(b).digest('hex');
