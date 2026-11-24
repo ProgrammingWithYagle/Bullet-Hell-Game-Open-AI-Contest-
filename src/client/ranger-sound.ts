@@ -2,6 +2,10 @@
 export const rangerSoundSpecs = {
   "ranger-draw": { duration: 0.13, frequency: 175, end: 140, noise: 0.08 },
   "ranger-release": { duration: 0.11, frequency: 260, end: 75, noise: 0.24 },
+  'ranger-sight-draw': { duration: 0.16, frequency: 138, end: 156, noise: 0.15 },
+  'ranger-sight-release': { duration: 0.15, frequency: 295, end: 86, noise: 0.33 },
+  'ranger-sight-adjust': { duration: 0.1, frequency: 189, end: 142, noise: 0.11 },
+  'ranger-sight-roll': { duration: 0.09, frequency: 100, end: 81, noise: 0.24 },
   "ranger-stakes": { duration: 0.12, frequency: 105, end: 60, noise: 0.5 },
   "ranger-trip": { duration: 0.13, frequency: 340, end: 110, noise: 0.34 },
   "ranger-survey": { duration: 0.2, frequency: 210, end: 270, noise: 0.07 },

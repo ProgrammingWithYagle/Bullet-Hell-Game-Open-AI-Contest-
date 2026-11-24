@@ -1252,7 +1252,7 @@ export class CombatScene extends Phaser.Scene {
         continue;
       }
       if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
-      if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'){drawRangerCue(h,cue,now,this.localId);continue;}
+      if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'||cue.kind==='ranger-sight'){drawRangerCue(h,cue,now,this.localId);continue;}
       if (cue.kind === 'summoner-formation') { drawFormationCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }
       if (cue.kind === 'summoner-bond') { drawBondCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }
       if (cue.kind === 'summoner-cohort') { drawCohortCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }

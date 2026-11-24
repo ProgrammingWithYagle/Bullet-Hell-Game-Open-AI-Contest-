@@ -7,6 +7,7 @@ import {
   type Rect,
 } from "./geometry.ts";
 import type { Vec } from "./protocol.ts";
+import { RangerSightDraw, rangerSightRules, type RangerSightFitting } from './ranger-sight.ts';
 
 export type RangerOwner = Vec & {
   id: string;
@@ -185,16 +186,19 @@ export function rangerTriplineContact(
 /** Combat-only bow commitments and finite prepared ground. Game owns real projectiles/credit. */
 export class RangerKit {
   private draws = new Map<string, Draw>();
+  private readonly sight = new RangerSightDraw();
   private traps = new Map<number, Trap>();
   private surveys = new Map<number, Survey>();
   private released: RangerCue[] = [];
   clear() {
+    this.sight.clear();
     this.draws.clear();
     this.traps.clear();
     this.surveys.clear();
     this.released = [];
   }
   removeOwner(owner: string) {
+    this.sight.cancel(owner);
     this.draws.delete(owner);
     for (const [id, t] of this.traps)
       if (t.owner === owner) this.traps.delete(id);
@@ -258,7 +262,7 @@ export class RangerKit {
     });
   }
   canPrimary(p: RangerOwner, c: RangerContext) {
-    return controlled(p, c) && c.tick >= p.dashUntil && !this.draws.has(p.id);
+    return controlled(p, c) && c.tick >= p.dashUntil && !this.draws.has(p.id) && !this.sight.active(p.id, c.tick);
   }
   canCast(
     p: RangerOwner,
@@ -280,7 +284,24 @@ export class RangerKit {
     if (slot === "ultimate") return this.surveyPoints(p, c, o).length > 0;
     return true;
   }
+  sightStatus(p: RangerOwner, c: RangerContext, fitting: RangerSightFitting | undefined, replenishing: boolean, hasArrow: boolean) {
+    return this.sight.status(p, c, fitting, replenishing || this.draws.has(p.id), hasArrow);
+  }
+  commandSight(p: RangerOwner, c: RangerContext, fitting: RangerSightFitting | undefined, replenishing: boolean,
+    hasArrow: boolean, canEmit: boolean, potency: number) {
+    const before = this.sight.drawTiming(p.id, c.tick);
+    const result = this.sight.command(p, c, fitting, replenishing || this.draws.has(p.id), hasArrow, canEmit, potency);
+    if (result === 'release' && before) {
+      this.released.push({ kind:'ranger-release', id:before.id, owner:p.id, x:p.x, y:p.y, x2:p.x, y2:p.y,
+        aim:p.aim, radius:rangerSightRules.range, at:before.at, until:c.tick + 6, remaining:0, active:true, training:false });
+    }
+    return result;
+  }
+  sightCues(c: RangerContext) {
+    return this.sight.cues(c);
+  }
   movement(owner: string, now: number) {
+    if (this.sight.active(owner, now)) return rangerSightRules.movement;
     const d = this.draws.get(owner);
     return d && now < d.at
       ? d.training
@@ -290,12 +311,13 @@ export class RangerKit {
   }
   status(owner: string, now: number, o = baseRangerOptions()) {
     const d = this.draws.get(owner);
+    const held = this.sight.drawTiming(owner, now);
     const points = [...this.surveys.values()].filter(
       (s) => s.owner === owner && now < s.until && s.remaining > 0,
     );
     return {
-      rangerDrawUntil: d?.at ?? 0,
-      rangerDrawId: d?.id ?? 0,
+      rangerDrawUntil: d?.at ?? held?.until ?? 0,
+      rangerDrawId: d?.id ?? held?.id ?? 0,
       rangerDrawMovement: this.movement(owner, now),
       rangerTraps: [...this.traps.values()].filter(
         (t) => t.owner === owner && now < t.until,
@@ -452,6 +474,7 @@ export class RangerKit {
       return;
     }
     if (c.paused) return;
+    this.sight.step(c);
     if (
       !this.draws.size &&
       !this.traps.size &&

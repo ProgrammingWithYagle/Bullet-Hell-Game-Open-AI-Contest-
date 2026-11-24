@@ -79,6 +79,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   technique1At?:number;technique2At?:number;trapCommandAt?:number;trapHeld?:boolean;
   builderRepairUntil?:number;builderRepairTarget?:number;builderGroups?:number;builderGroupCapacity?:number;
   alchemySamplesCapacity?:number;alchemyRecipe?:Recipe;alchemyCinder?:number;alchemyChalk?:number;alchemySap?:number;alchemyPrepared?:Recipe[];alchemyCapacity?:number;alchemyBrewUntil?:number;alchemyBrewRecipe?:string;alchemyBrewMovement?:number;alchemyBatchUntil?:number;alchemyBatchCharges?:number;
+  rangerSight?:import('./ranger-sight.ts').RangerSightStatus;
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;
@@ -147,6 +148,7 @@ export type Construct = {
   until: number;
 };
 export type KitCue =
+  | import('./ranger-sight.ts').RangerSightCue
   | FieldDressingCue | RapidResponseCue | PrecautionCue | PivotCue | WaymarkCue | FuseCue | CalledOpeningCue | CrossingWritCue
   | BastionCue
   | InterceptorScreenCue

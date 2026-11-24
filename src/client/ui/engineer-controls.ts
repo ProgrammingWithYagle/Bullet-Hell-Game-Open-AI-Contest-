@@ -12,10 +12,13 @@ import { profileText } from "../profile-text.ts";
 import { escape as e } from "./html.ts";
 
 type KitAction =
-  "q" | "e" | "ultimate" | "technique1" | "technique2" | "technique3" | "reload" | "fire" | "interact";
+  "q" | "e" | "ultimate" | "technique1" | "technique2" | "technique3" | "reload" | "fire" | "interact" | "dodge";
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  'ranger-sight-draw-1': ['technique1', 'reload'],
+  'ranger-rolling-nock-1': ['technique1', 'dodge'],
+  'ranger-change-bearing-1': ['technique1'],
   "summoner-cohort-drive-1": ["technique1", "fire", "q"],
   "summoner-cohort-cross-orders-1": ["technique1"],
   "summoner-cohort-relay-orders-1": ["technique1", "fire"],

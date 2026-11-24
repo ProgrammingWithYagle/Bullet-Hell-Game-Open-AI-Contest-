@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  'ranger-bowcraft-1': { x:500, y:75 },
+  'ranger-sight-draw-1': { x:500, y:255 },
+  'ranger-rolling-nock-1': { x:230, y:505 },
+  'ranger-change-bearing-1': { x:770, y:505 },
   "summoner-bonds-1": { x:500, y:75 },
   "summoner-cohort-drive-1": { x:500, y:255 },
   "summoner-cohort-cross-orders-1": { x:230, y:505 },

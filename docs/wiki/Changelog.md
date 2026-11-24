@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.23-summoner-formation**, protocol 101. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.24-ranger-marksman**, protocol 102. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-24 — Hold a Ranger Sight Draw
+
+### Ranger Marksman
+
+- Reserve one arrow and choose when to release it within the aim guides.
+- Rolling Nock keeps a drawn arrow through one dodge. Change Bearing lets the Ranger set a new aim arc once.
 
 ## 2026-11-23 — Set the retinue in formation
 

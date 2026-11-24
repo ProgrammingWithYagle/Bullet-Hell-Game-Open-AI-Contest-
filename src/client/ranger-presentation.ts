@@ -1,4 +1,7 @@
 import type { RangerCue } from "../shared/ranger-kit.ts";
+import type { RangerSightCue } from '../shared/ranger-sight.ts';
+
+type BowCue = RangerCue | RangerSightCue;
 import type { PlayerView, View } from "../shared/view.ts";
 import rules from "../shared/ranger-rules.json";
 import { hasTalent } from "../shared/class-talents.ts";
@@ -22,16 +25,20 @@ export function rangerAttackCue(p: PlayerView, view: View, now: number) {
     return undefined;
   return view.classCues
     .filter(
-      (c): c is RangerCue =>
+      (c): c is BowCue =>
         c.owner === p.id &&
-        (c.kind === "ranger-draw" || c.kind === "ranger-release") &&
+        (c.kind === "ranger-draw" || c.kind === "ranger-release" || c.kind === "ranger-sight") &&
         now < c.until,
     )
     .sort((a, b) => b.id - a.id)[0];
 }
-export function rangerAttackFrame(c: RangerCue, now: number, reduced = false) {
+export function rangerAttackFrame(c: BowCue, now: number, reduced = false) {
   if (c.kind === "ranger-release") return 3;
   if (reduced) return 2;
+  if (c.kind === 'ranger-sight') {
+    if (c.state === 'set') return 2;
+    return Math.min(2, Math.floor(Math.max(0, now - c.at) * 3 / Math.max(1, c.readyAt - c.at)));
+  }
   const duration = c.training ? rules.lineDrawTicks : rules.primaryDrawTicks;
   return Math.min(2, Math.floor((Math.max(0, now - c.at) * 3) / duration));
 }
@@ -42,7 +49,7 @@ export function rangerPredictedSpeed(p: PlayerView, now: number) {
   return (p.speed / scale) * (now < (p.kit.rangerDrawUntil ?? 0) ? scale : 1);
 }
 export function cancelPredictedRangerDraw(p: PlayerView) {
-  if (p.classId !== "ranger") return;
+  if (p.classId !== "ranger" || p.kit.rangerSight?.rollAvailable) return;
   p.speed /= p.kit.rangerDrawMovement ?? 1;
   p.kit = {
     ...p.kit,
@@ -60,7 +67,7 @@ export type RangerGraphics = {
 };
 export function drawRangerCue(
   g: RangerGraphics,
-  c: RangerCue,
+  c: BowCue,
   now: number,
   owner: string,
 ) {
@@ -68,6 +75,18 @@ export function drawRangerCue(
   const own = c.owner === owner,
     color = own ? 0xb6d2a7 : 0x829e99,
     alpha = own ? 0.8 : 0.3;
+  if (c.kind === 'ranger-sight') {
+    const reach = own ? 112 : 66;
+    const detailed = c.state === 'set' ? alpha : alpha * 0.5;
+    for (const offset of [-c.halfArc, c.halfArc]) {
+      const angle = c.aim + offset;
+      g.lineStyle(c.state === 'set' ? 2 : 1, color, detailed).lineBetween(
+        c.x + Math.cos(angle) * 21, c.y + Math.sin(angle) * 21,
+        c.x + Math.cos(angle) * reach, c.y + Math.sin(angle) * reach,
+      );
+    }
+    return;
+  }
   if (c.kind === "ranger-draw") {
     g.lineStyle(1, color, alpha * 0.45).lineBetween(
       c.x + Math.cos(c.aim) * 16,
