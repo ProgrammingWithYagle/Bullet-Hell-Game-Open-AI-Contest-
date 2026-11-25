@@ -8,7 +8,7 @@ import { hasTalent } from "../shared/class-talents.ts";
 export function rangerCommitBlocked(p: PlayerView, slot: string, now: number) {
   if (p.classId !== "ranger" || !["q", "e", "ultimate"].includes(slot))
     return false;
-  if (now < p.dashUntil || now < (p.kit.rangerDrawUntil ?? 0)) return true;
+  if (now < p.dashUntil || now < (p.kit.rangerDrawUntil ?? 0) || now < (p.kit.rangerField?.until ?? 0)) return true;
   if (slot === "q")
     return p.reloadAt > now || p.ammo < (hasTalent(p, "crosswind") ? 3 : 1);
   return (

@@ -1,3 +1,4 @@
+import fieldEdition from './fixtures/ranger-issued103-bindings.json';
 import trackerEdition from './fixtures/ranger-issued102-bindings.json';
 import rangerEdition from './fixtures/summoner-issued101-bindings.json';
 import formationEdition from './fixtures/summoner-issued100-bindings.json';
@@ -26,7 +27,7 @@ const issued = JSON.parse(raw);
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 
 test('issued 90 restores all 4,442 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 103);
+  assert.equal(PROTOCOL, 104);
   assert.equal(issued.protocol, 90);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -97,7 +98,7 @@ test('issued 90 preserves both HUD layouts, all three remaps and the full profil
 
 test('Infiltrator extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...trackerEdition.addedLocaleKeys, ...rangerEdition.addedLocaleKeys, ...formationEdition.addedLocaleKeys, ...bondEdition.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...fieldEdition.addedLocaleKeys, ...trackerEdition.addedLocaleKeys, ...rangerEdition.addedLocaleKeys, ...formationEdition.addedLocaleKeys, ...bondEdition.addedLocaleKeys, ...cohortEdition.addedLocaleKeys, ...pursuitEdition.addedLocaleKeys, ...replyEdition.addedLocaleKeys, ...measuredEdition.addedLocaleKeys, ...entranceEdition.addedLocaleKeys, ...lamentEdition.addedLocaleKeys, ...conductorEdition.addedLocaleKeys, ...hunterEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 25);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

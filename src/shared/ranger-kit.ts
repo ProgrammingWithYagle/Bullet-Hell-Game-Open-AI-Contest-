@@ -9,6 +9,7 @@ import {
 import type { Vec } from "./protocol.ts";
 import { RangerSightDraw, rangerSightRules, type RangerSightFitting } from './ranger-sight.ts';
 import { RangerTracker } from './ranger-tracker.ts';
+import { RangerFieldController, fieldRules, type FieldContext, type FieldFitting, type RangerCable } from './ranger-field.ts';
 
 export type RangerOwner = Vec & {
   id: string;
@@ -116,20 +117,7 @@ type Draw = {
   training: boolean;
   primary: boolean;
 };
-type Trap = {
-  id: number;
-  owner: string;
-  x: number;
-  y: number;
-  x2: number;
-  y2: number;
-  placedAt: number;
-  at: number;
-  until: number;
-  remaining: number;
-  damage: number;
-  touched: Set<string>;
-};
+type Trap = RangerCable;
 type Survey = {
   id: number;
   owner: string;
@@ -192,12 +180,14 @@ export class RangerKit {
   private draws = new Map<string, Draw>();
   private readonly sight = new RangerSightDraw();
   readonly tracker = new RangerTracker();
-  private traps = new Map<number, Trap>();
+  private readonly traps = new Map<number, Trap>();
+  private readonly field = new RangerFieldController(this.traps);
   private surveys = new Map<number, Survey>();
   private released: RangerCue[] = [];
   clear() {
     this.sight.clear();
     this.tracker.clear();
+    this.field.clear();
     this.draws.clear();
     this.traps.clear();
     this.surveys.clear();
@@ -206,6 +196,7 @@ export class RangerKit {
   removeOwner(owner: string) {
     this.sight.cancel(owner);
     this.tracker.cancel(owner);
+    this.field.drop(owner);
     this.draws.delete(owner);
     for (const [id, t] of this.traps)
       if (t.owner === owner) this.traps.delete(id);
@@ -244,8 +235,8 @@ export class RangerKit {
         return point;
     }
   }
-  private line(p: RangerOwner, c: RangerContext) {
-    const end = this.point(p, p.aim, rules.trapReach, c),
+  private line(p: RangerOwner, c: RangerContext, reach = rules.trapReach) {
+    const end = this.point(p, p.aim, reach, c),
       start = {
         x: p.x + Math.cos(p.aim) * rules.trapNear,
         y: p.y + Math.sin(p.aim) * rules.trapNear,
@@ -269,7 +260,7 @@ export class RangerKit {
     });
   }
   canPrimary(p: RangerOwner, c: RangerContext) {
-    return controlled(p, c) && c.tick >= p.dashUntil && !this.draws.has(p.id) && !this.sight.active(p.id, c.tick);
+    return controlled(p, c) && c.tick >= p.dashUntil && !this.draws.has(p.id) && !this.sight.active(p.id, c.tick) && !this.field.carries(p.id);
   }
   canCast(
     p: RangerOwner,
@@ -291,13 +282,27 @@ export class RangerKit {
     if (slot === "ultimate") return this.surveyPoints(p, c, o).length > 0;
     return true;
   }
+  private fieldContext(c: RangerContext): FieldContext {
+    return { tick:c.tick,combat:c.combat,paused:c.paused,owners:c.owners,
+      normalPlacement:(p,reach)=>this.line(p,c,reach),
+      validSegment:(from,to)=>this.legal(from,c) && this.legal(to,c) &&
+        !c.obstacles.some(wall=>segmentRect(from,to,wall,8)!==null) &&
+        !c.lava.some(pit=>segmentCircle(from,to,pit,pit.radius+8)!==null),
+      sound:c.sound };
+  }
+  fieldStatus(p:RangerOwner,c:RangerContext,fitting:FieldFitting | undefined,replenishing:boolean,hasArrow:boolean) {
+    return this.field.status(p,this.fieldContext(c),fitting,!replenishing && this.canPrimary(p,c),hasArrow);
+  }
+  commandField(p:RangerOwner,c:RangerContext,fitting:FieldFitting | undefined,replenishing:boolean,reserveArrow:()=>boolean) {
+    return this.field.command(p,this.fieldContext(c),fitting,!replenishing && this.canPrimary(p,c),reserveArrow);
+  }
   sightStatus(p: RangerOwner, c: RangerContext, fitting: RangerSightFitting | undefined, replenishing: boolean, hasArrow: boolean) {
-    return this.sight.status(p, c, fitting, replenishing || this.draws.has(p.id), hasArrow);
+    return this.sight.status(p, c, fitting, replenishing || this.draws.has(p.id) || this.field.carries(p.id), hasArrow);
   }
   commandSight(p: RangerOwner, c: RangerContext, fitting: RangerSightFitting | undefined, replenishing: boolean,
     hasArrow: boolean, canEmit: boolean, potency: number) {
     const before = this.sight.drawTiming(p.id, c.tick);
-    const result = this.sight.command(p, c, fitting, replenishing || this.draws.has(p.id), hasArrow, canEmit, potency);
+    const result = this.sight.command(p, c, fitting, replenishing || this.draws.has(p.id) || this.field.carries(p.id), hasArrow, canEmit, potency);
     if (result === 'release' && before) {
       this.released.push({ kind:'ranger-release', id:before.id, owner:p.id, x:p.x, y:p.y, x2:p.x, y2:p.y,
         aim:p.aim, radius:rangerSightRules.range, at:before.at, until:c.tick + 6, remaining:0, active:true, training:false });
@@ -308,6 +313,7 @@ export class RangerKit {
     return this.sight.cues(c);
   }
   movement(owner: string, now: number) {
+    if (this.field.carries(owner)) return fieldRules.movement;
     if (this.sight.active(owner, now)) return rangerSightRules.movement;
     const d = this.draws.get(owner);
     return d && now < d.at
@@ -487,6 +493,7 @@ export class RangerKit {
     }
     if (c.paused) return;
     this.sight.step(c);
+    if (this.field.hasWork) this.field.step(this.fieldContext(c));
     if (
       !this.draws.size &&
       !this.traps.size &&
@@ -548,7 +555,7 @@ export class RangerKit {
         this.traps.delete(id);
         continue;
       }
-      if (c.tick < t.at) continue;
+      if (this.field.lifted(t) || c.tick < t.at) continue;
       const p = owners.get(t.owner)!;
       for (const target of targets) {
         if (
@@ -612,7 +619,7 @@ export class RangerKit {
           : [];
       }),
       ...[...this.traps.values()]
-        .filter((t) => owners.has(t.owner))
+        .filter((t) => owners.has(t.owner) && !this.field.lifted(t))
         .map((t) => ({
           kind: "ranger-trap" as const,
           id: t.id,

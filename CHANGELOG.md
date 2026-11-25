@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.24-ranger-tracker**, protocol 103. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.24-ranger-field-controller**, protocol 104. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-24 — Move a Ranger Tripline
+
+### Ranger Field Controller
+
+- Lift your placed Tripline for one arrow and replant the same cable on a new legal line.
+- Pivot Stake holds one original end. Short Lash re-arms sooner with a shorter line.
 
 ## 2026-11-24 — Follow a Ranger arrow trail
 

@@ -80,7 +80,7 @@ import {alchemyCommitBlocked} from './alchemy-presentation.ts';
 import './ui/alchemy.css';
 import {RetinueControls} from './retinue-controls.ts';
 import {rangerCommitBlocked} from './ranger-presentation.ts';
-import { rangerActions, rangerSightLabel, rangerTrackerLabel } from './ranger-sight-actions.ts';
+import { rangerActions, rangerSightLabel, rangerTrackerLabel, rangerFieldLabel } from './ranger-sight-actions.ts';
 import './ui/home-gallery.css';
 import './ui/language-welcome.css';
 import './ui/game-viewport.css';
@@ -773,7 +773,7 @@ function update(view: View) {
       t('ability.' + cl.abilities[1].id + '.name'),
     ],
     ['ultimate', ultimateLabel, p.ultimateAt, t(redoubt?'skill.engineer-builder-redoubt-1.description':'ability.' + cl.ultimate.id + '.name')],
-    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicHudLabel(p,a.key,view.combatTick):p.classId==='mage'?(a.key==='technique3'?mageFuseLabel(p,view.combatTick):a.key==='technique2'?mageWaymarkLabel(p,view.combatTick):mageBindingLabel(p,view.combatTick)):p.classId==='assassin'?(a.key==='technique3'?assassinWritLabel(p,view.combatTick):a.key==='technique2'?assassinSlipLabel(p,view.combatTick):assassinDuelLabel(p,view.combatTick)):p.classId==='bard'?(a.key==='technique3'?bardMisdirectionLabel(p,view.combatTick):a.key==='technique2'?bardLamentLabel(p,view.combatTick):bardHudLabel(p,view.combatTick)):p.classId==='swordsman'?swordsmanHudLabel(p,view.combatTick,a.key):p.classId==='summoner'?(a.key==='technique3'?summonerFormationLabel(p):a.key==='technique2'?summonerBondLabel(p):summonerCohortLabel(p,view.combatTick)):p.classId==='ranger'?(a.key==='technique2'?rangerTrackerLabel(p):rangerSightLabel(p)):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
+    ...machineryActions.extras.map(a=>[a.key,(p.classId==='tank'?tankHudLabel(p,a.key,view.combatTick):p.classId==='soldier'?soldierHudLabel(p,a.key,view.combatTick):p.classId==='heavy'?heavyHudLabel(p,a.key,view.combatTick):p.classId==='medic'?medicHudLabel(p,a.key,view.combatTick):p.classId==='mage'?(a.key==='technique3'?mageFuseLabel(p,view.combatTick):a.key==='technique2'?mageWaymarkLabel(p,view.combatTick):mageBindingLabel(p,view.combatTick)):p.classId==='assassin'?(a.key==='technique3'?assassinWritLabel(p,view.combatTick):a.key==='technique2'?assassinSlipLabel(p,view.combatTick):assassinDuelLabel(p,view.combatTick)):p.classId==='bard'?(a.key==='technique3'?bardMisdirectionLabel(p,view.combatTick):a.key==='technique2'?bardLamentLabel(p,view.combatTick):bardHudLabel(p,view.combatTick)):p.classId==='swordsman'?swordsmanHudLabel(p,view.combatTick,a.key):p.classId==='summoner'?(a.key==='technique3'?summonerFormationLabel(p):a.key==='technique2'?summonerBondLabel(p):summonerCohortLabel(p,view.combatTick)):p.classId==='ranger'?(a.key==='technique3'?rangerFieldLabel(p):a.key==='technique2'?rangerTrackerLabel(p):rangerSightLabel(p)):t('skill.'+a.id+'.name')),a.at,t('skill.'+a.id+'.description')] as const),
   ] as const) {
     let e = abilityList.querySelector<HTMLElement>('[data-ability="' + key + '"]');
     if (!e) {

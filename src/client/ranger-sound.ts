@@ -8,6 +8,8 @@ export const rangerSoundSpecs = {
   'ranger-sight-roll': { duration: 0.09, frequency: 100, end: 81, noise: 0.24 },
   'ranger-track-read': { duration: 0.11, frequency: 114, end: 132, noise: 0.36 },
   'ranger-track-recover': { duration: 0.15, frequency: 241, end: 352, noise: 0.13 },
+  'ranger-cable-lift': { duration: 0.15, frequency: 101, end: 82, noise: 0.45 },
+  'ranger-cable-set': { duration: 0.17, frequency: 167, end: 109, noise: 0.27 },
   "ranger-stakes": { duration: 0.12, frequency: 105, end: 60, noise: 0.5 },
   "ranger-trip": { duration: 0.13, frequency: 340, end: 110, noise: 0.34 },
   "ranger-survey": { duration: 0.2, frequency: 210, end: 270, noise: 0.07 },
