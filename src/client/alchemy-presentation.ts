@@ -22,7 +22,9 @@ export function alchemyCommitBlocked(p: PlayerView, slot: string, now: number) {
   if (slot === 'e') return !p.kit.alchemyPrepared?.length;
   if (slot !== 'q') return false;
   const cost = rules.recipes[p.kit.alchemyRecipe ?? 'flare'].cost;
-  return (p.kit.alchemyPrepared?.length ?? 0) >= (p.kit.alchemyCapacity ?? 2) || (p.kit.alchemyCinder ?? 3) < cost.cinder || (p.kit.alchemyChalk ?? 3) < cost.chalk || (p.kit.alchemySap ?? 3) < cost.sap;
+  const held = p.kit.alchemyReserve?.held;
+  const occupied = (p.kit.alchemyPrepared?.length ?? 0) + Number(!!held && now < held.until);
+  return occupied >= (p.kit.alchemyCapacity ?? 2) || (p.kit.alchemyCinder ?? 3) < cost.cinder || (p.kit.alchemyChalk ?? 3) < cost.chalk || (p.kit.alchemySap ?? 3) < cost.sap;
 }
 /** A received speed already includes its brew penalty. Restore it after expiry/dodge once. */
 export function alchemyPredictedSpeed(p: PlayerView, now: number) {

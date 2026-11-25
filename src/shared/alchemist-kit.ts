@@ -1,6 +1,7 @@
 import rules from "./alchemy-rules.json";
 import { clamp, distance, segmentCircle, segmentRect, type Rect } from "./geometry.ts";
 import type { Vec } from "./protocol.ts";
+import { compoundRules, type AlchemyReserveStatus, type CompoundFitting } from "./alchemist-prepared.ts";
 import { reactiveRules, type AlchemyReactionStatus, type ReactiveFitting } from "./alchemist-reactive.ts";
 export const reagents = ["cinder", "chalk", "sap"] as const;
 export type Reagent = (typeof reagents)[number];
@@ -76,12 +77,14 @@ export type AlchemyCue = {
 };
 type Vial = { recipe: Recipe; potency: number; radiusBonus: number };
 type Brewing = { id: number; vial: Vial; at: number; until: number };
+type Reserve = { vial: Vial; fitting: CompoundFitting; readyAt: number; until: number };
 type Stock = {
   selectAt: number;
   selected: Recipe;
   stock: Record<Reagent, number>;
   vials: Vial[];
   brewing?: Brewing;
+  reserve?: Reserve;
   primaryAt: number;
   recoverAt: number;
   recoveryCursor: number;
@@ -304,6 +307,40 @@ export class AlchemistKit {
           !c.obstacles.some((w) => segmentRect(p, point, w, 8)),
       );
   }
+  private held(s: Stock | undefined, tick: number) {
+    return s?.reserve && s.reserve.until > tick ? s.reserve : undefined;
+  }
+  private release(s: Stock, reserve: Reserve) {
+    s.vials.unshift(reserve.vial);
+    s.reserve = undefined;
+  }
+  private openLatch(s: Stock, recipe: Recipe, fitting: 'brew' | 'toss', tick: number) {
+    const reserve = this.held(s, tick);
+    if (reserve?.fitting === fitting && reserve.vial.recipe !== recipe) this.release(s, reserve);
+  }
+  reserveStatus(p: AlchemyOwner, c: AlchemyContext, fitting: CompoundFitting): AlchemyReserveStatus {
+    const s = this.stocks.get(p.id), reserve = this.held(s, c.tick);
+    const held = reserve && { recipe: reserve.vial.recipe, readyAt: reserve.readyAt, until: reserve.until };
+    if (!this.canPrimary(p, c)) return { fitting, stage: 'busy', held };
+    if (!reserve) return { fitting, stage: s?.vials.length ? 'stow' : 'empty' };
+    if (reserve.fitting !== 'standard') return { fitting, stage: reserve.fitting, held };
+    return { fitting, stage: c.tick < reserve.readyAt ? 'latched' : 'return', held };
+  }
+  reserve(p: AlchemyOwner, c: AlchemyContext, fitting: CompoundFitting) {
+    if (!this.canPrimary(p, c)) return false;
+    const s = this.stocks.get(p.id);
+    if (!s) return false;
+    const held = this.held(s, c.tick);
+    if (held) {
+      if (held.fitting !== 'standard' || c.tick < held.readyAt) return false;
+      this.release(s, held);
+      return true;
+    }
+    const vial = s.vials.shift();
+    if (!vial) return false;
+    s.reserve = { vial, fitting, readyAt:c.tick + compoundRules.settleTicks, until:c.tick + compoundRules.holdingTicks };
+    return true;
+  }
   private hasFlightRoom(owner: string, count: number) {
     return count > 0 && this.flights.filter(f => f.owner === owner).length + count <= rules.maximumOwnerFlights;
   }
@@ -358,7 +395,7 @@ export class AlchemistKit {
         ? rules.maximumPreparedCapacity
         : rules.preparedCapacity;
       return (
-        s.vials.length < capacity &&
+        s.vials.length + Number(!!this.held(s, c.tick)) < capacity &&
         reagents.every((r) => s.stock[r] >= rules.recipes[s.selected].cost[r])
       );
     }
@@ -409,7 +446,8 @@ export class AlchemistKit {
       return true;
     }
     s.reactionUsed = false;
-    this.launchFlask(p, s, this.points(p, c, o), c, o);
+    const recipe = this.launchFlask(p, s, this.points(p, c, o), c, o);
+    this.openLatch(s, recipe, 'toss', c.tick);
     return true;
   }
   private launchFlask(p: AlchemyOwner, s: Stock, points: readonly Vec[], c: AlchemyContext, o: AlchemyOptions,
@@ -444,6 +482,7 @@ export class AlchemistKit {
         reaction,
       });
     c.sound("alchemy-throw", p);
+    return vial.recipe;
   }
   private land(p: AlchemyOwner, f: Flight, c: AlchemyContext) {
     if (!this.legal(f.point, c) || f.reaction && c.obstacles.some(w => segmentRect(f.from, f.point, w, 8) !== null)) return;
@@ -536,11 +575,14 @@ export class AlchemistKit {
       if (!owners.has(owner)) this.removeOwner(owner);
     for (const p of owners.values()) {
       const s = this.stock(p.id, c.tick);
+      if (s.reserve && !this.held(s, c.tick)) s.reserve = undefined;
       if (s.brewing) {
         if (c.tick < p.dashUntil) s.brewing = undefined;
         else if (c.tick >= s.brewing.until) {
-          s.vials.push(s.brewing.vial);
+          const vial = s.brewing.vial;
+          s.vials.push(vial);
           s.brewing = undefined;
+          this.openLatch(s, vial.recipe, 'brew', c.tick);
           c.sound("alchemy-ready", p);
         }
       }

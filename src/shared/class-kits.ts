@@ -83,6 +83,7 @@ export type KitStatus = Partial<InterceptorStatus> & Partial<BastionStatus> & Pa
   rangerTracker?:import('./ranger-tracker.ts').TrackerStatus;
   rangerField?:import('./ranger-field.ts').RangerFieldStatus;
   alchemyReaction?:import('./alchemist-reactive.ts').AlchemyReactionStatus;
+  alchemyReserve?:import('./alchemist-prepared.ts').AlchemyReserveStatus;
   rangerDrawUntil?:number;rangerDrawId?:number;rangerDrawMovement?:number;rangerTraps?:number;rangerTrapCapacity?:number;rangerSurveyCharges?:number;rangerSurveyUntil?:number;rangerQuiverCapacity?:number;
   retinueHoldX?:number;retinueHoldY?:number;retinueMarkKey?:string;
   retinueCount?:number;retinuePermanent?:number;retinueCapacity?:number;retinueOrder?:RetinueOrder;retinueMarkUntil?:number;retinueGatherUntil?:number;retinueUltimateUntil?:number;

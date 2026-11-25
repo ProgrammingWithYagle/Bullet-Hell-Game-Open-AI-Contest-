@@ -1,4 +1,5 @@
-import { applyAlchemistReactive, authoredDate as reactionAuthoredDate } from '../content/source/alchemist-reactive.mjs';
+import { applyAlchemistPrepared, authoredDate as preparedAuthoredDate } from '../content/source/alchemist-prepared.mjs';
+import { applyAlchemistReactive } from '../content/source/alchemist-reactive.mjs';
 import { applyRangerField } from '../content/source/ranger-field.mjs';
 import { applyRangerTracker } from '../content/source/ranger-tracker.mjs';
 import { applyRangerSight } from '../content/source/ranger-sight.mjs';
@@ -356,6 +357,7 @@ applyRangerSight(manifest);
 applyRangerTracker(manifest);
 applyRangerField(manifest);
 applyAlchemistReactive(manifest);
+applyAlchemistPrepared(manifest);
 for(const [key,value] of Object.entries(manifest)) json('content/'+key+'.json',value);
 json('content/catalog.json',manifest);
 write('docs/balance/skills.csv',csv(['id','class','branch','subbranch','name','depth','cost','grade','prerequisite','capstone','effects'],skills.map(s=>[s.id,s.classId,s.branchName,s.subbranchName,s.name,s.depth,s.cost,s.grade,s.prerequisite??'',s.capstone,JSON.stringify(s.effects)])));
@@ -557,5 +559,5 @@ if(!fs.existsSync(path.join(root,'docs/ACCEPTANCE.md')))write('docs/ACCEPTANCE.m
   ['Delivery','Windows + public URL + GitHub release + Wiki + Project + ruleset','Pending'],
 ])+'\n');
 const fingerprint=crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
-json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:reactionAuthoredDate});
+json('content/revision.json',{version:rules.contentVersion,sha256:fingerprint,authoredDate:preparedAuthoredDate});
 console.log(JSON.stringify({classes:classes.length,skills:skills.length,weapons:weapons.length,bosses:bosses.length,mutations:mutations.length,arenas:arenas.length,locales:locales.length,revision:fingerprint}));

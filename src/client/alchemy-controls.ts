@@ -37,6 +37,10 @@ export class AlchemyControls {
     const ready = !this.root.hidden && !blocked && !view.matchPaused && view.phase === 'combat' && p?.status === 'active';
     const queue = (p?.kit.alchemyPrepared ?? []).map(recipe => this.t('ui.alchemy.' + recipe)).join(' → ') || this.t('ui.alchemyEmpty');
     this.summary.textContent = this.t('ui.alchemyStock', {cinder: this.format(p?.kit.alchemyCinder ?? 3), chalk: this.format(p?.kit.alchemyChalk ?? 3), sap: this.format(p?.kit.alchemySap ?? 3)}) + ' · ' + this.t('ui.alchemyQueue', {queue, capacity: this.format(p?.kit.alchemyCapacity ?? 2)}) + ((p?.kit.alchemyBatchUntil??0)>view.combatTick?' · '+this.t('ui.alchemyBatch',{count:this.format(p?.kit.alchemyBatchCharges??0)}):'');
+    const reserve = p?.kit.alchemyReserve?.held;
+    if (reserve && reserve.until > view.combatTick) this.summary.textContent += ' · ' + this.t('ui.alchemyReserve.held', {
+      recipe:this.t('ui.alchemy.' + reserve.recipe), seconds:this.format(Math.ceil((reserve.until - view.combatTick) / 30)),
+    });
     this.summary.title = this.t('ui.alchemyCycleHint', {binding});
     for (const [recipe, button] of this.buttons) {
       button.disabled = !ready || recipe === this.selected;

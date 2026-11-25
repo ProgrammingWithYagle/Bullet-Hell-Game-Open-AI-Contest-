@@ -1,3 +1,4 @@
+import { compoundFitting, preparedIds } from '../shared/alchemist-prepared.ts';
 import { reactiveFitting, reactiveIds } from '../shared/alchemist-reactive.ts';
 import type { PlayerView } from '../shared/view.ts';
 import { t } from './i18n.ts';
@@ -18,4 +19,20 @@ export function alchemyReactiveActions(player: PlayerView) {
 export function alchemyReactionLabel(player: PlayerView) {
   const state = player.kit.alchemyReaction;
   return t(state && state.stage !== 'ready' ? 'ui.alchemyReaction.' + state.stage : 'skill.' + reactiveIds.entry + '.name');
+}
+
+export function alchemyActions(player: PlayerView) {
+  const reactive = alchemyReactiveActions(player);
+  if (player.classId !== 'alchemist' || player.training || !player.skills.includes(preparedIds.entry)) return reactive;
+  const fitting = compoundFitting(player.skills), state = player.kit.alchemyReserve;
+  return { ...reactive, extras:[...reactive.extras,{
+    key:'technique2' as const,
+    id:fitting === 'standard' ? preparedIds.entry : preparedIds[fitting],
+    blocked:state?.stage !== 'stow' && state?.stage !== 'return',
+    at:state?.stage === 'latched' ? state.held?.readyAt ?? 0 : 0,
+  }] };
+}
+
+export function alchemyReserveLabel(player: PlayerView) {
+  return t('ui.alchemyReserve.' + (player.kit.alchemyReserve?.stage ?? 'empty'));
 }

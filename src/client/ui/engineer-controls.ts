@@ -16,6 +16,9 @@ type KitAction =
 // These are affected inputs, not an inference from a technique's visual frame.
 // Breach Casings also works when a placed charge triggers without remote input.
 const controlsByTechnique: Record<string, readonly KitAction[]> = {
+  'alchemist-stow-flask-1': ['technique2', 'q', 'e'],
+  'alchemist-brew-latch-1': ['technique2', 'q'],
+  'alchemist-throw-latch-1': ['technique2', 'e'],
   'alchemist-flash-reaction-1': ['technique1', 'q', 'e'],
   'alchemist-short-wick-1': ['technique1'],
   'alchemist-vent-cap-1': ['technique1'],

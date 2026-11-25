@@ -11,6 +11,10 @@ export type SpecializationMap = {
 };
 // Authored positions belong to real techniques; no proposed family becomes an empty card.
 const positions: Record<string, Point> = {
+  'alchemist-reagents-1': { x:500, y:75 },
+  'alchemist-stow-flask-1': { x:500, y:255 },
+  'alchemist-brew-latch-1': { x:230, y:505 },
+  'alchemist-throw-latch-1': { x:770, y:505 },
   'alchemist-mixtures-1': { x:500, y:75 },
   'alchemist-flash-reaction-1': { x:500, y:255 },
   'alchemist-short-wick-1': { x:230, y:505 },

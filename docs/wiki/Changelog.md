@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.24-alchemist-reactive-mixtures**, protocol 105. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.24-alchemist-prepared-compounds**, protocol 106. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-24 — Seal a prepared flask for a second opening
+
+### Alchemist Prepared Compounds
+
+- Use Action 2 to stow your first prepared flask in a real rack slot. Return it before its seven-second window ends.
+- Brew Latch opens on completion of a different recipe. Throw Latch opens when Cast Flask launches a different recipe.
 
 ## 2026-11-24 — Advance a prepared Alchemist throw
 

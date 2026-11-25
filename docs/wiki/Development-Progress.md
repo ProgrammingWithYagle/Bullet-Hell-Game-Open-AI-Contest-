@@ -1,6 +1,6 @@
 # Development progress
 
-Updated 2026-11-24 for **2026.11.24-alchemist-reactive-mixtures**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
+Updated 2026-11-24 for **2026.11.24-alchemist-prepared-compounds**. These counts track specific requested passes; they do not imply that earlier playable content is absent. The game is still in development.
 
 66 playable identities: 65 ordinary and 1 secret. Three ordinary bosses in every one of fifty subtiers requires 150 ordinary identities, plus secrets; 85 additional ordinary bosses remain.
 
@@ -9,7 +9,7 @@ Updated 2026-11-24 for **2026.11.24-alchemist-reactive-mixtures**. These counts 
 | New ordinary bosses | 65 / 150 | 85 new identities | 0 unintegrated art-only concepts; Early Watch and Small Wakes integrations are implemented |
 | Existing-boss phase / mobility / Brutal quality passes | 18 / 60 | 42 | Eighteen original encounter quality passes are implemented; 42 remain. Lamplighter has reachable bankable shadows, distinct watches, complete later warnings, swept refuge-union exposure and fifteen-language lore/help. Source grade/health/deadline remain. Whole-boss human acceptance remains0; rendered/device/language and final balance review stay open. |
 | Ability-changing class-upgrade revamps | 12 / 12 | 0 | Three ability-changing upgrades per class (36 total) execute under shared authority. Alchemist adds Split Pour, Settled Batch and Second Extraction with finite stock, real landings and useful-effect refunds. Fifteen-language help is drafted. Rendered/device/native-language/listening/human/final balance review remains open. |
-| Classes with at least three developed specialization routes | 11 / 12 | 1 | Eleven classes have at least three implemented specialization routes. The Alchemist opens Reactive Mixtures with Flash Reaction, Short Wick and Vent Cap. Prepared Compounds and Restorative Practice are next. Human play, rendered presentation, devices, listening, native-language review and final balance remain open. |
+| Classes with at least three developed specialization routes | 11 / 12 | 1 | Eleven classes have at least three implemented specialization routes. The Alchemist has Reactive Mixtures and Prepared Compounds. Restorative Practice and whole-Alchemist trials follow. Human play, rendered presentation, devices, listening, native-language review and final balance remain open. |
 | Optional large branching skill-tree view | 1 / 1 | 0 | All twelve issued54-node General maps remain. General now uses a field-manual workbook with a shared-technique subtab, reading view and35%–200%zoom. Engineer has a separate dynamic three-route specialization tree, closer route views and20%–200%zoom. Rendered/human/device/native-language review remains open. |
 | Secondary-map topology revamps | 5 / 5 | 0 | Five distinct secondary layouts installed. Four spacious maps now have compact real geometry; Ossuary/Crown routes retain their size. Difficulty cover/lava, movement and prediction remain shared. Human 5185 feedback motivated the compact pass; its rendered/human/device comparison remains open. |
 | Map ground-art deliveries | 6 / 6 | 0 | Six ground deliveries installed. Limited Normal/Constable readability feedback is positive. |
