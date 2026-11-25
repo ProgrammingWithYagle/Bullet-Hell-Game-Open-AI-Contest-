@@ -176,3 +176,5 @@ The Ranger Marksman build is the verified rollback. [Ranger Marksman](RANGER_MAR
 The Ranger Tracker build is the verified rollback. [Ranger Tracker](RANGER_TRACKER.md).
 
 Ranger Field Controller is available on both verified previews. The whole-Ranger trials are next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Field Controller](RANGER_FIELD_CONTROLLER.md).
+
+The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact replays, 40 Practice continuations and 6 controlled cases. Alchemist Reactive Mixtures is next. [Ranger run review](RANGER_RUN_REVIEW.md).

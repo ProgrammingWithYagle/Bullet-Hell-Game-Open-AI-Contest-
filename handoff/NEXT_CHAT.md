@@ -10,7 +10,7 @@ Source **d572d5ec38c8c40b3d1eef53754e17c43f049930**, build **2026.11.24-ranger-f
 
 Protocol 103 Ranger Tracker is the verified rollback in `output/review-rollback.zip`. All 4,457 restored files matched the archive. Archive SHA-256 `f09ebae1de15f4958b76b3e5b0b68f267cb4b135dd05b8ffb868764db43e6de4`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-ranger-field-controller-2026-11-24/retention-result.json).
 
-The whole-Ranger trials are next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Field Controller](../docs/RANGER_FIELD_CONTROLLER.md).
+The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact replays, 40 Practice continuations and 6 controlled cases. Alchemist Reactive Mixtures is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger run review](../docs/RANGER_RUN_REVIEW.md) · [Ranger Field Controller](../docs/RANGER_FIELD_CONTROLLER.md).
 
 ## Historical protocol 103 Ranger Tracker review
 

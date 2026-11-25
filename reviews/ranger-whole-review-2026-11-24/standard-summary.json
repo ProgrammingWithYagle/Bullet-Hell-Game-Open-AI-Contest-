@@ -1,0 +1,1043 @@
+{
+  "passed": true,
+  "scratchOnly": false,
+  "routed": true,
+  "effectsObserved": true,
+  "profile": "standard",
+  "source": "d572d5ec38c8c40b3d1eef53754e17c43f049930",
+  "matches": 96,
+  "pairedComparisons": 48,
+  "exactReplays": 12,
+  "sourceBytes": {
+    "runtime": "302ef941d38262234838cb5d03ea3abdb3b5164dbda24f82a008db8c697519de",
+    "catalogue": "0bb3f810e7267ddf040b14d3a3a9ccffada6fc9947f529cf706fa7350df1865a",
+    "content": "0bb3f810e7267ddf040b14d3a3a9ccffada6fc9947f529cf706fa7350df1865a",
+    "policy": [
+      {
+        "path": "./navigation-policy.mjs",
+        "sha256": "2b99d13c04b750f87c4b25509da2b9352715961b0a820ee0fea1e42d8010df56"
+      },
+      {
+        "path": "./whole-policy.mjs",
+        "sha256": "699c3c68f2c0d55b98bb861e5b78ae540fc6f5e3919dba4ab7248f3b56434cf4"
+      },
+      {
+        "path": "../ranger-marksman/sight-policy.mjs",
+        "sha256": "6906939aa0b4df1d7d5b9f5678b5208fb2c3bb6b02cef2f4742cfb5297f7ca18"
+      },
+      {
+        "path": "../ranger-tracker/tracker-policy.mjs",
+        "sha256": "b9bffa3c90d316c22601cfc252418030a1e10aa0d20321f94a934cb18603f99a"
+      },
+      {
+        "path": "../summoner-whole/situational-input.mjs",
+        "sha256": "2be23735a086467843c4f49df844a716fe8b61533f39617f7873787ce00c158e"
+      },
+      {
+        "path": "../formation/formation-policy.mjs",
+        "sha256": "5f4e933d574c06495dbfc37db627d60c622fff7181949fa8acf15f18dd766e52"
+      }
+    ]
+  },
+  "outcomes": [
+    {
+      "party": "solo",
+      "replayed": [
+        "gatehouse,roll,stakes,pivot,unused",
+        "gatehouse,roll,stakes,pivot,active",
+        "sunken-chapel,roll,backtrack,pivot,unused",
+        "sunken-chapel,roll,backtrack,pivot,active",
+        "ossuary-works,bearing,stakes,pivot,unused",
+        "ossuary-works,bearing,stakes,pivot,active"
+      ],
+      "practice": [
+        {
+          "key": "gatehouse,roll,stakes,pivot,active",
+          "boundary": {
+            "digest": "a0eaef5da6f216d685d75a9645e982f536a91960914e385051566d639072428d",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-rolling-nock-1",
+              "ranger-trail-stakes-1",
+              "ranger-pivot-stake-1"
+            ],
+            "ammo": 12
+          },
+          "continuation": "bcf067ae55915cdf61705235dbb2c94105370ccf56e465067b44fdf0998fa23d",
+          "clears": 8,
+          "won": false
+        },
+        {
+          "key": "gatehouse,roll,stakes,short,active",
+          "boundary": {
+            "digest": "1aa1ab4150416878862c951723ecd6312eb52532f00852bb8009d0cb0827bed8",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trail-stakes-1",
+              "ranger-short-lash-1",
+              "ranger-rolling-nock-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "0b9287ce1e1585bd618b9e4d5bbc16679e6651378b737850d6aa7b7b95004810",
+          "clears": 9,
+          "won": false
+        },
+        {
+          "key": "gatehouse,roll,backtrack,pivot,active",
+          "boundary": {
+            "digest": "65a1196b2dcc3e372ac8de3f53e2a0e81c01011d4ede0e6a2cd3225769600f08",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-pivot-stake-1",
+              "ranger-rolling-nock-1",
+              "ranger-backtrack-1"
+            ],
+            "ammo": 16
+          },
+          "continuation": "96be9a574330028e6799ee5871110df83d1cb022ec4a8e086d4e4664f86e973f",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "gatehouse,roll,backtrack,short,active",
+          "boundary": {
+            "digest": "e00d9b263afd8c844167818b5bcf3d8519825181180e0bea1a0a6193fd5a4728",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-rolling-nock-1",
+              "ranger-backtrack-1",
+              "ranger-short-lash-1"
+            ],
+            "ammo": 12
+          },
+          "continuation": "ccdb32cbe2e7676b5868817990797e566e3103ee54446eb99970389c96a54f6b",
+          "clears": 7,
+          "won": false
+        },
+        {
+          "key": "gatehouse,bearing,stakes,pivot,active",
+          "boundary": {
+            "digest": "543b1366d0b68be56f619231c327550e8814426e5444bf7f42d689f666814bca",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trail-stakes-1",
+              "ranger-pivot-stake-1",
+              "ranger-change-bearing-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "939359124ba44aaf2b8b2d3c3267a5997be44c264e591132693796a76431d322",
+          "clears": 9,
+          "won": false
+        },
+        {
+          "key": "gatehouse,bearing,stakes,short,active",
+          "boundary": {
+            "digest": "5117c844575662f9295fafa33c81780b33d8988e15c8769df69ec07907fb125a",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-short-lash-1",
+              "ranger-change-bearing-1",
+              "ranger-trail-stakes-1"
+            ],
+            "ammo": 16
+          },
+          "continuation": "e7e0c2e1f919bd4dcdbf28c542a5e1c953d45f2c0392944d40667f020479e0d2",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "gatehouse,bearing,backtrack,pivot,active",
+          "boundary": {
+            "digest": "68d540648cb64a0ae1e782352f07db5361f0a1ee31df84a6cc01a431447ed75a",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-change-bearing-1",
+              "ranger-backtrack-1",
+              "ranger-pivot-stake-1"
+            ],
+            "ammo": 12
+          },
+          "continuation": "c65c3bae781f6a49172233199e0906de951b8d2aef36fb46754e5721505a38b3",
+          "clears": 8,
+          "won": false
+        },
+        {
+          "key": "gatehouse,bearing,backtrack,short,active",
+          "boundary": {
+            "digest": "2c25bd181560b5c502cfcf898f992c19e59f3580ef68cac9ad818f169dcd052d",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-backtrack-1",
+              "ranger-short-lash-1",
+              "ranger-change-bearing-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "89a230a5b25d93fbdca91ef50260eaec16ced158aae1063342bdfae06376a30d",
+          "clears": 9,
+          "won": false
+        },
+        {
+          "key": "sunken-chapel,roll,stakes,pivot,active",
+          "boundary": {
+            "digest": "7e4a4033c59fb529660238e1ff845e01c4a6c9deaf2501802b94eebc228c2946",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trail-stakes-1",
+              "ranger-pivot-stake-1",
+              "ranger-rolling-nock-1"
+            ],
+            "ammo": 18
+          },
+          "continuation": "60b4935fe3c01f0f22efee00bb762aaa54fbc44a59aa86f266503d6ab9392dcf",
+          "clears": 5,
+          "won": false
+        },
+        {
+          "key": "sunken-chapel,roll,stakes,short,active",
+          "boundary": {
+            "digest": "908a0ecde1f08b4c55db4f1772ed7254405a39724a3b3bd7b264218fac70425a",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-short-lash-1",
+              "ranger-rolling-nock-1",
+              "ranger-trail-stakes-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "f2dd66ca451fa2c1d87aa9db73ac336817c495c3e5c0d8c3054b91387e7c42d8",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "sunken-chapel,roll,backtrack,pivot,active",
+          "boundary": {
+            "digest": "3a29730dacec2907a2d1bee12765e6a6df82ae591f7e7d8bb7e62eabb769dafc",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-rolling-nock-1",
+              "ranger-backtrack-1",
+              "ranger-pivot-stake-1"
+            ],
+            "ammo": 12
+          },
+          "continuation": "da8b2b512125314e07621d332dbba0749bd1bb2ede73129bac89e8f03ff0f09c",
+          "clears": 9,
+          "won": false
+        },
+        {
+          "key": "sunken-chapel,roll,backtrack,short,active",
+          "boundary": {
+            "digest": "a92204bd2614927e6731a81761d145b52aaa76e0513e44718a6de443fa30de00",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-backtrack-1",
+              "ranger-short-lash-1",
+              "ranger-rolling-nock-1"
+            ],
+            "ammo": 14
+          },
+          "continuation": "5b9c3aa7ae9d85b99746a867a5da91dfd95e5e7d6e796137cf2e625851137f09",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "sunken-chapel,bearing,stakes,pivot,active",
+          "boundary": {
+            "digest": "8dc33d22b19ecf3cfbec37f73fc44f15258953804e9cda86474bb7793ee11dd6",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-pivot-stake-1",
+              "ranger-change-bearing-1",
+              "ranger-trail-stakes-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "a82d1d492562818e3b3e8dc4fc28c77235b99a0df078b85b3c8f9ec135325674",
+          "clears": 9,
+          "won": false
+        },
+        {
+          "key": "sunken-chapel,bearing,stakes,short,active",
+          "boundary": {
+            "digest": "96ed7f6c92b75b0f890759cd76ca34aaa03199e694d06e441951863944fe4a00",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-change-bearing-1",
+              "ranger-trail-stakes-1",
+              "ranger-short-lash-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "5368dd2cb07d4e6d1ce698ad003db012c5aa49a0083cff3f07dbe9e0cf5a0dee",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "sunken-chapel,bearing,backtrack,pivot,active",
+          "boundary": {
+            "digest": "c183e0e0bd02658791142713d3a5f260a84c1cfcbafa23ec769e1dca66222bec",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-backtrack-1",
+              "ranger-pivot-stake-1",
+              "ranger-change-bearing-1"
+            ],
+            "ammo": 14
+          },
+          "continuation": "b6b5114e9c99a6ad59a2d5e0200038213efa3e17efb6eb88b7e67f8f8a613979",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "sunken-chapel,bearing,backtrack,short,active",
+          "boundary": {
+            "digest": "d458fa6f427c7b8d29a748377a6d666e228d31eca5ed50190c2c0b26a8a989ab",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-short-lash-1",
+              "ranger-change-bearing-1",
+              "ranger-backtrack-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "73d2db558334bc1eb0e8b2634716c74dd65427e5cbba3121a22ce1b255676292",
+          "clears": 10,
+          "won": true
+        },
+        {
+          "key": "ossuary-works,roll,backtrack,pivot,active",
+          "boundary": {
+            "digest": "687767a24f248ddf16bfbbfcce43ccf77ce58af88f78efdade40abccf316a77b",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-backtrack-1",
+              "ranger-pivot-stake-1",
+              "ranger-rolling-nock-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "8b73d50715fb1081e50112393e537ba344e59e02e4ccf21786f89741c64d1858",
+          "clears": 9,
+          "won": false
+        },
+        {
+          "key": "ossuary-works,bearing,stakes,short,active",
+          "boundary": {
+            "digest": "ae2a4415a935b2e5150184ea5bc628dc20ac14fd662690532d1a4ab20a3d5a77",
+            "earned": 16,
+            "clears": 5,
+            "skills": [
+              "ranger-trailkeeping-1",
+              "ranger-read-the-sign-1",
+              "ranger-fieldcraft-1",
+              "ranger-re-stake-1",
+              "ranger-bowcraft-1",
+              "ranger-sight-draw-1",
+              "ranger-trail-stakes-1",
+              "ranger-short-lash-1",
+              "ranger-change-bearing-1"
+            ],
+            "ammo": 13
+          },
+          "continuation": "57c3cb3044150ec99ab9f656ff6a0dece709def3c04999b582015c9b31caa367",
+          "clears": 7,
+          "won": false
+        }
+      ],
+      "summaries": [
+        {
+          "party": "solo",
+          "arena": "gatehouse",
+          "active": false,
+          "runs": 8,
+          "wins": 2,
+          "clears": [
+            8,
+            9,
+            10,
+            8,
+            9,
+            10,
+            8,
+            9
+          ],
+          "fitted": 8,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 0,
+          "movedContacts": 0,
+          "eventCounts": {}
+        },
+        {
+          "party": "solo",
+          "arena": "sunken-chapel",
+          "active": false,
+          "runs": 8,
+          "wins": 3,
+          "clears": [
+            7,
+            10,
+            2,
+            7,
+            10,
+            2,
+            7,
+            10
+          ],
+          "fitted": 6,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 0,
+          "movedContacts": 0,
+          "eventCounts": {}
+        },
+        {
+          "party": "solo",
+          "arena": "ossuary-works",
+          "active": false,
+          "runs": 8,
+          "wins": 3,
+          "clears": [
+            2,
+            10,
+            7,
+            2,
+            10,
+            7,
+            2,
+            10
+          ],
+          "fitted": 5,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 0,
+          "movedContacts": 0,
+          "eventCounts": {}
+        },
+        {
+          "party": "solo",
+          "arena": "gatehouse",
+          "active": true,
+          "runs": 8,
+          "wins": 2,
+          "clears": [
+            8,
+            9,
+            10,
+            7,
+            9,
+            10,
+            8,
+            9
+          ],
+          "fitted": 8,
+          "usedAll": 7,
+          "usedAllFitted": 7,
+          "sightHits": 298,
+          "movedContacts": 20,
+          "eventCounts": {
+            "ranger-sight-draw": 324,
+            "ranger-sight-release": 299,
+            "ranger-track-read": 270,
+            "ranger-track-recover": 211,
+            "ranger-sight-roll": 50,
+            "ranger-cable-lift": 26,
+            "ranger-cable-set": 23,
+            "ranger-sight-adjust": 128
+          }
+        },
+        {
+          "party": "solo",
+          "arena": "sunken-chapel",
+          "active": true,
+          "runs": 8,
+          "wins": 5,
+          "clears": [
+            5,
+            10,
+            9,
+            10,
+            9,
+            10,
+            10,
+            10
+          ],
+          "fitted": 8,
+          "usedAll": 5,
+          "usedAllFitted": 4,
+          "sightHits": 441,
+          "movedContacts": 10,
+          "eventCounts": {
+            "ranger-track-read": 386,
+            "ranger-track-recover": 247,
+            "ranger-sight-draw": 461,
+            "ranger-sight-release": 441,
+            "ranger-sight-roll": 108,
+            "ranger-cable-lift": 17,
+            "ranger-cable-set": 10,
+            "ranger-sight-adjust": 195
+          }
+        },
+        {
+          "party": "solo",
+          "arena": "ossuary-works",
+          "active": true,
+          "runs": 8,
+          "wins": 0,
+          "clears": [
+            2,
+            2,
+            9,
+            2,
+            2,
+            7,
+            2,
+            2
+          ],
+          "fitted": 2,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 89,
+          "movedContacts": 0,
+          "eventCounts": {
+            "ranger-sight-draw": 97,
+            "ranger-sight-release": 92,
+            "ranger-cable-lift": 3,
+            "ranger-cable-set": 3,
+            "ranger-track-read": 59,
+            "ranger-track-recover": 51,
+            "ranger-sight-roll": 29,
+            "ranger-sight-adjust": 10
+          }
+        }
+      ]
+    },
+    {
+      "party": "pair",
+      "replayed": [
+        "gatehouse,roll,stakes,pivot,unused",
+        "gatehouse,roll,stakes,pivot,active",
+        "sunken-chapel,roll,backtrack,pivot,unused",
+        "sunken-chapel,roll,backtrack,pivot,active",
+        "ossuary-works,bearing,stakes,pivot,unused",
+        "ossuary-works,bearing,stakes,pivot,active"
+      ],
+      "practice": [],
+      "summaries": [
+        {
+          "party": "pair",
+          "arena": "gatehouse",
+          "active": false,
+          "runs": 8,
+          "wins": 5,
+          "clears": [
+            10,
+            2,
+            10,
+            10,
+            2,
+            10,
+            10,
+            2
+          ],
+          "fitted": 5,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 0,
+          "movedContacts": 0,
+          "eventCounts": {}
+        },
+        {
+          "party": "pair",
+          "arena": "sunken-chapel",
+          "active": false,
+          "runs": 8,
+          "wins": 8,
+          "clears": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          "fitted": 8,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 0,
+          "movedContacts": 0,
+          "eventCounts": {}
+        },
+        {
+          "party": "pair",
+          "arena": "ossuary-works",
+          "active": false,
+          "runs": 8,
+          "wins": 6,
+          "clears": [
+            10,
+            10,
+            9,
+            10,
+            10,
+            9,
+            10,
+            10
+          ],
+          "fitted": 8,
+          "usedAll": 0,
+          "usedAllFitted": 0,
+          "sightHits": 0,
+          "movedContacts": 0,
+          "eventCounts": {}
+        },
+        {
+          "party": "pair",
+          "arena": "gatehouse",
+          "active": true,
+          "runs": 8,
+          "wins": 6,
+          "clears": [
+            7,
+            10,
+            10,
+            10,
+            10,
+            9,
+            10,
+            10
+          ],
+          "fitted": 8,
+          "usedAll": 8,
+          "usedAllFitted": 6,
+          "sightHits": 295,
+          "movedContacts": 25,
+          "eventCounts": {
+            "ranger-sight-draw": 318,
+            "ranger-sight-release": 295,
+            "ranger-track-read": 267,
+            "ranger-track-recover": 211,
+            "ranger-sight-roll": 57,
+            "ranger-cable-lift": 32,
+            "ranger-cable-set": 29,
+            "ranger-sight-adjust": 121
+          }
+        },
+        {
+          "party": "pair",
+          "arena": "sunken-chapel",
+          "active": true,
+          "runs": 8,
+          "wins": 6,
+          "clears": [
+            10,
+            10,
+            8,
+            8,
+            10,
+            10,
+            10,
+            10
+          ],
+          "fitted": 8,
+          "usedAll": 5,
+          "usedAllFitted": 2,
+          "sightHits": 291,
+          "movedContacts": 4,
+          "eventCounts": {
+            "ranger-track-read": 246,
+            "ranger-track-recover": 186,
+            "ranger-sight-draw": 299,
+            "ranger-sight-release": 291,
+            "ranger-sight-roll": 74,
+            "ranger-cable-lift": 10,
+            "ranger-cable-set": 6,
+            "ranger-sight-adjust": 131
+          }
+        },
+        {
+          "party": "pair",
+          "arena": "ossuary-works",
+          "active": true,
+          "runs": 8,
+          "wins": 5,
+          "clears": [
+            10,
+            10,
+            10,
+            9,
+            9,
+            10,
+            10,
+            7
+          ],
+          "fitted": 8,
+          "usedAll": 2,
+          "usedAllFitted": 2,
+          "sightHits": 293,
+          "movedContacts": 2,
+          "eventCounts": {
+            "ranger-sight-draw": 306,
+            "ranger-sight-release": 293,
+            "ranger-track-read": 197,
+            "ranger-track-recover": 176,
+            "ranger-sight-roll": 98,
+            "ranger-sight-adjust": 106,
+            "ranger-cable-lift": 2,
+            "ranger-cable-set": 2
+          }
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "solo-all",
+      "raw": "solo-all.json",
+      "rawSha256": "cbef3f763c3b39aaeb176199e64f5b23687907d864e7ee2cae5fabeb3b97813e",
+      "log": "solo-all.log",
+      "logSha256": "f74597bd69d0521928f0b2b1bdeff675f6ba02c0a5d7a547b4c0b5f1419ea094"
+    },
+    {
+      "name": "solo-replay-0",
+      "raw": "solo-replay-0.json",
+      "rawSha256": "be6129a888b9810b8a319079215d09e04cc9eb6e55fc1b2e3b3dcb57aa103ec7",
+      "log": "solo-replay-0.log",
+      "logSha256": "ca0900eed0673890a151669940646fadc49f508468c94322b62cfe924ce7589f"
+    },
+    {
+      "name": "solo-replay-1",
+      "raw": "solo-replay-1.json",
+      "rawSha256": "c2d430c03da5c0523fdf2291fce5a84939ff75062fc5b7f30851f9cbf1c0f32d",
+      "log": "solo-replay-1.log",
+      "logSha256": "e0cf7c71d8f3eacf5b12177e13e847bc54324721fe83ddcec0b329ee68a94cce"
+    },
+    {
+      "name": "solo-replay-2",
+      "raw": "solo-replay-2.json",
+      "rawSha256": "7ce87501266a9c64dc659c516033377205de1762535cf44364a7bbe0da9a6eed",
+      "log": "solo-replay-2.log",
+      "logSha256": "28b516417092bf4b62d7fa947fc1a29cd2d4ad6bb1939a9265911fe5d6e92f5c"
+    },
+    {
+      "name": "solo-replay-3",
+      "raw": "solo-replay-3.json",
+      "rawSha256": "fee45568e9d7bc963aa142fd51a9b7c6aafe68b9ae31ab41b3d4f1384bd52f05",
+      "log": "solo-replay-3.log",
+      "logSha256": "2afffefc858524dd553dd3e379ac9b4ff6a3beefd4be685e96042499ffed0607"
+    },
+    {
+      "name": "solo-replay-4",
+      "raw": "solo-replay-4.json",
+      "rawSha256": "98bab4113f3d88b58e86d8f576dea715d353cc1fa1a64c905754a679c9e4b7c8",
+      "log": "solo-replay-4.log",
+      "logSha256": "832c4c30dab6b48754b716cf956b14b736e197c36f657f63f4b354b43c5415ac"
+    },
+    {
+      "name": "solo-replay-5",
+      "raw": "solo-replay-5.json",
+      "rawSha256": "8041c558547730bd8da93df189db93a3fe797d4e2a52fb87fd98322760817922",
+      "log": "solo-replay-5.log",
+      "logSha256": "b6c17fb8867ab97f92c92d29615bfd37e05530c9802cc82362c52a5d9d456668"
+    },
+    {
+      "name": "solo-practice-0",
+      "raw": "solo-practice-0.json",
+      "rawSha256": "c2d430c03da5c0523fdf2291fce5a84939ff75062fc5b7f30851f9cbf1c0f32d",
+      "log": "solo-practice-0.log",
+      "logSha256": "e0cf7c71d8f3eacf5b12177e13e847bc54324721fe83ddcec0b329ee68a94cce"
+    },
+    {
+      "name": "solo-practice-1",
+      "raw": "solo-practice-1.json",
+      "rawSha256": "ddb45c4c8bc5c171d1c43f1993c2bb1219ccdef7927886892051a8d9ca9b8786",
+      "log": "solo-practice-1.log",
+      "logSha256": "ec53ccaef89eebc7bf9b62ab8742bf2461c46ccfdf1e4185c6d6a70f9d0f94ae"
+    },
+    {
+      "name": "solo-practice-2",
+      "raw": "solo-practice-2.json",
+      "rawSha256": "0dea536b4662730a4147748bcca78cc943b21f6c0bed0fbfd17f1fdc90536083",
+      "log": "solo-practice-2.log",
+      "logSha256": "d62cb37f158b37428ce1889b79762cbf8af26036883956a424dccd6479a64fa8"
+    },
+    {
+      "name": "solo-practice-3",
+      "raw": "solo-practice-3.json",
+      "rawSha256": "0457a048b77d5d784bbcb73c7e438c1be3c0913ba489feaa2a1d48448d58caaa",
+      "log": "solo-practice-3.log",
+      "logSha256": "da3a4256af4404ad486277d6619fed170373ca2bee28dacc59fd3604d138cdbf"
+    },
+    {
+      "name": "solo-practice-4",
+      "raw": "solo-practice-4.json",
+      "rawSha256": "50d4b82a4ce91fa74d4e1817ac7bed6cf895b506d57d97538931fbfa53c14e85",
+      "log": "solo-practice-4.log",
+      "logSha256": "6c8bf3eccf6945ad51f96e81525e0289a2cb009f257b7c35770764a119f05d55"
+    },
+    {
+      "name": "solo-practice-5",
+      "raw": "solo-practice-5.json",
+      "rawSha256": "9ab6d69d768de0744055eb1d556738ca948ea6dd5fcef5105ddf493767c0f3d5",
+      "log": "solo-practice-5.log",
+      "logSha256": "bb91757e1e562c2cfdf3117948b5bc0c3552bbc1a6d5b24bb404314f32b8015e"
+    },
+    {
+      "name": "solo-practice-6",
+      "raw": "solo-practice-6.json",
+      "rawSha256": "3d6cce8957af77503164522cb0533550bd4cf4d4c4bc22757684fda00c43ca60",
+      "log": "solo-practice-6.log",
+      "logSha256": "80b0746b1cc5c2d7e87b5b7cce42461e25a1292468b7747d80903636b9aac274"
+    },
+    {
+      "name": "solo-practice-7",
+      "raw": "solo-practice-7.json",
+      "rawSha256": "5f4e911b855f061d34d2da562bd5ec5cdcc2e82023d870af57a46235dd67fdb3",
+      "log": "solo-practice-7.log",
+      "logSha256": "577a049614b3958305385654f9694c576a20bd0af96ae17816d051c523f751c5"
+    },
+    {
+      "name": "solo-practice-8",
+      "raw": "solo-practice-8.json",
+      "rawSha256": "c3624343e08072e463dfb27f089dd02963b5027f9b65e1f05b7759faeae02237",
+      "log": "solo-practice-8.log",
+      "logSha256": "4eb4474928d0513b5d4b77de67e9c5212465e6ec113e4ff5e07964d7613d305f"
+    },
+    {
+      "name": "pair-all",
+      "raw": "pair-all.json",
+      "rawSha256": "3ccb8a60accce4a294d8532e5dba6befae1912df7e5044944c1efc2600fe984e",
+      "log": "pair-all.log",
+      "logSha256": "eb64cfa12445fc68c3d80a6c81811ab418e633244456e47d573d51a92a2ed1b4"
+    },
+    {
+      "name": "pair-replay-0",
+      "raw": "pair-replay-0.json",
+      "rawSha256": "c378d13c4add04cb617a8abca0e90725dd9c9b42e520bc19036cc43f1d1bb3c4",
+      "log": "pair-replay-0.log",
+      "logSha256": "29ea000cb59ace9adaa7702e417bb5c7f90f2098a2d52d1e5e58782f53d20c25"
+    },
+    {
+      "name": "solo-practice-9",
+      "raw": "solo-practice-9.json",
+      "rawSha256": "fd3a6509614fa2e96aa9aa4c8d7f1399d4d9fde51b5334e1295845ba71b5e8f9",
+      "log": "solo-practice-9.log",
+      "logSha256": "2e33efa05c9e91d16cb12da255449eb5efdd9392920a7a5bcda9db94e7c6e7bd"
+    },
+    {
+      "name": "pair-replay-1",
+      "raw": "pair-replay-1.json",
+      "rawSha256": "56dc4af72781b35a36d557d23206614433ae67a8df74d328238cab9630b2db9f",
+      "log": "pair-replay-1.log",
+      "logSha256": "d912ea633fb13b3fa0ee10ce6adcba904c8da6d90592c9a41c08eae6c237c964"
+    },
+    {
+      "name": "solo-practice-10",
+      "raw": "solo-practice-10.json",
+      "rawSha256": "fee45568e9d7bc963aa142fd51a9b7c6aafe68b9ae31ab41b3d4f1384bd52f05",
+      "log": "solo-practice-10.log",
+      "logSha256": "2afffefc858524dd553dd3e379ac9b4ff6a3beefd4be685e96042499ffed0607"
+    },
+    {
+      "name": "pair-replay-2",
+      "raw": "pair-replay-2.json",
+      "rawSha256": "a1cfbd6dd7ddfda4630b3e96a2aac22228bba8921f15dfde06702028c7a29ec7",
+      "log": "pair-replay-2.log",
+      "logSha256": "da5e7cd9789c3d7cee6a7961d9e7978c0db8d5254e3c14ebf1bb52993607527d"
+    },
+    {
+      "name": "solo-practice-11",
+      "raw": "solo-practice-11.json",
+      "rawSha256": "b030a7f0e60d7dcd3a485087d250f32e42638fe38f6d3f56530c9a65b8e8bd2a",
+      "log": "solo-practice-11.log",
+      "logSha256": "475717170970d4195cafb4bcdbfff476af78d23325c2bc563d165cd9112f6b6f"
+    },
+    {
+      "name": "pair-replay-3",
+      "raw": "pair-replay-3.json",
+      "rawSha256": "14f3d335a13efac589906f011f0e87db0378be32e6e74a7573de03759da91590",
+      "log": "pair-replay-3.log",
+      "logSha256": "fa4d00af8774f8ad21a054bd29e5ca5d87a532dc78dee75f6848cf0b12b216cb"
+    },
+    {
+      "name": "pair-replay-4",
+      "raw": "pair-replay-4.json",
+      "rawSha256": "5cd2c19e7bdfddfd6a2c2c8381693f54d8504935a3f6aa3655b718c43cc67dc6",
+      "log": "pair-replay-4.log",
+      "logSha256": "832c4c30dab6b48754b716cf956b14b736e197c36f657f63f4b354b43c5415ac"
+    },
+    {
+      "name": "solo-practice-12",
+      "raw": "solo-practice-12.json",
+      "rawSha256": "ed377975ec61ac646208825293b01f3c5ca4781ef092877d1546105c65f5a05d",
+      "log": "solo-practice-12.log",
+      "logSha256": "567d745916da6128f32a6758cd75991e90b9e63511ae9582e9fe04f35a3e7f10"
+    },
+    {
+      "name": "pair-replay-5",
+      "raw": "pair-replay-5.json",
+      "rawSha256": "675a6d420dba251a1b2460fa0e42d8f10478bd6a2b887484996ab66579d49a0f",
+      "log": "pair-replay-5.log",
+      "logSha256": "b0216c72bca12f4aec69e1c26a68b05fdc6672ba755346b96e1d92533e7b46fb"
+    },
+    {
+      "name": "solo-practice-13",
+      "raw": "solo-practice-13.json",
+      "rawSha256": "194418b18801202093770c628886d1de8cfa07d71fb2b79a7b2095154135dc26",
+      "log": "solo-practice-13.log",
+      "logSha256": "b63e7f535cae46f681c859e46b80208938e4c7036523d702b1698e2b26151d26"
+    },
+    {
+      "name": "solo-practice-14",
+      "raw": "solo-practice-14.json",
+      "rawSha256": "4f34dca16ce7c10ee07b4e7cd72e3b846393a49e65f3ba3438923a62b307ee2d",
+      "log": "solo-practice-14.log",
+      "logSha256": "033a33b2550c370a4cfa34c6a6b0541327f4b94a5172f4bf9075f9942d39a552"
+    },
+    {
+      "name": "solo-practice-15",
+      "raw": "solo-practice-15.json",
+      "rawSha256": "551fbafb4bf9fb46b42c493a41ad27e240f06547561f55834db3d91161ff7d23",
+      "log": "solo-practice-15.log",
+      "logSha256": "0cda626adc892d11af255737a0ee79bda5166fdaa138e8dcff6e216fe35dd3a8"
+    },
+    {
+      "name": "solo-practice-16",
+      "raw": "solo-practice-16.json",
+      "rawSha256": "45d78c0f29dd5eba7a64c0fb6970f39b31191e46bff9d79378dc15d26177ba8c",
+      "log": "solo-practice-16.log",
+      "logSha256": "5d28f4747d4310d0b79593460d17f4d48e2be39a8d8073312831e292f59d7be7"
+    },
+    {
+      "name": "solo-practice-17",
+      "raw": "solo-practice-17.json",
+      "rawSha256": "19ba3ebff520500e494b4bbbd29c060d9f496d499aebe5d4fb78cb2c9ccda95d",
+      "log": "solo-practice-17.log",
+      "logSha256": "522efc04d9efcac0481920d77ef1e92e36ba55d9b19e3aee9346207cba7e56d2"
+    }
+  ]
+}
