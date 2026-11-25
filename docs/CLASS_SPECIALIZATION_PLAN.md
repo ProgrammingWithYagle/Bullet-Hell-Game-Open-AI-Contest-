@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **863954bee46f8f9d40f50ac58e5ba8bbcc99283f** has 146 techniques. Ranger Tracker adds Read the Sign and two fittings. [Ranger Tracker](RANGER_TRACKER.md).
+Current verified source **d572d5ec38c8c40b3d1eef53754e17c43f049930** has 149 techniques. Ranger Field Controller adds Re-stake and two fittings. [Ranger Field Controller](RANGER_FIELD_CONTROLLER.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -173,4 +173,6 @@ The Formation Keeper build is the verified rollback. [Summoner run review](SUMMO
 
 The Ranger Marksman build is the verified rollback. [Ranger Marksman](RANGER_MARKSMAN.md).
 
-Ranger Tracker is available on both verified previews. Ranger Field Controller is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Tracker](RANGER_TRACKER.md).
+The Ranger Tracker build is the verified rollback. [Ranger Tracker](RANGER_TRACKER.md).
+
+Ranger Field Controller is available on both verified previews. The whole-Ranger trials are next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Field Controller](RANGER_FIELD_CONTROLLER.md).

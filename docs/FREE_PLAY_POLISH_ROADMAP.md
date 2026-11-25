@@ -145,4 +145,6 @@ The Formation Keeper build is the verified rollback. [Summoner run review](SUMMO
 
 The Ranger Marksman build is the verified rollback. [Ranger Marksman](RANGER_MARKSMAN.md).
 
-Ranger Tracker is available on both verified previews. Ranger Field Controller is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Tracker](RANGER_TRACKER.md).
+The Ranger Tracker build is the verified rollback. [Ranger Tracker](RANGER_TRACKER.md).
+
+Ranger Field Controller is available on both verified previews. The whole-Ranger trials are next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Field Controller](RANGER_FIELD_CONTROLLER.md).

@@ -4,13 +4,21 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Current exact protocol 103 Ranger Tracker review
+## Current exact protocol 104 Ranger Field Controller review
+
+Source **d572d5ec38c8c40b3d1eef53754e17c43f049930**, build **2026.11.24-ranger-field-controller**, protocol **104**, catalog **149**. The local gate and both GitHub workflows passed 3,003 tests and seven checks. Each frozen audience verified 2,230 files and passed seven checks. Testing uses [5452](http://127.0.0.1:5452/) with backend 2828. Public-audience review uses [5453](http://127.0.0.1:5453/) with backend 2829. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45517103420) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45517126663) · [Frozen checks](../reviews/ranger-field-controller-2026-11-24/frozen-verification.json).
+
+Protocol 103 Ranger Tracker is the verified rollback in `output/review-rollback.zip`. All 4,457 restored files matched the archive. Archive SHA-256 `f09ebae1de15f4958b76b3e5b0b68f267cb4b135dd05b8ffb868764db43e6de4`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-ranger-field-controller-2026-11-24/retention-result.json).
+
+The whole-Ranger trials are next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Field Controller](../docs/RANGER_FIELD_CONTROLLER.md).
+
+## Historical protocol 103 Ranger Tracker review
 
 Source **863954bee46f8f9d40f50ac58e5ba8bbcc99283f**, build **2026.11.24-ranger-tracker**, protocol **103**, catalog **146**. The local gate and both GitHub workflows passed 2,988 tests and seven checks. Each frozen audience verified 2,227 files and passed seven checks. Testing uses [5450](http://127.0.0.1:5450/) with backend 2826. Public-audience review uses [5451](http://127.0.0.1:5451/) with backend 2827. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45471158840) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45471191246) · [Frozen checks](../reviews/ranger-tracker-2026-11-24/frozen-verification.json).
 
 Protocol 102 Ranger Marksman is the verified rollback in `output/review-rollback.zip`. All 4,451 restored files matched the archive. Archive SHA-256 `b08933461f3e70e35f6ab26096ecd58cd66262c9035e91c0f66f50d30a917ab2`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-ranger-tracker-2026-11-24/retention-result.json).
 
-Ranger Field Controller is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger Tracker](../docs/RANGER_TRACKER.md).
+The protocol 103 preview pair now serves as the verified rollback. [Ranger Tracker](../docs/RANGER_TRACKER.md).
 
 ## Historical protocol 102 Ranger Marksman review
 
