@@ -4,13 +4,21 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Current exact protocol 104 Ranger Field Controller review
+## Current exact protocol 105 Alchemist Reactive Mixtures review
+
+Source **61fe200deb40e4881239c58fb39e63ae73e69d6f**, build **2026.11.24-alchemist-reactive-mixtures**, protocol **105**, catalog **152**. The local gate and both exact GitHub workflows passed 3,023 tests and seven checks. Each frozen audience verified 2,233 files and passed seven checks. Testing uses [5454](http://127.0.0.1:5454/) with backend 2830. Public-audience review uses [5455](http://127.0.0.1:5455/) with backend 2831. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45530242056) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45530263747) · [Frozen checks](../reviews/alchemist-reactive-2026-11-24/frozen-verification.json).
+
+Protocol 104 Ranger Field Controller is the verified rollback in `output/review-rollback.zip`. All 4,463 restored files matched the archive. Archive SHA-256 `a2dd9ec42e617c95fde9a52fc1dcb01642e630d307d7c51b674d55149eedd287`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-alchemist-reactive-2026-11-24/retention-result.json).
+
+Prepared Compounds follows Reactive Mixtures. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Reactive Mixtures](../docs/ALCHEMIST_REACTIVE_MIXTURES.md).
+
+## Historical protocol 104 Ranger Field Controller review
 
 Source **d572d5ec38c8c40b3d1eef53754e17c43f049930**, build **2026.11.24-ranger-field-controller**, protocol **104**, catalog **149**. The local gate and both GitHub workflows passed 3,003 tests and seven checks. Each frozen audience verified 2,230 files and passed seven checks. Testing uses [5452](http://127.0.0.1:5452/) with backend 2828. Public-audience review uses [5453](http://127.0.0.1:5453/) with backend 2829. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45517103420) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45517126663) · [Frozen checks](../reviews/ranger-field-controller-2026-11-24/frozen-verification.json).
 
 Protocol 103 Ranger Tracker is the verified rollback in `output/review-rollback.zip`. All 4,457 restored files matched the archive. Archive SHA-256 `f09ebae1de15f4958b76b3e5b0b68f267cb4b135dd05b8ffb868764db43e6de4`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-ranger-field-controller-2026-11-24/retention-result.json).
 
-The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact replays, 40 Practice continuations and 6 controlled cases. Alchemist Reactive Mixtures is next. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Ranger run review](../docs/RANGER_RUN_REVIEW.md) · [Ranger Field Controller](../docs/RANGER_FIELD_CONTROLLER.md).
+The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact replays, 40 Practice continuations and 6 controlled cases. The protocol 104 pair now serves as the verified rollback. [Ranger run review](../docs/RANGER_RUN_REVIEW.md) · [Ranger Field Controller](../docs/RANGER_FIELD_CONTROLLER.md).
 
 ## Historical protocol 103 Ranger Tracker review
 
