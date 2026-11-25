@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.24-ranger-field-controller**, protocol 104. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.24-alchemist-reactive-mixtures**, protocol 105. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-24 — Advance a prepared Alchemist throw
+
+### Alchemist Reactive Mixtures
+
+- Spend a prepared Flare and one extra chalk to reach an owned Binding early, advancing one throw and paying its full recovery.
+- Short Wick lands sooner at close range. Vent Cap keeps the selected Binding and gives up the combination burst.
 
 ## 2026-11-24 — Move a Ranger Tripline
 

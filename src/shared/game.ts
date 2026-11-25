@@ -30,6 +30,7 @@ import {motionAt,type MotionWindow}from'./motion-window.ts';
 import {SoldierSkirmisher,type SkirmisherContext} from './soldier-skirmisher.ts';
 import {AlchemistKit,type AlchemyContext,type AlchemyOptions,type AlchemyArea} from './alchemist-kit.ts';
 import alchemyRules from './alchemy-rules.json';
+import { reactiveFitting, reactiveIds, type ReactiveFitting } from './alchemist-reactive.ts';
 import {RangerKit, type RangerContext, type RangerOptions, type RangerTarget} from './ranger-kit.ts';
 import { rangerSightFitting, rangerSightIds } from './ranger-sight.ts';
 import { rangerTrackerFitting, rangerTrackerIds, type TrackerWorld, type TrackArrow } from './ranger-tracker.ts';
@@ -330,7 +331,7 @@ export class Game {
   readonly sniper = new SoldierSniper();
   readonly grenadier = new SoldierGrenadier();
   readonly marksman = new SoldierMarksman();
-  kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.assassinWritStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine,...this.rangerSightStatus(this.players.get(id)!),...this.rangerTrackerStatus(this.players.get(id)!),...this.rangerFieldStatus(this.players.get(id)!)}:{}),...this.bardStatus(id),...this.swordsmanStatus(id),...this.summonerStatus(id)};}
+  kitStatus(id:string){return {...this.medicStatus(id),...this.magePivotStatus(id),...this.mageSpatialStatus(id),...this.mageFuseStatus(id),...this.assassinDuelStatus(id),...this.assassinSlipStatus(id),...this.assassinWritStatus(id),...this.bastionStatus(this.players.get(id)),...this.classKits.status(id,this.combatTick),...(this.players.get(id)?.classId==='tank'?this.interceptor.ownerStatus(this.players.get(id)!,{tick:this.combatTick,playerRadius:rule.playerRadius,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits},this.classKits.tankWallCarried(id,this.combatTick),this.phase==='combat'):{}),...(this.players.get(id)?.classId==='tank'?this.classKits.bulwarkStatus(this.players.get(id)!,{tick:this.combatTick,bounds:this.arena.bounds,obstacles:this.obstacles,lavaPits:this.arena.lavaPits}):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(lineworkIds.entry)?this.lineworkStatus(this.players.get(id)!):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(traverseIds.entry)?this.traverse.status(this.players.get(id)!,this.combatTick):{}),...(this.players.get(id)?.classId==='heavy'&&this.players.get(id)?.skills.includes(flakIds.entry)?this.flak.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.classId==='soldier'?{...this.skirmisher.status(id),...(this.players.get(id)?.skills.includes(sniperId)?this.sniper.status(this.players.get(id),this.combatTick):{}),...(this.players.get(id)?.skills.includes(grenadierIds.entry)?this.grenadier.status(this.players.get(id),this.grenadierContext()):{}),...(this.players.get(id)?.skills.includes(marksmanId)?this.marksman.status(this.players.get(id),this.combatTick):{}),soldierMagazineCapacity:this.stats(this.players.get(id)!).magazine}:{}),...(this.players.get(id)?.classId==='alchemist'?{...this.alchemy.status(id,this.combatTick,this.alchemyOptions(this.players.get(id)!)),alchemySamplesCapacity:this.stats(this.players.get(id)!).magazine,...this.alchemyReactionStatus(this.players.get(id)!)}:{}),...(this.players.get(id)?.classId==='ranger'?{...this.ranger.status(id,this.combatTick,this.rangerOptions(this.players.get(id)!)),rangerQuiverCapacity:this.stats(this.players.get(id)!).magazine,...this.rangerSightStatus(this.players.get(id)!),...this.rangerTrackerStatus(this.players.get(id)!),...this.rangerFieldStatus(this.players.get(id)!)}:{}),...this.bardStatus(id),...this.swordsmanStatus(id),...this.summonerStatus(id)};}
   readonly transforms = new AbilityTransforms();
   classCues(){return [...(this.phase==='combat'?this.fieldSurgery.cues(this.combatTick):[]),...(this.phase==='combat'?this.rapidResponse.cues(this.combatTick):[]),...(this.phase==='combat'?this.preventiveCare.cues({players:this.players,tick:this.combatTick}):[]),...(this.phase==='combat'?[...this.pivotSigil.cues(),...this.waymarkReturn.cues(),...this.fuseSeal.cues(),...this.calledOpening.cues(),...(this.crossingWrit.active?this.crossingWrit.cues(this.crossingWritWorld()):[])]:[]),...(this.phase==='combat'?this.bastion.cues(this.combatTick):[]),...this.interceptor.cues(this.roster(),this.combatTick,this.phase==='combat'),...this.flak.cues(),...this.sniper.cues(this.roster()),...this.grenadier.cues(this.roster()),...this.marksman.cues(),...this.skirmisher.cues(this.roster()),...this.classKits.cues(),...this.transforms.cues(),...this.bard.cues(),...this.bard.conductorCues(),...this.bard.lament.cues(),...this.bard.misdirection.cues(),...this.sword.cues(this.roster(),this.combatTick),...(this.phase==='combat'?[...this.sword.measured.cues(this.combatTick),...this.sword.counterstroke.cues(this.players,this.combatTick),...this.sword.pursuit.cues(this.players,this.combatTick)]:[]),...(this.phase==='combat'?[...this.retinue.cohortCues(this.combatTick),...this.retinue.bondCues(this.combatTick,this.players),...this.retinue.formationCues(this.combatTick)]:[]),...this.ranger.cues(this.rangerContext()),...this.ranger.sightCues(this.rangerContext()),...this.alchemy.cues(this.alchemyContext())];}
   private aimTargets(wardsOnly=true){const real=this.roster().filter(p=>p.status==='active'&&!this.classKits.untargetable(p.id,this.combatTick));return [...real,...this.classKits.decoyTargets(this.roster(),this.combatTick),...this.retinueTargets(wardsOnly)];}
@@ -1786,6 +1787,9 @@ export class Game {
       this.commandRangerTracker(p, i);
       if (this.commandRangerField(p, i)) i = { ...i, fire:false };
     }
+    if (p.classId === 'alchemist' && i.technique1 && p.skills.includes(reactiveIds.entry) &&
+        !i.technique2 && !i.technique3 && !i.q && !i.e && !i.ultimate && !i.dodge && !i.sprint && !i.reload && i.supply < 0 &&
+        this.ability(p, 'e', undefined, reactiveFitting(p.skills))) i = { ...i, fire:false };
     this.interceptor.afterMove(p,interceptorWorld);
     if (tankWorld && i.technique1) {
       const command = this.classKits.commandTankWall(p, tankWorld);
@@ -2318,11 +2322,17 @@ export class Game {
       y: p.y,
     });
   }
-  private ability(p: Player, slot: 'q' | 'e' | 'ultimate', alchemyPoint?: {x:number;y:number}) {
+  private ability(p: Player, slot: 'q' | 'e' | 'ultimate', alchemyPoint?: {x:number;y:number}, reaction?: ReactiveFitting) {
     const cl = data.classes.find((c) => c.id === p.classId)!,
       a = slot === 'ultimate' ? cl.ultimate : cl.abilities[slot === 'q' ? 0 : 1],
       s = this.stats(p),
       now = this.combatTick;
+    const flaskPenalty = p.classId==='alchemist' && hasTalent(p,'second-extraction') ? alchemyRules.extractionCooldownPenalty : 0;
+    if (reaction && p.classId === 'alchemist' && slot === 'e') {
+      if (!this.alchemy.react(p, p.eAt, this.alchemyContext(), this.alchemyOptions(p), reaction)) return;
+      p.eAt += ticks((a.cooldown + flaskPenalty) * s.cooldown);
+      return true;
+    }
     if(p.classId==='engineer'&&!this.classKits.canCast(p,slot,this.kitContext()))return;
     if(p.classId==='alchemist'&&!this.alchemy.canCast(p,slot,this.alchemyContext(p.id,alchemyPoint),this.alchemyOptions(p)))return;
     if(p.classId==='swordsman'&&!this.sword.canCast(p,now))return;
@@ -2331,7 +2341,7 @@ export class Game {
     if(p.classId==='ranger'&&slot==='q')p.ammo-=hasTalent(p,'crosswind')?3:1;
     if (slot === 'q') p.qAt = now + ticks(a.cooldown * s.cooldown);
     else if (slot === 'e' && !this.classKits.freeStep(p.id, now))
-      p.eAt = now + ticks((a.cooldown + (p.classId==='alchemist'&&hasTalent(p,'second-extraction')?alchemyRules.extractionCooldownPenalty:0)) * s.cooldown);
+      p.eAt = now + ticks((a.cooldown + flaskPenalty) * s.cooldown);
     else if (slot === 'ultimate') p.ultimateAt = now + ticks(a.cooldown * s.ultimateCooldown);
     if(p.classId==='heavy'){this.traverse.beforeAbility(p,slot,this.traverseContext());this.linework.beforeAbility(p,slot);}
     const before={x:p.x,y:p.y},empowered=slot==='e'&&this.classKits.freeStep(p.id,now);
@@ -2673,6 +2683,10 @@ export class Game {
     tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
     shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
   };}
+  private alchemyReactionStatus(p: Player) {
+    if (!p.skills.includes(reactiveIds.entry)) return {};
+    return { alchemyReaction: this.alchemy.reactionStatus(p, p.eAt, this.alchemyContext(), this.alchemyOptions(p), reactiveFitting(p.skills)) };
+  }
   private alchemyOptions(p:Player):AlchemyOptions {
     const s=this.stats(p),e=s.effects;
     return {potency:s.ability,radiusBonus:e.alchemyRadius??0,ultimateDurationBonus:ticks(e.ultimateDuration??0),ultimateCharges:e.ultimateCharges??0,ultimatePotency:e.ultimatePotency??0,talents:{splitPour:hasTalent(p,'split-pour'),settledBatch:hasTalent(p,'settled-batch'),secondExtraction:hasTalent(p,'second-extraction')}};

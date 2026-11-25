@@ -1,6 +1,7 @@
 import rules from "./alchemy-rules.json";
-import { clamp, distance, segmentRect, type Rect } from "./geometry.ts";
+import { clamp, distance, segmentCircle, segmentRect, type Rect } from "./geometry.ts";
 import type { Vec } from "./protocol.ts";
+import { reactiveRules, type AlchemyReactionStatus, type ReactiveFitting } from "./alchemist-reactive.ts";
 export const reagents = ["cinder", "chalk", "sap"] as const;
 export type Reagent = (typeof reagents)[number];
 export const recipes = ["flare", "binding", "mending"] as const;
@@ -87,6 +88,7 @@ type Stock = {
   batchUntil: number;
   batchCharges: number;
   batchPotency: number;
+  reactionUsed: boolean;
 };
 type Flight = {
   id: number;
@@ -101,6 +103,7 @@ type Flight = {
   empowered: boolean;
   refundGroup: number;
   refund: boolean;
+  reaction?: { poolId: number; preserve: boolean };
 };
 type Pool = {
   id: number;
@@ -115,6 +118,9 @@ type Pool = {
   pulseAt: number;
   empowered: boolean;
 };
+type ReactionPlan =
+  | { stage: Exclude<AlchemyReactionStatus['stage'], 'ready'> }
+  | { stage: 'ready'; stock: Stock; pool: Pool; points: Vec[]; duration: number };
 const live = (p: AlchemyOwner | undefined): p is AlchemyOwner =>
   !!p && p.classId === "alchemist" && p.connected && p.status === "active";
 const control = (p: AlchemyOwner, c: AlchemyContext) =>
@@ -139,6 +145,7 @@ const fresh = (now: number): Stock => ({
   batchUntil: 0,
   batchCharges: 0,
   batchPotency: 0,
+  reactionUsed: false,
 });
 /** Combat-only fictional recipe stock. Game owns collision, useful credit and real healing. */
 export class AlchemistKit {
@@ -278,7 +285,9 @@ export class AlchemistKit {
   }
   private points(p: AlchemyOwner, c: AlchemyContext, o: AlchemyOptions) {
     const center = this.landing(p, c);
-    if (!center) return [];
+    return center ? this.pointsAt(p, center, c, o) : [];
+  }
+  private pointsAt(p: AlchemyOwner, center: Vec, c: AlchemyContext, o: AlchemyOptions) {
     if (!o.talents.splitPour) return [center];
     const aim =
       distance(p, center) > 0
@@ -294,6 +303,47 @@ export class AlchemistKit {
           this.legal(point, c) &&
           !c.obstacles.some((w) => segmentRect(p, point, w, 8)),
       );
+  }
+  private hasFlightRoom(owner: string, count: number) {
+    return count > 0 && this.flights.filter(f => f.owner === owner).length + count <= rules.maximumOwnerFlights;
+  }
+  private reactionPlan(p: AlchemyOwner, eAt: number, c: AlchemyContext, o: AlchemyOptions, fitting: ReactiveFitting): ReactionPlan {
+    if (!this.canPrimary(p, c)) return { stage: "busy" };
+    if (c.tick >= eAt) return { stage: "normal" };
+    const stock = this.stocks.get(p.id);
+    if (stock?.reactionUsed) return { stage: "spent" };
+    if (stock?.vials[0]?.recipe !== "flare") return { stage: "prepare" };
+    if (stock.stock.chalk < reactiveRules.chalk) return { stage: "chalk" };
+    const reach = fitting === "wick" ? reactiveRules.wickRange : rules.flaskRange;
+    const duration = fitting === "wick" ? reactiveRules.wickFlightTicks : rules.flightTicks;
+    const endpoint = { x: p.x + Math.cos(p.aim) * reach, y: p.y + Math.sin(p.aim) * reach };
+    let target: { pool: Pool; contact: number; points: Vec[] } | undefined;
+    for (const pool of this.pools) {
+      if (pool.owner !== p.id || pool.recipe !== "binding" || c.tick + duration >= pool.until ||
+          distance(p, pool) > reach || !this.legal(pool, c) || c.obstacles.some(w => segmentRect(p, pool, w, 8) !== null)) continue;
+      const contact = segmentCircle(p, endpoint, pool, pool.radius);
+      if (contact === null || target && (contact > target.contact || contact === target.contact && pool.id >= target.pool.id)) continue;
+      const points = this.pointsAt(p, { x: pool.x, y: pool.y }, c, o);
+      if (!points.some(point => distance(point, pool) <= pool.radius)) continue;
+      target = { pool, contact, points };
+    }
+    if (!target) return { stage: "aim" };
+    if (!this.hasFlightRoom(p.id, target.points.length)) return { stage: "busy" };
+    return { stage: "ready", stock, pool: target.pool, points: target.points, duration };
+  }
+  reactionStatus(p: AlchemyOwner, eAt: number, c: AlchemyContext, o: AlchemyOptions, fitting: ReactiveFitting): AlchemyReactionStatus {
+    const plan = this.reactionPlan(p, eAt, c, o, fitting);
+    if (plan.stage !== "ready") return { fitting, stage: plan.stage };
+    const { x, y, radius } = plan.pool;
+    return { fitting, stage: "ready", target: { x, y, radius } };
+  }
+  react(p: AlchemyOwner, eAt: number, c: AlchemyContext, o: AlchemyOptions, fitting: ReactiveFitting) {
+    const plan = this.reactionPlan(p, eAt, c, o, fitting);
+    if (plan.stage !== "ready") return false;
+    plan.stock.stock.chalk -= reactiveRules.chalk;
+    plan.stock.reactionUsed = true;
+    this.launchFlask(p, plan.stock, plan.points, c, o, plan.duration, { poolId: plan.pool.id, preserve: fitting === "vent" });
+    return true;
   }
   canCast(
     p: AlchemyOwner,
@@ -314,12 +364,7 @@ export class AlchemistKit {
     }
     if (slot === "e") {
       const points = this.points(p, c, o);
-      return (
-        s.vials.length > 0 &&
-        points.length > 0 &&
-        this.flights.filter((f) => f.owner === p.id).length + points.length <=
-          rules.maximumOwnerFlights
-      );
+      return s.vials.length > 0 && this.hasFlightRoom(p.id, points.length);
     }
     return true;
   }
@@ -363,8 +408,13 @@ export class AlchemistKit {
       c.sound("alchemy-batch", p);
       return true;
     }
+    s.reactionUsed = false;
+    this.launchFlask(p, s, this.points(p, c, o), c, o);
+    return true;
+  }
+  private launchFlask(p: AlchemyOwner, s: Stock, points: readonly Vec[], c: AlchemyContext, o: AlchemyOptions,
+    duration: number = rules.flightTicks, reaction?: Flight["reaction"]) {
     const vial = s.vials.shift()!,
-      points = this.points(p, c, o),
       group = c.id(),
       empowered = c.tick < s.batchUntil && s.batchCharges > 0;
     if (empowered) s.batchCharges--;
@@ -385,23 +435,24 @@ export class AlchemistKit {
         from: { x: p.x, y: p.y },
         point,
         at: c.tick,
-        until: c.tick + rules.flightTicks,
+        until: c.tick + duration,
         radius,
         potency,
         empowered,
         refundGroup: group,
         refund: o.talents.secondExtraction,
+        reaction,
       });
     c.sound("alchemy-throw", p);
-    return true;
   }
   private land(p: AlchemyOwner, f: Flight, c: AlchemyContext) {
-    if (!this.legal(f.point, c)) return;
+    if (!this.legal(f.point, c) || f.reaction && c.obstacles.some(w => segmentRect(f.from, f.point, w, 8) !== null)) return;
     let bonus = 0;
-    const consumed = this.pools
+    const consumed = f.reaction?.preserve ? undefined : this.pools
       .filter(
         (pool) =>
           pool.owner === p.id &&
+          (!f.reaction || f.reaction.poolId === pool.id) &&
           c.tick < pool.until &&
           distance(pool, f.point) <= pool.radius &&
           ((f.recipe === "flare" && pool.recipe === "binding") ||
@@ -454,7 +505,9 @@ export class AlchemistKit {
     if (f.recipe !== "mending") {
       const own = this.pools.filter((pool) => pool.owner === p.id);
       if (own.length >= rules.maximumOwnerFields) {
-        const oldest = own.toSorted((a, b) => a.id - b.id)[0];
+        const protectedId = f.reaction?.preserve ? f.reaction.poolId : undefined;
+        const eligible = protectedId === undefined ? own : own.filter(pool => pool.id !== protectedId);
+        const oldest = eligible.toSorted((a, b) => a.id - b.id)[0];
         this.pools = this.pools.filter((pool) => pool !== oldest);
       }
       this.pools.push({

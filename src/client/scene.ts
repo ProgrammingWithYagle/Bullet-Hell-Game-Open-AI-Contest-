@@ -17,6 +17,7 @@ import{HeavySeamPresentation,drawHeavySeam}from"./heavy-seam-presentation.ts";
 import {flakFlightBearing}from"./heavy-flak-presentation.ts";
 import {skirmisherRules}from"../shared/soldier-skirmisher.ts";
 import {drawAlchemyCue} from "./alchemy-presentation.ts";
+import { drawAlchemyReactionGuide } from "./alchemy-reactive-presentation.ts";
 import {drawRangerCue} from "./ranger-presentation.ts";
 import { drawRangerTracks } from "./ranger-tracker-presentation.ts";
 import { drawRangerFieldGuide } from "./ranger-field-presentation.ts";
@@ -938,6 +939,8 @@ export class CombatScene extends Phaser.Scene {
       }
       if (slip.relayTo) h.lineStyle(2, color, .76).strokeRoundedRect(slip.relayTo.x - 7, slip.relayTo.y - 7, 14, 14, 3);
     }
+    const reaction = interceptOwner?.kit.alchemyReaction;
+    if (reaction && view.phase === 'combat') drawAlchemyReactionGuide(h, reaction, this.highContrast);
     const field = interceptOwner?.kit.rangerField;
     if (field && view.phase === 'combat') drawRangerFieldGuide(h, field, now, this.highContrast);
     const trail = interceptOwner?.kit.rangerTracker;

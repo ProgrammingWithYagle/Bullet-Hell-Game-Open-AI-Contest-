@@ -266,7 +266,7 @@ export class GraveRoom extends Room<{ state: WorldState; metadata: Metadata }> {
   }
   private bindPrivateKitView(client: Client) {
     const player = this.state.players.get(client.sessionId);
-    if (!player || !['heavy','tank','medic','mage','assassin','bard','swordsman','summoner','ranger'].includes(player.classId)) return;
+    if (!player || !['heavy','tank','medic','mage','assassin','bard','swordsman','summoner','ranger','alchemist'].includes(player.classId)) return;
     client.view ??= new StateView();
     client.view.add(player);
   }
