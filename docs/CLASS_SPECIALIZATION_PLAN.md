@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **61fe200deb40e4881239c58fb39e63ae73e69d6f** has 152 techniques. Alchemist Reactive Mixtures adds Flash Reaction and two fittings. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
+Current verified source **9e332c6decb5ff7c4d8094e72ae5a614323d4a55** has 155 techniques. Alchemist Prepared Compounds adds Stow Flask and two release latches. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -179,4 +179,6 @@ The Ranger Field Controller build is the verified rollback. [Ranger Field Contro
 
 The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact replays, 40 Practice continuations and 6 controlled cases. Alchemist specialization work follows. [Ranger run review](RANGER_RUN_REVIEW.md).
 
-Alchemist Reactive Mixtures is available on both verified previews. Prepared Compounds follows Reactive Mixtures. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
+The Alchemist Reactive Mixtures build is the verified rollback. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
+
+Alchemist Prepared Compounds is available on both verified previews. Restorative Practice follows Prepared Compounds. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).

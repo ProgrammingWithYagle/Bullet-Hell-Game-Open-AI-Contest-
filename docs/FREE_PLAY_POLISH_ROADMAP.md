@@ -151,4 +151,6 @@ The Ranger Field Controller build is the verified rollback. [Ranger Field Contro
 
 The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact replays, 40 Practice continuations and 6 controlled cases. Alchemist specialization work follows. [Ranger run review](RANGER_RUN_REVIEW.md).
 
-Alchemist Reactive Mixtures is available on both verified previews. Prepared Compounds follows Reactive Mixtures. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
+The Alchemist Reactive Mixtures build is the verified rollback. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
+
+Alchemist Prepared Compounds is available on both verified previews. Restorative Practice follows Prepared Compounds. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
