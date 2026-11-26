@@ -1,3 +1,4 @@
+import { restorativeIds } from '../../shared/alchemist-restorative.ts';
 import { preparedIds } from '../../shared/alchemist-prepared.ts';
 import { reactiveIds } from '../../shared/alchemist-reactive.ts';
 import { alchemyReactiveMarkup } from './alchemy-reactive-controls.ts';
@@ -316,8 +317,9 @@ export function specializationMarkup(p:PlayerView,allowed=true,controls:ControlO
   const summonerEmblem = showFormation ? formationIds.entry : showBond ? bondIds.entry : cohortIds.entry;
   const summonerManual = showFormation ? 'ui.formation.overview' : showBond ? 'ui.bond.overview' : 'ui.cohort.overview';
   const alchemyEmblem = specializationRoute === 'all' ?
-    p.skills.includes(preparedIds.entry) ? preparedIds.entry : reactiveIds.entry : specializationRoute;
-  const alchemyOverview = alchemyEmblem === preparedIds.entry ? 'ui.alchemyReserve.overview' : 'ui.alchemyReaction.overview';
+    [restorativeIds.entry, preparedIds.entry, reactiveIds.entry].find(id => p.skills.includes(id)) ?? reactiveIds.entry : specializationRoute;
+  const alchemyOverview = alchemyEmblem === restorativeIds.entry ? 'ui.alchemyDressing.overview' :
+    alchemyEmblem === preparedIds.entry ? 'ui.alchemyReserve.overview' : 'ui.alchemyReaction.overview';
   const rangerRoots = [rangerSightIds.entry,rangerTrackerIds.entry,rangerFieldIds.entry];
   const rangerEmblem = specializationRoute === 'all' ? rangerRoots.find(id=>p.skills.includes(id)) ?? rangerSightIds.entry : specializationRoute;
   const rangerOverview = rangerEmblem === rangerFieldIds.entry ? 'ui.rangerField.overview' :

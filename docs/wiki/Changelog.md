@@ -1,6 +1,13 @@
 # Changelog
 
-Development build **2026.11.24-alchemist-prepared-compounds**, protocol 106. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+Development build **2026.11.24-alchemist-restorative-practice**, protocol 107. The recorded contest Site publication uses protocol43; the older Site under the other account is a separate historical publication.
+
+## 2026-11-24 — Set down a Mending flask for later care
+
+### Alchemist Restorative Practice
+
+- Use Action 3 to leave a paid Mending dressing where a wounded survivor can stop for care.
+- Shared Roll divides the dose between two people. Quick Knot lets the owner use a smaller dressing sooner.
 
 ## 2026-11-24 — Seal a prepared flask for a second opening
 

@@ -1,3 +1,4 @@
+import { restorativeFitting, restorativeIds } from '../../shared/alchemist-restorative.ts';
 import { compoundFitting, preparedIds } from '../../shared/alchemist-prepared.ts';
 import { reactiveFitting, reactiveIds } from '../../shared/alchemist-reactive.ts';
 import type { PlayerView } from '../../shared/view.ts';
@@ -14,22 +15,27 @@ export function alchemyReactiveMarkup(player: PlayerView, controls: ControlOptio
   const id = fitting === 'standard' ? reactiveIds.entry : reactiveIds[fitting];
   const reserve = player.skills.includes(preparedIds.entry), latch = compoundFitting(player.skills);
   const reserveId = latch === 'standard' ? preparedIds.entry : preparedIds[latch];
+  const dressing = player.skills.includes(restorativeIds.entry), roll = restorativeFitting(player.skills);
+  const dressingId = roll === 'standard' ? restorativeIds.entry : restorativeIds[roll];
   const actions = [
     { action: 'q', key: 'ability.alchemist-q.name' },
     { action: 'e', key: 'ability.alchemist-e.name' },
     { action: 'ultimate', key: 'ability.alchemist-ultimate.name' },
     ...(known ? [{ action: 'technique1', key: `skill.${id}.name` }] as const : []),
     ...(reserve ? [{ action: 'technique2', key: `skill.${reserveId}.name` }] as const : []),
+    ...(dressing ? [{ action: 'technique3', key: `skill.${dressingId}.name` }] as const : []),
   ] as const;
   const notes = known ? ['ui.alchemyReaction.help'] : [];
   if (known && fitting !== 'standard') notes.push(fitting === 'wick' ? 'ui.alchemyReaction.wickHelp' : 'ui.alchemyReaction.ventHelp');
   if (reserve) notes.push('ui.alchemyReserve.help', latch === 'standard' ? 'ui.alchemyReserve.manualHelp' :
     latch === 'brew' ? 'ui.alchemyReserve.brewHelp' : 'ui.alchemyReserve.tossHelp');
+  if (dressing) notes.push('ui.alchemyDressing.help');
+  if (dressing && roll !== 'standard') notes.push(roll === 'shared' ? 'ui.alchemyDressing.sharedHelp' : 'ui.alchemyDressing.quickHelp');
   return '<details class="engineer-kit" data-class-kit data-alchemy-reactive-kit' + (open ? ' open' : '') +
     '><summary><span lang="' + e(locale) + '">' + e(t('ui.controls')) + '</span><small>' + e(t('ui.equipped')) + '</small></summary>' +
     notes.map(key => '<p lang="en" dir="ltr">' + e(t(key)) + '</p>').join('') + '<ul>' + actions.map(({ action, key }) =>
       '<li data-kit-action="' + action + '"><span class="engineer-kit-slot">' + e(actionLabel(action)) +
-      '</span><strong lang="' + e(action === 'technique1' || action === 'technique2' ? 'en' : locale) + '" dir="auto">' + e(t(key)) + '</strong>' +
+      '</span><strong lang="' + e(action.startsWith('technique') ? 'en' : locale) + '" dir="auto">' + e(t(key)) + '</strong>' +
       bindingMarkup(action, controls) + '</li>',
     ).join('') + '</ul></details>';
 }

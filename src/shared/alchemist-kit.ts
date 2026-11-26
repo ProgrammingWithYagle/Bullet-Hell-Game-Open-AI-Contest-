@@ -1,6 +1,7 @@
 import rules from "./alchemy-rules.json";
 import { clamp, distance, segmentCircle, segmentRect, type Rect } from "./geometry.ts";
 import type { Vec } from "./protocol.ts";
+import { RestorativeGround, dressingRadius, dressingRules, type AlchemyDressingStatus, type RestorativeFitting } from "./alchemist-restorative.ts";
 import { compoundRules, type AlchemyReserveStatus, type CompoundFitting } from "./alchemist-prepared.ts";
 import { reactiveRules, type AlchemyReactionStatus, type ReactiveFitting } from "./alchemist-reactive.ts";
 export const reagents = ["cinder", "chalk", "sap"] as const;
@@ -36,6 +37,7 @@ export const baseAlchemyOptions = (): AlchemyOptions => ({
   talents: { splitPour: false, settledBatch: false, secondExtraction: false },
 });
 export type AlchemyArea = {
+  recipient?: string;
   owner: string;
   recipe: Recipe;
   x: number;
@@ -50,6 +52,8 @@ export type AlchemyArea = {
 };
 export type AlchemyContext = {
   aimPoint?(owner: string): Vec | undefined;
+  needsHealing?(id: string): boolean;
+  dressingGround?(point: Vec): boolean;
   tick: number;
   combat: boolean;
   paused: boolean;
@@ -62,7 +66,7 @@ export type AlchemyContext = {
 };
 export type AlchemyCue = {
   kind:
-    "alchemy-brew" | "alchemy-flask" | "alchemy-pool" | "alchemy-combination";
+    "alchemy-brew" | "alchemy-flask" | "alchemy-pool" | "alchemy-combination" | "alchemy-dressing";
   id: number;
   owner: string;
   recipe: Recipe;
@@ -74,6 +78,7 @@ export type AlchemyCue = {
   at: number;
   until: number;
   empowered: boolean;
+  uses?: number;
 };
 type Vial = { recipe: Recipe; potency: number; radiusBonus: number };
 type Brewing = { id: number; vial: Vial; at: number; until: number };
@@ -107,6 +112,7 @@ type Flight = {
   refundGroup: number;
   refund: boolean;
   reaction?: { poolId: number; preserve: boolean };
+  dressing?: RestorativeFitting;
 };
 type Pool = {
   id: number;
@@ -124,6 +130,9 @@ type Pool = {
 type ReactionPlan =
   | { stage: Exclude<AlchemyReactionStatus['stage'], 'ready'> }
   | { stage: 'ready'; stock: Stock; pool: Pool; points: Vec[]; duration: number };
+type DressingPlan =
+  | { stage: Exclude<AlchemyDressingStatus['stage'], 'ready'> }
+  | { stage: 'ready'; stock: Stock; points: Vec[]; radius: number };
 const live = (p: AlchemyOwner | undefined): p is AlchemyOwner =>
   !!p && p.classId === "alchemist" && p.connected && p.status === "active";
 const control = (p: AlchemyOwner, c: AlchemyContext) =>
@@ -157,22 +166,25 @@ export class AlchemistKit {
   private pools: Pool[] = [];
   private combinations: AlchemyCue[] = [];
   private refunded = new Set<number>();
+  private restorative = new RestorativeGround();
   clear() {
     this.stocks.clear();
     this.flights = [];
     this.pools = [];
     this.combinations = [];
     this.refunded.clear();
+    this.restorative.clear();
   }
   removeOwner(owner: string) {
     this.stocks.delete(owner);
+    this.restorative.removeOwner(owner);
     this.flights = this.flights.filter((f) => f.owner !== owner);
     this.pools = this.pools.filter((f) => f.owner !== owner);
     this.combinations = this.combinations.filter((f) => f.owner !== owner);
     this.pruneRefunds();
   }
   private pruneRefunds() {
-    const active = new Set(this.flights.map((f) => f.refundGroup));
+    const active = new Set([...this.flights.map(f => f.refundGroup), ...this.restorative.refundGroups()]);
     for (const group of this.refunded)
       if (!active.has(group)) this.refunded.delete(group);
   }
@@ -341,6 +353,31 @@ export class AlchemistKit {
     s.reserve = { vial, fitting, readyAt:c.tick + compoundRules.settleTicks, until:c.tick + compoundRules.holdingTicks };
     return true;
   }
+  private dressingPlan(p: AlchemyOwner, eAt: number, c: AlchemyContext, o: AlchemyOptions, fitting: RestorativeFitting): DressingPlan {
+    if (!this.canPrimary(p, c)) return { stage: 'busy' };
+    if (this.restorative.active(p.id, c.tick) || this.flights.some(f => f.owner === p.id && f.dressing)) return { stage: 'placed' };
+    if (c.tick < eAt) return { stage: 'recovering' };
+    const stock = this.stocks.get(p.id), vial = stock?.vials[0];
+    if (!stock || vial?.recipe !== 'mending') return { stage: 'prepare' };
+    const reach = o.talents.splitPour ? Math.sqrt(dressingRules.range ** 2 - rules.splitOffset ** 2) : dressingRules.range;
+    const target = { x:p.x + Math.cos(p.aim) * reach, y:p.y + Math.sin(p.aim) * reach };
+    const points = this.points(p, { ...c, aimPoint:() => target }, o).filter(point => c.dressingGround?.(point) !== false);
+    if (!points.length) return { stage: 'aim' };
+    if (!this.hasFlightRoom(p.id, points.length)) return { stage: 'busy' };
+    return { stage:'ready', stock, points, radius:dressingRadius(this.flaskRadius(vial, o, this.empowered(stock, c.tick)), fitting) };
+  }
+  dressingStatus(p: AlchemyOwner, eAt: number, c: AlchemyContext, o: AlchemyOptions, fitting: RestorativeFitting): AlchemyDressingStatus {
+    const plan = this.dressingPlan(p, eAt, c, o, fitting);
+    if (plan.stage !== 'ready') return { fitting, stage:plan.stage };
+    return { fitting, stage:plan.stage, targets:plan.points.map(point => ({ ...point, radius:plan.radius })) };
+  }
+  dress(p: AlchemyOwner, eAt: number, c: AlchemyContext, o: AlchemyOptions, fitting: RestorativeFitting) {
+    const plan = this.dressingPlan(p, eAt, c, o, fitting);
+    if (plan.stage !== 'ready') return false;
+    plan.stock.reactionUsed = true;
+    this.launchFlask(p, plan.stock, plan.points, c, o, rules.flightTicks, undefined, fitting);
+    return true;
+  }
   private hasFlightRoom(owner: string, count: number) {
     return count > 0 && this.flights.filter(f => f.owner === owner).length + count <= rules.maximumOwnerFlights;
   }
@@ -450,21 +487,23 @@ export class AlchemistKit {
     this.openLatch(s, recipe, 'toss', c.tick);
     return true;
   }
+  private empowered(s: Stock, tick: number) { return tick < s.batchUntil && s.batchCharges > 0; }
+  private flaskRadius(vial: Vial, o: AlchemyOptions, empowered: boolean) {
+    return rules.recipes[vial.recipe].radius * (1 + vial.radiusBonus) *
+      (empowered ? rules.ultimateRadiusMultiplier : 1) *
+      (o.talents.splitPour ? rules.splitRadiusMultiplier : 1);
+  }
   private launchFlask(p: AlchemyOwner, s: Stock, points: readonly Vec[], c: AlchemyContext, o: AlchemyOptions,
-    duration: number = rules.flightTicks, reaction?: Flight["reaction"]) {
+    duration: number = rules.flightTicks, reaction?: Flight["reaction"], dressing?: RestorativeFitting) {
     const vial = s.vials.shift()!,
       group = c.id(),
-      empowered = c.tick < s.batchUntil && s.batchCharges > 0;
+      empowered = this.empowered(s, c.tick);
     if (empowered) s.batchCharges--;
     const potency =
       vial.potency *
       (empowered ? rules.ultimateDamageMultiplier * (1 + s.batchPotency) : 1) *
       (o.talents.splitPour ? rules.splitMultiplier : 1);
-    const radius =
-      rules.recipes[vial.recipe].radius *
-      (1 + vial.radiusBonus) *
-      (empowered ? rules.ultimateRadiusMultiplier : 1) *
-      (o.talents.splitPour ? rules.splitRadiusMultiplier : 1);
+    const radius = this.flaskRadius(vial, o, empowered);
     for (const point of points)
       this.flights.push({
         id: c.id(),
@@ -480,12 +519,14 @@ export class AlchemistKit {
         refundGroup: group,
         refund: o.talents.secondExtraction,
         reaction,
+        dressing,
       });
     c.sound("alchemy-throw", p);
     return vial.recipe;
   }
   private land(p: AlchemyOwner, f: Flight, c: AlchemyContext) {
-    if (!this.legal(f.point, c) || f.reaction && c.obstacles.some(w => segmentRect(f.from, f.point, w, 8) !== null)) return;
+    if (!this.legal(f.point, c) || (f.reaction || f.dressing) && c.obstacles.some(w => segmentRect(f.from, f.point, w, 8) !== null)) return;
+    if (f.dressing && c.dressingGround?.(f.point) === false) return;
     let bonus = 0;
     const consumed = f.reaction?.preserve ? undefined : this.pools
       .filter(
@@ -517,8 +558,13 @@ export class AlchemistKit {
       });
       c.sound(f.recipe === "flare" ? "alchemy-react" : "alchemy-quench", p);
     }
-    const recipe = rules.recipes[f.recipe],
-      actual = c.area({
+    const recipe = rules.recipes[f.recipe];
+    if (f.dressing) {
+      this.restorative.place(f, c.tick, f.dressing, recipe.healing);
+      c.sound("alchemy-impact", p);
+      return;
+    }
+    const actual = c.area({
         owner: p.id,
         recipe: f.recipe,
         ...f.point,
@@ -530,17 +576,7 @@ export class AlchemistKit {
         training: true,
         origin: f.point,
       });
-    if (
-      f.refund &&
-      !this.refunded.has(f.refundGroup) &&
-      (actual.damage > 0 || actual.healing > 0)
-    ) {
-      const cost = recipe.cost,
-        reagent = reagents.find((r) => cost[r] > 0)!;
-      const s = this.stock(p.id, c.tick);
-      s.stock[reagent] = Math.min(rules.maximumReagent, s.stock[reagent] + 1);
-      this.refunded.add(f.refundGroup);
-    }
+    if (f.refund && (actual.damage > 0 || actual.healing > 0)) this.refund(p, f.recipe, f.refundGroup, c.tick);
     if (f.recipe !== "mending") {
       const own = this.pools.filter((pool) => pool.owner === p.id);
       if (own.length >= rules.maximumOwnerFields) {
@@ -563,6 +599,13 @@ export class AlchemistKit {
       });
     }
     c.sound("alchemy-impact", p);
+  }
+  private refund(owner: AlchemyOwner, recipe: Recipe, group: number, tick: number) {
+    if (this.refunded.has(group)) return;
+    const reagent = reagents.find(key => rules.recipes[recipe].cost[key] > 0)!;
+    const stock = this.stock(owner.id, tick);
+    stock.stock[reagent] = Math.min(rules.maximumReagent, stock.stock[reagent] + 1);
+    this.refunded.add(group);
   }
   step(c: AlchemyContext) {
     if (!c.combat) {
@@ -599,6 +642,9 @@ export class AlchemistKit {
       const p = owners.get(f.owner);
       if (p) this.land(p, f, c);
     }
+    this.restorative.step(c, owners, (owner, group, refund) => {
+      if (refund) this.refund(owner, 'mending', group, c.tick);
+    });
     this.pruneRefunds();
     for (const pool of this.pools) {
       const p = owners.get(pool.owner);
@@ -628,6 +674,7 @@ export class AlchemistKit {
   cues(c: AlchemyContext): AlchemyCue[] {
     const owners = new Map(c.owners.filter(live).map((p) => [p.id, p]));
     return [
+      ...this.restorative.cues(owners, c.tick),
       ...[...this.stocks].flatMap(([owner, s]) => {
         const p = owners.get(owner),
           b = s.brewing;

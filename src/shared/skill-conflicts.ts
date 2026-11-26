@@ -1,3 +1,4 @@
+import { restorativeIds } from './alchemist-restorative.ts';
 import { preparedIds } from './alchemist-prepared.ts';
 import { reactiveIds } from './alchemist-reactive.ts';
 import { formationIds } from './summoner-formation.ts';
@@ -30,6 +31,8 @@ const builder='engineer-builder-1',longspan='engineer-builder-longspan-1',wings=
 const replacesTurrets=(id:string)=>catalog.skills.some(s=>s.id===id&&(('transform'in s&&s.transform==='crossfire-pair')||('extraTurrets'in s.effects&&(s.effects.extraTurrets??0)>0)));
 /** Same conflicts for inspection, authoritative spending and boundary restoration. */
 export function conflictingSkill(owned:readonly string[],candidate:string):string|undefined {
+  const otherDressing = candidate === restorativeIds.shared ? restorativeIds.quick : candidate === restorativeIds.quick ? restorativeIds.shared : undefined;
+  if (otherDressing && owned.includes(otherDressing)) return otherDressing;
   const otherCompound = candidate === preparedIds.brew ? preparedIds.toss : candidate === preparedIds.toss ? preparedIds.brew : undefined;
   if (otherCompound && owned.includes(otherCompound)) return otherCompound;
   const otherReaction = candidate === reactiveIds.wick ? reactiveIds.vent : candidate === reactiveIds.vent ? reactiveIds.wick : undefined;

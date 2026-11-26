@@ -1,3 +1,4 @@
+import restorativeEdition from './fixtures/alchemist-issued106-bindings.json';
 import preparedEdition from './fixtures/alchemist-issued105-bindings.json';
 import { gunzipSync } from 'node:zlib';
 import assert from 'node:assert/strict';
@@ -17,7 +18,7 @@ const issued = JSON.parse(raw.toString('utf8'));
 const hash = (text: string | Buffer) => createHash('sha256').update(text).digest('hex');
 
 test('issued 104 restores all 22,944 local ownership fixtures under the current edition', () => {
-  assert.equal(PROTOCOL, 106);
+  assert.equal(PROTOCOL, 107);
   assert.equal(issued.protocol, 104);
   assert.equal(issued.sourceCommit, binding.sourceCommit);
   assert.equal(issued.contentRevision, binding.sourceRevision);
@@ -114,7 +115,7 @@ test('issued 104 preserves both HUD layouts, all three remaps and the full profi
 
 test('Reactive Mixtures extends all fifteen exact issued dictionaries', () => {
   assert.equal(Object.keys(issued.dictionaries).length, 15);
-  const appended = new Set([...binding.addedLocaleKeys, ...preparedEdition.addedLocaleKeys]);
+  const appended = new Set([...binding.addedLocaleKeys, ...restorativeEdition.addedLocaleKeys, ...preparedEdition.addedLocaleKeys]);
   assert.equal(binding.addedLocaleKeys.length, 20);
   for (const [name, original] of Object.entries(issued.dictionaries)) {
     const { messages } = JSON.parse(readFileSync(new URL('../locales/' + name + '.json', import.meta.url), 'utf8'));

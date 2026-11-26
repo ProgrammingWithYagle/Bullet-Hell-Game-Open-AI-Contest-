@@ -32,6 +32,7 @@ import {AlchemistKit,type AlchemyContext,type AlchemyOptions,type AlchemyArea} f
 import alchemyRules from './alchemy-rules.json';
 import { reactiveFitting, reactiveIds, type ReactiveFitting } from './alchemist-reactive.ts';
 import { compoundFitting, preparedIds } from './alchemist-prepared.ts';
+import { restorativeFitting, restorativeIds, type RestorativeFitting } from './alchemist-restorative.ts';
 import {RangerKit, type RangerContext, type RangerOptions, type RangerTarget} from './ranger-kit.ts';
 import { rangerSightFitting, rangerSightIds } from './ranger-sight.ts';
 import { rangerTrackerFitting, rangerTrackerIds, type TrackerWorld, type TrackArrow } from './ranger-tracker.ts';
@@ -1788,13 +1789,7 @@ export class Game {
       this.commandRangerTracker(p, i);
       if (this.commandRangerField(p, i)) i = { ...i, fire:false };
     }
-    if (p.classId === 'alchemist' && i.technique1 !== i.technique2 &&
-        !i.technique3 && !i.q && !i.e && !i.ultimate && !i.dodge && !i.sprint && !i.reload && i.supply < 0) {
-      const handled = i.technique1
-        ? p.skills.includes(reactiveIds.entry) && this.ability(p, 'e', undefined, reactiveFitting(p.skills))
-        : p.skills.includes(preparedIds.entry) && this.alchemy.reserve(p, this.alchemyContext(), compoundFitting(p.skills));
-      if (handled) i = { ...i, fire:false };
-    }
+    if (p.classId === 'alchemist' && this.commandAlchemyTechnique(p, i)) i = { ...i, fire:false };
     this.interceptor.afterMove(p,interceptorWorld);
     if (tankWorld && i.technique1) {
       const command = this.classKits.commandTankWall(p, tankWorld);
@@ -2327,15 +2322,19 @@ export class Game {
       y: p.y,
     });
   }
-  private ability(p: Player, slot: 'q' | 'e' | 'ultimate', alchemyPoint?: {x:number;y:number}, reaction?: ReactiveFitting) {
+  private ability(p: Player, slot: 'q' | 'e' | 'ultimate', alchemyPoint?: {x:number;y:number}, technique?: { reaction: ReactiveFitting } | { dressing: RestorativeFitting }) {
     const cl = data.classes.find((c) => c.id === p.classId)!,
       a = slot === 'ultimate' ? cl.ultimate : cl.abilities[slot === 'q' ? 0 : 1],
       s = this.stats(p),
       now = this.combatTick;
     const flaskPenalty = p.classId==='alchemist' && hasTalent(p,'second-extraction') ? alchemyRules.extractionCooldownPenalty : 0;
-    if (reaction && p.classId === 'alchemist' && slot === 'e') {
-      if (!this.alchemy.react(p, p.eAt, this.alchemyContext(), this.alchemyOptions(p), reaction)) return;
-      p.eAt += ticks((a.cooldown + flaskPenalty) * s.cooldown);
+    if (technique && p.classId === 'alchemist' && slot === 'e') {
+      const context = this.alchemyContext(), options = this.alchemyOptions(p);
+      const advance = 'reaction' in technique;
+      const paid = advance ? this.alchemy.react(p, p.eAt, context, options, technique.reaction)
+        : this.alchemy.dress(p, p.eAt, context, options, technique.dressing);
+      if (!paid) return;
+      p.eAt = (advance ? p.eAt : now) + ticks((a.cooldown + flaskPenalty) * s.cooldown);
       return true;
     }
     if(p.classId==='engineer'&&!this.classKits.canCast(p,slot,this.kitContext()))return;
@@ -2688,13 +2687,22 @@ export class Game {
     tick:this.combatTick,players:this.roster(),fields:this.fields,kits:this.classKits,kit:this.kitContext(),id:()=>this.id(),stats:p=>this.stats(p),heal:(source,target,amount)=>this.heal(source,target,amount),
     shot:(p,point,angle,speed,damage,pierce,life=12,slow=0)=>{const shot=this.emitShot(p.id,point.x,point.y,angle,speed,damage,4,pierce,life);if(shot&&slow>0)this.shotEffects.set(shot.id,{slowTicks:ticks(slow),slowMultiplier:.6,rangeRemaining:speed*life});},
   };}
+  private commandAlchemyTechnique(p: Player, i: InputFrame) {
+    if (Number(i.technique1) + Number(i.technique2) + Number(i.technique3) !== 1 ||
+        i.q || i.e || i.ultimate || i.dodge || i.sprint || i.reload || i.supply >= 0) return false;
+    if (i.technique1) return p.skills.includes(reactiveIds.entry) && this.ability(p, 'e', undefined, { reaction:reactiveFitting(p.skills) });
+    if (i.technique2) return p.skills.includes(preparedIds.entry) && this.alchemy.reserve(p, this.alchemyContext(), compoundFitting(p.skills));
+    return p.skills.includes(restorativeIds.entry) && this.ability(p, 'e', undefined, { dressing:restorativeFitting(p.skills) });
+  }
   private alchemyTechniqueStatus(p: Player) {
     const reactive = p.skills.includes(reactiveIds.entry), prepared = p.skills.includes(preparedIds.entry);
-    if (!reactive && !prepared) return {};
+    const restorative = p.skills.includes(restorativeIds.entry);
+    if (!reactive && !prepared && !restorative) return {};
     const c = this.alchemyContext();
     return {
       ...(reactive ? { alchemyReaction: this.alchemy.reactionStatus(p, p.eAt, c, this.alchemyOptions(p), reactiveFitting(p.skills)) } : {}),
       ...(prepared ? { alchemyReserve: this.alchemy.reserveStatus(p, c, compoundFitting(p.skills)) } : {}),
+      ...(restorative ? { alchemyDressing: this.alchemy.dressingStatus(p, p.eAt, c, this.alchemyOptions(p), restorativeFitting(p.skills)) } : {}),
     };
   }
   private alchemyOptions(p:Player):AlchemyOptions {
@@ -2736,11 +2744,11 @@ export class Game {
       for(const weak of weakHits)this.hitWeak(p,a.damage,weak.id,a.origin);
       if(!this.skirmish&&!this.director.hasIndependentBodies()&&!weakHits.some(w=>this.director.damageTransfer(w.id))&&!this.director.coreContact(a,a,a.radius)&&distance(a,this.boss)<=a.radius+this.bossDefinition().radius&&visible(this.boss))this.hitBoss(p,a.damage,false,a.origin);
     }
-    if(a.healing>0)for(const ally of this.roster())if(ally.connected&&ally.status==='active'&&distance(a,ally)<=a.radius&&visible(ally))this.heal(p,ally,a.healing);
+    if(a.healing>0)for(const ally of this.roster())if((a.recipient===undefined||ally.id===a.recipient)&&ally.connected&&ally.status==='active'&&distance(a,ally)<=a.radius&&visible(ally))this.heal(p,ally,a.healing);
     return {damage:Math.max(0,p.damageDealt-before),healing:Math.max(0,p.healing-healed)};
   }
   private alchemyContext(aimOwner?:string,point?:{x:number;y:number}):AlchemyContext {
-    return {tick:this.combatTick,combat:this.phase==='combat',paused:false,owners:this.roster(),bounds:this.arena.bounds,obstacles:this.obstacles,aimPoint:id=>id===aimOwner?point:undefined,id:()=>this.id(),area:a=>this.alchemyArea(a),sound:(id,p)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};
+    return {tick:this.combatTick,combat:this.phase==='combat',paused:false,owners:this.roster(),bounds:this.arena.bounds,obstacles:this.obstacles,aimPoint:id=>id===aimOwner?point:undefined,needsHealing:id=>{const patient=this.players.get(id);return !!patient&&patient.health<patient.maxHealth;},dressingGround:point=>this.arena.lavaPits.every(pit=>distance(point,pit)>pit.radius),id:()=>this.id(),area:a=>this.alchemyArea(a),sound:(id,p)=>this.events.push({type:'sound',id,owner:p.id,x:p.x,y:p.y})};
   }
   private rangerOptions(p:Player):RangerOptions {
     const s=this.stats(p),e=s.effects;

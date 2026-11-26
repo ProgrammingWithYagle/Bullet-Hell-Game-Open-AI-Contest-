@@ -47,6 +47,14 @@ export function drawAlchemyCue(g: RangerGraphics, c: AlchemyCue, now: number, ow
     g.lineStyle(1, color, alpha * .65).strokeCircle(c.x2, c.y2, c.radius);
     g.lineStyle(1, color, alpha * .4).lineBetween(c.x, c.y, c.x2, c.y2);
     g.fillStyle(color, alpha).fillCircle(c.x + (c.x2 - c.x) * t, c.y + (c.y2 - c.y) * t - Math.sin(t * Math.PI) * 24, 4);
+  } else if (c.kind === 'alchemy-dressing') {
+    g.fillStyle(color, alpha * .12).fillCircle(c.x, c.y, c.radius);
+    g.lineStyle(c.empowered ? 2 : 1, color, alpha).strokeCircle(c.x, c.y, c.radius);
+    for (const offset of c.uses === 2 ? [-7,7] : [0]) {
+      const x = c.x + offset;
+      g.lineBetween(x-4,c.y,x+4,c.y);
+      g.lineBetween(x,c.y-4,x,c.y+4);
+    }
   } else if (c.kind === 'alchemy-brew') {
     g.lineStyle(2, color, alpha).strokeCircle(c.x, c.y, 14);
   } else {

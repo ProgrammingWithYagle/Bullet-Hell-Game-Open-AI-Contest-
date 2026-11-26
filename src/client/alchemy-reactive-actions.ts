@@ -1,3 +1,4 @@
+import { restorativeFitting, restorativeIds } from '../shared/alchemist-restorative.ts';
 import { compoundFitting, preparedIds } from '../shared/alchemist-prepared.ts';
 import { reactiveFitting, reactiveIds } from '../shared/alchemist-reactive.ts';
 import type { PlayerView } from '../shared/view.ts';
@@ -23,16 +24,30 @@ export function alchemyReactionLabel(player: PlayerView) {
 
 export function alchemyActions(player: PlayerView) {
   const reactive = alchemyReactiveActions(player);
-  if (player.classId !== 'alchemist' || player.training || !player.skills.includes(preparedIds.entry)) return reactive;
-  const fitting = compoundFitting(player.skills), state = player.kit.alchemyReserve;
-  return { ...reactive, extras:[...reactive.extras,{
-    key:'technique2' as const,
-    id:fitting === 'standard' ? preparedIds.entry : preparedIds[fitting],
-    blocked:state?.stage !== 'stow' && state?.stage !== 'return',
-    at:state?.stage === 'latched' ? state.held?.readyAt ?? 0 : 0,
-  }] };
+  if (player.classId !== 'alchemist' || player.training) return reactive;
+  const compound = compoundFitting(player.skills), reserve = player.kit.alchemyReserve;
+  const restorative = restorativeFitting(player.skills), dressing = player.kit.alchemyDressing;
+  return { ...reactive, extras:[...reactive.extras,
+    ...(player.skills.includes(preparedIds.entry) ? [{
+      key:'technique2' as const,
+      id:compound === 'standard' ? preparedIds.entry : preparedIds[compound],
+      blocked:reserve?.stage !== 'stow' && reserve?.stage !== 'return',
+      at:reserve?.stage === 'latched' ? reserve.held?.readyAt ?? 0 : 0,
+    }] : []),
+    ...(player.skills.includes(restorativeIds.entry) ? [{
+      key:'technique3' as const,
+      id:restorative === 'standard' ? restorativeIds.entry : restorativeIds[restorative],
+      blocked:dressing?.stage !== 'ready',
+      at:dressing?.stage === 'recovering' ? player.eAt : 0,
+    }] : []),
+  ] };
 }
 
 export function alchemyReserveLabel(player: PlayerView) {
   return t('ui.alchemyReserve.' + (player.kit.alchemyReserve?.stage ?? 'empty'));
+}
+
+export function alchemyDressingLabel(player: PlayerView) {
+  const state = player.kit.alchemyDressing;
+  return t(state && state.stage !== 'ready' ? 'ui.alchemyDressing.' + state.stage : 'skill.' + restorativeIds.entry + '.name');
 }

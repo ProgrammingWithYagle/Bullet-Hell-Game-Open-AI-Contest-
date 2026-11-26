@@ -18,6 +18,7 @@ import {flakFlightBearing}from"./heavy-flak-presentation.ts";
 import {skirmisherRules}from"../shared/soldier-skirmisher.ts";
 import {drawAlchemyCue} from "./alchemy-presentation.ts";
 import { drawAlchemyReactionGuide } from "./alchemy-reactive-presentation.ts";
+import { drawAlchemyDressingGuide } from "./alchemy-dressing-presentation.ts";
 import {drawRangerCue} from "./ranger-presentation.ts";
 import { drawRangerTracks } from "./ranger-tracker-presentation.ts";
 import { drawRangerFieldGuide } from "./ranger-field-presentation.ts";
@@ -939,6 +940,8 @@ export class CombatScene extends Phaser.Scene {
       }
       if (slip.relayTo) h.lineStyle(2, color, .76).strokeRoundedRect(slip.relayTo.x - 7, slip.relayTo.y - 7, 14, 14, 3);
     }
+    const alchemyDressing = interceptOwner?.kit.alchemyDressing;
+    if (alchemyDressing && view.phase === 'combat') drawAlchemyDressingGuide(h, alchemyDressing, this.highContrast);
     const reaction = interceptOwner?.kit.alchemyReaction;
     if (reaction && view.phase === 'combat') drawAlchemyReactionGuide(h, reaction, this.highContrast);
     const field = interceptOwner?.kit.rangerField;
@@ -1260,7 +1263,7 @@ export class CombatScene extends Phaser.Scene {
         if(!armed&&!spent&&cue.state!=='hauling'){const start=fuse?cue.detonateAt-Math.ceil(engineerRules.fuseSeconds*30):cue.at,end=fuse?cue.detonateAt:cue.armedAt;const progress=Math.max(0,Math.min(1,(now-start)/(end-start)));h.lineStyle(3,color,1).beginPath().arc(cue.x,cue.y,18,-Math.PI/2,-Math.PI/2+Math.PI*2*progress).strokePath();}
         continue;
       }
-      if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'){drawAlchemyCue(h,cue,now,this.localId);continue;}
+      if(cue.kind==='alchemy-brew'||cue.kind==='alchemy-flask'||cue.kind==='alchemy-pool'||cue.kind==='alchemy-combination'||cue.kind==='alchemy-dressing'){drawAlchemyCue(h,cue,now,this.localId);continue;}
       if(cue.kind==='ranger-draw'||cue.kind==='ranger-release'||cue.kind==='ranger-trap'||cue.kind==='ranger-survey'||cue.kind==='ranger-sight'){drawRangerCue(h,cue,now,this.localId);continue;}
       if (cue.kind === 'summoner-formation') { drawFormationCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }
       if (cue.kind === 'summoner-bond') { drawBondCue(h,cue,now,cue.owner===this.localId,this.highContrast); continue; }

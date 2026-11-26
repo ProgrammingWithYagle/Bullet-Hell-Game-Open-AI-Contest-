@@ -185,7 +185,7 @@ test("Story checkpoints reject forged histories, cards, maps and pre-Story proto
     },
   ];
   for (const save of invalid) assert.throws(() => Game.restoreOffline(save));
-  assert.equal(PROTOCOL, 106);
+  assert.equal(PROTOCOL, 107);
   assert.equal(raw.contentRevision, CONTENT_REVISION);
 });
 test("Three personal endings survive duplicate views, old branches, profile export and secret failure", () => {
