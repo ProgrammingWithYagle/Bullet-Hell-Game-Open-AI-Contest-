@@ -184,3 +184,5 @@ The Alchemist Reactive Mixtures build is the verified rollback. [Reactive Mixtur
 The Alchemist Prepared Compounds build is the verified rollback. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
 
 Alchemist Restorative Practice is available on both verified previews. The whole-Alchemist trials follow Restorative Practice. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Restorative Practice](ALCHEMIST_RESTORATIVE_PRACTICE.md).
+
+The whole-Alchemist review covers 192 matched Standard and Long runs, 24 exact replays, 45 Practice continuations and 4 controlled cases. Class balance and Free Play build variety follow. [Alchemist run review](ALCHEMIST_RUN_REVIEW.md).

@@ -10,7 +10,7 @@ Source **e5dc321d64c4370a102e7d4c12862e3f80f7e52d**, build **2026.11.24-alchemis
 
 Protocol 106 Alchemist Prepared Compounds is the verified rollback in `output/review-rollback.zip`. All 4,475 restored files matched the archive. Archive SHA-256 `b900fae28d660f05b08fb2c183f12a7038a665882e20e9a386a986c4dfb8a006`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-alchemist-restorative-2026-11-24/retention-result.json).
 
-The whole-Alchemist trials follow Restorative Practice. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Restorative Practice](../docs/ALCHEMIST_RESTORATIVE_PRACTICE.md).
+The whole-Alchemist review covers 192 matched Standard and Long runs, 24 exact replays, 45 Practice continuations and 4 controlled cases. Class balance and Free Play build variety follow. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Alchemist run review](../docs/ALCHEMIST_RUN_REVIEW.md) · [Restorative Practice](../docs/ALCHEMIST_RESTORATIVE_PRACTICE.md).
 
 ## Historical protocol 106 Alchemist Prepared Compounds review
 
