@@ -4,13 +4,21 @@ Development remains active. Only the user decides when a class or the game is fi
 
 Read [Interceptor](../docs/TANK_INTERCEPTOR_DESIGN.md), [Mobile Bulwark](../docs/TANK_MOBILE_BULWARK_DESIGN.md), [Tethered Traverse](../docs/HEAVY_TETHERED_TRAVERSE_DESIGN.md), [Heavy](../docs/HEAVY_SPECIALIZATIONS.md), [further studies](../docs/HEAVY_FURTHER_ROUTE_STUDIES.md), [Soldier](../docs/SOLDIER_SPECIALIZATIONS.md), [open Soldier routes](../docs/SOLDIER_ROUTE_CANDIDATES.md), [class plan](../docs/CLASS_SPECIALIZATION_PLAN.md), [Service Yard](../docs/SERVICE_YARD_WORKING.md) and [bounded storage](../docs/REVIEW_STORAGE_POLICY.md). Current source/accepted proof outranks historical study proposals.
 
-## Current exact protocol 106 Alchemist Prepared Compounds review
+## Current exact protocol 107 Alchemist Restorative Practice review
+
+Source **e5dc321d64c4370a102e7d4c12862e3f80f7e52d**, build **2026.11.24-alchemist-restorative-practice**, protocol **107**, catalog **158**. The local gate and both exact GitHub workflows passed 3,063 tests and seven checks. Each frozen audience verified 2,239 files and passed seven checks. Testing uses [5458](http://127.0.0.1:5458/) with backend 2834. Public-audience review uses [5459](http://127.0.0.1:5459/) with backend 2835. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45840189605) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45840215697) · [Frozen checks](../reviews/alchemist-restorative-2026-11-24/frozen-verification.json).
+
+Protocol 106 Alchemist Prepared Compounds is the verified rollback in `output/review-rollback.zip`. All 4,475 restored files matched the archive. Archive SHA-256 `b900fae28d660f05b08fb2c183f12a7038a665882e20e9a386a986c4dfb8a006`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-alchemist-restorative-2026-11-24/retention-result.json).
+
+The whole-Alchemist trials follow Restorative Practice. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Restorative Practice](../docs/ALCHEMIST_RESTORATIVE_PRACTICE.md).
+
+## Historical protocol 106 Alchemist Prepared Compounds review
 
 Source **9e332c6decb5ff7c4d8094e72ae5a614323d4a55**, build **2026.11.24-alchemist-prepared-compounds**, protocol **106**, catalog **155**. The local gate and both exact GitHub workflows passed 3,044 tests and seven checks. Each frozen audience verified 2,236 files and passed seven checks. Testing uses [5456](http://127.0.0.1:5456/) with backend 2832. Public-audience review uses [5457](http://127.0.0.1:5457/) with backend 2833. [Push workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45658350596) · [Draft-PR workflow](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/45658380856) · [Frozen checks](../reviews/alchemist-prepared-2026-11-24/frozen-verification.json).
 
 Protocol 105 Alchemist Reactive Mixtures is the verified rollback in `output/review-rollback.zip`. All 4,469 restored files matched the archive. Archive SHA-256 `dd5abeb64c67d0293f71a19f80e43587d740cff195fdb62c9708cd15b448e4d0`. All 213 original private SQLite-related files matched their inventory. [Rotation](../reviews/storage-alchemist-prepared-2026-11-24/retention-result.json).
 
-Restorative Practice follows Prepared Compounds. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Prepared Compounds](../docs/ALCHEMIST_PREPARED_COMPOUNDS.md).
+The protocol 106 pair now serves as the verified rollback. [Prepared Compounds](../docs/ALCHEMIST_PREPARED_COMPOUNDS.md).
 
 ## Historical protocol 105 Alchemist Reactive Mixtures review
 

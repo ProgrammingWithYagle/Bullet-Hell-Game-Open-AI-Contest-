@@ -1,6 +1,6 @@
 # Class specialization: next development direction
 
-Current verified source **9e332c6decb5ff7c4d8094e72ae5a614323d4a55** has 155 techniques. Alchemist Prepared Compounds adds Stow Flask and two release latches. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
+Current verified source **e5dc321d64c4370a102e7d4c12862e3f80f7e52d** has 158 techniques. Alchemist Restorative Practice adds Set Dressing and two fittings. [Restorative Practice](ALCHEMIST_RESTORATIVE_PRACTICE.md).
 
 The scoped Medic review covers all three pathways in 96 Standard runs, twelve matched Solo replays and two controlled hybrid checks. Human acceptance and final balance remain open. [Medic run review](MEDIC_RUN_REVIEW.md).
 
@@ -181,4 +181,6 @@ The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact repl
 
 The Alchemist Reactive Mixtures build is the verified rollback. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
 
-Alchemist Prepared Compounds is available on both verified previews. Restorative Practice follows Prepared Compounds. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
+The Alchemist Prepared Compounds build is the verified rollback. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
+
+Alchemist Restorative Practice is available on both verified previews. The whole-Alchemist trials follow Restorative Practice. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Restorative Practice](ALCHEMIST_RESTORATIVE_PRACTICE.md).

@@ -13,7 +13,7 @@ Finish one coherent area before opening the next. Use the public-release-era gam
 | Order | Focus | Concrete result needed before the next focus |
 | --- | --- | --- |
 | 1 — scoped reference checked | Class-tree structure and Engineer reference | Separate General and Specializations; build an honest, readable specialization graph; finish Engineer's three distinct pathways and their internal choices; verify the full build loop. |
-| 2 — active: Alchemist specialization work | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
+| 2 — active: whole-Alchemist trials | Remaining classes, individually | Bring each class through the same quality checklist. At least three distinctive routes is initial coverage, with no fixed maximum. Do not release eleven sets of placeholder cards at once. |
 | 3 | Class balance and Free Play build variety | Compare complete legal builds across classes, weapons, mutations, difficulties, solo and co-op. Resolve dominant combinations, weak support paths and unclear interactions. |
 | 4 | Existing bosses, individually | Polish tells, movement, phases, hit rules, arenas, audio and difficulty identities. Work from early encounters toward late and secret encounters; do not start a second boss while the first has known major defects. |
 | 5 | The rest of Free Play | Finish the surrounding run loop: menus, objectives, rewards, pacing, readability, controls, networking, saves, performance and presentation. Address shared defects earlier when they block the current class or boss. |
@@ -153,4 +153,6 @@ The whole-Ranger review covers 192 matched Standard and Long runs, 24 exact repl
 
 The Alchemist Reactive Mixtures build is the verified rollback. [Reactive Mixtures](ALCHEMIST_REACTIVE_MIXTURES.md).
 
-Alchemist Prepared Compounds is available on both verified previews. Restorative Practice follows Prepared Compounds. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
+The Alchemist Prepared Compounds build is the verified rollback. [Prepared Compounds](ALCHEMIST_PREPARED_COMPOUNDS.md).
+
+Alchemist Restorative Practice is available on both verified previews. The whole-Alchemist trials follow Restorative Practice. Human play, rendered presentation, physical controls, listening, native-language review and final balance remain open. [Restorative Practice](ALCHEMIST_RESTORATIVE_PRACTICE.md).
