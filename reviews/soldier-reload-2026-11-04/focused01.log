@@ -1,0 +1,69 @@
+✔ ordinary Raid's 12 SP buys the fifth action; earned gates keep the evolution later and preserve General (5.2064ms)
+✔ individual rounds use each actual weapon's modified reload clock and stop at four without overflow (46.4493ms)
+✖ replacing a normal reload never converts elapsed work into cartridges (11.7775ms)
+✔ stop works during recovery, retains inserted rounds and resumes held primary without catch-up shots (4.4114ms)
+✔ manual full Reload interrupts; simultaneous Reload and action2 chooses the full reload (13.7652ms)
+✔ base drill stops for a fresh burst or successful step; a rejected step preserves its work (4.7328ms)
+✔ Roving Chamber keeps the same finite drill through burst and all three physical commitments (12.782ms)
+✔ dodge and actual health loss stop both drills; a fully absorbed hit does not (21.7956ms)
+✖ owner/weapon/phase loss clears unfinished work and an actual ultimate refill ends the drill (4.516ms)
+✔ walking remains real while sprint is gated; full magazines and unowned requests spend no recovery (5.807ms)
+✔ issued Breach Cadence still delivers its three scheduled burst rounds during roving loading (4.2293ms)
+✔ public load progress is owner-attached and strips private bookkeeping; stop stays available during recovery (2.7707ms)
+✔ exact issued55 safe ownership migrates without inventing new techniques or online proof (4.8052ms)
+✔ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (22.2133ms)
+✔ unearned, expired and directionless follow-through requests spend no opening or recovery (7.0392ms)
+✔ a wall across the whole footprint rejects a step without spending its earned opening (2.3058ms)
+✔ bounds and a crossed lava circle reject the entire step before any recovery is spent (6.5246ms)
+✔ new obstruction, displacement and a real dodge cancel unfinished work without an arrival shot or refund (9.7237ms)
+✔ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (2.6095ms)
+✔ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (2.3975ms)
+✔ Rear Guard cannot intercept through cover or remove another player's shot (2.2073ms)
+✔ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (3.3486ms)
+✔ disconnect and host end immediately remove windows and motion; reconnect cannot resume it (4.0951ms)
+✔ the early fork uses the same authoritative exclusion for purchases and restored boundaries (0.8266ms)
+✔ issued protocol54 preserves legitimate Builder ownership but cannot invent Soldier techniques (4.1863ms)
+✔ new follow-through coexists with the issued moving rally and bounded second resupply (14.7756ms)
+✔ downing immediately cancels unfinished Soldier work, without revival or an arrival shot (1.6931ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 25
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1482.0826
+
+✖ failing tests:
+
+test at tests\soldier-reload.test.ts:1:3692
+✖ replacing a normal reload never converts elapsed work into cartridges (11.7775ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(c?.kind==="soldier-load")
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload.test.ts:47:20)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-reload.test.ts:1:7216
+✖ owner/weapon/phase loss clears unfinished work and an actual ultimate refill ends the drill (4.516ms)
+  TypeError [Error]: f.g.endMatch is not a function
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-reload.test.ts:103:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

@@ -1,0 +1,323 @@
+{
+  "passed": true,
+  "publishedAt": "2026-11-12T00:26:52.924454+00:00",
+  "registered": false,
+  "canonicalFilesChanged": false,
+  "onlineProof": false,
+  "countsAs2211Tests": false,
+  "sourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+  "initialControlledMovementArms": 216,
+  "originalTwoPixelMeasurementPreserved": true,
+  "separateBodyRadiusMeasurementArms": 216,
+  "correctedPrototypeRepeatArms": 216,
+  "actualBodyRadiusArrivalDisk": 9,
+  "ticksPerArm": 150,
+  "newPrototype03AllRawFramesMatchPrototype02": true,
+  "sharedExactTraceArchive": "lineworker-value07-traces.json.gz",
+  "prototype02Guards": {
+    "pass": 9,
+    "fail": 3,
+    "failuresPreserved": [
+      "blocked dodge retains issued admission authority",
+      "blocked reload retains issued admission authority",
+      "blocked ultimate retains issued admission authority"
+    ]
+  },
+  "prototype03Guards": {
+    "pass": 12,
+    "fail": 0
+  },
+  "admissionCorrection": "Rejected Dodge/Reload/ultimate input alone no longer releases the line. Actual admitted Dodge and reload use explicit copied-Game interruption hooks; admitted ultimate retains its actual ability hook. Recovery, ammunition and finite clocks stay unchanged.",
+  "quietSelectedRouteComparisons": {
+    "arenasAndDifficulties": 36,
+    "actualPaidAnchorRoundEach": 1,
+    "versusWalking": {
+      "faster": 36,
+      "equal": 0,
+      "slower": 0
+    },
+    "versusActualSprint": {
+      "faster": 36,
+      "equal": 0,
+      "slower": 0
+    },
+    "versusActualDodgeThenWalking": {
+      "faster": 33,
+      "equal": 0,
+      "slower": 3
+    }
+  },
+  "canonicalBuildLegality": {
+    "totalDistinctScopedSets": 2190,
+    "classes": [
+      {
+        "classId": "engineer",
+        "distinctOperationAndSharedMobilitySets": 841,
+        "actualCanonicalPurchasesVerified": 5598,
+        "withCapstone": 166
+      },
+      {
+        "classId": "soldier",
+        "distinctOperationAndSharedMobilitySets": 853,
+        "actualCanonicalPurchasesVerified": 5547,
+        "withCapstone": 175
+      },
+      {
+        "classId": "heavy",
+        "distinctOperationAndSharedMobilitySets": 496,
+        "actualCanonicalPurchasesVerified": 3208,
+        "withCapstone": 104
+      }
+    ],
+    "controlled27SPShopLegalityOnly": true,
+    "legacyNumericalVariationsExcluded": true,
+    "allSetsReplayThroughActualCanonicalPurchases": true
+  },
+  "codeArchive": {
+    "path": "prototype-and-study-sources11.zip",
+    "sha256": "a9c7c316c794206db123da162f776fd827a1db27ef1330707e3b50eb216a2b9b",
+    "members": [
+      {
+        "member": "original/linework-candidate01.mts",
+        "bytes": 9714,
+        "sha256": "aebe376b98f891e57957a422812c82e34651ad82a94a1dbc6dead52d244d22d3"
+      },
+      {
+        "member": "original/linework-candidate02.mts",
+        "bytes": 10034,
+        "sha256": "10421aded34e81e8c6662d949e72795569012bb42e6e8b194fce3d1a665c397d"
+      },
+      {
+        "member": "original/game-study01-binding.json",
+        "bytes": 1818,
+        "sha256": "69bca67c236011a5286a0fae8c9de5d1c17af6bc65526f2fcef43c37b09ba741"
+      },
+      {
+        "member": "original/game-study02-binding.json",
+        "bytes": 1818,
+        "sha256": "b804f709c2f1e21c37f110469908abbd3da99f815f308f853278a10c90e1ee4d"
+      },
+      {
+        "member": "original/game-study02.mjs",
+        "bytes": 3896797,
+        "sha256": "7ea14bd9ca65daa519b067650d2c1aea384e9f4748b2072d18c83d53b7de990a"
+      },
+      {
+        "member": "original/build-study01.mjs",
+        "bytes": 5789,
+        "sha256": "6acfe2fe0dcf824ae2e01a2bf6898df09f2310626342bcca6395e9bf4db55a63"
+      },
+      {
+        "member": "original/build-study02.mjs",
+        "bytes": 5789,
+        "sha256": "23593a1c4aa000663468e50d68be98a9eae1d6a4c7698e7959c80c46d5022159"
+      },
+      {
+        "member": "original/candidate02-preparation.json",
+        "bytes": 758,
+        "sha256": "ed237608cc073dae355207431818c62b09d609d1cede5684fd9e50f3d6a6bdb5"
+      },
+      {
+        "member": "current/common.mjs",
+        "bytes": 2974,
+        "sha256": "0869319525b595322e89e69cab6da9cc84ad2e11e4632865ebf9afb17d43dab1"
+      },
+      {
+        "member": "current/linework-candidate03.mts",
+        "bytes": 10036,
+        "sha256": "d761b799ba4986606accecbb8e76b148bcd7c9317a1a055f8a9d22338c12fc3c"
+      },
+      {
+        "member": "current/game-study03.mjs",
+        "bytes": 3887549,
+        "sha256": "1abf7ee1498ee8b1dc20124b2acaf59959a4cb081762970df314a2263bfcab89"
+      },
+      {
+        "member": "current/game-study03-binding.json",
+        "bytes": 2075,
+        "sha256": "809e475bbfe2cf1684919c9f7fafc9edc0e6974d4871d6851b3aa884c790a4b2"
+      },
+      {
+        "member": "current/build-study03.mjs",
+        "bytes": 6190,
+        "sha256": "1141d27c961fea0d887a77fd0a178818d58d06e448a4d3e727014006e8e5ee5c"
+      },
+      {
+        "member": "current/build-study04.mjs",
+        "bytes": 6190,
+        "sha256": "856eed3eda64140f51d4103ceab73b2cb932c401c009ca65fbea11de71863c18"
+      },
+      {
+        "member": "current/prepare-lineworker07.mjs",
+        "bytes": 5744,
+        "sha256": "0a139d9f59fe0e5822caa5ac582d108268f8534d6c0ec781b1c22d3b21863440"
+      },
+      {
+        "member": "current/correct-prototype-builder08.mjs",
+        "bytes": 1388,
+        "sha256": "4a6278b0c310a8310001ad0006fccf5a699adc4f3c9eb63cf4175742a4d7adab"
+      },
+      {
+        "member": "current/lineworker-value03.mts",
+        "bytes": 7091,
+        "sha256": "798c09c0c2b22645181fbd298152622bfa78fec42bd4ec546ae134e16755f57f"
+      },
+      {
+        "member": "current/lineworker-guards04.mts",
+        "bytes": 6845,
+        "sha256": "e7b098531c8dcf1cb072e85173743afd6ffd847a1b3ea491b30d45c79dd4f07c"
+      },
+      {
+        "member": "current/lineworker-value07.mts",
+        "bytes": 8068,
+        "sha256": "c60c3e80311c647cbdb838e5064099a2ca9406da8717015cf84eb8bc099ab9f5"
+      },
+      {
+        "member": "current/lineworker-guards08.mts",
+        "bytes": 6745,
+        "sha256": "018c0e309d9767df6354a3e1570bcbdebe8ba4f0548c4d6baeb9e88b7c79cdde"
+      },
+      {
+        "member": "current/lineworker-value10.mts",
+        "bytes": 8288,
+        "sha256": "cd14e7532e29b75ecd63a4b72f8c2392bf34aca525772bdfb833164237fd89b9"
+      },
+      {
+        "member": "current/prepare-value10.mjs",
+        "bytes": 1671,
+        "sha256": "b7e04f2f0e5f337d4f0521538314b5da1641e0cc0008b5c05af4a771c165f565"
+      },
+      {
+        "member": "current/build-variety05.mts",
+        "bytes": 4984,
+        "sha256": "97e8cf6b9af77169bbef1ee69942fc0ca5e7f2b94e19c6755dd3e7833ac21361"
+      },
+      {
+        "member": "current/run-study06.mjs",
+        "bytes": 1514,
+        "sha256": "9300100beff2f4edd0adffeebba0025bb0c7b24e92bec1ccd9010640f224725c"
+      },
+      {
+        "member": "current/run-research08.mjs",
+        "bytes": 1358,
+        "sha256": "4e704a9cfc6cdbd92394740bcfdd194cbbef8f81d8d3afec8b3885c43372efd3"
+      }
+    ],
+    "allRawSourceAndBindingBytesVerified": true
+  },
+  "files": [
+    {
+      "path": "lineworker-value03.json",
+      "bytes": 2546651,
+      "sha256": "d67c3cac3251a7bda9bdf8123dc4f80009c827979657197adc5ae090747586ba"
+    },
+    {
+      "path": "lineworker-value03.log",
+      "bytes": 8344,
+      "sha256": "5882943f7123b31bf674e25d1552b7dfcc2fa21f65507da2bd9800ca1c40c770"
+    },
+    {
+      "path": "lineworker-value03-execution.json",
+      "bytes": 668,
+      "sha256": "9d4491dd0d30dc15f24e2168401c611376083027322d9a9369e45f318af61788"
+    },
+    {
+      "path": "lineworker-guards04.json",
+      "bytes": 8523,
+      "sha256": "aedeca1d48db1cf4ce0c6af8427d5e20e5423a3382f55929050917142e60322b"
+    },
+    {
+      "path": "lineworker-guards04.log",
+      "bytes": 1309,
+      "sha256": "552b0ed091cefe6500a7eb521ab062a4eae688d517b353745b0d60d3039ab4e7"
+    },
+    {
+      "path": "lineworker-guards04-execution.json",
+      "bytes": 671,
+      "sha256": "0dcb05a4ffbbea4f7a9a9a93b78be6792f0309bedb211d6c955fdb1a64376df6"
+    },
+    {
+      "path": "lineworker-value07.json",
+      "bytes": 223752,
+      "sha256": "fca1b9e9040ea9f99b49ec63713b2ec7a89db4824584b22be9f9a3e346deb22b"
+    },
+    {
+      "path": "lineworker-value07.log",
+      "bytes": 8152,
+      "sha256": "a00648733faa378ad52b04059840b2d16c8aa239fe8dfffc1277a843176e2c7a"
+    },
+    {
+      "path": "lineworker-value07-execution.json",
+      "bytes": 492,
+      "sha256": "259ee006fd1e4429facee3b0ceb68a7932bd44c35faf9b13111610cdfb073bcd"
+    },
+    {
+      "path": "lineworker-value07-traces.json.gz",
+      "bytes": 476533,
+      "sha256": "9980e473d51aa610dfdd9ddf6b71ddbfcae816bbe18c63942ec8df139c21276d"
+    },
+    {
+      "path": "lineworker-guards08.json",
+      "bytes": 6980,
+      "sha256": "c3002634344c3a8d5459aa0ef11c61d2a5a6602485eda8f9809086458df72651"
+    },
+    {
+      "path": "lineworker-guards08.log",
+      "bytes": 971,
+      "sha256": "bc4cb3e567b5fd7a645379ce38e4c2619a4c2d3bf1c520233e9bfa1e7c0db2b3"
+    },
+    {
+      "path": "lineworker-guards08-execution.json",
+      "bytes": 493,
+      "sha256": "24aff563a245b79755855d0ab7972b9e9c099188a9deb598baa59e4b74550d43"
+    },
+    {
+      "path": "lineworker-value10.json",
+      "bytes": 223874,
+      "sha256": "dd9947e3bfe5a2a84e3122ea4862b31b20a7b35f52eef8d875c5404b0d0b9666"
+    },
+    {
+      "path": "lineworker-value10.log",
+      "bytes": 8153,
+      "sha256": "49d3979eff7d8e9133e4f2da879e127fd6e834b2d05f539c42d76e1fcedb6fbb"
+    },
+    {
+      "path": "build-variety05.json",
+      "bytes": 1170561,
+      "sha256": "fdbcc0dc407db5339332dace453b3366748a2298f2c6c4930bc66c63a58c17e4"
+    },
+    {
+      "path": "build-variety05.log",
+      "bytes": 334,
+      "sha256": "beaa8a5bfea403cdbd242593fba85fa3cccc67125ea9b1ec40c6cf4f0ab605cf"
+    },
+    {
+      "path": "build-variety05-execution.json",
+      "bytes": 659,
+      "sha256": "70d03488fb62a726bc912d51b033cd89864afeed873e81328d5387bf992b69cd"
+    },
+    {
+      "path": "lineworker-preparation07.json",
+      "bytes": 3337,
+      "sha256": "036130a89d5772b60811f1d0aaad8a2619c6ddd0521949891f9f58cdbe76fcd4"
+    },
+    {
+      "path": "prototype-builder-syntax08.json",
+      "bytes": 505,
+      "sha256": "1137c201ab3c3bf6b7a2c4e58ef63c5a13ab4387cdad11af37421d69f34def4e"
+    },
+    {
+      "path": "value10-prepared.json",
+      "bytes": 321,
+      "sha256": "b07b9d00476fcbc50437886fa9a0dd254dbabe13f55ebba5195f1dcae2546875"
+    }
+  ],
+  "limits": [
+    "Unregistered copied-Game raw ownership only. No canonical card, normal earned purchase, UI integration, serialized proposed checkpoint or online proof is created.",
+    "Movement uses one geometry-selected route per actual map/difficulty, held boss attacks, actual boss body/cover/lava and one input policy. It measures arrival/cost, not live safety, overall build ranking or final balance. The original2px observations remain original; the separate9px metric never rewrites them.",
+    "Prototype03 repeats all216arms and compares all32400body frames exactly to prototype02. The shared raw trace archive stores identical content once; execution metadata/source bindings remain separate.",
+    "Canonical841Engineer/853Soldier/496Heavy configurations are distinct issued specialization/shared-mobility ownership sets replayed in controlled27SP shops. They are not2190natural runs, equally useful/balanced builds or completion of those classes.",
+    "Current-cover/body/hazard lifecycle, owner/weapon/technique loss, pool reuse, live pressure, canonical migration/menu/transport/art integration and human/rendered/device/language/listening/motion/final-balance assessment remain open before any admission."
+  ]
+}

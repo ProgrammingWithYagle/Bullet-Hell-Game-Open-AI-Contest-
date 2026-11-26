@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-22T01:17:09.3461103Z",
+  "stage": "after",
+  "currentScope": "reviews/assassin-mark-hunter-2026-11-21",
+  "rollbackScope": "reviews/assassin-infiltrator-2026-11-21",
+  "rollbackSha256": "7935251a4a5118cbae0125a772a2d521d93a2613975ee302cda6552b6e9d006b",
+  "previews": [
+    {
+      "scope": "reviews/assassin-mark-hunter-2026-11-21",
+      "audience": "testing",
+      "source": "c0cfa9a61800cb86c3cba0d9e057266f4e6ec859",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 45748,
+          "port": 5428,
+          "processUtc": "2026-11-22T00:46:47.5226730Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-assassin-mark-hunter-2026-11-21-testing-c0cfa9a --host 127.0.0.1 --port 5428 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 14156,
+          "port": 2804,
+          "processUtc": "2026-11-22T00:46:47.4926960Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-assassin-mark-hunter-2026-11-21-c0cfa9a.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T00:46:48.097Z",
+        "uptimeSeconds": 1809.0814754,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 92,
+        "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "c0cfa9a61800cb86c3cba0d9e057266f4e6ec859",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/assassin-mark-hunter-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/assassin-mark-hunter-2026-11-21",
+      "audience": "public",
+      "source": "c0cfa9a61800cb86c3cba0d9e057266f4e6ec859",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 26764,
+          "port": 5429,
+          "processUtc": "2026-11-22T00:46:46.0496520Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-assassin-mark-hunter-2026-11-21-public-c0cfa9a --host 127.0.0.1 --port 5429 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 35028,
+          "port": 2805,
+          "processUtc": "2026-11-22T00:46:46.0349930Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-assassin-mark-hunter-2026-11-21-c0cfa9a.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-22T00:46:46.624Z",
+        "uptimeSeconds": 1815.0496028,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 92,
+        "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "c0cfa9a61800cb86c3cba0d9e057266f4e6ec859",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/assassin-mark-hunter-2026-11-21/processes-public.json"
+    },
+    {
+      "scope": "reviews/assassin-infiltrator-2026-11-21",
+      "audience": "testing",
+      "source": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5426,
+          "originallyRecordedPid": 39264,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2802,
+          "originallyRecordedPid": 29384,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/assassin-infiltrator-2026-11-21/processes-testing.json"
+    },
+    {
+      "scope": "reviews/assassin-infiltrator-2026-11-21",
+      "audience": "public",
+      "source": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5427,
+          "originallyRecordedPid": 35128,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2803,
+          "originallyRecordedPid": 42688,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/assassin-infiltrator-2026-11-21/processes-public.json"
+    }
+  ]
+}

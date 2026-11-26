@@ -1,0 +1,67 @@
+{
+  "createdAt": "2026-10-23T18:34:17.465Z",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "players": 50,
+  "renderedClients": 0,
+  "scriptedClients": 50,
+  "firstPlayableGate": "incomplete",
+  "reference": {
+    "cpu": "Intel(R) Core(TM) 9 270H",
+    "logicalCpus": 20,
+    "memoryGiB": 31.638248443603516,
+    "platform": "win32",
+    "node": "v24.19.0"
+  },
+  "baseline": {
+    "scenario": "active combat",
+    "durationSeconds": 5.0352099,
+    "samples": 151,
+    "tickP50Ms": 2.414099999999962,
+    "tickP99Ms": 10.92599999999993,
+    "tickMaxMs": 12.16740000000027,
+    "eventLoopP99Ms": 45.449215,
+    "encodedOutboundBytes": 11058713,
+    "meanOutboundBytesPerSecondPerClient": 43925.52930117173,
+    "peakHostiles": 0,
+    "stressProjectilesSpawned": 0,
+    "processMemory": {
+      "rss": 261898240,
+      "heapTotal": 183836672,
+      "heapUsed": 62141880,
+      "external": 8768486,
+      "arrayBuffers": 4426137
+    }
+  },
+  "stress": {
+    "scenario": "4000-hostile stress",
+    "durationSeconds": 5.0025743,
+    "samples": 140,
+    "tickP50Ms": 6.553299999999581,
+    "tickP99Ms": 20.63180000000102,
+    "tickMaxMs": 63.16069999999854,
+    "eventLoopP99Ms": 58.818559,
+    "encodedOutboundBytes": 38809470,
+    "meanOutboundBytesPerSecondPerClient": 155157.99535451178,
+    "peakHostiles": 4000,
+    "stressProjectilesSpawned": 7768,
+    "processMemory": {
+      "rss": 294158336,
+      "heapTotal": 199770112,
+      "heapUsed": 112476568,
+      "external": 14629562,
+      "arrayBuffers": 10287157
+    }
+  },
+  "actions": {
+    "acceptedInputs": 12450,
+    "rejectedInputs": 0,
+    "successfulPurchaseReplies": 100,
+    "votes": 100
+  },
+  "limitations": [
+    "All clients are scripted; no rendered-client FPS measurement.",
+    "Server and bot clients share this process; memory is combined.",
+    "Invulnerability and extended boss health isolate throughput; stress projectiles and short intermissions are test fixtures.",
+    "Localhost pilot does not establish WAN performance, free-host capacity, device performance, reconnection endurance or human play quality."
+  ]
+}

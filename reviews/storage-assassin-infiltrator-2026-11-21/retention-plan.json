@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-21T18:59:12.622014+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/assassin-infiltrator-2026-11-21",
+  "rollbackScope": "reviews/assassin-duelist-2026-11-20",
+  "currentSourceCommit": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+  "rollbackSourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+  "keep": [
+    {
+      "path": "output/playtest-assassin-infiltrator-2026-11-21-testing-a24d3bd",
+      "sourceCommit": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+      "scope": "reviews/assassin-infiltrator-2026-11-21",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\assassin-infiltrator-2026-11-21-testing-files.json",
+      "manifestSha256": "85d3b0ca8db1c7594e40bcaeebc13482dd97227fff80a9099ee2143f53ac08de",
+      "files": 2164,
+      "bytes": 905950828,
+      "treeStatSha256": "46ec403e1e08cf4bd08102ffdf0e51df060fc2c235f0c871f432749e73f8a7de"
+    },
+    {
+      "path": "output/playtest-assassin-infiltrator-2026-11-21-public-a24d3bd",
+      "sourceCommit": "a24d3bd9df2200ad32c4ea3126c06bef3d236fd3",
+      "scope": "reviews/assassin-infiltrator-2026-11-21",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\assassin-infiltrator-2026-11-21-public-files.json",
+      "manifestSha256": "a8ad5a70362abbf4a46570c4a073f5badc90dd4a71b8684cc668f168a1b03cdf",
+      "files": 2164,
+      "bytes": 905945541,
+      "treeStatSha256": "c1ddc3550460b44d28f4c90a993dfbbb35ac9d2bc29b686714b5375c16bd8aed"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-assassin-infiltrator-2026-11-21-a24d3bd.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-assassin-duelist-2026-11-20-public-cc72b00",
+      "files": 2153,
+      "bytes": 902044851,
+      "treeStatSha256": "242bcfe580bc8d2b90f94530f7ef726c75de2252eb5c649505362bbf8518f42b",
+      "identity": {
+        "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+        "buildId": "2026.11.20-assassin-duelist",
+        "protocol": 90,
+        "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+        "audience": "public",
+        "runtimeSourceSha256": "f2c535aa35a00ea7ae70d4a2922076d3c77c5dd99d57128e1c23bba57ac698a8",
+        "sourceSnapshotSha256": "f1810a38408981f9f3a9ed5be37afd38ad67de1d08d5dc57c8f7b22d2ec98b25",
+        "endpoint": "http://127.0.0.1:2801"
+      },
+      "identitySha256": "76ce3afd0d08d34fa5fccbf8a65c7b6d206a2a2f7eb084182a6aa150831e5823"
+    },
+    {
+      "path": "output/playtest-assassin-duelist-2026-11-20-testing-cc72b00",
+      "files": 2153,
+      "bytes": 902050137,
+      "treeStatSha256": "67995c49ff8983cb0fc29aee35daa10cbc3b4825fbeec5488ddd165ad4da668e",
+      "identity": {
+        "sourceCommit": "cc72b0044650d7980a306c478bc285caa8f36384",
+        "buildId": "2026.11.20-assassin-duelist",
+        "protocol": 90,
+        "contentRevision": "2ab4ebd473cba67322891a4996de0596c9e04ffc6eeffb0600f4a648c3230a7d",
+        "audience": "testing",
+        "runtimeSourceSha256": "f2c535aa35a00ea7ae70d4a2922076d3c77c5dd99d57128e1c23bba57ac698a8",
+        "sourceSnapshotSha256": "f1810a38408981f9f3a9ed5be37afd38ad67de1d08d5dc57c8f7b22d2ec98b25",
+        "endpoint": "http://127.0.0.1:2800"
+      },
+      "identitySha256": "ef01b802ee3ae650aff66259f4eb34911f2113fa2511ed7455627d886354385c"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-assassin-duelist-2026-11-20-cc72b00.mjs",
+      "bytes": 4249605,
+      "sha256": "e0e12296f349b85d79686df505963431fdf3c5338c274319c7f5e65705d9f0b5"
+    }
+  ],
+  "retireDirectoryCount": 2,
+  "retireFileBytes": 1808344593,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": "50928501f3c1a0a8de36ba2d2e4f87d4c7f31f996795a2e45d2c2de4312be1be",
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true,
+  "reuseExistingVerifiedRollback": false,
+  "existingRollbackArchiveSha256": null
+}

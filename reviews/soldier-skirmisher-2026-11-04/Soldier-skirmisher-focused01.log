@@ -1,0 +1,125 @@
+✖ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (12.7424ms)
+✔ unearned, expired and directionless follow-through requests spend no opening or recovery (20.4715ms)
+✔ a wall across the whole footprint rejects a step without spending its earned opening (2.5785ms)
+✔ bounds and a crossed lava circle reject the entire step before any recovery is spent (3.0113ms)
+✔ new obstruction, displacement and a real dodge cancel unfinished work without an arrival shot or refund (13.2424ms)
+✖ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (6.2585ms)
+✖ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (2.924ms)
+✔ Rear Guard cannot intercept through cover or remove another player's shot (1.6751ms)
+✖ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (3.4618ms)
+✖ disconnect and paused host end immediately remove windows and motion; reconnect cannot resume it (1.662ms)
+✔ the early fork uses the same authoritative exclusion for purchases and restored boundaries (0.8618ms)
+✔ issued protocol54 preserves legitimate Builder ownership but cannot invent Soldier techniques (3.9993ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 7
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1129.3024
+
+✖ failing tests:
+
+test at tests\soldier-skirmisher.test.ts:1:1453
+✖ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (12.7424ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:20:36)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-skirmisher.test.ts:1:4465
+✖ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (6.2585ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(cue?.kind==='soldier-step')
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:59:112)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\soldier-skirmisher.test.ts:1:5079
+✖ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (2.924ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  110 !== 103
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:70:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 110,
+    expected: 103,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-skirmisher.test.ts:1:6662
+✖ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (3.4618ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 5
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:81:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-skirmisher.test.ts:1:7176
+✖ disconnect and paused host end immediately remove windows and motion; reconnect cannot resume it (1.662ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(stepCue(g))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:86:74)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

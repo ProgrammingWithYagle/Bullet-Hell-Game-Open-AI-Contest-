@@ -1,0 +1,1615 @@
+{
+  "scope": "Fresh and restored Solo Short comparisons from the real 21-SP shop. Both use the same owned policy and complete ordinary combats.",
+  "bindings": {
+    "baseline": {
+      "entry": "game",
+      "variant": "baseline",
+      "baselineContentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "bundleSha256": "cde03d042319e88cf1690127971a8eae43f00ca19583ea1965746628634d845a",
+      "originalInterceptorSha256": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+      "canonicalUpgradesAdded": 0,
+      "overlays": {}
+    },
+    "candidate": {
+      "protocol": 82,
+      "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49",
+      "runtimeSourceSha256": "bbd6dbce3d7857af9707d61c7b1c67d621312abf9d12100824c7d6d09271649c",
+      "bundleSha256": "ba5022271dc697642588085b4c5482f66011fd40472787087ca74c0f149fdeb2",
+      "originalInterceptorSha256": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+      "comparedBaseline": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "canonicalGame": true
+    }
+  },
+  "rows": [
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": false,
+      "restore": false,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 556,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 3205
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 4669,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1269,
+          "encounter": 3,
+          "at": 3611,
+          "until": 3621,
+          "origin": {
+            "x": 1194.073757037604,
+            "y": 543.3713325213723
+          },
+          "normal": {
+            "x": 0.05816002736432751,
+            "y": -0.9983072729460507
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1573,
+          "encounter": 4,
+          "at": 4041,
+          "until": 4051,
+          "origin": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "normal": {
+            "x": 0.4891508799540208,
+            "y": -0.8721991840400948
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "offsets": [
+        {
+          "id": 1573,
+          "encounter": 4,
+          "tick": 4041,
+          "until": 4051,
+          "body": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "recovery": 4341,
+          "shape": {
+            "offset": 56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 1573,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1140.1675220556722,
+            "y": 509.0015741023092,
+            "aim": -1.0596803790715283,
+            "at": 4041,
+            "until": 4051,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3618,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 3619,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 4,
+          "tick": 4047,
+          "mode": "standfast"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": false,
+      "restore": true,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 556,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 3205
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 4669,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1269,
+          "encounter": 3,
+          "at": 3611,
+          "until": 3621,
+          "origin": {
+            "x": 1194.073757037604,
+            "y": 543.3713325213723
+          },
+          "normal": {
+            "x": 0.05816002736432751,
+            "y": -0.9983072729460507
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1573,
+          "encounter": 4,
+          "at": 4041,
+          "until": 4051,
+          "origin": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "normal": {
+            "x": 0.4891508799540208,
+            "y": -0.8721991840400948
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "offsets": [
+        {
+          "id": 1573,
+          "encounter": 4,
+          "tick": 4041,
+          "until": 4051,
+          "body": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "recovery": 4341,
+          "shape": {
+            "offset": 56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 1573,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1140.1675220556722,
+            "y": 509.0015741023092,
+            "aim": -1.0596803790715283,
+            "at": 4041,
+            "until": 4051,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3618,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 3619,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 4,
+          "tick": 4047,
+          "mode": "standfast"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": false,
+      "restore": false,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 167,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 3318
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 8227,
+      "clears": 5,
+      "tankDamage": 185,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1401,
+          "encounter": 3,
+          "at": 3656,
+          "until": 3666,
+          "origin": {
+            "x": 1045.8768831382736,
+            "y": 743.6914022055724
+          },
+          "normal": {
+            "x": 0.5011389839346535,
+            "y": -0.8653668116937135
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1546,
+          "encounter": 3,
+          "at": 3964,
+          "until": 3974,
+          "origin": {
+            "x": 1403.2679225070679,
+            "y": 749.670817802214
+          },
+          "normal": {
+            "x": -0.6547343723633147,
+            "y": -0.7558590487954857
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1833,
+          "encounter": 3,
+          "at": 4446,
+          "until": 4456,
+          "origin": {
+            "x": 974.2726891880055,
+            "y": 331.31411132766874
+          },
+          "normal": {
+            "x": 0.7835494575028176,
+            "y": 0.6213294195891904
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1994,
+          "encounter": 3,
+          "at": 4763,
+          "until": 4773,
+          "origin": {
+            "x": 684.7123111972231,
+            "y": 693.0435182925684
+          },
+          "normal": {
+            "x": 0.9334352723501161,
+            "y": -0.358745860370074
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 2303,
+          "encounter": 3,
+          "at": 5247,
+          "until": 5257,
+          "origin": {
+            "x": 1420.9995757359313,
+            "y": 614.8574791401738
+          },
+          "normal": {
+            "x": -0.8976904331304187,
+            "y": -0.4406266971781455
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 2511,
+          "encounter": 3,
+          "at": 5609,
+          "until": 5619,
+          "origin": {
+            "x": 1256.530936428668,
+            "y": 230.4361241086585
+          },
+          "normal": {
+            "x": -0.24976373057537762,
+            "y": 0.968306810308112
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "offsets": [
+        {
+          "id": 1546,
+          "encounter": 3,
+          "tick": 3964,
+          "until": 3974,
+          "body": {
+            "x": 1403.2679225070679,
+            "y": 749.670817802214
+          },
+          "recovery": 4264,
+          "shape": {
+            "offset": -56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 1546,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1345.2261908378011,
+            "y": 768.1953254834679,
+            "aim": -2.284627468930715,
+            "at": 3964,
+            "until": 3974,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        },
+        {
+          "id": 2303,
+          "encounter": 3,
+          "tick": 5247,
+          "until": 5257,
+          "body": {
+            "x": 1420.9995757359313,
+            "y": 614.8574791401738
+          },
+          "recovery": 5547,
+          "shape": {
+            "offset": -56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 2303,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1374.7799102988251,
+            "y": 654.5531026632018,
+            "aim": -2.6852959780011365,
+            "at": 5247,
+            "until": 5257,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3662,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 3971,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4452,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4453,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4767,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5253,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5254,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5255,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5616,
+          "mode": "standfast"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": false,
+      "restore": true,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 167,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 3318
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 8227,
+      "clears": 5,
+      "tankDamage": 185,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1401,
+          "encounter": 3,
+          "at": 3656,
+          "until": 3666,
+          "origin": {
+            "x": 1045.8768831382736,
+            "y": 743.6914022055724
+          },
+          "normal": {
+            "x": 0.5011389839346535,
+            "y": -0.8653668116937135
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1546,
+          "encounter": 3,
+          "at": 3964,
+          "until": 3974,
+          "origin": {
+            "x": 1403.2679225070679,
+            "y": 749.670817802214
+          },
+          "normal": {
+            "x": -0.6547343723633147,
+            "y": -0.7558590487954857
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1833,
+          "encounter": 3,
+          "at": 4446,
+          "until": 4456,
+          "origin": {
+            "x": 974.2726891880055,
+            "y": 331.31411132766874
+          },
+          "normal": {
+            "x": 0.7835494575028176,
+            "y": 0.6213294195891904
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1994,
+          "encounter": 3,
+          "at": 4763,
+          "until": 4773,
+          "origin": {
+            "x": 684.7123111972231,
+            "y": 693.0435182925684
+          },
+          "normal": {
+            "x": 0.9334352723501161,
+            "y": -0.358745860370074
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 2303,
+          "encounter": 3,
+          "at": 5247,
+          "until": 5257,
+          "origin": {
+            "x": 1420.9995757359313,
+            "y": 614.8574791401738
+          },
+          "normal": {
+            "x": -0.8976904331304187,
+            "y": -0.4406266971781455
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 2511,
+          "encounter": 3,
+          "at": 5609,
+          "until": 5619,
+          "origin": {
+            "x": 1256.530936428668,
+            "y": 230.4361241086585
+          },
+          "normal": {
+            "x": -0.24976373057537762,
+            "y": 0.968306810308112
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "offsets": [
+        {
+          "id": 1546,
+          "encounter": 3,
+          "tick": 3964,
+          "until": 3974,
+          "body": {
+            "x": 1403.2679225070679,
+            "y": 749.670817802214
+          },
+          "recovery": 4264,
+          "shape": {
+            "offset": -56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 1546,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1345.2261908378011,
+            "y": 768.1953254834679,
+            "aim": -2.284627468930715,
+            "at": 3964,
+            "until": 3974,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        },
+        {
+          "id": 2303,
+          "encounter": 3,
+          "tick": 5247,
+          "until": 5257,
+          "body": {
+            "x": 1420.9995757359313,
+            "y": 614.8574791401738
+          },
+          "recovery": 5547,
+          "shape": {
+            "offset": -56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 2303,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1374.7799102988251,
+            "y": 654.5531026632018,
+            "aim": -2.6852959780011365,
+            "at": 5247,
+            "until": 5257,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3662,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 3971,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4452,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4453,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4767,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5253,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5254,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5255,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 5616,
+          "mode": "standfast"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": false,
+      "restore": false,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 167,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 3629
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 7410,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1496,
+          "encounter": 3,
+          "at": 3962,
+          "until": 3972,
+          "origin": {
+            "x": 1136.5726411483631,
+            "y": 523.0013327347475
+          },
+          "normal": {
+            "x": 0.2794798036457458,
+            "y": -0.9601515710314363
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1625,
+          "encounter": 3,
+          "at": 4272,
+          "until": 4282,
+          "origin": {
+            "x": 1372.962869199098,
+            "y": 521.0152485162263
+          },
+          "normal": {
+            "x": -0.5158162905301026,
+            "y": -0.8566992205107723
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1816,
+          "encounter": 3,
+          "at": 4607,
+          "until": 4617,
+          "origin": {
+            "x": 1444.0858601363068,
+            "y": 264.1722416368511
+          },
+          "normal": {
+            "x": -0.9995145062880914,
+            "y": -0.03115688879963845
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 2009,
+          "encounter": 3,
+          "at": 4986,
+          "until": 4996,
+          "origin": {
+            "x": 1009.5154644348747,
+            "y": 167.3643174458352
+          },
+          "normal": {
+            "x": 0.9158714170516442,
+            "y": 0.4014717268100125
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "offsets": [
+        {
+          "id": 1496,
+          "encounter": 3,
+          "tick": 3962,
+          "until": 3972,
+          "body": {
+            "x": 1136.5726411483631,
+            "y": 523.0013327347475
+          },
+          "recovery": 4262,
+          "shape": {
+            "offset": -56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 1496,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1089.5116684581005,
+            "y": 484.30682602583124,
+            "aim": -1.2875440460019665,
+            "at": 3962,
+            "until": 3972,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        },
+        {
+          "id": 2009,
+          "encounter": 3,
+          "tick": 4986,
+          "until": 4996,
+          "body": {
+            "x": 1009.5154644348747,
+            "y": 167.3643174458352
+          },
+          "recovery": 5286,
+          "shape": {
+            "offset": 56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 2009,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1009.0139617427536,
+            "y": 228.2884382441676,
+            "aim": 0.4131231954359592,
+            "at": 4986,
+            "until": 4996,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3968,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 3971,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4273,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4613,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4614,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4615,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4993,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4994,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4995,
+          "mode": "standfast"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": false,
+      "restore": true,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 167,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 3629
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 7410,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1496,
+          "encounter": 3,
+          "at": 3962,
+          "until": 3972,
+          "origin": {
+            "x": 1136.5726411483631,
+            "y": 523.0013327347475
+          },
+          "normal": {
+            "x": 0.2794798036457458,
+            "y": -0.9601515710314363
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1625,
+          "encounter": 3,
+          "at": 4272,
+          "until": 4282,
+          "origin": {
+            "x": 1372.962869199098,
+            "y": 521.0152485162263
+          },
+          "normal": {
+            "x": -0.5158162905301026,
+            "y": -0.8566992205107723
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 1816,
+          "encounter": 3,
+          "at": 4607,
+          "until": 4617,
+          "origin": {
+            "x": 1444.0858601363068,
+            "y": 264.1722416368511
+          },
+          "normal": {
+            "x": -0.9995145062880914,
+            "y": -0.03115688879963845
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 2009,
+          "encounter": 3,
+          "at": 4986,
+          "until": 4996,
+          "origin": {
+            "x": 1009.5154644348747,
+            "y": 167.3643174458352
+          },
+          "normal": {
+            "x": 0.9158714170516442,
+            "y": 0.4014717268100125
+          },
+          "motion": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "offsets": [
+        {
+          "id": 1496,
+          "encounter": 3,
+          "tick": 3962,
+          "until": 3972,
+          "body": {
+            "x": 1136.5726411483631,
+            "y": 523.0013327347475
+          },
+          "recovery": 4262,
+          "shape": {
+            "offset": -56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 1496,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1089.5116684581005,
+            "y": 484.30682602583124,
+            "aim": -1.2875440460019665,
+            "at": 3962,
+            "until": 3972,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        },
+        {
+          "id": 2009,
+          "encounter": 3,
+          "tick": 4986,
+          "until": 4996,
+          "body": {
+            "x": 1009.5154644348747,
+            "y": 167.3643174458352
+          },
+          "recovery": 5286,
+          "shape": {
+            "offset": 56,
+            "halfSpan": 44
+          },
+          "panel": {
+            "kind": "tank-intercept-screen",
+            "id": 2009,
+            "radius": 45.60701700396552,
+            "owner": "solo",
+            "x": 1009.0139617427536,
+            "y": 228.2884382441676,
+            "aim": 0.4131231954359592,
+            "at": 4986,
+            "until": 4996,
+            "halfSpan": 44,
+            "thickness": 12,
+            "mode": "standfast",
+            "motionX": 0,
+            "motionY": 0
+          }
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3968,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 3971,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4273,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4613,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4614,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4615,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4993,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4994,
+          "mode": "standfast"
+        },
+        {
+          "encounter": 3,
+          "tick": 4995,
+          "mode": "standfast"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": false,
+      "restore": false,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 300,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 1159
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 2084,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "offsets": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": false,
+      "restore": true,
+      "boundary": {
+        "earned": 21,
+        "weapon": "tank-3",
+        "coins": 300,
+        "skills": [
+          "tank-bastion-1",
+          "tank-interceptor-1",
+          "tank-interceptor-standfast-1",
+          "tank-interceptor-offset-brace-1"
+        ],
+        "tick": 1159
+      },
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 2084,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "offsets": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-standfast-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-offset-brace-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "arena": "crown-crypt",
+      "passed": true,
+      "clears": 5,
+      "boundary": 3205
+    },
+    {
+      "arena": "sunken-chapel",
+      "passed": true,
+      "clears": 5,
+      "boundary": 3318
+    },
+    {
+      "arena": "bell-foundry",
+      "passed": true,
+      "clears": 5,
+      "boundary": 3629
+    },
+    {
+      "arena": "gatehouse",
+      "passed": true,
+      "clears": 5,
+      "boundary": 1159
+    }
+  ],
+  "failures": 0,
+  "allRecordedFieldsMatchExceptRestoreFlag": true
+}

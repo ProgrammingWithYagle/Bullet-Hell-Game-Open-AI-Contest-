@@ -1,5 +1,7 @@
 # Grave Accord — audio bible
 
+> Dated subsystem record: counts, source hashes and test totals below describe this page's recorded stage. For the current game and remaining work, use [implementation state](IMPLEMENTATION_STATE.md), [development progress](DEVELOPMENT_PROGRESS.md) and the [continuation checkpoint](CHECKPOINT_2026_10_25.md). Current [fixed-grade rules](FIXED_BOSS_THREATS.md) supersede older encounter-scaled ratings and the old Brutal-plus label.
+
 Edition 0.1.0 · Stage 1 original composition and sound design · 2026-10-22
 
 ## Delivered audio and evidence
@@ -142,3 +144,11 @@ Stage 1 objective acceptance:
 Later listening acceptance is separate: loop each music file for at least six cycles; check phrase continuity, fatigue, masking, tonal balance, clicks and noise. Test headphones, stereo speakers, a mono phone speaker and low volume. Listen to a crowded 50-player mix with the game sound count caps, warning ducking and master safety stage active. Verify warnings with music on/off, caption meaning in all locales, muted-device behavior, scene cleanup and unlock-on-interaction behavior. Test adaptive layers and compressed release transcodes after export; do not infer gapless compressed playback from WAV results.
 
 Human/native-device listening and final runtime mixing remain pending. No such approval is asserted by the objective proof report.
+
+## Compressed delivery, 2026-10-24
+
+The earlier protocol-13 delivery checkpoint: all sixty boss themes and City Wake have 192 kbps delivery copies: 64,351,596 bytes versus 472,276,236 PCM bytes. Original WAV masters and scores remain unchanged and bundled as fallback. The runtime checks decoded frame duration before looping and falls back on decode failure or unexpected padding. FFmpeg decode/frame/SNR/headroom/DC/seam checks pass for 61 copies; browser/device decoding and human listening remain unreviewed. The full pipeline now passes 272 tests. See the [delivery audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/audio-delivery-2026-10-24.json). Encoder details follow the [FFmpeg MP3 format documentation](https://ffmpeg.org/ffmpeg-formats.html#mp3). The encoder is a development tool and is not shipped with the game.
+
+## Small Wakes original scores
+
+Slow Wick is a G-minor 9/8 plucked-droplet phrase at 88 BPM; Stones Remember is D-minor 5/4 struck keys with a low reed response at 104 BPM; Tea for the Absent is F-sharp-minor 6/8 descending reed/soft metal at 92 BPM. All 63 previous boss masters and score events stay unchanged. The current 66 boss themes plus City Wake have 67 MP3 deliveries: 70,569,830 bytes against 517,909,764 PCM bytes. Independent frame/SNR/headroom/DC/seam decode checks pass. The original masters remain bundled fallback. Listening, rendered/device playback and final mix acceptance stay open. [Exact delivery audit](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/small-wakes-2026-10-26/audio-delivery.json).

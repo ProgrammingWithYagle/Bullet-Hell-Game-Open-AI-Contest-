@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-02 00:38:12 UTC",
+  "failedRun": 41366812979,
+  "failedJob": 125028592405,
+  "commit": "e8aad25386e75a4f0f338d68d358b71c19d6eea0",
+  "failure": "tests/summoner-network.test.ts:68 compared the last received peer position 777.25 to current authoritative position 786.75 while combat was advancing.",
+  "diagnosis": "The live server can advance beyond the last encoded patch. The test now pauses and waits for the peer to acknowledge the exact frozen combat tick before testing typed wire quantization, then resumes before testing actual damage. The existing later order rejection/frozen-retinue checks remain.",
+  "verification": {
+    "targetedRuns": 4,
+    "passed": 4,
+    "threeRunsConcurrent": true,
+    "typeScriptPassed": true
+  },
+  "runtimeChanged": false,
+  "limits": [
+    "Local targeted checks; replacement commit CI still required.",
+    "Ranger foundation remains separate uncommitted work."
+  ]
+}

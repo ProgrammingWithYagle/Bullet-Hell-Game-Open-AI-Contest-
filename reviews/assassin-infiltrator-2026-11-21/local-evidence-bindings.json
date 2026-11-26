@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "protocol": 91,
+  "contentRevision": "448522105b115dd46ff6f8c80d25c980f988c7bade981dc66abd4326832ce461",
+  "runtimeSourceSha256": "7dcfac981e48b48b3aef6efb7f03286ba98f28a0331841157eda08cce4f8d333",
+  "sourceSnapshotSha256": "6855c0069dc980ef6d59869f6ee407e3f2dc93d02e785195aea18af06273892c",
+  "tests": 2813,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "ragpicker-kite",
+      "sp": 3,
+      "paidUntil": 673
+    },
+    {
+      "transport": "worker",
+      "fitting": "relay",
+      "boss": "stitchwright",
+      "sp": 9,
+      "paidUntil": 1112
+    },
+    {
+      "transport": "worker",
+      "fitting": "threshold",
+      "boss": "stitchwright",
+      "sp": 9,
+      "paidUntil": 1112
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "courier",
+      "sp": 3,
+      "paidUntil": 747
+    },
+    {
+      "transport": "peer",
+      "fitting": "relay",
+      "boss": "stitchwright",
+      "sp": 9,
+      "paidUntil": 1471
+    },
+    {
+      "transport": "peer",
+      "fitting": "threshold",
+      "boss": "stitchwright",
+      "sp": 9,
+      "paidUntil": 1300
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate01/generated/reviews/runtime-verification.json",
+      "sha256": "91fbcb306fea66ea84db3b1d33970af25eb5d4832b73ad179a66040227aad173"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "89934a4fb83753db4af393be3838303018deed825f8ba7ac214eb2e12e39fd0e"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "4355962296c80482b61b52708a5f37ca109b45d8d3cf3b870759d134de1c5042"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "67a43e1edf5a16570bfed5b63ed5a0637327ddb87c133c58173c066f6e1d82b3"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "9b6ae20d19aa3c1d74eaf0aa6755067c3735fe54968b11475839794fdc689f1e"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "06e89719664b44bdf06f5d07e7a048b7a9cb3683c1b9d2a232955a469fc53070"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "migration-proof01.json",
+      "sha256": "972f32fbc2f0e97c2e4f09135eea0da44f9f049f4bbd2b92e372162e53466f0b"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof02.json",
+      "sha256": "e78a00fd20067324b09e6525478b999baa3333144f6503779c4dcba27b8e144c"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo02.json",
+      "sha256": "c1b77bff2dca3908443ab26418b7d745ca7a575f3bbe6bd78af651831633f811"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party02.json",
+      "sha256": "999483cd756d779354e7f45cbc05b59bdaf7e6a64e01686e8c77aadf830dc3bb"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo02.json",
+      "sha256": "83f9165eadeca3e6ba34b9188ebbf8e0c15af2b6f2d5e3e882afb35861a5f4c6"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party02.json",
+      "sha256": "80efb4ceb507d26fe8c340af7d32eae92987e355a5deb2e7a722a53cc1a8d212"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source01/worker-entry.json",
+      "sha256": "89fd323ee3d0d9668fae03dacc1e042de42cd229c708455eee29bf1bcd8d0301"
+    },
+    {
+      "path": "source-worker-relay.json",
+      "from": "native-source01/worker-relay.json",
+      "sha256": "780ea3caa4dc5d60a1249d1fa08ba3e54a06254d102089a42cf98d69c4e0bf99"
+    },
+    {
+      "path": "source-worker-threshold.json",
+      "from": "native-source01/worker-threshold.json",
+      "sha256": "a1bc095aaa9016bf367b98ea6e9640258d77a5d7f1daea1d0d0798c97d87d848"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source01/peer-entry.json",
+      "sha256": "8bfbf6855516d7b9eb8e8e607428e970fbb4287f018f2035fea5c9b73c74ca32"
+    },
+    {
+      "path": "source-peer-relay.json",
+      "from": "native-source01/peer-relay.json",
+      "sha256": "c6e326b858092a104598e4a5ec7f308d6d0a0fd2ce79971f464abb41cc9d0c48"
+    },
+    {
+      "path": "source-peer-threshold.json",
+      "from": "native-source01/peer-threshold.json",
+      "sha256": "46abea4072c9d2249ef78007509a5ec9c10960f66a5004293a8b9ae472a19df3"
+    }
+  ],
+  "documents": [
+    "docs/ASSASSIN_INFILTRATOR.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

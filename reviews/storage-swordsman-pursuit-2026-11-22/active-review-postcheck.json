@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-23T05:51:11.3946787Z",
+  "stage": "after",
+  "currentScope": "reviews/swordsman-pursuit-2026-11-22",
+  "rollbackScope": "reviews/swordsman-counterstroke-2026-11-22",
+  "rollbackSha256": "a83a0ae617a1b57fc4ea3fd7db2dc4126536287af28cc7485ae2eb1372c9366c",
+  "previews": [
+    {
+      "scope": "reviews/swordsman-pursuit-2026-11-22",
+      "audience": "testing",
+      "source": "6f9e582d2c45babc99e0719b4e446c240fe6a56b",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 45508,
+          "port": 5440,
+          "processUtc": "2026-11-23T05:20:41.6944790Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-swordsman-pursuit-2026-11-22-testing-6f9e582 --host 127.0.0.1 --port 5440 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 24460,
+          "port": 2816,
+          "processUtc": "2026-11-23T05:20:41.6767710Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-swordsman-pursuit-2026-11-22-6f9e582.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-23T05:20:42.298Z",
+        "uptimeSeconds": 1820.9898228,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 98,
+        "contentRevision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "6f9e582d2c45babc99e0719b4e446c240fe6a56b",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/swordsman-pursuit-2026-11-22/processes-testing.json"
+    },
+    {
+      "scope": "reviews/swordsman-pursuit-2026-11-22",
+      "audience": "public",
+      "source": "6f9e582d2c45babc99e0719b4e446c240fe6a56b",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 15788,
+          "port": 5441,
+          "processUtc": "2026-11-23T05:20:41.1067890Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-swordsman-pursuit-2026-11-22-public-6f9e582 --host 127.0.0.1 --port 5441 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 51616,
+          "port": 2817,
+          "processUtc": "2026-11-23T05:20:41.0920800Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-swordsman-pursuit-2026-11-22-6f9e582.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-23T05:20:41.769Z",
+        "uptimeSeconds": 1824.6080893,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 98,
+        "contentRevision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "6f9e582d2c45babc99e0719b4e446c240fe6a56b",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      },
+      "launcherReceipt": "reviews/swordsman-pursuit-2026-11-22/processes-public.json"
+    },
+    {
+      "scope": "reviews/swordsman-counterstroke-2026-11-22",
+      "audience": "testing",
+      "source": "1f7aea463436a14744bbc8ee7423c0dcac122030",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5438,
+          "originallyRecordedPid": 51392,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2814,
+          "originallyRecordedPid": 42204,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/swordsman-counterstroke-2026-11-22/processes-testing.json"
+    },
+    {
+      "scope": "reviews/swordsman-counterstroke-2026-11-22",
+      "audience": "public",
+      "source": "1f7aea463436a14744bbc8ee7423c0dcac122030",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5439,
+          "originallyRecordedPid": 44904,
+          "alreadyStopped": true,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2815,
+          "originallyRecordedPid": 52948,
+          "alreadyStopped": true,
+          "retired": true
+        }
+      ],
+      "health": null,
+      "launcherReceipt": "reviews/swordsman-counterstroke-2026-11-22/processes-public.json"
+    }
+  ]
+}

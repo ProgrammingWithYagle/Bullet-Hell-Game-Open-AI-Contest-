@@ -1,0 +1,10 @@
+{
+  "recordedAt": "2026-10-30T00:23:07.525Z",
+  "sourceCommit": "3991fdae3cc8aaddaea00be8d43ec668e15533e9",
+  "exitCode": 1,
+  "assertion": "Missing host controls: id=\"host-pause-match\"",
+  "compiledHostControl": ");banner=document.createElement(`p`);confirmation;constructor(e,t,n,r,i){this.session=e,this.host=t,this.t=i,this.pauseButton.id=`host-pause-match`,this.pauseButton.type=`button`,this.pauseButton.hidden=!0,this.pauseButton.onclick=()=>e.setMatchPaused(!e.view?.matchPaused),n.before(this.pauseButton),this.pane",
+  "cause": "Review assertion expected an HTML attribute, but the working control sets its DOM id imperatively; minified output uses a backtick string.",
+  "correction": "Require the host-pause-match marker and a compiled pauseButton.id assignment. Runtime/test source and passing gate bytes are unchanged.",
+  "frozenRootCreated": false
+}

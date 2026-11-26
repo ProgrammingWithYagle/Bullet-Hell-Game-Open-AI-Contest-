@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "bossId": "constable",
+  "groundOffsetY": 65,
+  "sourceTool": "tools/pack-constable-motion.py",
+  "sourceToolSha256": "3b3f475e50e033144f446f0c0c23adc0d2a3e1b25b93eb7cfb96fa8d9436c96b",
+  "calibration": {
+    "source": "assets/proofs/animation/boss-attack-0.png",
+    "sourceSha256": "11767a1f075175b50dd83d7e8c81673020036b95fd4354ffbc05532186f61a4a",
+    "alpha16Bounds": [
+      138,
+      45,
+      388,
+      431
+    ],
+    "existingDisplayCell": 300,
+    "existingCellSize": 512,
+    "existingGroundOffsetY": 65,
+    "bodyWorldHeight": 226.171875,
+    "referenceBuilder": "C:\\Users\\yigal\\.codex\\plugins\\cache\\openai-curated-remote\\game-studio\\0.1.2\\scripts\\build_sprite_edit_canvas.py",
+    "referenceBuilderSha256": "c04fa1becb078c02c60f66ce8ada736983fef77e09f80158816b23098d889b95"
+  },
+  "clips": {
+    "idle": {
+      "id": "constable-idle",
+      "name": "Hollow Constable Idle",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "idle",
+      "source": "assets/production/generated/constable-motion-2026-10-25/idle-v1.png",
+      "sourceSha256": "e99b323c7f08042dfe37057bf2c3108ef3221f4e031264c22d49e51ca3878ad8",
+      "atlas": "assets/production/motion/constable-idle-v1-atlas.png",
+      "atlasSha256": "5681d9d51e718dfe16c5f6b3bb4bf36fa9a87dbf770a0874c6fa0f30af0accb4",
+      "cellSize": 384,
+      "columns": 2,
+      "frames": 4,
+      "fps": 5,
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 301.5625,
+      "loop": true,
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    "hurt": {
+      "id": "constable-hurt",
+      "name": "Hollow Constable Hurt",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "hurt",
+      "source": "assets/production/generated/constable-motion-2026-10-25/hurt-v1.png",
+      "sourceSha256": "1fea09a52dd0e88e1b3a41a1b10462f88b098419d169962085b06fa2d0e6a771",
+      "atlas": "assets/production/motion/constable-hurt-v1-atlas.png",
+      "atlasSha256": "34e8207da211a281597e51ea53dd01d8e0556d538ac4b770b68bf1e9ac1fec84",
+      "cellSize": 384,
+      "columns": 3,
+      "frames": 3,
+      "fps": 10,
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 301.5625,
+      "loop": false,
+      "labels": [
+        "1",
+        "2",
+        "3"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    "stagger": {
+      "id": "constable-stagger",
+      "name": "Hollow Constable Stagger",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "stagger",
+      "source": "assets/production/generated/constable-motion-2026-10-25/stagger-v1.png",
+      "sourceSha256": "57c7c3130767067ed39ca403dd86b0d250827b3d8eee68c01734acf9a4551bcc",
+      "atlas": "assets/production/motion/constable-stagger-v1-atlas.png",
+      "atlasSha256": "8adf6f6249d05bc4026f1b76a4ade91aa13bc1b12ccd48ff0fecac34b268d287",
+      "cellSize": 384,
+      "columns": 2,
+      "frames": 4,
+      "fps": 5,
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 301.5625,
+      "loop": true,
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    "defeat": {
+      "id": "constable-defeat",
+      "name": "Hollow Constable Defeat",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "defeat",
+      "source": "assets/production/generated/constable-motion-2026-10-25/defeat-v1.png",
+      "sourceSha256": "03ee2261b23b209ba18d883f463dbb280adb646bc50a5ec2b093c2b3a86ba88d",
+      "atlas": "assets/production/motion/constable-defeat-v1-atlas.png",
+      "atlasSha256": "e71955a1ddad6384725b14a196532a749801a9570a874bd13e749a367f19063a",
+      "cellSize": 448,
+      "columns": 4,
+      "frames": 8,
+      "fps": 8,
+      "frameDurationsMs": [
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0
+      ],
+      "origin": [
+        0.5,
+        0.7857142857142857
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 351.82291666666663,
+      "loop": false,
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    "attack": {
+      "id": "constable-attack",
+      "name": "Hollow Constable Attack (retained)",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "attack",
+      "atlas": "assets/proofs/animation/boss-attack-atlas.png",
+      "atlasSha256": "76638969c238a0d322256f435f71d3e872b9929d5826b67dc6cbe104ad5025bb",
+      "source": "assets/proofs/boss-attack-v1.png",
+      "sourceSha256": "27f8c83927e9b168f57ef9f1b8db9caca58f2a0ab8ac9130bf98853d2ad9b4af",
+      "cellSize": 512,
+      "columns": 4,
+      "frames": 8,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "origin": [
+        0.5,
+        0.84
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 300,
+      "loop": false,
+      "labels": [
+        "idle",
+        "prepare",
+        "raise",
+        "hold",
+        "release",
+        "recover",
+        "settle",
+        "idle"
+      ],
+      "status": "Original shipped attack art preserved; timing now follows authoritative cast release"
+    }
+  },
+  "entries": [
+    {
+      "id": "constable-idle",
+      "name": "Hollow Constable Idle",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "idle",
+      "source": "assets/production/generated/constable-motion-2026-10-25/idle-v1.png",
+      "sourceSha256": "e99b323c7f08042dfe37057bf2c3108ef3221f4e031264c22d49e51ca3878ad8",
+      "atlas": "assets/production/motion/constable-idle-v1-atlas.png",
+      "atlasSha256": "5681d9d51e718dfe16c5f6b3bb4bf36fa9a87dbf770a0874c6fa0f30af0accb4",
+      "cellSize": 384,
+      "columns": 2,
+      "frames": 4,
+      "fps": 5,
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 301.5625,
+      "loop": true,
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    {
+      "id": "constable-hurt",
+      "name": "Hollow Constable Hurt",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "hurt",
+      "source": "assets/production/generated/constable-motion-2026-10-25/hurt-v1.png",
+      "sourceSha256": "1fea09a52dd0e88e1b3a41a1b10462f88b098419d169962085b06fa2d0e6a771",
+      "atlas": "assets/production/motion/constable-hurt-v1-atlas.png",
+      "atlasSha256": "34e8207da211a281597e51ea53dd01d8e0556d538ac4b770b68bf1e9ac1fec84",
+      "cellSize": 384,
+      "columns": 3,
+      "frames": 3,
+      "fps": 10,
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 301.5625,
+      "loop": false,
+      "labels": [
+        "1",
+        "2",
+        "3"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    {
+      "id": "constable-stagger",
+      "name": "Hollow Constable Stagger",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "stagger",
+      "source": "assets/production/generated/constable-motion-2026-10-25/stagger-v1.png",
+      "sourceSha256": "57c7c3130767067ed39ca403dd86b0d250827b3d8eee68c01734acf9a4551bcc",
+      "atlas": "assets/production/motion/constable-stagger-v1-atlas.png",
+      "atlasSha256": "8adf6f6249d05bc4026f1b76a4ade91aa13bc1b12ccd48ff0fecac34b268d287",
+      "cellSize": 384,
+      "columns": 2,
+      "frames": 4,
+      "fps": 5,
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "origin": [
+        0.5,
+        0.8333333333333334
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 301.5625,
+      "loop": true,
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    {
+      "id": "constable-defeat",
+      "name": "Hollow Constable Defeat",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "defeat",
+      "source": "assets/production/generated/constable-motion-2026-10-25/defeat-v1.png",
+      "sourceSha256": "03ee2261b23b209ba18d883f463dbb280adb646bc50a5ec2b093c2b3a86ba88d",
+      "atlas": "assets/production/motion/constable-defeat-v1-atlas.png",
+      "atlasSha256": "e71955a1ddad6384725b14a196532a749801a9570a874bd13e749a367f19063a",
+      "cellSize": 448,
+      "columns": 4,
+      "frames": 8,
+      "fps": 8,
+      "frameDurationsMs": [
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0,
+        125.0
+      ],
+      "origin": [
+        0.5,
+        0.7857142857142857
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 351.82291666666663,
+      "loop": false,
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "status": "Assistant native/contact-sheet candidate; rendered transitions, physical devices and human review pending"
+    },
+    {
+      "id": "constable-attack",
+      "name": "Hollow Constable Attack (retained)",
+      "bossId": "constable",
+      "family": "bosses",
+      "kind": "animation",
+      "action": "attack",
+      "atlas": "assets/proofs/animation/boss-attack-atlas.png",
+      "atlasSha256": "76638969c238a0d322256f435f71d3e872b9929d5826b67dc6cbe104ad5025bb",
+      "source": "assets/proofs/boss-attack-v1.png",
+      "sourceSha256": "27f8c83927e9b168f57ef9f1b8db9caca58f2a0ab8ac9130bf98853d2ad9b4af",
+      "cellSize": 512,
+      "columns": 4,
+      "frames": 8,
+      "fps": 10,
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "origin": [
+        0.5,
+        0.84
+      ],
+      "displayHeight": 226.171875,
+      "displayCell": 300,
+      "loop": false,
+      "labels": [
+        "idle",
+        "prepare",
+        "raise",
+        "hold",
+        "release",
+        "recover",
+        "settle",
+        "idle"
+      ],
+      "status": "Original shipped attack art preserved; timing now follows authoritative cast release"
+    }
+  ],
+  "selectedNewPoses": 19,
+  "retainedAttackPoses": 8,
+  "renderedAccepted": false
+}

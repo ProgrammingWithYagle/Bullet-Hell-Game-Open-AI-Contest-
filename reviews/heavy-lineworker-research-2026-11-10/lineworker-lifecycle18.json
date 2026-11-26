@@ -1,0 +1,187 @@
+{
+  "createdAt": "2026-11-12T00:45:12.216Z",
+  "registered": false,
+  "onlineProof": false,
+  "canonicalSourceAndTestsUnchanged": true,
+  "countsAs2211Tests": false,
+  "prototype": "04",
+  "prototypeBundleSha256": "4fcd4af184e49b97058f1b09d23ee6c7f1862a506540cca6b52998b47c40247d",
+  "runnerSha256": "8e91e0f15f2ed4b9f43a0f4a4e9027d77df47e368d197af877fe86d90315dc0c",
+  "cases": 19,
+  "pass": 19,
+  "fail": 0,
+  "results": [
+    {
+      "label": "fresh empty magazine admits no anchor, payment or recovery",
+      "passed": true,
+      "details": {
+        "ammo": 0,
+        "recovery": 0
+      }
+    },
+    {
+      "label": "actual ordinary body consumes paid anchor flight without damage or attachment",
+      "passed": true,
+      "details": {
+        "paidRound": 1,
+        "bodyHealth": 1000,
+        "attached": false
+      }
+    },
+    {
+      "label": "controlled temporary solid stops flight without becoming masonry attachment",
+      "passed": true,
+      "details": {
+        "controlledTemporarySolid": true,
+        "actualGameCollision": true,
+        "attached": false
+      }
+    },
+    {
+      "label": "current original masonry removal permanently releases unpaid work",
+      "passed": true,
+      "details": {
+        "removedActualOriginalWall": true,
+        "recovery": 241,
+        "noRefund": true
+      }
+    },
+    {
+      "label": "new actual cover across the current lead severs it permanently",
+      "passed": true,
+      "details": {
+        "controlledNewCover": true,
+        "actualCurrentLineObstruction": true
+      }
+    },
+    {
+      "label": "entry loss removes paid flight and retains rostered recovery",
+      "passed": true,
+      "details": {
+        "loss": "entry",
+        "removedShotId": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "weapon loss removes paid flight and retains rostered recovery",
+      "passed": true,
+      "details": {
+        "loss": "weapon",
+        "removedShotId": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "actual disconnect/reconnect immediately removes dependent flight without erasing recovery",
+      "passed": true,
+      "details": {
+        "removedShotId": 1,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "actual disconnect/reconnect immediately releases an already attached line",
+      "passed": true,
+      "details": {
+        "recovery": 241
+      }
+    },
+    {
+      "label": "unused Yoke loss falls back to bare handling instead of retaining primary privilege",
+      "passed": true,
+      "details": {
+        "mode": "bare",
+        "noPrimaryPrivilege": true
+      }
+    },
+    {
+      "label": "used Yoke loss removes its dependent work while keeping paid recovery",
+      "passed": true,
+      "details": {
+        "recovery": 241
+      }
+    },
+    {
+      "label": "brake/reengage never extends original finite lifetime or pays another cartridge",
+      "passed": true,
+      "details": {
+        "originalUntil": 151,
+        "endedAt": 152,
+        "rounds": 1
+      }
+    },
+    {
+      "label": "admitted cone brakes the motor without resetting the remaining line or its recovery",
+      "passed": true,
+      "details": {
+        "actualConeAdmitted": true,
+        "retainedUntil": 151,
+        "recovery": 241
+      }
+    },
+    {
+      "label": "rejected cone preserves current active motor and original deadline",
+      "passed": true,
+      "details": {
+        "coneRejected": true,
+        "motorRetained": true
+      }
+    },
+    {
+      "label": "issued Braced Firing slows actual motor displacement rather than granting an extra movement privilege",
+      "passed": true,
+      "details": {
+        "ordinaryDisplacement": 6.333333333333293,
+        "bracedDisplacement": 3.8000000000000482,
+        "issuedEOnly": true
+      }
+    },
+    {
+      "label": "actual host exit removes tracked flight/work instead of carrying it into another phase",
+      "passed": true,
+      "details": {
+        "actualHostExit": true,
+        "removedShotId": 1
+      }
+    },
+    {
+      "label": "pooled-shot reuse cannot redirect old cleanup onto another owner",
+      "passed": true,
+      "details": {
+        "oldId": 1,
+        "foreignId": 2,
+        "foreignOwnerRetained": "ally",
+        "onlyCopiedIdsUsedForCleanupChecks": true
+      }
+    },
+    {
+      "label": "actual health-loss owner removal during flight",
+      "passed": true,
+      "details": {
+        "when": "flight",
+        "removed": [
+          1
+        ],
+        "recovery": 241,
+        "actualDamageApi": true
+      }
+    },
+    {
+      "label": "actual health-loss owner removal during attached",
+      "passed": true,
+      "details": {
+        "when": "attached",
+        "removed": [
+          1
+        ],
+        "recovery": 241,
+        "actualDamageApi": true
+      }
+    }
+  ],
+  "limits": [
+    "Controlled copied-Game lifecycle fixtures, including explicit cover/body/resources/recovery states and held boss attacks. No canonical purchase, real earned progression or online checkpoint is created.",
+    "Current geometry, actual ordinary body/temporary-solid collision, admitted issued abilities, actual disconnect API, host exit and real shot pool run in the copied authority. These are not rendered/native-device or live-combat balance acceptance."
+  ]
+}

@@ -1,0 +1,82 @@
+✔ all seven survivors are selectable with their own four compatible weapon tiers and 54 purchasable nodes (6.402ms)
+✔ Tank wall takes finite swept bullet damage while teammates walk through it (7.6454ms)
+✔ Tank charge moves its authored distance, stops on cover and hits a crossed enemy only once (2.4837ms)
+✔ The City Holds grants finite team shield and capped armor without stacking identical fields (12.0097ms)
+✔ Mage sigil deals one burst and slows ordinary enemies without slowing the boss (6.8108ms)
+✔ Mage ward detonates at the locked aim point and grants nearby allies a temporary shield (5.9109ms)
+✖ Silent Twelfth releases three timed pulses and clears only nearby hostile projectiles (17.1477ms)
+✔ Engineer deploys an 80-HP turret with real owned projectiles; cover still blocks its fire (8.7328ms)
+✔ Engineer siege and skill paths change actual construct count, health, damage and duration (5.2573ms)
+✔ Assassin veil prevents new target locks but still takes existing projectile and contact damage (8.9702ms)
+✔ Assassin Shadow Step sweeps enemies, respects masonry and ultimate provides three free empowered steps (1.2122ms)
+✖ new class-specific skills affect barrier health, sigil radius, veil duration and extra ultimate charges (3.3759ms)
+✔ Last Passage guarantees critical primary damage and Siege Engine accelerates owned turrets (4.5838ms)
+✔ input is finite, bounded, strict and replay-resistant (7.3611ms)
+✔ swept collision catches a bullet crossing the complete body in one tick (0.2457ms)
+✔ swept dash blocks and slides at arena cover instead of tunnelling (0.2628ms)
+✔ diagonal movement has the same speed and clients cannot multiply steps (1.2203ms)
+✔ purchase deduplication is atomic and conflicts cannot spend twice (0.9565ms)
+✔ skill prerequisites, budgets, class ownership and one capstone are enforced (0.7956ms)
+✔ friendly bullets pass through teammates without damage (3.7638ms)
+✔ two-second teammate channel revives and interrupted channels reset (4.3303ms)
+✔ solo self-revive is available once per encounter, then defeat follows (2.1501ms)
+✔ Medic ultimate channels, returns an eliminated ally and freezes its cooldown in shops (4.1111ms)
+✔ votes, rewards and shop follow authoritative timers and late arrivals wait for a boundary (2.6384ms)
+✔ boss timeout defeats the encounter independently of party health (0.3599ms)
+✔ seed replay produces the same complete combat state (106.0008ms)
+✔ friendly weapon projectiles damage Walking District blocks while hostile shots stop, and a destroyed block stops shielding within the same tick (20.9546ms)
+✔ construct broad-phase rejection preserves rotated wall corners, endpoints and large projectile padding (27.9372ms)
+✔ cached weak-point snapshots refresh after a sack breaks before another shot in the same batch (1.2958ms)
+✔ construct broad-phase candidates preserve oldest-shield precedence and immediate destruction across eight overlapping walls (2.5129ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 28
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 686.9939
+
+✖ failing tests:
+
+test at tests\class-kits.test.ts:1:4919
+✖ Silent Twelfth releases three timed pulses and clears only nearby hostile projectiles (17.1477ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\class-kits.test.ts:206:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\class-kits.test.ts:1:8686
+✖ new class-specific skills affect barrier health, sigil radius, veil duration and extra ultimate charges (3.3759ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(mage.g.classKits.cues().find((c) => c.kind === 'sigil')!.radius > 120)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\class-kits.test.ts:330:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

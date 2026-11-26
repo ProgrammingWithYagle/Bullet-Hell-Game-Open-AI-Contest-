@@ -1,0 +1,349 @@
+{
+  "passed": true,
+  "protocol": 92,
+  "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "transport": "peer",
+  "fitting": "canted",
+  "bought": [
+    {
+      "item": "assassin-evasion-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "assassin-crossing-writ-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "assassin-mark-hunter-canted-cutoff-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "triage-yard",
+    "start": 2083
+  },
+  "setup": {
+    "mode": "short",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "paid": {
+      "id": 837,
+      "at": 2149,
+      "until": 2235,
+      "recovery": 4699
+    },
+    "original": 0,
+    "line": {
+      "x": 589.5834375585356,
+      "y": 314.50434276936375,
+      "kind": "assassin-writ-cutoff",
+      "id": 837,
+      "owner": "5d0GFnaCR",
+      "at": 2149,
+      "until": 2235,
+      "radius": 4,
+      "from": {
+        "x": 530.7079353115085,
+        "y": 359.3337442282313
+      },
+      "to": {
+        "x": 648.4589398055626,
+        "y": 269.6749413104962
+      },
+      "quarry": {
+        "x": 556.0258741498274,
+        "y": 284.52122374940734,
+        "radius": 66
+      }
+    },
+    "newest": {
+      "x": 589.5834375585356,
+      "y": 314.50434276936375,
+      "kind": "assassin-writ-cutoff",
+      "id": 837,
+      "owner": "5d0GFnaCR",
+      "at": 2149,
+      "until": 2235,
+      "radius": 4,
+      "from": {
+        "x": 530.7079353115085,
+        "y": 359.3337442282313
+      },
+      "to": {
+        "x": 648.4589398055626,
+        "y": 269.6749413104962
+      },
+      "quarry": {
+        "x": 556.0258741498274,
+        "y": 284.52122374940734,
+        "radius": 66
+      }
+    },
+    "originalPin": {
+      "point": {
+        "x": 589.5834375585356,
+        "y": 314.50434276936375
+      },
+      "at": 2147,
+      "expires": 2265,
+      "ultimateAt": 0
+    },
+    "transferred": false,
+    "effects": [
+      "assassin-writ-mark",
+      "assassin-writ-proof",
+      "assassin-writ-confirm",
+      "assassin-writ-pin",
+      "assassin-writ-set"
+    ],
+    "outcomes": [
+      {
+        "phase": "idle",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 2088,
+        "status": {
+          "phase": "idle",
+          "ready": false,
+          "until": 0
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "marked",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 2121,
+        "status": {
+          "phase": "marked",
+          "ready": false,
+          "proof": 0,
+          "until": 2265
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "confirmed",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 2146,
+        "status": {
+          "phase": "confirmed",
+          "ready": true,
+          "proof": 2,
+          "pin": {
+            "x": 589.388526501649,
+            "y": 314.71946293688364
+          },
+          "until": 2265
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "pinned",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 2147,
+        "status": {
+          "phase": "pinned",
+          "ready": true,
+          "proof": 2,
+          "until": 2265,
+          "pin": {
+            "x": 589.5834375585356,
+            "y": 314.50434276936375
+          },
+          "guide": {
+            "from": {
+              "x": 539.8490956701589,
+              "y": 369.29937207796127
+            },
+            "to": {
+              "x": 639.3177794469123,
+              "y": 259.7093134607662
+            }
+          }
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "laid",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 2149,
+        "status": {
+          "phase": "laid",
+          "ready": false,
+          "until": 2235
+        },
+        "ultimateAt": 4699
+      }
+    ],
+    "plans": [
+      {
+        "kind": "pin",
+        "tick": 2146,
+        "boss": "stitchwright",
+        "target": "boss",
+        "placement": {
+          "angle": -2.404570740511132,
+          "center": {
+            "x": 589.3213016065795,
+            "y": 314.2438565537426
+          },
+          "from": {
+            "x": 539.5869597182028,
+            "y": 369.0388858623401
+          },
+          "to": {
+            "x": 639.0556434949561,
+            "y": 259.4488272451451
+          },
+          "ticks": 77,
+          "predicted": {
+            "id": "stitchwright",
+            "hurtAt": 2146,
+            "defeatedAt": 0,
+            "castAt": 0,
+            "castReleaseAt": 0,
+            "castEndsAt": 0,
+            "vulnerableUntil": 0,
+            "variant": "normal",
+            "x": 556,
+            "y": 284,
+            "health": 3884.013671875,
+            "maxHealth": 4099.0537109375,
+            "phase": 0,
+            "threat": 3,
+            "deadline": 5683,
+            "staggerUntil": 0,
+            "key": "boss",
+            "radius": 58,
+            "velocity": {
+              "x": 0.1586752548021341,
+              "y": 0.014375922843736745
+            }
+          },
+          "score": 86.00000000000001
+        }
+      },
+      {
+        "kind": "set",
+        "tick": 2147,
+        "boss": "stitchwright",
+        "target": "boss",
+        "placement": {
+          "angle": -2.2215707405111322,
+          "center": {
+            "x": 589.5834375585356,
+            "y": 314.50434276936375
+          },
+          "from": {
+            "x": 530.7079353115085,
+            "y": 359.3337442282313
+          },
+          "to": {
+            "x": 648.4589398055626,
+            "y": 269.6749413104962
+          },
+          "ticks": 77,
+          "predicted": {
+            "id": "stitchwright",
+            "hurtAt": 2146,
+            "defeatedAt": 0,
+            "castAt": 0,
+            "castReleaseAt": 0,
+            "castEndsAt": 0,
+            "vulnerableUntil": 0,
+            "variant": "normal",
+            "x": 556,
+            "y": 284,
+            "health": 3853.293701171875,
+            "maxHealth": 4099.0537109375,
+            "phase": 0,
+            "threat": 3,
+            "deadline": 5683,
+            "staggerUntil": 0,
+            "key": "boss",
+            "radius": 58,
+            "velocity": {
+              "x": 0.09520515288128045,
+              "y": 0.008625553706242047
+            }
+          },
+          "score": 91.14236600743747
+        }
+      }
+    ]
+  },
+  "witnessed": {
+    "nonHost": true,
+    "shared": {
+      "first": {
+        "x": 589.5834375585356,
+        "y": 314.50434276936375,
+        "kind": "assassin-writ-cutoff",
+        "id": 837,
+        "owner": "5d0GFnaCR",
+        "at": 2149,
+        "until": 2235,
+        "radius": 4,
+        "from": {
+          "x": 530.7079353115085,
+          "y": 359.3337442282313
+        },
+        "to": {
+          "x": 648.4589398055626,
+          "y": 269.6749413104962
+        },
+        "quarry": {
+          "x": 556.0258741498274,
+          "y": 284.52122374940734,
+          "radius": 66
+        }
+      },
+      "last": {
+        "x": 589.5834375585356,
+        "y": 314.50434276936375,
+        "kind": "assassin-writ-cutoff",
+        "id": 837,
+        "owner": "5d0GFnaCR",
+        "at": 2149,
+        "until": 2235,
+        "radius": 4,
+        "from": {
+          "x": 530.7079353115085,
+          "y": 359.3337442282313
+        },
+        "to": {
+          "x": 648.4589398055626,
+          "y": 269.6749413104962
+        },
+        "quarry": {
+          "x": 556.0258741498274,
+          "y": 284.52122374940734,
+          "radius": 66
+        }
+      }
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "9eb5b41c6805d6cfa7f2561fa6097cba65ca177a0446261b4021ee84d1cdd674",
+  "testedAudience": "public"
+}

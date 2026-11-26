@@ -1,0 +1,678 @@
+{
+  "passed": true,
+  "revision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "protocol": 92,
+  "gameBundle": "e44328d25d25355f6085ef9f3ddd696049afa17274974291b3af7a7393066035",
+  "cases": 80,
+  "matchedControls": 16,
+  "exactReplays": 12,
+  "drivers": {
+    "natural-mark-hunter-fittings-v2.mjs": "44c256290b5954b94382eaff5d6d9f7ea489945fc229e4cc2e976eb2ab3082fe",
+    "writ-pilot-fittings.mjs": "7b0d56ed90da847f78d2ee7c20055df8ae2a36de93cccff8ddcd15b3a63a8d81",
+    "focused-mark-hunter-fittings.mjs": "0447e5aa494f68d5a0fe847e0b53e1ab3e0b46b86adc24dd6c5c41d0190b84f5",
+    "replay-study.mjs": "6b8d0238c410f506e4e6e03e03b9b477eadcb782cfd7a42090d85747fef4c5d9"
+  },
+  "aggregate": {
+    "runs": 80,
+    "wins": 49,
+    "purchases": 32,
+    "paidPinnedStrikes": 2,
+    "byAction": {
+      "mark": 281,
+      "proof": 269,
+      "confirm": 257,
+      "pin": 4,
+      "set": 35,
+      "strike": 23,
+      "guarded": 0,
+      "lost": 244,
+      "proposal": 0,
+      "transfer": 0
+    },
+    "policies": [
+      {
+        "policy": "banked",
+        "runs": 16,
+        "wins": 11,
+        "purchases": 0,
+        "paidPinnedStrikes": 0,
+        "byAction": {
+          "mark": 0,
+          "proof": 0,
+          "confirm": 0,
+          "pin": 0,
+          "set": 0,
+          "strike": 0,
+          "guarded": 0,
+          "lost": 0,
+          "proposal": 0,
+          "transfer": 0
+        }
+      },
+      {
+        "policy": "unused",
+        "runs": 16,
+        "wins": 11,
+        "purchases": 0,
+        "paidPinnedStrikes": 0,
+        "byAction": {
+          "mark": 0,
+          "proof": 0,
+          "confirm": 0,
+          "pin": 0,
+          "set": 0,
+          "strike": 0,
+          "guarded": 0,
+          "lost": 0,
+          "proposal": 0,
+          "transfer": 0
+        }
+      },
+      {
+        "policy": "writ",
+        "runs": 16,
+        "wins": 9,
+        "purchases": 0,
+        "paidPinnedStrikes": 0,
+        "byAction": {
+          "mark": 89,
+          "proof": 85,
+          "confirm": 81,
+          "pin": 0,
+          "set": 12,
+          "strike": 8,
+          "guarded": 0,
+          "lost": 77,
+          "proposal": 0,
+          "transfer": 0
+        }
+      },
+      {
+        "policy": "canted",
+        "runs": 16,
+        "wins": 9,
+        "purchases": 16,
+        "paidPinnedStrikes": 2,
+        "byAction": {
+          "mark": 103,
+          "proof": 99,
+          "confirm": 95,
+          "pin": 4,
+          "set": 11,
+          "strike": 7,
+          "guarded": 0,
+          "lost": 90,
+          "proposal": 0,
+          "transfer": 0
+        }
+      },
+      {
+        "policy": "transfer",
+        "runs": 16,
+        "wins": 9,
+        "purchases": 16,
+        "paidPinnedStrikes": 0,
+        "byAction": {
+          "mark": 89,
+          "proof": 85,
+          "confirm": 81,
+          "pin": 0,
+          "set": 12,
+          "strike": 8,
+          "guarded": 0,
+          "lost": 77,
+          "proposal": 0,
+          "transfer": 0
+        }
+      }
+    ]
+  },
+  "runs": [
+    {
+      "mode": "short",
+      "cohort": "solo",
+      "path": "short-solo08.json",
+      "sha256": "4750b676f3d07734b51e3d427d4537fee60216970ea1ed104d7f76179ddd22b5",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 3,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 3,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "writ",
+          "runs": 4,
+          "wins": 3,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 18,
+            "proof": 17,
+            "confirm": 16,
+            "pin": 0,
+            "set": 2,
+            "strike": 1,
+            "guarded": 0,
+            "lost": 17,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "canted",
+          "runs": 4,
+          "wins": 3,
+          "purchases": 4,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 18,
+            "proof": 17,
+            "confirm": 16,
+            "pin": 0,
+            "set": 2,
+            "strike": 1,
+            "guarded": 0,
+            "lost": 17,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "transfer",
+          "runs": 4,
+          "wins": 3,
+          "purchases": 4,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 18,
+            "proof": 17,
+            "confirm": 16,
+            "pin": 0,
+            "set": 2,
+            "strike": 1,
+            "guarded": 0,
+            "lost": 17,
+            "proposal": 0,
+            "transfer": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "arena": "gatehouse",
+          "sameTrace": true
+        },
+        {
+          "arena": "sunken-chapel",
+          "sameTrace": true
+        },
+        {
+          "arena": "ossuary-works",
+          "sameTrace": true
+        },
+        {
+          "arena": "crown-crypt",
+          "sameTrace": true
+        }
+      ]
+    },
+    {
+      "mode": "short",
+      "cohort": "party",
+      "path": "short-party08.json",
+      "sha256": "8a97513620eae870f6fc302722880d8719ff99e458768e8988a8029099fcfb57",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "writ",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 14,
+            "proof": 13,
+            "confirm": 13,
+            "pin": 0,
+            "set": 2,
+            "strike": 1,
+            "guarded": 0,
+            "lost": 13,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "canted",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 4,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 14,
+            "proof": 13,
+            "confirm": 13,
+            "pin": 0,
+            "set": 2,
+            "strike": 1,
+            "guarded": 0,
+            "lost": 13,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "transfer",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 4,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 14,
+            "proof": 13,
+            "confirm": 13,
+            "pin": 0,
+            "set": 2,
+            "strike": 1,
+            "guarded": 0,
+            "lost": 13,
+            "proposal": 0,
+            "transfer": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "arena": "gatehouse",
+          "sameTrace": true
+        },
+        {
+          "arena": "sunken-chapel",
+          "sameTrace": true
+        },
+        {
+          "arena": "ossuary-works",
+          "sameTrace": true
+        },
+        {
+          "arena": "crown-crypt",
+          "sameTrace": true
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "cohort": "solo",
+      "path": "standard-solo08.json",
+      "sha256": "d2ad799481c4454067404adcca5447597b688c7780f7992656b2955146d1e704",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "writ",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 27,
+            "proof": 27,
+            "confirm": 25,
+            "pin": 0,
+            "set": 4,
+            "strike": 3,
+            "guarded": 0,
+            "lost": 22,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "canted",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 4,
+          "paidPinnedStrikes": 1,
+          "byAction": {
+            "mark": 39,
+            "proof": 38,
+            "confirm": 36,
+            "pin": 2,
+            "set": 4,
+            "strike": 3,
+            "guarded": 0,
+            "lost": 33,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "transfer",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 4,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 27,
+            "proof": 27,
+            "confirm": 25,
+            "pin": 0,
+            "set": 4,
+            "strike": 3,
+            "guarded": 0,
+            "lost": 22,
+            "proposal": 0,
+            "transfer": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "arena": "gatehouse",
+          "sameTrace": true
+        },
+        {
+          "arena": "sunken-chapel",
+          "sameTrace": true
+        },
+        {
+          "arena": "ossuary-works",
+          "sameTrace": true
+        },
+        {
+          "arena": "crown-crypt",
+          "sameTrace": true
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "cohort": "party",
+      "path": "standard-party08.json",
+      "sha256": "5477bcc0247f7bea8b675d4d9b24518273efb107263b0c99618c4f068918beed",
+      "stats": [
+        {
+          "policy": "banked",
+          "runs": 4,
+          "wins": 4,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "unused",
+          "runs": 4,
+          "wins": 4,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 0,
+            "proof": 0,
+            "confirm": 0,
+            "pin": 0,
+            "set": 0,
+            "strike": 0,
+            "guarded": 0,
+            "lost": 0,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "writ",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 0,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 30,
+            "proof": 28,
+            "confirm": 27,
+            "pin": 0,
+            "set": 4,
+            "strike": 3,
+            "guarded": 0,
+            "lost": 25,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "canted",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 4,
+          "paidPinnedStrikes": 1,
+          "byAction": {
+            "mark": 32,
+            "proof": 31,
+            "confirm": 30,
+            "pin": 2,
+            "set": 3,
+            "strike": 2,
+            "guarded": 0,
+            "lost": 27,
+            "proposal": 0,
+            "transfer": 0
+          }
+        },
+        {
+          "policy": "transfer",
+          "runs": 4,
+          "wins": 2,
+          "purchases": 4,
+          "paidPinnedStrikes": 0,
+          "byAction": {
+            "mark": 30,
+            "proof": 28,
+            "confirm": 27,
+            "pin": 0,
+            "set": 4,
+            "strike": 3,
+            "guarded": 0,
+            "lost": 25,
+            "proposal": 0,
+            "transfer": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "arena": "gatehouse",
+          "sameTrace": true
+        },
+        {
+          "arena": "sunken-chapel",
+          "sameTrace": true
+        },
+        {
+          "arena": "ossuary-works",
+          "sameTrace": true
+        },
+        {
+          "arena": "crown-crypt",
+          "sameTrace": true
+        }
+      ]
+    }
+  ],
+  "supportRuns": [
+    {
+      "path": "focused-transfer-chapel01.json",
+      "mode": "standard",
+      "cohort": "party",
+      "arena": "sunken-chapel",
+      "sha256": "bbf67f818258b02d6683f98433a8c01a81e5aa720b15fe53e4ed85a000690751",
+      "stats": {
+        "runs": 1,
+        "wins": 0,
+        "purchases": 1,
+        "paidPinnedStrikes": 0,
+        "byAction": {
+          "mark": 6,
+          "proof": 5,
+          "confirm": 5,
+          "pin": 0,
+          "set": 2,
+          "strike": 1,
+          "guarded": 0,
+          "lost": 4,
+          "proposal": 1,
+          "transfer": 0
+        }
+      },
+      "transfers": []
+    },
+    {
+      "path": "focused-transfer-ossuary01.json",
+      "mode": "standard",
+      "cohort": "party",
+      "arena": "ossuary-works",
+      "sha256": "ef81a3141054bec013b77c080227d82475b8979344975220824e721879516656",
+      "stats": {
+        "runs": 1,
+        "wins": 0,
+        "purchases": 1,
+        "paidPinnedStrikes": 0,
+        "byAction": {
+          "mark": 10,
+          "proof": 10,
+          "confirm": 10,
+          "pin": 0,
+          "set": 2,
+          "strike": 1,
+          "guarded": 0,
+          "lost": 8,
+          "proposal": 1,
+          "transfer": 1
+        }
+      },
+      "transfers": [
+        {
+          "at": 8986,
+          "boss": "city-eater",
+          "line": 5641,
+          "sameLine": true,
+          "until": 9066
+        }
+      ]
+    }
+  ]
+}

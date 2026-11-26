@@ -1,0 +1,99 @@
+✖ Early Watch grades, three ordinary phases and extra Brutal geometry execute through real Game casts (28.7224ms)
+✖ destroying a ticket stand cancels all its pending volleys and leaves the other aisle intact (23.6188ms)
+✖ Toad changes ground position only on its warned hop, lands with real damage and emits a broad-gap ring (6.9144ms)
+✔ breaking the drain plug removes the tongue without suppressing warned hops (21.0392ms)
+✖ wind is bounded, absent during tells and dodge, and authority/prediction share collision-resolved displacement (4.7968ms)
+✔ phase changes cancel outgoing attack cues and every moving body respects all six arena layouts (584.3686ms)
+✔ four-frame defeats hold the last pose and hop lift follows combat time even after a world-clock offset (7.486ms)
+✔ issued protocol-14 Practice migration preserves fixed-grade cards, progress and run identity while rejecting unknown revisions and forged scope (1.7073ms)
+✔ fifteen locale sources contain original names, complete help and three named phase labels (0.7999ms)
+✖ real two-client rooms replicate every Early Watch identity, warned geometry and break cancellation (2391.8332ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 5
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4784.8408
+
+✖ failing tests:
+
+test at tests\early-watch.test.ts:1:1545
+✖ Early Watch grades, three ordinary phases and extra Brutal geometry execute through real Game casts (28.7224ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(live.length>0)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:33:4)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\early-watch.test.ts:1:2841
+✖ destroying a ticket stand cancels all its pending volleys and leaves the other aisle intact (23.6188ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:52:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\early-watch.test.ts:1:3592
+✖ Toad changes ground position only on its warned hop, lands with real damage and emits a broad-gap ring (6.9144ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(shots.length>=12)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:64:67)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\early-watch.test.ts:1:4886
+✖ wind is bounded, absent during tells and dodge, and authority/prediction share collision-resolved displacement (4.7968ms)
+  TypeError [Error]: g.queueInput is not a function
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:85:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests\early-watch.test.ts:1:8884
+✖ real two-client rooms replicate every Early Watch identity, warned geometry and break cancellation (2391.8332ms)
+  TypeError [Error]: guest.leave is not a function
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:142:26)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

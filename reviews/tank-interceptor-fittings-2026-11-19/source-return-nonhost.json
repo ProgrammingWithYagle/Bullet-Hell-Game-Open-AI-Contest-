@@ -1,0 +1,223 @@
+{
+  "passed": true,
+  "choice": "returning",
+  "actualEarnedSequence": [
+    3,
+    9,
+    15,
+    21
+  ],
+  "actualClears": 3,
+  "spent": 8,
+  "earlyScreenAtEarned3": true,
+  "early": {
+    "mode": "forward",
+    "physical": {
+      "kind": "tank-intercept-screen",
+      "id": 1,
+      "radius": 65.11528238439882,
+      "owner": "jdmL6QpQs",
+      "x": 769,
+      "y": 752,
+      "aim": 0,
+      "at": 23,
+      "until": 33,
+      "halfSpan": 64,
+      "thickness": 12,
+      "mode": "forward",
+      "motionX": 1,
+      "motionY": 0
+    },
+    "startedAt": 23,
+    "recoveryAt": 323,
+    "actualDistance": 180,
+    "publicGeometryWaypoints": 0,
+    "searched": 1,
+    "actualImpactSounds": 0
+  },
+  "later": {
+    "mode": "crossing",
+    "physical": {
+      "kind": "tank-intercept-screen",
+      "id": 883,
+      "radius": 65.11528238439882,
+      "owner": "jdmL6QpQs",
+      "x": 815.2373567302637,
+      "y": 618.088875046052,
+      "aim": 0,
+      "at": 1853,
+      "until": 1863,
+      "halfSpan": 64,
+      "thickness": 12,
+      "mode": "crossing",
+      "motionX": 0,
+      "motionY": 1
+    },
+    "adjusted": {
+      "kind": "tank-intercept-screen",
+      "id": 883,
+      "radius": 65.11528238439882,
+      "owner": "jdmL6QpQs",
+      "x": 815.2373567302637,
+      "y": 618.088875046052,
+      "aim": 0,
+      "at": 1853,
+      "until": 1863,
+      "halfSpan": 64,
+      "thickness": 12,
+      "mode": "crossing",
+      "motionX": 0,
+      "motionY": -1
+    },
+    "startedAt": 1853,
+    "recoveryAt": 2153,
+    "actualDistance": 100,
+    "publicGeometryWaypoints": 0,
+    "searched": 1,
+    "actualImpactSounds": 0
+  },
+  "pausedCommandsDiscarded": true,
+  "purchases": [
+    {
+      "item": "tank-bastion-1",
+      "earned": 3,
+      "before": 3,
+      "after": 2,
+      "requests": 1
+    },
+    {
+      "item": "tank-interceptor-1",
+      "earned": 3,
+      "before": 2,
+      "after": 0,
+      "requests": 1
+    },
+    {
+      "item": "tank-interceptor-crossing-1",
+      "earned": 3,
+      "before": 0,
+      "after": 0,
+      "requests": 0
+    },
+    {
+      "item": "tank-interceptor-standfast-1",
+      "earned": 3,
+      "before": 0,
+      "after": 0,
+      "requests": 0
+    },
+    {
+      "item": "tank-interceptor-crossing-1",
+      "earned": 9,
+      "before": 6,
+      "after": 4,
+      "requests": 1
+    },
+    {
+      "item": "tank-interceptor-standfast-1",
+      "earned": 9,
+      "before": 4,
+      "after": 4,
+      "requests": 0
+    },
+    {
+      "item": "tank-interceptor-return-crossing-1",
+      "earned": 9,
+      "before": 4,
+      "after": 4,
+      "requests": 0
+    },
+    {
+      "item": "tank-interceptor-return-crossing-1",
+      "earned": 15,
+      "before": 10,
+      "after": 10,
+      "requests": 0
+    },
+    {
+      "item": "tank-interceptor-return-crossing-1",
+      "earned": 21,
+      "before": 16,
+      "after": 13,
+      "requests": 1
+    }
+  ],
+  "observations": [
+    {
+      "tag": "ready-forward",
+      "tick": 21,
+      "body": {
+        "x": 725,
+        "y": 752
+      },
+      "phase": "ready",
+      "eAt": 0
+    },
+    {
+      "tag": "active-forward",
+      "tick": 24,
+      "body": {
+        "x": 745,
+        "y": 752
+      },
+      "phase": "screen",
+      "eAt": 323
+    },
+    {
+      "tag": "expired-forward",
+      "tick": 34,
+      "body": {
+        "x": 905,
+        "y": 752
+      },
+      "phase": "idle",
+      "eAt": 323
+    },
+    {
+      "tag": "ready-crossing",
+      "tick": 1846,
+      "body": {
+        "x": 791.25,
+        "y": 598
+      },
+      "phase": "ready",
+      "eAt": 1832
+    },
+    {
+      "tag": "active-crossing",
+      "tick": 1854,
+      "body": {
+        "x": 791.25,
+        "y": 618
+      },
+      "phase": "screen",
+      "eAt": 2153
+    },
+    {
+      "tag": "expired-crossing",
+      "tick": 1864,
+      "body": {
+        "x": 791.25,
+        "y": 498
+      },
+      "phase": "idle",
+      "eAt": 2153
+    }
+  ],
+  "checkpointImports": 0,
+  "scope": "Ordinary Short shop purchases and whole transport commands. Acknowledged physical screen identity, course, expiry, owner readiness and sound. Impact sounds are counted when observed.",
+  "realPeers": 3,
+  "tankIsNonHost": true,
+  "ownerPrivatePreparationAndPublicScreen": true,
+  "sharedPhysicalScreen": true,
+  "sharedDodge": {
+    "sequence": 1,
+    "ack": 1,
+    "x": 695,
+    "y": 752
+  },
+  "ownerPrivateSounds": true,
+  "transport": "peer",
+  "protocol": 82,
+  "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49"
+}

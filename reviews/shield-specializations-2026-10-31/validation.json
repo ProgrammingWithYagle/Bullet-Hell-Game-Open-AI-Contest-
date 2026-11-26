@@ -1,0 +1,84 @@
+{
+  "createdAt": "2026-10-31T20:03:54.297Z",
+  "passed": true,
+  "buildId": "2026.10.31-shield-specializations",
+  "protocol": 44,
+  "tests": 989,
+  "failures": 0,
+  "runtimeSourceSha256": "7d3ed6ea43bf82dbe29f1d36a0d5a147a22efe588d087ac8d120de284fc03122",
+  "sourceSnapshotSha256": "76100d60ba7b0fd51eb322054f04f222afbe3b20af05c68e4e95d8fa85cc4272",
+  "contentRevision": "39fd34dfd7530860d0ecfad5d7e86361438fae9bd3ac93881ec4fe51a3974322",
+  "checks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 3623
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2185
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 67917
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 5812
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 771
+    }
+  ],
+  "specializations": {
+    "heavy": {
+      "name": "Reserve Plating",
+      "costs": [
+        6,
+        15,
+        21
+      ],
+      "capacityBonuses": [
+        0.15,
+        0.3,
+        0.5
+      ]
+    },
+    "tank": {
+      "name": "Citadel Lining",
+      "costs": [
+        6,
+        15,
+        21
+      ],
+      "capacityBonuses": [
+        0.25,
+        0.5,
+        0.75
+      ]
+    },
+    "newNodes": 0,
+    "hellishCapacity": 0,
+    "purchasesRefill": false,
+    "languages": 15
+  },
+  "coverage": [
+    "Every difficulty and investment stage; bounded class bonuses and unchanged other classes",
+    "Earned path prerequisites, costs and foreign-class rejection",
+    "Shared permanent/ability/supply pools; excess shielding cannot absorb damage",
+    "Actual Heavy/Tank peer replication and Tank shielding above the previous limit",
+    "Exact previous protocol44 local save/profile migration; old online content revisions rejected",
+    "Localized skill descriptions and base difficulty-limit labels"
+  ],
+  "limits": [
+    "Automated controller, authority and transport checks; no rendered/human class-balance acceptance",
+    "Native-language, audio, physical-device, WAN and endurance review remain open",
+    "Public Site version4/protocol43 and the production backend are unchanged",
+    "Online clients and servers require both protocol44 and the exact new content revision"
+  ]
+}

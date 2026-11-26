@@ -1,0 +1,58 @@
+# Whole Engineer run and replay review
+
+**Current development:** source **22d0df8072fc146285096eaa9223df905edbd41a**, build **2026.11.04-soldier-bank-shot**, protocol **58**, **1,500/1,500 local tests** and all7configured checks pass. Exact-source [push CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41942099496) and [PR CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41942120189) conclude success; every job/step and decoded1,500-pass/0-fail logs are checked. Fresh testing [5346](http://127.0.0.1:5346/)/2722 and public-interface [5347](http://127.0.0.1:5347/)/2723 each bind **2,019 files** and pass four native groups using ordinary Short3SP/two real purchases. Soldier has seven Skirmisher techniques plus one initial Marksman operation, Bank Shot. Marksman depth and whole-class assessment remain unfinished. There is **no fixed maximum for any class**; develop meaningful pathways one polished slice at a time. Human/rendered/device/native-language/listening/motion/final-balance acceptance remains separate and open. Bosses, the armory and Campaign stay later.
+
+The Engineer reference receipts below retain their original source and historical preview labels; they are not relabeled as current-source acceptance.
+
+Engineer reference source **233e9143300989f43f986fdd5fe800975c3f88db**, build **2026.11.04-engineer-kit-guide**, protocol **54**, passes **1,394 tests** and every job/step in exact-source push/PR CI. Matching testing [5336](http://127.0.0.1:5336/)/2712 and public [5337](http://127.0.0.1:5337/)/2713 bind 2,011 files and pass four targeted native groups each. [ENGINEER_KIT_GUIDE.md](ENGINEER_KIT_GUIDE.md) records the owned-action/remapped-control guide. Six legal internal-fork builds naturally clear five encounters and match their safe-restored counterparts in one native policy trial; [ENGINEER_RUN_REVIEW.md](ENGINEER_RUN_REVIEW.md) states its limits. Engineer retains three routes/22 techniques. Targeted Traps control trials now observe the full prepared sequence, including held-pair release, haul and corridor; their outcomes and limits are in ENGINEER_RUN_REVIEW.md. The scoped Engineer implementation/reference assessment supports moving to Soldier next. Human enjoyment, rendered/device/native-language/listening/motion and final balance remain open; other class route sets are still proposals.
+
+## Current usability and integration
+
+The [kit/control guide](ENGINEER_KIT_GUIDE.md) makes the growing owned action set explicit before combat, displays current remapped controls while inspecting future techniques and preserves guarded purchases. It uses the combat HUD's evolved extra-action names. Breach Casings identifies both placement-triggered and remote firing. This client-only slice preserves shared simulation, catalog, prices, protocol, ownership and progression. General remains separate; Engineer still has 22 techniques across Machinery, Traps and Builder.
+
+[Push CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41765652104) and [PR CI](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/41765667392) pass all jobs/steps with 1,394 tests. Testing5336/2712 and public5337/2713 each bind 2,011 files and pass four scoped groups: source-bound native control guide/real purchases with served main/CSS markers, base HTTP/transport, complete exact-served Builder worker and real three-Engineer paused host exit. The MenuDOM fixture has no renderer/layout engine, and the guide subset bundle is distinct from executing the entire browser main. Nineteen earlier roots/backends and 28 preceding exact live processes remain intact.
+
+## Current natural combat and safe-boundary comparisons
+
+| Legal build | Natural clears | Combat seconds | Earned / spent SP | Safe restores | Measured restored results match |
+| --- | ---: | ---: | --- | ---: | --- |
+| machinery-anchor | 5 | 107.200 | 27 / 27 | 18 | Yes |
+| machinery-survey | 5 | 107.933 | 27 / 27 | 18 | Yes |
+| traps-wire | 5 | 164.300 | 27 / 27 | 18 | Yes |
+| traps-switch | 5 | 164.300 | 27 / 27 | 18 | Yes |
+| builder-longspan | 5 | 146.400 | 27 / 27 | 18 | Yes |
+| builder-wings | 5 | 153.800 | 27 / 27 | 18 | Yes |
+
+These are twelve native shared-Game trials on Short/Normal, seed2209, fixed Gatehouse: six legal internal-fork builds and one safe-restored counterpart for each. All use actual input, health damage, enemy completion, ordinary SP/coin rewards and purchases, mutation/contract choices and intermission clocks. There is no health/SP/currency injection, forced enemy completion, boss-deadline edit, invulnerability or score upload. Each restored run round-trips 18 safe phases. Combat duration, damage, fight starts, purchased skills/equipment, sounds, observed cue kinds and final outcomes match its baseline exactly. Simulation executes fixed ticks faster than wall time. These results do not establish a human clear or final balance.
+
+The policy adapts movement range by family and uses real Survey Drive orders when appropriate. Do not rank pathways by this table's durations. The trial observes Machinery order/beam/collapse, Traps charges/shaped jets and Builder repair/redoubt work. Return Wings also observes folding/relocation work. The Traps runs do not observe a Tripwire cue, hold/release use, haul or corridor; identical wire/switch outcomes do not compare those control choices. Focused controller/peer tests cover their mechanics, but targeted control-decision play assessment remains the next Engineer task. Longspan's pilot does not observe relocation; the exact served-worker probe covers it separately. Buying a technique is not proof that this policy used every capability.
+
+Raw current reports are reviews/engineer-controls-2026-11-04/forks-normal.json, forks-normal-restored.json and fork-comparison.json; each is source/runtime bound. No artifact from a previous source is relabeled as current evidence. Broader seed/map/difficulty/co-op build quality, human enjoyment, rendered/device/native-language/listening/motion and final balance remain open.
+
+## Historical transition fixes
+
+Source f67091403b530829d7e6e7d192fcc2e488edcd90/build2026.11.04-engineer-transition-polish/protocol54/1,390tests, metadata151690e0a84a870e3ad649682b4fb6560211857e and reviews/engineer-transition-2026-11-04 retain the prior three actual combat pairs and exact source/metadata push/PR CI. Its first reset readies a refilled primary at a fresh encounter; the second clears a prior hostile-zone slow. Q/E/ultimate recovery and ordinary in-combat slowing/firing intervals remain. The first twelve-class primary regressions fail before that fix; a corrected zone regression adds one failure and one ordinary-slow control. An initial incorrect projectile fixture is retained and excluded as a setup error. The intermediate primary-only source d7bef25 still diverged for Machinery and is preserved honestly. Source7f5cdac6's earlier host-end cleanup remains.
+
+The 30-case/six-build/five-mode boundary audit at7f5cdac6 injects enemy completion and is historical controlled transition evidence, not a current combat clear. All these raw reports/pre-fix logs remain under their own source scopes. New source verification does not erase their limitations.
+
+The scoped Engineer implementation/reference assessment now permits the next single class focus: Soldier. Keep the open human and broader balance review recorded; this does not declare Engineer accepted or the game finished. The other eleven classes still need at least three distinctive specializations individually; their rosters remain proposals. Bosses and remaining Free Play follow. The meaningful weapon/shop overhaul remains queued, with useful stats supporting handling/actions/utility. Campaign stays last and slow learned/proven/prepared, no SP or mutations. Service Yard remains its original unregistered four-pass/one-fail WIP; prose stays 5,741 checked English words toward five million, with no completed personal arc.
+
+
+## Targeted Traps control-decision trial
+
+The follow-up policy deliberately prepares owned ground rather than firing every ready charge immediately. All four baseline runs below use Short, seed 2209 and fixed Gatehouse; each has a separately executed safe-restored counterpart. All eight execute actual combat, damage, ordinary rewards, purchases and intermissions, with no health/SP/currency injection, forced enemy completion, deadline edit, invulnerability or score upload. The game source remains233e914 / build 2026.11.04-engineer-kit-guide / protocol 54 / 1,394 tests. This is new review evidence, not a new playable feature.
+
+| Difficulty / build | Natural clears / result | Combat seconds | SP earned / spent | Observed prepared operations | Safe restores / measured match |
+| --- | --- | ---: | --- | --- | --- |
+| Baby / Tripwire | 5 / victory | 190.633 | 27 / 27 | 2 wire cues, 2 hauls, 5 shaped-jet impacts, 1 corridor impact | 17 / yes |
+| Baby / Safety Switch | 5 / victory | 177.233 | 27 / 27 | 4 holds, 3 full-pair releases, 2 hauls, 5 jet impacts, 1 corridor impact | 17 / yes |
+| Normal / Tripwire | 4 / defeat at fifth | 221.067 | 27 / 27 | 2 wire cues, 2 hauls, 4 jet impacts; no corridor | 17 / yes |
+| Normal / Safety Switch | 4 / defeat at fifth | 198.700 | 27 / 27 | 4 holds, 3 full-pair releases, 2 hauls, 4 jet impacts, 1 corridor impact | 17 / yes |
+
+Ready-pair preparation, releases with two actual live plates and committed warning/impact cues are recorded separately from skill ownership. Public cues establish observed operations; the report does not isolate how much damage each technique caused. Both final easiest-difficulty builds use the full sequence. A preparation-heavy policy losing on Normal does not establish a balance defect, and the earlier policy's faster five-clear Normal results do not establish a superior build. Preparing ground has an opportunity cost; the policy must account for carried Q recovery and stay near its first plate.
+
+All four restored counterparts match measured signals, fight starts, purchases, damage, timing and outcomes. Each round-trips 17 safe phases; terminal phases are outside the loop. Earlier policy losses and raw reports remain preserved in the chat, with hashes/outcomes in the committed assessment. V1's unnormalized aim and V3's restored-client sequence exceeding the 4096-input window were harness errors. The final policy normalizes aim and reseeds its sequence from the restored player's acknowledgment. V5 improves only preparation navigation; no game mechanics were changed to make it win.
+
+Evidence is in reviews/engineer-controls-2026-11-04/traps-control-assessment.json, the six hash-bound raw reports/comparisons and traps-control-policy.mts. Four current client/backend processes and their two launchers were rechecked by full command, PID and UTC creation time; none were stopped. The policy is native fixed-step simulation, not human play, browser rendering, device or final-balance acceptance.
+
+The Engineer reference now has scoped implementation, ownership/migration, purchase/tree controls, actual combat, internal-fork, targeted operation, safe-replay and served-worker/room evidence. No new major game defect was established in this assessment. Proceed to [Soldier's source audit and working brief](SOLDIER_SPECIALIZATIONS.md), one coherent slice at a time. Broader map/seed/difficulty/co-op quality and human enjoyment/rendered/device/native-language/listening/motion/final-balance acceptance remain open. Only the user decides when the whole game is finished.

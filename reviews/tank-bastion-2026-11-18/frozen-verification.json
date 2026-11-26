@@ -1,0 +1,204 @@
+{
+  "passed": true,
+  "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+  "protocol": 79,
+  "contentRevision": "d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0",
+  "checkedAt": "2026-11-18T16:29:24.479Z",
+  "driverSha256": "c1df8bfddf8f4354754c341e620eb8947bf39482818c7a86d15e07743c34c85a",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+      "protocol": 79,
+      "contentRevision": "d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0",
+      "url": "http://127.0.0.1:5402/",
+      "endpoint": "http://127.0.0.1:2778",
+      "backendStartedAt": "2026-11-18T16:21:30.741Z",
+      "files": 2074,
+      "manifestSha256": "e2dcf3ea7d7de631dca2e144a14f36f8fae312043735c3c2dd54c6d798ad75ea",
+      "backendSha256": "24a0873cf6b08d619387294ce4f6f92f529a7458675860cf9ea9e9848b7f31ef",
+      "httpPath": "reviews/tank-bastion-2026-11-18/smoke-testing.json",
+      "httpSha256": "921f8641bc93710c073ee81d5be8d3d564dafa86a2eca473709da9af87bbacf6",
+      "emblems": [
+        {
+          "path": "assets/tank-gate-signal-1-CH-4UPY-.png",
+          "bytes": 690103,
+          "sha256": "34e50431d051fd8acd629189e1f5e9225a486f608c5ffb942f50a11936ec3576"
+        },
+        {
+          "path": "assets/tank-gate-signal-split-1-Dh0gdsMV.png",
+          "bytes": 720874,
+          "sha256": "a475bc1a27f4d2f13bc0e3ed11a36818a5fdfb3f1d2d7edcff7f0f55c0f0a4cc"
+        },
+        {
+          "path": "assets/tank-gate-signal-corner-1-CbVhmLtG.png",
+          "bytes": 496385,
+          "sha256": "e8a14ed1f5cd8ee1a2880903c14c94d5f17f3fb55e8e4aab88bf595b88477407"
+        }
+      ],
+      "caseCount": 7,
+      "cases": [
+        {
+          "choice": "plain",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-plain.log",
+          "logSha256": "3af66e3441ad3e4f9a5d8536a17c059416cdeb5331bc27782bc3372f00b625c7",
+          "result": "testing-worker-plain.json",
+          "resultSha256": "3d5569a327365cb1d2592ff566bfa773a22c537c3da1bed7d6964c04496af7d4"
+        },
+        {
+          "choice": "split",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-split.log",
+          "logSha256": "3ce93baf9a54ade3daec8d850d6d088edf4009647e8a72290164bb67bd2e6928",
+          "result": "testing-worker-split.json",
+          "resultSha256": "10243f52a5fa67a0cd05db2b7a54f0093877f094f968a6f89ef31c127c790db2"
+        },
+        {
+          "choice": "corner",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-corner.log",
+          "logSha256": "197e43c9b9381edb32d2b35dfac5ecd1a0382d60b0898e9b6f00a87f28202da0",
+          "result": "testing-worker-corner.json",
+          "resultSha256": "e78b256f4ded0315bd9214256f314d34b4d50a8fd198d71d8e7091d80befd70d"
+        },
+        {
+          "choice": "plain",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-plain.log",
+          "logSha256": "fac19033cce7dc8ee2d25efe108b50c76664c1b0c0610c5eedf52863ed4c6f03",
+          "result": "testing-peer-plain.json",
+          "resultSha256": "be3119d4403abb7b06d0810d3e207956145bb1597f3a051a252b9e33b87fdfdf"
+        },
+        {
+          "choice": "split",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-split.log",
+          "logSha256": "b812b7df1fcfdf8e7070944c5d29959444beec410e0bff907a4e328feb8977f2",
+          "result": "testing-peer-split.json",
+          "resultSha256": "8101080075fb2fb5b25cda65b611ce43857c48739c6f2c666c0d853e7959aad0"
+        },
+        {
+          "choice": "corner",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-corner.log",
+          "logSha256": "a2d4e90d6b6e6bfb51672c03444bbcddfbb0777b7adbbe7ace10ceb127ae80ce",
+          "result": "testing-peer-corner.json",
+          "resultSha256": "a17c6a39be6d07df006bc414c1f38e79ecf77df96e39d1c9a53beac8ac972511"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+      "protocol": 79,
+      "contentRevision": "d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0",
+      "url": "http://127.0.0.1:5403/",
+      "endpoint": "http://127.0.0.1:2779",
+      "backendStartedAt": "2026-11-18T16:21:31.911Z",
+      "files": 2074,
+      "manifestSha256": "744e6a147a5b94c28fae2e68927071a8dd070b4e98d7985d28ff722c446874cf",
+      "backendSha256": "24a0873cf6b08d619387294ce4f6f92f529a7458675860cf9ea9e9848b7f31ef",
+      "httpPath": "reviews/tank-bastion-2026-11-18/smoke-public.json",
+      "httpSha256": "4e0b7f2b971d124bb964ee269af5f885b5bac0c8f5c4da043421b7f638dc599c",
+      "emblems": [
+        {
+          "path": "assets/tank-gate-signal-1-CH-4UPY-.png",
+          "bytes": 690103,
+          "sha256": "34e50431d051fd8acd629189e1f5e9225a486f608c5ffb942f50a11936ec3576"
+        },
+        {
+          "path": "assets/tank-gate-signal-split-1-Dh0gdsMV.png",
+          "bytes": 720874,
+          "sha256": "a475bc1a27f4d2f13bc0e3ed11a36818a5fdfb3f1d2d7edcff7f0f55c0f0a4cc"
+        },
+        {
+          "path": "assets/tank-gate-signal-corner-1-CbVhmLtG.png",
+          "bytes": 496385,
+          "sha256": "e8a14ed1f5cd8ee1a2880903c14c94d5f17f3fb55e8e4aab88bf595b88477407"
+        }
+      ],
+      "caseCount": 7,
+      "cases": [
+        {
+          "choice": "plain",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-plain.log",
+          "logSha256": "bb3250e33c74bb4b824e03d71498b43671958cedcc5678f4441ae4b0aef91a68",
+          "result": "public-worker-plain.json",
+          "resultSha256": "fbc1bbdab070b614884194585ae75d330da18e7638a782f5ca7d2b7fb6ad336f"
+        },
+        {
+          "choice": "split",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-split.log",
+          "logSha256": "c5ca642df3b6132ec834c2dde8bc842fbf58505d352de257f88cb49522e53058",
+          "result": "public-worker-split.json",
+          "resultSha256": "728347ba754a015704e4754189678b3c6b90ccff9681573180e8a6030049f55c"
+        },
+        {
+          "choice": "corner",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-corner.log",
+          "logSha256": "61e35d1a7283a0db01c6a9464e14971930a68c68f78cd78fbd5c9e2fcd3259a1",
+          "result": "public-worker-corner.json",
+          "resultSha256": "28d585103cab37615d428e5d20bb16a01feee1da265ed76b19b8f9d396308705"
+        },
+        {
+          "choice": "plain",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-plain.log",
+          "logSha256": "73ef08920d664c32639867a9b7f6d1e5b01c1bd6e98a1f58b3ac67a64a7fb6a2",
+          "result": "public-peer-plain.json",
+          "resultSha256": "bb1bb77c3b408a748d8a894ca53887944423501f486c73c2916071afaaa5bcbb"
+        },
+        {
+          "choice": "split",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-split.log",
+          "logSha256": "04a6d6234687ae99863c680ec7e83f4d32ad68c7d5fe89d58164170bf122b0b7",
+          "result": "public-peer-split.json",
+          "resultSha256": "1a1ee13aef150818eb533da4d9c24cb635c7798e87f64a681cb1e33090364a96"
+        },
+        {
+          "choice": "corner",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-corner.log",
+          "logSha256": "faec0d22fc1912420e1936cf214f3f7584a1c590f132bf695c61332b0e6007c7",
+          "result": "public-peer-corner.json",
+          "resultSha256": "e8afba06d60cc74e079292e9263115b07333b281fd01014bb057eec22cbb5185"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

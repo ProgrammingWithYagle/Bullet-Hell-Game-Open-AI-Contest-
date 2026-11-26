@@ -1,0 +1,911 @@
+{
+  "scope": "Copied Game. Three actual Short clears and a 21 SP purchase. Controlled fourth encounter uses actual wall, over-time port, and ordinary primary.",
+  "bindings": {
+    "exact": {
+      "variant": "exact80",
+      "sourceCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+      "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+      "catalogSize": 80,
+      "bundleSha256": "29670a0bd16775954e955d0695eb7696e436833d003cfab93aec5a28a1acfd2c",
+      "runtimeFiles": {
+        "src/shared/game.ts": "8c35ab5afd67aca4016b01c1ec3c86b47334a142badbdf373a13158472dd8ea4",
+        "src/shared/ranger-kit.ts": "e490be8bf70941849eda61bd308a026805ceee235fc2dc08cec979d54a4d2972",
+        "src/shared/heavy-traverse.ts": "39b599044795c35a8af7b44a78da67d7d0844ddb80c7cc99e59fa3c9b2f592b0",
+        "src/shared/soldier-skirmisher.ts": "de17aa693d4df4926958e8a52941cd17da60d2c62b447a2d6476d8bd510f6537",
+        "src/shared/tank-bastion.ts": "a15f9f9574df36fe31c70c927d8579d8998c588868e4824d1c9686d793457a6c",
+        "src/shared/soldier-marksman.ts": "1db9d4dd53d75234cc2c84de82df8c6fca93b6f948b37125ad0ade4a688c6ad8",
+        "src/shared/summoner-kit.ts": "650724a43f6f62479f992d5fff41e5c9e5db9f39679a56fdee0256685ca9d7b7",
+        "src/shared/motion-window.ts": "d4a9208267a7c1e37be65daf2c3e77b0ada5612fb9d6a7911d2d4236e442f72d",
+        "src/shared/class-kits.ts": "79c5939821fb4beba7a7fcc0a6fbac65dbf5c80aa5e1ad0e635425c5d87722b2",
+        "src/shared/bard-kit.ts": "77cc38a17ad9d93a82a38fcfd8b72c8d0376726a3246e38269b47ee9948f0bbe",
+        "src/shared/heavy-linework.ts": "37d7b1dfda2b921a70079a26aa02cb49350f02ba5abdf59fe65c5460864a22d1",
+        "src/shared/sword-geometry.ts": "c176edd83e7229fc44abbcfb7d037b9aeef270756d7e269dfcb436d127271918",
+        "src/shared/soldier-sniper.ts": "978e646410cb1f195e749fd0e69a83146efdd04830f70acaa1801f936c52add9",
+        "src/shared/tank-interceptor.ts": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+        "src/shared/sword-rules.json": "36ade2383c267bf099761bf68aee786e82086ed4e094b0f257fa192e5ab0c527",
+        "src/shared/alchemist-kit.ts": "fa028664e12f96326c884f474088ab9e8d8011b35727c5288de4bca40d06d0e4",
+        "src/shared/heavy-flak.ts": "3e5047491a403c286c96d99430c60c6d60fc1b65eb1552ff643a26d5578d6dba",
+        "src/shared/alchemy-rules.json": "ed15676095256e7d0fdd084fa9687bf6126a1a8712f80baaca2d1bc4ce669e0c",
+        "src/shared/swordsman-kit.ts": "39ca2ad99a03497d1fe291d8daf3d5b16ff738435274d5e6713367c8d1ed6d93",
+        "src/shared/story-chapter.ts": "631853c58dcd5dfabe9762257819c2ab1b5185bca3fbdd64b117926bdd985ccc",
+        "src/shared/ward-skirmish.ts": "b929cb9925e459e49fac7ecf3c4df987ceccbce70082f788a9b4a85c169b52f3",
+        "src/shared/free-play.ts": "9d66dba0fca1025694f701aac4ad9cf19dcc855bdb0747f50022b272bd2d5482",
+        "src/shared/story-campaign.ts": "332e112c6e8522b612d3a19def0f40a3c9dc469bc261fb6966953cd2a7f55a74",
+        "src/shared/story-training.ts": "f94fa42c48deebbde137ad80499839f3d78446acb0b1624f0b8b7f72cf3db11c",
+        "src/shared/variant-pressure.ts": "a15bc55729b990ee1be31e4532c1ed7f6c6da4d5421031f54383e0a3787724c1",
+        "src/shared/boss-defeat-flow.ts": "d0ad8cf5046efde79b4ed174a89b4eee4ae7e3cfef04f295bd5d17c07742bce4",
+        "src/shared/arena-selection.ts": "d81dd51dfe884ea447ff4c923bb942b814ae85936045d65af232699188f1b861",
+        "src/shared/soldier-grenadier.ts": "6e187880dc534c2a8541c4d51c7f05f579572b7ec23cf813ca7265c278ce3d13",
+        "src/shared/warden-patrol.ts": "0e82f8c70f9e678c99831fc5ca3b9dfe77d322585f743b04219b085f37aafc69",
+        "src/shared/mobility.ts": "5ffa6041f35f8d9297dd0ecd11085689e9599c426bb84804eddb89214a84dfac",
+        "src/shared/ability-transforms.ts": "04dfd5458a8faf83f09063ecf43b57156f26ee84e358b48e224e2c30788887d2",
+        "src/shared/class-talents.ts": "fd2bdd52b1aa3aad429f4e2cca4308b5e29a8fe4ca3df2070fb562569650942b",
+        "src/shared/field-follow.ts": "f815f64741950317b0762b27221d8a5c8194e562a4a91e14d0531cd0648dfd7d",
+        "src/shared/phase-break-layout.ts": "eca2aa0a5bc503a5e2de54af1325c7a71e8d0f7c1b2f58580116691fb7146b83",
+        "src/shared/encounter-policy.ts": "bef2891b12e84a6c74e1c1d2744d74c206f08a315f44428525e1cdb6a5b2a05b",
+        "src/shared/recovery-policy.ts": "0f5f39a9a61a8d40d375d91ab318ca8913dad8986eaa873fcb95279d156e6379",
+        "src/shared/early-watch-director.ts": "d367576516b210ca66afecfc9625b141518fe3664e208f44d80d49fa32b6658b",
+        "src/shared/small-wakes-director.ts": "2df7bbcd4b17a138a67931da96432d14b3997191b8a75aebd02b272dc42c1093",
+        "src/shared/boss-body-bounds.ts": "154a0aa4884429493de1d59b8fc2cac43930cbe18af234f30af113003ca8e239",
+        "src/shared/constable-signature.ts": "d2fb007054c7198027eefadbc07fd60e90f3583063ec39aa3f271952f817cf38",
+        "src/shared/boss-threat.ts": "e550b9512f6857ff6972b26b370a2927af52042742fa20fec795b307756cec61",
+        "src/shared/endless-director.ts": "8f22fd8c03118baa071f6e5e88ea89466bf118cbcaf2d9b5c9e56b62705a49ad",
+        "src/shared/brutal-volley.ts": "3688f8c7c999374a468ec40ea4c7ee8e77a8097a15ecde692f84c62f07058ea0",
+        "src/shared/run-progress.ts": "6b1b2de7ee28f51b3713d3324cf531ee3676512da2bf8370ce56154f5be3ce2e",
+        "src/shared/endless-schedule.ts": "fb48bdd6128497dc6025908ffecc3ba653ecb54d9ff5b402a4ee1388dc7fe430",
+        "src/shared/raid-director.ts": "ee9f692cd4ce0dbcea1220b73cec49df7b5d6b37a138a490ce6f4a32b4381dd1",
+        "src/shared/protocol.ts": "230a21553e423e6fbefda84b5e094e664eeb4b37f14524433e98727cfc8f8073",
+        "content/catalog.json": "54d7366b0210558b4504333ca7257208544d9b5d1a694c555b734a7f0b44f483",
+        "src/shared/district-director.ts": "5d0cdc1e93605c2b6e707215b83e60ec314d900b75d0ab2292745407bcb139f8",
+        "src/shared/arena-layouts.ts": "9b75f7b7f47a97dff941c2b8f5562421afe94d10154b8dd0d2615a32a8ef0a6d",
+        "src/shared/geometry.ts": "bc7e8599a331868989757c21f84ecb335c50bb3e5454a5894726f38d1d2514bd",
+        "src/shared/random.ts": "82222fa4041390726946b75c5e7cf1cd4b1c012ea74e959d1d1cf2c00dbb1027",
+        "src/shared/clerk-appeal.ts": "c3222d9f1e9c32637805b0e60877ff0cd69f822db90869a5afba7f795c82daa7",
+        "src/shared/practice-migration.ts": "9537f244deddc929e3af65d1b1f78731a9e4fd1bda60fb67967f6fd4702dc7dc",
+        "src/shared/minions.ts": "2f7f1908351ce83998b564586d5488a3ad2d5716f8204252ff32a2fecd15c627",
+        "src/shared/boss-director.ts": "54245aa3cdb57976f52eb5f5ab5a17e799245cf48e6d69e3f9dd72de1b11e69b",
+        "src/shared/engineer-pathways.ts": "3964dfc2c26643ba4d8bbac9dc4e84bccc87bc20152de6bc8a1a5e3d1529d9ee",
+        "src/shared/skill-conflicts.ts": "90c2c889a8cd6c4760ff7f3079cdffdcaf2493e99feb25070dc2994c9a675e20",
+        "src/shared/civic-director.ts": "2022946168d88ecb32ee5724ff6992d6f54cf127ffd83747540c2a0f8c85f5f9",
+        "src/shared/warden-signature.ts": "8c2abbb7c50f4280fcc651af648ad370d342d6e1d072db705655375a338574fb",
+        "src/shared/ranger-rules.json": "5da7de5ae28b461fd9f641dbcf597a9ec61503503ec21c33255a0679dd777b81",
+        "src/shared/boss-body-bounds.json": "ed7e93c76b59179b884b7f01565bfe5de4a5f537563413b4655af2dfe0ba5de8",
+        "src/shared/soldier-sniper-bore-flight.ts": "9d173992c04173e753ddcadc0a72642d16002cf743e6943390ae799d75df76e5",
+        "src/shared/summoner-rules.json": "6188de93ee5857f2427d3985d65bfa88c6f3a44c8bbdc618509ad97a8ae66e04",
+        "src/shared/rat-navigation.ts": "5694bc716d781db0ab130d010b086ca3d8aa082994d37be6084859961685e1e8",
+        "src/shared/tank-bulwark.ts": "1689fec89288267a8d9b3e4c5f91865e51846ee5b5970031b15647b546c2ebb5",
+        "src/shared/soldier-sniper-positions.ts": "9aab0dac4625012fb51e2b879a536451bd8b58d23e3612bb9297bea0cf003723",
+        "src/shared/heavy-linework-guide.ts": "cda0a378617791c25814614836b0654a08e3da29cc7fc50aab9ad53f886b5e43",
+        "src/shared/tank-bulwark-port.ts": "9dd123876b08199cbd8b4fe09536484a5fc405b974ee5fe1b43db930d49a2213",
+        "src/shared/engineer-machinery.ts": "b8d78e091ce7bce58b9683f144af79edc433d79d3e8ff400487bada1075afc71",
+        "src/shared/engineer-builder.ts": "d8922307b3e7c5a7ce9aeab74647e1f0f3f545bb39e86d120c08181df1d715e6",
+        "src/shared/engineer-traps.ts": "3211d5c4c582660b94a5888513189e8f0407c724855e0ea348198930ed77b6ca",
+        "content/revision.json": "f545e4b9caa04bb543df5832b976a947793f2aa6d219e381c7098b88e139bb29",
+        "src/shared/small-wakes-body-bounds.ts": "8b3387befd5342a3bdc02dfca59370b5b7a0e0719178fa9bee698a77205c7d04",
+        "src/shared/boss-threats.json": "8d118e4a9e8de29c95c259297ee044bd6891885edc833be80884b6286d2ca239",
+        "src/shared/boss-hop-route.ts": "fda9f31e16dacf35f467ecc16ca8f204d5e00321adaa3a42628d7fdd2c26dfa2",
+        "src/shared/service-director.ts": "6b8cf3711f8a40c28c3dafe264ad101396f102a80a7397d8085a9f1f689e6122",
+        "src/shared/heavy-seam.ts": "5107c9c9c066fe33d4e7bcef369c179c87b96b4703dc4cb885ce829284d0bfed",
+        "src/shared/baby-cover.ts": "9ae9ddabfdfc90375f66dbe309e9246c5659291b384a55ab22b6a5413e4fa077",
+        "src/shared/arena-footprint.ts": "7b4757d62561fc99f85e51e228275cb8bc1edf9cbb892b33f18e7f42731fe97a",
+        "src/shared/ambulance-route.ts": "c2fde5836a45c5c4354bb2ca9859a087e67576059cf20ff13b93883efe10b32f",
+        "src/shared/marshal-chains.ts": "8da968d39fe665c5dc608c727a0b65b7d6dca450bcba8783dc9eb98a0d6f738f",
+        "src/shared/widow-gates.ts": "6ccb1b40f22ac49fde15af1f2c8a7d31e4a8723fc555fb8883e372c3f09508c9",
+        "src/shared/tollkeeper-return.ts": "ecd16001352e14589e1fececd6a159ba9ebd2d5e3cdcd94e1e36b554d2f2b876",
+        "src/shared/clerk-appeal-rules.json": "4d66459e7b5e8efd3a6ee2b1cd972abda2edc431291599dccc17bbb8e66a3f40",
+        "src/shared/clerk-placement.ts": "3e9f4df3c1acf292a42559ade9c6c2e0a4d7bc85a5ee9e6f23d15f2ac0e9c362",
+        "src/shared/courier-route.ts": "98b536f4b80bcee0ab8093829e40ec6234ef28c25430c5ecc4e28ad08170ec8d",
+        "src/shared/ratcatcher-muster.ts": "fba4212fe2dce9b8dd62ad85fc6fdfac33e0eb4c81f97799a576ea1a568f271b",
+        "src/shared/soldier-sniper-bore-geometry.ts": "1540c2e9276fef13c133812fc226f046725b6455fef5456fc45c7b4c9406dba7",
+        "src/shared/small-wakes-body-bounds.json": "373e35342b58f266b71971ec672b40b16fc14d2529e1727728586fd7320ea7cd",
+        "src/shared/soldier-sniper-withdrawal.ts": "c68305e62b07108243779aa356feaac278c0f2482acd03667cdbe538f32ced1b",
+        "src/shared/soldier-sniper-rest.ts": "bebb1006b9996548ab20d5d7818631c66f47693a56e5594b2e4d53a1ee7480db",
+        "src/shared/tollkeeper-return-rules.json": "20328fdc2d1597b625cc7dc660d3efe166d6fafc1e336a2643eb8e65e032cc34",
+        "src/shared/ratcatcher-muster-rules.json": "b1450ff63369f40e0cd91e3d06de35b24044c8dd154239ecfc639bfc3c2f0126",
+        "src/shared/courier-route-rules.json": "ff55b7f254104119fbc0fe88c2aceb5acf83ba0ef7ccb93ce3e6d79889775334",
+        "src/shared/widow-gates-rules.json": "ef25dc85fa4941892f8cccba0d6ecd8006108022c1c461733b999aa177de9111",
+        "src/shared/marshal-chains-rules.json": "12ba46be11774968271bb4e948a31bf63377b5f89d62bcec948546fc403bb74c",
+        "src/shared/ambulance-route-rules.json": "b8cf50504fe5736512fa57fabf5abda2dcfbe68dd7e2b31c90d3a81fa48937a4",
+        "src/shared/lamplight-watch.ts": "dba457d80b0c2b8d98317a9f2f926f1a090f9c17a5b98864347fed82fbc82ea6",
+        "src/shared/ring-contact.ts": "5d9094ef5a837f180ae3d72b654273be041ecf99b0c80ebaaa2302b3826c90c6",
+        "src/shared/stitchwork.ts": "02e4d4c6d2c40d896106060e2ab3e67b3f42c005a84ecbe9f745687c5f0c2d06",
+        "src/shared/baker-oven.ts": "b6d7f74be3ee2e6fee38707f825a5e800f6a34b7b11ade1e909521fc92bd340f",
+        "src/shared/mold-mixing.ts": "aa4b68642882d69df4fc8c46f88806ef41916593920c5166819d0cd7d2c03f3c",
+        "src/shared/station-signals.ts": "d00dec1449cd0454103ab0464d0e419bad18c070d21d62a0659586196fa77632",
+        "src/shared/sluice-pressure.ts": "951c06f6acd2a12e749bf990b8a0e657d534490dabc6e71f76d1fa976fb19e66",
+        "src/shared/matron-ward.ts": "825b503869288716c458d08c56140eae4a272f1d81de5034b1fbf0d354ca1821",
+        "src/shared/glass-surgery.ts": "01693c32eecb876b2f8936eb5702a1bda9d7a9fc31b14196f6cfdd361f175f13",
+        "src/shared/bell-carillon.ts": "52a04d704112353d29be2e468457ffccb5a424b33a02fb183e3e2127ad630419",
+        "src/shared/stitchwork-rules.json": "36b023d9671d13af56bd585f345cf5bbdaf65915c52316ecf6953bdc1a68cc31",
+        "src/shared/matron-ward-rules.json": "e2a04474d7d7093dc2b2d85aa6cbc3a902352618f8c160e9aa3793e635e51081",
+        "src/shared/bell-return-chain.ts": "c61d855c1097fbc1211071cdc397ca055d3f72357e37e6e519330069eeee4d6d",
+        "src/shared/bell-carillon-rules.json": "d07495332bf1e982b5c9fccd7a966c4d2bdc7fcfe0abca6635fa9c4988088b07",
+        "src/shared/mold-still.ts": "23b30a337449fdce5fa111407816ef54f9829d9b621b56afbe29b510700cee23",
+        "src/shared/mold-mixing-rules.json": "2df874f2d863b024f9e007d6faaea16eda77b73514b114e2c671a5d19bac6304",
+        "src/shared/bell-return-chain-rules.json": "12f7be524cccfa1b943e6f8c66397c779cbb58e7e1d8d447ceb0f425ca43c046",
+        "src/shared/mold-still-rules.json": "5e76e6a5feaea4c860450abcfc4312341e434066410e55ede559134c89fdb6d1"
+      }
+    },
+    "study": {
+      "variant": "runtime81",
+      "parentCommit": "237e1620a74777600e3564b23059a7689b261ca3",
+      "contentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "catalogSize": 82,
+      "bundleSha256": "cde03d042319e88cf1690127971a8eae43f00ca19583ea1965746628634d845a",
+      "runtimeFiles": {
+        "src/shared/game.ts": "8c35ab5afd67aca4016b01c1ec3c86b47334a142badbdf373a13158472dd8ea4",
+        "src/shared/heavy-linework.ts": "37d7b1dfda2b921a70079a26aa02cb49350f02ba5abdf59fe65c5460864a22d1",
+        "src/shared/soldier-grenadier.ts": "6e187880dc534c2a8541c4d51c7f05f579572b7ec23cf813ca7265c278ce3d13",
+        "src/shared/soldier-marksman.ts": "1db9d4dd53d75234cc2c84de82df8c6fca93b6f948b37125ad0ade4a688c6ad8",
+        "src/shared/motion-window.ts": "d4a9208267a7c1e37be65daf2c3e77b0ada5612fb9d6a7911d2d4236e442f72d",
+        "src/shared/tank-interceptor.ts": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+        "src/shared/soldier-skirmisher.ts": "de17aa693d4df4926958e8a52941cd17da60d2c62b447a2d6476d8bd510f6537",
+        "src/shared/ward-skirmish.ts": "b929cb9925e459e49fac7ecf3c4df987ceccbce70082f788a9b4a85c169b52f3",
+        "src/shared/alchemist-kit.ts": "fa028664e12f96326c884f474088ab9e8d8011b35727c5288de4bca40d06d0e4",
+        "src/shared/warden-patrol.ts": "0e82f8c70f9e678c99831fc5ca3b9dfe77d322585f743b04219b085f37aafc69",
+        "src/shared/alchemy-rules.json": "ed15676095256e7d0fdd084fa9687bf6126a1a8712f80baaca2d1bc4ce669e0c",
+        "src/shared/story-chapter.ts": "631853c58dcd5dfabe9762257819c2ab1b5185bca3fbdd64b117926bdd985ccc",
+        "src/shared/soldier-sniper.ts": "978e646410cb1f195e749fd0e69a83146efdd04830f70acaa1801f936c52add9",
+        "src/shared/ranger-kit.ts": "e490be8bf70941849eda61bd308a026805ceee235fc2dc08cec979d54a4d2972",
+        "src/shared/free-play.ts": "9d66dba0fca1025694f701aac4ad9cf19dcc855bdb0747f50022b272bd2d5482",
+        "src/shared/story-training.ts": "f94fa42c48deebbde137ad80499839f3d78446acb0b1624f0b8b7f72cf3db11c",
+        "src/shared/class-kits.ts": "79c5939821fb4beba7a7fcc0a6fbac65dbf5c80aa5e1ad0e635425c5d87722b2",
+        "src/shared/sword-geometry.ts": "c176edd83e7229fc44abbcfb7d037b9aeef270756d7e269dfcb436d127271918",
+        "src/shared/heavy-traverse.ts": "39b599044795c35a8af7b44a78da67d7d0844ddb80c7cc99e59fa3c9b2f592b0",
+        "src/shared/summoner-kit.ts": "650724a43f6f62479f992d5fff41e5c9e5db9f39679a56fdee0256685ca9d7b7",
+        "src/shared/bard-kit.ts": "77cc38a17ad9d93a82a38fcfd8b72c8d0376726a3246e38269b47ee9948f0bbe",
+        "src/shared/class-talents.ts": "fd2bdd52b1aa3aad429f4e2cca4308b5e29a8fe4ca3df2070fb562569650942b",
+        "src/shared/heavy-flak.ts": "3e5047491a403c286c96d99430c60c6d60fc1b65eb1552ff643a26d5578d6dba",
+        "src/shared/sword-rules.json": "36ade2383c267bf099761bf68aee786e82086ed4e094b0f257fa192e5ab0c527",
+        "src/shared/tank-bastion.ts": "a15f9f9574df36fe31c70c927d8579d8998c588868e4824d1c9686d793457a6c",
+        "src/shared/arena-selection.ts": "d81dd51dfe884ea447ff4c923bb942b814ae85936045d65af232699188f1b861",
+        "src/shared/variant-pressure.ts": "a15bc55729b990ee1be31e4532c1ed7f6c6da4d5421031f54383e0a3787724c1",
+        "src/shared/swordsman-kit.ts": "39ca2ad99a03497d1fe291d8daf3d5b16ff738435274d5e6713367c8d1ed6d93",
+        "src/shared/field-follow.ts": "f815f64741950317b0762b27221d8a5c8194e562a4a91e14d0531cd0648dfd7d",
+        "src/shared/boss-defeat-flow.ts": "d0ad8cf5046efde79b4ed174a89b4eee4ae7e3cfef04f295bd5d17c07742bce4",
+        "src/shared/mobility.ts": "5ffa6041f35f8d9297dd0ecd11085689e9599c426bb84804eddb89214a84dfac",
+        "src/shared/ability-transforms.ts": "04dfd5458a8faf83f09063ecf43b57156f26ee84e358b48e224e2c30788887d2",
+        "src/shared/story-campaign.ts": "332e112c6e8522b612d3a19def0f40a3c9dc469bc261fb6966953cd2a7f55a74",
+        "src/shared/phase-break-layout.ts": "eca2aa0a5bc503a5e2de54af1325c7a71e8d0f7c1b2f58580116691fb7146b83",
+        "src/shared/brutal-volley.ts": "3688f8c7c999374a468ec40ea4c7ee8e77a8097a15ecde692f84c62f07058ea0",
+        "src/shared/encounter-policy.ts": "bef2891b12e84a6c74e1c1d2744d74c206f08a315f44428525e1cdb6a5b2a05b",
+        "src/shared/recovery-policy.ts": "0f5f39a9a61a8d40d375d91ab318ca8913dad8986eaa873fcb95279d156e6379",
+        "src/shared/small-wakes-director.ts": "2df7bbcd4b17a138a67931da96432d14b3997191b8a75aebd02b272dc42c1093",
+        "src/shared/boss-body-bounds.ts": "154a0aa4884429493de1d59b8fc2cac43930cbe18af234f30af113003ca8e239",
+        "src/shared/early-watch-director.ts": "d367576516b210ca66afecfc9625b141518fe3664e208f44d80d49fa32b6658b",
+        "src/shared/constable-signature.ts": "d2fb007054c7198027eefadbc07fd60e90f3583063ec39aa3f271952f817cf38",
+        "src/shared/boss-threat.ts": "e550b9512f6857ff6972b26b370a2927af52042742fa20fec795b307756cec61",
+        "src/shared/endless-director.ts": "8f22fd8c03118baa071f6e5e88ea89466bf118cbcaf2d9b5c9e56b62705a49ad",
+        "src/shared/raid-director.ts": "ee9f692cd4ce0dbcea1220b73cec49df7b5d6b37a138a490ce6f4a32b4381dd1",
+        "src/shared/endless-schedule.ts": "fb48bdd6128497dc6025908ffecc3ba653ecb54d9ff5b402a4ee1388dc7fe430",
+        "src/shared/run-progress.ts": "6b1b2de7ee28f51b3713d3324cf531ee3676512da2bf8370ce56154f5be3ce2e",
+        "src/shared/protocol.ts": "5852f68ff44ebef7fbf1233055277736cd7d2a731fbfded75c3427300bed8ec9",
+        "src/shared/district-director.ts": "5d0cdc1e93605c2b6e707215b83e60ec314d900b75d0ab2292745407bcb139f8",
+        "content/catalog.json": "717a32c88b81c59e2992694c56f3483853c7ff90071a4f189d3e1541ead9620e",
+        "src/shared/geometry.ts": "bc7e8599a331868989757c21f84ecb335c50bb3e5454a5894726f38d1d2514bd",
+        "src/shared/random.ts": "82222fa4041390726946b75c5e7cf1cd4b1c012ea74e959d1d1cf2c00dbb1027",
+        "src/shared/practice-migration.ts": "5e62e0b358887ebfdcb78dc5314f1745e28171df3184edb3bfb5e734e7244900",
+        "src/shared/boss-director.ts": "54245aa3cdb57976f52eb5f5ab5a17e799245cf48e6d69e3f9dd72de1b11e69b",
+        "src/shared/arena-layouts.ts": "9b75f7b7f47a97dff941c2b8f5562421afe94d10154b8dd0d2615a32a8ef0a6d",
+        "src/shared/warden-signature.ts": "8c2abbb7c50f4280fcc651af648ad370d342d6e1d072db705655375a338574fb",
+        "src/shared/minions.ts": "2f7f1908351ce83998b564586d5488a3ad2d5716f8204252ff32a2fecd15c627",
+        "src/shared/clerk-appeal.ts": "c3222d9f1e9c32637805b0e60877ff0cd69f822db90869a5afba7f795c82daa7",
+        "src/shared/engineer-pathways.ts": "3964dfc2c26643ba4d8bbac9dc4e84bccc87bc20152de6bc8a1a5e3d1529d9ee",
+        "src/shared/skill-conflicts.ts": "90c2c889a8cd6c4760ff7f3079cdffdcaf2493e99feb25070dc2994c9a675e20",
+        "src/shared/civic-director.ts": "2022946168d88ecb32ee5724ff6992d6f54cf127ffd83747540c2a0f8c85f5f9",
+        "src/shared/heavy-linework-guide.ts": "cda0a378617791c25814614836b0654a08e3da29cc7fc50aab9ad53f886b5e43",
+        "src/shared/ranger-rules.json": "5da7de5ae28b461fd9f641dbcf597a9ec61503503ec21c33255a0679dd777b81",
+        "src/shared/soldier-sniper-bore-flight.ts": "9d173992c04173e753ddcadc0a72642d16002cf743e6943390ae799d75df76e5",
+        "src/shared/soldier-sniper-positions.ts": "9aab0dac4625012fb51e2b879a536451bd8b58d23e3612bb9297bea0cf003723",
+        "src/shared/tank-bulwark.ts": "940cbb7b05d955c6bf60b094f00bb23d556c85143cf51cd73b30c0f017475234",
+        "src/shared/tank-bulwark-port.ts": "9dd123876b08199cbd8b4fe09536484a5fc405b974ee5fe1b43db930d49a2213",
+        "src/shared/engineer-builder.ts": "d8922307b3e7c5a7ce9aeab74647e1f0f3f545bb39e86d120c08181df1d715e6",
+        "src/shared/engineer-machinery.ts": "b8d78e091ce7bce58b9683f144af79edc433d79d3e8ff400487bada1075afc71",
+        "src/shared/engineer-traps.ts": "3211d5c4c582660b94a5888513189e8f0407c724855e0ea348198930ed77b6ca",
+        "content/revision.json": "357177f685784a790a3cb621767c6888c400df37abc654893feba930839e85ac",
+        "src/shared/boss-body-bounds.json": "ed7e93c76b59179b884b7f01565bfe5de4a5f537563413b4655af2dfe0ba5de8",
+        "src/shared/summoner-rules.json": "6188de93ee5857f2427d3985d65bfa88c6f3a44c8bbdc618509ad97a8ae66e04",
+        "src/shared/rat-navigation.ts": "5694bc716d781db0ab130d010b086ca3d8aa082994d37be6084859961685e1e8",
+        "src/shared/heavy-seam.ts": "5107c9c9c066fe33d4e7bcef369c179c87b96b4703dc4cb885ce829284d0bfed",
+        "src/shared/boss-threats.json": "8d118e4a9e8de29c95c259297ee044bd6891885edc833be80884b6286d2ca239",
+        "src/shared/boss-hop-route.ts": "fda9f31e16dacf35f467ecc16ca8f204d5e00321adaa3a42628d7fdd2c26dfa2",
+        "src/shared/service-director.ts": "6b8cf3711f8a40c28c3dafe264ad101396f102a80a7397d8085a9f1f689e6122",
+        "src/shared/small-wakes-body-bounds.ts": "8b3387befd5342a3bdc02dfca59370b5b7a0e0719178fa9bee698a77205c7d04",
+        "src/shared/ambulance-route.ts": "c2fde5836a45c5c4354bb2ca9859a087e67576059cf20ff13b93883efe10b32f",
+        "src/shared/tollkeeper-return.ts": "ecd16001352e14589e1fececd6a159ba9ebd2d5e3cdcd94e1e36b554d2f2b876",
+        "src/shared/widow-gates.ts": "6ccb1b40f22ac49fde15af1f2c8a7d31e4a8723fc555fb8883e372c3f09508c9",
+        "src/shared/marshal-chains.ts": "8da968d39fe665c5dc608c727a0b65b7d6dca450bcba8783dc9eb98a0d6f738f",
+        "src/shared/baby-cover.ts": "9ae9ddabfdfc90375f66dbe309e9246c5659291b384a55ab22b6a5413e4fa077",
+        "src/shared/arena-footprint.ts": "7b4757d62561fc99f85e51e228275cb8bc1edf9cbb892b33f18e7f42731fe97a",
+        "src/shared/ratcatcher-muster.ts": "fba4212fe2dce9b8dd62ad85fc6fdfac33e0eb4c81f97799a576ea1a568f271b",
+        "src/shared/courier-route.ts": "98b536f4b80bcee0ab8093829e40ec6234ef28c25430c5ecc4e28ad08170ec8d",
+        "src/shared/clerk-placement.ts": "3e9f4df3c1acf292a42559ade9c6c2e0a4d7bc85a5ee9e6f23d15f2ac0e9c362",
+        "src/shared/clerk-appeal-rules.json": "4d66459e7b5e8efd3a6ee2b1cd972abda2edc431291599dccc17bbb8e66a3f40",
+        "src/shared/soldier-sniper-bore-geometry.ts": "1540c2e9276fef13c133812fc226f046725b6455fef5456fc45c7b4c9406dba7",
+        "src/shared/soldier-sniper-rest.ts": "bebb1006b9996548ab20d5d7818631c66f47693a56e5594b2e4d53a1ee7480db",
+        "src/shared/ratcatcher-muster-rules.json": "b1450ff63369f40e0cd91e3d06de35b24044c8dd154239ecfc639bfc3c2f0126",
+        "src/shared/ambulance-route-rules.json": "b8cf50504fe5736512fa57fabf5abda2dcfbe68dd7e2b31c90d3a81fa48937a4",
+        "src/shared/tollkeeper-return-rules.json": "20328fdc2d1597b625cc7dc660d3efe166d6fafc1e336a2643eb8e65e032cc34",
+        "src/shared/soldier-sniper-withdrawal.ts": "c68305e62b07108243779aa356feaac278c0f2482acd03667cdbe538f32ced1b",
+        "src/shared/small-wakes-body-bounds.json": "373e35342b58f266b71971ec672b40b16fc14d2529e1727728586fd7320ea7cd",
+        "src/shared/widow-gates-rules.json": "ef25dc85fa4941892f8cccba0d6ecd8006108022c1c461733b999aa177de9111",
+        "src/shared/courier-route-rules.json": "ff55b7f254104119fbc0fe88c2aceb5acf83ba0ef7ccb93ce3e6d79889775334",
+        "src/shared/marshal-chains-rules.json": "12ba46be11774968271bb4e948a31bf63377b5f89d62bcec948546fc403bb74c",
+        "src/shared/lamplight-watch.ts": "dba457d80b0c2b8d98317a9f2f926f1a090f9c17a5b98864347fed82fbc82ea6",
+        "src/shared/station-signals.ts": "d00dec1449cd0454103ab0464d0e419bad18c070d21d62a0659586196fa77632",
+        "src/shared/ring-contact.ts": "5d9094ef5a837f180ae3d72b654273be041ecf99b0c80ebaaa2302b3826c90c6",
+        "src/shared/bell-carillon.ts": "52a04d704112353d29be2e468457ffccb5a424b33a02fb183e3e2127ad630419",
+        "src/shared/sluice-pressure.ts": "951c06f6acd2a12e749bf990b8a0e657d534490dabc6e71f76d1fa976fb19e66",
+        "src/shared/stitchwork.ts": "02e4d4c6d2c40d896106060e2ab3e67b3f42c005a84ecbe9f745687c5f0c2d06",
+        "src/shared/baker-oven.ts": "b6d7f74be3ee2e6fee38707f825a5e800f6a34b7b11ade1e909521fc92bd340f",
+        "src/shared/mold-mixing.ts": "aa4b68642882d69df4fc8c46f88806ef41916593920c5166819d0cd7d2c03f3c",
+        "src/shared/matron-ward.ts": "825b503869288716c458d08c56140eae4a272f1d81de5034b1fbf0d354ca1821",
+        "src/shared/glass-surgery.ts": "01693c32eecb876b2f8936eb5702a1bda9d7a9fc31b14196f6cfdd361f175f13",
+        "src/shared/stitchwork-rules.json": "36b023d9671d13af56bd585f345cf5bbdaf65915c52316ecf6953bdc1a68cc31",
+        "src/shared/matron-ward-rules.json": "e2a04474d7d7093dc2b2d85aa6cbc3a902352618f8c160e9aa3793e635e51081",
+        "src/shared/mold-still.ts": "23b30a337449fdce5fa111407816ef54f9829d9b621b56afbe29b510700cee23",
+        "src/shared/mold-mixing-rules.json": "2df874f2d863b024f9e007d6faaea16eda77b73514b114e2c671a5d19bac6304",
+        "src/shared/bell-carillon-rules.json": "d07495332bf1e982b5c9fccd7a966c4d2bdc7fcfe0abca6635fa9c4988088b07",
+        "src/shared/bell-return-chain.ts": "c61d855c1097fbc1211071cdc397ca055d3f72357e37e6e519330069eeee4d6d",
+        "src/shared/mold-still-rules.json": "5e76e6a5feaea4c860450abcfc4312341e434066410e55ede559134c89fdb6d1",
+        "src/shared/bell-return-chain-rules.json": "12f7be524cccfa1b943e6f8c66397c779cbb58e7e1d8d447ceb0f425ca43c046"
+      }
+    }
+  },
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "seed": 41,
+      "dir": 1,
+      "difficulty": "baby",
+      "kind": "baseline",
+      "passed": true,
+      "progress": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "tick": 648
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "tick": 919
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "tick": 1164
+        }
+      ],
+      "transactions": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-port-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ],
+      "opening": 1423,
+      "movedAt": 1431,
+      "original": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0
+      },
+      "center": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "pending": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "moved": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55
+      },
+      "qAt": 1876,
+      "paidPrimary": 0,
+      "roundsBeyondPanel": 0
+    },
+    {
+      "arena": "gatehouse",
+      "seed": 41,
+      "dir": 1,
+      "difficulty": "baby",
+      "kind": "unowned",
+      "passed": true,
+      "progress": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "tick": 648
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "tick": 919
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "tick": 1164
+        }
+      ],
+      "transactions": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-port-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ],
+      "opening": 1423,
+      "movedAt": 1431,
+      "original": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0
+      },
+      "center": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "pending": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "moved": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55
+      },
+      "qAt": 1876,
+      "paidPrimary": 0,
+      "roundsBeyondPanel": 0
+    },
+    {
+      "arena": "gatehouse",
+      "seed": 41,
+      "dir": 1,
+      "difficulty": "baby",
+      "kind": "late-right",
+      "passed": true,
+      "progress": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "tick": 648
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "tick": 919
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "tick": 1164
+        }
+      ],
+      "transactions": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-port-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ],
+      "opening": 1423,
+      "movedAt": 1431,
+      "original": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0
+      },
+      "center": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "pending": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "moved": {
+        "kind": "wall",
+        "id": 452,
+        "owner": "tank",
+        "x": 695,
+        "y": 652,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 1408,
+        "until": 1558,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 18.475208614068038,
+        "bulwarkPortHalfSpan": 16.16580753730952
+      },
+      "qAt": 1876,
+      "paidPrimary": 1,
+      "roundsBeyondPanel": 2
+    },
+    {
+      "arena": "triage-yard",
+      "seed": 73,
+      "dir": -1,
+      "difficulty": "normal",
+      "kind": "late-left",
+      "passed": true,
+      "progress": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "tick": 1181
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "tick": 2233
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "tick": 3565
+        }
+      ],
+      "transactions": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-port-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ],
+      "opening": 3770,
+      "movedAt": 3778,
+      "original": {
+        "kind": "wall",
+        "id": 1288,
+        "owner": "tank",
+        "x": 1099.2,
+        "y": 707.2,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 3753,
+        "until": 3903,
+        "retaliation": 0
+      },
+      "center": {
+        "kind": "wall",
+        "id": 1288,
+        "owner": "tank",
+        "x": 1099.2,
+        "y": 707.2,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 3753,
+        "until": 3903,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "pending": {
+        "kind": "wall",
+        "id": 1288,
+        "owner": "tank",
+        "x": 1099.2,
+        "y": 707.2,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 3753,
+        "until": 3903,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "moved": {
+        "kind": "wall",
+        "id": 1288,
+        "owner": "tank",
+        "x": 1099.2,
+        "y": 707.2,
+        "radius": 110,
+        "aim": -1.5707963267948966,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 3753,
+        "until": 3903,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": -18.475208614067924,
+        "bulwarkPortHalfSpan": 16.165807537309522
+      },
+      "qAt": 4221,
+      "paidPrimary": 1,
+      "roundsBeyondPanel": 1
+    },
+    {
+      "arena": "sunken-chapel",
+      "seed": 73,
+      "dir": 1,
+      "difficulty": "normal",
+      "kind": "move-during-shift",
+      "passed": true,
+      "progress": [
+        {
+          "encounter": 1,
+          "earned": 9,
+          "clears": 1,
+          "tick": 1342
+        },
+        {
+          "encounter": 2,
+          "earned": 15,
+          "clears": 2,
+          "tick": 2303
+        },
+        {
+          "encounter": 3,
+          "earned": 21,
+          "clears": 3,
+          "tick": 4063
+        }
+      ],
+      "transactions": [
+        {
+          "id": "tank-protection-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-carry-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-port-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "id": "tank-bulwark-side-port-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ],
+      "opening": 4235,
+      "movedAt": 4243,
+      "original": {
+        "kind": "wall",
+        "id": 1610,
+        "owner": "tank",
+        "x": 360.71067811865476,
+        "y": 429.28932188134524,
+        "radius": 110,
+        "aim": -0.7853981633974483,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 4222,
+        "until": 4372,
+        "retaliation": 0
+      },
+      "center": {
+        "kind": "wall",
+        "id": 1610,
+        "owner": "tank",
+        "x": 360.71067811865476,
+        "y": 429.28932188134524,
+        "radius": 110,
+        "aim": -0.7853981633974483,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 4222,
+        "until": 4372,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "pending": {
+        "kind": "wall",
+        "id": 1610,
+        "owner": "tank",
+        "x": 360.71067811865476,
+        "y": 429.28932188134524,
+        "radius": 110,
+        "aim": -0.7853981633974483,
+        "health": 157.5,
+        "maxHealth": 157.5,
+        "at": 4222,
+        "until": 4372,
+        "retaliation": 0,
+        "halfSpan": 55,
+        "bulwarkPortOffset": 0,
+        "bulwarkPortHalfSpan": 14
+      },
+      "qAt": 4690,
+      "expired": false,
+      "paidPrimary": 0
+    }
+  ],
+  "failures": 0
+}

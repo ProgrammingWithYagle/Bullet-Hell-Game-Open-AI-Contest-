@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-04T03:07:28.946Z",
+  "baseMetadata": "151690e0a84a870e3ad649682b4fb6560211857e",
+  "playableSource": "f67091403b530829d7e6e7d192fcc2e488edcd90",
+  "beforeImplementation": {
+    "path": "reviews/engineer-controls-2026-11-04/regression-before-fix.log",
+    "sha256": "640886037a67433604093e36b3d65dd3b6a983462bea5d3b3e7741bc9e678b33",
+    "missingUsabilityFlows": 4
+  },
+  "finalFocused": {
+    "path": "reviews/engineer-controls-2026-11-04/focused-final.log",
+    "sha256": "a8ad4801416c4bb17f33ab98a8db0ace4580abc80d9e70994d253950f1cac762",
+    "passed": 20
+  },
+  "initialFixtureErrors": {
+    "path": "reviews/engineer-controls-2026-11-04/focused-after-fix.log",
+    "notGameplayDefects": true,
+    "reason": "Whitespace-concatenation assertion and unsupported MenuDOM hasAttribute; corrected semantic assertions and typed elements pass."
+  },
+  "limits": "Native DOM/real-source fixtures and existing actual-peer checks; not rendered/device/human/native-language acceptance."
+}

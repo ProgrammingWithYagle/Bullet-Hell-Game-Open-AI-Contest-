@@ -1,0 +1,282 @@
+{
+  "passed": true,
+  "protocol": 95,
+  "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "transport": "peer",
+  "fitting": "second",
+  "bought": [
+    {
+      "item": "bard-company-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-false-entrance-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-misdirection-second-entrance-1",
+      "earned": 5,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "matron",
+    "arena": "triage-yard",
+    "start": 2324
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "bard-false-entrance",
+        "x": 840.5595950831562,
+        "y": 297.9548079403,
+        "owner": "QzqtH2DTv",
+        "id": 1490,
+        "at": 4468,
+        "radius": 19,
+        "until": 4594,
+        "armed": false
+      },
+      "last": {
+        "kind": "bard-false-entrance",
+        "x": 840.5595950831562,
+        "y": 297.9548079403,
+        "owner": "QzqtH2DTv",
+        "id": 1490,
+        "at": 4468,
+        "radius": 19,
+        "until": 4594,
+        "armed": true,
+        "target": 1358,
+        "repeats": true
+      },
+      "phases": [
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": false
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": true,
+          "target": 1357
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": true
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": true,
+          "target": 1358,
+          "repeats": true
+        }
+      ]
+    },
+    "targets": [
+      1357,
+      1358
+    ],
+    "trace": [
+      {
+        "tick": 4503,
+        "actor": 1358,
+        "distance": 113.35241602599169,
+        "x": 939.1331787109375,
+        "y": 353.91925048828125
+      },
+      {
+        "tick": 4504,
+        "actor": 1358,
+        "distance": 110.28572400403989,
+        "x": 936.46630859375,
+        "y": 352.4051818847656
+      }
+    ],
+    "paid": {
+      "e": 2716,
+      "u": 2704
+    },
+    "sounds": [
+      "bard-entrance-set",
+      "bard-entrance-arm",
+      "bard-entrance-take",
+      "bard-entrance-set",
+      "bard-entrance-arm",
+      "bard-entrance-take",
+      "bard-entrance-arrive",
+      "bard-entrance-second",
+      "bard-entrance-take"
+    ],
+    "plans": [
+      {
+        "action": "set",
+        "at": 2649,
+        "from": {
+          "x": 901.5,
+          "y": 505.25
+        },
+        "point": {
+          "x": 858.3616303043196,
+          "y": 358.4573535220554
+        },
+        "escape": {
+          "x": 949.4502770088292,
+          "y": 465.9464259287206
+        },
+        "initialActor": 954
+      },
+      {
+        "action": "set",
+        "at": 4467,
+        "from": {
+          "x": 954.75,
+          "y": 399.75
+        },
+        "point": {
+          "x": 840.6367793183731,
+          "y": 297.8325193322248
+        },
+        "escape": {
+          "x": 1014.325345757847,
+          "y": 382.5808946699898
+        },
+        "initialActor": 1358
+      },
+      {
+        "action": "second",
+        "at": 4502,
+        "point": {
+          "x": 840.5595950831562,
+          "y": 297.9548079403
+        }
+      }
+    ],
+    "boss": "matron"
+  },
+  "witnessed": {
+    "nonHost": true,
+    "shared": {
+      "first": {
+        "kind": "bard-false-entrance",
+        "x": 840.5595950831562,
+        "y": 297.9548079403,
+        "owner": "QzqtH2DTv",
+        "id": 1490,
+        "at": 4468,
+        "radius": 19,
+        "until": 4594,
+        "armed": false
+      },
+      "last": {
+        "kind": "bard-false-entrance",
+        "x": 840.5595950831562,
+        "y": 297.9548079403,
+        "owner": "QzqtH2DTv",
+        "id": 1490,
+        "at": 4468,
+        "radius": 19,
+        "until": 4594,
+        "armed": true,
+        "target": 1358,
+        "repeats": true
+      },
+      "phases": [
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": false
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": true,
+          "target": 1357
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": true
+        },
+        {
+          "kind": "bard-false-entrance",
+          "x": 840.5595950831562,
+          "y": 297.9548079403,
+          "owner": "QzqtH2DTv",
+          "id": 1490,
+          "at": 4468,
+          "radius": 19,
+          "until": 4594,
+          "armed": true,
+          "target": 1358,
+          "repeats": true
+        }
+      ]
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "9a5d944816debb334e6c3797aef4b740e5146e3d767a34217e5be84e4b5a2a2e",
+  "testedAudience": "public"
+}

@@ -1,0 +1,203 @@
+{
+  "createdAt": "2026-11-01T17:42:37.456Z",
+  "requests": [
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-selection-v1.png",
+      "sha256": "593bc352bbee736c674e0f50906cee94d974c59d83b9ee1b3f11692cf52e5e78",
+      "request": "assets/production/generated/bard-2026-11-01/PROMPT.txt",
+      "requestSha256": "73ef142b80906dbb152c79e83c3b6da84869a94f11ff5ea1655f15400764f040",
+      "purpose": "selection portrait",
+      "inputBindings": [],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+      "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e",
+      "request": "assets/production/generated/bard-2026-11-01/FOUR-VIEW-PROMPT.txt",
+      "requestSha256": "cfdf015ee27f1f114b333eb288bd3ee9d22ce46c575dde70b3feb1745f51f912",
+      "purpose": "four independent idle facings",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-selection-v1.png",
+          "sha256": "593bc352bbee736c674e0f50906cee94d974c59d83b9ee1b3f11692cf52e5e78"
+        },
+        {
+          "projectPath": "assets/production/normalized/survivors/engineer/reference-atlas-v1.png",
+          "sha256": "ce938198baaa8fad40ad1924acffb576745857e3d404abfa02db34441a5f1f98"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-run-v1.png",
+      "sha256": "43d41422c4502d43040467b201bd72040ef2d8702428b42132c9c692a69d9d11",
+      "request": "assets/production/generated/bard-2026-11-01/RUN-PROMPT.txt",
+      "requestSha256": "845d2c43a527ada8d45211f60d1fc515118e8e35fc2727f38b22c1a3ed269813",
+      "purpose": "initial run candidate, retained",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+        },
+        {
+          "projectPath": "assets/production/normalized/survivors/bard/south-seed-v1.png",
+          "sha256": "5d49509285b1defecb7a7070e30f6a1e9847b49d3bb65b992e3de6ed37b103ae"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-run-v2.png",
+      "sha256": "761433f6966591c3c40e04c46b1292dd57c596ee244fed30643dc7e130a63875",
+      "request": "assets/production/generated/bard-2026-11-01/RUN-V2-PROMPT.txt",
+      "requestSha256": "c08ad41a9bdc3f95d43ed76853221b53286cfe66cfe17a9a7e86e02c7db5fc6a",
+      "purpose": "selected revised run candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-run-v1.png",
+          "sha256": "43d41422c4502d43040467b201bd72040ef2d8702428b42132c9c692a69d9d11"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/bard-items-v1.png",
+      "sha256": "ef17c51a21d198e4e23bc36d1e8c8d023abcacb0d342566b54582eb44f813c33",
+      "request": "assets/production/generated/bard-2026-11-01/ITEMS-PROMPT.txt",
+      "requestSha256": "d481de9e72779b509e56b3c193e9edce091604737bfbf49c096f37c3fac89f97",
+      "purpose": "thirteen new item icons",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/items/icons/weapon/mage-0.png",
+          "sha256": "1a112e56b3ef690be80f5373de16bf2060af628c17923ff7d6658b465f51583c"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-attack-v1.png",
+      "sha256": "ddbe3d9035fe07a6bf804517ce733c4f52252d08ee2748dd6b6e55cb44ba0a08",
+      "request": "assets/production/generated/bard-2026-11-01/ATTACK-PROMPT.txt",
+      "requestSha256": "e3a153bb1cbcbe428a862ba67027e5876c988babb598ed6a866a0ae9fcc15708",
+      "purpose": "attack directional animation candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+        },
+        {
+          "projectPath": "assets/production/normalized/survivors/bard/south-seed-v1.png",
+          "sha256": "5d49509285b1defecb7a7070e30f6a1e9847b49d3bb65b992e3de6ed37b103ae"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-hurt-v1.png",
+      "sha256": "1279760106fc379a24aa70991e5aa68283a917b807fb89682472f90f407f4190",
+      "request": "assets/production/generated/bard-2026-11-01/HURT-PROMPT.txt",
+      "requestSha256": "5212f68d14fab8b0ffe3c2f2449a3737c91a83a23ff5cb09028bea09de997e39",
+      "purpose": "hurt directional animation candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+        },
+        {
+          "projectPath": "assets/production/normalized/survivors/bard/south-seed-v1.png",
+          "sha256": "5d49509285b1defecb7a7070e30f6a1e9847b49d3bb65b992e3de6ed37b103ae"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-downed-v1.png",
+      "sha256": "b60e24102711d68014e40c73da5e46759d0032de3a5f1cedb8ce0e7804f7e3f9",
+      "request": "assets/production/generated/bard-2026-11-01/DOWNED-PROMPT.txt",
+      "requestSha256": "8b0862b9e5f41621a64bafadfb65485d1e9c38481a4b300cd00597725d9da8f9",
+      "purpose": "downed directional animation candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+        },
+        {
+          "projectPath": "assets/production/normalized/survivors/bard/south-seed-v1.png",
+          "sha256": "5d49509285b1defecb7a7070e30f6a1e9847b49d3bb65b992e3de6ed37b103ae"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    },
+    {
+      "file": "assets/production/generated/bard-2026-11-01/iven-dash-v1.png",
+      "sha256": "f153d3c9917b9e1d18b4034b0c135fcb32d596fc734b9a55f99c4afc0fabafa1",
+      "request": "assets/production/generated/bard-2026-11-01/DASH-PROMPT.txt",
+      "requestSha256": "f8414c5a130be23e18f56b6c286dbf845b882388b59eab64602415a64624bf15",
+      "purpose": "dash directional animation candidate",
+      "inputBindings": [
+        {
+          "projectPath": "assets/production/generated/bard-2026-11-01/iven-four-view-v1.png",
+          "sha256": "9133077dd3d85444b94158e0b6fe872a6c6e52dc79329d96f225879bff6b468e"
+        },
+        {
+          "projectPath": "assets/production/normalized/survivors/bard/south-seed-v1.png",
+          "sha256": "5d49509285b1defecb7a7070e30f6a1e9847b49d3bb65b992e3de6ed37b103ae"
+        }
+      ],
+      "mode": "built-in imagegen",
+      "transparentBackground": true
+    }
+  ],
+  "generatedNatives": 9,
+  "selectionPortraits": 1,
+  "independentFacings": 4,
+  "runPoses": 16,
+  "actionClips": 20,
+  "actionPoses": 68,
+  "itemIcons": 13,
+  "sourcePromptsSaved": true,
+  "originalsRetained": true,
+  "technicalNormalizationOnly": true,
+  "libraries": [
+    {
+      "projectPath": "assets/production/normalized/library.json",
+      "sha256": "dd0f3fbf9aea00476c48b65964966c38effaa6a061b7ee4b6f057f3a5b0899df"
+    },
+    {
+      "projectPath": "assets/delivery/selection-portraits-v1/library.json",
+      "sha256": "971d2bfc873abcc2e5a14ff8cc718e9bfae63774d828b2d63cc350fc1f66f79c"
+    },
+    {
+      "projectPath": "assets/production/motion/bard-library.json",
+      "sha256": "0db0ba2367e1d84a21cbd31be2008294cd2980017824c69e9e57e9de79a89bf1"
+    },
+    {
+      "projectPath": "assets/production/motion/bard-actions/library.json",
+      "sha256": "b603c8ce5c4f60bca20a0448d46acd5d9c1a4a7d8fc2c16beea84289cf634360"
+    },
+    {
+      "projectPath": "assets/delivery/survivor-motion-v1/library.json",
+      "sha256": "fed64ef40fe1f355a0508bf01a38ba92a3b5766e8a2bde71aa4860d7620c4c03"
+    },
+    {
+      "projectPath": "assets/production/items/library.json",
+      "sha256": "d44cb65e5af1f8399e854d1fadecd0c1e1c5aae2d4e59f7e148c710d9596b78c"
+    }
+  ],
+  "renderedAccepted": false,
+  "humanAccepted": false,
+  "limits": [
+    "Native images and normalized atlas cells were inspected by the assistant. Whole-cell crop, one uniform scale per action sheet and translation only; no mirroring, rigging or painted pose substitutions.",
+    "Running and action cycles remain candidates pending rendered transitions, stride refinement and human/device acceptance.",
+    "Original synthesized reed cues are executable audio specifications, not recorded character voice clips or listening acceptance.",
+    "No browser automation or production deployment."
+  ]
+}

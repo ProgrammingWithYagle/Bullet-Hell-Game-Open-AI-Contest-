@@ -1,0 +1,6 @@
+tests/mold-still-network.test.ts(131,15): error TS7022: 'q' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+tests/mold-still-network.test.ts(164,15): error TS7022: 'q' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+tests/mold-still.test.ts(454,36): error TS2345: Argument of type 'MoldCue' is not assignable to parameter of type 'Vec'.
+  Type 'MoldWalk' is missing the following properties from type 'Vec': x, y
+tests/mold-still.test.ts(529,60): error TS2339: Property 'x' does not exist on type 'AmbulanceBurst | AmbulanceDriver | AmbulanceLane | AmbulancePatrol | AmbulanceStop | ArenaLavaCue | ... 80 more ... | WidowGate'.
+  Property 'x' does not exist on type 'AmbulanceLane'.

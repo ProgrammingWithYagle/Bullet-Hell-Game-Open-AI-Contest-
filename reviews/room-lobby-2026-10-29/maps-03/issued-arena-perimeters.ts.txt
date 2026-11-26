@@ -1,0 +1,23 @@
+import library from '../../assets/production/arena-perimeters/library.json';
+import {runtimeArena} from '../shared/arena-layouts.ts';
+import {escape as e} from './ui/html.ts';
+export const arenaPerimeterArt=library;
+export function arenaPerimeterPlan(id:string){
+  const arena=runtimeArena(id),entry=library.entries.find(item=>item.id===id);
+  if(id==='gatehouse')return [];
+  if(!entry||(['x','y','width','height'] as const).some(key=>entry.playableBounds[key]!==arena.bounds[key]))
+    throw Error('Arena surrounding geometry differs: '+id);
+  return entry.frames;
+}
+export function preloadArenaPerimeters(loader:{image(key:string,url:string):unknown},urls:Record<string,string>){
+  for(const entry of library.entries)for(const frame of entry.frames){
+    const url=urls[entry.id+'-'+frame.side];if(!url)throw Error('Missing painted arena surroundings: '+entry.id+'/'+frame.side);
+    loader.image(frame.texture,url);
+  }
+}
+export function arenaPerimeterPreview(id:string,urls:Record<string,string>){
+  return arenaPerimeterPlan(id).map(frame=>{
+    const url=urls?.[id+'-'+frame.side];if(!url)throw Error('Missing arena surrounding preview');
+    const r=frame.worldBounds;return `<image class="arena-surrounding-painted" href="${e(url)}" x="${r.x}" y="${r.y}" width="${r.width}" height="${r.height}" preserveAspectRatio="none" opacity=".8"/>`;
+  }).join('');
+}

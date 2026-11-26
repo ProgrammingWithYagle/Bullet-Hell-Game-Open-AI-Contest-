@@ -1,0 +1,1418 @@
+{
+  "scope": "Ordinary local two-player Short on copied protocol 79 Game and its exact control. Paths and timings use actual terrain and projectiles. Owned-only policies never request Relief Watch.",
+  "bindings": {
+    "exact": {
+      "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+      "profile": "control",
+      "sourceRuntimeSha256": "0fb2ca15df788de36ad3b87fa61bcd75026164771af736921df639a7a48688f2",
+      "bundleSha256": "2374c38a365a1ae793d8cd6e12efd40141202b6de94c8152cb8d54308084b3e4",
+      "studyCatalogAdditions": [],
+      "publishedCatalogAdditions": [],
+      "overlays": {}
+    },
+    "study": {
+      "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+      "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+      "profile": "actual working-tree protocol 80",
+      "bundleSha256": "29670a0bd16775954e955d0695eb7696e436833d003cfab93aec5a28a1acfd2c",
+      "catalogSize": 80
+    }
+  },
+  "rows": [
+    {
+      "arena": "triage-yard",
+      "seed": 73,
+      "policy": "banked",
+      "difficulty": "baby",
+      "outcome": "victory",
+      "combatTicks": 3728,
+      "clears": 5,
+      "sampled": 1,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "tick": 1628,
+          "id": 854,
+          "until": 1868,
+          "encounter": 2,
+          "center": {
+            "x": 813.201291188256,
+            "y": 413.8633646353407
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 772.2683462740212,
+            "y": 404.4562385785573
+          },
+          "ally": {
+            "x": 766.9934023052358,
+            "y": 409.71843027917953
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1868,
+          "encounter": 2,
+          "tick": 1639
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 1868,
+          "encounter": 2,
+          "tick": 1653
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 1642,
+          "encounter": 2,
+          "id": 854,
+          "usedHalf": 0,
+          "same": {
+            "time": 10,
+            "points": [
+              {
+                "x": 788.9392247558816,
+                "y": 439.0695569783156
+              },
+              {
+                "x": 824.9992000374694,
+                "y": 447.3567870759581
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 12,
+            "points": [
+              {
+                "x": 802.3779762655721,
+                "y": 380.5939213865515
+              },
+              {
+                "x": 838.43795154716,
+                "y": 388.881151484194
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          0,
+          19284.96978341372,
+          120
+        ],
+        [
+          "soldier",
+          37.5,
+          16195.284000000001,
+          84
+        ]
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "seed": 73,
+      "policy": "owned",
+      "difficulty": "baby",
+      "outcome": "victory",
+      "combatTicks": 3728,
+      "clears": 5,
+      "sampled": 1,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 1628,
+          "id": 854,
+          "until": 1868,
+          "encounter": 2,
+          "center": {
+            "x": 813.201291188256,
+            "y": 413.8633646353407
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 772.2683462740212,
+            "y": 404.4562385785573
+          },
+          "ally": {
+            "x": 766.9934023052358,
+            "y": 409.71843027917953
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1868,
+          "encounter": 2,
+          "tick": 1639
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 1868,
+          "encounter": 2,
+          "tick": 1653
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 1642,
+          "encounter": 2,
+          "id": 854,
+          "usedHalf": 0,
+          "same": {
+            "time": 10,
+            "points": [
+              {
+                "x": 788.9392247558816,
+                "y": 439.0695569783156
+              },
+              {
+                "x": 824.9992000374694,
+                "y": 447.3567870759581
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 12,
+            "points": [
+              {
+                "x": 802.3779762655721,
+                "y": 380.5939213865515
+              },
+              {
+                "x": 838.43795154716,
+                "y": 388.881151484194
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          0,
+          19284.96978341372,
+          120
+        ],
+        [
+          "soldier",
+          37.5,
+          16195.284000000001,
+          84
+        ]
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "seed": 73,
+      "policy": "active",
+      "difficulty": "baby",
+      "outcome": "victory",
+      "combatTicks": 3917,
+      "clears": 5,
+      "sampled": 1,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 1628,
+          "id": 854,
+          "until": 1868,
+          "encounter": 2,
+          "center": {
+            "x": 813.201291188256,
+            "y": 413.8633646353407
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 772.2683462740212,
+            "y": 404.4562385785573
+          },
+          "ally": {
+            "x": 766.9934023052358,
+            "y": 409.71843027917953
+          }
+        }
+      ],
+      "switches": [
+        {
+          "id": 854,
+          "encounter": 2,
+          "tick": 1643,
+          "half": 0,
+          "until": 1868,
+          "walkedTime": 10
+        }
+      ],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 1868,
+          "encounter": 2,
+          "tick": 1639
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 0,
+          "until": 1868,
+          "encounter": 2,
+          "tick": 1651
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 1642,
+          "encounter": 2,
+          "id": 854,
+          "usedHalf": 0,
+          "same": {
+            "time": 10,
+            "points": [
+              {
+                "x": 788.9392247558816,
+                "y": 439.0695569783156
+              },
+              {
+                "x": 824.9992000374694,
+                "y": 447.3567870759581
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 12,
+            "points": [
+              {
+                "x": 802.3779762655721,
+                "y": 380.5939213865515
+              },
+              {
+                "x": 838.43795154716,
+                "y": 388.881151484194
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          0,
+          18842.015212437043,
+          160
+        ],
+        [
+          "soldier",
+          33.5,
+          16638.238570976704,
+          112
+        ]
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "seed": 73,
+      "policy": "banked",
+      "difficulty": "normal",
+      "outcome": "victory",
+      "combatTicks": 6346,
+      "clears": 5,
+      "sampled": 2,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "tick": 2046,
+          "id": 940,
+          "until": 2286,
+          "encounter": 2,
+          "center": {
+            "x": 1073.5282579512327,
+            "y": 778.6985612569566
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1034.49211845484,
+            "y": 763.2008255120757
+          },
+          "ally": {
+            "x": 1092.1786905452439,
+            "y": 725.4747836612945
+          }
+        },
+        {
+          "tick": 4936,
+          "id": 3003,
+          "until": 5176,
+          "encounter": 4,
+          "center": {
+            "x": 999.41280021736,
+            "y": 695.2091562235819
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1041.0593410420709,
+            "y": 689.7717269288056
+          },
+          "ally": {
+            "x": 931.0238552081807,
+            "y": 566.6982646928302
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 2286,
+          "encounter": 2,
+          "tick": 2050
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 2286,
+          "encounter": 2,
+          "tick": 2057
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 5176,
+          "encounter": 4,
+          "tick": 4946
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 5176,
+          "encounter": 4,
+          "tick": 4976
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 4950,
+          "encounter": 4,
+          "id": 3003,
+          "usedHalf": 0,
+          "same": {
+            "time": 22,
+            "points": [
+              {
+                "x": 1013.3774396459672,
+                "y": 663.1313002224557
+              },
+              {
+                "x": 976.6888203480077,
+                "y": 667.9214165059492
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 29,
+            "points": [
+              {
+                "x": 1021.1451957813621,
+                "y": 722.6263585434712
+              },
+              {
+                "x": 984.4565764834025,
+                "y": 727.4164748269646
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          41,
+          37652.60175928288,
+          190
+        ],
+        [
+          "soldier",
+          212.7,
+          29105.639952260426,
+          130
+        ]
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "seed": 73,
+      "policy": "owned",
+      "difficulty": "normal",
+      "outcome": "victory",
+      "combatTicks": 6346,
+      "clears": 5,
+      "sampled": 2,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 2046,
+          "id": 940,
+          "until": 2286,
+          "encounter": 2,
+          "center": {
+            "x": 1073.5282579512327,
+            "y": 778.6985612569566
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1034.49211845484,
+            "y": 763.2008255120757
+          },
+          "ally": {
+            "x": 1092.1786905452439,
+            "y": 725.4747836612945
+          }
+        },
+        {
+          "tick": 4936,
+          "id": 3003,
+          "until": 5176,
+          "encounter": 4,
+          "center": {
+            "x": 999.41280021736,
+            "y": 695.2091562235819
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1041.0593410420709,
+            "y": 689.7717269288056
+          },
+          "ally": {
+            "x": 931.0238552081807,
+            "y": 566.6982646928302
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 2286,
+          "encounter": 2,
+          "tick": 2050
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 2286,
+          "encounter": 2,
+          "tick": 2057
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 5176,
+          "encounter": 4,
+          "tick": 4946
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 5176,
+          "encounter": 4,
+          "tick": 4976
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 4950,
+          "encounter": 4,
+          "id": 3003,
+          "usedHalf": 0,
+          "same": {
+            "time": 22,
+            "points": [
+              {
+                "x": 1013.3774396459672,
+                "y": 663.1313002224557
+              },
+              {
+                "x": 976.6888203480077,
+                "y": 667.9214165059492
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 29,
+            "points": [
+              {
+                "x": 1021.1451957813621,
+                "y": 722.6263585434712
+              },
+              {
+                "x": 984.4565764834025,
+                "y": 727.4164748269646
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          41,
+          37652.60175928288,
+          190
+        ],
+        [
+          "soldier",
+          212.7,
+          29105.639952260426,
+          130
+        ]
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "seed": 73,
+      "policy": "active",
+      "difficulty": "normal",
+      "outcome": "victory",
+      "combatTicks": 6476,
+      "clears": 5,
+      "sampled": 2,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 2046,
+          "id": 940,
+          "until": 2286,
+          "encounter": 2,
+          "center": {
+            "x": 1073.5282579512327,
+            "y": 778.6985612569566
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1034.49211845484,
+            "y": 763.2008255120757
+          },
+          "ally": {
+            "x": 1092.1786905452439,
+            "y": 725.4747836612945
+          }
+        },
+        {
+          "tick": 4936,
+          "id": 3003,
+          "until": 5176,
+          "encounter": 4,
+          "center": {
+            "x": 999.41280021736,
+            "y": 695.2091562235819
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1041.0593410420709,
+            "y": 689.7717269288056
+          },
+          "ally": {
+            "x": 931.0238552081807,
+            "y": 566.6982646928302
+          }
+        }
+      ],
+      "switches": [
+        {
+          "id": 3003,
+          "encounter": 4,
+          "tick": 4951,
+          "half": 0,
+          "until": 5176,
+          "walkedTime": 22
+        }
+      ],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 2286,
+          "encounter": 2,
+          "tick": 2050
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 2286,
+          "encounter": 2,
+          "tick": 2057
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 5176,
+          "encounter": 4,
+          "tick": 4946
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 0,
+          "until": 5176,
+          "encounter": 4,
+          "tick": 4971
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 4950,
+          "encounter": 4,
+          "id": 3003,
+          "usedHalf": 0,
+          "same": {
+            "time": 22,
+            "points": [
+              {
+                "x": 1013.3774396459672,
+                "y": 663.1313002224557
+              },
+              {
+                "x": 976.6888203480077,
+                "y": 667.9214165059492
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 29,
+            "points": [
+              {
+                "x": 1021.1451957813621,
+                "y": 722.6263585434712
+              },
+              {
+                "x": 984.4565764834025,
+                "y": 727.4164748269646
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          107,
+          40136.06175928303,
+          190
+        ],
+        [
+          "soldier",
+          212.7,
+          26644.97995226047,
+          130
+        ]
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "seed": 73,
+      "policy": "banked",
+      "difficulty": "normal",
+      "outcome": "victory",
+      "combatTicks": 7165,
+      "clears": 5,
+      "sampled": 2,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "tick": 2688,
+          "id": 1249,
+          "until": 2928,
+          "encounter": 2,
+          "center": {
+            "x": 1094.7664118261107,
+            "y": 698.9790500977172
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1080.9774348516792,
+            "y": 659.3070938313746
+          },
+          "ally": {
+            "x": 1211.5914980641628,
+            "y": 554.0372261007168
+          }
+        },
+        {
+          "tick": 5539,
+          "id": 3457,
+          "until": 5779,
+          "encounter": 4,
+          "center": {
+            "x": 1176.4191840454432,
+            "y": 519.7003394508915
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1182.0171358411365,
+            "y": 478.0750714554408
+          },
+          "ally": {
+            "x": 1129.7582947519086,
+            "y": 509.529575817726
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 2928,
+          "encounter": 2,
+          "tick": 2700
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 5779,
+          "encounter": 4,
+          "tick": 5549
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 5779,
+          "encounter": 4,
+          "tick": 5568
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 5553,
+          "encounter": 4,
+          "id": 3457,
+          "usedHalf": 0,
+          "same": {
+            "time": 8,
+            "points": [
+              {
+                "x": 1149.0859719611326,
+                "y": 497.8624018844889
+              },
+              {
+                "x": 1144.15444299826,
+                "y": 534.532280832862
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 16,
+            "points": [
+              {
+                "x": 1208.5506405260621,
+                "y": 505.8594758783364
+              },
+              {
+                "x": 1203.6191115631896,
+                "y": 542.5293548267097
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          2.5,
+          24751.606830821485,
+          190
+        ],
+        [
+          "soldier",
+          239.1,
+          34031.149474867656,
+          130
+        ]
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "seed": 73,
+      "policy": "owned",
+      "difficulty": "normal",
+      "outcome": "victory",
+      "combatTicks": 7165,
+      "clears": 5,
+      "sampled": 2,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 2688,
+          "id": 1249,
+          "until": 2928,
+          "encounter": 2,
+          "center": {
+            "x": 1094.7664118261107,
+            "y": 698.9790500977172
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1080.9774348516792,
+            "y": 659.3070938313746
+          },
+          "ally": {
+            "x": 1211.5914980641628,
+            "y": 554.0372261007168
+          }
+        },
+        {
+          "tick": 5539,
+          "id": 3457,
+          "until": 5779,
+          "encounter": 4,
+          "center": {
+            "x": 1176.4191840454432,
+            "y": 519.7003394508915
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1182.0171358411365,
+            "y": 478.0750714554408
+          },
+          "ally": {
+            "x": 1129.7582947519086,
+            "y": 509.529575817726
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 2928,
+          "encounter": 2,
+          "tick": 2700
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 5779,
+          "encounter": 4,
+          "tick": 5549
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 1,
+          "until": 5779,
+          "encounter": 4,
+          "tick": 5568
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 5553,
+          "encounter": 4,
+          "id": 3457,
+          "usedHalf": 0,
+          "same": {
+            "time": 8,
+            "points": [
+              {
+                "x": 1149.0859719611326,
+                "y": 497.8624018844889
+              },
+              {
+                "x": 1144.15444299826,
+                "y": 534.532280832862
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 16,
+            "points": [
+              {
+                "x": 1208.5506405260621,
+                "y": 505.8594758783364
+              },
+              {
+                "x": 1203.6191115631896,
+                "y": 542.5293548267097
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          2.5,
+          24751.606830821485,
+          190
+        ],
+        [
+          "soldier",
+          239.1,
+          34031.149474867656,
+          130
+        ]
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "seed": 73,
+      "policy": "active",
+      "difficulty": "normal",
+      "outcome": "victory",
+      "combatTicks": 7002,
+      "clears": 5,
+      "sampled": 2,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 2688,
+          "id": 1249,
+          "until": 2928,
+          "encounter": 2,
+          "center": {
+            "x": 1094.7664118261107,
+            "y": 698.9790500977172
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1080.9774348516792,
+            "y": 659.3070938313746
+          },
+          "ally": {
+            "x": 1211.5914980641628,
+            "y": 554.0372261007168
+          }
+        },
+        {
+          "tick": 5539,
+          "id": 3457,
+          "until": 5779,
+          "encounter": 4,
+          "center": {
+            "x": 1176.4191840454432,
+            "y": 519.7003394508915
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 1182.0171358411365,
+            "y": 478.0750714554408
+          },
+          "ally": {
+            "x": 1129.7582947519086,
+            "y": 509.529575817726
+          }
+        }
+      ],
+      "switches": [
+        {
+          "id": 3457,
+          "encounter": 4,
+          "tick": 5554,
+          "half": 0,
+          "until": 5779,
+          "walkedTime": 8
+        }
+      ],
+      "claims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 2928,
+          "encounter": 2,
+          "tick": 2700
+        },
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 0,
+          "until": 5779,
+          "encounter": 4,
+          "tick": 5549
+        },
+        {
+          "owner": "tank",
+          "target": "soldier",
+          "entrance": 0,
+          "until": 5779,
+          "encounter": 4,
+          "tick": 5560
+        }
+      ],
+      "opportunities": [
+        {
+          "tick": 5553,
+          "encounter": 4,
+          "id": 3457,
+          "usedHalf": 0,
+          "same": {
+            "time": 8,
+            "points": [
+              {
+                "x": 1149.0859719611326,
+                "y": 497.8624018844889
+              },
+              {
+                "x": 1144.15444299826,
+                "y": 534.532280832862
+              }
+            ],
+            "danger": 0
+          },
+          "other": {
+            "time": 16,
+            "points": [
+              {
+                "x": 1208.5506405260621,
+                "y": 505.8594758783364
+              },
+              {
+                "x": 1203.6191115631896,
+                "y": 542.5293548267097
+              }
+            ],
+            "danger": 0
+          }
+        }
+      ],
+      "roster": [
+        [
+          "tank",
+          47.5,
+          24799.079199999607,
+          190
+        ],
+        [
+          "soldier",
+          219.1,
+          33983.677105689545,
+          130
+        ]
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "seed": 41,
+      "policy": "banked",
+      "difficulty": "baby",
+      "outcome": "victory",
+      "combatTicks": 2309,
+      "clears": 5,
+      "sampled": 1,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        }
+      ],
+      "casts": [
+        {
+          "tick": 1618,
+          "id": 931,
+          "until": 1858,
+          "encounter": 3,
+          "center": {
+            "x": 904.7071431825952,
+            "y": 574.8077907137945
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 888.0757991459645,
+            "y": 536.2409863927825
+          },
+          "ally": {
+            "x": 797.8754668048839,
+            "y": 606.0630596753797
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [],
+      "opportunities": [],
+      "roster": [
+        [
+          "tank",
+          0,
+          19130.07819092982,
+          200
+        ],
+        [
+          "soldier",
+          3.75,
+          16148.719592483887,
+          140
+        ]
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "seed": 41,
+      "policy": "owned",
+      "difficulty": "baby",
+      "outcome": "victory",
+      "combatTicks": 2309,
+      "clears": 5,
+      "sampled": 1,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 1618,
+          "id": 931,
+          "until": 1858,
+          "encounter": 3,
+          "center": {
+            "x": 904.7071431825952,
+            "y": 574.8077907137945
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 888.0757991459645,
+            "y": 536.2409863927825
+          },
+          "ally": {
+            "x": 797.8754668048839,
+            "y": 606.0630596753797
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [],
+      "opportunities": [],
+      "roster": [
+        [
+          "tank",
+          0,
+          19130.07819092982,
+          200
+        ],
+        [
+          "soldier",
+          3.75,
+          16148.719592483887,
+          140
+        ]
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "seed": 41,
+      "policy": "active",
+      "difficulty": "baby",
+      "outcome": "victory",
+      "combatTicks": 2309,
+      "clears": 5,
+      "sampled": 1,
+      "rejected": 0,
+      "buys": [
+        {
+          "id": "tank-gate-signal-split-1",
+          "earned": 9,
+          "clears": 1
+        },
+        {
+          "id": "tank-gate-signal-relief-1",
+          "earned": 15,
+          "clears": 2
+        }
+      ],
+      "casts": [
+        {
+          "tick": 1618,
+          "id": 931,
+          "until": 1858,
+          "encounter": 3,
+          "center": {
+            "x": 904.7071431825952,
+            "y": 574.8077907137945
+          },
+          "usedHalf": 0,
+          "tank": {
+            "x": 888.0757991459645,
+            "y": 536.2409863927825
+          },
+          "ally": {
+            "x": 797.8754668048839,
+            "y": 606.0630596753797
+          }
+        }
+      ],
+      "switches": [],
+      "claims": [],
+      "opportunities": [],
+      "roster": [
+        [
+          "tank",
+          0,
+          19130.07819092982,
+          200
+        ],
+        [
+          "soldier",
+          3.75,
+          16148.719592483887,
+          140
+        ]
+      ]
+    }
+  ],
+  "fail": 0,
+  "mismatches": []
+}

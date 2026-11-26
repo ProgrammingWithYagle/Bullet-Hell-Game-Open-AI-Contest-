@@ -1,0 +1,858 @@
+{
+  "passed": true,
+  "finishedAt": "2026-11-11T02:47:07.9772069Z",
+  "currentScope": "reviews/heavy-tethered-traverse-2026-11-10",
+  "currentSourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+  "currentFourExactServicesAndListenersKept": true,
+  "stoppedOlderExactProcesses": [
+    {
+      "pid": 54052,
+      "role": "client",
+      "createdAt": "2026-11-06T17:46:14.382629Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-rest-2026-11-06-testing-3ebc3b8 --host 127.0.0.1 --port 5360 --strictPort",
+      "retiredPath": "output/playtest-soldier-sniper-rest-2026-11-06-testing-3ebc3b8",
+      "listeningPorts": [
+        5360
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 52948
+    },
+    {
+      "pid": 69452,
+      "role": "client",
+      "createdAt": "2026-11-08T19:03:50.43488Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-seam-2026-11-08-r2-public-4392f46 --host 127.0.0.1 --port 5369 --strictPort",
+      "retiredPath": "output/playtest-heavy-seam-2026-11-08-r2-public-4392f46",
+      "listeningPorts": [
+        5369
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 39548
+    },
+    {
+      "pid": 7652,
+      "role": "client",
+      "createdAt": "2026-11-10T04:22:03.896568Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-handling-movement-2026-11-09-testing-205d1bd --host 127.0.0.1 --port 5378 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-handling-movement-2026-11-09-testing-205d1bd",
+      "listeningPorts": [
+        5378
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 59524
+    },
+    {
+      "pid": 46180,
+      "role": "backend",
+      "createdAt": "2026-11-06T16:30:39.52556Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs\"",
+      "retiredPath": "output/frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs",
+      "listeningPorts": [
+        2735
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 38836
+    },
+    {
+      "pid": 34592,
+      "role": "client",
+      "createdAt": "2026-11-07T17:59:43.286593Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-flak-2026-11-06-testing-d796d66 --host 127.0.0.1 --port 5364 --strictPort",
+      "retiredPath": "output/playtest-heavy-flak-2026-11-06-testing-d796d66",
+      "listeningPorts": [
+        5364
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 50772
+    },
+    {
+      "pid": 17176,
+      "role": "client",
+      "createdAt": "2026-11-10T13:43:26.623971Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-stat-scaling-2026-11-10-testing-20aad19 --host 127.0.0.1 --port 5380 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-stat-scaling-2026-11-10-testing-20aad19",
+      "listeningPorts": [
+        5380
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 28524
+    },
+    {
+      "pid": 40328,
+      "role": "backend",
+      "createdAt": "2026-11-08T19:03:50.416872Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-seam-2026-11-08-r2-4392f46.mjs\"",
+      "retiredPath": "output/frozen-heavy-seam-2026-11-08-r2-4392f46.mjs",
+      "listeningPorts": [
+        2745
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 39548
+    },
+    {
+      "pid": 48020,
+      "role": "client",
+      "createdAt": "2026-11-09T13:55:20.824083Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-2026-11-09-public-12c265f --host 127.0.0.1 --port 5373 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-2026-11-09-public-12c265f",
+      "listeningPorts": [
+        5373
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 61916
+    },
+    {
+      "pid": 67228,
+      "role": "client",
+      "createdAt": "2026-11-08T19:03:50.428362Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-seam-2026-11-08-r2-testing-4392f46 --host 127.0.0.1 --port 5368 --strictPort",
+      "retiredPath": "output/playtest-heavy-seam-2026-11-08-r2-testing-4392f46",
+      "listeningPorts": [
+        5368
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 10584
+    },
+    {
+      "pid": 34280,
+      "role": "client",
+      "createdAt": "2026-11-10T04:22:03.893226Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-handling-movement-2026-11-09-public-205d1bd --host 127.0.0.1 --port 5379 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-handling-movement-2026-11-09-public-205d1bd",
+      "listeningPorts": [
+        5379
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 27972
+    },
+    {
+      "pid": 55504,
+      "role": "client",
+      "createdAt": "2026-11-08T03:16:29.855674Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-fuze-2026-11-08-testing-c56ae85 --host 127.0.0.1 --port 5366 --strictPort",
+      "retiredPath": "output/playtest-heavy-fuze-2026-11-08-testing-c56ae85",
+      "listeningPorts": [
+        5366
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 30968
+    },
+    {
+      "pid": 7052,
+      "role": "backend",
+      "createdAt": "2026-11-10T02:45:14.970842Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-handling-rounds-2026-11-09-d238694.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-handling-rounds-2026-11-09-d238694.mjs",
+      "listeningPorts": [
+        2752
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 58180
+    },
+    {
+      "pid": 43796,
+      "role": "client",
+      "createdAt": "2026-11-06T16:30:39.546734Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-bore-2026-11-05-public-81d818a --host 127.0.0.1 --port 5359 --strictPort",
+      "retiredPath": "output/playtest-soldier-sniper-bore-2026-11-05-public-81d818a",
+      "listeningPorts": [
+        5359
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 38836
+    },
+    {
+      "pid": 66772,
+      "role": "client",
+      "createdAt": "2026-11-10T01:34:06.151339Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-handling-2026-11-09-public-18da7f9 --host 127.0.0.1 --port 5375 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-handling-2026-11-09-public-18da7f9",
+      "listeningPorts": [
+        5375
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 51532
+    },
+    {
+      "pid": 62896,
+      "role": "client",
+      "createdAt": "2026-11-09T01:29:56.518815Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-traverse-2026-11-09-public-5316ead --host 127.0.0.1 --port 5371 --strictPort",
+      "retiredPath": "output/playtest-heavy-traverse-2026-11-09-public-5316ead",
+      "listeningPorts": [
+        5371
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 41452
+    },
+    {
+      "pid": 22296,
+      "role": "backend",
+      "createdAt": "2026-11-10T13:43:26.599143Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-stat-scaling-2026-11-10-20aad19.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-stat-scaling-2026-11-10-20aad19.mjs",
+      "listeningPorts": [
+        2757
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 72244
+    },
+    {
+      "pid": 30016,
+      "role": "client",
+      "createdAt": "2026-11-07T17:59:43.286597Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-flak-2026-11-06-public-d796d66 --host 127.0.0.1 --port 5365 --strictPort",
+      "retiredPath": "output/playtest-heavy-flak-2026-11-06-public-d796d66",
+      "listeningPorts": [
+        5365
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 36380
+    },
+    {
+      "pid": 66680,
+      "role": "backend",
+      "createdAt": "2026-11-10T02:45:15.026577Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-handling-rounds-2026-11-09-d238694.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-handling-rounds-2026-11-09-d238694.mjs",
+      "listeningPorts": [
+        2753
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 59212
+    },
+    {
+      "pid": 6788,
+      "role": "backend",
+      "createdAt": "2026-11-07T17:59:43.26017Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-flak-2026-11-06-d796d66.mjs\"",
+      "retiredPath": "output/frozen-heavy-flak-2026-11-06-d796d66.mjs",
+      "listeningPorts": [
+        2741
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 36380
+    },
+    {
+      "pid": 47308,
+      "role": "client",
+      "createdAt": "2026-11-06T17:46:14.409497Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-rest-2026-11-06-public-3ebc3b8 --host 127.0.0.1 --port 5361 --strictPort",
+      "retiredPath": "output/playtest-soldier-sniper-rest-2026-11-06-public-3ebc3b8",
+      "listeningPorts": [
+        5361
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 19184
+    },
+    {
+      "pid": 16404,
+      "role": "backend",
+      "createdAt": "2026-11-05T02:40:17.411026Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs\"",
+      "retiredPath": "output/frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs",
+      "listeningPorts": [
+        2723
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 39532
+    },
+    {
+      "pid": 41468,
+      "role": "backend",
+      "createdAt": "2026-11-09T01:29:56.456279Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-traverse-2026-11-09-5316ead.mjs\"",
+      "retiredPath": "output/frozen-heavy-traverse-2026-11-09-5316ead.mjs",
+      "listeningPorts": [
+        2746
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 57280
+    },
+    {
+      "pid": 51120,
+      "role": "backend",
+      "createdAt": "2026-11-08T03:16:29.82825Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-fuze-2026-11-08-c56ae85.mjs\"",
+      "retiredPath": "output/frozen-heavy-fuze-2026-11-08-c56ae85.mjs",
+      "listeningPorts": [
+        2742
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 30968
+    },
+    {
+      "pid": 37584,
+      "role": "backend",
+      "createdAt": "2026-11-09T01:29:56.50054Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-traverse-2026-11-09-5316ead.mjs\"",
+      "retiredPath": "output/frozen-heavy-traverse-2026-11-09-5316ead.mjs",
+      "listeningPorts": [
+        2747
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 41452
+    },
+    {
+      "pid": 35608,
+      "role": "client",
+      "createdAt": "2026-11-06T22:26:00.137154Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-withdrawal-2026-11-06-public-6345afc --host 127.0.0.1 --port 5363 --strictPort",
+      "retiredPath": "output/playtest-soldier-sniper-withdrawal-2026-11-06-public-6345afc",
+      "listeningPorts": [
+        5363
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 61968
+    },
+    {
+      "pid": 19304,
+      "role": "client",
+      "createdAt": "2026-11-09T01:29:56.474705Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-traverse-2026-11-09-testing-5316ead --host 127.0.0.1 --port 5370 --strictPort",
+      "retiredPath": "output/playtest-heavy-traverse-2026-11-09-testing-5316ead",
+      "listeningPorts": [
+        5370
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 57280
+    },
+    {
+      "pid": 31688,
+      "role": "backend",
+      "createdAt": "2026-11-06T22:26:00.093873Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-withdrawal-2026-11-06-6345afc.mjs\"",
+      "retiredPath": "output/frozen-soldier-sniper-withdrawal-2026-11-06-6345afc.mjs",
+      "listeningPorts": [
+        2738
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 63324
+    },
+    {
+      "pid": 1124,
+      "role": "client",
+      "createdAt": "2026-11-06T16:30:39.545597Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-bore-2026-11-05-testing-81d818a --host 127.0.0.1 --port 5358 --strictPort",
+      "retiredPath": "output/playtest-soldier-sniper-bore-2026-11-05-testing-81d818a",
+      "listeningPorts": [
+        5358
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 13256
+    },
+    {
+      "pid": 23948,
+      "role": "backend",
+      "createdAt": "2026-11-07T17:59:43.260642Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-flak-2026-11-06-d796d66.mjs\"",
+      "retiredPath": "output/frozen-heavy-flak-2026-11-06-d796d66.mjs",
+      "listeningPorts": [
+        2740
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 50772
+    },
+    {
+      "pid": 37448,
+      "role": "client",
+      "createdAt": "2026-11-08T03:16:29.855682Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-fuze-2026-11-08-public-c56ae85 --host 127.0.0.1 --port 5367 --strictPort",
+      "retiredPath": "output/playtest-heavy-fuze-2026-11-08-public-c56ae85",
+      "listeningPorts": [
+        5367
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 59424
+    },
+    {
+      "pid": 4608,
+      "role": "backend",
+      "createdAt": "2026-11-06T17:46:14.364852Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-rest-2026-11-06-3ebc3b8.mjs\"",
+      "retiredPath": "output/frozen-soldier-sniper-rest-2026-11-06-3ebc3b8.mjs",
+      "listeningPorts": [
+        2736
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 52948
+    },
+    {
+      "pid": 66372,
+      "role": "client",
+      "createdAt": "2026-11-09T13:55:20.742437Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-2026-11-09-testing-12c265f --host 127.0.0.1 --port 5372 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-2026-11-09-testing-12c265f",
+      "listeningPorts": [
+        5372
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 61948
+    },
+    {
+      "pid": 72120,
+      "role": "client",
+      "createdAt": "2026-11-10T02:45:15.048627Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-handling-rounds-2026-11-09-public-d238694 --host 127.0.0.1 --port 5377 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-handling-rounds-2026-11-09-public-d238694",
+      "listeningPorts": [
+        5377
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 59212
+    },
+    {
+      "pid": 65816,
+      "role": "client",
+      "createdAt": "2026-11-06T22:26:00.111357Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-sniper-withdrawal-2026-11-06-testing-6345afc --host 127.0.0.1 --port 5362 --strictPort",
+      "retiredPath": "output/playtest-soldier-sniper-withdrawal-2026-11-06-testing-6345afc",
+      "listeningPorts": [
+        5362
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 63324
+    },
+    {
+      "pid": 18016,
+      "role": "backend",
+      "createdAt": "2026-11-06T16:30:39.523959Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs\"",
+      "retiredPath": "output/frozen-soldier-sniper-bore-2026-11-05-81d818a.mjs",
+      "listeningPorts": [
+        2734
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 13256
+    },
+    {
+      "pid": 39216,
+      "role": "backend",
+      "createdAt": "2026-11-10T01:34:06.124191Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-handling-2026-11-09-18da7f9.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-handling-2026-11-09-18da7f9.mjs",
+      "listeningPorts": [
+        2751
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 51532
+    },
+    {
+      "pid": 43068,
+      "role": "client",
+      "createdAt": "2026-11-10T13:43:26.623961Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-stat-scaling-2026-11-10-public-20aad19 --host 127.0.0.1 --port 5381 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-stat-scaling-2026-11-10-public-20aad19",
+      "listeningPorts": [
+        5381
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 72244
+    },
+    {
+      "pid": 36316,
+      "role": "backend",
+      "createdAt": "2026-11-09T13:55:20.799944Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-2026-11-09-12c265f.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-2026-11-09-12c265f.mjs",
+      "listeningPorts": [
+        2749
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 61916
+    },
+    {
+      "pid": 29428,
+      "role": "client",
+      "createdAt": "2026-11-10T02:45:14.990156Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-handling-rounds-2026-11-09-testing-d238694 --host 127.0.0.1 --port 5376 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-handling-rounds-2026-11-09-testing-d238694",
+      "listeningPorts": [
+        5376
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 58180
+    },
+    {
+      "pid": 54492,
+      "role": "client",
+      "createdAt": "2026-11-05T02:40:13.709907Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-sync-2026-11-05-testing-22d0df8 --host 127.0.0.1 --port 5346 --strictPort",
+      "retiredPath": "output/playtest-soldier-marksman-sync-2026-11-05-testing-22d0df8",
+      "listeningPorts": [
+        5346
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 50572
+    },
+    {
+      "pid": 44828,
+      "role": "backend",
+      "createdAt": "2026-11-10T04:22:03.860319Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-handling-movement-2026-11-09-205d1bd.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-handling-movement-2026-11-09-205d1bd.mjs",
+      "listeningPorts": [
+        2754
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 59524
+    },
+    {
+      "pid": 52536,
+      "role": "backend",
+      "createdAt": "2026-11-10T01:34:06.124195Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-handling-2026-11-09-18da7f9.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-handling-2026-11-09-18da7f9.mjs",
+      "listeningPorts": [
+        2750
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 39708
+    },
+    {
+      "pid": 58240,
+      "role": "backend",
+      "createdAt": "2026-11-08T03:16:29.827953Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-fuze-2026-11-08-c56ae85.mjs\"",
+      "retiredPath": "output/frozen-heavy-fuze-2026-11-08-c56ae85.mjs",
+      "listeningPorts": [
+        2743
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 59424
+    },
+    {
+      "pid": 21540,
+      "role": "client",
+      "createdAt": "2026-11-05T02:40:17.436145Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-soldier-marksman-sync-2026-11-05-public-22d0df8 --host 127.0.0.1 --port 5347 --strictPort",
+      "retiredPath": "output/playtest-soldier-marksman-sync-2026-11-05-public-22d0df8",
+      "listeningPorts": [
+        5347
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 39532
+    },
+    {
+      "pid": 38884,
+      "role": "backend",
+      "createdAt": "2026-11-05T02:40:13.686472Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs\"",
+      "retiredPath": "output/frozen-soldier-marksman-sync-2026-11-05-22d0df8.mjs",
+      "listeningPorts": [
+        2722
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 50572
+    },
+    {
+      "pid": 60084,
+      "role": "backend",
+      "createdAt": "2026-11-10T13:43:26.598272Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-stat-scaling-2026-11-10-20aad19.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-stat-scaling-2026-11-10-20aad19.mjs",
+      "listeningPorts": [
+        2756
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 28524
+    },
+    {
+      "pid": 52348,
+      "role": "backend",
+      "createdAt": "2026-11-06T22:26:00.11902Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-withdrawal-2026-11-06-6345afc.mjs\"",
+      "retiredPath": "output/frozen-soldier-sniper-withdrawal-2026-11-06-6345afc.mjs",
+      "listeningPorts": [
+        2739
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 61968
+    },
+    {
+      "pid": 28952,
+      "role": "backend",
+      "createdAt": "2026-11-06T17:46:14.378809Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1030-493-0_26.1030.493.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-soldier-sniper-rest-2026-11-06-3ebc3b8.mjs\"",
+      "retiredPath": "output/frozen-soldier-sniper-rest-2026-11-06-3ebc3b8.mjs",
+      "listeningPorts": [
+        2737
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 19184
+    },
+    {
+      "pid": 11768,
+      "role": "client",
+      "createdAt": "2026-11-10T01:34:06.151372Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-heavy-clutch-handling-2026-11-09-testing-18da7f9 --host 127.0.0.1 --port 5374 --strictPort",
+      "retiredPath": "output/playtest-heavy-clutch-handling-2026-11-09-testing-18da7f9",
+      "listeningPorts": [
+        5374
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": false,
+      "projectLauncherParentVerified": true,
+      "parentPid": 39708
+    },
+    {
+      "pid": 67748,
+      "role": "backend",
+      "createdAt": "2026-11-10T04:22:03.862035Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-handling-movement-2026-11-09-205d1bd.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-handling-movement-2026-11-09-205d1bd.mjs",
+      "listeningPorts": [
+        2755
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 27972
+    },
+    {
+      "pid": 58092,
+      "role": "backend",
+      "createdAt": "2026-11-08T19:03:50.409594Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-seam-2026-11-08-r2-4392f46.mjs\"",
+      "retiredPath": "output/frozen-heavy-seam-2026-11-08-r2-4392f46.mjs",
+      "listeningPorts": [
+        2744
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 10584
+    },
+    {
+      "pid": 67640,
+      "role": "backend",
+      "createdAt": "2026-11-09T13:55:20.708537Z",
+      "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-heavy-clutch-2026-11-09-12c265f.mjs\"",
+      "retiredPath": "output/frozen-heavy-clutch-2026-11-09-12c265f.mjs",
+      "listeningPorts": [
+        2748
+      ],
+      "recordedExactIdentityMatched": true,
+      "absoluteProjectPathVerified": true,
+      "projectLauncherParentVerified": true,
+      "parentPid": 61948
+    }
+  ],
+  "olderAlreadyAbsent": [],
+  "removedDirectories": [
+    "output/playtest-alchemist-2026-11-02-public-62030d3",
+    "output/playtest-alchemist-2026-11-02-testing-62030d3",
+    "output/playtest-baker-oven-2026-10-31-public-76ff463",
+    "output/playtest-baker-oven-2026-10-31-testing-76ff463",
+    "output/playtest-bard-2026-11-01-public-61141f9",
+    "output/playtest-bard-2026-11-01-testing-61141f9",
+    "output/playtest-chapter-checkpoint-2026-11-02-public-5fba8f2",
+    "output/playtest-chapter-checkpoint-2026-11-02-testing-5fba8f2",
+    "output/playtest-class-tree-polish-2026-11-02-public-a63533a",
+    "output/playtest-class-tree-polish-2026-11-02-testing-a63533a",
+    "output/playtest-engineer-builder-2026-11-03-public-d3de8ed",
+    "output/playtest-engineer-builder-2026-11-03-testing-d3de8ed",
+    "output/playtest-engineer-controls-2026-11-04-public-233e914",
+    "output/playtest-engineer-controls-2026-11-04-testing-233e914",
+    "output/playtest-engineer-pathways-2026-11-02-public-ab8e4b3",
+    "output/playtest-engineer-pathways-2026-11-02-testing-ab8e4b3",
+    "output/playtest-engineer-replay-2026-11-04-testing-d7bef25",
+    "output/playtest-engineer-run-exit-2026-11-04-public-7f5cdac",
+    "output/playtest-engineer-run-exit-2026-11-04-testing-7f5cdac",
+    "output/playtest-engineer-transition-2026-11-04-public-f670914",
+    "output/playtest-engineer-transition-2026-11-04-testing-f670914",
+    "output/playtest-engineer-traps-2026-11-03-public-c4b2b6f",
+    "output/playtest-engineer-traps-2026-11-03-testing-c4b2b6f",
+    "output/playtest-first-return-2026-10-31-public-57f1956",
+    "output/playtest-first-return-2026-10-31-testing-57f1956",
+    "output/playtest-foundation-workbook-2026-11-03-public-42ec806",
+    "output/playtest-foundation-workbook-2026-11-03-testing-42ec806",
+    "output/playtest-general-mobility-2026-10-31-public-55cc82d",
+    "output/playtest-general-mobility-2026-10-31-testing-55cc82d",
+    "output/playtest-glass-surgery-2026-10-31-public-517472b",
+    "output/playtest-glass-surgery-2026-10-31-testing-517472b",
+    "output/playtest-heavy-clutch-2026-11-09-public-12c265f",
+    "output/playtest-heavy-clutch-2026-11-09-testing-12c265f",
+    "output/playtest-heavy-clutch-handling-2026-11-09-public-18da7f9",
+    "output/playtest-heavy-clutch-handling-2026-11-09-testing-18da7f9",
+    "output/playtest-heavy-clutch-handling-movement-2026-11-09-public-205d1bd",
+    "output/playtest-heavy-clutch-handling-movement-2026-11-09-testing-205d1bd",
+    "output/playtest-heavy-clutch-handling-rounds-2026-11-09-public-d238694",
+    "output/playtest-heavy-clutch-handling-rounds-2026-11-09-testing-d238694",
+    "output/playtest-heavy-clutch-stat-scaling-2026-11-10-public-20aad19",
+    "output/playtest-heavy-clutch-stat-scaling-2026-11-10-testing-20aad19",
+    "output/playtest-heavy-flak-2026-11-06-public-d796d66",
+    "output/playtest-heavy-flak-2026-11-06-testing-d796d66",
+    "output/playtest-heavy-fuze-2026-11-08-public-c56ae85",
+    "output/playtest-heavy-fuze-2026-11-08-testing-c56ae85",
+    "output/playtest-heavy-seam-2026-11-08-r2-public-4392f46",
+    "output/playtest-heavy-seam-2026-11-08-r2-testing-4392f46",
+    "output/playtest-heavy-seam-2026-11-08-testing-4392f46",
+    "output/playtest-heavy-traverse-2026-11-09-public-5316ead",
+    "output/playtest-heavy-traverse-2026-11-09-testing-5316ead",
+    "output/playtest-hud-alignment-2026-10-31-public-366c12d",
+    "output/playtest-hud-alignment-2026-10-31-testing-366c12d",
+    "output/playtest-lamplight-reading-2026-10-31-public-8a4674c",
+    "output/playtest-lamplight-reading-2026-10-31-testing-8a4674c",
+    "output/playtest-machinery-progression-2026-11-03-public-76bac94",
+    "output/playtest-machinery-progression-2026-11-03-testing-76bac94",
+    "output/playtest-manual-cascade-2026-11-03-public-4090068",
+    "output/playtest-manual-cascade-2026-11-03-testing-4090068",
+    "output/playtest-opening-chapter-2026-11-01-public-8fc4706",
+    "output/playtest-opening-chapter-2026-11-01-testing-8fc4706",
+    "output/playtest-ranger-2026-11-02-public-1f3ef92",
+    "output/playtest-ranger-2026-11-02-testing-1f3ef92",
+    "output/playtest-shield-specializations-2026-10-31-public-810d9dc",
+    "output/playtest-shield-specializations-2026-10-31-testing-810d9dc",
+    "output/playtest-soldier-grenadier-2026-11-05-public-68cb835",
+    "output/playtest-soldier-grenadier-2026-11-05-testing-68cb835",
+    "output/playtest-soldier-marksman-2026-11-04-public-afc4274",
+    "output/playtest-soldier-marksman-2026-11-04-testing-afc4274",
+    "output/playtest-soldier-marksman-depth-2026-11-05-public-99f7d3a",
+    "output/playtest-soldier-marksman-depth-2026-11-05-testing-99f7d3a",
+    "output/playtest-soldier-marksman-late-2026-11-05-public-b5c3f5e",
+    "output/playtest-soldier-marksman-late-2026-11-05-testing-b5c3f5e",
+    "output/playtest-soldier-marksman-sync-2026-11-05-public-22d0df8",
+    "output/playtest-soldier-marksman-sync-2026-11-05-testing-22d0df8",
+    "output/playtest-soldier-reload-2026-11-04-public-84b6bba",
+    "output/playtest-soldier-reload-2026-11-04-testing-84b6bba",
+    "output/playtest-soldier-skirmisher-2026-11-04-public-ef502f7",
+    "output/playtest-soldier-skirmisher-2026-11-04-testing-ef502f7",
+    "output/playtest-soldier-sniper-2026-11-05-public-d5bc833",
+    "output/playtest-soldier-sniper-2026-11-05-testing-d5bc833",
+    "output/playtest-soldier-sniper-bore-2026-11-05-public-81d818a",
+    "output/playtest-soldier-sniper-bore-2026-11-05-testing-81d818a",
+    "output/playtest-soldier-sniper-depth-2026-11-05-public-9e09c75",
+    "output/playtest-soldier-sniper-depth-2026-11-05-testing-9e09c75",
+    "output/playtest-soldier-sniper-rest-2026-11-06-public-3ebc3b8",
+    "output/playtest-soldier-sniper-rest-2026-11-06-testing-3ebc3b8",
+    "output/playtest-soldier-sniper-withdrawal-2026-11-06-public-6345afc",
+    "output/playtest-soldier-sniper-withdrawal-2026-11-06-testing-6345afc",
+    "output/playtest-soldier-volley-2026-11-04-public-d9abd98",
+    "output/playtest-soldier-volley-2026-11-04-testing-d9abd98",
+    "output/playtest-station-signals-2026-10-31-public-ea08414",
+    "output/playtest-station-signals-2026-10-31-testing-ea08414",
+    "output/playtest-story-campaign-2026-10-31-public-4448f8d",
+    "output/playtest-story-campaign-2026-10-31-testing-4448f8d",
+    "output/playtest-story-editions-2026-10-31-public-1e1a728",
+    "output/playtest-story-editions-2026-10-31-testing-1e1a728",
+    "output/playtest-story-hubs-2026-10-31-public-01ae374",
+    "output/playtest-story-hubs-2026-10-31-testing-01ae374",
+    "output/playtest-story-journal-2026-10-31-public-23afb5d",
+    "output/playtest-story-journal-2026-10-31-testing-23afb5d",
+    "output/playtest-story-voices-2026-10-31-public-fc383d8",
+    "output/playtest-story-voices-2026-10-31-testing-fc383d8",
+    "output/playtest-summoner-2026-11-01-public-b2b90aa",
+    "output/playtest-summoner-2026-11-01-testing-b2b90aa",
+    "output/playtest-swordsman-2026-11-01-public-08acf5f",
+    "output/playtest-swordsman-2026-11-01-testing-08acf5f",
+    "output/playtest-ward-approach-2026-10-31-public-a61403e",
+    "output/playtest-ward-approach-2026-10-31-testing-a61403e"
+  ],
+  "removedDirectoryCount": 108,
+  "removedBackendCount": 56,
+  "removedLogicalBuildBytes": 85210322106,
+  "rollbackArchive": "output/review-rollback.zip",
+  "rollbackArchiveSha256": "21ceabead7c881c906b2828ac85c5043ba7169ce442abad808eeb73f9b38dd32",
+  "rollbackArchiveBytes": 791971124,
+  "rollbackFullyRestoredAndHashVerified": true,
+  "onlyTwoExpandedPreviewRootsRemain": true,
+  "sourceAssetsReviewReceiptsReleaseAndPrivateDatabasesExcluded": true,
+  "priorPreserveEveryFrozenRootRuleSupersededByUser": true
+}

@@ -1,0 +1,6 @@
+.boss-defeated-banner{position:absolute;top:.7rem;inset-inline:0;margin-inline:auto;width:fit-content;max-width:86vw;display:grid;gap:.25rem;text-align:center;z-index:18;pointer-events:none;padding:.7rem 1.8rem;background:#142e28ee;color:#f1e4bd;border:1px solid #bdaa75;border-radius:.35rem;box-shadow:0 .4rem 1.6rem #071b1577;animation:defeat-announcement .25s ease-out both}
+.boss-defeated-banner strong{font-size:clamp(1.3rem,3vw,2rem);font-weight:normal}.boss-defeated-banner span{font-size:.95rem;color:#d7d1b6}
+@keyframes defeat-announcement{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.boss-defeated-banner{animation:none}}
+body[data-reduce-motion=true] .boss-defeated-banner{animation:none}
+@media(max-height:500px){.boss-defeated-banner{padding:.35rem 1.2rem}.boss-defeated-banner strong{font-size:1.15rem}.boss-defeated-banner span{font-size:.8rem}}

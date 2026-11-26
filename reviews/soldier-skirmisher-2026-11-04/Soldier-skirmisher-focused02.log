@@ -1,0 +1,54 @@
+✔ normal starting 3 SP acquires a separate action; one real burst earns one vulnerable physical follow-through (22.4079ms)
+✔ unearned, expired and directionless follow-through requests spend no opening or recovery (7.8278ms)
+✔ a wall across the whole footprint rejects a step without spending its earned opening (2.0154ms)
+✔ bounds and a crossed lava circle reject the entire step before any recovery is spent (2.8984ms)
+✔ new obstruction, displacement and a real dodge cancel unfinished work without an arrival shot or refund (8.2757ms)
+✔ Crossing Advance splits the same damage into departure and re-aimed arrival rounds (3.9483ms)
+✖ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (5.1543ms)
+✔ Rear Guard cannot intercept through cover or remove another player's shot (1.7551ms)
+✔ the issued Breach Cadence still fires all three committed-aim rounds from the moving owner (3.0248ms)
+✖ disconnect and paused host end immediately remove windows and motion; reconnect cannot resume it (3.917ms)
+✔ the early fork uses the same authoritative exclusion for purchases and restored boundaries (0.8509ms)
+✔ issued protocol54 preserves legitimate Builder ownership but cannot invent Soldier techniques (4.2157ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 924.7538
+
+✖ failing tests:
+
+test at tests\soldier-skirmisher.test.ts:1:5217
+✖ Rear Guard intercepts only one visible hostile round and remains vulnerable to the next (5.1543ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  110 !== 103
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:70:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 110,
+    expected: 103,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\soldier-skirmisher.test.ts:1:7314
+✖ disconnect and paused host end immediately remove windows and motion; reconnect cannot resume it (3.917ms)
+  TypeError [Error]: next.g.pause is not a function
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-skirmisher.test.ts:87:82)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

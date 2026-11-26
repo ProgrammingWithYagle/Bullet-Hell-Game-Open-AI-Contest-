@@ -1,0 +1,237 @@
+{
+  "checkedAt": "2026-11-10T13:54:21.171Z",
+  "audience": "testing",
+  "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "protocol": 72,
+  "contentRevision": "cc0f92021ec2a1bb9d0b82a4a85bc6bc6f026655a90d77ae3362f36da929fba4",
+  "group": "worker",
+  "variant": "seam-running",
+  "passed": true,
+  "handling": "running",
+  "ordinaryMode": "short",
+  "ordinaryStartingSP": 3,
+  "actualThreeClears": true,
+  "actualEarnedSequence": [
+    3,
+    9,
+    15,
+    21
+  ],
+  "manualRejectedAtActual9": true,
+  "seamRejectedAtActual9And15": true,
+  "actualSeamPurchaseAt21": true,
+  "actualRequiredSkillPurchases": 6,
+  "spentSkillSP": 15,
+  "remainingSP": 6,
+  "clears": [
+    {
+      "clear": 1,
+      "boss": "constable",
+      "combatTicks": 192,
+      "actualEarnedSP": 9
+    },
+    {
+      "clear": 2,
+      "boss": "stitchwright",
+      "combatTicks": 147,
+      "actualEarnedSP": 15
+    },
+    {
+      "clear": 3,
+      "boss": "pallbearer",
+      "combatTicks": 470,
+      "actualEarnedSP": 21
+    }
+  ],
+  "observedClocks": [
+    {
+      "encounter": 1,
+      "phase": "mutationVote",
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 1,
+      "phase": "contractVote",
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 1,
+      "phase": "shop",
+      "remainingTicks": 750,
+      "maximumIssuedTicks": 750
+    },
+    {
+      "encounter": 1,
+      "phase": "loading",
+      "remainingTicks": 150,
+      "maximumIssuedTicks": 150
+    },
+    {
+      "encounter": 2,
+      "phase": "mutationVote",
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 2,
+      "phase": "contractVote",
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 2,
+      "phase": "shop",
+      "remainingTicks": 750,
+      "maximumIssuedTicks": 750
+    },
+    {
+      "encounter": 2,
+      "phase": "loading",
+      "remainingTicks": 150,
+      "maximumIssuedTicks": 150
+    },
+    {
+      "encounter": 3,
+      "phase": "mutationVote",
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 3,
+      "phase": "contractVote",
+      "remainingTicks": 450,
+      "maximumIssuedTicks": 450
+    },
+    {
+      "encounter": 3,
+      "phase": "shop",
+      "remainingTicks": 750,
+      "maximumIssuedTicks": 750
+    },
+    {
+      "encounter": 3,
+      "phase": "loading",
+      "remainingTicks": 150,
+      "maximumIssuedTicks": 150
+    }
+  ],
+  "actualCarrierId": 354,
+  "onePaidRound": true,
+  "originalFuse": 823,
+  "originalRecovery": 1051,
+  "actualPausedPath": {
+    "type": "private-class-cues",
+    "owner": "solo",
+    "at": 811,
+    "cues": [
+      {
+        "kind": "heavy-flak-seam-owner",
+        "id": 354,
+        "owner": "solo",
+        "at": 811,
+        "until": 823,
+        "points": [
+          {
+            "x": 695,
+            "y": 752
+          },
+          {
+            "x": 709.3541050359831,
+            "y": 747.6457298411831
+          }
+        ],
+        "broken": false,
+        "stage": "flight"
+      }
+    ],
+    "run": "simulation-15",
+    "encounter": 3
+  },
+  "actualPrivateCut": {
+    "type": "private-class-cues",
+    "owner": "solo",
+    "at": 814,
+    "cues": [
+      {
+        "kind": "heavy-flak-seam-owner",
+        "id": 357,
+        "owner": "solo",
+        "at": 814,
+        "until": 820,
+        "points": [
+          {
+            "x": 695,
+            "y": 752
+          },
+          {
+            "x": 709.3541050359831,
+            "y": 747.6457298411831
+          },
+          {
+            "x": 723.7082100719663,
+            "y": 743.2914596823662
+          },
+          {
+            "x": 738.0623151079494,
+            "y": 738.9371895235493
+          }
+        ],
+        "broken": false,
+        "stage": "cut"
+      }
+    ],
+    "run": "simulation-15",
+    "encounter": 3
+  },
+  "sharedContactCue": {
+    "kind": "heavy-flak-seam-contacts",
+    "id": 356,
+    "owner": "solo",
+    "at": 814,
+    "until": 820,
+    "contacts": []
+  },
+  "relatedPointAndSeamCues": [
+    {
+      "kind": "heavy-flak-burst",
+      "id": 355,
+      "owner": "solo",
+      "x": 723.7082100719663,
+      "y": 743.2914596823662,
+      "at": 813,
+      "until": 819,
+      "radius": 60,
+      "arc": 6.283185307179586,
+      "aim": -0.2945243112740432,
+      "contacts": []
+    },
+    {
+      "kind": "heavy-flak-seam-contacts",
+      "id": 356,
+      "owner": "solo",
+      "at": 814,
+      "until": 820,
+      "contacts": []
+    }
+  ],
+  "actualContacts": 0,
+  "sameOriginalQuota": true,
+  "noSecondFiringPose": true,
+  "privatePathExpires": true,
+  "privateClearObserved": true,
+  "pausedRequestsDiscarded": true,
+  "noCheckpointOrStateInjection": true,
+  "limits": [
+    "Actual ordinary Short3→9→15→21progression; normal index0votes and original phase/death-hold clocks. All boss identities and failed purchases are retained. No checkpoint, testing command, forced clear, hidden contract identity, resource/health/position/hazard injection or deadline/timeout edit.",
+    "This operation case may contain zero actual contacts; controlled production geometry/contact cases and separate natural/replay/positive evidence carry their own provenance. Native worker/transport/MenuDOM is separate from rendered browser, physical-device, native-language, listening, human enjoyment or final balance acceptance."
+  ],
+  "workerPatched": false,
+  "wholeOptimizedWorkerExecuted": true,
+  "wholeExactServedOptimizedWorker": true,
+  "servedWorker": {
+    "path": "assets/offline.worker-CUkWoxzZ.js",
+    "sha256": "3e4f9c0b5b3acb81595f0e908e68cee778eb45a00a755b61051b7ca2bec6628f"
+  }
+}

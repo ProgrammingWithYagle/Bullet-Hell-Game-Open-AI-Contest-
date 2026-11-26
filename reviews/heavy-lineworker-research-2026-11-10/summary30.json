@@ -1,0 +1,525 @@
+{
+  "passed": true,
+  "createdAt": "2026-11-12T01:04:28.010901+00:00",
+  "registered": false,
+  "canonicalFilesChanged": false,
+  "onlineProof": false,
+  "countsAs2211Tests": false,
+  "verificationSource": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "priorPublicationHead": "9769e77bf3a4ffe9c425e48e6f579eea0248d7e5",
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+  "sourceSnapshotSha256": "7211728dc29df50da0b1df6cdf1d5fdf1ad034852526f36cf8a7c036a1507f79",
+  "prototype03LifecycleOriginal": {
+    "cases": 17,
+    "pass": 14,
+    "fail": 3,
+    "result": "lineworker-lifecycle16.json",
+    "failedResultsPreserved": true
+  },
+  "prototype04LifecycleCorrection": {
+    "cases": 19,
+    "pass": 19,
+    "fail": 0,
+    "result": "lineworker-lifecycle18.json",
+    "change": "Actual disconnect/fatal-owner removal retires tracked flights immediately; host/phase cleanup removes actual shots before discarding copied ids. Rostered recovery stays intact."
+  },
+  "prototype04BoundaryOriginal": {
+    "cases": 3,
+    "pass": 1,
+    "fail": 2,
+    "result": "lineworker-boundaries22.json",
+    "failedResultsPreserved": true,
+    "observedBareMaximumDistance": 603.322639548104,
+    "observedInitialPaidLength": 576.4041457767873
+  },
+  "prototype05Boundaries": {
+    "cases": 3,
+    "pass": 3,
+    "fail": 0,
+    "result": "lineworker-boundaries23.json",
+    "change": "Bare/Yoke engagements can shorten but cannot enlarge paid cable through repeated slack/brake. Every retained line obeys the600px absolute maximum. Sheave alone permits explicit finite payout."
+  },
+  "prototype05Handling": {
+    "cases": 12,
+    "pass": 12,
+    "fail": 0,
+    "result": "lineworker-guards24.json"
+  },
+  "prototype05Lifecycle": {
+    "cases": 19,
+    "pass": 19,
+    "fail": 0,
+    "result": "lineworker-lifecycle25.json"
+  },
+  "prototype05QuietMovement": {
+    "arms": 216,
+    "actualArrivalRadius": 9,
+    "all32400RawFramesMatchOriginal02": true,
+    "sharedTraceArchive": "lineworker-value07-traces.json.gz",
+    "result": "lineworker-value26.json"
+  },
+  "prototype05LivePressure": {
+    "arms": 252,
+    "allRawRowsAndFramesMatchPrototype04": true,
+    "actualBossIds": [
+      "constable"
+    ],
+    "seed": 41,
+    "maximumCombatSteps": 150,
+    "attackHoldsOrHealthPositionHazardInjection": false,
+    "traceArchive": {
+      "file": "lineworker-pressure21-traces.json.gz",
+      "sha256": "35a82d5490e61345bc136896efbbe94da143faff0a6e17c64afc56611dceba76",
+      "uncompressedSha256": "0e29326a75cbb27defae49e15b527e2fbd76933f02ae107181e16f57a5d1a332"
+    },
+    "resultsByPolicy": [
+      {
+        "policy": "dodge",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 35,
+        "actualRoundCost": 0,
+        "actualDamageDealt": 0,
+        "losses": [
+          {
+            "arena": "gatehouse",
+            "difficulty": "hellish",
+            "combatTicks": 138,
+            "phase": "defeat",
+            "initialHealth": 140,
+            "finalHealth": 0
+          }
+        ]
+      },
+      {
+        "policy": "haul-bare",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 35,
+        "actualRoundCost": 36,
+        "actualDamageDealt": 0,
+        "losses": [
+          {
+            "arena": "gatehouse",
+            "difficulty": "hellish",
+            "combatTicks": 149,
+            "phase": "defeat",
+            "initialHealth": 140,
+            "finalHealth": 0
+          }
+        ]
+      },
+      {
+        "policy": "haul-sheave",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 35,
+        "actualRoundCost": 36,
+        "actualDamageDealt": 0,
+        "losses": [
+          {
+            "arena": "gatehouse",
+            "difficulty": "hellish",
+            "combatTicks": 149,
+            "phase": "defeat",
+            "initialHealth": 140,
+            "finalHealth": 0
+          }
+        ]
+      },
+      {
+        "policy": "haul-yoke",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 35,
+        "actualRoundCost": 36,
+        "actualDamageDealt": 0,
+        "losses": [
+          {
+            "arena": "gatehouse",
+            "difficulty": "hellish",
+            "combatTicks": 149,
+            "phase": "defeat",
+            "initialHealth": 140,
+            "finalHealth": 0
+          }
+        ]
+      },
+      {
+        "policy": "haul-yoke-fire",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 35,
+        "actualRoundCost": 1403,
+        "actualDamageDealt": 7862.4000000000015,
+        "losses": [
+          {
+            "arena": "gatehouse",
+            "difficulty": "hellish",
+            "combatTicks": 149,
+            "phase": "defeat",
+            "initialHealth": 140,
+            "finalHealth": 0
+          }
+        ]
+      },
+      {
+        "policy": "sprint",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 35,
+        "actualRoundCost": 0,
+        "actualDamageDealt": 0,
+        "losses": [
+          {
+            "arena": "gatehouse",
+            "difficulty": "hellish",
+            "combatTicks": 138,
+            "phase": "defeat",
+            "initialHealth": 140,
+            "finalHealth": 0
+          }
+        ]
+      },
+      {
+        "policy": "walk",
+        "arms": 36,
+        "arrivedWithin9px": 36,
+        "survivedToObservationEnd": 36,
+        "actualRoundCost": 0,
+        "actualDamageDealt": 0,
+        "losses": []
+      }
+    ],
+    "result": "lineworker-pressure29.json"
+  },
+  "researchRegistryPurchaseStudy": {
+    "cases": 27,
+    "pass": 27,
+    "fail": 0,
+    "result": "lineworker-shop28.json",
+    "virtualCatalogOnly": true,
+    "canonicalCatalogCount": 64,
+    "virtualCatalogCount": 67,
+    "proposedCards": [
+      {
+        "classId": "heavy",
+        "branchId": "heavy-pathways",
+        "branchName": "Specializations",
+        "subbranchId": "heavy-linework-1",
+        "subbranchName": "Lineworker",
+        "subbranchNameKey": "pathway.heavy-linework-1.name",
+        "capstone": false,
+        "effects": {},
+        "id": "heavy-linework-1",
+        "name": "Anchor Cartridge",
+        "nameKey": "skill.heavy-linework-1.name",
+        "sourceSkillId": "heavy-linework-1",
+        "grade": "D-",
+        "depth": 1,
+        "cost": 2,
+        "freePlaySpRequired": 3,
+        "prerequisite": "heavy-ordnance-1",
+        "role": "active",
+        "description": "Spend one actual magazine round on a finite physical masonry anchor. A separate Action2 engages or brakes the hauling motor; Action1 releases the line. Cover, bodies and bounds stop its flight; living bodies and temporary constructs cannot become attachments. Hauling commits primary fire, preserves ordinary lateral walking and respects collision, slows and the original finite line/recovery. Choose Lineworker instead of Flak or Siege Gunner."
+      },
+      {
+        "classId": "heavy",
+        "branchId": "heavy-pathways",
+        "branchName": "Specializations",
+        "subbranchId": "heavy-linework-1",
+        "subbranchName": "Lineworker",
+        "subbranchNameKey": "pathway.heavy-linework-1.name",
+        "capstone": false,
+        "effects": {},
+        "id": "heavy-linework-yoke-1",
+        "name": "Straight Yoke",
+        "nameKey": "skill.heavy-linework-yoke-1.name",
+        "sourceSkillId": "heavy-linework-yoke-1",
+        "grade": "D",
+        "depth": 2,
+        "cost": 2,
+        "freePlaySpRequired": 5,
+        "prerequisite": "heavy-linework-1",
+        "role": "evolution",
+        "description": "Permit ordinary paid primary while hauling, but restrict ordinary walking to the current anchor approach axis. Manual aim remains your responsibility. A separate brake releases that steering commitment without refunding the anchor or resetting its original clocks. Choose this fitting instead of Open Sheave."
+      },
+      {
+        "classId": "heavy",
+        "branchId": "heavy-pathways",
+        "branchName": "Specializations",
+        "subbranchId": "heavy-linework-1",
+        "subbranchName": "Lineworker",
+        "subbranchNameKey": "pathway.heavy-linework-1.name",
+        "capstone": false,
+        "effects": {},
+        "id": "heavy-linework-sheave-1",
+        "name": "Open Sheave",
+        "nameKey": "skill.heavy-linework-sheave-1.name",
+        "sourceSkillId": "heavy-linework-sheave-1",
+        "grade": "D",
+        "depth": 2,
+        "cost": 2,
+        "freePlaySpRequired": 5,
+        "prerequisite": "heavy-linework-1",
+        "role": "evolution",
+        "description": "While braked, allow actual clear line to pay out up to its original600px maximum, then re-engage from that new approach. Keep lateral walking while hauling and keep primary committed. The same original deadline, one paid cartridge and recovery remain; losing a fitting after using its payout releases dependent work. Choose this fitting instead of Straight Yoke."
+      }
+    ],
+    "threePartialFirstClearRuns": true,
+    "ordinaryStartEarnedSp": 3,
+    "afterActualFirstClearEarnedSp": 9,
+    "spentAtStart": 3,
+    "spentAfterFitting": 5,
+    "commonFirstEncounterPolicyIdentical": true,
+    "canonicalOrOnlinePurchaseProof": false,
+    "checkpointCreatedOrImported": false
+  },
+  "codeArchive": {
+    "path": "prototype-lifecycle-pressure30.zip",
+    "sha256": "1bd2c6ca74ab2c563e60d4056f42e38a2eff30028e620eb31300fb3d774c6fd0",
+    "members": [
+      {
+        "member": "lineworker-lifecycle16.mts",
+        "bytes": 10817,
+        "sha256": "84242c96c7cdf9079cc93177e6219429248db52029296ad163186d4f7f1b1a56"
+      },
+      {
+        "member": "lineworker-lifecycle16.json",
+        "bytes": 6699,
+        "sha256": "7ddfe0ef787afbefdb0404c640128e23b66a9934397dec0a55b7405de75627cf"
+      },
+      {
+        "member": "prepare-lifecycle17.mjs",
+        "bytes": 5274,
+        "sha256": "254915984d396076a4023c64c6bfcbedec3c649828665957ae7a967486e32f2d"
+      },
+      {
+        "member": "linework-candidate04.mts",
+        "bytes": 10449,
+        "sha256": "910fc82a5b00e4c975407d75ed565c22713cf1378c77f3097827475c5562ea73"
+      },
+      {
+        "member": "build-study05.mjs",
+        "bytes": 7060,
+        "sha256": "c8b36794d1ec57e4382f8f0e446653affbf5b75b0516545b08806b2bc62d52f4"
+      },
+      {
+        "member": "game-study04.mjs",
+        "bytes": 3888687,
+        "sha256": "4fcd4af184e49b97058f1b09d23ee6c7f1862a506540cca6b52998b47c40247d"
+      },
+      {
+        "member": "game-study04-binding.json",
+        "bytes": 2355,
+        "sha256": "c8486de93524cc6342c78637bf3bd432da69c03462c1a837b205987e673ab9b0"
+      },
+      {
+        "member": "lineworker-lifecycle18.mts",
+        "bytes": 11295,
+        "sha256": "8e91e0f15f2ed4b9f43a0f4a4e9027d77df47e368d197af877fe86d90315dc0c"
+      },
+      {
+        "member": "lineworker-lifecycle18.json",
+        "bytes": 5308,
+        "sha256": "d7545ba85171fc3495d9d05fe6d7d3a446b430edea511280d0a92fde6320b55e"
+      },
+      {
+        "member": "lineworker-guards19.mts",
+        "bytes": 6745,
+        "sha256": "541926049110f9a5b1b73a5dcfae8d0fa061f476826eae77cf67d0b2e7c3f997"
+      },
+      {
+        "member": "lineworker-guards19.json",
+        "bytes": 6980,
+        "sha256": "c0476c5bcfbc13612e5ae66ddb7c03ea00d50c84f2034d79b439d438dcbfa6eb"
+      },
+      {
+        "member": "lineworker-value20.mts",
+        "bytes": 8288,
+        "sha256": "a5f8d6ac62ec25f2159e09170c19a860f8dabd6346507ecad50edb3b44d93b65"
+      },
+      {
+        "member": "lineworker-value20.json",
+        "bytes": 223874,
+        "sha256": "3b4b2eca2561ec098c723fad95aedd6c394121ebbf477e11ca55cce8ec73ada0"
+      },
+      {
+        "member": "prepare-pressure21.mjs",
+        "bytes": 4126,
+        "sha256": "0b77db41cbf01f5dc0c97ac55e0604b2d693f0b13999f3334fb5f65609517aa2"
+      },
+      {
+        "member": "lineworker-pressure21.mts",
+        "bytes": 7883,
+        "sha256": "addb2ebde8d8d83c9599f6c934e8637d58a177a9ddf324e28f107d038144190c"
+      },
+      {
+        "member": "lineworker-pressure21.json",
+        "bytes": 309801,
+        "sha256": "6c319a8b98e5f8085cedadc11a3562fb7e8ee27088543698e03ddea4bbfcb5f0"
+      },
+      {
+        "member": "lineworker-boundaries22.mts",
+        "bytes": 5012,
+        "sha256": "1f7dfc6eb641793d70559bb6b94da1cc88c28e67bb659a17f1a9b79258dc3267"
+      },
+      {
+        "member": "lineworker-boundaries22.json",
+        "bytes": 79109,
+        "sha256": "bdf04ee3cf1021991a8b438f9e9d2cd20e176a4f768cc7ee2e720d171c9bb70c"
+      },
+      {
+        "member": "prepare-boundary23.mjs",
+        "bytes": 2528,
+        "sha256": "ca3993e8a1d3fc02ff3bdb56eb8ebec864821f2ae6dd33e34e99ee5baf982c7e"
+      },
+      {
+        "member": "boundary23-preparation.json",
+        "bytes": 762,
+        "sha256": "1e98a25c8aeb14d9fe88d4d61b7f13377de4d103056ba394c4e39f52173ea72b"
+      },
+      {
+        "member": "linework-candidate05.mts",
+        "bytes": 10567,
+        "sha256": "7ce40b8772b238bd3441ee287fe67f5e53686ebcb93b51c5a844858666d80e40"
+      },
+      {
+        "member": "build-study06.mjs",
+        "bytes": 7060,
+        "sha256": "f5c38ba373d14088dddf01d7901f2411cbdde7bff7242b83f9a981c4cda91845"
+      },
+      {
+        "member": "game-study05.mjs",
+        "bytes": 3888823,
+        "sha256": "602f942aa3fdf878828559ac2e44b33432f4664d80685c21e186f3479c66899f"
+      },
+      {
+        "member": "game-study05-binding.json",
+        "bytes": 2355,
+        "sha256": "5599fe3ba97c5da6565876e8b2a946c99d75d903b0ef6c5d61d35af122794583"
+      },
+      {
+        "member": "lineworker-boundaries23.mts",
+        "bytes": 5012,
+        "sha256": "5dbca08f11dc98a923ca37d736cc8a70cca3a91bf32004ce866c6472bec5038d"
+      },
+      {
+        "member": "lineworker-boundaries23.json",
+        "bytes": 43332,
+        "sha256": "1b18085bdc82318a2531a9b4c7e1a87ca08ae663acdf65cb2b039f2f15fe7448"
+      },
+      {
+        "member": "lineworker-guards24.mts",
+        "bytes": 6745,
+        "sha256": "266c3e55dac152ea4789f107bb416e91c7d9930e852f9909de7bfe4d1602508d"
+      },
+      {
+        "member": "lineworker-guards24.json",
+        "bytes": 6980,
+        "sha256": "d33c64c2dfce90bfc010c78a00b1d4cbe3356b891dfca1fd606d0e62aeb79e51"
+      },
+      {
+        "member": "lineworker-lifecycle25.mts",
+        "bytes": 11295,
+        "sha256": "ebb3769a21bb7c79c821d93028e3e9222d1e4ff930737656a86c03ff808678b3"
+      },
+      {
+        "member": "lineworker-lifecycle25.json",
+        "bytes": 5308,
+        "sha256": "1813312dd293fdb972271d7ba61827e84433ca8efb940dc4a3caf62b80853eed"
+      },
+      {
+        "member": "lineworker-value26.mts",
+        "bytes": 8288,
+        "sha256": "29450b0054f6f374affa953c70a522db324e3847eed51ec971880232e90bc241"
+      },
+      {
+        "member": "lineworker-value26.json",
+        "bytes": 223874,
+        "sha256": "25a8c096cad129012791c3e42d470d0f487a99200f7e76e29183e8a8a658e457"
+      },
+      {
+        "member": "prepare-shop27.mjs",
+        "bytes": 4165,
+        "sha256": "f38eb23a7fb685f4286e432dc15fbc00c7b13a4ffd51bfae5f26f80a8aa43be9"
+      },
+      {
+        "member": "linework-proposed-catalog27.json",
+        "bytes": 3241,
+        "sha256": "40ad4a16cc354dbc7ed520d20d7c8be9afe3a7b137c2256a780f2a587574fcf2"
+      },
+      {
+        "member": "build-study07.mjs",
+        "bytes": 8051,
+        "sha256": "a6ec1670e764567dacaa68da328b3e1219b745cf33d7476bec8598c28909c819"
+      },
+      {
+        "member": "game-study06.mjs",
+        "bytes": 3892217,
+        "sha256": "a4bfe632630909303d89c2515522811f410239a810b59130a766599f82d44079"
+      },
+      {
+        "member": "game-study06-binding.json",
+        "bytes": 2453,
+        "sha256": "f48108245eb64210f5e61affc804f7666b70168cd0322e7f9930be159c512ede"
+      },
+      {
+        "member": "lineworker-shop28.mts",
+        "bytes": 9066,
+        "sha256": "1c0970e3930821c969026b1b532fbbcdf22c72bfbee3c1a3724194fb9eac6415"
+      },
+      {
+        "member": "lineworker-shop28.json",
+        "bytes": 120596,
+        "sha256": "f30ce2ef537982dd4ec1aff6bf1b6958de0880a401cfca10b54240216607404d"
+      },
+      {
+        "member": "prepare-pressure29.mjs",
+        "bytes": 1674,
+        "sha256": "aca919d2539ba84fb3662826b7655225a37eedd5d03c188748f609f0274c36b6"
+      },
+      {
+        "member": "lineworker-pressure29.mts",
+        "bytes": 8180,
+        "sha256": "cf510a9076938f4bdb890a8cb14ba81ac2f08e602e229234aadd334b6c01b22a"
+      },
+      {
+        "member": "lineworker-pressure29.json",
+        "bytes": 309915,
+        "sha256": "e9791c7ffa6826e4ab44f30babdd3f48aba68c6f6bcca1ec400dec437821d29d"
+      },
+      {
+        "member": "common.mjs",
+        "bytes": 2974,
+        "sha256": "0869319525b595322e89e69cab6da9cc84ad2e11e4632865ebf9afb17d43dab1"
+      },
+      {
+        "member": "publish-research30.py",
+        "bytes": 9972,
+        "sha256": "79db62b19577e772e79abd76a04bcc0ce20d7d012b74f1d2eef88411834f1904"
+      },
+      {
+        "member": "prepare-resume31.py",
+        "bytes": 2645,
+        "sha256": "8c12c4f81b4dd6d137f22769ef6471df6e5edc0d1e5daa56a9ce3fb853ec3218"
+      },
+      {
+        "member": "resume-publish31.py",
+        "bytes": 10419,
+        "sha256": "301c5d91abb3194a6dad0a6368c3a7dcf9f9dbf5a196aee677ee7f9abea74217"
+      }
+    ],
+    "allRawMemberBytesVerified": true,
+    "publication30PartialWriteVerifiedBeforeResume": true,
+    "publication30Error": "Default Windows cp1252 catalog decoding failed after archive and result copies; resume31 reads UTF-8. Original publisher source remains exact in this archive."
+  },
+  "limits": [
+    "Unregistered copied-Game research only. No new canonical card, catalog edition, source runtime, menu, asset or online authority exists. These studies are separate from2211canonical tests and from the frozen Tethered proof.",
+    "Lifecycle and gate fixtures explicitly control cover, bodies, ownership or budgets and hold attacks when stated. Original failures and source/bundle/runner hashes remain exact. No class/game completion or human/device acceptance is asserted.",
+    "Live pressure uses one selected geometry route per36map/difficulty combinations, one seed and the ordinary Constable boss, for at most150ticks. All policies reach the approach disk. Six faster policies later die in Hellish Gatehouse while walking survives this short observation; they reach the target earlier and remain near it longer. This is a specific observed exposure cost, not an isolated causal test or build ranking.",
+    "Yoke/fire manually aims using observed boss position and pays actual rounds. It does not add target selection or auto-aim to the candidate. Raw traces retain deaths and truncation at terminal phase.",
+    "Virtual registry transactions run actual Game spending/prerequisite/grade/conflict authority with proposed study definitions. Controlled budget cases and three ordinary first-clear3to9partial runs remain distinct. They do not verify canonical menus, local edition imports or online purchase/transport.",
+    "The next canonical CONTENT edition must admit exact73rosters before72 across ownership and all12profile/history rosters. Never import proposed checkpoints into canonical/online source. Later acquired operations, higher-grade culmination and wider Heavy routes remain open without a fixed maximum."
+  ]
+}

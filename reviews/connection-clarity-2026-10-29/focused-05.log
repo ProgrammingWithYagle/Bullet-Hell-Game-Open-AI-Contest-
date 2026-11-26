@@ -1,0 +1,66 @@
+✔ authority confirms delivery/rejections, binds sender identity and acknowledges duplicate requests without duplicate posts (6.5194ms)
+✔ outbox waits for confirmation, retains a request after timeout/drop and permits a safe explicit retry or a genuinely new message (36.9521ms)
+✔ late success still confirms the pending text; cooldown, disable, send failure and destroyed lifetimes preserve bounded state (90.907ms)
+✔ actual peers receive explicit cooldown and reconnect retry acknowledges a lost confirmation without a duplicate broadcast (4016.6553ms)
+✔ quickly hiding and showing chat restores its recent history without another player needing to post (5238.2774ms)
+✔ leaving during delayed health aborts actual HTTP and settles the search promptly (122.8109ms)
+✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (105.0856ms)
+✔ leaving during delayed code aborts actual HTTP and settles the search promptly (76.5756ms)
+✔ leaving during server startup cancels the retry delay and makes no later request (137.6525ms)
+✔ cancelled admission releases the known ticket once during its retry delay (17.8489ms)
+✔ cancelled admission releases the known ticket once during a pending poll (1029.7314ms)
+✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (27.9575ms)
+✔ code lookup distinguishes missing, throttled and failing servers (22.6572ms)
+✔ an incompatible HTTP address and startup throttling fail promptly with useful errors (15.2201ms)
+✔ Cancel aborts the actual SDK matchmaking POST and releases admission (42.6889ms)
+Room connection was closed unexpectedly (4000): 
+✔ Cancel closes an actual SDK socket whose server never sends the room handshake (72.7334ms)
+✔ a room that closed after listing gives useful guidance and releases its join ticket (142.337ms)
+✔ closing offline startup settles before its first view and suppresses late worker events (3.9626ms)
+✔ an unresolved asset task can be cancelled without accepting its late completion (0.5068ms)
+✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (62.121ms)
+✔ Cancel keeps a newer load intact after the older join returns success (696.4866ms)
+✔ Cancel keeps a newer load intact after the older join returns error (498.8371ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (352.5828ms)
+✔ compiled room search shows the version error, retries, then aborts when the player goes back (739.1287ms)
+✔ code lookup keeps actionable errors and disposal cancels without a late launch (566.6212ms)
+✔ leaving the online records tab aborts its real pending board request (258.7525ms)
+✔ existing rows still open after pagination and changing filters aborts roster requests (216.1163ms)
+✔ all six opening arenas show the real bounds, cover, spawns and difficulty hazards (45.3535ms)
+✔ welcome, map legends and difficulty explanations cover all fifteen supported locales (3.0958ms)
+✔ mode previews describe all five authored run lengths and each difficulty has a distinct non-fallback symbol (1.2531ms)
+✔ compiled public setup shares the clear first-run flow and preserves its audience boundary (385.0791ms)
+✔ compiled testing setup shares the clear first-run flow and preserves its audience boundary (269.4243ms)
+✔ actual armory presents all seven classes' existing names and prices while inspection and unaffordable buys spend nothing (195.952ms)
+✔ catalytic warnings retain their real radius and produce a bounded local eruption with a static reduced-motion alternative (2.9441ms)
+✔ explicit ready handshake delivers private codes after client handlers attach and permits a real guest join (216.3759ms)
+✔ real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session (1300.0769ms)
+✔ instance capacity reserves reconnect slots independently of room limits (0.7707ms)
+Room connection was closed unexpectedly (4002): 
+✔ real WebSocket clients enforce visibility, versions, authority, idempotence and reconnection (1191.8649ms)
+ℹ version rejection
+ℹ public room creation
+ℹ public guest joining
+ℹ interrupted connection
+ℹ private room creation
+ℹ client adapter recovers an early disconnect and closes during retry
+✔ room passwords use separate salted verifiers, bounded Unicode text and exact case/space matching (210.9254ms)
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+✔ real public/private password rooms reject missing/wrong passwords, prompt lookup safely, reconnect and keep host authority (2304.5972ms)
+✔ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (7.0281ms)
+✔ real private-room peers share a server result, can read its paged roster, and retain it after a complete server restart (21499.7371ms)
+✔ only the host may end an endless run during a break; testing servers cannot create team records (784.4921ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25293.988

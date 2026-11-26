@@ -1,0 +1,423 @@
+{
+  "passed": true,
+  "sourceCommit": "6f9e582d2c45babc99e0719b4e446c240fe6a56b",
+  "protocol": 98,
+  "contentRevision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+  "runtimeSourceSha256": "efb25d030739b0de444ca2342c7536746f6ca8b4d99d08da3322fa28822d197b",
+  "sourceSnapshotSha256": "4eb4c2c4e18e83fbf94a0f351d60a0394b18b631aecc0a0041b165f6345cf61d",
+  "sourceWorkflowIds": [
+    45117108255,
+    45117129015
+  ],
+  "sourceWorkflowsSha256": "d83f2211fdbac1089cb68e1cf85aa57d97664efd5c8b6ff453378f10876c087c",
+  "comparisonCases": 96,
+  "exactReplays": 12,
+  "safeResumes": 6,
+  "ferrymanCases": 6,
+  "ferrymanSafeResumes": 6,
+  "sameClassCoopCases": 6,
+  "sameClassCoopReplaySha256": "abc1c676e8d33b99198dda86e69ac1fd30d6d4f6fff0860bd1c154f09c25cae7",
+  "sameClassCoopRebuiltSha256": "99b5d31f81fcf67532d6996529eba4a5c900a366e3d0112066bcd9d567be6238",
+  "archive": {
+    "filename": "whole-swordsman-receipts.zip",
+    "bytes": 158232,
+    "sha256": "4539a2649c7c5077231e763ed297db2c72692ea80c9be8f6608002302e90a0d9"
+  },
+  "members": [
+    {
+      "path": "controlled/controlled01.json",
+      "size": 4393,
+      "sha256": "08faf1b557fa76f7391df103754873771fc9a7ad11fbcc023fbaa0e03a782dec"
+    },
+    {
+      "path": "controlled/same-class-coop-rebuilt.json",
+      "size": 9863,
+      "sha256": "99b5d31f81fcf67532d6996529eba4a5c900a366e3d0112066bcd9d567be6238"
+    },
+    {
+      "path": "controlled/same-class-coop-rebuilt.log",
+      "size": 649,
+      "sha256": "5ca0076898ad357a3f9a509998f4a01b509867f21b8424562a7bd48a00dff060"
+    },
+    {
+      "path": "controlled/same-class-coop-replay.log",
+      "size": 649,
+      "sha256": "5ca0076898ad357a3f9a509998f4a01b509867f21b8424562a7bd48a00dff060"
+    },
+    {
+      "path": "controlled/same-class-coop.json",
+      "size": 9706,
+      "sha256": "abc1c676e8d33b99198dda86e69ac1fd30d6d4f6fff0860bd1c154f09c25cae7"
+    },
+    {
+      "path": "controlled/same-class-coop.log",
+      "size": 649,
+      "sha256": "5ca0076898ad357a3f9a509998f4a01b509867f21b8424562a7bd48a00dff060"
+    },
+    {
+      "path": "controlled/verified-attempt.log",
+      "size": 98,
+      "sha256": "2628eb53f365bef4cc71c959cacd462b2702670c874e1df29c8b0e60dc8e5f67"
+    },
+    {
+      "path": "drivers/assassin-mark-hunter/native-writ-navigation.mjs",
+      "size": 4534,
+      "sha256": "d218e31f2217b9a445c8d77414501d91f432b9f06a28f28c4da1d90b5f276dec"
+    },
+    {
+      "path": "drivers/bastion/study-paths.mjs",
+      "size": 1229,
+      "sha256": "290339d36d8129c156ad6529c8f13f6d6d15c49c26142d12d29822ea85fd0c3e"
+    },
+    {
+      "path": "drivers/bind-published-source.mjs",
+      "size": 6168,
+      "sha256": "02e5fdca551aa076e4d065d69d12d8470178be620bc7496bb0cb078c6bfa553f"
+    },
+    {
+      "path": "drivers/combine-pathways.mjs",
+      "size": 1711,
+      "sha256": "aa55e20cf37d09fdad66ef368174250ed421c11ddcd21e52bc15c8c11a7eb3da"
+    },
+    {
+      "path": "drivers/controlled-combinations.mjs",
+      "size": 7140,
+      "sha256": "8854ef3b3497df52d546a08929f5b70506aeab1793090dc875d78509e8b48b9b"
+    },
+    {
+      "path": "drivers/diagnose-ferryman.mjs",
+      "size": 8826,
+      "sha256": "02ef62083483d9b4e59292d010b48d22b7a70069dcad40a0a58d328576e256a8"
+    },
+    {
+      "path": "drivers/ferryman-bypass-study.mjs",
+      "size": 9528,
+      "sha256": "70aff35b95e1d4a08aea58ccdbbf5ae8ec2ee598601341478d482bb0b2171ded"
+    },
+    {
+      "path": "drivers/ferryman-bypass.mjs",
+      "size": 3397,
+      "sha256": "6481b72de03f6c7fc6635ea8afba88338d08a933041b6cd43a1220f8899de595"
+    },
+    {
+      "path": "drivers/replay-and-summarize.mjs",
+      "size": 5067,
+      "sha256": "731dea02a9bcce893754380894048d73f57aa9b62fb840ca96d59403c3b9e2fd"
+    },
+    {
+      "path": "drivers/safe-resume-ferryman.mjs",
+      "size": 12232,
+      "sha256": "3c2184ada002ae87b7a5260ff54faa405566db6a3379acc7581001cc1daeefb7"
+    },
+    {
+      "path": "drivers/safe-resume-study.mjs",
+      "size": 11759,
+      "sha256": "2169edd18bee08fef66a2cce964a5e533201024ab960660c1a9f6fa816fe6b9e"
+    },
+    {
+      "path": "drivers/same-class-coop.mjs",
+      "size": 10444,
+      "sha256": "06aa45572ab5fafcdbd5fb915757bfe12edceeda3d1a9dda915194c4308b1409"
+    },
+    {
+      "path": "drivers/standard-runs.mjs",
+      "size": 8277,
+      "sha256": "e59e169b2b5e25dfd736882dc27e8c38e0858838abf4ebe414238440625d4e19"
+    },
+    {
+      "path": "drivers/swordsman-counterstroke/counterstroke-targeted-pilot.mjs",
+      "size": 5804,
+      "sha256": "bb7dbca745adcef0f1c18f6ec0ebbd1f1f209cb832c9320554c7a84ad71ec15e"
+    },
+    {
+      "path": "drivers/swordsman-measured/measured-pilot.mjs",
+      "size": 4661,
+      "sha256": "fdf61799672579ebf0b3784c2235aba4ce38903099ae194a3338b77df677fa49"
+    },
+    {
+      "path": "drivers/swordsman-pursuit/bundle-entry.mjs",
+      "size": 3384,
+      "sha256": "b35428240e62b6fe435ce1fc8b7c64a2ac0ce5b47464a1c82fc87effa4de8f80"
+    },
+    {
+      "path": "drivers/swordsman-pursuit/pursuit-pilot.mjs",
+      "size": 4240,
+      "sha256": "aca3150ae5417e8365b3787b8ffc4b8f8f283bad69d389ba0b0840e0ad68bde7"
+    },
+    {
+      "path": "drivers/verify-ferryman-bypass.mjs",
+      "size": 3590,
+      "sha256": "05905bdef2ffed90ca63698d8c4eb201136d95691e492129200a9872bead7ce6"
+    },
+    {
+      "path": "ferryman/ferryman-bypass01.json",
+      "size": 54637,
+      "sha256": "54ec98276ead549cbc1d876ee7b2df0bb9f4d4c69a62e6e0058e624b14d80653"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/follow-back-cross.json",
+      "size": 60488,
+      "sha256": "d40eb5c294842c7516a7ecb57a7534bf7cdd4025ed0bfb525a89723859ee9734"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/follow-back-cross.log",
+      "size": 628,
+      "sha256": "465c766fb5e75ea3a511ae6428e483518cde7c06b386764a5cc0607ee5facda0"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/follow-back-through.json",
+      "size": 51226,
+      "sha256": "bdc260a2097fc9cf625ca7944040ce359458256927858ea26e12de0696978aa5"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/follow-back-through.log",
+      "size": 624,
+      "sha256": "2b54c503ed174d0348f3b3104d4fdc7bfb0d96984a21cc8308597b11ade04396"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/follow-needle-through.json",
+      "size": 73992,
+      "sha256": "a192426890f5ebd3de560c4c09c9bcf0fa8bdc0f87605bb0ffc46c75de67b9d3"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/follow-needle-through.log",
+      "size": 599,
+      "sha256": "32da91d9a3dc6f66b27eba11ffc51b12cca98306bd3951f9bb39ef73be2a0c2c"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/turn-back-cross.json",
+      "size": 49587,
+      "sha256": "57052683b21d604d9ed94575bf4480e685c6a23d9715e16bf6d363e62ec863ab"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/turn-back-cross.log",
+      "size": 626,
+      "sha256": "2aca0335f68b7c809d8a37a7a8445fc5ab36dc91b8d327aec4ab66237c1f4b04"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/turn-needle-cross.json",
+      "size": 69855,
+      "sha256": "d82fa72ee26205e92041437b29efc09443b5636ccb65bdbfc96606f082a83748"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/turn-needle-cross.log",
+      "size": 629,
+      "sha256": "f2de647dccaf9252c7ab6640265f4f688fe3e67a7087aa23065530a967118272"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/turn-needle-through.json",
+      "size": 54637,
+      "sha256": "54ec98276ead549cbc1d876ee7b2df0bb9f4d4c69a62e6e0058e624b14d80653"
+    },
+    {
+      "path": "ferryman/ferryman-cases01/turn-needle-through.log",
+      "size": 636,
+      "sha256": "019bfea5e6172b2c35c762b07e43dfbbc42ff4d1af568a2f4c4dc1405a3a84b6"
+    },
+    {
+      "path": "ferryman/ferryman-observed01.json",
+      "size": 212628,
+      "sha256": "d9929d3774b43373eaadf8d690e8894ecfe61247e33d9e4d6888bf3174649f91"
+    },
+    {
+      "path": "ferryman/summary.json",
+      "size": 5705,
+      "sha256": "cb11b3fbe0d0b90e06ab2678398ede89468d96290d92a1d3cfdfa6a7cf630db7"
+    },
+    {
+      "path": "ferryman/summary.log",
+      "size": 84,
+      "sha256": "9d1a235416fc442791bf47bd75d64acd9775e4b4abe8556188bc0fa6144945bd"
+    },
+    {
+      "path": "replays/party-crown-crypt-active.json",
+      "size": 21055,
+      "sha256": "5a66cf1c1c7f32583adaf1af0a632ad8e178f1fa6c9eabdddcca45203160b49b"
+    },
+    {
+      "path": "replays/party-crown-crypt-active.log",
+      "size": 180,
+      "sha256": "bafb33909717073c9470c13714baa04a2e96b03b5061ff7cfd3594be77624a69"
+    },
+    {
+      "path": "replays/party-crown-crypt-unused.json",
+      "size": 1956,
+      "sha256": "44e200e572cb73419f47c1cdd2d83bad2758781d409bc7e201c4b18d53a4b09b"
+    },
+    {
+      "path": "replays/party-crown-crypt-unused.log",
+      "size": 132,
+      "sha256": "a3ed6307e2d9354f5ba93264174bbe28c0292160d45f571de5cea324b7d63601"
+    },
+    {
+      "path": "replays/party-gatehouse-active.json",
+      "size": 22810,
+      "sha256": "7b44ed545b3d29baa87232411c2d5c01b5de0cb11cf79e895dab7e57c2c4df68"
+    },
+    {
+      "path": "replays/party-gatehouse-active.log",
+      "size": 179,
+      "sha256": "91c3a849a9d1c7fb596813a27a2c276c04bd13dae464027d4bec9fc14991397d"
+    },
+    {
+      "path": "replays/party-gatehouse-unused.json",
+      "size": 1956,
+      "sha256": "cc74ae55fe094993ef3c0f75ee55f5f3416600beeffa1f95fbfe062f00428bad"
+    },
+    {
+      "path": "replays/party-gatehouse-unused.log",
+      "size": 130,
+      "sha256": "dacd55f42b2c8b19e4c0443e52b5f52c8157ae6434d759ecee5257498ba4d144"
+    },
+    {
+      "path": "replays/party-sunken-chapel-active.json",
+      "size": 36400,
+      "sha256": "9123676217ce047d988f4bcd48584d8e4822724d3f6b354710006e81d4a54dca"
+    },
+    {
+      "path": "replays/party-sunken-chapel-active.log",
+      "size": 183,
+      "sha256": "d712ff47a5c51bc0e3466224977b31a5fb42fc01857aa47251f116966cc97069"
+    },
+    {
+      "path": "replays/party-sunken-chapel-unused.json",
+      "size": 1962,
+      "sha256": "2f9b4a0b5cf77e4b109fa9e9443323fa3f615b6506a9dcc768c077335e6435d1"
+    },
+    {
+      "path": "replays/party-sunken-chapel-unused.log",
+      "size": 134,
+      "sha256": "e9426430caf46a361c3b4eab0e58c3a2405fc23a87b8e416d501a24220c015a1"
+    },
+    {
+      "path": "replays/solo-crown-crypt-active.json",
+      "size": 8607,
+      "sha256": "06b4522a0fd57be374eec25244b85228b3bdeb21dc4f1a90c234ce1a2139c452"
+    },
+    {
+      "path": "replays/solo-crown-crypt-active.log",
+      "size": 150,
+      "sha256": "e1f57edd37a598ac265960391b53d3be7b68a29143868eadffeb6042f1ac272c"
+    },
+    {
+      "path": "replays/solo-crown-crypt-unused.json",
+      "size": 1007,
+      "sha256": "57410ae6a44a89ec760d372a183ba0695bb015c35dcfb59c6738770df70bab2a"
+    },
+    {
+      "path": "replays/solo-crown-crypt-unused.log",
+      "size": 134,
+      "sha256": "b42b10f0f720c1826d56b30fd208e74b73fe9016a95a3e8aa81378b2f078e6a3"
+    },
+    {
+      "path": "replays/solo-gatehouse-active.json",
+      "size": 8594,
+      "sha256": "18389960029cf2aef4e18bdbecd60db0357142746f278f07605e4f1e8bb6eeae"
+    },
+    {
+      "path": "replays/solo-gatehouse-active.log",
+      "size": 146,
+      "sha256": "87e71c0e20d542fcc8aca12560c360d570f620bbb7a7891011dcf7907f4f429d"
+    },
+    {
+      "path": "replays/solo-gatehouse-unused.json",
+      "size": 1261,
+      "sha256": "5c89cb898498341ecbbd4d3c041b705798cf6456121f80811a1eb893d8b8f949"
+    },
+    {
+      "path": "replays/solo-gatehouse-unused.log",
+      "size": 130,
+      "sha256": "5af2bd4d5f4a9b08416669974bb6db4245f1b05e9011321d01f63a5376df9ed9"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-active.json",
+      "size": 14232,
+      "sha256": "59a2c289d040458d062c8637fd20161fb520aee9f964e4cb7125d6ee9ef2da23"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-active.log",
+      "size": 186,
+      "sha256": "a9859276f9ea5ae13e7510a06f00370c61235542565009cd1b77a15da5651330"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-unused.json",
+      "size": 1271,
+      "sha256": "aa3d912b04c1a7b69d7a789c25e7ec97f58d7949cc1474a90209ff4beed82b47"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-unused.log",
+      "size": 138,
+      "sha256": "d07e65d281b33ed1965f85baa9113033ed53942d46833937d0641a7830177445"
+    },
+    {
+      "path": "replays/summary.json",
+      "size": 5506,
+      "sha256": "24525b9f23d7f37a4a856a5ff09a9ccd29fe0a69e1222bfb5e97de3bbb6be401"
+    },
+    {
+      "path": "resume/safe-resume-ferryman01.json",
+      "size": 24711,
+      "sha256": "5ab226c63cc372224a4f662469b96194f6e2979ffec25c20baf70157317ca050"
+    },
+    {
+      "path": "resume/safe-resume-ferryman01.log",
+      "size": 662,
+      "sha256": "15f2dcf7c92169988a8a0ca56cbaf65acc10bcaf9f678ffdca58b942c7757686"
+    },
+    {
+      "path": "resume/safe-resume01.json",
+      "size": 19324,
+      "sha256": "b16e505c9c83af305daec14612643facb001c96d68af33072eb6ec21a14e4443"
+    },
+    {
+      "path": "resume/safe-resume01.log",
+      "size": 558,
+      "sha256": "4d3dc964dc649ef4e6f93f1da1729825ea6851be7d80da195bad3c85ddaea371"
+    },
+    {
+      "path": "runtime/inputs-before.json",
+      "size": 1766,
+      "sha256": "1f0b05dd9f1d277a5f7ea86e0ce1581706c87e0e1b3c44365d7d4ed402d52a50"
+    },
+    {
+      "path": "runtime/inputs-rebuilt.json",
+      "size": 1926,
+      "sha256": "7698fa4d9bdf402979f03086c05becb79ab8677d39a77124fa9b4972974432c4"
+    },
+    {
+      "path": "runtime/source-workflows.json",
+      "size": 1742,
+      "sha256": "d83f2211fdbac1089cb68e1cf85aa57d97664efd5c8b6ff453378f10876c087c"
+    },
+    {
+      "path": "runtime/source.json",
+      "size": 1549,
+      "sha256": "f3251f39b0de0b9506599bfe54080f54e997b59b35db6f76ccca3dfaefa7cf27"
+    },
+    {
+      "path": "study/standard-party01.json",
+      "size": 537075,
+      "sha256": "d5a239e06e0db1d273251ea2fe904f76099c095257e4326ae20e27b942940d05"
+    },
+    {
+      "path": "study/standard-party01.log",
+      "size": 7489,
+      "sha256": "21135d5f3b41b4517d99a3a47dbaee264fc1a5498acd84d0c3623cd1dbb55716"
+    },
+    {
+      "path": "study/standard-solo01.json",
+      "size": 184899,
+      "sha256": "faa5d411e77bda7560a0144af1a3fa48e72dfd64f5a74b71f037ca502338a03c"
+    },
+    {
+      "path": "study/standard-solo01.log",
+      "size": 6805,
+      "sha256": "48d81afc5da37111d6b1f6a48e0c24857e108c3a791f158e3da7f3a4e9172deb"
+    },
+    {
+      "path": "study/summary.json",
+      "size": 11197,
+      "sha256": "2e4eec8539699c8d5a4663e418bcf50b2d3635525d6186d7769badfa1474b312"
+    }
+  ]
+}

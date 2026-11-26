@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-20T16:35:40.8561623Z",
+  "stage": "after",
+  "currentScope": "reviews/medic-preventive-care-2026-11-20",
+  "rollbackScope": "reviews/medic-rapid-response-2026-11-19",
+  "rollbackSha256": "644e564e30aaf2431c3cd2033c60b2680061f20797ec9ea6fe2b07da46b8543d",
+  "previews": [
+    {
+      "scope": "reviews/medic-preventive-care-2026-11-20",
+      "audience": "testing",
+      "source": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 11776,
+          "port": 5416,
+          "processUtc": "2026-11-20T16:02:31.0668120Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-medic-preventive-care-2026-11-20-testing-c05ff5d --host 127.0.0.1 --port 5416 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 52324,
+          "port": 2792,
+          "processUtc": "2026-11-20T16:02:31.0460750Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-medic-preventive-care-2026-11-20-c05ff5d.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-20T16:02:31.764Z",
+        "uptimeSeconds": 1981.1297209,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 86,
+        "contentRevision": "6804a534edddc489675628e35eaf6745c42c296bb8a2a167141547c6bbce324d",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/medic-preventive-care-2026-11-20",
+      "audience": "public",
+      "source": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 31984,
+          "port": 5417,
+          "processUtc": "2026-11-20T16:02:31.0724260Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-medic-preventive-care-2026-11-20-public-c05ff5d --host 127.0.0.1 --port 5417 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 39084,
+          "port": 2793,
+          "processUtc": "2026-11-20T16:02:31.0529120Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-medic-preventive-care-2026-11-20-c05ff5d.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-20T16:02:31.805Z",
+        "uptimeSeconds": 1983.852615,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 86,
+        "contentRevision": "6804a534edddc489675628e35eaf6745c42c296bb8a2a167141547c6bbce324d",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "c05ff5dd2c2ac3c5de16b50284878b78e93c8487",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/medic-rapid-response-2026-11-19",
+      "audience": "testing",
+      "source": "7c84f1faa2556eeaca653902742b0646e75161b5",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5414,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2790,
+          "retired": true
+        }
+      ],
+      "health": null
+    },
+    {
+      "scope": "reviews/medic-rapid-response-2026-11-19",
+      "audience": "public",
+      "source": "7c84f1faa2556eeaca653902742b0646e75161b5",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5415,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2791,
+          "retired": true
+        }
+      ],
+      "health": null
+    }
+  ]
+}

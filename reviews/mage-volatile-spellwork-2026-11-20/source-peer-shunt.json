@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "protocol": 89,
+  "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+  "transport": "peer",
+  "fitting": "shunt",
+  "bought": [
+    {
+      "item": "mage-hexcraft-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-fuse-seal-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-volatile-shunt-fuse-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "gatehouse",
+    "start": 356
+  },
+  "result": {
+    "prepared": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "IH_Tj5_zR",
+      "id": 91,
+      "at": 362,
+      "until": 440,
+      "radius": 18,
+      "phase": "prepared"
+    },
+    "firstCharge": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "IH_Tj5_zR",
+      "id": 91,
+      "at": 364,
+      "until": 402,
+      "radius": 18,
+      "phase": "binding"
+    },
+    "shifted": {
+      "x": 784.5202605108466,
+      "y": 706.3673517235629,
+      "kind": "mage-fuse-point",
+      "owner": "IH_Tj5_zR",
+      "id": 91,
+      "at": 364,
+      "until": 396,
+      "radius": 18,
+      "phase": "binding"
+    },
+    "vent": {
+      "x": 784.5202605108466,
+      "y": 706.3673517235629,
+      "kind": "mage-fuse-vent",
+      "owner": "IH_Tj5_zR",
+      "id": 91,
+      "at": 375,
+      "until": 382,
+      "radius": 12,
+      "phase": "binding",
+      "segments": [
+        {
+          "from": {
+            "x": 784.5202605108466,
+            "y": 706.3673517235629
+          },
+          "to": {
+            "x": 797.6742206804047,
+            "y": 368.6734432326669
+          }
+        }
+      ]
+    },
+    "paid": 3064,
+    "original": 0,
+    "qClock": 724,
+    "sounds": [
+      "prepare",
+      "binding",
+      "shunt",
+      "vent"
+    ],
+    "originalAngle": -1.531863692451025,
+    "privateGuide": true
+  },
+  "witnessed": {
+    "nonHost": true,
+    "sharedPhysical": {
+      "phases": [
+        "prepared",
+        "binding"
+      ],
+      "positions": [
+        {
+          "x": 725,
+          "y": 752
+        },
+        {
+          "x": 784.5202605108466,
+          "y": 706.3673517235629
+        }
+      ],
+      "point": {
+        "x": 784.5202605108466,
+        "y": 706.3673517235629,
+        "kind": "mage-fuse-point",
+        "owner": "IH_Tj5_zR",
+        "id": 91,
+        "at": 364,
+        "until": 396,
+        "radius": 18,
+        "phase": "binding"
+      },
+      "vent": {
+        "x": 784.5202605108466,
+        "y": 706.3673517235629,
+        "kind": "mage-fuse-vent",
+        "owner": "IH_Tj5_zR",
+        "id": 91,
+        "at": 375,
+        "until": 382,
+        "radius": 12,
+        "phase": "binding",
+        "segments": [
+          {
+            "from": {
+              "x": 784.5202605108466,
+              "y": 706.3673517235629
+            },
+            "to": {
+              "x": 797.6742206804047,
+              "y": 368.6734432326669
+            }
+          }
+        ]
+      }
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "7fadedc25050d759390c8b3e6b73450599c05a871254910439ae32a1cd3a0e6f",
+  "testedAudience": "public"
+}

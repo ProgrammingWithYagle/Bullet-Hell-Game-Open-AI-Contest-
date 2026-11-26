@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-11-09T02:19:58.566Z",
+  "canonicalFilesWritten": false,
+  "candidateUnchanged": true,
+  "previousFailureReport": "outputs/Heavy-clutch-game-edges02.json",
+  "observation": "outputs/Heavy-clutch-edge-observation02.json",
+  "corrections": [
+    "Observed x594.0002/y625.332066666667 reflects the issued collision backoff; the expected free y625.333333333333 uses a 0.002px tolerance rather than 1e-6. No movement code changes.",
+    "Stationary cover does not automatically depenetrate a zero-delta planted body. The corrected controlled adapter supplies 60px/s through the existing service movement interface; actual Game/moveBody applies the force and the real Spade displacement guard must stop unpaid work. No real-boss or online force claim."
+  ]
+}

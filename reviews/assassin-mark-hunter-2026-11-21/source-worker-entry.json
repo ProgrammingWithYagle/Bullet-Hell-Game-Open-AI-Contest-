@@ -1,0 +1,205 @@
+{
+  "passed": true,
+  "protocol": 92,
+  "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "transport": "worker",
+  "fitting": "entry",
+  "bought": [
+    {
+      "item": "assassin-evasion-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "assassin-crossing-writ-1",
+      "earned": 3,
+      "clears": 0
+    }
+  ],
+  "firstClear": 0,
+  "next": {
+    "boss": "constable",
+    "arena": "ossuary-works",
+    "start": 0
+  },
+  "setup": {
+    "mode": "short",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "paid": {
+      "id": 32,
+      "at": 235,
+      "until": 321,
+      "recovery": 2785
+    },
+    "original": 0,
+    "line": {
+      "x": 423.74304228378094,
+      "y": 145.78879708811172,
+      "kind": "assassin-writ-cutoff",
+      "id": 32,
+      "owner": "solo",
+      "at": 235,
+      "until": 321,
+      "radius": 4,
+      "from": {
+        "x": 444.58202058007925,
+        "y": 216.79398692354846
+      },
+      "to": {
+        "x": 402.90406398748263,
+        "y": 74.78360725267498
+      },
+      "quarry": {
+        "x": 397.303813938108,
+        "y": 196.54920291923494,
+        "radius": 66
+      }
+    },
+    "newest": {
+      "x": 423.74304228378094,
+      "y": 145.78879708811172,
+      "kind": "assassin-writ-cutoff",
+      "id": 32,
+      "owner": "solo",
+      "at": 260,
+      "until": 269,
+      "radius": 4,
+      "from": {
+        "x": 444.58202058007925,
+        "y": 216.79398692354846
+      },
+      "to": {
+        "x": 402.90406398748263,
+        "y": 74.78360725267498
+      },
+      "outcome": "strike"
+    },
+    "transferred": false,
+    "effects": [
+      "assassin-writ-mark",
+      "assassin-writ-proof",
+      "assassin-writ-confirm",
+      "assassin-writ-set",
+      "assassin-writ-strike"
+    ],
+    "outcomes": [
+      {
+        "phase": "idle",
+        "boss": "constable",
+        "encounter": 0,
+        "at": 0,
+        "status": {
+          "phase": "idle",
+          "ready": false,
+          "until": 0
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "marked",
+        "boss": "constable",
+        "encounter": 0,
+        "at": 145,
+        "status": {
+          "phase": "marked",
+          "ready": false,
+          "proof": 0,
+          "until": 289
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "confirmed",
+        "boss": "constable",
+        "encounter": 0,
+        "at": 162,
+        "status": {
+          "phase": "confirmed",
+          "ready": true,
+          "proof": 2,
+          "until": 289,
+          "guide": {
+            "from": {
+              "x": 439.19957784313857,
+              "y": 281.34008763582176
+            },
+            "to": {
+              "x": 470.57783282653594,
+              "y": 136.70466626817444
+            }
+          }
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "laid",
+        "boss": "constable",
+        "encounter": 0,
+        "at": 235,
+        "status": {
+          "phase": "laid",
+          "ready": false,
+          "until": 321
+        },
+        "ultimateAt": 2785
+      },
+      {
+        "phase": "idle",
+        "boss": "constable",
+        "encounter": 0,
+        "at": 260,
+        "status": {
+          "phase": "idle",
+          "ready": false,
+          "until": 2785
+        },
+        "ultimateAt": 2785
+      }
+    ],
+    "plans": [
+      {
+        "kind": "set",
+        "tick": 234,
+        "boss": "constable",
+        "target": "boss",
+        "placement": {
+          "angle": 2.8561233272394904,
+          "center": {
+            "x": 423.74304228378094,
+            "y": 145.78879708811172
+          },
+          "from": {
+            "x": 444.58202058007925,
+            "y": 216.79398692354846
+          },
+          "to": {
+            "x": 402.90406398748263,
+            "y": 74.78360725267498
+          },
+          "ticks": 63.1306854361423,
+          "predicted": {
+            "x": 441.5078797483666,
+            "y": 206.31938734227245
+          },
+          "score": 79.53242394552699
+        }
+      }
+    ]
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "69f7005928619794787acb227ed68d7dcb97386534d5f28fb952ea8ea9b592fa",
+  "driverSha256": "9eb5b41c6805d6cfa7f2561fa6097cba65ca177a0446261b4021ee84d1cdd674",
+  "testedAudience": "public"
+}

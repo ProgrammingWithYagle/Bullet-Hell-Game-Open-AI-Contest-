@@ -1,0 +1,195 @@
+{
+  "passed": true,
+  "protocol": 89,
+  "contentRevision": "868983b908277d7fd5025837c1f9c9b40fb7aeb213cb0c77279941237f43a259",
+  "transport": "peer",
+  "fitting": "twin",
+  "bought": [
+    {
+      "item": "mage-hexcraft-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-fuse-seal-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "mage-volatile-twin-vent-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "gatehouse",
+    "start": 427
+  },
+  "result": {
+    "prepared": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "RgD8UoVoE",
+      "id": 99,
+      "at": 433,
+      "until": 511,
+      "radius": 18,
+      "phase": "prepared"
+    },
+    "firstCharge": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "RgD8UoVoE",
+      "id": 99,
+      "at": 434,
+      "until": 472,
+      "radius": 18,
+      "phase": "binding"
+    },
+    "crossed": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-point",
+      "owner": "RgD8UoVoE",
+      "id": 99,
+      "at": 436,
+      "until": 463,
+      "radius": 18,
+      "phase": "crossed"
+    },
+    "vent": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-vent",
+      "owner": "RgD8UoVoE",
+      "id": 99,
+      "at": 439,
+      "until": 446,
+      "radius": 12,
+      "phase": "binding",
+      "segments": [
+        {
+          "from": {
+            "x": 725,
+            "y": 752
+          },
+          "to": {
+            "x": 784.408446275552,
+            "y": 419.3127008569085
+          }
+        }
+      ],
+      "part": "first"
+    },
+    "echo": {
+      "x": 725,
+      "y": 752,
+      "kind": "mage-fuse-vent",
+      "owner": "RgD8UoVoE",
+      "id": 102,
+      "at": 440,
+      "until": 447,
+      "radius": 12,
+      "phase": "ward",
+      "segments": [
+        {
+          "from": {
+            "x": 848.1612698158234,
+            "y": 581.9079613345941
+          },
+          "to": {
+            "x": 932.3568289551994,
+            "y": 642.8727898934267
+          }
+        },
+        {
+          "from": {
+            "x": 848.1612698158234,
+            "y": 581.9079613345941
+          },
+          "to": {
+            "x": 763.9657106764474,
+            "y": 520.9431327757616
+          }
+        }
+      ],
+      "part": "echo"
+    },
+    "paid": 3134,
+    "original": 0,
+    "qClock": 794,
+    "sounds": [
+      "prepare",
+      "binding",
+      "crossed",
+      "split",
+      "echo"
+    ],
+    "originalAngle": -1.39408747072486,
+    "echoAngle": -0.9440874707248601,
+    "privateGuide": true
+  },
+  "witnessed": {
+    "nonHost": true,
+    "sharedPhysical": {
+      "phases": [
+        "prepared",
+        "binding",
+        "crossed",
+        "ward"
+      ],
+      "positions": [
+        {
+          "x": 725,
+          "y": 752
+        }
+      ],
+      "point": {
+        "x": 725,
+        "y": 752,
+        "kind": "mage-fuse-point",
+        "owner": "RgD8UoVoE",
+        "id": 99,
+        "at": 436,
+        "until": 463,
+        "radius": 18,
+        "phase": "ward",
+        "echo": true
+      },
+      "vent": {
+        "x": 725,
+        "y": 752,
+        "kind": "mage-fuse-vent",
+        "owner": "RgD8UoVoE",
+        "id": 99,
+        "at": 439,
+        "until": 446,
+        "radius": 12,
+        "phase": "binding",
+        "segments": [
+          {
+            "from": {
+              "x": 725,
+              "y": 752
+            },
+            "to": {
+              "x": 784.408446275552,
+              "y": 419.3127008569085
+            }
+          }
+        ],
+        "part": "first"
+      }
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "7fadedc25050d759390c8b3e6b73450599c05a871254910439ae32a1cd3a0e6f",
+  "testedAudience": "public"
+}

@@ -1,0 +1,387 @@
+{
+  "passed": true,
+  "sourceCommit": "bc63a14eaa8befd469d298e13d04269db3864e66",
+  "protocol": 95,
+  "contentRevision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "runtimeSourceSha256": "d3b6cb905ce7f7544cefc5872c82f43f32b2691f8fa804dda0251b2ec2a6658b",
+  "sourceSnapshotSha256": "5f93e26f56c61677a9fccafa5248654256bdd7968405f939603e6c45337f4222",
+  "comparisonCases": 96,
+  "exactReplays": 12,
+  "archive": {
+    "filename": "whole-bard-receipts.zip",
+    "bytes": 330406,
+    "sha256": "e1482c6a00f100957dc39033001ed93e1470cd85a402ab5010df1550bdcb61e1"
+  },
+  "members": [
+    {
+      "path": "controlled/controlled02.json",
+      "size": 7764,
+      "sha256": "496209673f2b85467c48d06b2b4fd03efe6aedb9ae04c71e1cc28f6fce5b29bc"
+    },
+    {
+      "path": "controlled/first-attempt.log",
+      "size": 542,
+      "sha256": "50b42e96afac3889d99080a2ab44b4380f983326bfd2452245d3324bf0ffce22"
+    },
+    {
+      "path": "controlled/verified-attempt.log",
+      "size": 42,
+      "sha256": "8d80e3d37142e5579231ac7ffeb2357688f434a03c928d574679db740551b6c5"
+    },
+    {
+      "path": "drivers/bind-published-source.mjs",
+      "size": 4491,
+      "sha256": "d97a86c85c846ad18689f28983afb9b85320224a53e0e369dbcc14a72ee7786c"
+    },
+    {
+      "path": "drivers/bundle-stage.mjs",
+      "size": 3121,
+      "sha256": "ef174907661c1568682741076d8fe76ab65b0d2c1f8ff34f0e0505831156a67b"
+    },
+    {
+      "path": "drivers/controlled-bard.mjs",
+      "size": 6156,
+      "sha256": "61830b8041255c26389aa576eb52294d57ddd6bcc8a2087164990dbb03cb89a3"
+    },
+    {
+      "path": "drivers/endless-depth32.mjs",
+      "size": 10867,
+      "sha256": "5c6fa350dc405d79491f0986193b9cc952138b016689ae31b70e6d88e331e299"
+    },
+    {
+      "path": "drivers/endless-focused.mjs",
+      "size": 10868,
+      "sha256": "1b7d340298721dbd30116b653ea43c83080a90b66d5b774decce6a3ff959e39f"
+    },
+    {
+      "path": "drivers/raid-cover.mjs",
+      "size": 10022,
+      "sha256": "bf68a18996e8b3d910b371f113b9afa8d612c201d4ce9c6247ef961bac2b3e49"
+    },
+    {
+      "path": "drivers/raid-focused.mjs",
+      "size": 9855,
+      "sha256": "9c9ceee34fbeca1e991a5edf2d7def85eb33a0028eef4a50a78e3f0855bd7968"
+    },
+    {
+      "path": "drivers/study-paths.mjs",
+      "size": 1229,
+      "sha256": "290339d36d8129c156ad6529c8f13f6d6d15c49c26142d12d29822ea85fd0c3e"
+    },
+    {
+      "path": "drivers/verify-and-replay.mjs",
+      "size": 5839,
+      "sha256": "3e55a858f67ebf9c56003f9b96c27e599fa3ca1d6362aadb5e7f334f0c17f711"
+    },
+    {
+      "path": "drivers/whole-bard.mjs",
+      "size": 9623,
+      "sha256": "dfc25ce1ab40d14869dd18a9a9086165808cf3613224f113194e47926a628784"
+    },
+    {
+      "path": "replays/party-gatehouse-active.json",
+      "size": 27704,
+      "sha256": "d458a0c4e6d0b5d04a218ddb46c4fcba10c045a60a63376f8ae990c8875de251"
+    },
+    {
+      "path": "replays/party-gatehouse-active.log",
+      "size": 164,
+      "sha256": "872f7af1ad3ff54004b07b1182ad741ccf10b182228efdc2b7154c29664548bf"
+    },
+    {
+      "path": "replays/party-gatehouse-unused.json",
+      "size": 1989,
+      "sha256": "653d99a6776935d12e49082aadefdedce60fa72137581aa65f3880a64e95a91d"
+    },
+    {
+      "path": "replays/party-gatehouse-unused.log",
+      "size": 164,
+      "sha256": "e0173e0bdbb9d8d376cf0dfbc8f14f6b72fcf7e09936c4d923cbeb58c8e76838"
+    },
+    {
+      "path": "replays/party-ossuary-works-active.json",
+      "size": 62394,
+      "sha256": "218f8f65ac039663cd6ef684eb9e3d61ed7e9ef45af40f18b60b8c54958e5982"
+    },
+    {
+      "path": "replays/party-ossuary-works-active.log",
+      "size": 173,
+      "sha256": "d61e5d33784ca11fd2b8e713b1e0a1ee8ff75ad7b4521fec2d61ce6da808ee1c"
+    },
+    {
+      "path": "replays/party-ossuary-works-unused.json",
+      "size": 1996,
+      "sha256": "cd9eff533f0a685e0611a4e5453719aff36b5cc1a0e9b7a2b8e30b4ec2d96ca4"
+    },
+    {
+      "path": "replays/party-ossuary-works-unused.log",
+      "size": 171,
+      "sha256": "ad161883bbf22374ed4e1ec27d4727751f3050d7e658f4d926b0cc8a347c3715"
+    },
+    {
+      "path": "replays/party-sunken-chapel-active.json",
+      "size": 50320,
+      "sha256": "9c0b6e583cb3a4743e0264f78f9ef932d21dfeefadbc02fafd935120c90c20aa"
+    },
+    {
+      "path": "replays/party-sunken-chapel-active.log",
+      "size": 169,
+      "sha256": "afb2c2eed7a31d30836249320562b50ccf1d5b42f4fcd4c878a7798da8ba8a35"
+    },
+    {
+      "path": "replays/party-sunken-chapel-unused.json",
+      "size": 1995,
+      "sha256": "7f405aaa78d37d1d5ff4c450702b347e71f9a84b62e79d942b1e3ece4ab757f2"
+    },
+    {
+      "path": "replays/party-sunken-chapel-unused.log",
+      "size": 168,
+      "sha256": "98e1faa40426dfed49ad0e4c74fdde44bb1d005ed04310211d78f14cd7d4b8fc"
+    },
+    {
+      "path": "replays/solo-gatehouse-active.json",
+      "size": 18362,
+      "sha256": "da6c47d93773353539c1444757e4613686b8bb790e3c0bc1ea3a61265b86b755"
+    },
+    {
+      "path": "replays/solo-gatehouse-active.log",
+      "size": 166,
+      "sha256": "3e676e1aabb0665d4c3345a422e0f1e143d6439400d8e874b28dd78be06cf289"
+    },
+    {
+      "path": "replays/solo-gatehouse-unused.json",
+      "size": 1990,
+      "sha256": "233a0d8e838601f5c52e8256952296ea118b6fd2e42bf850c79e77600d7df9a8"
+    },
+    {
+      "path": "replays/solo-gatehouse-unused.log",
+      "size": 166,
+      "sha256": "7c2ca6e92a288471e1522b4e9b064a5146036b14add0fb7bde9a5a38457dd4ef"
+    },
+    {
+      "path": "replays/solo-ossuary-works-active.json",
+      "size": 45092,
+      "sha256": "f1c96a6080046d073e42e6b9039336d059b39e475410f266711a772f6cc50c3a"
+    },
+    {
+      "path": "replays/solo-ossuary-works-active.log",
+      "size": 171,
+      "sha256": "b0df41b2930070d49fae18d1df1d49b067b6a2b688c069331c0d67304dfcbbea"
+    },
+    {
+      "path": "replays/solo-ossuary-works-unused.json",
+      "size": 1997,
+      "sha256": "9e150b11cbd16d24b956081e48ccef16905b556b1a470cfff0b5e7ec065db908"
+    },
+    {
+      "path": "replays/solo-ossuary-works-unused.log",
+      "size": 170,
+      "sha256": "caec5686e58f4f7fe41c823737f60b1131a741da02d7e41b33ce14baca320246"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-active.json",
+      "size": 51260,
+      "sha256": "f2e2fae3dc54e3c1751ac87b1ffe673e8b304842ec70a6622004eda4fe5ebdf4"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-active.log",
+      "size": 169,
+      "sha256": "b3be0a43ced6590f120ea45edd95ccd2914fd5f842343b4733cc9a12a598533e"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-unused.json",
+      "size": 1994,
+      "sha256": "f509c7441c291d7a25e6625907aa489fcc1f3fab9050b8670fd535cbd4af5efd"
+    },
+    {
+      "path": "replays/solo-sunken-chapel-unused.log",
+      "size": 168,
+      "sha256": "98e1faa40426dfed49ad0e4c74fdde44bb1d005ed04310211d78f14cd7d4b8fc"
+    },
+    {
+      "path": "replays/summary.json",
+      "size": 5928,
+      "sha256": "f5505d841ededfd653a96f4b90e074c0f5a81cb53d8518be419bba5fd9f013bc"
+    },
+    {
+      "path": "runtime/inputs-before.json",
+      "size": 1335,
+      "sha256": "82d8b23ff0c49dc246f7d4fd83f0d0db173110cf9df77fa94964499e9530cbbe"
+    },
+    {
+      "path": "runtime/inputs-rebuilt.json",
+      "size": 1339,
+      "sha256": "f3c3cf8938d00b18177f04ac283c2a8e900fe9ebf9fb68c8945598e4f3847df9"
+    },
+    {
+      "path": "runtime/source.json",
+      "size": 1232,
+      "sha256": "0ea989c2f2045059433c1b8c96bfb815386047b2de5ccc3541c0ae1c9dda4772"
+    },
+    {
+      "path": "study/summary.json",
+      "size": 11954,
+      "sha256": "4a598e86f766ab18e1b75d0d10f52c4098c012a3d9719d31e03d91e72daeab88"
+    },
+    {
+      "path": "study/whole-party01.json",
+      "size": 2752723,
+      "sha256": "6f4b9513e402b230d266baf98b683c3ecbad7056222a0931f96ce285226a43e3"
+    },
+    {
+      "path": "study/whole-party01.log",
+      "size": 8125,
+      "sha256": "78991b41acee77220a545c22a88b8003621d0e1834eea8919003998845a1c68b"
+    },
+    {
+      "path": "study/whole-solo01.json",
+      "size": 2820158,
+      "sha256": "37baef159431f0a281daa5b27396c5fc2fcd863a26d7533ec4e54d66ea2dc4fd"
+    },
+    {
+      "path": "study/whole-solo01.log",
+      "size": 8128,
+      "sha256": "641ba171cacef24b2ea3bd7d7863fa57262b6555903332b0f8f9494d8e6d5b15"
+    },
+    {
+      "path": "support/cover-party-gatehouse01.json",
+      "size": 8979,
+      "sha256": "21cf059c0f5e685d664a701bcde1561cdf2133e105e16669312b69d40faee2de"
+    },
+    {
+      "path": "support/cover-party-gatehouse01.log",
+      "size": 166,
+      "sha256": "c2bd750dc673ce7bd9670fd277d100c861bc45dbc1a9a2010adf3b4ce1c1e3cc"
+    },
+    {
+      "path": "support/cover-party-ossuary-works01.json",
+      "size": 28930,
+      "sha256": "bc5b3af3831d1776aefc66413d966b906a5f8d56173c1cd2e93ee37dbc51161f"
+    },
+    {
+      "path": "support/cover-party-ossuary-works01.log",
+      "size": 174,
+      "sha256": "d18dc829584be8b199c915f02ef2d318af613068c932f6592c39aaf9b98a4789"
+    },
+    {
+      "path": "support/cover-party-sunken-chapel01.json",
+      "size": 14180,
+      "sha256": "e0687b96918b63036747970d6b43739d1f12ed1e23873033f209ac873ec245f7"
+    },
+    {
+      "path": "support/cover-party-sunken-chapel01.log",
+      "size": 168,
+      "sha256": "259e98a40a92a575f28c179d9aa8a8f60e046db764da92805aa544ec7824ddee"
+    },
+    {
+      "path": "support/late-party-gatehouse01.json",
+      "size": 97115,
+      "sha256": "f1c1da305efdc29dfa9c951874dd4b58b531cb60a3a583aca0726ec3ab30fa25"
+    },
+    {
+      "path": "support/late-party-gatehouse01.log",
+      "size": 167,
+      "sha256": "5057fb015509d6d98276ca79a4ed23d1160b61ebd962c98548d9933da30225af"
+    },
+    {
+      "path": "support/late-party-gatehouse02.json",
+      "size": 157247,
+      "sha256": "104c9fb8e20dceadb1e44bba27d914e5497f7a675867a6f23811eb3c073b657f"
+    },
+    {
+      "path": "support/late-party-gatehouse02.log",
+      "size": 168,
+      "sha256": "b5317d83091aab4bc04d52cfb02e2b5eccc0a8e10af123c03d518f3a577bf203"
+    },
+    {
+      "path": "support/late-party-ossuary-works01.json",
+      "size": 14957,
+      "sha256": "182a3ffdc8212222aaafc20ca60d0d86b8e41171a9ab69297203fa81dfff3eeb"
+    },
+    {
+      "path": "support/late-party-ossuary-works01.log",
+      "size": 175,
+      "sha256": "84731a408f9e2d110de395c436e068a56869d6d90a2cd284641349b586d4bb11"
+    },
+    {
+      "path": "support/late-party-ossuary-works02.json",
+      "size": 204805,
+      "sha256": "44c26b18d696846b446aa2d1e69f984bcdd0d6cbfddb51c57c99e399b5f25b39"
+    },
+    {
+      "path": "support/late-party-ossuary-works02.log",
+      "size": 176,
+      "sha256": "db5eb9e677630911a0822b0a070dbab24041a24212ff37c1b67f5af9c1eb224d"
+    },
+    {
+      "path": "support/late-solo-gatehouse01.json",
+      "size": 5811,
+      "sha256": "4e4353aedf562a54c5ef63d79d8a50dee14e7aa0f5ebb9205732f3971b57f27e"
+    },
+    {
+      "path": "support/late-solo-gatehouse01.log",
+      "size": 164,
+      "sha256": "d644a2b34aa59dbd0444523f6dbb22fa4c9826ebad1bc0136f460274b449794b"
+    },
+    {
+      "path": "support/late-solo-sunken-chapel01.json",
+      "size": 20058,
+      "sha256": "1b39ddc4f2606647470603bf3e00897eb5c63fbcd1a2d361b542f1497e5fa0af"
+    },
+    {
+      "path": "support/late-solo-sunken-chapel01.log",
+      "size": 173,
+      "sha256": "d62214438fb1a4f615a6663a187b4e90aad1677418d1ea357cf609ba1e35b7d0"
+    },
+    {
+      "path": "support/late-solo-sunken-chapel02.json",
+      "size": 1463233,
+      "sha256": "297b214a7d8db0d80093e204354642d1c5106f726135efb6d6b7e9046b7dc34b"
+    },
+    {
+      "path": "support/late-solo-sunken-chapel02.log",
+      "size": 174,
+      "sha256": "3a99190e65115f12919edca15c9ca43c00ef274eafb4594fdf1e696c8d25bd47"
+    },
+    {
+      "path": "support/raid-party-gatehouse01.json",
+      "size": 35567,
+      "sha256": "1cfe474f69e6fd8643482c7d0bbdceb51b9bd1597e3af3b82d6461e6743b86ac"
+    },
+    {
+      "path": "support/raid-party-gatehouse01.log",
+      "size": 166,
+      "sha256": "b9e938d9ae02ee5f7873d53e82060a4a2a60dfedd42e175adbe5b611f3f7eb40"
+    },
+    {
+      "path": "support/raid-party-ossuary-works01.json",
+      "size": 21005,
+      "sha256": "e1e6f3808913febd3637e09245a67a4c370b43b7fb053d2c1fd5dfbd5db87ceb"
+    },
+    {
+      "path": "support/raid-party-ossuary-works01.log",
+      "size": 174,
+      "sha256": "9d56de5b926b247c0083e65a065fb486062a6802e241b12ae4e3b774c6ae8ab9"
+    },
+    {
+      "path": "support/raid-solo-gatehouse01.json",
+      "size": 8986,
+      "sha256": "b60ec1c53f88050bf3ead39d6de1a1b6150d50fc3900a6cb78a4358a5d0efad1"
+    },
+    {
+      "path": "support/raid-solo-gatehouse01.log",
+      "size": 164,
+      "sha256": "1cde23bb16ce9b4343a18475720525b8833425437b3266e6ab5b29fab4c69281"
+    },
+    {
+      "path": "support/raid-solo-sunken-chapel01.json",
+      "size": 10787,
+      "sha256": "3bed57ec7d9f27153e1e3801d6840d56482023f9bf07d43ed2e4e800725c3dbe"
+    },
+    {
+      "path": "support/raid-solo-sunken-chapel01.log",
+      "size": 172,
+      "sha256": "61ed12d7355ed8d1e97eae20552bccac7faa3e773ad0be0f2ad1407ac0b65d90"
+    }
+  ]
+}

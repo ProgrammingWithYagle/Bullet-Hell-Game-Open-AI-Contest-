@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-11T03:59:04.838Z",
+  "originalFailureLog": "reviews/heavy-tethered-menu21-2026-11-10/focused01.log",
+  "originalFailureLogSha256": "9c21f7f7bfbae0a52e32470e09d9a8176312037ac46a3afefd65b2f2dd6cf3ee",
+  "originalCounts": {
+    "tests": 6,
+    "pass": 5,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "before": [
+    {
+      "path": "tests/helpers/heavy-post-flow.ts",
+      "sha256": "bef89968f7b54acc27f10dff9fa27ee39ca1c46701a98ea5e3b9a2318daf36e7"
+    },
+    {
+      "path": "tests/helpers/heavy-post-earned-flow.ts",
+      "sha256": "ba549b88e897d1065c330715f6a7b169c0569df5a9751b8822c014281d00f316"
+    }
+  ],
+  "after": [
+    {
+      "path": "tests/helpers/heavy-post-flow.ts",
+      "sha256": "20c831a485b0acb637d85f3e83b092d1dfb2dfcf9f5aacceb53c683ac063928b"
+    },
+    {
+      "path": "tests/helpers/heavy-post-earned-flow.ts",
+      "sha256": "e29b02aacab2f2cf5d2c1b883d999e092240acd351f226a93ca0f27d64e43357"
+    }
+  ],
+  "observedCause": "The operation checked a room-only matchPaused view field after the Solo adapter had already acknowledged the real pauseState and matching combatTick. The operation now uses the actual transport adapter paused predicate for both pauses.",
+  "actualShortThreeClearsAnd21SPCapstonePurchaseObservedBeforeFailure": true,
+  "noViewOrWorkerPatch": true,
+  "noTimeoutPolicyGameplayContentChange": true,
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8"
+}

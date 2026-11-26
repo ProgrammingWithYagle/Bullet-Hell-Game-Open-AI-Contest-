@@ -1,0 +1,259 @@
+{
+  "passed": true,
+  "protocol": 92,
+  "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "transport": "worker",
+  "fitting": "canted",
+  "bought": [
+    {
+      "item": "assassin-evasion-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "assassin-crossing-writ-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "assassin-mark-hunter-canted-cutoff-1",
+      "earned": 9,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "stitchwright",
+    "arena": "triage-yard",
+    "start": 1270
+  },
+  "setup": {
+    "mode": "short",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "paid": {
+      "id": 406,
+      "at": 1322,
+      "until": 1408,
+      "recovery": 3872
+    },
+    "original": 0,
+    "line": {
+      "x": 597.1064081926501,
+      "y": 294.70797371752775,
+      "kind": "assassin-writ-cutoff",
+      "id": 406,
+      "owner": "solo",
+      "at": 1322,
+      "until": 1408,
+      "radius": 4,
+      "from": {
+        "x": 643.6995886140777,
+        "y": 352.19776009925204
+      },
+      "to": {
+        "x": 550.5132277712224,
+        "y": 237.21818733580346
+      },
+      "quarry": {
+        "x": 549.9023981634098,
+        "y": 286.63268736050253,
+        "radius": 66
+      }
+    },
+    "newest": {
+      "x": 597.1064081926501,
+      "y": 294.70797371752775,
+      "kind": "assassin-writ-cutoff",
+      "id": 406,
+      "owner": "solo",
+      "at": 1322,
+      "until": 1408,
+      "radius": 4,
+      "from": {
+        "x": 643.6995886140777,
+        "y": 352.19776009925204
+      },
+      "to": {
+        "x": 550.5132277712224,
+        "y": 237.21818733580346
+      },
+      "quarry": {
+        "x": 549.9023981634098,
+        "y": 286.63268736050253,
+        "radius": 66
+      }
+    },
+    "originalPin": {
+      "point": {
+        "x": 597.1064081926501,
+        "y": 294.70797371752775
+      },
+      "at": 1321,
+      "expires": 1447,
+      "ultimateAt": 0
+    },
+    "transferred": false,
+    "effects": [
+      "assassin-writ-mark",
+      "assassin-writ-proof",
+      "assassin-writ-confirm",
+      "assassin-writ-pin",
+      "assassin-writ-set"
+    ],
+    "outcomes": [
+      {
+        "phase": "idle",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 1270,
+        "status": {
+          "phase": "idle",
+          "ready": false,
+          "until": 0
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "marked",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 1303,
+        "status": {
+          "phase": "marked",
+          "ready": false,
+          "proof": 0,
+          "until": 1447
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "confirmed",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 1320,
+        "status": {
+          "phase": "confirmed",
+          "ready": true,
+          "proof": 2,
+          "pin": {
+            "x": 575.1011896438558,
+            "y": 316.18393204088744
+          },
+          "until": 1447
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "pinned",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 1321,
+        "status": {
+          "phase": "pinned",
+          "ready": true,
+          "proof": 2,
+          "until": 1447,
+          "pin": {
+            "x": 597.1064081926501,
+            "y": 294.70797371752775
+          },
+          "guide": {
+            "from": {
+              "x": 539.4062558397306,
+              "y": 341.04038589787814
+            },
+            "to": {
+              "x": 654.8065605455695,
+              "y": 248.37556153717736
+            }
+          }
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "laid",
+        "boss": "stitchwright",
+        "encounter": 1,
+        "at": 1322,
+        "status": {
+          "phase": "laid",
+          "ready": false,
+          "until": 1408
+        },
+        "ultimateAt": 3872
+      }
+    ],
+    "plans": [
+      {
+        "kind": "pin",
+        "tick": 1320,
+        "boss": "stitchwright",
+        "target": "boss",
+        "placement": {
+          "angle": -2.2473553256941767,
+          "center": {
+            "x": 597.1064081926501,
+            "y": 294.70797371752775
+          },
+          "from": {
+            "x": 539.4062558397306,
+            "y": 341.04038589787814
+          },
+          "to": {
+            "x": 654.8065605455695,
+            "y": 248.37556153717736
+          },
+          "ticks": 14.49796704880267,
+          "predicted": {
+            "x": 598.7881572025511,
+            "y": 293.35755287575876
+          },
+          "score": 15.058742880945836
+        }
+      },
+      {
+        "kind": "set",
+        "tick": 1321,
+        "boss": "stitchwright",
+        "target": "boss",
+        "placement": {
+          "angle": -3.8226792665928397,
+          "center": {
+            "x": 597.1064081926501,
+            "y": 294.70797371752775
+          },
+          "from": {
+            "x": 643.6995886140777,
+            "y": 352.19776009925204
+          },
+          "to": {
+            "x": 550.5132277712224,
+            "y": 237.21818733580346
+          },
+          "ticks": 12.69915062983123,
+          "predicted": {
+            "x": 595.6635903887675,
+            "y": 292.9277284845835
+          },
+          "score": 13.294941994481977
+        }
+      }
+    ]
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "69f7005928619794787acb227ed68d7dcb97386534d5f28fb952ea8ea9b592fa",
+  "driverSha256": "9eb5b41c6805d6cfa7f2561fa6097cba65ca177a0446261b4021ee84d1cdd674",
+  "testedAudience": "public"
+}

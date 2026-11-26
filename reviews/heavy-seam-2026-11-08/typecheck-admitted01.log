@@ -1,0 +1,28 @@
+src/client/engineer-actions.ts(33,84): error TS2345: Argument of type 'KitCue' is not assignable to parameter of type 'Vec'.
+  Type 'FlakSeamContactCue' is missing the following properties from type 'Vec': x, y
+src/shared/ability-transforms.ts(351,33): error TS2339: Property 'x' does not exist on type 'KitCue'.
+  Property 'x' does not exist on type 'FlakSeamContactCue'.
+src/shared/ability-transforms.ts(351,44): error TS2339: Property 'y' does not exist on type 'KitCue'.
+  Property 'y' does not exist on type 'FlakSeamContactCue'.
+tests/class-kits.test.ts(332,28): error TS2339: Property 'radius' does not exist on type 'KitCue'.
+  Property 'radius' does not exist on type 'FlakSeamContactCue'.
+tests/class-talents.test.ts(422,18): error TS2345: Argument of type 'KitCue' is not assignable to parameter of type 'Vec'.
+  Type 'FlakSeamContactCue' is missing the following properties from type 'Vec': x, y
+tests/class-talents.test.ts(424,13): error TS2339: Property 'radius' does not exist on type 'KitCue'.
+  Property 'radius' does not exist on type 'FlakSeamContactCue'.
+tests/class-talents.test.ts(428,12): error TS2339: Property 'x' does not exist on type 'KitCue'.
+  Property 'x' does not exist on type 'FlakSeamContactCue'.
+tests/class-talents.test.ts(429,12): error TS2339: Property 'y' does not exist on type 'KitCue'.
+  Property 'y' does not exist on type 'FlakSeamContactCue'.
+tests/engineer-builder.test.ts(639,16): error TS2339: Property 'x' does not exist on type 'KitCue'.
+  Property 'x' does not exist on type 'FlakSeamContactCue'.
+tests/ranger-game.test.ts(278,24): error TS2339: Property 'x' does not exist on type 'KitCue'.
+  Property 'x' does not exist on type 'FlakSeamContactCue'.
+tests/ranger-game.test.ts(279,24): error TS2339: Property 'y' does not exist on type 'KitCue'.
+  Property 'y' does not exist on type 'FlakSeamContactCue'.
+tests/ranger-game.test.ts(287,15): error TS2339: Property 'x' does not exist on type 'KitCue'.
+  Property 'x' does not exist on type 'FlakSeamContactCue'.
+tests/ranger-game.test.ts(288,15): error TS2339: Property 'y' does not exist on type 'KitCue'.
+  Property 'y' does not exist on type 'FlakSeamContactCue'.
+tests/soldier-grenadier.test.ts(221,12): error TS2339: Property 'x' does not exist on type 'AlchemyCue | BardCue | Construct | FlakSeamContactCue | RangerCue | SwordCue | TalentCue | ... 14 more ... | TrapCue'.
+  Property 'x' does not exist on type 'FlakSeamContactCue'.

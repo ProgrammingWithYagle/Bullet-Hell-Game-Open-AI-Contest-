@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "protocol": 95,
+  "revision": "63da17e09a7e43e127cdc97059f0f81c20cc74dccea92e4decd22509d8a01c08",
+  "driver": "9a5d944816debb334e6c3797aef4b740e5146e3d767a34217e5be84e4b5a2a2e",
+  "worker": "ede8119d5d955aa2f2c207b6c9d661c2c86ee5f38492b05fee105588b8eeec80",
+  "bundle": "native-bundle01",
+  "attempt": "native01",
+  "cases": [
+    {
+      "path": "native01-worker-entry.json",
+      "sha256": "e77fabbc2d66ad42b8c685e9b29ddee19cd9c37b8efd2b93fc2e17e53740f489",
+      "logSha256": "7b129867cc9175a0a49265acaea4b30026bd99d2ddc6445c18a1921ac52d122c",
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "matron",
+      "stage": 21,
+      "targets": [
+        17
+      ],
+      "firstClear": 0,
+      "advanced": 5.333333333333371
+    },
+    {
+      "path": "native01-worker-wrong.json",
+      "sha256": "095821195833cd5021c429882742ceecab7a28a25c1094b0e67506e6d3bb35ed",
+      "logSha256": "bd55a98b4850de27f07cfdc86c67de8925b3796724eff1fa14492d97c52eb2dc",
+      "transport": "worker",
+      "fitting": "wrong",
+      "boss": "matron",
+      "stage": 594,
+      "targets": [
+        534
+      ],
+      "firstClear": 1,
+      "advanced": 5.333333333333357
+    },
+    {
+      "path": "native01-worker-second.json",
+      "sha256": "c439eb9df270eb89867d33ece6065fb95192ded3391de0b5d80418a24af19960",
+      "logSha256": "f7105ae9c7f7b3b2a828ace3952d9f5acb73e1deddd140542528276c4d92d340",
+      "transport": "worker",
+      "fitting": "second",
+      "boss": "matron",
+      "stage": 562,
+      "targets": [
+        460,
+        519
+      ],
+      "firstClear": 1,
+      "advanced": 5.333333333333371
+    },
+    {
+      "path": "native01-peer-entry.json",
+      "sha256": "be1ecbc1285bcc03cfb59374458795d37de5a14fcb18de0688ef5563aa253935",
+      "logSha256": "847592de7cb248fc9b398cdd9434bc10fb10d2b6416718ce30c2a0beecffafc6",
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "matron",
+      "stage": 21,
+      "targets": [
+        17
+      ],
+      "firstClear": 0,
+      "advanced": 8.000014668840208
+    },
+    {
+      "path": "native01-peer-wrong.json",
+      "sha256": "9e7e0d4f8d2d3c6e842d30ad4525c8dd28a574112118a5ab0211f8dc26b1e393",
+      "logSha256": "bd256dcbc9f5b3e409fd84cfc593de361b83973c43ce035b2b9f4cc6dbafc0d7",
+      "transport": "peer",
+      "fitting": "wrong",
+      "boss": "matron",
+      "stage": 1432,
+      "targets": [
+        1378
+      ],
+      "firstClear": 1,
+      "advanced": 3.0666879669801332
+    },
+    {
+      "path": "native01-peer-second.json",
+      "sha256": "75809513d5352a8a7c5cbc7c4ae6ee36c4766061a7aae919c6df5f941c352a9c",
+      "logSha256": "cb49f361a7cb48066814c634dd4fb52676cc2d9f31e6323fc82b23e333a41cfb",
+      "transport": "peer",
+      "fitting": "second",
+      "boss": "matron",
+      "stage": 1166,
+      "targets": [
+        1158,
+        1159
+      ],
+      "firstClear": 1,
+      "advanced": 5.333347988326551
+    }
+  ],
+  "inputs": {
+    "src/shared/protocol.ts": "ff1661ec4595a530e7957c1047148a3962295f8636c55e7b5d1260da7e41ab1a",
+    "src/shared/game.ts": "1dc2d53d31d530259af30ca08dcc3745dddecdeecbee105ac6e2a52de0f12aa0",
+    "src/shared/view.ts": "f9366f55f60012b0ee2525667934797dc186c154231d94cdf80324943a152a0f",
+    "content/revision.json": "de894736469cf4abd33128e320e8f160c1e24b34a73d3a16d52b0a681dbd9157",
+    "content/catalog.json": "6b0a199795af35b7eb789e7098d0de6a7ae3548910f64c08e749ecaf83c9cea7",
+    "src/shared/bard-misdirection.ts": "0ff45672bc4724f0aeef4636cf089955e597a53004951e68b661e06fe2af86ee",
+    "src/shared/bard-kit.ts": "d9e7c91896b5304d6d5a7c92ecf2394d636290226d1a0e79d9d0bbee5b53cfbc",
+    "src/shared/bard-lament.ts": "36c7e1057f03217a510e61c54633f4f31b33e5db7934e2e5791dc4b92d5b588f",
+    "src/shared/class-kits.ts": "3dd1d8bbab9254c34678a117637ee64a0d8289721b29304924347f9cd1a5eacb",
+    "src/shared/practice-migration.ts": "c26b34651444a71fd5bff3626eb5df42258ff02faaea99f96d9c7ee54e882824",
+    "src/shared/skill-conflicts.ts": "a9a42421adfaa1a6e9e6527447b452958725a1f921a877d7cbdd7c0b01e2148b",
+    "src/shared/minions.ts": "dc27deb09ed7e48de5e6e8faa137dd0bacc5184937b9e2ab298a0114fe9cc9c3",
+    "src/server/GraveRoom.ts": "71779638cbd62083537a9f8d18e56a780c414bd8b3912cd38e40c159c178ab97",
+    "src/client/progress.ts": "142e8a11c3079236fe37896f2ca121c583fb8b1e278c7540ba5a82533ff9da13",
+    "src/client/profile.ts": "b3d0814decb0d568dd6a31749b08987d8be8f03d94574d738a2c84e418c34852"
+  },
+  "helpers": {
+    "native-misdirection-flow.mts": "dd237166a864556edaef36e5f3e175698e2c6390cc4ce74377708f98b36b500e",
+    "misdirection-pilot.mjs": "a206407d284b41f047645d3b67f50c0ecafdce1150bac6c432048f6154eb95c2",
+    "../assassin-mark-hunter/native-writ-navigation.mjs": "d218e31f2217b9a445c8d77414501d91f432b9f06a28f28c4da1d90b5f276dec"
+  }
+}

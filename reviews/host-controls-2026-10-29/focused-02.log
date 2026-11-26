@@ -1,0 +1,52 @@
+✔ Cancel keeps a newer load intact after the older join returns success (501.3822ms)
+✔ Cancel keeps a newer load intact after the older join returns error (333.0374ms)
+✔ Escape cancels before artwork or audio settles and late completions do not reopen the game (245.6856ms)
+✔ password eye buttons reveal exact typed text without submitting or changing it; cancel clears the form (4.2561ms)
+✔ host invite and waiting-room password controls render only the authorized value and clear it on owner change (4.9389ms)
+✔ explicit host buttons send Pause/Continue, menu state alone sends nothing, and ending needs confirmation (5.67ms)
+✔ ending an encounter clears queued actions without inventing a clear or a player-down reason (1.8352ms)
+✔ issued42local Practice keeps build/map/economy identity while server checkpoints remain strict (3.3317ms)
+✔ all fifteen catalogs include the exact authored host-control and password notices (28.5545ms)
+✔ host-only pause freezes real peers, chat stays live, leaving resumes and transfers private invite access, end reaches everyone (1206.1146ms)
+✔ explicit pause holds the real intermission clock, rejects transactions, and Continue restores the same remaining time (578.8851ms)
+✔ room passwords use separate salted verifiers, bounded Unicode text and exact case/space matching (205.7957ms)
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+Room connection was closed unexpectedly (4002): 
+✔ real public/private password rooms reject missing/wrong passwords, prompt lookup safely, reconnect and keep host authority (1968.0038ms)
+✖ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (9.3072ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4357.8198
+
+✖ failing tests:
+
+test at tests\room-password.test.ts:1:5744
+✖ protocol40 local saves keep equipment, economy, selected map and identity; server checkpoints stay strict (9.3072ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  43 !== 42
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\room-password.test.ts:65:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 43,
+    expected: 42,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

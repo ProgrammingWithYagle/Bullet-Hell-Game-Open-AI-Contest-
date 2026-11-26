@@ -1,0 +1,30 @@
+✔ leaving during delayed health aborts actual HTTP and settles the search promptly (101.7754ms)
+✔ leaving during delayed rooms aborts actual HTTP and settles the search promptly (92.972ms)
+✔ leaving during delayed code aborts actual HTTP and settles the search promptly (77.8336ms)
+✔ leaving during server startup cancels the retry delay and makes no later request (140.3295ms)
+✔ cancelled admission releases the known ticket once during its retry delay (16.1763ms)
+✔ cancelled admission releases the known ticket once during a pending poll (1031.3467ms)
+✔ room discovery keeps version, rate-limit and server errors distinct from an empty list (37.8466ms)
+✔ code lookup distinguishes missing, throttled and failing servers (27.3734ms)
+✔ closing offline startup settles before its first view and suppresses late worker events (4.4601ms)
+✔ an unresolved asset task can be cancelled without accepting its late completion (0.8478ms)
+✔ all fifteen catalogs contain source-backed plain connection progress and a Cancel action (47.6001ms)
+✔ explicit ready handshake delivers private codes after client handlers attach and permits a real guest join (193.1727ms)
+✔ real client supply state and capacity queue admit one slot, support cancellation and never reopen a closed session (1272.9919ms)
+✔ instance capacity reserves reconnect slots independently of room limits (1.0317ms)
+Room connection was closed unexpectedly (4002): 
+✔ real WebSocket clients enforce visibility, versions, authority, idempotence and reconnection (1190.8864ms)
+ℹ version rejection
+ℹ public room creation
+ℹ public guest joining
+ℹ interrupted connection
+ℹ private room creation
+ℹ client adapter recovers an early disconnect and closes during retry
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4990.3373

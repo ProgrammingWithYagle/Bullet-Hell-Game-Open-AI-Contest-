@@ -1,0 +1,216 @@
+{
+  "passed": true,
+  "protocol": 98,
+  "contentRevision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+  "runtimeSourceSha256": "efb25d030739b0de444ca2342c7536746f6ca8b4d99d08da3322fa28822d197b",
+  "sourceSnapshotSha256": "4eb4c2c4e18e83fbf94a0f351d60a0394b18b631aecc0a0041b165f6345cf61d",
+  "tests": 2912,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 11,
+      "release": 11,
+      "hits": [
+        {
+          "id": "boss/constable",
+          "before": 1944.0000000000002,
+          "after": 1832.0000000000002
+        }
+      ]
+    },
+    {
+      "transport": "worker",
+      "fitting": "through",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 267,
+      "opening": 268,
+      "release": 270,
+      "angle": 0,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 3006.08,
+          "after": 2910.08
+        }
+      ]
+    },
+    {
+      "transport": "worker",
+      "fitting": "cross",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 247,
+      "opening": 248,
+      "release": 249,
+      "angle": 1.139999999999999,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 3072.2,
+          "after": 2998.2
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 11,
+      "release": 11,
+      "hits": [
+        {
+          "id": "boss/constable",
+          "before": 3304.800048828125,
+          "after": 3192.800048828125
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "through",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 363,
+      "opening": 364,
+      "release": 365,
+      "angle": 0,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 6113.11083984375,
+          "after": 6017.11083984375
+        }
+      ]
+    },
+    {
+      "transport": "peer",
+      "fitting": "cross",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 360,
+      "opening": 361,
+      "release": 362,
+      "angle": 1.1400000000000061,
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 5301.14013671875,
+          "after": 5227.14013671875
+        }
+      ]
+    }
+  ],
+  "hudFeedback": {
+    "source": "src/client/sword-measured-actions.ts",
+    "sourceSha256": "3837f9985a2ab2b7c170af548eefb00d40cda87e314af3f24d0ea17141d08ecd",
+    "test": "tests/swordsman-pursuit-ui.test.ts",
+    "testSha256": "c0dfb618a05955246ab0d864e2c5484efcaf504f90eacc911429f98109434353",
+    "reproductionLogSha256": "a3bbb5b5507d9ed9c53abe9311356f0d2a2944028d9327b97964c42ad637de1a",
+    "correctedLogSha256": "db04f5515f93896ee033bff322014523a984b38d09c9237254f98fe2099148e1"
+  },
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate01/generated/reviews/runtime-verification.json",
+      "sha256": "91a50fb33220f77aafdec445ae1c75c81cea2f9f9f25d286c84d01998f5e0fa2"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "e182cba2242ae4b9edd268a44efb9af85b256981ff7bce2e2ae17abe826f9b30"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "16209b2213a9f0d3957895ae016398f93c897d38121590e7b39bfe0eab061e71"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "a712bdf6608849cb3a1be3f3f5111da54046eb1f09cf2b0a3078533cb39f389f"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "493155bc21f3b9d626fdff7150e7a896270e6edec62a25686ac945e94c3fa3e5"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "cb8cfeb348b3cf0765cab0f6dbfb15a57f599115c4723e9f3d5c217e3cd776b9"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "migration-proof01.json",
+      "sha256": "d8bb567a489ca14735e3b64ffeeb211d4f665be2162bf79e82f65ea453d468c0"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof02.json",
+      "sha256": "9ffd0efd7cbe313a1074346b9b1262fc93a73822b7149d7d64d21c2878c4b0c9"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo02.json",
+      "sha256": "7c8a4565ba47a14cdee8b6895638aa729c77d0a2f7304de9faaed03bb7acab68"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party02.json",
+      "sha256": "b838145742b59b6a1ddc788cc06d9323baefc1d069f9615e8e9e0971449ab62c"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo02.json",
+      "sha256": "7b26a96e5b56417367f346be17ca8851af1217c38a62a5285012e3a8561a2433"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party02.json",
+      "sha256": "d24de62d42ecb5ebcd68da9fa56e9a01ba65fd16dbe793fd64dfd881475661f9"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source01/worker-entry.json",
+      "sha256": "eb7300efbd9d29a10288e434214a4f772d33e08ac9027456fc3be085174dbaa0"
+    },
+    {
+      "path": "source-worker-through.json",
+      "from": "native-source01/worker-through.json",
+      "sha256": "319927e90fe73d9423c0ae6e9f35d8489f9ed74ca348804896440656caaff230"
+    },
+    {
+      "path": "source-worker-cross.json",
+      "from": "native-source01/worker-cross.json",
+      "sha256": "d970f74facd6710b387c9fc7eed10f685a89334a6fa21b2609fb2451f4888f6c"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source01/peer-entry.json",
+      "sha256": "03d4de3c401e89f605ad016e802712df9fbacc913fe83e3716d993c1fa1f9a8d"
+    },
+    {
+      "path": "source-peer-through.json",
+      "from": "native-source01/peer-through.json",
+      "sha256": "d221b52a5d1f299d4770895c93791d2bb39d8735907e1bfc34bfbf4abb8b05cb"
+    },
+    {
+      "path": "source-peer-cross.json",
+      "from": "native-source01/peer-cross.json",
+      "sha256": "f8e5fec2d99a50d0c68188d08cdbcb147563b20a4e14026d280ed6ddc0dfe292"
+    }
+  ],
+  "documents": [
+    "docs/SWORDSMAN_FLOWING_PURSUIT.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

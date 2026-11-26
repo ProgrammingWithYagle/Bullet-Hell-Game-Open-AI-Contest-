@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-20T15:12:27.345033+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "7c84f1faa2556eeaca653902742b0646e75161b5",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/medic-rapid-response-2026-11-19",
+  "rollbackScope": "reviews/medic-surgery-fittings-2026-11-19",
+  "currentSourceCommit": "7c84f1faa2556eeaca653902742b0646e75161b5",
+  "rollbackSourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+  "keep": [
+    {
+      "path": "output/playtest-medic-rapid-response-2026-11-19-testing-7c84f1f",
+      "sourceCommit": "7c84f1faa2556eeaca653902742b0646e75161b5",
+      "scope": "reviews/medic-rapid-response-2026-11-19",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\medic-rapid-response-2026-11-19-testing-files.json",
+      "manifestSha256": "405a60af769288d66ffe83514192d082738227c88652f0b94fddcb5bd121661e",
+      "files": 2102,
+      "bytes": 880951124,
+      "treeStatSha256": "510980cd653f92baa253a3ec96dbfe1f2531ed55013b72e471d7cd35a44924b0"
+    },
+    {
+      "path": "output/playtest-medic-rapid-response-2026-11-19-public-7c84f1f",
+      "sourceCommit": "7c84f1faa2556eeaca653902742b0646e75161b5",
+      "scope": "reviews/medic-rapid-response-2026-11-19",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\medic-rapid-response-2026-11-19-public-files.json",
+      "manifestSha256": "92927c42adf6c06258a1410fbe0aecdb93919eabb0afc33be35228c4516e76e8",
+      "files": 2102,
+      "bytes": 880945839,
+      "treeStatSha256": "839fd7556e03201beec70e1d3864d1fc886c64c44972396f0c1adda6eea99e16"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-medic-rapid-response-2026-11-19-7c84f1f.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-medic-surgery-fittings-2026-11-19-public-ec18a27",
+      "files": 2094,
+      "bytes": 876763777,
+      "treeStatSha256": "1f26f99d9d46f603cc40ac51b8a4056a90f88ab4671eb7fc27b95fbc7a922e9f",
+      "identity": {
+        "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+        "buildId": "2026.11.19-medic-surgery-fittings",
+        "protocol": 84,
+        "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+        "audience": "public",
+        "runtimeSourceSha256": "877108b2425876f2b16580978ae38a8c36f161aa649c87329bfcc025972f081f",
+        "sourceSnapshotSha256": "cb8b4d42943fa758252018426c0b5237a78839d0e7278185be8896497febdc3e",
+        "endpoint": "http://127.0.0.1:2789"
+      },
+      "identitySha256": "bfeb2cdbeea31b07e5127e7ceccab62e0fdb054c92e1e3d043071b98c491bf84"
+    },
+    {
+      "path": "output/playtest-medic-surgery-fittings-2026-11-19-testing-ec18a27",
+      "files": 2094,
+      "bytes": 876769065,
+      "treeStatSha256": "2bd0aa04d02fc1b522c53467709bd00e8bf4fd530008e0cb1f9b49ef8edcb50c",
+      "identity": {
+        "sourceCommit": "ec18a2786c9e5935431e92c1482d97b836610c64",
+        "buildId": "2026.11.19-medic-surgery-fittings",
+        "protocol": 84,
+        "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+        "audience": "testing",
+        "runtimeSourceSha256": "877108b2425876f2b16580978ae38a8c36f161aa649c87329bfcc025972f081f",
+        "sourceSnapshotSha256": "cb8b4d42943fa758252018426c0b5237a78839d0e7278185be8896497febdc3e",
+        "endpoint": "http://127.0.0.1:2788"
+      },
+      "identitySha256": "650141aca1221e39d0e87802b9eed30bcc7b4ad2c73d187653bc7b949abb5e50"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-medic-surgery-fittings-2026-11-19-ec18a27.mjs",
+      "bytes": 4125719,
+      "sha256": "c823e1941fd6ba1871932c2df879d280c2837fde6b7779d68757f1597db77c7d"
+    }
+  ],
+  "retireDirectoryCount": 2,
+  "retireFileBytes": 1757658561,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": "9d7a8ea2590f24b3d25d60d0f850736e81fec7b847e6989e341e0637268e1eb1",
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true,
+  "reuseExistingVerifiedRollback": false,
+  "existingRollbackArchiveSha256": null
+}

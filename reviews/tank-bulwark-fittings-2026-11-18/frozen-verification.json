@@ -1,0 +1,314 @@
+{
+  "passed": true,
+  "sourceCommit": "f2c8f02708904fdf4d3208da3067f264c61a87fb",
+  "protocol": 81,
+  "contentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+  "checkedAt": "2026-11-19T16:57:31.494Z",
+  "driverSha256": "b1ff69185146211b623105b7e001087a4d8eb90239379b21001f830ee75e07ef",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "f2c8f02708904fdf4d3208da3067f264c61a87fb",
+      "protocol": 81,
+      "contentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "url": "http://127.0.0.1:5406/",
+      "endpoint": "http://127.0.0.1:2782",
+      "backendStartedAt": "2026-11-19T16:40:55.618Z",
+      "files": 2078,
+      "manifestSha256": "49e19dbe63a4ea24fb36d755543bdf1c3c349f25f01a9963c1f7be09f65ca78d",
+      "backendSha256": "872021e12ceea5abd18a51d6ca728857a0da412ffc615ec92a2a13db86c37aba",
+      "httpPath": "reviews/tank-bulwark-fittings-2026-11-18/smoke-testing.json",
+      "httpSha256": "42704d7d75ffd92bcac59b95e4e008cec03b99a199f0fa0a99aabaae45d07b61",
+      "emblems": [
+        {
+          "path": "assets/tank-bulwark-carry-1-DZL50pnb.png",
+          "bytes": 375678,
+          "sha256": "9b6f8497d1de5bf12a30abc38f85f8e1e6a49be19d7d9e995d33c5b3b5a632f1"
+        },
+        {
+          "path": "assets/tank-bulwark-pivot-1-1M002yjk.png",
+          "bytes": 382803,
+          "sha256": "d03a81968ad0832777d61f3ed9754f9b0c4a20e470d31c8c2df9cdf1e4f686cd"
+        },
+        {
+          "path": "assets/tank-bulwark-port-1-DL46nFBj.png",
+          "bytes": 487348,
+          "sha256": "f9ba0c9e3c2f03e30e7ea31f4b4cff5cb805a08c2c5bca8fb17a891921166251"
+        },
+        {
+          "path": "assets/tank-bulwark-folded-setdown-1-BRys3E-s.png",
+          "bytes": 466351,
+          "sha256": "1bf61eed8a84395b132e98a02b27893a3bd3864fb4bc8233dce9d8716027c7ef"
+        },
+        {
+          "path": "assets/tank-bulwark-side-port-1-jLA3oJdx.png",
+          "bytes": 905565,
+          "sha256": "584eb0639fcfe6b6207301295d8a5d126dbdf48648c7ef5355b70f4f11c557f2"
+        }
+      ],
+      "caseCount": 11,
+      "cases": [
+        {
+          "choice": "none",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-none.log",
+          "logSha256": "76b1868a1550cc115d6308cf7b3f632cb5d0b5af005caf60dae550aa0d7f8c1e",
+          "result": "testing-worker-none.json",
+          "resultSha256": "7ca0f6e913a08b8bfecb82f510b1dae852c7843e2805204674b14adf6fcea3cd"
+        },
+        {
+          "choice": "pivot",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-pivot.log",
+          "logSha256": "a52bd452d2ebdce3f905b95920883884d53bb52adc96d639412e2a79fe6ed4dd",
+          "result": "testing-worker-pivot.json",
+          "resultSha256": "b0f7777e54cc3cc21695501e731cceec06d4c8713d70237013b4cbc5a3208005"
+        },
+        {
+          "choice": "port",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-port.log",
+          "logSha256": "3a6660eee3709a5b2f157e9663b725414855001a9a5cb7cea2e89240b43028f7",
+          "result": "testing-worker-port.json",
+          "resultSha256": "9e45a7a89829d276112b4bf7fa22ca9321c58bdd4e9bf6366aa02de2bc8d6c04"
+        },
+        {
+          "choice": "folded",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-folded.log",
+          "logSha256": "6a5e9bca7a1deb00be84ca5191f8d9661b94b04710c60ab02e0d92b0a6651a01",
+          "result": "testing-worker-folded.json",
+          "resultSha256": "89947c3386cd66a08a8601e740fb945c5765d8bfd425529d1857ec708c1de8fe"
+        },
+        {
+          "choice": "side",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-side.log",
+          "logSha256": "b13fc9f3da0e22a172687412773983e34c45923f047c48233d7634bc30405683",
+          "result": "testing-worker-side.json",
+          "resultSha256": "58e5f54b40d529eb4c7e80124b765a7f3113a98cef4b6d114ea2085ce5d9fee0"
+        },
+        {
+          "choice": "none",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-none.log",
+          "logSha256": "d73f3b2fa811b6c0d928aaf06fbd1e83edfeee77a1da3d881675e0cfd280eea7",
+          "result": "testing-peer-none.json",
+          "resultSha256": "30e2181587038574614241c1393004557e6c7a92714992f6a5b3b17b647332f9"
+        },
+        {
+          "choice": "pivot",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-pivot.log",
+          "logSha256": "d121625202e3a6f5779ec8a64f4c4f963dab964ae39bf39ba7997373ccf5ee83",
+          "result": "testing-peer-pivot.json",
+          "resultSha256": "b8c0754ed5a3b18b86444cd6d875839aac42aa8d93d8dba25bf4bf416140c8a5"
+        },
+        {
+          "choice": "port",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-port.log",
+          "logSha256": "761b191fe738bf20a03381d98f79c7d97bee8d0a11fcbd7a26a3225f75944ceb",
+          "result": "testing-peer-port.json",
+          "resultSha256": "bc156b32ebdfcc5b3eb799ca6690ac6a8377db47c5c765aa207ac495788e8b9d"
+        },
+        {
+          "choice": "folded",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-folded.log",
+          "logSha256": "2bcb968a7a90916724830d87f0dd5e4f3f93d02f3cfb600c4ac2c96847b43b03",
+          "result": "testing-peer-folded.json",
+          "resultSha256": "d1668e471688096172826c7c36c6c2ad0e93b1ea3f4c5961a68d41385f2fb51d"
+        },
+        {
+          "choice": "side",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-side.log",
+          "logSha256": "d55ca435cf188cdf884af079bd25a6523e1a99dd70b7b84611811d37ca7eca07",
+          "result": "testing-peer-side.json",
+          "resultSha256": "132d2f23c28f481917ecdecdbee071e88afed72263f088b9d159b48ca3cbcf3b"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "f2c8f02708904fdf4d3208da3067f264c61a87fb",
+      "protocol": 81,
+      "contentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "url": "http://127.0.0.1:5407/",
+      "endpoint": "http://127.0.0.1:2783",
+      "backendStartedAt": "2026-11-19T16:40:54.144Z",
+      "files": 2078,
+      "manifestSha256": "7eb2a1cab2727e8ed0fc2e07930fc6e7781595618ed9d0aaf46b18430d4b8df1",
+      "backendSha256": "872021e12ceea5abd18a51d6ca728857a0da412ffc615ec92a2a13db86c37aba",
+      "httpPath": "reviews/tank-bulwark-fittings-2026-11-18/smoke-public.json",
+      "httpSha256": "4ca4ac9c40c6dc9b2be620acde40f43800e453d31db5de54e16105cfc5d6e8cc",
+      "emblems": [
+        {
+          "path": "assets/tank-bulwark-carry-1-DZL50pnb.png",
+          "bytes": 375678,
+          "sha256": "9b6f8497d1de5bf12a30abc38f85f8e1e6a49be19d7d9e995d33c5b3b5a632f1"
+        },
+        {
+          "path": "assets/tank-bulwark-pivot-1-1M002yjk.png",
+          "bytes": 382803,
+          "sha256": "d03a81968ad0832777d61f3ed9754f9b0c4a20e470d31c8c2df9cdf1e4f686cd"
+        },
+        {
+          "path": "assets/tank-bulwark-port-1-DL46nFBj.png",
+          "bytes": 487348,
+          "sha256": "f9ba0c9e3c2f03e30e7ea31f4b4cff5cb805a08c2c5bca8fb17a891921166251"
+        },
+        {
+          "path": "assets/tank-bulwark-folded-setdown-1-BRys3E-s.png",
+          "bytes": 466351,
+          "sha256": "1bf61eed8a84395b132e98a02b27893a3bd3864fb4bc8233dce9d8716027c7ef"
+        },
+        {
+          "path": "assets/tank-bulwark-side-port-1-jLA3oJdx.png",
+          "bytes": 905565,
+          "sha256": "584eb0639fcfe6b6207301295d8a5d126dbdf48648c7ef5355b70f4f11c557f2"
+        }
+      ],
+      "caseCount": 11,
+      "cases": [
+        {
+          "choice": "none",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-none.log",
+          "logSha256": "097d2264195061903d5baf3a58f6572b7543966c9c2c8b03c3aba52da3933c84",
+          "result": "public-worker-none.json",
+          "resultSha256": "3b6a9b4032d771eda868bee5263069796ba74aa2dac1bc7ab7022eab42d92ced"
+        },
+        {
+          "choice": "pivot",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-pivot.log",
+          "logSha256": "2aef0de6c91850a5c468537fd5cdb3277510aff455b5df93fa0882f3cbf1100a",
+          "result": "public-worker-pivot.json",
+          "resultSha256": "d50988cff71a466a422309a2d2aa909e322c6c7e0eb01fcfd2875f7b4999656a"
+        },
+        {
+          "choice": "port",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-port.log",
+          "logSha256": "ad0766cc23eb4346c40c41507ae2b238a4e9edc6596207c179f21e588b4e5b5f",
+          "result": "public-worker-port.json",
+          "resultSha256": "b98e85608d045eadf1725b67ad217ab0bfef3303686bf4c1b71ff2db5deabc3d"
+        },
+        {
+          "choice": "folded",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-folded.log",
+          "logSha256": "fd38a4081181226392841e77a8657578099b377edf5918a6274bef2c5c2a0add",
+          "result": "public-worker-folded.json",
+          "resultSha256": "219a6641a2034aa23bbe6cd6158b434c788a46f3e1d45a3b40316bf1b9c23641"
+        },
+        {
+          "choice": "side",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-side.log",
+          "logSha256": "af80e2f0dc2b159970b4e935080bb50d2abbb44f997e0aa56966fea6156bcbd5",
+          "result": "public-worker-side.json",
+          "resultSha256": "d233e3da05c36c8d2ae337c07f990d7a12272b242bf07c9dc2d9d210f5b06917"
+        },
+        {
+          "choice": "none",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-none.log",
+          "logSha256": "02b77cb896cb3cd588d01c379ff770167037c07e01ae5f362790c2f631b44730",
+          "result": "public-peer-none.json",
+          "resultSha256": "afc570c9554d1a4ea1e465243cc58f168e1846f6dd5f777706418db5f6cefbd1"
+        },
+        {
+          "choice": "pivot",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-pivot.log",
+          "logSha256": "00fc1a377cdeb5728283d0b7952681f8c5571a6dfd5212a523b45c819e9f726e",
+          "result": "public-peer-pivot.json",
+          "resultSha256": "f085e97966970aa535a54f9ea120bb819af5a2df5f8145aec57a39762d3c207e",
+          "retested": true,
+          "initialLogSha256": "26ec35a1c6fe165d8d6b7018309c1aa104a9a033efa1e7717e2ae6c64176cc3e"
+        },
+        {
+          "choice": "port",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-port.log",
+          "logSha256": "fc228eade3567df4b97e264ab18890071d8d3c8000bc759f262af03ab5caec2c",
+          "result": "public-peer-port.json",
+          "resultSha256": "5d3f30539d98a253db93944e1893c7561f0c56b90da8ddd3e88f42baca8082c4"
+        },
+        {
+          "choice": "folded",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-folded.log",
+          "logSha256": "c15db49b9b96523f9111cec4364f0659e7f1185c867bf5816a0b1374e073f351",
+          "result": "public-peer-folded.json",
+          "resultSha256": "64553fda060ef95b350b31cb6d9f452b6d85bc0ab4923cd5218bdadf9629b071"
+        },
+        {
+          "choice": "side",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-side.log",
+          "logSha256": "d66002a5af982faa609ff5fb1bf6b6366f5c7b475f02f0fceed14a2b5762801d",
+          "result": "public-peer-side.json",
+          "resultSha256": "cf0d79342c4c3c1340709291ae1bacc44946f5959e85dd3a8aa5ef126bc75c2e"
+        }
+      ],
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ],
+  "composedFromSameLaunches": true,
+  "initialMatrixSha256": "23eb5a02902f4a4138ae83c14d78d9b81e2ee799c8d9be535c24ded9f975d9d5",
+  "initialPivotLogSha256": "26ec35a1c6fe165d8d6b7018309c1aa104a9a033efa1e7717e2ae6c64176cc3e",
+  "supplement": {
+    "driverSha256": "3da209e6797a54d0901300879fa1bac8e7cebdfd4b48b25b890b1e35c49a89cf",
+    "testFlowSha256": "7472ab48f688755ca3c8089789ace36664bf0a4568459602180d83b0a6bee34f",
+    "publicPeerPivotOnly": true
+  }
+}

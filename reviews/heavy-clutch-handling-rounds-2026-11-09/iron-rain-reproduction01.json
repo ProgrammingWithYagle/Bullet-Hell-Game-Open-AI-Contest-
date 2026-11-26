@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-11-10T02:21:43.378Z",
+  "reproducedExpectedHelperFailure": true,
+  "error": "AssertionError [ERR_ASSERTION]: separate admitted primary event batch matches every actual round conversion\n    at heavyWait (C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tests\\helpers\\heavy-flak-flow.ts:44:5)\n    at async heavyClutchHandlingOperation (C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\tests\\helpers\\heavy-clutch-handling-flow.ts:177:3)\n    at async <anonymous> (C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-handling-stage\\reproduce-iron-rain01.mts:16:3)",
+  "controlledLateEndless27AndRawIronRain": true,
+  "actualRoundConversions": [
+    {
+      "tick": 4,
+      "ammo": 43,
+      "beforeNext": 12,
+      "afterNext": 22
+    }
+  ],
+  "actualPrimaryProjectiles": [
+    {
+      "id": 2,
+      "owner": "owner",
+      "x": 607.6433176243524,
+      "y": 595.9145616141748,
+      "vx": 589.5520636014005,
+      "vy": -377.39682603770035,
+      "radius": 4,
+      "damage": 7.5600000000000005,
+      "expires": 52,
+      "pierce": 0
+    },
+    {
+      "id": 3,
+      "owner": "owner",
+      "x": 607.6433176243524,
+      "y": 595.9145616141748,
+      "vx": 641.331569981995,
+      "vy": -280.5241831721989,
+      "radius": 4,
+      "damage": 7.5600000000000005,
+      "expires": 52,
+      "pierce": 0
+    }
+  ],
+  "actualAmmo": 43,
+  "actualKit": {
+    "heavyClutchConverted": 1,
+    "heavyClutchHandling": "heavy-traverse-open-1",
+    "heavyClutchAt": 3,
+    "heavyClutchSequence": 5,
+    "heavyClutchBlocked": false,
+    "heavyClutchLifted": true,
+    "heavyClutchUsed": true,
+    "heavyClutchForfeited": 1,
+    "heavyClutchSlotsRemaining": 2,
+    "heavyPrimaryAt": 4,
+    "heavyPrimaryAim": -0.4908738521234055,
+    "heavyTraverseBornAt": 2,
+    "heavyTraverseSequence": 3,
+    "heavyTraversePostX": 600,
+    "heavyTraversePostY": 600,
+    "technique1At": 242,
+    "heavyTraverseUntil": 33,
+    "heavyTraverseNextAt": 22,
+    "heavyTraverseRounds": 1,
+    "heavyTraverseAim": -0.4908738521234055,
+    "heavyTraverseMode": "loose",
+    "heavyTraverseCastAt": 2,
+    "heavyTraverseShotRequiresClutch": false,
+    "heavyTraverseShotAt": 2,
+    "heavyTraverseShotAim": -0.4908738521234055,
+    "heavyTraverseShotMode": "loose",
+    "heavyTraverseBlocked": false
+  },
+  "runtimeChanged": false,
+  "onlineProof": false,
+  "canonicalFilesWritten": false
+}

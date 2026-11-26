@@ -1,0 +1,55 @@
+✔ five-fight Quarantine keeps five distinct bosses for every opening identity and saved vote (422.3379ms)
+✔ Endless marks previously defeated candidates Brutal and excludes the last twelve identities (26.0166ms)
+✔ Courier locks a harmless charge warning then actually moves along that lane and leaves an expiring trail (29.339ms)
+✔ Ratcatcher summons three locked packs of four real rats, respects its cap and serializes their lanes (55.1505ms)
+✔ shooting the 65-HP sack interrupts the warned pack without also damaging the boss, then the sack recovers (17.1027ms)
+✔ Clerk stamps three non-overlapping zones in order and reopens the first as a real safe interior (7.4662ms)
+✔ early bosses have two phases retaining stronger Brutal sacks/rats and the Clerk final echo (278.1359ms)
+✔ Easy Standard Accord cancels signature hazards/adds and resumes with a full fresh warning (23.4085ms)
+✔ protocol-5 Heavy Practice boundaries retain builds and two-boss history; online v5 remains rejected (1.9088ms)
+✔ signature art follows real cue time and respects reduced motion (7.6735ms)
+✔ opening Ratcatcher locks three harmless scent lanes, spawns four real rats per lane and exposes recovery (4.9886ms)
+✔ late phase marks a safe patrol, resolves movement, then locks a complete new warning from its actual stop (1.1553ms)
+✔ a new collider stops patrol early and the subsequent warning uses that actual position (0.7234ms)
+✔ pack spawning honors locked lane origins even if an external relocation changes the live boss during the tell (0.2623ms)
+✔ intrinsic sack damage cancels the pending/next pack, restores on its exact clock, and never silences advanced whistles (0.7617ms)
+✔ the sack follows actual patrol motion and uses relative swept contact without a fictional first-frame origin (0.526ms)
+✔ advanced opening/late phases release one/two full warned whistle rings with a locked safe gap and rotated second gap (2.4823ms)
+✔ rat navigation actually goes around cover and makes contact while ordinary actors retain their previous behavior (4.3694ms)
+✔ rat navigation replaces paths for moved targets/new walls and bounds its corner graph and actor routes (8.6513ms)
+✔ actual advanced whistle emissions use the shared 2.5x/7.5x budget while rats retain the twelve-live cap (76.4705ms)
+✔ all maps/difficulties admit a complete relocated muster with body and sack inside bounds and no masonry crossings (27.6524ms)
+✖ phase/stagger/victory/timeout/wipe cancel Ratcatcher routes, whistles, delayed echoes and live rats (14.3537ms)
+✔ fifteen locales and known protocol22 saves/profiles preserve phase help and exact completed form/build history (30.9069ms)
+✔ real owner/observer rooms replicate the relocated origin, locked whistle gap, phase sound and cancellation (487.0012ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 23
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3255.3558
+
+✖ failing tests:
+
+test at tests\ratcatcher-muster.test.ts:1:10328
+✖ phase/stagger/victory/timeout/wipe cancel Ratcatcher routes, whistles, delayed echoes and live rats (14.3537ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  12 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\ratcatcher-muster.test.ts:406:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

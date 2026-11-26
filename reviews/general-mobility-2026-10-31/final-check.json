@@ -1,0 +1,31 @@
+{
+  "createdAt": "2026-10-31T20:41:20.452Z",
+  "passed": true,
+  "runtimeSourceSha256": "6023989f3b3eb1ff1cce7132557163133257e9db98350d55b7e99ace274a173d",
+  "contentRevision": "5a4ffd871d1880ccb681aee1faa5e51a664385752977fa7a136b50d44c7c6927",
+  "checks": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5278/",
+      "endpoint": "http://127.0.0.1:2654",
+      "sourceCommit": "55cc82da4b67448cdb3f3385ac2e59638055398f",
+      "protocol": 45,
+      "available": true,
+      "bothBundlesContainGeneralMobility": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5279/",
+      "endpoint": "http://127.0.0.1:2655",
+      "sourceCommit": "55cc82da4b67448cdb3f3385ac2e59638055398f",
+      "protocol": 45,
+      "available": true,
+      "bothBundlesContainGeneralMobility": true
+    }
+  ],
+  "olderUserPreviewRetained": "http://127.0.0.1:5276/",
+  "limits": [
+    "Native source/HTTP/transport checks only; no browser/rendered/human acceptance.",
+    "Production Site/backend unchanged."
+  ]
+}

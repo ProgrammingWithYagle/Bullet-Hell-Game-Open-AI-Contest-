@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "protocol": 93,
+  "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+  "runtimeSourceSha256": "67f9d069c263ce05c87c1b7a48138b7150ddd3666ca68f0621971485a9ddac96",
+  "sourceSnapshotSha256": "94e15cb0bb0114c57b21a13edc696093652fa733659f4522d9d2b3c11c028a85",
+  "tests": 2841,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 5,
+      "final": 10
+    },
+    {
+      "transport": "worker",
+      "fitting": "side",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 526,
+      "final": 541
+    },
+    {
+      "transport": "worker",
+      "fitting": "reprise",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 526,
+      "final": 531
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "stage": 6,
+      "final": 10
+    },
+    {
+      "transport": "peer",
+      "fitting": "side",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 955,
+      "final": 965
+    },
+    {
+      "transport": "peer",
+      "fitting": "reprise",
+      "boss": "matron",
+      "firstClear": 1,
+      "stage": 1001,
+      "final": 1011
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate01/generated/reviews/runtime-verification.json",
+      "sha256": "0ba82981b2881b17830d340517093108ed130cadc149f5262183ed6aa3e2ebfd"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "53fb4a0191db2ba399c0c901ff334402e9e24f39ef41e6c8de49a9b179f50fba"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "93f93d510f6f4c3764cf9bbb1f828e849b4720f4962ae841ece664c2c43b0a33"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "24c8a4e3668b060ab5ce282be1f48cfc26af2a3c3756249cb2b8c68605ec1186"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "c593723056f6d34feaecccf11236e2c4bd94deb81ac904ee4f1d19ef462426e2"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "956f0836c4b73ef7fe100d6f9d69532619a5dd68adadcc64b646322575b2b543"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "migration-proof02.json",
+      "sha256": "182781ac712f58a549ca8b8c9323bbc20d7231d1870851b6fcff100d9b9a62a9"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof03.json",
+      "sha256": "b508f2c117db31fe3fe5d230f48e130d58c0c69dc59ada559db31798ef268a31"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo03.json",
+      "sha256": "6249ebd48a2b57fef500b29c968544aee5b6fcf83ef866e336ab06a869e5edbe"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party03.json",
+      "sha256": "a073b7a86abebe5af79fe599c3590d66e27c0ac794ce2727221575e610e26f39"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo03.json",
+      "sha256": "8135b5d0a3ee602287179bb11e0785933b21174b8b756b4f4e07d2a8ea659891"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party03.json",
+      "sha256": "080ed9bcdb85937a537c1b439b064b734dd35af5bc9437cb5db74e88a3ddb7d4"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source01/worker-entry.json",
+      "sha256": "059538327c7e83306ff07f42ce20817828e66ee4b139099613ace0d61337edb5"
+    },
+    {
+      "path": "source-worker-side.json",
+      "from": "native-source01/worker-side.json",
+      "sha256": "35cee5541cc5c99ca4b7b8144a9a85f91556d3ca1411a3477e50e6c303cd576c"
+    },
+    {
+      "path": "source-worker-reprise.json",
+      "from": "native-source01/worker-reprise.json",
+      "sha256": "b8b5b14f0d14e1c6e5d518de916b3673719c7299912d0178233786db8fc6391d"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source01/peer-entry.json",
+      "sha256": "4a51846c13e149a362f06725bbfb0d8de42d18e675ed95df2a69dc37ed230c11"
+    },
+    {
+      "path": "source-peer-side.json",
+      "from": "native-source01/peer-side.json",
+      "sha256": "f8c9cbae59796973a1172161db52378f1e11eb1a379ff54e8d67d1604d92919d"
+    },
+    {
+      "path": "source-peer-reprise.json",
+      "from": "native-source01/peer-reprise.json",
+      "sha256": "674cd221f56c19086ed9014adb9f0747b94793612cbb20efb506ae83107a0d5c"
+    }
+  ],
+  "documents": [
+    "docs/BARD_CONDUCTOR.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

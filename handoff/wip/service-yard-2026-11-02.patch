@@ -1,0 +1,257 @@
+diff --git a/src/shared/porch-watch-rules.json b/src/shared/porch-watch-rules.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..636a44f32a7df43d8d35744a71b27370b3fa5fe2
+--- /dev/null
++++ b/src/shared/porch-watch-rules.json
+@@ -0,0 +1,17 @@
++{
++  "holdSeconds": 60,
++  "deadlineSeconds": 180,
++  "warningSeconds": 2.5,
++  "waveSeconds": [0, 20, 40],
++  "waveCounts": [4, 6, 8],
++  "holdRadius": 72,
++  "minimumHoldRadius": 56,
++  "maximumLive": 50,
++  "retryTicks": 30,
++  "bodyRadius": 12,
++  "baseHealth": 42,
++  "healthPerWave": 5,
++  "baseSpeed": 48,
++  "speedPerWave": 6,
++  "baseDamage": 5
++}
+diff --git a/src/shared/porch-watch.ts b/src/shared/porch-watch.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..f05ef7453d2015904e54f5388564533218bd0a82
+--- /dev/null
++++ b/src/shared/porch-watch.ts
+@@ -0,0 +1,116 @@
++import catalog from '../../content/catalog.json';
++import rules from './porch-watch-rules.json';
++import { HZ, type Vec } from './protocol.ts';
++import { distance, segmentRect, type Rect } from './geometry.ts';
++import { skirmishSites, type WardSkirmishContext } from './ward-skirmish.ts';
++export type PorchWatchView = {
++  id: 'porch-watch';
++  status: 'briefing' | 'warning' | 'fighting' | 'complete' | 'failed';
++  wave: number;
++  waves: number;
++  defeated: number;
++  total: number;
++  remaining: number;
++  deadline: number;
++  portals: (Vec & {at:number})[];
++  hold?: Vec & {radius:number};
++  heldTicks: number;
++  requiredHoldTicks: number;
++  holding: number;
++  contesting: number;
++};
++export type PorchWatchContext = WardSkirmishContext & {
++  /** Actual connected active players only. Pets and decoys must not hold ground. */
++  holders: readonly Vec[];
++};
++const ticks=(seconds:number)=>Math.ceil(seconds*HZ);
++const scale=(value:number)=>Number.isFinite(value)?Math.max(.05,Math.min(10,value)):1;
++/** A full visible circle fits actual floor, cover and every authored lava footprint. */
++export function porchHoldPoint(bounds:Rect,obstacles:readonly Rect[],lava:readonly(Vec&{radius:number})[],route=0){
++  if(![bounds.x,bounds.y,bounds.width,bounds.height].every(Number.isFinite)||bounds.width<=0||bounds.height<=0)return;
++  const fraction=[.28,.5,.72][Number.isSafeInteger(route)&&route>=0&&route<=2?route:0];
++  const preferred={x:bounds.x+bounds.width*fraction,y:bounds.y+bounds.height*.55};
++  for(let radius=rules.holdRadius;radius>=rules.minimumHoldRadius;radius-=8){
++    const candidates:Vec[]=[preferred];
++    for(let y=bounds.y+radius+8;y<=bounds.y+bounds.height-radius-8;y+=32)
++      for(let x=bounds.x+radius+8;x<=bounds.x+bounds.width-radius-8;x+=32)candidates.push({x,y});
++    const point=candidates.filter(p=>p.x-radius>=bounds.x+4&&p.x+radius<=bounds.x+bounds.width-4&&p.y-radius>=bounds.y+4&&p.y+radius<=bounds.y+bounds.height-4&&!obstacles.some(w=>segmentRect(p,p,w,radius+4))&&!lava.some(pit=>distance(p,pit)<radius+pit.radius+8))
++      .toSorted((a,b)=>distance(a,preferred)-distance(b,preferred)||a.y-b.y||a.x-b.x)[0];
++    if(point)return {...point,radius};
++  }
++}
++/** Timed space control. Success never implies every planned enemy was killed. */
++export class PorchWatch {
++  private state:PorchWatchView={
++    id:'porch-watch',status:'briefing',wave:0,waves:rules.waveCounts.length,
++    defeated:0,total:0,remaining:0,deadline:0,portals:[],
++    heldTicks:0,requiredHoldTicks:ticks(rules.holdSeconds),holding:0,contesting:0,
++  };
++  private began=0;
++  private lastTick=-1;
++  private stopped=true;
++  private counts:number[]=[];
++  private queue:{wave:number;count:number}[]=[];
++  private alive=new Map<number,number>();
++  private announceAt=0;
++  private turn=0;
++  constructor(private readonly route=0){}
++  start(now:number,party:number){
++    const partyScale=Math.min(4,Math.sqrt(Math.max(1,Math.min(50,Number.isFinite(party)?party:1))));
++    this.counts=rules.waveCounts.map(n=>Math.ceil(n*partyScale));
++    const total=this.counts.reduce((a,b)=>a+b,0);
++    this.state={id:'porch-watch',status:'fighting',wave:0,waves:this.counts.length,defeated:0,total,remaining:total,deadline:now+ticks(rules.deadlineSeconds),portals:[],heldTicks:0,requiredHoldTicks:ticks(rules.holdSeconds),holding:0,contesting:0};
++    this.began=this.lastTick=now;this.stopped=false;
++    this.alive.clear();this.queue=[];this.announceAt=now;this.turn=0;
++  }
++  view():PorchWatchView {
++    return {...this.state,portals:this.state.portals.map(p=>({...p})),...(this.state.hold?{hold:{...this.state.hold}}:{})};
++  }
++  cancel(){this.stopped=true;this.state.portals=[];this.queue=[];this.alive.clear();}
++  fail(){this.state.status='failed';this.cancel();}
++  step(c:PorchWatchContext){
++    if(this.stopped||!Number.isSafeInteger(c.now)||c.now<=this.lastTick)return;
++    this.lastTick=c.now;
++    const s=this.state;
++    if(c.now>=s.deadline){this.fail();return;}
++    s.hold??=porchHoldPoint(c.bounds,c.obstacles,c.lava,this.route);
++    if(!s.hold){this.fail();return;}
++    for(const [id,expires]of this.alive)if(!c.actors.has(id)){
++      if(c.now>=expires){this.fail();return;}
++      this.alive.delete(id);s.defeated++;s.remaining=Math.max(0,s.total-s.defeated);
++    }
++    while(s.wave<this.counts.length&&c.now>=this.began+ticks(rules.waveSeconds[s.wave])){
++      this.queue.push({wave:s.wave+1,count:this.counts[s.wave]});s.wave++;
++    }
++    if(s.portals.length&&c.now>=s.portals[0].at)this.release(c);
++    if(!s.portals.length&&this.queue.length&&c.now>=this.announceAt)this.announce(c);
++    s.status=s.portals.length?'warning':'fighting';
++    s.holding=c.holders.filter(p=>distance(p,s.hold!)<=s.hold!.radius-catalog.rules.playerRadius).length;
++    s.contesting=[...c.actors.values()].filter(a=>a.health>0&&distance(a,s.hold!)<=s.hold!.radius+a.radius).length;
++    if(s.holding>0&&s.contesting===0)s.heldTicks=Math.min(s.requiredHoldTicks,s.heldTicks+1);
++    if(s.heldTicks>=s.requiredHoldTicks){s.status='complete';this.cancel();}
++  }
++  private announce(c:PorchWatchContext){
++    const front=this.queue[0];
++    this.announceAt=c.now+rules.retryTicks;
++    if(!front||c.actors.size>=rules.maximumLive||!c.targets.length)return;
++    const sites=skirmishSites(c.bounds,c.obstacles,c.lava,[...c.targets,this.state.hold!]);
++    if(!sites.length)return;
++    const offset=this.turn++%sites.length;
++    this.state.portals=sites.slice(offset).concat(sites.slice(0,offset))
++      .slice(0,Math.min(front.count,rules.maximumLive-c.actors.size))
++      .map(p=>({...p,at:c.now+ticks(rules.warningSeconds)}));
++  }
++  private release(c:PorchWatchContext){
++    const promised=this.state.portals,front=this.queue[0];this.state.portals=[];
++    this.announceAt=c.now+rules.retryTicks;
++    if(!front)return;
++    for(const point of promised){
++      if(c.actors.size>=rules.maximumLive)break;
++      if(c.targets.some(p=>distance(p,point)<55)||c.obstacles.some(w=>segmentRect(point,point,w,26))||c.lava.some(p=>distance(p,point)<p.radius+26)||[...c.actors.values()].some(a=>distance(a,point)<a.radius+rules.bodyRadius+4))continue;
++      const actor=c.spawn({kind:'ordinary',x:point.x,y:point.y,health:(rules.baseHealth+front.wave*rules.healthPerWave)*scale(c.healthScale),radius:rules.bodyRadius,speed:(rules.baseSpeed+front.wave*rules.speedPerWave)*scale(c.speedScale),damage:rules.baseDamage*scale(c.damageScale),lifeSeconds:600});
++      if(actor){this.alive.set(actor.id,actor.expires);front.count--;}
++    }
++    if(front.count===0)this.queue.shift();
++  }
++}
+diff --git a/src/shared/ward-skirmish.ts b/src/shared/ward-skirmish.ts
+index a2e68391c47f8569c5b4980341b386bba89ddb91..a9d06ef09bf7b237f28a7404a2a25e38fbab405d 100644
+--- a/src/shared/ward-skirmish.ts
++++ b/src/shared/ward-skirmish.ts
+@@ -13,7 +13,7 @@ export type SkirmishView = {
+   deadline: number;
+   portals: (Vec & { at: number })[];
+ };
+-type Context = {
++export type WardSkirmishContext = {
+   now: number;
+   bounds: Rect;
+   obstacles: Rect[];
+@@ -122,7 +122,7 @@ export class WardSkirmish {
+     this.state.status = "failed";
+     this.cancel();
+   }
+-  step(c: Context) {
++  step(c: WardSkirmishContext) {
+     const s = this.state;
+     if (["briefing", "complete", "failed"].includes(s.status)) return;
+     if (c.now >= s.deadline) {
+@@ -186,7 +186,7 @@ export class WardSkirmish {
+       this.announce(c);
+     }
+   }
+-  private announce(c: Context) {
++  private announce(c: WardSkirmishContext) {
+     const sites = skirmishSites(c.bounds, c.obstacles, c.lava, c.targets);
+     if (!sites.length || !c.targets.length) return;
+     const offset = this.turn++ % sites.length;
+diff --git a/tests/porch-watch.test.ts b/tests/porch-watch.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..17e9b62bdf883f91e3d5326dd98f78d47df1232a
+--- /dev/null
++++ b/tests/porch-watch.test.ts
+@@ -0,0 +1,75 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import catalog from '../content/catalog.json';
++import { HZ } from '../src/shared/protocol.ts';
++import { PorchWatch, porchHoldPoint, type PorchWatchContext } from '../src/shared/porch-watch.ts';
++import rules from '../src/shared/porch-watch-rules.json';
++import { Minions } from '../src/shared/minions.ts';
++import { runtimeArena } from '../src/shared/arena-layouts.ts';
++import { distance, segmentRect } from '../src/shared/geometry.ts';
++function fixture(party=1){
++ const minions=new Minions(),watch=new PorchWatch(),body={x:300,y:300};
++ let nextId=1;
++ const c:PorchWatchContext={now:0,bounds:{x:100,y:100,width:1000,height:700},obstacles:[],lava:[],targets:[body],holders:[],actors:minions.actors,healthScale:1,damageScale:1,speedScale:1,spawn:def=>minions.spawn(nextId++,def,c.now)};
++ watch.start(0,party);
++ const step=(n=1)=>{for(let i=0;i<n;i++){c.now++;watch.step(c);}};
++ step();
++ return {watch,c,minions,body,step};
++}
++test('Hold progress requires a real supplied player body and clear ground; targets alone, contested edges, repeated ticks and clock jumps cannot manufacture held time',()=>{
++ const {watch,c,body,step}=fixture(),hold=watch.view().hold!;
++ Object.assign(body,hold);c.targets=[body];step(50);
++ assert.equal(watch.view().heldTicks,0,'A pet/decoy aim target cannot hold');
++ c.holders=[body];step();assert.equal(watch.view().heldTicks,1);
++ watch.step(c);assert.equal(watch.view().heldTicks,1);
++ c.now+=200;watch.step(c);assert.equal(watch.view().heldTicks,2);
++ const enemy={id:9900,kind:'ordinary' as const,x:hold.x+hold.radius+11,y:hold.y,oldX:0,oldY:0,health:20,maxHealth:20,speed:0,radius:12,damage:0,expires:100000,attackAt:0,slowUntil:0,slowMultiplier:1};
++ c.actors.set(enemy.id,enemy);step(20);
++ assert.equal(watch.view().heldTicks,2);assert.equal(watch.view().contesting,1);
++ enemy.x=hold.x+hold.radius+13;step();assert.equal(watch.view().heldTicks,3);
++ body.x=hold.x+hold.radius-catalog.rules.playerRadius+1;step();assert.equal(watch.view().heldTicks,3);
++});
++test('Sixty seconds of actual uncontested occupancy completes with surviving enemies and no fabricated defeats, while an empty hold fails at its deadline',()=>{
++ const {watch,c,body,step}=fixture(),hold=watch.view().hold!;
++ Object.assign(body,hold);c.targets=[body];c.holders=[body];
++ step(rules.holdSeconds*HZ-1);assert.equal(watch.view().status,'complete');
++ const state=watch.view();assert.equal(state.heldTicks,state.requiredHoldTicks);
++ assert.equal(state.defeated,0);assert.equal(state.remaining,state.total);assert(c.actors.size>0);
++ assert.equal(state.wave,3);assert.equal(state.portals.length,0);
++ const prior=JSON.stringify(state);step(300);assert.equal(JSON.stringify(watch.view()),prior);
++ const failed=fixture();failed.step(rules.deadlineSeconds*HZ);
++ assert.equal(failed.watch.view().status,'failed');assert.equal(failed.watch.view().heldTicks,0);assert.equal(failed.watch.view().portals.length,0);
++});
++test('Wave warnings keep their promised positions, occupied landings receive a new full warning, and cancelled ownership never spawns late actors',()=>{
++ const {watch,c,step}=fixture(),promised=watch.view().portals;
++ assert(promised.length>0);const at=promised[0].at;
++ const copied=watch.view();copied.portals[0].x=-999;assert.notEqual(watch.view().portals[0].x,-999);
++ c.targets=promised.map(({x,y})=>({x,y}));
++ step(at-c.now-1);assert.equal(c.actors.size,0);
++ step();assert.equal(c.actors.size,0);assert.equal(watch.view().portals.length,0);
++ step(rules.retryTicks);const fresh=watch.view().portals;
++ assert(fresh.length>0);assert(fresh.every(p=>p.at===c.now+Math.ceil(rules.warningSeconds*HZ)));
++ const before=c.actors.size;watch.cancel();step(200);
++ assert.equal(c.actors.size,before);assert.equal(watch.view().portals.length,0);
++});
++test('A fifty-player plan remains bounded at fifty real actors and only actual removed bodies count as defeats',()=>{
++ const {watch,c,minions,step}=fixture(50);
++ step(50*HZ);assert(c.actors.size<=rules.maximumLive);assert.equal(watch.view().total,72);
++ assert.equal(watch.view().defeated,0);
++ const ids=[...c.actors.keys()].slice(0,3);assert.equal(ids.length,3);
++ for(const id of ids)assert(minions.hit(id,1e6,c.now)>0);
++ step();assert.equal(watch.view().defeated,3);assert.equal(watch.view().remaining,69);
++ step(5*HZ);assert(c.actors.size<=rules.maximumLive);
++});
++test('Each of the three hold approaches fits complete visible ground on every map and difficulty, outside current cover and all lava footprints',()=>{
++ for(const map of catalog.arenas)for(const difficulty of catalog.difficulties)for(let route=0;route<3;route++){
++  const arena=runtimeArena(map.id,difficulty.id),point=porchHoldPoint(arena.bounds,arena.obstacles,arena.lavaPits,route);
++  assert(point,map.id+'/'+difficulty.id+'/'+route);
++  assert(point.radius>=rules.minimumHoldRadius);
++  assert(!arena.obstacles.some(w=>segmentRect(point,point,w,point.radius+4)));
++  assert(arena.lavaPits.every(p=>distance(point,p)>=point.radius+p.radius+8));
++  assert(point.x-point.radius>=arena.bounds.x&&point.x+point.radius<=arena.bounds.x+arena.bounds.width);
++  assert(point.y-point.radius>=arena.bounds.y&&point.y+point.radius<=arena.bounds.y+arena.bounds.height);
++ }
++ assert.equal(porchHoldPoint({x:0,y:0,width:10,height:10},[],[]),undefined);
++});

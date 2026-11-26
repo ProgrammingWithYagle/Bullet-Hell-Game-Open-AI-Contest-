@@ -1,0 +1,351 @@
+{
+  "checkedAt": "2026-11-11T01:37:03.483Z",
+  "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+  "runtimeSourceSha256": "c213467e0877fce574552b98139e4171a71ad4430069102a880db46c65f86de8",
+  "sourceSnapshotSha256": "565333e00e8cf875e4be37b6e7f5a12ef55a9835f578a441ea1b442dea1c59c8",
+  "runtimeAndTestsUnchanged": true,
+  "gameplayFeatureWorkPausedForRequestedHandoff": true,
+  "legal21SPGuardNotYetFixed": true,
+  "proposed2211TestsNotRun": true,
+  "currentNativeMatricesComplete": false,
+  "native": [
+    {
+      "audience": "testing",
+      "finishedAt": "2026-11-10T22:38:12.608Z",
+      "passed": false,
+      "passedCases": 127,
+      "failedCases": 2,
+      "executedCases": 129,
+      "unexecutedCases": 16,
+      "invocations": 46,
+      "plannedCases": 145,
+      "plannedInvocations": 62,
+      "partialReceipt": "reviews/heavy-tethered-traverse-2026-11-10/native01-testing-partial.json",
+      "partialSha256": "187110000c46f8b997c06756e69706c9241ab76e5b191f1a9ee1dbd6bd72efe2",
+      "failures": [
+        {
+          "label": "worker-post-standard-loose",
+          "cases": 1,
+          "passed": false,
+          "startedAt": "2026-11-10T22:32:54.093Z",
+          "finishedAt": "2026-11-10T22:36:08.109Z",
+          "log": "reviews/heavy-tethered-traverse-2026-11-10/native01-testing-worker-post-standard-loose.log",
+          "logSha256": "3a560a1473e6d9b15dd0d2e58919875fea6880a1d5ace38c0ae177dd99ce955b"
+        },
+        {
+          "label": "room-post-standard-loose",
+          "cases": 1,
+          "passed": false,
+          "startedAt": "2026-11-10T22:35:06.742Z",
+          "finishedAt": "2026-11-10T22:38:12.606Z",
+          "log": "reviews/heavy-tethered-traverse-2026-11-10/native01-testing-room-post-standard-loose.log",
+          "logSha256": "eacee60d39fbc128c96e0a9296f659ceab6639e0d337aacb4bc4d71687573cf3"
+        }
+      ]
+    },
+    {
+      "audience": "public",
+      "finishedAt": "2026-11-10T22:38:25.995Z",
+      "passed": false,
+      "passedCases": 127,
+      "failedCases": 2,
+      "executedCases": 129,
+      "unexecutedCases": 16,
+      "invocations": 46,
+      "plannedCases": 145,
+      "plannedInvocations": 62,
+      "partialReceipt": "reviews/heavy-tethered-traverse-2026-11-10/native01-public-partial.json",
+      "partialSha256": "ee99841d6cf4d4f7e5c56543c855f64c17ad6863e5b0e588bcc22e4034160669",
+      "failures": [
+        {
+          "label": "worker-post-standard-loose",
+          "cases": 1,
+          "passed": false,
+          "startedAt": "2026-11-10T22:32:52.889Z",
+          "finishedAt": "2026-11-10T22:36:08.587Z",
+          "log": "reviews/heavy-tethered-traverse-2026-11-10/native01-public-worker-post-standard-loose.log",
+          "logSha256": "271cab1a7888d7ce00173217b1a622b01f7cda9635517526c4ac4930e080b1d8"
+        },
+        {
+          "label": "room-post-standard-loose",
+          "cases": 1,
+          "passed": false,
+          "startedAt": "2026-11-10T22:35:04.974Z",
+          "finishedAt": "2026-11-10T22:38:25.994Z",
+          "log": "reviews/heavy-tethered-traverse-2026-11-10/native01-public-room-post-standard-loose.log",
+          "logSha256": "5d0bd783c4b38ca08750b3512d5fbbf9244661e4f2b7c76735e0e76e8a621bf2"
+        }
+      ]
+    }
+  ],
+  "health": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5382/",
+      "endpoint": "http://127.0.0.1:2758",
+      "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+      "protocol": 73,
+      "healthAndPreviewBuildAgree": true
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5383/",
+      "endpoint": "http://127.0.0.1:2759",
+      "sourceCommit": "30fbfefaa66faabd93416dc31e27310149df5fed",
+      "protocol": 73,
+      "healthAndPreviewBuildAgree": true
+    }
+  ],
+  "rawExecutedHelpers": [
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/aggregate-natural32.mjs",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/aggregate-natural32.mjs",
+      "bytes": 10167,
+      "sha256": "161e04bf7a94c1e2c8036de024d34c59a0ad5062fb5c3005a3f0d6be0faf31d4",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/clutch-baseline18.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/clutch-baseline18.mts",
+      "bytes": 13248,
+      "sha256": "2c0a583839e2912abe12a20e95022c939c8bf0cb5ee7a4efd5bc697adbed4c7d",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/earned-menu-flow.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/earned-menu-flow.mts",
+      "bytes": 4902,
+      "sha256": "aeb44a4f7a7be94e48c8cafa4640a0d595745fc7168247c1397ec455ee8b2243",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/handling-baseline18.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/handling-baseline18.mts",
+      "bytes": 14797,
+      "sha256": "8cd7b0f07fe17f71aedcba1a31d5fc4c5eb57606a7b970b334d2d4e7dbb2f324",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/issued-baseline18.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/issued-baseline18.mts",
+      "bytes": 12111,
+      "sha256": "437ef29c94d8a935d4d3bdbb3ec191dc48d564a6935da279708d3584165c7f8f",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/linework-geometry27.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/linework-geometry27.mts",
+      "bytes": 6204,
+      "sha256": "0407d18fdda727d85eb86878bf2bdf14d3d7317cc245ba1f31866b8349bea091",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/native-helper-preflight28.json",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/native-helper-preflight28.json",
+      "bytes": 4711,
+      "sha256": "803cfc3c3c4d7d909f7676e5d57385c4d3edb1a44cd09246d906f6f950384720",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/native-helper-preflight29.json",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/native-helper-preflight29.json",
+      "bytes": 4711,
+      "sha256": "43151f478eafdfed11f778be852f178c2a3e66e29dd3c2aa45593ded7fef4bb0",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/native-probe01.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/native-probe01.mts",
+      "bytes": 9108,
+      "sha256": "b03ded42afbf16b315f5dfc88d8cd5c6fe5ec736585df06562e5ec24c59581c1",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/post-natural18.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/post-natural18.mts",
+      "bytes": 17340,
+      "sha256": "c1bf55f88cca808f80c16dacc74dc7020520d77051427243f92cc16ecad86737",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-clutch-flow.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-clutch-flow.mts",
+      "bytes": 5986,
+      "sha256": "08dac3151779983147b0ce68251af4da5502eb96a61ba68299411f6536b19802",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-clutch-menu.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-clutch-menu.mts",
+      "bytes": 4337,
+      "sha256": "4ecc7ad74ac473bef79731e921fe3c61c376f686e579b7ba1063482bf1d6c1a8",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-clutch-peer.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-clutch-peer.mts",
+      "bytes": 6395,
+      "sha256": "1efa264ed2c45f3351a1a72ad1283c1c3f2ed45ebc40d9d5291e525be5e8d4ec",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-clutch-worker.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-clutch-worker.mts",
+      "bytes": 5436,
+      "sha256": "e56bf21f1ee34a52574cd9283a4a6f33d29dd5cbcadca29f9fed2fda44611da2",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-seam-earned-menu.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-seam-earned-menu.mts",
+      "bytes": 3769,
+      "sha256": "2c14662a0f2e4d4c7562e286cbfb590f834b6f48cbe8d9ef9d35d509b78cbcb8",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-seam-flow.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-seam-flow.mts",
+      "bytes": 9749,
+      "sha256": "4f361b7419d6a6ac278d7ac7f591245d8159ec29acc6af865dae265c1ce89061",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-seam-peer.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-seam-peer.mts",
+      "bytes": 7854,
+      "sha256": "13af9c56bac223965a9edac63275b05852ba6d09ac910588034e367bbb4bfefb",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-seam-worker.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-seam-worker.mts",
+      "bytes": 5090,
+      "sha256": "86e2eee88df206b466f71a44e1d28b12d33db39663170955d4aede4a2494a87b",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-flow.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-flow.mts",
+      "bytes": 7364,
+      "sha256": "eeaa087960ad5e4b60ac4098c67c4a12216c8dba9298f738a5eef3c823667b78",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-flow04.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-flow04.mts",
+      "bytes": 7542,
+      "sha256": "32f2bc9f58505ba4b25e038d97a6c067dbe98e4c0c1dd3aee22dac7111650ab1",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-flow05.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-flow05.mts",
+      "bytes": 7699,
+      "sha256": "45e2d103135a3b1b4eb4083caf69f70ab98efc726d9ca3cecf01ebe8cdc7fd0e",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-menu.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-menu.mts",
+      "bytes": 3992,
+      "sha256": "206819d1bf144714b741630e6d6f54a120d781b5d91fe2630cca07a785003284",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-peer.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-peer.mts",
+      "bytes": 6192,
+      "sha256": "e4fd9080623ab3e41857da15fedab3ad3035479dd34bbb5b387bdb03d3efcb1d",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-peer04.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-peer04.mts",
+      "bytes": 6194,
+      "sha256": "f0cf5ca3b6389aa867398685fcd9be2af04e0cba4d17a4b62ba992759333eb26",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-peer05.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-peer05.mts",
+      "bytes": 6194,
+      "sha256": "159959d5c6f536734cddeda22d7a35e56ff6c2fb0408ff21ceabc0961f33d9dc",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-worker.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-worker.mts",
+      "bytes": 5366,
+      "sha256": "fb4fecdc29bfe822d96194c1193c0a667589bb9b4659f472aeb38b958dbe4905",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-worker04.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-worker04.mts",
+      "bytes": 5368,
+      "sha256": "8a21f02b252151dc2415e74b16f26c301d2dd752f5f13509ac1e76a6f9d67473",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/retained-traverse-worker05.mts",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/retained-traverse-worker05.mts",
+      "bytes": 5368,
+      "sha256": "e07bf32b09865dad1187c42095f94b7ba9e473665a5d4bb721da7ae82c77dccb",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same/work/heavy-tethered-traverse-stage/run-reviews01.mjs",
+      "reviewPath": "reviews/heavy-tethered-traverse-2026-11-10/executed-helper-evidence/run-reviews01.mjs",
+      "bytes": 4079,
+      "sha256": "546620cce60ddb616e3ee3f1f308717fa763ea79e3ec9346b1ecbb17082c234f",
+      "rawBytesExact": true
+    }
+  ],
+  "cleanupEvidence": [
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\handoff-2026-11-10-stage/cleanup-plan01.json",
+      "reviewPath": "reviews/handoff-2026-11-10-tethered/cleanup-plan01.json",
+      "bytes": 462453,
+      "sha256": "6e40f3fab7c3c980ca8927b5a222f2ad82c832df78565784cfa2d15ca8c1d76f",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\handoff-2026-11-10-stage/cleanup-result01.json",
+      "reviewPath": "reviews/handoff-2026-11-10-tethered/cleanup-result01.json",
+      "bytes": 904,
+      "sha256": "2df2dbf06223024ca663e3024a9e3b3b88496c0e100d56ddde6f952ae9cff83b",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\handoff-2026-11-10-stage/archive-verified01.json",
+      "reviewPath": "reviews/handoff-2026-11-10-tethered/archive-verified01.json",
+      "bytes": 412,
+      "sha256": "dba13f69e7ae5af84a8d235d4b8768929e3e968bf34b20d929d3e558492e5702",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\handoff-2026-11-10-stage/cleanup-preparation-stop01.json",
+      "reviewPath": "reviews/handoff-2026-11-10-tethered/cleanup-preparation-stop01.json",
+      "bytes": 279,
+      "sha256": "42b45f7cb7f10d4234cfa1152b2b35d9ddb2652269cd3f405ce37c372338c3c1",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\handoff-2026-11-10-stage/process-observation01.json",
+      "reviewPath": "reviews/handoff-2026-11-10-tethered/process-observation01.json",
+      "bytes": 75775,
+      "sha256": "d05ef98cf95244bb6febeddd951a56e8dee7299063887c09cc517e87c42243fe",
+      "rawBytesExact": true
+    },
+    {
+      "sourcePath": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\handoff-2026-11-10-stage/remote-before01.json",
+      "reviewPath": "reviews/handoff-2026-11-10-tethered/remote-before01.json",
+      "bytes": 14216,
+      "sha256": "70cc3a45ea2bfc2cdde96a717d207cc4a0d29b6659bb00ea05f79fcd6ab54c84",
+      "rawBytesExact": true
+    }
+  ],
+  "privateSQLiteUploaded": false,
+  "processCleanup": false,
+  "limits": "This validates preservation and reports a known failed native matrix. It is not a complete frozen review acceptance or class/game completion."
+}

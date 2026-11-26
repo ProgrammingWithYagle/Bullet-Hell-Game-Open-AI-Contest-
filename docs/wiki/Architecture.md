@@ -1,12 +1,111 @@
 # Architecture
 
-TypeScript, Phaser, Vite, Colyseus and Electron. Shared authoritative simulation rules support online and offline play. 30 Hz simulation, initially 20 Hz state patches, independent rendering. Predict movement and reconcile; validate all economy and combat on the server.
+The shared deterministic simulation runs at 30 Hz. Phaser presents its state; menus and HUD use a DOM overlay. Offline play hosts the same authority in a worker. Online play uses Colyseus rooms and a server-owned simulation, with client movement prediction and reconciliation.
 
-| Interface | Contract |
-| --- | --- |
-| RoomSettings | mode, difficulty, visibility, seed, contentRevision, protocolVersion. Route is represented by the selected campaign mode. |
-| PublicRoomSummary | public room ID, name, mode, difficulty, connected players, maximum players, phase and capacity state. Never a private code, checkpoint signature or reconnect token. |
-| InputFrame | sequence, client tick, normalized movement, aim angle, fire, reload, dodge, Q/E, ultimate and interact actions. Reject non-finite, oversized, stale and rate-exceeding inputs. |
-| ContentCatalog | Versioned definitions for classes, abilities, weapons, upgrades, supplies, skills, bosses, attacks, difficulties, mutations, modes and arenas. |
-| ProfileV1 | Locale, controls, display/audio/accessibility settings, mastery, cosmetics, lore, difficulty unlocks and local best streaks. No purchased online power. |
-| CheckpointV1 | Room ID, intermission sequence, seed, mode, difficulty, roster/builds, earned rewards, mutation lifetimes, recovery credentials, issue/expiry times, protocol/content revisions and HMAC signature. Never broadcast the signing key. |
+**Current runtime protocol: 24.** The immutable authored content revision is `27c4b2e298912b53f88b115654857f923966aeccdb80b730e449536a2045ef27`. The content bible's historical protocol field is not the live transport protocol; `src/shared/protocol.ts` owns that value.
+
+- Gameplay validates inputs, purchases, skill prerequisites, votes, rewards, collisions and boss transitions at the authority.
+- Projectile batches reuse weak-point/solid geometry with immediate refresh after destructive hits. Construct broad phases preserve rotated-wall contact and shield order; live Walking District buildings receive friendly weapon damage and block hostile shots.
+- Compact projectile waves and actor field patches retain exact gameplay values. Shared geometry handles swept shots and body contacts.
+- Class kits, minions and the civic/service boss directors keep rules separate from presentation. Prediction shares map geometry and environmental forces.
+- All six maps use one camera space with different traversable footprints. The same source feeds server collision, prediction and map previews.
+- JSON boundary saves retain run state. Local protocol-4 through protocol-23 saves have explicitly bounded migrations. Online clients and signed saves require the current protocol.
+- Original image returns, exact requests, references and superseded attempts remain preserved; technical normalization does not invent animation frames.
+- Local ProfileV1 receipts record personal deployment/clears/rescues with opaque run IDs. Monotonic high-water counts prevent duplicate mastery across patches/restores; profile values never supply combat power. [Profiles](Profiles).
+- One structured update history drives the in-game journal and both Markdown changelogs. Tests reject stale published source text or playable-content counts.
+
+## Verification
+
+`pnpm verify` checks authored content and fifteen locale catalogs, TypeScript, headless rules and real-network integration, then builds the production client. `reviews/runtime-verification.json` records the exact source snapshot hash and emitted build artifacts. Art/audio audits and Wiki publication evidence are separate reports.
+
+Passing automated checks does not imply full rendered FPS, human playtest, device, WAN, restart recovery, native-language or release acceptance. [Hosting and Recovery](Hosting-and-Recovery) records operational limits.
+
+[Shared authority](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/game.ts) · [Live protocol](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/src/shared/protocol.ts) · [Latest full verification](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/runtime-verification.json)
+
+[Latest balance, collision and local throughput evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BALANCE_AND_COLLISION_RUNTIME.md): the earlier 382-test pipeline, 210 progression combinations and 1,740 health/deadline deployments. Longer local 50-client Moths/Walking District and 16-client City Eater probes keep stress p99 below 25 ms; occasional slower ticks remain. Zero rendered clients means this is not final capacity acceptance.
+
+## One-hour local combat observation
+
+![One hour of actual simulation tick and process heap measurements for fifty scripted clients](https://raw.githubusercontent.com/wiki/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/images/endurance-50-clients.jpg)
+
+Fifty active SDK clients and 4,000 maintained hostile projectiles: 21.41 ms p99, 112.11 ms worst, 236 ticks over 33.33 ms. The graph uses actual frozen-source measurements, with zero rendered clients and invulnerable fixture players. It is separate from hosted/WAN capacity, normal progression and rendered acceptance. [Exact scope, source and raw evidence](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ONE_HOUR_ENDURANCE.md).
+
+## Survivor animation between patches
+
+Survivor runs and action frames use a drawing clock with at most 50 ms of lead beyond the latest authoritative snapshot. Duplicate patches do not restart it, missing patches hold at the bound, and run/encounter/phase or backward-clock boundaries reset it. It changes sprite frames only. Tank Rescue Charge uses its existing ten-tick duration; ordinary dodge retains its seven-tick interval. A sixty-Hz software fixture fed twenty-Hz authority patches reproduces all six dodge frames. [Regression evidence and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SURVIVOR_MOTION_TIMING.md).
+
+## Survivor texture delivery
+
+The 168 survivor action/run atlases use technical runtime-sized copies with the same 820 poses, speed, display size and foot origin. Two-times display density is retained wherever the original supplies it. Exact image dimensions imply 211.09 MiB decoded RGBA instead of 462.88 MiB, and PNG transfers fall from 30,042,299 to 15,225,408 bytes. Original production/natives stay intact; the four excluded Engineer north frames remain excluded. These are storage estimates, not measured GPU/driver memory or FPS. [Policy, reconstruction and comparisons](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/SURVIVOR_TEXTURE_DELIVERY.md).
+
+## Boss texture lifecycle
+
+Eight shared actor atlases stay preloaded. The other 57 bosses have exact first-frame identity references ready at startup, and their full animation atlases load only for the current replicated encounter. A two-entry cache reserves space before each load, coalesces rapid switches and releases stale completions. Failures use the same boss identity and retry after five seconds. Live sprites release an old texture before it is destroyed; scene shutdown cancels listeners and clears the cache. This encounter-set estimate falls from 292.5 MiB decoded RGBA to 68.06 MiB at startup or at most 77.06 MiB with two full atlases retained. It is separate from total scene/driver memory, network-delay/device and rendered-FPS acceptance. [Exact policy and tests](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_TEXTURE_LOADING.md).
+
+## Constable action states
+
+Five motion states now use replicated cast, stagger, hurt and defeat clocks. The original eight-frame attack remains unchanged, but anticipation stretches until actual release instead of finishing early. Bounded drawing lead stays within that observed state. Hurt cannot replace a cast or stagger; defeat advances once on world time through rewards/votes and holds the settled pose. Reduced motion preserves readable authority states. Four new whole sheets add nineteen intact poses; independent RGBA reconstruction and real normal/Brutal/Accord/reward regressions remain separate from rendered acceptance. [Motion contract and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/CONSTABLE_MOTION.md).
+
+## Arena material layers
+
+All six maps bind ground textures to their existing exact playable bounds. Five new opaque paintings replace plain fills/grid lines; the original Gatehouse stays intact. A backdrop at depth -2 sits below material images at -1, while actual cover props/outlines, hazards and actors stay above. Setup previews combine the same material with the existing geometry. Full native returns and exact requests are preserved, and independent reconstruction verifies every delivered pixel. The five new floors imply 24.39 MiB decoded RGBA, separate from actual GPU/device budgets. [Ground artwork and scope](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/ARENA_GROUND_ART.md).
+
+## Opening boss defeat frames
+
+Seven current atlases retain their original eight live cells and append eight collapse cells. Authoritative defeat records select frames 8–15 once on world time, hold the final pose through reward/vote phases, and cannot create another reward. Reduced motion uses the settled pose. The cache remains two complete atlases with one load in flight; seven exact settled images supplement the 57 first-frame identities for load/retry and safe eviction. The current encounter-set estimate is 72.40625 MiB startup and at most 93.65625 MiB retained, separate from other textures, actual GPU memory and device/FPS acceptance. [Contract and current arithmetic](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/OPENING_BOSS_DEFEATS.md).
+
+Survivor visual motion uses observed-position continuity with a 100-ms stop bound and ten-degree facing hysteresis; one-shot attack/hurt facing stays at onset. Input/authority are unchanged. Current encounter-only static crops plus shared/two full atlas subtotal is 76.81033 MiB by PNG dimensions; every crop reconstructs the old cell and preserves world geometry. Device FPS remains unverified.
+
+Protocol 14 introduces explicit fixed boss classifications and subtier-bearing concealed cards; card-position risk is zero. Local protocol-13 Practice boundaries migrate while preserving progress/run identity. Boss grade drives health, pressure and bounty; base income remains separate from earned bounty premiums. Online signatures and version gates remain strict.
+
+Early Watch adds a separate shared director and a bounded wind helper used by both authority and prediction. Current test totals and exact source hashes are in the [Early Watch receipt](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/reviews/early-watch-integration-2026-10-25/runtime.json).
+
+Authority and prediction share difficulty-specific static geometry. Hellish lava and bounded Brutal repeat-volley warnings replicate with the existing cue stream. All revival sources and Hellish form enforcement share authority policies; clients cannot bypass them through a form choice or supply input. [Current rules](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/DIFFICULTY_AND_PHASES.md).
+
+## Class ability transformations
+
+The seven requested class-upgrade implementation passes now add 21 behavior changes at existing utility-path depth-three nodes (six cumulative SP each). Costs, prerequisites, node IDs and the single-capstone rule remain. Both skill views show fifteen-locale help. Shared authority, finite constructs, delayed attacks and moving fields replicate to offline/online clients. [Class behavior and tradeoffs](Classes-and-Skills#purchased-ability-transformations). Protocol 18 migrates known issued protocol-17 local saves/profiles; online remains strict. Latest Baby/Easy/Normal assistance and Hellish rules remain intact. Human/rendered/device/native-language acceptance remains open.
+
+## Protocol 21 form and geometry follow-up
+
+Shared authority owns Crazed admission, rational projectile budgets, controlled-shot density, warned swept-contact form pressure and cleanup. Insane/Hellish override form in all entry/offer/secret paths. Per-identity cleared form history survives offline and authoritative boundaries. Known issued protocol 20 local revisions migrate; online/signed envelopes remain strict. Four uniform world transforms reduce actual map bounds while preserving issued native ground pixels. Phaser reads the same bounds/cues and adapts purple treatment and the structured DOM nameplate.
+
+Courier Return Address plans each new charge from its actual previous stop, locks a complete warning and uses the same swept body/trail geometry at the authority and renderer. Phase names/help share fifteen-locale sources. Protocol21 Practice migration retains actual completed form history; it does not downgrade Crazed/Brutal clears.
+
+Protocol 27 adds replicated poison expiry for shared prediction/presentation. Clerk source authority owns once-per-seal purple hit budgets and seeded locked green numbers. Poison clocks are finite, nonstacking, cleansable, respect existing damage protection, and clear at downing/encounter exits. Shelter duration includes maximum variant echo delay, actual fan speed/distance and a half-second exit margin; it is separate from hazard expiry. Known issued protocol 26 local saves/profiles migrate; online and signed state stays strict.
+
+Protocol 28 adds locked clipped Marshal sweep polygons and source-owned advanced barb queues. A local guide/manual-pause composition freezes the Solo worker and Scene separately from the online world; neutral input and reset accumulator prevent resumed catchup/held fire. Known protocol 27 local Practice/profile state migrates; online and signed boundaries remain strict.
+
+## Build audience and optional room chat
+
+A compile-time audience constant reaches client and Solo worker. Public new-run settings ignore chosen openers; the public room server rejects explicit opening injection. Testing coin/SP editing is Solo-only and marks runs modified, disabling their boundary save/local records. Server-assigned chat identity, subscriber-only delivery, bounded plain text/history and per-sender limits are separate from currency authority. [Exact build and protocol policy](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/TESTING_AND_PUBLIC_BUILDS.md).
+
+Last Dispatch keeps vehicle patrol, fixed roads, relative swept contact, serial stops and controlled door emissions in shared authority; the client draws those clocks/paths and existing poses. The generic charge slot is excluded for this dedicated controller, preventing phantom casts from blocking later cycles. Full offset bounds and physical body width constrain route search and rays.
+
+Cradle Relay keeps escort routes, nests, brood clocks, gapped radial sweeps and controlled needle waves in shared authority. Only Matron encounters opt ordinary actors into the existing bounded corner navigator; transport and checkpoint actor schemas remain unchanged. The generic summon slot is excluded, and phase/assistance/stagger cancellation owns its pending work. Known issued local protocol-30 content migrates strictly to protocol 31. Phaser draws authoritative clocks and geometry with existing poses.
+
+Reagent Road owns Alchemist movement, culture clocks, shared floor-contact budgets, actual active slow, relative swept reaction contact, draining and controlled vial emission in shared authority. Position copies take x/y only, retaining numeric cue identities. Client prediction uses the same pool slow; Phaser draws the same locked path/clocks and existing poses. Only exact issued local protocol-31 content migrates to 32; online/signed boundaries remain strict.
+
+Alchemist laboratory owns serializable flask, reagent, vapor, vessel, reaction and walk cues. Shared authority applies actual neutralization/cooling/catalyst outcomes and relative vapor contact; prediction shares harmful-pool slow. Phaser draws those exact states and uses eight new gait poses. Alchemist suppresses generic auxiliary bullets/common variant laser pressure; all other boss behavior stays. [Theme-first encounter criteria](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/BOSS_ENCOUNTER_DESIGN.md) guide future quality work.
+
+Bellringer owns explicit warning/travel/quiet/rewarn states, connected procession paths and responding-bell links. Pure shared ring contact retains its previous service behavior. The scene reads those cues and the exact selected sixteen-frame atlas; gameplay and collision stay outside Phaser. Committed acoustic work retains its issuing phase through phase entry. Explicit stagger, earned assistance success and encounter exit still interrupt it.
+
+Counterpoint supersedes Bellringer’s exclusive quiet/response scheduling with a bounded score queue, locked clapper sectors and concurrently active primary/reply fronts. Its approach planner targets survivor range. Clear-floor opening and swept-sector authority remain outside Phaser. Protocol36 subsequently implemented committed-attack phase continuity; issued scores now keep their original children and release clocks.
+
+## Committed attacks across phase changes
+
+Development build **2026.10.28-unbroken-attacks / protocol36** keeps already warned or released attacks alive through phase entry on every difficulty. Custom owners retain the issuing phase for their children; weak points, terrain and summons stay authoritative. Fresh casts wait through the shared1.5-second grace or optional Baby/Easy assistance. Completing that channel still earns an interruption; natural expiry, genuine weak-point breaks and encounter cleanup remain. Software evidence and human/rendered balance acceptance are separate.
+
+At the protocol-36 checkpoint, human5206 found Bellringer pressure sufficient and possibly too high for Standard. The requested calibration and distinct Brutal mechanic are implemented by protocol37 below. Stronger themed Alchemist Crazed and the requested shared General mobility branch (Double Dash/Sprint) are also pending. Roster66, ordinary deficit85 and quality12/60 with48remaining stay unchanged. The full game remains unfinished.
+
+## Bellringer: Returning Clapper (protocol 37)
+
+Development build **2026.10.28-returning-clapper** eases Standard with a 46-degree gap, 1.05-second beat spacing and 260-unit primary clapper reach. Brutal adds one physical chained-clapper throw per primary score: a full 1.3-second outbound warning, landing, then a fresh 1.2-second return warning. The thin tether is harmless; only the travelling head hurts, once per leg. During the return warning, shoot the white cracked head (45 health) to stop its return or leave the return lane. Crazed inherits a 65-health head and retains its simultaneous responding bell. Issued throws and returns persist through phase entry. Fixed grade3-, base combat, all art and music remain.
+
+The complete-score probe covers408cases/128708ticks/336throws/10350return-and-peal overlap ticks, with no generic hostile projectiles. Actual projectile breaks, owner/observer replication, strict issued-36 local migration and current phase-continuity/full-suite checks are separate from rendered/human/final balance acceptance. Roster66/ordinary deficit85/quality12of60/48remaining stay unchanged. At protocol37, Alchemist Crazed and the General mobility branch were pending. Protocol38 below implements the Alchemist follow-up; the earned-SP General branch (Double Dash/Sprint) is still pending. [Exact mechanics and limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/RETURNING_CLAPPER.md).
+
+## Crazed Alchemist: Volatile Distillation (protocol 38)
+
+Build **2026.10.28-volatile-distillation** adds Crazed-only conical columns while the original recipes continue. PhaseI has one fixed two-cloud lane;II re-aims three clouds;III has two staggered columns with two each;IV has three each, ending in inward reflux. Each full route warns1.8seconds. Aerosols pass above masonry, hit once per cloud and slow movement to0.7while inside. Mix coolant beside a column to stop future and still-pending releases. Already emitted clouds continue until expiry or coolant contact, which condenses them and spends the coolant after0.9seconds of grace. Columns cannot be shot.
+
+Normal/Brutal chemistry, base combat, fixed3--grade, selected art and individual music remain. A240-case issued/current owner comparison checks unaffected movement, cues, clocks and damage. Separate actual-Game map/phase, real recipe/health/prediction and owner/observer tests exercise the new chemistry. Current full-suite/CI and exact-runtime evidence are recorded with the checkpoint; software samples are not human clears or final balance. Roster66/ordinary deficit85/original quality12of60/48remaining stay unchanged. The shared earned-SP General mobility branch remains pending. [Mechanics and limits](https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/blob/feat/first-playable-loop/docs/VOLATILE_DISTILLATION.md).

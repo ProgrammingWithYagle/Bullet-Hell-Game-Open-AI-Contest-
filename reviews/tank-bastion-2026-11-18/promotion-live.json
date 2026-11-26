@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-19T00:02:44.5506749Z",
+  "stage": "after",
+  "currentScope": "reviews/tank-bastion-2026-11-18",
+  "rollbackScope": "reviews/tank-interceptor-2026-11-17",
+  "rollbackSha256": "833a8caae9cb96a416e001c35b1c1556f8e254bae5c6093c7088905f67b18988",
+  "previews": [
+    {
+      "scope": "reviews/tank-bastion-2026-11-18",
+      "audience": "testing",
+      "source": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 3692,
+          "port": 5402,
+          "processUtc": "2026-11-18T16:21:29.8649910Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-tank-bastion-2026-11-18-testing-83bc919 --host 127.0.0.1 --port 5402 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 43256,
+          "port": 2778,
+          "processUtc": "2026-11-18T16:21:29.8457870Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-tank-bastion-2026-11-18-83bc919.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-18T16:21:30.741Z",
+        "uptimeSeconds": 27666.8734469,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 79,
+        "contentRevision": "d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/tank-bastion-2026-11-18",
+      "audience": "public",
+      "source": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 2480,
+          "port": 5403,
+          "processUtc": "2026-11-18T16:21:31.3508650Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-tank-bastion-2026-11-18-public-83bc919 --host 127.0.0.1 --port 5403 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 46276,
+          "port": 2779,
+          "processUtc": "2026-11-18T16:21:31.3350040Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-tank-bastion-2026-11-18-83bc919.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-18T16:21:31.911Z",
+        "uptimeSeconds": 27667.7705636,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 79,
+        "contentRevision": "d784e4ab3aab24a08c50ca8d1bb8b63cb18c2bfea3337ae5818beb6bd144ece0",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/tank-interceptor-2026-11-17",
+      "audience": "testing",
+      "source": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5400,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2776,
+          "retired": true
+        }
+      ],
+      "health": null
+    },
+    {
+      "scope": "reviews/tank-interceptor-2026-11-17",
+      "audience": "public",
+      "source": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5401,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2777,
+          "retired": true
+        }
+      ],
+      "health": null
+    }
+  ]
+}

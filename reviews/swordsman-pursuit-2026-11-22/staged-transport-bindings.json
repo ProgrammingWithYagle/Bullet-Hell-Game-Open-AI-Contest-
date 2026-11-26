@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "protocol": 98,
+  "revision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+  "driver": "3181f2a6515413fea0290aaff78acfb041374095db2d1ac7eb546c235e1b66b7",
+  "worker": "a4829bc1dc7c93d199c87588092befcd239d7fe3e8cef7cb9f9f4fbff3646114",
+  "bundle": "native-bundle01",
+  "attempt": "native01",
+  "cases": [
+    {
+      "path": "native01-worker-entry.json",
+      "sha256": "8bdfbf272243db91a6e1962f797fbbc3c8238aabdd978d5f72c012516d0988d6",
+      "logSha256": "24a3cd2bf24bd330494a52fcf447970fa12e01f29872ed9da802eff7bae45d1a",
+      "transport": "worker",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "firstId": 11,
+      "releaseId": 11,
+      "firstStride": 54,
+      "releaseStride": 54,
+      "actualHits": [
+        {
+          "id": "boss/constable",
+          "before": 1944.0000000000002,
+          "after": 1832.0000000000002
+        }
+      ]
+    },
+    {
+      "path": "native01-worker-through.json",
+      "sha256": "62baa9686318402bbd7587efce38771c8cf580e4f1fc9cfaecfcbc1d7da255d7",
+      "logSha256": "3fb1e1b8bb8346d1784765ed569439edf6e0bc831517b2eeaeb440b3994ab1dc",
+      "transport": "worker",
+      "fitting": "through",
+      "boss": "matron",
+      "firstClear": 1,
+      "firstId": 268,
+      "openingId": 269,
+      "releaseId": 271,
+      "angle": 0,
+      "firstStride": 54,
+      "releaseStride": 32,
+      "actualHits": [
+        {
+          "id": "boss/matron",
+          "before": 2978.08,
+          "after": 2858.08
+        }
+      ]
+    },
+    {
+      "path": "native01-worker-cross.json",
+      "sha256": "d6eff09fa1d4f2d8c62d28ddd469882ad83f5eb421f9441e9c34dc7e25609b61",
+      "logSha256": "2bc33ed5c4d12128aa4abaa327b254587e090700b0562ee1723ba431e389a4c7",
+      "transport": "worker",
+      "fitting": "cross",
+      "boss": "matron",
+      "firstClear": 1,
+      "firstId": 266,
+      "openingId": 267,
+      "releaseId": 268,
+      "angle": 1.139999999999999,
+      "firstStride": 54,
+      "releaseStride": 32,
+      "actualHits": [
+        {
+          "id": "boss/matron",
+          "before": 3044.2,
+          "after": 2951.7
+        }
+      ]
+    },
+    {
+      "path": "native01-peer-entry.json",
+      "sha256": "1491632ce8bef13809607c405cf615b888aea64b2d89c36fd0d2daf53674e774",
+      "logSha256": "27c13c1775cc0ac427a8754d12e992953dba36eddd6be1e0e6d10ea84c63bb5f",
+      "transport": "peer",
+      "fitting": "entry",
+      "boss": "constable",
+      "firstClear": 0,
+      "firstId": 11,
+      "releaseId": 11,
+      "firstStride": 54,
+      "releaseStride": 54,
+      "actualHits": [
+        {
+          "id": "boss/constable",
+          "before": 3304.800048828125,
+          "after": 3192.800048828125
+        }
+      ]
+    },
+    {
+      "path": "native01-peer-through.json",
+      "sha256": "4a9dbf3c2a0900628dd74a3c57bcb1211ec66c311ea2f284e9585224fcddb179",
+      "logSha256": "33743e3dad67c93874f30f4eadb45dee72ded57b62fefba174e4314008a129c2",
+      "transport": "peer",
+      "fitting": "through",
+      "boss": "matron",
+      "firstClear": 1,
+      "firstId": 292,
+      "openingId": 293,
+      "releaseId": 294,
+      "angle": 0,
+      "firstStride": 54,
+      "releaseStride": 32,
+      "actualHits": [
+        {
+          "id": "boss/matron",
+          "before": 5301.14013671875,
+          "after": 5205.14013671875
+        }
+      ]
+    },
+    {
+      "path": "native01-peer-cross.json",
+      "sha256": "7810bc391d9f6d9fa48abe10bfc162058acd4219eec9d2356602e67f588139fd",
+      "logSha256": "c3729c5f29aacf96c3e3b2cc0dd3f5495519bde66f6591408129bf0e6e969bfa",
+      "transport": "peer",
+      "fitting": "cross",
+      "boss": "matron",
+      "firstClear": 1,
+      "firstId": 382,
+      "openingId": 383,
+      "releaseId": 384,
+      "angle": 1.5707963267948966,
+      "firstStride": 54,
+      "releaseStride": 32,
+      "actualHits": [
+        {
+          "id": "boss/matron",
+          "before": 5301.14013671875,
+          "after": 5227.14013671875
+        }
+      ]
+    }
+  ],
+  "inputs": {
+    "src/shared/protocol.ts": "e5335b664d169ab59c055e37da471c8d08fc5389fdd45c2e429f9b84727e328e",
+    "src/shared/game.ts": "952d2f058c958611db2329ea080ed1035946790097e0823e0b81aceb26337cfd",
+    "src/shared/view.ts": "141308e8d659c8f17d4ddd116ebaea65a7b5347ddac69e9c05947ab33318c1fc",
+    "content/revision.json": "c94d98aa6e698ba4b0e2a097c3f4e110aeadf926a439afb820e560d5eee12d4e",
+    "content/catalog.json": "0b793cd375ad33c817ed3be620812709c977fde7ff7b5f819fab0b6fdf628df3",
+    "src/shared/swordsman-pursuit.ts": "c58d0dc08b8b456bd0cef702140863b71c8165e035dc893896f2ade3d4ea9561",
+    "src/shared/swordsman-measured.ts": "668d3d13a878b5ffeffee9fdcb09f1b099c950aa293208c1756988d67ef1fa41",
+    "src/shared/bard-kit.ts": "d9e7c91896b5304d6d5a7c92ecf2394d636290226d1a0e79d9d0bbee5b53cfbc",
+    "src/shared/swordsman-counterstroke.ts": "98de832457bbdf97421b205efe8222418dee641892870c0cd3a8df0fe83da406",
+    "src/shared/bard-misdirection.ts": "0ff45672bc4724f0aeef4636cf089955e597a53004951e68b661e06fe2af86ee",
+    "src/shared/bard-lament.ts": "36c7e1057f03217a510e61c54633f4f31b33e5db7934e2e5791dc4b92d5b588f",
+    "src/shared/swordsman-kit.ts": "b4fe844113b3a6acb9681575d9cfb202431ea3ccfce60f2b930fe441d58f459e",
+    "src/shared/class-kits.ts": "3d5007a78a14660cb2a9f348fca389d2a168f33c70ed09d2b1a27bb910fca307",
+    "src/shared/practice-migration.ts": "74dd059c25eeafcb0c5fc187671ed2ef1fe8660e23ecc57f5d98a5fe8397d8cc",
+    "src/shared/minions.ts": "dc27deb09ed7e48de5e6e8faa137dd0bacc5184937b9e2ab298a0114fe9cc9c3",
+    "src/shared/skill-conflicts.ts": "04fd77aa1fe4c20e8c60644579328436a4f10adea00a51de103bbaa987f30898",
+    "src/server/GraveRoom.ts": "8024b48393b045359033e98f3960a98248919a52f035d5d4257cf6bb52b6ea99",
+    "src/client/profile.ts": "321bd921548a02d8251eaf289a70f4a709ba79d0f958d08813a19dab2a5bbc5d",
+    "src/client/progress.ts": "c267daf27a22cd0058e50eabcca5899d43f1915fad67620efc568fb5a51002dd"
+  },
+  "helpers": {
+    "native-pursuit-flow.mts": "c37c1f9a36d90d50ddb624ebf22e5bfcfab9b2bc1350361878b80b888b0bec0f",
+    "pursuit-pilot.mjs": "aca3150ae5417e8365b3787b8ffc4b8f8f283bad69d389ba0b0840e0ad68bde7",
+    "../swordsman-measured/measured-pilot.mjs": "fdf61799672579ebf0b3784c2235aba4ce38903099ae194a3338b77df677fa49",
+    "../assassin-mark-hunter/native-writ-navigation.mjs": "d218e31f2217b9a445c8d77414501d91f432b9f06a28f28c4da1d90b5f276dec"
+  }
+}

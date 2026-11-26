@@ -1,0 +1,114 @@
+✔ The specialization graph contains only real techniques, their General reference and the shared Q exclusion (2.1443ms)
+✔ Graph arrows follow authored positions and normal Tab can leave the graph without purchasing (3.2019ms)
+✖ Both General views lead to the actual prerequisite purchase, then the distinct Engineer tab spends once and rejects its conflicting Q (361.3308ms)
+✔ Campaign training and archived SP Story do not expose the Free Play specialization tab or numerical purchases (182.7327ms)
+✔ Real peers buy contrasting pathways with owned spending; a late observer receives the current charge and bracing machine (747.8975ms)
+✔ Both tree views inspect the same Engineer pathways, explain conflicts, preserve keyboard buttons and gate actual purchases (430.089ms)
+✔ The Engineer pilot adds two early behavioral choices, preserves every foundation and spends the existing three-SP start (15.4064ms)
+✔ Trap conflicts are symmetric and leave old paired-turret builds available for the machinery choice (0.2669ms)
+✔ A charge arms, gives its full committed fuse, damages and slows a real ordinary body exactly once, and credits only its owner (20.7326ms)
+✔ Charge capacity and invalid whole-body ground reject without spending a cooldown or replacing another owner’s charges (4.9813ms)
+✔ Charges expire unfired and owner death, disconnect, phase boundaries and pause cancel or suspend pending work (85.4153ms)
+✔ Committed blasts respect cover and bosses take damage without having their attack clocks slowed (1.8398ms)
+✔ A Carriage Sentry relocates at its bounded speed, braces without banking shots, and shoots only clear nearby targets (3.546ms)
+✔ Issued local saves and profiles preserve identities and proofs, reject invented new skills and never become online authority (13.1874ms)
+✔ Current Free Play boundaries restore a purchased pathway but reject dual pathways, conflicts and Campaign injection (4.8666ms)
+✔ English pilot labels have complete catalog parity and keep their mechanical inspection copy (35.969ms)
+✔ Bracing sentries retain Crossfire Pair and siege overclock while charge repeats and owner loss cannot replay a committed blast (2.485ms)
+✔ All fixed maps and difficulties admit the new placement rules only outside complete cover and lava footprints (57.4518ms)
+✔ Stationary sentries keep firing through aim sweeps at every deployment heading, including Crossfire Pair (20.2963ms)
+✔ Moving sentries preserve their formation, respect relocation speed and rebrace after movement while aim keeps changing (2.3867ms)
+✖ The issued protocol-49 boundaries preserve every class and owned Engineer choice locally, without online authority (4.7879ms)
+✔ switching equipment tabs retains focus on the current selected tab (353.966ms)
+✔ switching skill branches retains focus and old detached tab handlers cannot redraw the panel (186.7895ms)
+✔ arrow, Home and End keys navigate shop tabs, including mirrored horizontal direction (191.6741ms)
+✔ disposed equipment ignores old connected controls and cannot submit a purchase (173.6327ms)
+✔ purchase errors remain in the current equipment status and clear on a fresh item choice (180.6874ms)
+✔ a prerequisite link focuses its actual skill without resetting the skill scroll (220.4229ms)
+✔ hidden or inert equipment cannot spend currency and a disposed result cannot alter a newer panel (175.3519ms)
+✔ empty equipment and skill details show their own painted image while currency keeps text labels (194.8347ms)
+✔ player resources use the same painted coins and manual without removing accessible labels or values (14.7711ms)
+✔ General purchases use existing earned SP for all twelve classes without adding class nodes or granting free build points (12.8725ms)
+✔ Double Dash recharges serially, preserves the original cooldown, cannot overlap a dash or create extra invulnerability (32.6752ms)
+✔ Sprint has bounded stamina, exhaustion hysteresis and delayed recovery; ordinary combat actions and locked purchases cannot sprint (0.3785ms)
+✔ movement authority and prediction agree across all classes and maps, including Hellish, terrain slows, Sprint and two dash charges (3193.043ms)
+✔ current and known old local saves preserve builds/economy; old online revisions stay strict and new input requires Sprint boolean (27.1112ms)
+✔ old custom controls gain unused Sprint bindings while keeping every prior choice; malformed/current missing fields are not silently repaired (5.8684ms)
+✔ Sprint keyboard, gamepad and touch support hold/toggle, quick taps, cancel, blocked focus and blur without leaking input (5.6668ms)
+✔ both skill views expose shared purchases with written costs and localized descriptions; inspecting does not spend (910.3236ms)
+✔ actual peers purchase General skills through the server, replicate stamina and dash charges, and host pause freezes resources (930.4823ms)
+✔ authoritative multiplayer boundaries retain different General investments per participant and rebuild only legal movement resources (6.013ms)
+✔ each expanded class map exposes all 54 real skills and exactly their prerequisites without overlapping targets (8.5352ms)
+✔ keyboard navigation follows path depth and neighboring branches with bounded Home and End (0.363ms)
+✔ zoom retains a minimum target above 44 pixels and preserves the viewport center (0.2056ms)
+✔ map markup has every inspect target once, real prerequisite edges and escaped labels (1.0045ms)
+✔ map adapter provides one roving tab stop and arrow focus without a purchase action (0.7074ms)
+✔ classic is the default and issued eight-field profiles retain progress while migrating the option (12.6982ms)
+✔ all fifteen locales expose the option, navigation help and zoom controls with placeholder parity (41.6656ms)
+✔ the actual shop switches between 18 and 54 skills and expanded inspection uses the existing guarded purchase path (1277.3583ms)
+✔ real owner purchases and observer replication preserve transformed fields, walls, turrets, timed cues and decoys for all eleven classes (5120.749ms)
+✔ both actual shop layouts show localized talent help and retain prerequisite and affordability guards (13328.1465ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 48
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23489.5542
+
+✖ failing tests:
+
+test at tests\class-tree-polish.test.ts:1:3783
+✖ Both General views lead to the actual prerequisite purchase, then the distinct Engineer tab spends once and rejects its conflicting Q (361.3308ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.host.querySelector('[data-inspect="engineer-constructs-1"]'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\class-tree-polish.test.ts:50:140)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\engineer-pathways.test.ts:1:13613
+✖ The issued protocol-49 boundaries preserve every class and owned Engineer choice locally, without online authority (4.7879ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      classId: 'soldier',
+      coins: 80,
+      damageDealt: 0,
+      damageTaken: 0,
+  ...
+      healing: 0,
+  +   id: 'solo',
+  -   id: 'p',
+      incomeGranted: 80,
+      name: 'Entrant',
+      progress: {
+        campaignClears: 0,
+        clearedBossIds: [],
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\engineer-pathways.test.ts:138:60)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { training: { schemaVersion: 1, characterId: 'mara-rook', learned: [], proofs: [], prepared: [], focus: null }, progress: { clears: 0, rescues: 0, firstEncounter: -1, campaignClears: 0, clearedBossIds: [] }, id: 'solo', name: 'Entrant', classId: 'soldier', weapon: 'soldier-0', coins: 80, incomeGranted: 80, totalSp: 0, skills: [], upgrades: {}, supplies: [ [Object], [Object], [Object] ], supplyAt: 0, qAt: 0, eAt: 0, ultimateAt: 0, dodgeAt: 0, damageTaken: 0, damageDealt: 0, healing: 0 },
+    expected: { training: { schemaVersion: 1, characterId: 'mara-rook', learned: [], proofs: [], prepared: [], focus: null }, progress: { clears: 0, rescues: 0, firstEncounter: -1, campaignClears: 0, clearedBossIds: [] }, id: 'p', name: 'Entrant', classId: 'soldier', weapon: 'soldier-0', coins: 80, incomeGranted: 80, totalSp: 0, skills: [], upgrades: {}, supplies: [ [Object], [Object], [Object] ], supplyAt: 0, qAt: 0, eAt: 0, ultimateAt: 0, dodgeAt: 0, damageTaken: 0, damageDealt: 0, healing: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

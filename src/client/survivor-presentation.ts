@@ -1,0 +1,71 @@
+import references from '../../assets/production/normalized/library.json';
+import motion from '../../assets/production/motion/survivor-library.json';
+import legacyMotion from '../../assets/production/motion/legacy-survivor-library.json';
+import bardMotion from '../../assets/production/motion/bard-library.json';
+import swordMotion from '../../assets/production/motion/swordsman-library.json';
+import summonerMotion from '../../assets/production/motion/summoner-library.json';
+import alchemistMotion from '../../assets/production/motion/alchemist-library.json';
+import rangerMotion from '../../assets/production/motion/ranger-library.json';
+import { HZ } from '../shared/protocol.ts';
+import type { ClassId } from '../shared/protocol.ts';
+import { deliveredSurvivorClip } from './survivor-delivery.ts';
+import type { SurvivorFacing } from './survivor-visual-motion.ts';
+export const additionalSurvivors = ['tank', 'mage', 'engineer', 'assassin', 'bard', 'swordsman', 'summoner', 'ranger', 'alchemist'] as const;
+export const legacySurvivors = ['soldier', 'medic'] as const;
+type RunClip = {
+  frames: number;
+  fps: number;
+  id: string;
+  cellSize: number;
+  origin: number[];
+  displayCell: number;
+};
+export const survivorArt = {
+  references: references.entries.filter((e) => additionalSurvivors.some((id) => id === e.id)),
+  entries: [
+    ...(motion as { entries: RunClip[] }).entries,
+    ...(legacyMotion as { entries: RunClip[] }).entries,
+    ...(bardMotion as { entries: RunClip[] }).entries,
+    ...(swordMotion as { entries: RunClip[] }).entries,
+    ...(summonerMotion as { entries: RunClip[] }).entries,
+    ...(rangerMotion as { entries: RunClip[] }).entries,
+    ...(alchemistMotion as { entries: RunClip[] }).entries,
+  ].map(deliveredSurvivorClip),
+};
+export function survivorPose(
+  classId: ClassId,
+  aim: number,
+  moving: boolean,
+  status: string,
+  tick: number,
+  reduced = false,
+  visualFacing?: SurvivorFacing,
+) {
+  const facing =
+    visualFacing ??
+    (Math.abs(Math.sin(aim)) > Math.abs(Math.cos(aim))
+      ? Math.sin(aim) < 0
+        ? 'north'
+        : 'south'
+      : Math.cos(aim) < 0
+        ? 'west'
+        : 'east');
+  const running = moving && status === 'active' && !reduced;
+  const legacy = legacySurvivors.some((id) => id === classId);
+  const run =
+    running || legacy
+      ? survivorArt.entries.find((e) => e.id === classId + '-run-' + facing)
+      : undefined;
+  const reference = survivorArt.references.find((e) => e.id === classId)!;
+  const clip = run ?? reference;
+  return {
+    texture: run ? run.id : classId + '-reference',
+    frame: run
+      ? running
+        ? Math.floor((Math.max(0, tick) * run.fps) / HZ) % run.frames
+        : 0
+      : { south: 0, east: 1, north: 2, west: 3 }[facing],
+    origin: clip.origin,
+    displayCell: clip.displayCell,
+  };
+}

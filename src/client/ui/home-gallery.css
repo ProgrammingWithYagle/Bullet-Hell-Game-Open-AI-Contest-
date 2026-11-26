@@ -1,0 +1,12 @@
+.home-art.home-gallery{display:grid;grid-template-rows:auto auto auto;align-content:center;gap:.7rem;min-width:0;min-height:0;height:auto}
+.home-gallery::after{display:none}.home-gallery-viewport{aspect-ratio:1672/941;min-width:0;overflow:hidden;border:1px solid #86977980;border-radius:.45rem;background:radial-gradient(ellipse at 50% 80%,#3c5136,#10251f 75%);box-shadow:0 14px 45px #071a145c}
+.home-gallery-slide{height:100%;width:100%;display:grid;place-items:center}.home-gallery-slide[hidden]{display:none}
+.home-gallery .home-gallery-slide img{position:static;display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:contain;object-position:center;border:0;border-radius:0;box-shadow:none}
+.home-gallery .home-gallery-maps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;width:100%;height:100%;padding:4px}
+.home-gallery .home-gallery-maps img{object-fit:cover;min-width:0;min-height:0}
+.home-gallery-navigation{display:grid;grid-template-columns:2.9rem minmax(0,1fr) 2.9rem;align-items:center;gap:.65rem}
+.home-gallery-navigation>button{width:2.9rem;min-height:2.9rem;padding:.1rem;background:#223c30;color:#fff0ce;border-color:#8a9873;font-size:2rem;line-height:1}
+.home-gallery-caption{display:grid;gap:.2rem;min-width:0;margin:0;text-align:center;line-height:1.4}.home-gallery-caption strong{font-size:.95rem;font-weight:600;color:#f3e8c9;overflow-wrap:anywhere}.home-gallery-caption>span{font-size:.78rem;color:#c4cfb8}
+.home-gallery-dots{display:flex;justify-content:center;gap:.25rem}.home-gallery-dots>button{display:grid;place-items:center;width:2.75rem;min-height:2.75rem;padding:.5rem;background:transparent;border-color:transparent}.home-gallery-dots>button>span{width:.5rem;height:.5rem;border:1px solid #b8c6a3;border-radius:50%;background:#526750}.home-gallery-dots>button[aria-current=true]>span{background:#eedaa1;box-shadow:0 0 0 3px #eedaa126}
+.home-gallery:focus-visible,.home-gallery button:focus-visible{outline:3px solid #f0d69a;outline-offset:3px}
+@media(max-width:760px){.home-art.home-gallery{padding:.8rem 1rem;gap:.45rem}.home-gallery-navigation{gap:.4rem}.home-gallery-caption strong{font-size:.9rem}}

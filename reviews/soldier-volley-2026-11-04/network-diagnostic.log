@@ -1,0 +1,29 @@
+{"diagnostic":"second-paid-step","relayFrom":{"x":695,"y":849.5},"attemptedTo":{"x":605,"y":849.5},"tick":274,"player":{"x":635,"y":849.5,"ammo":9,"health":110,"status":"active","ack":19},"kit":{"chargeUntil":0,"veilUntil":0,"passageUntil":0,"stepCharges":0,"shield":0,"shieldUntil":0,"armor":0,"armorUntil":0,"technique1At":228,"technique2At":393,"soldierFollowupUntil":0,"soldierStepUntil":0,"soldierLoadUntil":0,"soldierLoadNextAt":0,"soldierLoadTotal":0,"soldierLoadInserted":0,"soldierReadyUntil":0,"soldierReadyRelay":false,"soldierMagazineCapacity":10},"obstacles":[{"x":128,"y":80,"width":1344,"height":138.6},{"x":128,"y":80,"width":142.79999999999998,"height":294},{"x":1329.1999999999998,"y":80,"width":142.79999999999998,"height":294},{"x":128,"y":374,"width":79.8,"height":365.4},{"x":1392.1999999999998,"y":374,"width":79.8,"height":365.4},{"x":128,"y":739.4,"width":168,"height":180.6},{"x":1304,"y":739.4,"width":168,"height":180.6},{"x":287.6,"y":794,"width":323.4,"height":126},{"x":993.2,"y":794,"width":319.2,"height":126},{"x":611,"y":890.5999999999999,"width":382.2,"height":29.4},{"x":0,"y":0,"width":1600,"height":80},{"x":0,"y":920,"width":1600,"height":80},{"x":0,"y":80,"width":128,"height":840},{"x":1472,"y":80,"width":128,"height":840},{"x":392.6,"y":445.4,"width":151.2,"height":126},{"x":1068.8,"y":445.4,"width":151.2,"height":126}],"lava":[],"bounds":{"x":128,"y":80,"width":1344,"height":840}}
+✖ real peers serialize paid/relay proof and pause/late observation in a clearly controlled legal late-budget server fixture (9536.5365ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10961.0005
+
+✖ failing tests:
+
+test at tests\soldier-volley-network.test.ts:1:450
+✖ real peers serialize paid/relay proof and pause/late observation in a clearly controlled legal late-budget server fixture (9536.5365ms)
+  AssertionError [ERR_ASSERTION]: second paid step
+      at wait (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-volley-network.test.ts:10:375)
+      at runNextTicks (node:internal/process/task_queues:65:5)
+      at process.processTimers (node:internal/timers:615:9)
+      at async TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-volley-network.test.ts:18:728)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

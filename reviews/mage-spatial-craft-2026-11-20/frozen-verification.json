@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "sourceCommit": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+  "contentRevision": "c5ceaa2e26561436fec7c715bbe32d4031ff3ee6195cb758a1b8bd464d2fa022",
+  "protocol": 88,
+  "checkedAt": "2026-11-21T01:22:41.203Z",
+  "nativeDriverSha256": "6521770df868f568296f1ead3541ed5c04786b35764626b17e4530fb42f1fe34",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+      "contentRevision": "c5ceaa2e26561436fec7c715bbe32d4031ff3ee6195cb758a1b8bd464d2fa022",
+      "protocol": 88,
+      "url": "http://127.0.0.1:5420/",
+      "endpoint": "http://127.0.0.1:2796",
+      "files": 2130,
+      "manifestSha256": "c0bf61a7ff9ece1a96d07406f40861d96c48c149dd321aa55cf73be5c01ee127",
+      "backendSha256": "d90d75849cc486cf8378a0754052acb3ccd2d5d666c319b2ab0dad783a065d8d",
+      "backendStartedAt": "2026-11-21T01:18:46.455Z",
+      "worker": {
+        "path": "assets/offline.worker-Bhqur6Xo.js",
+        "bytes": 1611547,
+        "sha256": "001f30476920a2550e7b943be1dfd0298c55abef6e631be9e072da03d65107c7"
+      },
+      "sampledNewAssets": 13,
+      "httpSha256": "93b810c9783369a030ebfc98ecad83d022b9cf084b8fc26019e094e94f4699a8",
+      "httpLogSha256": "c0a4c903d654b8a5e25d487fcf51d06cc816248199e5a607e0cfc512bbf918af",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "5e4025639f583093aa3b8b62e5473e4bdc18176ec196288660d6c8f686e5af0c",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "8e6240f022e475f63a497a2465d1a734b1de8781371b2e3502c17d942776b561",
+          "backendStartedAt": "2026-11-21T01:18:46.455Z"
+        },
+        {
+          "fitting": "hold",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-hold.log",
+          "logSha256": "d34fb95862cb480ccc7cac53726432b8520269fbce9bba60b0afe6876e77852d",
+          "raw": "testing-worker-hold.json",
+          "resultSha256": "bcf513788bf43d502727c27dfaf47ac807778528cfe2b852023657005b5e97c2",
+          "backendStartedAt": "2026-11-21T01:18:46.455Z"
+        },
+        {
+          "fitting": "side",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-side.log",
+          "logSha256": "424b75ddbe955d6af9f21a3fc34d4f5d0b4eeed16a3c300a6c49dfd54a14a211",
+          "raw": "testing-worker-side.json",
+          "resultSha256": "c2627c105f72224b3565115002373afcd28febbe4b552b2aa17a6a834e1a0ab7",
+          "backendStartedAt": "2026-11-21T01:18:46.455Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "b5a01d5d89fcc2c6b3baae96211eb77aa1dbb110a42aebd99c4c6666c4201a72",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "ff433a48a3a8ed5cdf2a8a3e3901202d6365ca435bc5af9cf27ca85cae1716b8",
+          "backendStartedAt": "2026-11-21T01:18:46.455Z"
+        },
+        {
+          "fitting": "hold",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-hold.log",
+          "logSha256": "ec9d34ffc3574a603899561f69fb97d354cf88b33c7802637c2abb92edd8be48",
+          "raw": "testing-peer-hold.json",
+          "resultSha256": "6eee68a84052fb6822f9a840caee66c83cc6d49b2ac8182a46a9c44e1cd051a2",
+          "backendStartedAt": "2026-11-21T01:18:46.455Z"
+        },
+        {
+          "fitting": "side",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-side.log",
+          "logSha256": "9f3e7899994393ae919674ecb905aee789eadf79835b08ccba0eeede48b15f53",
+          "raw": "testing-peer-side.json",
+          "resultSha256": "a79d9252fe0e7ae8b15c9e5c5ee6ef9a8403379a570dc48dbf5d5fc1bed90c0a",
+          "backendStartedAt": "2026-11-21T01:18:46.455Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "b69636150e788e83dd2725b38c1b3d42c6ca1ad6",
+      "contentRevision": "c5ceaa2e26561436fec7c715bbe32d4031ff3ee6195cb758a1b8bd464d2fa022",
+      "protocol": 88,
+      "url": "http://127.0.0.1:5421/",
+      "endpoint": "http://127.0.0.1:2797",
+      "files": 2130,
+      "manifestSha256": "bb108fe59deee75197375d1c0aea6d36635302a82ec2ddcdc5894f1057157641",
+      "backendSha256": "d90d75849cc486cf8378a0754052acb3ccd2d5d666c319b2ab0dad783a065d8d",
+      "backendStartedAt": "2026-11-21T01:18:45.760Z",
+      "worker": {
+        "path": "assets/offline.worker-DtOZ-gp2.js",
+        "bytes": 1611644,
+        "sha256": "c93e8dda154118a0dbe764c1ec2f33901094f37e2c7515a3d689f4f5278b78a0"
+      },
+      "sampledNewAssets": 13,
+      "httpSha256": "96cd768e4e8f1e87e4cd5ef844a1a9c4cfa080b81b5143553a777cb9ef8d43ed",
+      "httpLogSha256": "88a6b8e21194f5d32ab4faf44d0536ff1510ace64d2bfa7d8fd5d3087584d915",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "24fc37752a2e71bb567243ca7666c25e6179b5936dc1fa0f5778111c7a28e73d",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "8914b9e261c06f45588bc73b7b08c754c23fd0ee313f23600855b9c68f60a281",
+          "backendStartedAt": "2026-11-21T01:18:45.760Z"
+        },
+        {
+          "fitting": "hold",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-hold.log",
+          "logSha256": "f8abd8742cc818e33339c2b7bd7afdc8e38ff69b4c51bd93d92210cc0e46dde0",
+          "raw": "public-worker-hold.json",
+          "resultSha256": "fe5828aa153852f0aa54d78f998b225180a655669bb005003fdbb104d77bb0da",
+          "backendStartedAt": "2026-11-21T01:18:45.760Z"
+        },
+        {
+          "fitting": "side",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-side.log",
+          "logSha256": "9f80824d8b56bf56a6f03017545fb591b8bd76a760a24a20e4743dd98e1bcacb",
+          "raw": "public-worker-side.json",
+          "resultSha256": "9271a30b2aa555f0f0b40eb2783bb273ef23ec8ee9f4cf0fe8748abdf494ba60",
+          "backendStartedAt": "2026-11-21T01:18:45.760Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "c2601d1a12f219d80dc389062aa580b19289c6c05e7380916b12cdcbea8b59c6",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "9778efab97e78a19323f7e84b18c587669860007a1bbf4734731a664eb92ffa2",
+          "backendStartedAt": "2026-11-21T01:18:45.760Z"
+        },
+        {
+          "fitting": "hold",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-hold.log",
+          "logSha256": "69a8e6d8db0907704a36e773082ba6cf3ca92a2886d77b599a1ae09e09b6215a",
+          "raw": "public-peer-hold.json",
+          "resultSha256": "d94ca6bb7ef4c2314e41f256341727c1f079b29f8e658936944d53e1c7fb26d5",
+          "backendStartedAt": "2026-11-21T01:18:45.760Z"
+        },
+        {
+          "fitting": "side",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-side.log",
+          "logSha256": "ab7e3554db3046a43538edb9fba5510a5b72678102466d546f354f6cacd678f3",
+          "raw": "public-peer-side.json",
+          "resultSha256": "267c6cd35627b21b9460a7a7e02657d03a54cdc08ab1507e872b82cf3981d3bd",
+          "backendStartedAt": "2026-11-21T01:18:45.760Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+✔ compiled room search shows the version error, retries, then aborts when the player goes back (693.673ms)
+✔ code lookup keeps actionable errors and disposal cancels without a late launch (383.0303ms)
+✔ leaving the online records tab aborts its real pending board request (171.9272ms)
+✔ existing rows still open after pagination and changing filters aborts roster requests (202.536ms)
+✔ opening an own result reuses its downloaded first roster page and loads all fifty-one members once (514.3394ms)
+✔ roster reuse ends with the filter generation and cannot show an old result in this week (283.2625ms)
+✔ a failed own-result prefetch is retried normally when its row arrives through pagination (190.3017ms)
+✔ device record filters retain the current keyboard editing focus (352.6487ms)
+✔ switching record tabs focuses the current live tab (227.8066ms)
+✔ online records retain mode, difficulty, squad size and week when returning from device records (181.7245ms)
+✔ device and online record filters keep their separate choices (182.4758ms)
+✔ a smaller mode keeps the corrected squad size and time period on return (134.1732ms)
+✔ disposed record controls cannot navigate back or start a new board request (118.2696ms)
+✔ detached record filters and tabs cannot replace the live online view (139.758ms)
+✔ fifty real peers can join a private room by code from one IP and wait for the host (13292.7301ms)
+✔ a shared group can leave a sixteen-player lobby and rejoin a fifty-player lobby within one minute (12225.309ms)
+✔ failed room-code guesses remain limited without locking out a known valid code (201.085ms)
+✔ known room-code lookups have a bounded shared-network budget and cannot be reset with forwarded headers (307.4882ms)
+✔ admission allows two full join attempts per group while remaining bounded after tickets are cancelled (354.6481ms)
+✔ records reads allow a full group to browse results and roster pages while retaining a shared-IP limit (721.5068ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29725.9482

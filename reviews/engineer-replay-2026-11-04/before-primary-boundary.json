@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-04T02:03:27.529Z",
+  "sourceCommit": "7f5cdac6e84524a391fd96675c857a21d35dd9c7",
+  "reproduced": true,
+  "justFired": {
+    "tick": 1,
+    "fireAt": 9.571428571428571
+  },
+  "before": {
+    "uninterrupted": {
+      "combatTick": 2,
+      "fireAt": 9.571428571428571,
+      "phase": "loading"
+    },
+    "restored": {
+      "combatTick": 2,
+      "fireAt": 0,
+      "phase": "loading"
+    }
+  },
+  "start": {
+    "uninterrupted": {
+      "combatTick": 2,
+      "fireAt": 9.571428571428571,
+      "ammo": 12
+    },
+    "restored": {
+      "combatTick": 2,
+      "fireAt": 0,
+      "ammo": 12
+    }
+  },
+  "after": {
+    "uninterrupted": {
+      "combatTick": 3,
+      "fireAt": 9.571428571428571,
+      "ammo": 12,
+      "ownedShots": 0
+    },
+    "restored": {
+      "combatTick": 3,
+      "fireAt": 11.571428571428571,
+      "ammo": 11,
+      "ownedShots": 1
+    }
+  },
+  "explanation": "The safe checkpoint omits primary fireAt. A restored player defaults to0 while an uninterrupted player carries a few combat ticks of primary recovery across intermission. New encounters already reset magazine/reload but not primary fireAt.",
+  "scope": "Controlled one-shot/forced-boss-completion diagnostic with naturally stepped intermissions, not a combat clear. Source is read only."
+}

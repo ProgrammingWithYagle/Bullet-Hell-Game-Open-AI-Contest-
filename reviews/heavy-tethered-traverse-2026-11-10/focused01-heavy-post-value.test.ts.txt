@@ -1,0 +1,56 @@
+import test from 'node:test';
+import { fixture } from "./helpers/heavy-post-game-fixture.ts";
+import assert from 'node:assert/strict';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import path from 'node:path';
+import { lanyardId, traverseIds as ids, clutchId, heavyTraverseRules as rules } from "../src/shared/heavy-traverse.ts";
+import { idleInput } from "../src/shared/protocol.ts";
+
+test('a fixed actual muzzle keeps the paid lane while the body evades a real hostile round; carried and cancelled alternatives retain their own costs', () => {
+  const rows = [];
+  for (const mode of ['loose', 'spade', 'floating'] as const) for (const strategy of ['post', 'carry', 'cancel'] as const) {
+    const f = fixture(mode, strategy === 'post');
+    const target = f.target(900, 600);
+    const healthBefore = f.p.health;
+    assert(f.g.emitShot('hostile', 450, 600, 0, 300, 20, 3, 0, 2));
+    f.step({ technique1: true }); f.step({ technique2: true }); f.step({ technique2: true });
+    f.step(strategy === 'post' ? { technique2: true, moveY: 1 } : strategy === 'cancel' ? { technique1: true, moveY: 1, fire: true } : { technique2: true, moveY: 1 });
+    const postAt = f.status().heavyLanyardAt;
+    for (let t = 5; t <= 60; t++) f.step({ moveY: t <= 9 ? 1 : 0, fire: strategy === 'cancel' });
+    const row = { mode, strategy, damage: 1000 - target.health, ownerHealthLost: healthBefore - f.p.health, finalBody: { x: f.p.x, y: f.p.y }, actualPaidRounds: 45 - f.p.ammo, originalRecovery: f.status().technique1At, actualShots: f.shots.map(s => ({ at: s.at, x: s.x, y: s.y, damage: s.damage })), postAt };
+    if (strategy === 'post') { assert.equal(postAt, 4); assert.equal(row.ownerHealthLost, 0); assert(Math.abs(row.damage - 194.4) < 1e-6); assert.deepEqual(f.shots.map(s => s.at), [1, 11, 21, 31]); assert.equal(new Set(f.shots.slice(1).map(s => s.x + ',' + s.y)).size, 1); assert.equal(row.actualPaidRounds, 4); }
+    if (strategy === 'carry' && mode !== 'floating') { assert(row.ownerHealthLost > 0); assert(Math.abs(row.damage - 194.4) < 1e-6); }
+    if (strategy === 'carry' && mode === 'floating') { assert.equal(row.ownerHealthLost, 0); assert(row.damage < 194.4); }
+    if (strategy === 'cancel') { assert.equal(row.ownerHealthLost, 0); assert.equal(f.shots.filter(s => Math.abs(Math.hypot(s.vx, s.vy) - rules.speed) < 1e-6).length, 1); }
+    rows.push(row);
+  }
+  return { controlledStaticMapAndTargets: true, repeatedActualInputPolicy: true, rows, ranking: false };
+});
+test('current range and current cover permanently end unpaid posted work while the original recovery and paid flights remain physical', () => {
+  const rows = [];
+  for (const kind of ['range', 'wire-cover', 'post-cover'] as const) {
+    const f = fixture('spade'); f.post(); const post = { x: f.status().heavyLanyardX, y: f.status().heavyLanyardY };
+    f.step({ moveY: 1 }); f.step({ moveY: 1 });
+    if (kind !== 'range') f.g.arena.obstacles.push(kind === 'post-cover' ? { x: post.x - 3, y: post.y - 3, width: 6, height: 6 } : { x: post.x - 3, y: post.y + 3, width: 6, height: 3 });
+    let endedAt = 0;
+    for (let t = 7; t <= 40; t++) { f.step({ moveY: kind === 'range' ? 1 : 0 }); if (!f.status().heavyTraverseUntil && !endedAt) endedAt = t; }
+    assert(endedAt > 0 && endedAt < 31); assert.equal(f.status().heavyLanyardAt, 0); assert.equal(f.status().technique1At, 241);
+    assert(f.shots.length < 4); const paid = f.shots.length; for (let t = 0; t < 5; t++) f.step({ technique2: true }); assert.equal(f.shots.length, paid);
+    rows.push({ kind, post, endedAt, actualPaidCrounds: paid, actualAmmoSpent: 45 - f.p.ammo, originalRecovery: f.status().technique1At });
+  }
+  return rows;
+});
+test('new operation ownership is captured only when actually used; later posted flights are dependent and earlier paid rounds are not retroactive', () => {
+  const unused = fixture('spade'); unused.step({ technique1: true }); unused.p.skills = unused.p.skills.filter((id: string) => id !== lanyardId); unused.step(); assert(unused.status().heavyTraverseUntil > 0);
+  const f = fixture('spade'); f.post(); while (f.g.combatTick < 11) f.step(); const first = f.shots[0].id, later = f.shots[1].id;
+  assert(f.g.shots.has(first) && f.g.shots.has(later)); f.p.skills = f.p.skills.filter((id: string) => id !== lanyardId); f.step();
+  assert(f.g.shots.has(first)); assert(!f.g.shots.has(later)); assert.equal(f.status().heavyTraverseUntil, 0); assert.equal(f.status().technique1At, 241);
+  return { unusedNewOwnershipLossKeepsBaseWork: true, firstPaidId: first, removedDependentPaidId: later, originalRecovery: 241 };
+});
+test('separate third-command admission rejects unowned, repeated, simultaneous-C and fewer-than-two-slot requests without a new payment or deadline', () => {
+  const unowned = fixture('spade', false); unowned.post(); assert.equal(unowned.status().heavyLanyardAt, 0); assert.equal(unowned.p.ammo, 44);
+  const same = fixture('spade'); same.post(); const until = same.status().heavyTraverseUntil; same.step({ technique2: true }); assert.equal(same.status().heavyLanyardAt, 4); assert.equal(same.status().heavyTraverseUntil, until); assert.equal(same.p.ammo, 44);
+  const cancel = fixture('spade'); cancel.step({ technique1: true }); cancel.step({ technique2: true }); cancel.step({ technique2: true }); cancel.step({ technique1: true, technique2: true }); assert.equal(cancel.status().heavyTraverseUntil, 0); assert.equal(cancel.status().heavyLanyardAt, 0); assert.equal(cancel.p.ammo, 44);
+  const late = fixture('spade'); late.step({ technique1: true }); late.step({ technique2: true }); late.step({ technique2: true }); while (late.g.combatTick < 21) late.step(); late.step({ technique2: true }); assert.equal(late.status().heavyLanyardAt, 0); assert.equal(late.status().heavyTraverseUntil, 32); assert.equal(late.p.ammo, 42);
+  return { unowned: true, fourthCommandRejected: true, CStillWins: true, remainingOneSlotRejects: true, noNewPayment: true, originalUntil: until };
+});

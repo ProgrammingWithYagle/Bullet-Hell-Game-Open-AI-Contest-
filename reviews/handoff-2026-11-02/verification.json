@@ -1,0 +1,87 @@
+{
+  "createdAt": "2026-11-03T01:26:37.632769+00:00",
+  "kind": "requested-new-chat-handoff-verification",
+  "passed": true,
+  "verifiedGameSource": "5fba8f2470c22c60689488ef1a4970221233184e",
+  "metadataBase": "9c84f1cbf0c936074dce1516a59e7303f4f61b2e",
+  "runtimeSourceSha256": "a23674215746f787a644c3d457f8b762e039086721df489f0fa140839b2bad04",
+  "sourceSnapshotSha256": "e99ab2b10effa783985c9c71966fb715fcb2dd371592f6e7fd437d0b3081e2b4",
+  "finalFullGateLogSha256": "19be136f8db5fca7358fff934221340b14dc07a8830a5a3f0fa86b2c4ed818b1",
+  "retainedFullGateTests": 1251,
+  "newFullLocalGateRun": false,
+  "patchForwardCheck": true,
+  "patchExactOriginalFilesReconstructed": 4,
+  "patchSha256": "e177656a3359b44f71c28d9359706547b36e25e2a21761f0a4b483564554d5cf",
+  "focusedCandidateTestResult": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5
+  },
+  "candidateInActiveSource": false,
+  "localLinksChecked": 27,
+  "documents": [
+    {
+      "path": "handoff/NEXT_CHAT.md",
+      "bytes": 23007,
+      "sha256": "c8f321ebc41c497e2f0276a2a416014fb0e103a710c0206a35a08fc187cc7785"
+    },
+    {
+      "path": "START_NEXT_CHAT.txt",
+      "bytes": 3678,
+      "sha256": "da626673bbd695b69fd514a31c15f05cfa175ebe81beb610845e3a2a780fd8a4"
+    },
+    {
+      "path": "docs/HANDOFF_NEXT_CHAT.md",
+      "bytes": 382,
+      "sha256": "8a0a3b2ec036165d97b8b8b795f6ad221f2dccbd840d438705d80e46ce2afccb"
+    },
+    {
+      "path": "docs/CLASS_SPECIALIZATION_PLAN.md",
+      "bytes": 12596,
+      "sha256": "31091a2e4fc47686b742daf0e00ac1761b6c02253d9ce77d78632f2199ec00b5"
+    },
+    {
+      "path": "docs/SERVICE_YARD_WORKING.md",
+      "bytes": 4990,
+      "sha256": "1ca461fda258d410fcb075e8f66e443cb0741762c42eda44035469a643f4b393"
+    },
+    {
+      "path": "handoff/wip/README.md",
+      "bytes": 1558,
+      "sha256": "fe690d4b4288c720ecf55934b4536072cd1b40d7708f260ed77f5c79789fa6a5"
+    }
+  ],
+  "currentLocalServices": [
+    {
+      "url": "http://127.0.0.1:5314/preview-build.json",
+      "status": 200,
+      "sourceCommit": "5fba8f2470c22c60689488ef1a4970221233184e",
+      "audience": "testing"
+    },
+    {
+      "url": "http://127.0.0.1:2690/api/health",
+      "status": 200,
+      "sourceCommit": "5fba8f2470c22c60689488ef1a4970221233184e",
+      "audience": "testing"
+    },
+    {
+      "url": "http://127.0.0.1:5315/preview-build.json",
+      "status": 200,
+      "sourceCommit": "5fba8f2470c22c60689488ef1a4970221233184e",
+      "audience": "public"
+    },
+    {
+      "url": "http://127.0.0.1:2691/api/health",
+      "status": 200,
+      "sourceCommit": "5fba8f2470c22c60689488ef1a4970221233184e",
+      "audience": "public"
+    }
+  ],
+  "goalStatus": "paused at explicit user request for new-chat handoff; game unfinished",
+  "limits": [
+    "No feature added by this handoff.",
+    "No new full local gate: existing runtime and test fingerprints plus final raw gate log independently match.",
+    "No browser, rendered, human, device, language, literary or final balance acceptance.",
+    "No production or Windows release replacement."
+  ]
+}

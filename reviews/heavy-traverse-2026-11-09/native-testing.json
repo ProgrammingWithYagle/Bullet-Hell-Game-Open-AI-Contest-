@@ -1,0 +1,167 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-09T01:50:31.711Z",
+  "audience": "testing",
+  "groups": 4,
+  "cases": 64,
+  "invocations": 26,
+  "checks": [
+    {
+      "label": "http",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-http.log"
+    },
+    {
+      "label": "guide",
+      "cases": 39,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-guide.log"
+    },
+    {
+      "label": "worker-cover",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-cover.log"
+    },
+    {
+      "label": "room-cover",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-cover.log"
+    },
+    {
+      "label": "worker-fuse",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-fuse.log"
+    },
+    {
+      "label": "room-exit",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-exit.log"
+    },
+    {
+      "label": "worker-compact",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-compact.log"
+    },
+    {
+      "label": "room-compact",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-compact.log"
+    },
+    {
+      "label": "worker-frontal",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-frontal.log"
+    },
+    {
+      "label": "room-frontal",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-frontal.log"
+    },
+    {
+      "label": "worker-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-running.log"
+    },
+    {
+      "label": "room-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-running.log"
+    },
+    {
+      "label": "worker-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-hanging.log"
+    },
+    {
+      "label": "room-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-hanging.log"
+    },
+    {
+      "label": "worker-seam-manual",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-seam-manual.log"
+    },
+    {
+      "label": "room-seam-manual",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-seam-manual.log"
+    },
+    {
+      "label": "worker-seam-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-seam-running.log"
+    },
+    {
+      "label": "room-seam-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-seam-running.log"
+    },
+    {
+      "label": "worker-seam-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-seam-hanging.log"
+    },
+    {
+      "label": "worker-traverse-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-traverse-loose.log"
+    },
+    {
+      "label": "room-seam-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-seam-hanging.log"
+    },
+    {
+      "label": "worker-traverse-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-traverse-spade.log"
+    },
+    {
+      "label": "room-traverse-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-traverse-loose.log"
+    },
+    {
+      "label": "worker-traverse-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-worker-traverse-floating.log"
+    },
+    {
+      "label": "room-traverse-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-traverse-spade.log"
+    },
+    {
+      "label": "room-traverse-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-traverse-2026-11-09/native01-testing-room-traverse-floating.log"
+    }
+  ],
+  "limits": "HTTP1;39source UI/control/private-presentation cases with explicit controlled fixtures;12whole exact-served optimized Solo-worker cases;12real-peer cases. Three retained Seam cases in each worker/peer group earn actual Short3→9→15→21SP across three clears. Peer cases drive source MenuDOM with asset/i18n stubs and prove owner-only path data/late peer/host cleanup. Three new Traverse cases per transport buy both starting3SP purchases and the actual9SP fitting through source MenuDOM after one real clear. Heavy is the non-host owner in the three new peer cases. Operation cases may have zero contacts; natural and controlled contact evidence is separate. No browser/rendered/device/native-language/listening/human/final-balance acceptance."
+}

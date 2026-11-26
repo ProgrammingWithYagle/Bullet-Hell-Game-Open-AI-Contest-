@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-22T17:18:59.588060+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/bard-lament-2026-11-21",
+  "rollbackScope": "reviews/bard-conductor-2026-11-21",
+  "currentSourceCommit": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+  "rollbackSourceCommit": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+  "keep": [
+    {
+      "path": "output/playtest-bard-lament-2026-11-21-testing-7134e2c",
+      "sourceCommit": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+      "scope": "reviews/bard-lament-2026-11-21",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\bard-lament-2026-11-21-testing-files.json",
+      "manifestSha256": "d42171a75310a9d66123fab94ca1c5ebff75b1e790731f34abfdb232a0fe623b",
+      "files": 2194,
+      "bytes": 918058355,
+      "treeStatSha256": "e4da8eb364522a2405de878b68f65334ddc796f313c2a738b5853d087662b69b"
+    },
+    {
+      "path": "output/playtest-bard-lament-2026-11-21-public-7134e2c",
+      "sourceCommit": "7134e2c4bc52f0349e5601f20ec471f0a8d9cd8f",
+      "scope": "reviews/bard-lament-2026-11-21",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\bard-lament-2026-11-21-public-files.json",
+      "manifestSha256": "fb8c15019fb3071aa007eb292425c7b6a6c6efd1e9922a812d9e3fad16192bc4",
+      "files": 2194,
+      "bytes": 918053073,
+      "treeStatSha256": "ce9c36c04b7b0aec3c657cc8fbcaba67dc163deb556893bedd6c2c9b3eb7319c"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-bard-lament-2026-11-21-7134e2c.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-bard-conductor-2026-11-21-public-3c0b823",
+      "files": 2186,
+      "bytes": 914966848,
+      "treeStatSha256": "8f12b76d13d1faf2a568495a308c2e0df2dff230dd8e142b23adf23e6ef14701",
+      "identity": {
+        "sourceCommit": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+        "buildId": "2026.11.21-bard-conductor",
+        "protocol": 93,
+        "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+        "audience": "public",
+        "runtimeSourceSha256": "67f9d069c263ce05c87c1b7a48138b7150ddd3666ca68f0621971485a9ddac96",
+        "sourceSnapshotSha256": "94e15cb0bb0114c57b21a13edc696093652fa733659f4522d9d2b3c11c028a85",
+        "endpoint": "http://127.0.0.1:2807"
+      },
+      "identitySha256": "708c05f7f009beecb65c6f0ce49e602488158210f9c0675925519212ebdd0037"
+    },
+    {
+      "path": "output/playtest-bard-conductor-2026-11-21-testing-3c0b823",
+      "files": 2186,
+      "bytes": 914972134,
+      "treeStatSha256": "8baf6a4ac6e45d89ad6b499d01ad3a0277aa691e9367c303384c8a03fce58f45",
+      "identity": {
+        "sourceCommit": "3c0b8238d686b15bbd37b75fa97b8c1318b451c1",
+        "buildId": "2026.11.21-bard-conductor",
+        "protocol": 93,
+        "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+        "audience": "testing",
+        "runtimeSourceSha256": "67f9d069c263ce05c87c1b7a48138b7150ddd3666ca68f0621971485a9ddac96",
+        "sourceSnapshotSha256": "94e15cb0bb0114c57b21a13edc696093652fa733659f4522d9d2b3c11c028a85",
+        "endpoint": "http://127.0.0.1:2806"
+      },
+      "identitySha256": "4829e2aac128ea1565dffdf70e5ef5f474c92eb7f1b903eb6d2ec47e5f5336e9"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-bard-conductor-2026-11-21-3c0b823.mjs",
+      "bytes": 4316677,
+      "sha256": "c44a6ec086e04890864aebcdd8d4e8d4d377377671e7179c3ff43effda3f55d3"
+    }
+  ],
+  "retireDirectoryCount": 2,
+  "retireFileBytes": 1834255659,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": "a830aeaa9220bea8ee113ca6f4298a734f98bad2be1c9211d5c6390ba1ad92ec",
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true,
+  "reuseExistingVerifiedRollback": false,
+  "existingRollbackArchiveSha256": null
+}

@@ -1,0 +1,257 @@
+{
+  "passed": true,
+  "protocol": 92,
+  "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "transport": "worker",
+  "fitting": "transfer",
+  "bought": [
+    {
+      "item": "assassin-evasion-1",
+      "earned": 12,
+      "clears": 0
+    },
+    {
+      "item": "assassin-crossing-writ-1",
+      "earned": 12,
+      "clears": 0
+    },
+    {
+      "item": "assassin-mark-hunter-transfer-writ-1",
+      "earned": 12,
+      "clears": 0
+    }
+  ],
+  "firstClear": 0,
+  "next": {
+    "boss": "city-eater",
+    "arena": "crown-crypt",
+    "start": 0
+  },
+  "setup": {
+    "mode": "raid",
+    "difficulty": "normal",
+    "arenaSelection": "fixed",
+    "openingArenaId": "crown-crypt",
+    "freePlay": {
+      "openingBossId": "city-eater",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "paid": {
+      "id": 16,
+      "at": 104,
+      "until": 190,
+      "recovery": 2654
+    },
+    "original": 0,
+    "line": {
+      "x": 1182.568888527918,
+      "y": 305.67259625267286,
+      "kind": "assassin-writ-cutoff",
+      "id": 16,
+      "owner": "solo",
+      "at": 104,
+      "until": 190,
+      "radius": 4,
+      "from": {
+        "x": 1123.9072858013003,
+        "y": 260.5636573874714
+      },
+      "to": {
+        "x": 1241.2304912545358,
+        "y": 350.78153511787434
+      },
+      "quarry": {
+        "x": 1210,
+        "y": 270,
+        "radius": 66
+      }
+    },
+    "newest": {
+      "x": 1182.568888527918,
+      "y": 305.67259625267286,
+      "kind": "assassin-writ-cutoff",
+      "id": 16,
+      "owner": "solo",
+      "at": 104,
+      "until": 190,
+      "radius": 4,
+      "from": {
+        "x": 1123.9072858013003,
+        "y": 260.5636573874714
+      },
+      "to": {
+        "x": 1241.2304912545358,
+        "y": 350.78153511787434
+      },
+      "quarry": {
+        "x": 1210,
+        "y": 325,
+        "radius": 36
+      }
+    },
+    "transferred": true,
+    "effects": [
+      "assassin-writ-mark",
+      "assassin-writ-proof",
+      "assassin-writ-confirm",
+      "assassin-writ-set",
+      "assassin-writ-proposal",
+      "assassin-writ-transfer"
+    ],
+    "outcomes": [
+      {
+        "phase": "idle",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 1,
+        "status": {
+          "phase": "idle",
+          "ready": false,
+          "until": 0
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "marked",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 84,
+        "status": {
+          "phase": "marked",
+          "ready": false,
+          "proof": 0,
+          "until": 228
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "confirmed",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 103,
+        "status": {
+          "phase": "confirmed",
+          "ready": true,
+          "proof": 2,
+          "until": 228,
+          "guide": {
+            "from": {
+              "x": 1123.9072858013003,
+              "y": 260.5636573874714
+            },
+            "to": {
+              "x": 1241.2304912545358,
+              "y": 350.78153511787434
+            }
+          }
+        },
+        "ultimateAt": 0
+      },
+      {
+        "phase": "laid",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 104,
+        "status": {
+          "phase": "laid",
+          "ready": true,
+          "until": 190
+        },
+        "ultimateAt": 2654
+      },
+      {
+        "phase": "transfer",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 105,
+        "status": {
+          "phase": "transfer",
+          "ready": false,
+          "until": 190,
+          "proposed": {
+            "x": 1210,
+            "y": 325
+          }
+        },
+        "ultimateAt": 2654
+      },
+      {
+        "phase": "laid",
+        "boss": "city-eater",
+        "encounter": 0,
+        "at": 111,
+        "status": {
+          "phase": "laid",
+          "ready": false,
+          "until": 190
+        },
+        "ultimateAt": 2654
+      }
+    ],
+    "plans": [
+      {
+        "kind": "set",
+        "tick": 103,
+        "boss": "city-eater",
+        "target": "boss",
+        "placement": {
+          "angle": -0.9152653406013598,
+          "center": {
+            "x": 1182.568888527918,
+            "y": 305.67259625267286
+          },
+          "from": {
+            "x": 1123.9072858013003,
+            "y": 260.5636573874714
+          },
+          "to": {
+            "x": 1241.2304912545358,
+            "y": 350.78153511787434
+          },
+          "ticks": 77,
+          "predicted": {
+            "id": "city-eater",
+            "hurtAt": 96,
+            "defeatedAt": 0,
+            "castAt": 60,
+            "castReleaseAt": 114,
+            "castEndsAt": 134,
+            "variant": "normal",
+            "x": 1210,
+            "y": 270,
+            "health": 20362.41943442761,
+            "maxHealth": 20485.539434427614,
+            "phase": 0,
+            "threat": 10,
+            "deadline": 7200,
+            "staggerUntil": 0,
+            "vulnerableUntil": 0,
+            "key": "boss",
+            "radius": 58,
+            "velocity": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          "score": 86
+        }
+      },
+      {
+        "kind": "proposal",
+        "tick": 104,
+        "boss": "city-eater",
+        "target": "prop:5"
+      }
+    ]
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "69f7005928619794787acb227ed68d7dcb97386534d5f28fb952ea8ea9b592fa",
+  "driverSha256": "9eb5b41c6805d6cfa7f2561fa6097cba65ca177a0446261b4021ee84d1cdd674",
+  "testedAudience": "public"
+}

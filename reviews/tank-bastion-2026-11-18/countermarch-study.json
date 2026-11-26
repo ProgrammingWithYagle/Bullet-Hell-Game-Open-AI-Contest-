@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "source": "83bc91973585b3f483c8b43a02cc00fa5a9dd20f",
+  "registered": false,
+  "candidateBundleSha256": "5f34a29a696cee6ab29c15c93b44717a741ccd9b3a136bb4d9be6218b8612b85",
+  "controlledCases": 9,
+  "allNaturalTrials": 162,
+  "policies": {
+    "banked": {
+      "trials": 54,
+      "victories": 40,
+      "defeats": 14,
+      "purchases": 0,
+      "placements": 58,
+      "turns": 0,
+      "claims": 12
+    },
+    "owned": {
+      "trials": 54,
+      "victories": 40,
+      "defeats": 14,
+      "purchases": 45,
+      "placements": 58,
+      "turns": 0,
+      "claims": 12
+    },
+    "active": {
+      "trials": 54,
+      "victories": 40,
+      "defeats": 14,
+      "purchases": 45,
+      "placements": 58,
+      "turns": 2,
+      "claims": 14
+    }
+  },
+  "measuredTurns": [
+    {
+      "arena": "sunken-chapel",
+      "seed": 41,
+      "fitting": "corner",
+      "reversed": [
+        {
+          "encounter": 3,
+          "tick": 4800,
+          "face": 1,
+          "id": 1946,
+          "until": 5035
+        }
+      ],
+      "observedClaims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 1,
+          "until": 5035,
+          "encounter": 3,
+          "tick": 4803
+        }
+      ],
+      "control": {
+        "damageTaken": 112.5,
+        "combatTicks": 7572,
+        "outcome": "victory"
+      },
+      "active": {
+        "damageTaken": 112.5,
+        "combatTicks": 7572,
+        "outcome": "victory"
+      }
+    },
+    {
+      "arena": "crown-crypt",
+      "seed": 73,
+      "fitting": "corner",
+      "reversed": [
+        {
+          "encounter": 3,
+          "tick": 4572,
+          "face": 1,
+          "id": 1880,
+          "until": 4803
+        }
+      ],
+      "observedClaims": [
+        {
+          "owner": "tank",
+          "target": "tank",
+          "entrance": 1,
+          "until": 4803,
+          "encounter": 3,
+          "tick": 4575
+        }
+      ],
+      "control": {
+        "damageTaken": 188,
+        "combatTicks": 6839,
+        "outcome": "victory"
+      },
+      "active": {
+        "damageTaken": 155,
+        "combatTicks": 6825,
+        "outcome": "victory"
+      }
+    }
+  ],
+  "exactUnusedOwnershipPairs": 54,
+  "scope": "Copied Game using actual ordinary Short and actual 15 SP purchases. The nine controlled checks use a boss stagger after two natural clears.",
+  "raw": {
+    "fixtures01.json": "905256bd017364c24b6a0b8cde7214574bdfea443e1bfafef820e73f1beeff27",
+    "fixtures02.json": "d44cddd860effc7679608e1896e09fd8c6029293e11bcad3faa0238441b31c6c",
+    "natural-early01.json": "7ba6f0d54502965179d207720e23d3a375b3e8de80a3d2d33a809e514c07f4e1",
+    "natural-late01.json": "f9cd0e944db4383c3095dc1197831b256b6500108de7008ea4bf3fe218d6c78b",
+    "runtime-fragment.txt": "9f5a39a9e417454fc477a0b011100ac804e8e24d8534e25ef7d55b6e2014f880"
+  }
+}

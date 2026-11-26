@@ -1,0 +1,72 @@
+{
+  "createdAt": "2026-10-31T23:19:14.662Z",
+  "passed": true,
+  "buildId": "2026.10.31-story-editions",
+  "protocol": 46,
+  "contentRevision": "31bcd58adcfd8d9d1d76fc23b484237e68c266a513f2dedb2571f8a09067e131",
+  "runtimeSourceSha256": "72672db7dbc00931f54ef5cc3120c68ceebf590bcce894783ff3909b91b4372e",
+  "sourceSnapshotSha256": "380e5e0da75605c939dd2f956f2eea627aa4e50d0aa61853e47fc167a30813a8",
+  "fullGate": {
+    "tests": 1039,
+    "passed": 1039,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "Stage 1 authored content",
+        "passed": true,
+        "elapsedMs": 3462
+      },
+      {
+        "name": "TypeScript",
+        "passed": true,
+        "elapsedMs": 1968
+      },
+      {
+        "name": "Headless rules and real-network integration",
+        "passed": true,
+        "elapsedMs": 68891
+      },
+      {
+        "name": "Production client build",
+        "passed": true,
+        "elapsedMs": 4435
+      },
+      {
+        "name": "Emitted encounter atlas contracts",
+        "passed": true,
+        "elapsedMs": 696
+      }
+    ],
+    "selectedAtlasContracts": 71
+  },
+  "storyNarrative": {
+    "implementedLanguages": [
+      "en",
+      "es",
+      "ar"
+    ],
+    "remainingFullLanguages": 12,
+    "actsPerLanguage": 3,
+    "scenesPerLanguage": 15,
+    "choicesPerLanguage": 42,
+    "endingsPerLanguage": 3,
+    "proseOnlyPackages": true,
+    "arabicDirection": "rtl",
+    "unsupportedLanguageFallback": "en with explicit lang=en/dir=ltr"
+  },
+  "softwareChecks": {
+    "completePackageValidation": true,
+    "canonicalSpeakersPreserved": true,
+    "translationsRejectGameplayCommandFields": true,
+    "spanishNativeControllerReading": true,
+    "arabicNativeControllerReading": true,
+    "readingLeavesGameAndProfileStateUnchanged": true,
+    "narrativeCoverageLedgerParity": true
+  },
+  "limits": [
+    "Authored translations are implementation deliveries; native-speaker/rendered/device/human pacing/final acceptance remain open.",
+    "No browser automation or human playtest is claimed.",
+    "Public Site version4, production backend, Windows artifacts and main remain outside this development-source update.",
+    "The full development goal remains active."
+  ]
+}

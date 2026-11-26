@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-10T01:23:44.532Z",
+  "passed": true,
+  "rows": [
+    {
+      "stem": "source-worker01-public-loose-open-short",
+      "passed": true,
+      "actualEarnedSequence": [
+        3,
+        9,
+        15
+      ],
+      "spentSkillSP": 9,
+      "remainingSP": 6,
+      "sourceRuntimeSha256": "04d4a317fe709ba5d03cf7e9a93768d4f58520a0dc87414d15c2597be3b2d787",
+      "precedesFinalFormattingAndProgressProjection": true,
+      "notFinalExactServedProof": true
+    },
+    {
+      "stem": "source-peer01-public-floating-keyed-short",
+      "passed": true,
+      "actualEarnedSequence": [
+        3,
+        9,
+        15
+      ],
+      "spentSkillSP": 11,
+      "remainingSP": 4,
+      "sourceRuntimeSha256": "04d4a317fe709ba5d03cf7e9a93768d4f58520a0dc87414d15c2597be3b2d787",
+      "precedesFinalFormattingAndProgressProjection": true,
+      "notFinalExactServedProof": true
+    }
+  ],
+  "limits": "These two actual Short runs retain their earlier source runtime04d4a317 and helper hashes. The final gate runtime9703aee1includes subsequent formatting/progress projection. Do not relabel the early execution as the final exact-served runtime. The final gate has9actual Raid12→20 transport cases; fresh frozen reviews must cover allsixShorthandling/carriage combinations in both whole-worker and real-peer groups per audience."
+}

@@ -1,0 +1,193 @@
+{
+  "protocol": 84,
+  "buildId": "2026.11.19-medic-surgery-fittings",
+  "contentRevision": "5efdcb282f139fc46d075048751a8e9a2825ac487adff68c6fe2408a3443c1fc",
+  "tests": 2683,
+  "checks": 7,
+  "runtimeSourceSha256": "877108b2425876f2b16580978ae38a8c36f161aa649c87329bfcc025972f081f",
+  "sourceSnapshotSha256": "cb8b4d42943fa758252018426c0b5237a78839d0e7278185be8896497febdc3e",
+  "study": {
+    "solo": {
+      "short": {
+        "cases": 24,
+        "operated": {
+          "tie": 1,
+          "wrap": 29,
+          "resume": 26,
+          "shot": 30,
+          "dose": 35
+        }
+      },
+      "standard": {
+        "cases": 12,
+        "wins": 4,
+        "reachedCap": 4,
+        "operated": {
+          "tie": 0,
+          "wrap": 3,
+          "resume": 3,
+          "shot": 3,
+          "dose": 4
+        },
+        "terminalBosses": [
+          "matron",
+          "matron",
+          "matron",
+          "matron",
+          "matron",
+          "matron",
+          "matron",
+          "matron"
+        ]
+      }
+    },
+    "party": {
+      "short": {
+        "cases": 24,
+        "operated": {
+          "tie": 1,
+          "wrap": 20,
+          "resume": 17,
+          "shot": 21,
+          "dose": 20
+        }
+      },
+      "standard": {
+        "cases": 12,
+        "wins": 12,
+        "reachedCap": 12,
+        "operated": {
+          "tie": 0,
+          "wrap": 1,
+          "resume": 1,
+          "shot": 1,
+          "dose": 3
+        },
+        "terminalBosses": []
+      }
+    }
+  },
+  "transport": [
+    {
+      "mode": "worker",
+      "fitting": "tie",
+      "path": "source-worker-tie.json"
+    },
+    {
+      "mode": "worker",
+      "fitting": "wrap",
+      "path": "source-worker-wrap.json"
+    },
+    {
+      "mode": "peer",
+      "fitting": "tie",
+      "path": "source-peer-tie.json"
+    },
+    {
+      "mode": "peer",
+      "fitting": "wrap",
+      "path": "source-peer-wrap.json"
+    }
+  ],
+  "hybridWins": 8,
+  "replays": 6,
+  "files": [
+    {
+      "path": "source-verification.json",
+      "bytes": 389464,
+      "sha256": "16e6e03666de7f3cc714cdc395d544df26485b7775d5a69b26704f9152e76db5"
+    },
+    {
+      "path": "build-census.json",
+      "bytes": 2862803,
+      "sha256": "0bb4583297cf811c0b6a1369bf7006547c921b377238456497c52e3adfeb07c7"
+    },
+    {
+      "path": "short-solo-study.json",
+      "bytes": 178198,
+      "sha256": "5c520f5ceeac009679e04cd7d5b5b997962f4c14af0a98d65cf63dfe7cdfeab4"
+    },
+    {
+      "path": "short-party-study.json",
+      "bytes": 143940,
+      "sha256": "3ddbcefc37b2ce5bf576acd7a35bb1e2684aea02c7d0c320dae2baeaf63b9548"
+    },
+    {
+      "path": "shop-replays.json",
+      "bytes": 139810,
+      "sha256": "241edb4ea201d22dce221a028ed7c4144e7fa8f91d33b879346b1df20ef02828"
+    },
+    {
+      "path": "standard-solo-base.json",
+      "bytes": 41120,
+      "sha256": "7217bb2cb0186e585c7dd585eb0771d185c28b04cb3bf947e9566610d238f9ac"
+    },
+    {
+      "path": "standard-party-base.json",
+      "bytes": 21561,
+      "sha256": "07bd2a7ba217739b1c6b77eb9fce6a212316c8220ba04c05fc19117767b9f972"
+    },
+    {
+      "path": "standard-solo-navigation.json",
+      "bytes": 373563,
+      "sha256": "b60f9ad09e121073c0e0b68052413cd205537b364398e0fa40e3a46ed96a48d5"
+    },
+    {
+      "path": "standard-party-navigation.json",
+      "bytes": 5445816,
+      "sha256": "e1368b821263b5a13a4838353bc1f17ad5a3ee7479fd47b0bd68a38c900242c6"
+    },
+    {
+      "path": "audio-checks.json",
+      "bytes": 436,
+      "sha256": "c7bc3f64eb32e55dc4f19dd54542003fb68c9e198bd0999a0f0d8d05e6a82169"
+    },
+    {
+      "path": "standard-solo-openers.json",
+      "bytes": 280818,
+      "sha256": "7cc8f5827c26e838bf8d3352a1d612ee5d1a6a35cc1b94d3608ae80f0d7967be"
+    },
+    {
+      "path": "standard-solo-hybrid.json",
+      "bytes": 867695,
+      "sha256": "e5c24ad0e9b9344afc574278a6f98f5b0214282ffe451c332fa39cc844817ce2"
+    },
+    {
+      "path": "dodge-observer-regression.json",
+      "bytes": 426,
+      "sha256": "2deb27198b9d3a1b79e009714842b866428e848e8b8244978ad90ed03f6fc0a0"
+    },
+    {
+      "path": "dodge-observer-proof.json",
+      "bytes": 987,
+      "sha256": "0cfdd47c5c6f9aa06e0f164b3090f9345f9600c52158169defc034289029378f"
+    },
+    {
+      "path": "source-worker-tie.json",
+      "bytes": 2899,
+      "sha256": "58060aaee27721f2ee5843b2a6aa3b4c0041ff0b56419bc0d2c197775fc15a4c"
+    },
+    {
+      "path": "source-worker-wrap.json",
+      "bytes": 2295,
+      "sha256": "fddcc4dd846d06ae637400a82ffd58ccc6dc428b6a654241394f74e4e89f09c5"
+    },
+    {
+      "path": "source-peer-tie.json",
+      "bytes": 2861,
+      "sha256": "d5916342c2477f6f2bd65a05cc359422ab87047478d812567de5a672f847dc9d"
+    },
+    {
+      "path": "source-peer-wrap.json",
+      "bytes": 1953,
+      "sha256": "5232c96819a43465d1c8ecde3b0b36162963ed4f48836970e19bd0a18b2f0af2"
+    }
+  ],
+  "documents": [
+    "docs/MEDIC_FIELD_SURGERY.md",
+    "docs/BUILD_VARIETY_AUDIT.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "handoff/NEXT_CHAT.md"
+  ]
+}

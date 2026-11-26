@@ -1,0 +1,26 @@
+C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\client\i18n.ts:5
+const loaders = import.meta.glob<Catalog>('../../locales/*.json', { import: 'default' });
+                            ^
+
+TypeError: (intermediate value).glob is not a function
+    at <anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\src\client\i18n.ts:5:29)
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+✖ tests\testing-social.test.ts (1021.1099ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1030.1585
+
+✖ failing tests:
+
+test at tests\testing-social.test.ts:1:1
+✖ tests\testing-social.test.ts (1021.1099ms)
+  'test failed'

@@ -1,0 +1,617 @@
+import assert from 'node:assert/strict';
+import { setTimeout as sleep } from 'node:timers/promises';
+import { data } from '../../src/shared/game.ts';
+import { runtimeArena } from '../../src/shared/arena-layouts.ts';
+import { gateObstacles } from '../../src/shared/civic-director.ts';
+import { endlessSolids } from '../../src/shared/endless-director.ts';
+import { constructHit } from '../../src/shared/class-kits.ts';
+import { moveBody, segmentCircle, segmentRect } from '../../src/shared/geometry.ts';
+import {
+  heavyLineworkRules as rules,
+  lineworkIds,
+  lineworkTemporaryConstructs,
+} from '../../src/shared/heavy-linework.ts';
+import {
+  HZ,
+  type Event,
+  type InputFrame,
+  type Result,
+  type Vec,
+} from '../../src/shared/protocol.ts';
+import type { View } from '../../src/shared/view.ts';
+import { restWait } from './sniper-rest-flow.ts';
+import { restRaidInput, type ObservedRestShot } from './sniper-rest-raid-policy.ts';
+import { lineworkMenu, spentLineworkSP } from './heavy-linework-menu-flow.ts';
+
+export type LineworkFitting = 'bare' | 'yoke' | 'sheave';
+export type LineworkAcquisition = boolean | 'guide';
+type Purchase = { kind: 'skill' | 'weapon' | 'upgrade' | 'supply'; item: string };
+export type LineworkTransport = {
+  id: string;
+  view(): View | undefined;
+  events: Event[];
+  observed: Map<number, ObservedRestShot>;
+  input(input: Partial<InputFrame>): number;
+  purchase(request: Purchase): Promise<Result>;
+  start(): void;
+  vote(index: number): void;
+  pause(value: boolean): void;
+  paused(): boolean;
+  end?(): void;
+  allyPolicy?(): void;
+  stopAlly?(): void;
+  checkObservers?(anchorId: number, until: number, reserveId?: number, guide?: Vec): Promise<void>;
+};
+
+// A two-leg Gatehouse Baby route from the ordinary third deployment.
+const guideRoute = {
+  castFrom: { x: 695, y: 731.5999999999999 },
+  approach: { x: 0.6608406857770962, y: 0.7505262074182735 },
+  setFrom: { x: 695, y: 861.5999999999999 },
+  guide: { x: 695, y: 878.5999999999999 },
+  detour: { x: 695, y: 813.5999999999999 },
+  anchor: { x: 832.3584905660377, y: 890.5999999999999 },
+};
+
+/** Pick a manual ray from public geometry and visible bodies. */
+function anchorBearing(view: View, id: string, fromAnchor?: Vec) {
+  const player = view.players.find((p) => p.id === id)!;
+  const arena = runtimeArena(view.arenaId, view.run.difficulty);
+  const solids = [
+    ...arena.obstacles,
+    ...gateObstacles(view.bossCues, view.combatTick),
+    ...endlessSolids(view.bossCues, view.combatTick),
+  ];
+  const bodies = [
+    { ...view.boss, radius: data.bosses.find((b) => b.id === view.boss.id)!.radius + 35 },
+    ...view.players
+      .filter((p) => p.id !== id && p.connected && p.status === 'active')
+      .map((p) => ({ ...p, radius: 16 })),
+    ...view.minions.map((p) => ({ ...p, radius: p.radius + 22 })),
+    ...(view.retinue ?? []),
+  ];
+  const constructs = lineworkTemporaryConstructs(view.classCues, view.combatTick);
+  const candidates = Array.from({ length: 144 }, (_, index) => (index * Math.PI) / 72 - Math.PI)
+    .flatMap((aim) => {
+      const x = Math.cos(aim),
+        y = Math.sin(aim),
+        end = { x: player.x + x * 560, y: player.y + y * 560 };
+      const hits = solids
+        .flatMap((wall, index) => {
+          const hit = segmentRect(player, end, wall, rules.radius);
+          return hit ? [{ ...hit, index }] : [];
+        })
+        .sort((a, b) => a.t - b.t);
+      const hit = hits[0];
+      if (!hit || hit.index >= arena.obstacles.length || hit.t * 560 < 135 || hit.t * 560 > 480)
+        return [];
+      const contact = { x: player.x + x * 560 * hit.t, y: player.y + y * 560 * hit.t };
+      if (fromAnchor && Math.hypot(contact.x - fromAnchor.x, contact.y - fromAnchor.y) < 116)
+        return [];
+      const bounds = arena.bounds;
+      if (
+        contact.x < bounds.x + rules.radius ||
+        contact.y < bounds.y + rules.radius ||
+        contact.x > bounds.x + bounds.width - rules.radius ||
+        contact.y > bounds.y + bounds.height - rules.radius
+      )
+        return [];
+      if (
+        bodies.some(
+          (body) => segmentCircle(player, contact, body, body.radius + rules.radius) !== null,
+        ) ||
+        constructs.some((body) => constructHit(player, contact, body, rules.radius) !== null)
+      )
+        return [];
+      const retreat = moveBody(player, { x: -x * 26, y: -y * 26 }, data.rules.playerRadius, solids);
+      if (Math.hypot(retreat.x - player.x, retreat.y - player.y) < 18) return [];
+      if (
+        arena.lavaPits.some(
+          (lava) => segmentCircle(retreat, contact, lava, lava.radius + 16) !== null,
+        )
+      )
+        return [];
+      const incidence = Math.abs(x * hit.normal.x + y * hit.normal.y);
+      if (incidence < 0.5) return [];
+      return [{ aim, score: Math.abs(hit.t * 560 - 235) + (1 - incidence) * 140 }];
+    })
+    .sort((a, b) => a.score - b.score);
+  assert(
+    candidates.length,
+    'Actual arena has a clear manually aimed Lineworker route from the current position',
+  );
+  return candidates[0].aim;
+}
+
+export async function earnedLineworkFlow(
+  transport: LineworkTransport,
+  fitting: LineworkFitting,
+  acquisition: LineworkAcquisition = false,
+) {
+  const withReserve = acquisition === true;
+  const withGuide = acquisition === 'guide';
+  const evolution = withGuide ? lineworkIds.guide : withReserve ? lineworkIds.reserve : undefined;
+  const view = () => {
+    const current = transport.view();
+    assert(current, 'Missing authoritative view');
+    return current;
+  };
+  const player = () => {
+    const current = view().players.find((p) => p.id === transport.id);
+    assert(current);
+    return current;
+  };
+  const earned = () => player().sp + spentLineworkSP(player());
+  const acknowledge = async (input: Partial<InputFrame>, label: string) => {
+    const sequence = transport.input(input);
+    await restWait(() => player().ack >= sequence, label);
+    return sequence;
+  };
+  const ownedShots = () =>
+    transport.events.flatMap((event) =>
+      event.type === 'shots' ? event.shots.filter((s) => s.owner === transport.id) : [],
+    );
+  const removed = (id: number) =>
+    transport.events.some((event) => event.type === 'remove' && event.ids.includes(id));
+  const sounded = (id: string) =>
+    transport.events.some(
+      (event) => event.type === 'sound' && event.owner === transport.id && event.id === id,
+    );
+  const menu = await lineworkMenu(player);
+  async function buy(item: string) {
+    await menu.inspect(item, true, async () => {
+      const result = await transport.purchase({ kind: 'skill', item });
+      assert(result.ok, JSON.stringify(result));
+    });
+  }
+  async function equip() {
+    const weapons = data.weapons
+      .filter((w) => w.classId === 'heavy')
+      .sort((a, b) => b.tier - a.tier);
+    for (const weapon of weapons) {
+      if (player().weapon === weapon.id) break;
+      if ((await transport.purchase({ kind: 'weapon', item: weapon.id })).ok) break;
+    }
+    for (const item of ['damage', 'health', 'fire-rate', 'reload', 'magazine'])
+      await transport.purchase({ kind: 'upgrade', item });
+    await transport.purchase({ kind: 'supply', item: 'medkit' });
+  }
+  async function attach(bearing?: number) {
+    await acknowledge({}, 'Stopped policy input before selecting an actual wall');
+    const aim = bearing ?? anchorBearing(view(), transport.id),
+      ammo = player().ammo,
+      previous = ownedShots().length;
+    const sequence = await acknowledge(
+      { aim, technique1: true },
+      'Actual Lineworker cast acknowledged',
+    );
+    await restWait(
+      () =>
+        ownedShots()
+          .slice(previous)
+          .some((s) => s.visual === 'heavy-anchor'),
+      'Paid anchor trajectory arrives in its separate owner batch',
+    );
+    const shot = ownedShots()
+      .slice(previous)
+      .find((s) => s.visual === 'heavy-anchor')!;
+    const castAt = shot.expires - rules.flightTicks;
+    assert.equal(shot.damage, 0);
+    assert.equal(player().ammo, ammo - 1);
+    await restWait(
+      () => !!player().kit.lineworkConnection && removed(shot.id),
+      'Physical masonry attachment and separate flight removal',
+    );
+    const line = player().kit.lineworkConnection!,
+      recovery = player().kit.lineworkRecovery!;
+    assert.equal(line.until, castAt + rules.lineTicks);
+    assert.equal(
+      recovery,
+      castAt + Math.ceil(rules.cooldown * (player().kit.lineworkCooldownScale ?? 1) * HZ),
+    );
+    assert.equal(player().kit.lineworkCastSequence, sequence);
+    await restWait(() => sounded('linework-anchor'), 'Physical attachment sound reaches the owner');
+    return { aim, ammo, shot, castAt, recovery, line };
+  }
+  const earnedSequence = [3];
+  async function clearToShop(encounter: number, earnedSP: number) {
+    const clearDeadline = Date.now() + 200_000;
+    while (view().phase === 'combat') {
+      assert(Date.now() < clearDeadline, 'Ordinary Short clear policy bound');
+      transport.input(restRaidInput(view(), player(), [...transport.observed.values()]));
+      transport.allyPolicy?.();
+      await sleep(25);
+    }
+    transport.stopAlly?.();
+    assert.notEqual(view().phase, 'defeat');
+    assert.equal(view().encounter, encounter);
+    assert.equal(earned(), earnedSP);
+    assert.equal(player().progress.clears, encounter);
+    earnedSequence.push(earned());
+    console.log(
+      JSON.stringify({
+        fitting,
+        withReserve,
+        ...(withGuide ? { withGuide } : {}),
+        actualEarnedSP: earned(),
+        actualClears: player().progress.clears,
+        combatTick: view().combatTick,
+      }),
+    );
+    const shopDeadline = Date.now() + 90_000;
+    while (view().phase !== 'shop') {
+      assert(
+        Date.now() < shopDeadline && view().phase !== 'defeat',
+        'Original reward clocks reach the shop',
+      );
+      if (['mutationVote', 'contractVote'].includes(view().phase)) transport.vote(0);
+      await sleep(25);
+    }
+  }
+  async function deploy(earnedSP: number) {
+    await equip();
+    const deadline = Date.now() + 90_000;
+    while (view().phase !== 'combat') {
+      assert(
+        Date.now() < deadline && view().phase !== 'defeat',
+        'Original shop and deployment clocks reach combat',
+      );
+      await sleep(25);
+    }
+    assert.equal(earned(), earnedSP);
+    assert(!view().run.testingModified && !view().run.customized);
+  }
+  async function selectReserve(first: Awaited<ReturnType<typeof attach>>) {
+    const aim = anchorBearing(view(), transport.id, first.line.origin);
+    const before = ownedShots().length,
+      ammo = player().ammo;
+    await acknowledge({ aim, technique3: true }, 'Admitted separate paid reserve cast');
+    await restWait(
+      () =>
+        ownedShots()
+          .slice(before)
+          .some((shot) => shot.visual === 'heavy-anchor'),
+      'Actual reserve flight arrives',
+    );
+    const shot = ownedShots()
+      .slice(before)
+      .find((shot) => shot.visual === 'heavy-anchor')!;
+    assert.notEqual(shot.id, first.shot.id);
+    assert.equal(shot.damage, 0);
+    assert.equal(player().ammo, ammo - 1);
+    await restWait(
+      () => !!player().kit.lineworkConnection?.reserve && removed(shot.id),
+      'Real alternate masonry and separate removal',
+    );
+    const parent = player().kit.lineworkConnection!,
+      alternate = parent.reserve!;
+    assert.deepEqual(parent.origin, first.line.origin);
+    assert.equal(alternate.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    const separation = Math.hypot(
+      parent.origin.x - alternate.origin.x,
+      parent.origin.y - alternate.origin.y,
+    );
+    assert(separation >= 100);
+    transport.pause(true);
+    await restWait(() => transport.paused(), 'Actual paused two-anchor view');
+    const tick = view().combatTick,
+      ack = player().ack;
+    transport.input({ aim, technique3: true });
+    await sleep(90);
+    assert.equal(view().combatTick, tick);
+    assert.equal(player().ack, ack);
+    assert.equal(player().ammo, ammo - 1);
+    assert.deepEqual(player().kit.lineworkConnection?.origin, parent.origin);
+    await transport.checkObservers?.(first.shot.id, parent.until, shot.id);
+    transport.pause(false);
+    await restWait(
+      () => !transport.paused(),
+      'Original clock resumes after two-anchor observation',
+    );
+    await acknowledge(
+      { aim, technique3: true, technique2: true },
+      'Separate reserve selection before haul',
+    );
+    const selected = player().kit.lineworkConnection!;
+    assert(selected.reserveSelected && !selected.active && !selected.reserve);
+    assert.deepEqual(selected.origin, alternate.origin);
+    assert.equal(selected.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    assert.equal(player().ammo, ammo - 1);
+    return {
+      operation: {
+        primaryAnchor: first.line.origin,
+        reserveAnchor: alternate.origin,
+        separation,
+        firstAnchorId: first.shot.id,
+        reserveAnchorId: shot.id,
+        paidReserveRounds: 1,
+        originalUntil: parent.until,
+        selectedUntil: selected.until,
+        originalRecovery: first.recovery,
+        selectedWhileBraked: true,
+        pausedSelectionDiscarded: true,
+      },
+      selected: { ...first, shot, aim, line: selected },
+    };
+  }
+
+  const walkObservations: {
+    target: Vec;
+    startTick: number;
+    endTick: number;
+    commands: number;
+    elapsedMs: number;
+    completed: boolean;
+  }[] = [];
+
+  async function walkTo(target: Vec) {
+    const began = Date.now();
+    const observation = { target: { ...target }, startTick: view().combatTick,
+      endTick: view().combatTick, commands: 0, elapsedMs: 0, completed: false };
+    walkObservations.push(observation);
+    let commandedAt = -1;
+    try {
+      await restWait(() => {
+        const p = player(), dx = target.x - p.x, dy = target.y - p.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance <= 2.5) return true;
+        const now = view().combatTick;
+        if (now === commandedAt) return false;
+        commandedAt = now;
+        const scale = Math.max(18, distance);
+        transport.input({ moveX: dx / scale, moveY: dy / scale, aim: Math.atan2(dy, dx) });
+        observation.commands++;
+        return false;
+      }, 'Ordinary inputs reach the surveyed Gatehouse point');
+      await acknowledge({}, 'Braked and still at the surveyed point');
+      assert(Math.hypot(target.x - player().x, target.y - player().y) <= 6);
+      observation.completed = true;
+    } finally {
+      observation.endTick = view().combatTick;
+      observation.elapsedMs = Date.now() - began;
+      assert(observation.commands <= observation.endTick - observation.startTick + 1);
+    }
+  }
+
+  async function setAndRedirectGuide() {
+    assert.equal(view().arenaId, 'gatehouse');
+    await walkTo(guideRoute.castFrom);
+    const first = await attach(Math.atan2(guideRoute.approach.y, guideRoute.approach.x));
+    assert(
+      Math.hypot(
+        first.line.origin.x - guideRoute.anchor.x,
+        first.line.origin.y - guideRoute.anchor.y,
+      ) <= 16,
+    );
+    await walkTo(guideRoute.setFrom);
+    const aim = Math.atan2(guideRoute.guide.y - player().y, guideRoute.guide.x - player().x);
+    await acknowledge({ aim }, 'Aim preview reaches the authoritative guide status');
+    const ammo = player().ammo,
+      before = ownedShots().length;
+    assert.equal(
+      player().kit.lineworkGuideBlocked,
+      false,
+      'Owner can read the aimed masonry as ready',
+    );
+    await acknowledge(
+      { aim, technique3: true, technique2: true },
+      'Paid guide has priority over same-frame haul',
+    );
+    const fitted = player().kit.lineworkConnection!;
+    assert(fitted.guide && fitted.guideUsed && !fitted.active);
+    assert.equal(player().ammo, ammo - 1);
+    assert.equal(ownedShots().length, before);
+    assert.deepEqual(fitted.origin, first.line.origin);
+    assert.equal(fitted.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    await restWait(() => sounded('linework-guide-set'), 'Paid guide cue arrives');
+
+    await walkTo(guideRoute.detour);
+    const start = { x: player().x, y: player().y };
+    assert(Math.hypot(start.x - fitted.guide.point.x, start.y - fitted.guide.point.y) > 45);
+    await acknowledge({ technique2: true }, 'Separate haul begins along the guide leg');
+    await restWait(() => {
+      const p = player(),
+        line = p.kit.lineworkConnection;
+      return (
+        !!line?.guide &&
+        !line.active &&
+        p.kit.lineworkGuideBlocked === false
+      );
+    }, 'Motor stops braked at the guide');
+    const firstHaul = Math.hypot(player().x - start.x, player().y - start.y);
+    assert(firstHaul > 45);
+    assert.equal(player().kit.lineworkGuideBlocked, false);
+
+    transport.pause(true);
+    await restWait(() => transport.paused(), 'Actual paused guide view');
+    const tick = view().combatTick,
+      ack = player().ack;
+    transport.input({ technique3: true });
+    await sleep(90);
+    assert.equal(view().combatTick, tick);
+    assert.equal(player().ack, ack);
+    assert.equal(player().ammo, ammo - 1);
+    assert.deepEqual(player().kit.lineworkConnection?.guide, fitted.guide);
+    await transport.checkObservers?.(first.shot.id, fitted.until, undefined, fitted.guide.point);
+    transport.pause(false);
+    await restWait(() => !transport.paused(), 'Original combat clock resumes');
+    await acknowledge(
+      { technique3: true, technique2: true },
+      'Redirect has priority over same-frame second haul',
+    );
+    const redirected = player().kit.lineworkConnection!;
+    assert(redirected.guideUsed && !redirected.guide && !redirected.active);
+    assert.deepEqual(redirected.origin, first.line.origin);
+    assert.equal(redirected.until, first.line.until);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+    assert.equal(player().ammo, ammo - 1);
+    await restWait(() => sounded('linework-guide-redirect'), 'Separate redirect cue arrives');
+    const anchorAim = Math.atan2(
+      redirected.origin.y - player().y,
+      redirected.origin.x - player().x,
+    );
+    return {
+      selected: { ...first, aim: anchorAim, line: redirected },
+      operation: {
+        walkObservations,
+        firstAnchor: first.line.origin,
+        guide: fitted.guide.point,
+        masonryFoot: fitted.guide.foot,
+        paidGuideRounds: 1,
+        firstHaul,
+        originalUntil: first.line.until,
+        redirectedUntil: redirected.until,
+        originalRecovery: first.recovery,
+        pausedRedirectDiscarded: true,
+      },
+    };
+  }
+
+  try {
+    assert.equal(earned(), 3);
+    assert.deepEqual(player().skills, []);
+    await buy('heavy-ordnance-1');
+    await buy(lineworkIds.entry);
+    await menu.inspect(lineworkIds.yoke, false);
+    await menu.inspect(lineworkIds.sheave, false);
+    await equip();
+    transport.start();
+    await restWait(() => view().phase === 'combat', 'Ordinary Short starts combat');
+    const first = await attach();
+    await acknowledge({ aim: first.aim, technique2: true }, 'Separate base haul command');
+    assert(player().kit.lineworkActive);
+    await acknowledge({ aim: first.aim, technique1: true }, 'Separate base release command');
+    assert(!player().kit.lineworkConnection);
+    assert.equal(player().kit.lineworkRecovery, first.recovery);
+
+    await clearToShop(1, 9);
+    if (fitting !== 'bare') {
+      await buy(lineworkIds[fitting]);
+      await menu.inspect(lineworkIds[fitting === 'yoke' ? 'sheave' : 'yoke'], false);
+    } else await menu.inspect(lineworkIds.sheave, true);
+    if (evolution) {
+      await menu.inspect(evolution, false);
+      if (withGuide) {
+        const rejected = await transport.purchase({ kind: 'skill', item: evolution });
+        assert(!rejected.ok && !player().skills.includes(evolution));
+        assert.equal(earned(), 9);
+      }
+      await deploy(9);
+      await clearToShop(2, 15);
+      await buy(evolution);
+      if (withGuide) await menu.inspect(lineworkIds.reserve, false);
+    }
+    const spent = spentLineworkSP(player());
+    assert.equal(spent, (fitting === 'bare' ? 3 : 5) + (evolution ? 3 : 0));
+    await deploy(evolution ? 15 : 9);
+    const guide = withGuide ? await setAndRedirectGuide() : undefined;
+    const current = guide?.selected ?? (await attach());
+    const reserve = withReserve ? await selectReserve(current) : undefined;
+    const second = reserve?.selected ?? current;
+    let payout = 0;
+    if (fitting === 'sheave' && !withGuide) {
+      const initial = second.line.initialLength;
+      const out = { aim: second.aim, moveX: -Math.cos(second.aim), moveY: -Math.sin(second.aim) };
+      const begin = view().combatTick;
+      await acknowledge(out, 'Ordinary walk pays out the braked line');
+      await restWait(() => view().combatTick >= begin + 3, 'Observe actual braked walking');
+      await acknowledge({ aim: second.aim }, 'Stop after payout');
+      const line = player().kit.lineworkConnection!;
+      assert.equal(line.requiresFitting, lineworkIds.sheave);
+      assert.equal(line.until, second.line.until);
+      payout = Math.hypot(player().x - line.origin.x, player().y - line.origin.y) - initial;
+      assert(payout > rules.slack);
+    }
+    const start = { x: player().x, y: player().y },
+      beforePrimary = ownedShots().length,
+      beforeAmmo = player().ammo;
+    const begin = view().combatTick;
+    await acknowledge(
+      { aim: second.aim, technique2: true, fire: true },
+      'Separate acquired haul command',
+    );
+    assert(player().kit.lineworkActive);
+    await restWait(
+      () => view().combatTick >= begin + 8,
+      'Observe actual motor and primary handling',
+    );
+    await acknowledge({ aim: second.aim }, 'Stop requesting primary');
+    const walked = Math.hypot(player().x - start.x, player().y - start.y),
+      primary = ownedShots()
+        .slice(beforePrimary)
+        .filter((s) => !s.visual);
+    assert(walked > 8);
+    const towardOriginal =
+      Math.hypot(start.x - second.line.origin.x, start.y - second.line.origin.y) -
+      Math.hypot(player().x - second.line.origin.x, player().y - second.line.origin.y);
+    if (withGuide) assert(towardOriginal > 8, 'Second haul moves toward the original anchor');
+    assert.equal(player().kit.lineworkUntil, second.line.until);
+    if (fitting === 'yoke') {
+      assert(primary.length > 0);
+      assert(player().ammo < beforeAmmo);
+    } else {
+      assert.equal(primary.length, 0);
+      assert.equal(player().ammo, beforeAmmo);
+    }
+
+    transport.pause(true);
+    await restWait(() => transport.paused(), 'Actual pause acknowledgement');
+    const frozenTick = view().combatTick,
+      frozenAmmo = player().ammo,
+      frozenAck = player().ack;
+    transport.input({ aim: second.aim, technique1: true, fire: true });
+    await sleep(90);
+    assert.equal(view().combatTick, frozenTick);
+    assert.equal(player().ammo, frozenAmmo);
+    assert.equal(player().ack, frozenAck);
+    assert.equal(player().kit.lineworkUntil, second.line.until);
+    if (!evolution) await transport.checkObservers?.(second.shot.id, second.line.until);
+    transport.pause(false);
+    await restWait(() => !transport.paused(), 'Actual unpause acknowledgement');
+    if (transport.end) {
+      transport.end();
+      await restWait(() => view().phase === 'defeat', 'Real room host exit');
+    } else
+      await acknowledge(
+        { aim: second.aim, technique1: true },
+        'Actual Solo release clears the line',
+      );
+    assert(!player().kit.lineworkConnection);
+    assert(!player().kit.lineworkFlight);
+    return {
+      passed: true,
+      fitting,
+      actualEarnedSequence: earnedSequence,
+      actualClears: earnedSequence.length - 1,
+      reserve: reserve?.operation,
+      guide: guide ? { ...guide.operation, towardOriginal } : undefined,
+      spent,
+      walked,
+      payout,
+      paidPrimaryProjectiles: primary.length,
+      firstAnchorId: first.shot.id,
+      secondAnchorId: second.shot.id,
+      originalLifetimeTicks: rules.lineTicks,
+      menuObservations: menu.observations,
+    };
+  } catch (error) {
+    const current = transport.view(),
+      actor = current?.players.find((p) => p.id === transport.id);
+    console.error(
+      JSON.stringify({
+        phase: current?.phase,
+        encounter: current?.encounter,
+        combatTick: current?.combatTick,
+        actor,
+        fitting,
+        walkObservations,
+      }),
+    );
+    throw error;
+  } finally {
+    await menu.close();
+  }
+}

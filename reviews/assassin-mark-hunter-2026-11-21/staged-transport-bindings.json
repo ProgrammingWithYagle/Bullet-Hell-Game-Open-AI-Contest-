@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "revision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "protocol": 92,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "startingBoss": "constable",
+      "mode": "short",
+      "earned": 3,
+      "paidUntil": 2785,
+      "cutoff": 32,
+      "crossing": "strike",
+      "pinned": false,
+      "transferred": false,
+      "path": "native-scratch06/worker-entry.json",
+      "sha256": "9a34053b96d707719211c8384fb937fdd12d077169b2ca47aeaa07070eb4d717"
+    },
+    {
+      "transport": "worker",
+      "fitting": "canted",
+      "startingBoss": "stitchwright",
+      "mode": "short",
+      "earned": 9,
+      "paidUntil": 3873,
+      "cutoff": 406,
+      "pinned": true,
+      "transferred": false,
+      "path": "native-scratch06/worker-canted.json",
+      "sha256": "fac18e5e694809e83066accfdcbfede2ace76196bc42b1c18ca1ebc15caae4d7"
+    },
+    {
+      "transport": "worker",
+      "fitting": "transfer",
+      "startingBoss": "city-eater",
+      "mode": "raid",
+      "earned": 12,
+      "paidUntil": 2653,
+      "cutoff": 16,
+      "pinned": false,
+      "transferred": true,
+      "path": "native-scratch06/worker-transfer.json",
+      "sha256": "f7a380154602f02a3d9f5f08961ab2a470789dfccdc612852289c2fa27512d67"
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "startingBoss": "brass-toad",
+      "mode": "short",
+      "earned": 3,
+      "paidUntil": 2756,
+      "cutoff": 25,
+      "crossing": "strike",
+      "pinned": false,
+      "transferred": false,
+      "path": "native-scratch06/peer-entry.json",
+      "sha256": "b9bf29397441a34eb0d40dc513dc355ef0d57a5bcd1bf1aa5109e3331fd8cfd0"
+    },
+    {
+      "transport": "peer",
+      "fitting": "canted",
+      "startingBoss": "stitchwright",
+      "mode": "short",
+      "earned": 9,
+      "paidUntil": 4756,
+      "cutoff": 868,
+      "pinned": true,
+      "transferred": false,
+      "path": "native-scratch06/peer-canted.json",
+      "sha256": "ce3ee4d6070023fc057e95179bba1ab6420ab91cfa3e6b4a3203144e76224a86"
+    },
+    {
+      "transport": "peer",
+      "fitting": "transfer",
+      "startingBoss": "city-eater",
+      "mode": "raid",
+      "earned": 12,
+      "paidUntil": 3018,
+      "cutoff": 114,
+      "pinned": false,
+      "transferred": true,
+      "path": "native-scratch06/peer-transfer.json",
+      "sha256": "18b0ce7a4e0585754327ed5c413988c792148c17685eb0ccd57aa77f70dc4954"
+    }
+  ],
+  "driver": "9eb5b41c6805d6cfa7f2561fa6097cba65ca177a0446261b4021ee84d1cdd674",
+  "worker": "69f7005928619794787acb227ed68d7dcb97386534d5f28fb952ea8ea9b592fa",
+  "inputs": {
+    "src/shared/protocol.ts": "9a45e0674e3cc549f3a91b06bb1728e6c68d329afc0997db7205ff1f9860cee3",
+    "src/shared/game.ts": "006ac5c7d757cee452ba348ea27d97e86cb6482dcd6147f32e6bff4b03c0add4",
+    "src/shared/view.ts": "e684154c384d75a7a36dde0ac607f66ead1ac469da30aec772b3934dd3260fdb",
+    "content/revision.json": "ef3d5a4fac6d2fcb227332cdce47a8047d5913f6c1dec62c74f3b37579607ef9",
+    "content/catalog.json": "7127f2d2fd739c8b59f3dec4ca9233a3fa845c2e155ad8e504f1b870d91a19c6",
+    "src/shared/assassin-crossing-writ.ts": "ebc143233be60c1365c31dab34819e4fe68b85b540066b48ada64c4ca04312d6",
+    "src/shared/class-kits.ts": "959fe2e2b287e7468bf72988649dd674f84cd94afb1f9f7c936d042b2faaa6b7",
+    "src/shared/practice-migration.ts": "416dd27afd2604af577cf9afdddc478a586d02f5b07561262128172db2145555",
+    "src/shared/skill-conflicts.ts": "91655bedd81f005b0bd66660d69432a148601ae9900ec75af6432ae6a1862940",
+    "src/server/GraveRoom.ts": "fc7f3cb6b3c1dfa6a611b79ae48a19ecd509570ee4f84f610ec38c06eb471383",
+    "src/client/profile.ts": "15e85441a1b17cde18a73d04c581c28e8c184823b4ea8f63a602ab05213420db",
+    "src/client/progress.ts": "1fc000110cd7e10b81b74341074d26b57da4b0efb646310ebce27d1ef7e7312a"
+  },
+  "bundle": "native-bundle05",
+  "attempt": "native-scratch06",
+  "helpers": {
+    "native-writ-flow.mts": "bc9ab896c28e790e6d71d0d6fff8221922ce6740cc935ad0fd1319a2584aac5d",
+    "native-writ-navigation.mjs": "d218e31f2217b9a445c8d77414501d91f432b9f06a28f28c4da1d90b5f276dec",
+    "native-writ-pilot.mjs": "dd7fab81c9489aaa5cfa77d7638b450b4a84487fda5d51052276f0bc3bb5b522",
+    "verify-native-case.mjs": "99437d2c67786194461f619b497f3bebfeb5b2b74da5a010807c4c501387c4e1"
+  }
+}

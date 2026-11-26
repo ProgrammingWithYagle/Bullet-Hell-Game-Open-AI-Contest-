@@ -1,0 +1,400 @@
+{
+  "passed": true,
+  "stageOnly": true,
+  "protocol": 98,
+  "revision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+  "bundle": "ed7640cf77feea8cddbb2c726a53014d309b52d45076b1f468a99e93abb898ff",
+  "cases": 96,
+  "paired": 48,
+  "replays": 12,
+  "replaySha256": "24525b9f23d7f37a4a856a5ff09a9ccd29fe0a69e1222bfb5e97de3bbb6be401",
+  "controls": {
+    "path": "controlled01.json",
+    "sha256": "08faf1b557fa76f7391df103754873771fc9a7ad11fbcc023fbaa0e03a782dec",
+    "cases": 2
+  },
+  "studies": [
+    {
+      "path": "standard-solo01.json",
+      "sha256": "faa5d411e77bda7560a0144af1a3fa48e72dfd64f5a74b71f037ca502338a03c",
+      "cohort": "solo",
+      "matches": [
+        {
+          "arena": "gatehouse",
+          "fit": "turn/needle/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "turn/needle/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "turn/back/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "turn/back/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/needle/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/needle/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/back/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/back/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/needle/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/needle/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/back/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/back/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/needle/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/needle/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/back/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/back/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 4
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/needle/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/needle/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/back/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/back/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/needle/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/needle/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/back/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 2
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/back/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 2
+        }
+      ],
+      "active": {
+        "runs": 24,
+        "wins": 0,
+        "fitted": 6,
+        "allThree": 6,
+        "afterFitting": 3,
+        "events": {
+          "sword-held-edge-set": 152,
+          "sword-held-edge-cut": 150,
+          "sword-drawn-reply-guard": 20,
+          "sword-drawn-reply-catch": 20,
+          "sword-drawn-reply-cut": 12,
+          "sword-pursuit-passing": 218,
+          "sword-pursuit-open-through": 22,
+          "sword-pursuit-through": 19,
+          "sword-held-edge-turn": 7,
+          "sword-drawn-reply-needle": 6,
+          "sword-pursuit-open-cross": 22,
+          "sword-pursuit-cross": 22,
+          "sword-held-edge-follow": 5,
+          "sword-held-edge-second": 4,
+          "sword-drawn-reply-back": 2
+        }
+      },
+      "unused": {
+        "runs": 24,
+        "wins": 0,
+        "fitted": 0,
+        "allThree": 0,
+        "afterFitting": 0,
+        "events": {}
+      }
+    },
+    {
+      "path": "standard-party01.json",
+      "sha256": "d5a239e06e0db1d273251ea2fe904f76099c095257e4326ae20e27b942940d05",
+      "cohort": "party",
+      "matches": [
+        {
+          "arena": "gatehouse",
+          "fit": "turn/needle/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "turn/needle/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "turn/back/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "turn/back/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/needle/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/needle/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/back/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "gatehouse",
+          "fit": "follow/back/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/needle/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/needle/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/back/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "turn/back/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/needle/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/needle/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/back/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "sunken-chapel",
+          "fit": "follow/back/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/needle/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/needle/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/back/through",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "turn/back/cross",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/needle/through",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/needle/cross",
+          "start": "swordsman-drawn-reply-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/back/through",
+          "start": "swordsman-passing-cut-1",
+          "commonPurchases": 9
+        },
+        {
+          "arena": "crown-crypt",
+          "fit": "follow/back/cross",
+          "start": "swordsman-held-edge-1",
+          "commonPurchases": 9
+        }
+      ],
+      "active": {
+        "runs": 24,
+        "wins": 17,
+        "fitted": 24,
+        "allThree": 22,
+        "afterFitting": 19,
+        "events": {
+          "sword-held-edge-set": 260,
+          "sword-held-edge-cut": 241,
+          "sword-pursuit-passing": 520,
+          "sword-held-edge-turn": 91,
+          "sword-pursuit-open-through": 188,
+          "sword-pursuit-through": 165,
+          "sword-drawn-reply-guard": 105,
+          "sword-drawn-reply-catch": 105,
+          "sword-drawn-reply-needle": 62,
+          "sword-drawn-reply-cut": 19,
+          "sword-pursuit-open-cross": 187,
+          "sword-pursuit-cross": 167,
+          "sword-drawn-reply-back": 24,
+          "sword-held-edge-follow": 70,
+          "sword-held-edge-second": 46
+        }
+      },
+      "unused": {
+        "runs": 24,
+        "wins": 17,
+        "fitted": 24,
+        "allThree": 0,
+        "afterFitting": 0,
+        "events": {}
+      }
+    }
+  ],
+  "combined": {
+    "active": {
+      "runs": 48,
+      "wins": 17,
+      "fitted": 30,
+      "allThree": 28,
+      "afterFitting": 22
+    },
+    "unused": {
+      "runs": 48,
+      "wins": 17,
+      "fitted": 24,
+      "allThree": 0,
+      "afterFitting": 0
+    }
+  }
+}

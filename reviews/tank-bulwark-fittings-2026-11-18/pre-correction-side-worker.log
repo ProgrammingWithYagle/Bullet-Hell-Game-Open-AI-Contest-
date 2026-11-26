@@ -1,0 +1,22 @@
+{"error":"Expected values to be strictly equal:\n\n18 !== 17\n","handling":"side","observations":[{"tag":"staging-0-0-waypoints","tick":2,"body":{"x":695,"y":752},"ready":false,"panels":[]},{"tag":"original-Q-visible","tick":4,"body":{"x":695,"y":752},"ready":false,"panels":[{"id":1,"x":795,"y":752,"health":157.5,"until":154}]},{"tag":"original-rear-arrival","tick":37,"body":{"x":761.9321289062498,"y":752},"ready":true,"panels":[{"id":1,"x":795,"y":752,"health":157.5,"until":154}]},{"tag":"lift-ready","tick":37,"body":{"x":761.9321289062498,"y":752},"ready":true,"panels":[{"id":1,"x":795,"y":752,"health":157.5,"until":154}]},{"tag":"staging-0-2-waypoints","tick":1883,"body":{"x":764.0904128056733,"y":595.0409883745915},"ready":false,"panels":[]},{"tag":"original-Q-visible","tick":1926,"body":{"x":764.0904128056733,"y":658.0321291514641},"ready":false,"panels":[{"id":715,"x":764.0904128056733,"y":758.0321291514641,"health":157.5,"until":2076}]},{"tag":"original-rear-arrival","tick":1965,"body":{"x":764.0904128056733,"y":725.0988098155265},"ready":true,"panels":[{"id":715,"x":764.0904128056733,"y":758.0321291514641,"health":157.5,"until":2076}]},{"tag":"lift-ready","tick":1965,"body":{"x":764.0904128056733,"y":725.0988098155265},"ready":true,"panels":[{"id":715,"x":764.0904128056733,"y":758.0321291514641,"health":157.5,"until":2076}]}],"arenaId":"gatehouse","boss":{"id":"wire-harpist","hurtAt":-100,"defeatedAt":0,"castAt":1953,"castReleaseAt":1983,"castEndsAt":2003,"variant":"normal","x":800,"y":332,"health":4778.980466166972,"maxHealth":4778.980466166972,"phase":0,"threat":8,"deadline":6333,"staggerUntil":0,"vulnerableUntil":0},"bossCues":[],"phase":"combat","combatTick":2009,"player":{"id":"solo","progress":{"clears":3,"rescues":0,"firstEncounter":0,"campaignClears":0,"clearedBossIds":["constable","stitchwright","pallbearer"]},"eligible":true,"kit":{"chargeUntil":0,"veilUntil":0,"passageUntil":0,"stepCharges":0,"shield":0,"shieldUntil":0,"armor":0,"armorUntil":0,"technique1At":0,"technique2At":0,"bulwarkCarried":true,"bulwarkCanLift":false,"bulwarkCanSet":true,"bulwarkCanHandle":true,"bulwarkPrimaryReady":true,"bulwarkPortPhase":"open","bulwarkRecoveryAt":0,"bulwarkCommitAt":2001,"bulwarkCommitUntil":0,"bulwarkPanelUntil":2076,"bulwarkHeading":1.5707963267948966,"bulwarkPanelIds":[715]},"terrain":{"iceX":0,"iceY":0,"cleansedSeals":[]},"name":"Senn","classId":"tank","x":764.0904128056733,"y":759.9455090342764,"aim":2.0943951023931957,"health":160,"maxHealth":160,"maxShield":160,"shield":160,"status":"active","connected":true,"ack":2129,"ammo":18,"coins":590,"sp":13,"qAt":2394,"eAt":2119,"ultimateAt":2911,"dodgeAt":0,"dodgeInputDown":false,"dodgeSteered":false,"dodgeControlUntil":0,"dodgeCharges":1,"dodgeMaximum":1,"sprintStamina":100,"sprintRecoveryAt":0,"sprintExhausted":false,"sprinting":false,"reloadAt":0,"downUntil":0,"reviveProgress":0,"reviveTarget":"","selfRevives":1,"weapon":"tank-3","skills":["tank-protection-1","tank-bulwark-carry-1","tank-bulwark-port-1","tank-bulwark-side-port-1"],"upgrades":{"damage":3,"health":3,"fire-rate":2,"reload":2,"magazine":2},"supplies":[{"id":"medkit","count":2},{"id":"","count":0},{"id":"","count":0}],"supplyAt":0,"braceUntil":0,"overdriveUntil":0,"speed":147.6,"dashUntil":0,"dashX":-0.46272700856607313,"dashY":0.8865008265892893,"slowUntil":0,"poisonUntil":0,"dodgeCooldown":1},"panels":[{"kind":"wall","id":715,"owner":"solo","x":764.0904128056733,"y":791.9455090342764,"radius":110,"aim":1.5707963267948966,"health":157.5,"maxHealth":157.5,"at":1926,"until":2076,"retaliation":0,"halfSpan":55,"bulwarkPortOffset":18.475208614068038,"bulwarkPortHalfSpan":16.165807537309522}]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+18 !== 17
+
+    at earnedBulwarkFlow (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\tank-bulwark-earned-flow.ts:208:12)
+    at async runBulwarkWorker (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\helpers\tank-bulwark-transport.ts:114:20)
+    at async worker (C:\Users\yigal\Documents\Codex\2026-11-18\ok\work\tank-bulwark-late\opposite-transports.mts:20:18)
+    at async <anonymous> (C:\Users\yigal\Documents\Codex\2026-11-18\ok\work\tank-bulwark-late\opposite-transports.mts:39:16) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 18,
+  expected: 17,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

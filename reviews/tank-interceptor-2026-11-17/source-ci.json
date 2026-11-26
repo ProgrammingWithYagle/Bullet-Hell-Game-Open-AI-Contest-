@@ -1,0 +1,313 @@
+{
+  "passed": true,
+  "phase": "source",
+  "head": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+  "sourceCommit": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+  "checkedAt": "2026-11-18T02:35:01.127Z",
+  "draftPR14": true,
+  "sourceByteBinding": "reviews/tank-interceptor-2026-11-17/source-binding.json",
+  "sourceByteBindingSha256": "4b2954ecee4ccfd8d952d51c4c535949c3e1a378cb729fff934428069ced4625",
+  "events": [
+    {
+      "id": 44221825357,
+      "event": "push",
+      "runAttempt": 1,
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44221825357",
+      "headSha": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+      "status": "completed",
+      "conclusion": "success",
+      "totalJobs": 1,
+      "jobs": [
+        {
+          "id": 134525300476,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 2,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 3,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned package manager",
+              "number": 4,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "number": 5,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned image verification dependency",
+              "number": 6,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify content, rules, networking and client build",
+              "number": 7,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve verification report",
+              "number": 8,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 15,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 16,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "number": 17,
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "tests": 2586,
+          "pass": 2586,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "log": "reviews/tank-interceptor-2026-11-17/ci-source-push-134525300476.log",
+          "decodedLogSha256": "adf921887dc56cd1a5d200ab7466b0e703588c94a7af9aede746b7e1f90b62c4",
+          "verified": true,
+          "runtimeEvidence": {
+            "verified": true,
+            "runAttempt": 1,
+            "artifactId": 14391767790,
+            "artifactName": "verification-evidence",
+            "artifactCreatedAt": "2026-11-18T02:34:29Z",
+            "jobStartedAt": "2026-11-18T02:14:54Z",
+            "artifactArchiveSha256": "991d2224601c02c4e674f64747353a57662b38ca70ee0050cd67074ab8a24111",
+            "runtimeReportMember": "runtime-verification.json",
+            "runtimeReportSha256": "520cc0c7ae698ec096a317f1b65b10182e68102c69095177968392dd30a221f5",
+            "checks": [
+              {
+                "name": "Stage 1 authored content",
+                "passed": true,
+                "elapsedMs": 38846
+              },
+              {
+                "name": "Playable main-story word count",
+                "passed": true,
+                "elapsedMs": 75
+              },
+              {
+                "name": "TypeScript",
+                "passed": true,
+                "elapsedMs": 5062
+              },
+              {
+                "name": "Early chapter build feasibility",
+                "passed": true,
+                "elapsedMs": 978
+              },
+              {
+                "name": "Headless rules and real-network integration",
+                "passed": true,
+                "elapsedMs": 1068174
+              },
+              {
+                "name": "Production client build",
+                "passed": true,
+                "elapsedMs": 3191
+              },
+              {
+                "name": "Emitted encounter atlas contracts",
+                "passed": true,
+                "elapsedMs": 781
+              }
+            ],
+            "runtimeSourceSha256": "1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f",
+            "sourceSnapshotSha256": "15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d",
+            "contentRevision": "6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647",
+            "verificationDriverSha256": "5339069df1bc0ee829e5853286a777053ea4b0db1b51eaf16dde7278e43546c5",
+            "testFiles": 378,
+            "testFileConcurrency": 6,
+            "outputFiles": 2070
+          }
+        }
+      ]
+    },
+    {
+      "id": 44221845597,
+      "event": "pull_request",
+      "runAttempt": 1,
+      "url": "https://github.com/ProgrammingWithYagle/Bullet-Hell-Game-Open-AI-Contest-/actions/runs/44221845597",
+      "headSha": "911966ddefe65a2ff757b580c47197fa0518fd7e",
+      "status": "completed",
+      "conclusion": "success",
+      "totalJobs": 1,
+      "jobs": [
+        {
+          "id": 134525368670,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 2,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 3,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned package manager",
+              "number": 4,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "number": 5,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install pinned image verification dependency",
+              "number": 6,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify content, rules, networking and client build",
+              "number": 7,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve verification report",
+              "number": 8,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+              "number": 15,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 16,
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "number": 17,
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "tests": 2586,
+          "pass": 2586,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "log": "reviews/tank-interceptor-2026-11-17/ci-source-pull_request-134525368670.log",
+          "decodedLogSha256": "d4d43d99a0c35d2a97fbd242f9d6c9b82d27afdaded8741c876b66806289c4b4",
+          "verified": true,
+          "runtimeEvidence": {
+            "verified": true,
+            "runAttempt": 1,
+            "artifactId": 14392281422,
+            "artifactName": "verification-evidence",
+            "artifactCreatedAt": "2026-11-18T02:33:27Z",
+            "jobStartedAt": "2026-11-18T02:15:04Z",
+            "artifactArchiveSha256": "cb727e6c148dbc1bb91a616cefcceb7e797c38a6da5a3580752590e0041aec10",
+            "runtimeReportMember": "runtime-verification.json",
+            "runtimeReportSha256": "37b0e650821d976bcf030067b8daea1deb05227bc679ba05081a639d0b4c41d3",
+            "checks": [
+              {
+                "name": "Stage 1 authored content",
+                "passed": true,
+                "elapsedMs": 30483
+              },
+              {
+                "name": "Playable main-story word count",
+                "passed": true,
+                "elapsedMs": 60
+              },
+              {
+                "name": "TypeScript",
+                "passed": true,
+                "elapsedMs": 3139
+              },
+              {
+                "name": "Early chapter build feasibility",
+                "passed": true,
+                "elapsedMs": 762
+              },
+              {
+                "name": "Headless rules and real-network integration",
+                "passed": true,
+                "elapsedMs": 1006423
+              },
+              {
+                "name": "Production client build",
+                "passed": true,
+                "elapsedMs": 2568
+              },
+              {
+                "name": "Emitted encounter atlas contracts",
+                "passed": true,
+                "elapsedMs": 807
+              }
+            ],
+            "runtimeSourceSha256": "1197b39b470b9bb27bb802afa78a930331f9e5da2e4ac3b1fe6f42aad8716a7f",
+            "sourceSnapshotSha256": "15169433e2463aa3cc423943bb99968b768d21e21dfb514b70273b38bfd0584d",
+            "contentRevision": "6472614e137114fdb043bdbdff2952997932aba352e449a70508adfe3f5b4647",
+            "verificationDriverSha256": "5339069df1bc0ee829e5853286a777053ea4b0db1b51eaf16dde7278e43546c5",
+            "testFiles": 378,
+            "testFileConcurrency": 6,
+            "outputFiles": 2070
+          }
+        }
+      ]
+    }
+  ],
+  "credentialsPrintedOrStored": false
+}

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "approvalInterruption": {
+    "action": "Documentation/ledger sync and full verification command",
+    "executed": false,
+    "reason": "Automatic approval review could not complete due account usage limit.",
+    "resolution": "A later account read reported ordinary usage available; the normal approval route then succeeded. No bypass, reset purchase or paid provisioning was used."
+  },
+  "failedFocusedAttempts": [
+    "focused-attempt-1.log",
+    "focused-attempt-2.log"
+  ],
+  "failureReason": "Cleanup test originally expected live rats to clear on every phase/stagger; existing unassisted behavior deliberately retains them.",
+  "resolution": "Preserved the no-free-clear policy and separately tested cancellation of pending geometry/echoes and actual encounter-exit cleanup.",
+  "focusedBeforeFinalCastingChanges": "focused-before-motion.log",
+  "finalFocused": "focused-current.log",
+  "finalFull": "full-current.log",
+  "tests": 526,
+  "newRatcatcherTests": 16,
+  "allPriorAssetsPreserved": true
+}

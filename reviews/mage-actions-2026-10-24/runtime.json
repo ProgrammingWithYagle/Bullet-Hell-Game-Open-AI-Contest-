@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "buildId": "2026.10.24-mage-actions",
+  "protocol": 13,
+  "sourceSnapshotSha256": "616d8edc374b505692483b99cbe8fedc030240fb5117b5f57d9e90709e8f1198",
+  "runtimeSourceSha256": "fdc4b562d0f25938bd11de84f69c2d3828b1d4b92d52348f58b817e68c01e29b",
+  "contentRevision": "b8d9fb6918c854f3eed38b327ed0cb3026e071e6fe24932e50beed36943db241",
+  "fullPipeline": {
+    "tests": 294,
+    "failed": 0,
+    "outputFiles": 1494,
+    "logSha256": "6ce407e193d8506357b788849e69ee65fef5b85999f7319070d6ddc9488f7b75"
+  },
+  "art": {
+    "newClips": 20,
+    "newDrawnPoses": 88,
+    "retainedNativeReturns": 25,
+    "combinedTankEngineerMageNativeReturns": 73,
+    "existingMageRunPoses": 32,
+    "mageTotalSelectedPoses": 120,
+    "selectedProductionPoseTotal": 967,
+    "independentReconstruction": "reviews/mage-actions-2026-10-24/verification.json",
+    "reconstructionSha256": "56e00f8524fa19229d96124cb4ef1f0b6b555e57ae268a0d1b5bedbf09388406",
+    "provenance": "docs/mage-actions-2026-10-24.json",
+    "provenanceSha256": "e00c91696c57ffaf9308d1b9118cf795de945aec3c2495fdd4d713d4366e9b8b",
+    "creativePixelEdits": false,
+    "sourceAlphaErasure": false,
+    "facingMirrors": false,
+    "wholePoseOwnershipMasks": 5,
+    "connectedFiguresUnsplit": true,
+    "earlierTankEngineerVerificationBytesUnchanged": true
+  },
+  "presentationChecks": [
+    "Authority-fired Mage primary shots consume ammo and select independent east/south/west/north staff-cast clips.",
+    "Reduced-motion cast is stable; moving casts continue to use the independent run strips.",
+    "Existing shared-clock tests cover hit interruption, complete dodge intervals, late-observer falls, held rests, revives, participant/class/run resets."
+  ],
+  "wikiImage": {
+    "files": 12,
+    "priorElevenImageHashesUnchanged": true,
+    "added": "images/mage-actions.jpg"
+  },
+  "preservedIteration": {
+    "nativeSuperseded": [
+      "attack-east-v1",
+      "attack-west-v1",
+      "hurt-west-v1",
+      "dash-south-v1",
+      "downed-west-v1"
+    ],
+    "gutterInspectionSha256": "86a0eff676119f784f3941cba2fc2c27964c2221826a66e68c94e9edf73089a6",
+    "componentInspectionSha256": "021ae09436da7694f13c6b03fafe90738c939b740f967cafb032aa98453904df",
+    "packingCorrection": "Five sheets have overlapping rectangular crop envelopes but separate complete figures. Whole-figure ownership conserves every original nonzero-alpha pixel and independent neighbor checks reject splitting any connected figure. No creative limb repair or source alpha erasure."
+  },
+  "issuedWindowsArchiveSourceUnchanged": "52552c0d4465b918d7cde2ab3c2aa7f1d7eb045e",
+  "limits": [
+    "Native/contact-sheet/GIF review and state tests only; no new rendered Phaser transitions, listening, physical-device or human acceptance.",
+    "Four other survivors and many bosses still need complete action libraries.",
+    "Published Windows development download is immutable and predates these source changes.",
+    "The separate one-hour frozen fifty-client probe remains in progress; this stage does not claim its completion."
+  ]
+}

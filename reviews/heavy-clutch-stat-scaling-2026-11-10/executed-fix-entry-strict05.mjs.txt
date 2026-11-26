@@ -1,0 +1,12 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+const stage=new URL('./',import.meta.url),read=f=>fs.readFileSync(new URL(f,stage)),sha=b=>createHash('sha256').update(b).digest('hex');
+const before=read('retained-traverse-flow05.mts'),old='const start=p().kit.heavyTraverseShotAt,',s=before.toString();assert.equal(s.split(old).length,2);
+const strict=read('entry-strict05.log').toString();assert.equal((strict.match(/TS18048/g)||[]).length,4);assert(!/error TS(?!18048)/.test(strict));
+const after=s.replace(old,'const start=p().kit.heavyTraverseShotAt!,');
+const prep=JSON.parse(read('entry-reporting-preparation05.json'));const row=prep.files.find(f=>f.file==='retained-traverse-flow05.mts');assert.equal(row.sha256,sha(before));
+const archive='retained-traverse-flow05-before-type-only.mts.txt';assert(!fs.existsSync(new URL(archive,stage)));
+fs.writeFileSync(new URL(archive,stage),before,{flag:'wx'});row.sha256=sha(after);
+prep.preTransportTypeOnlyCorrection={previousSource:archive,previousSha256:sha(before),failedStrictLog:'entry-strict05.log',correction:'Type-only non-null assertion on the shot timestamp already established by the unchanged actual paid-shot wait. No runtime code, operation assertion or policy changes.'};
+fs.writeFileSync(new URL('retained-traverse-flow05.mts',stage),after);
+fs.writeFileSync(new URL('entry-reporting-preparation05.json',stage),JSON.stringify(prep,null,2)+'\n');
+console.log(JSON.stringify({prepared:true,transportNotStarted:true,typeOnlyCorrection:true,failedSourceAndLogPreserved:true}));

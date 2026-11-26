@@ -1,0 +1,321 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-12T04:02:13.370Z",
+  "sourceCommit": "ad5925f76ae1279e1503fe79d76d92daa16af80a",
+  "protocol": 74,
+  "contentRevision": "a7874267d15e45143a83ac286f78a3a2c79c0964bea0b033fff3f86915c9f0d1",
+  "runtimeSourceSha256": "ccc68b5ceb2434cca52d5326ffc1f535a2b62591e66a76452f91b55187aa0a77",
+  "sourceSnapshotSha256": "8f968188fb9a29ced007dcb71382eea626ab4f0a4fb7a5f01d8505a4bd06221a",
+  "tests": {
+    "tests": 2304,
+    "pass": 2304,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "sourceChecks": [
+    {
+      "name": "Stage 1 authored content",
+      "passed": true,
+      "elapsedMs": 58539
+    },
+    {
+      "name": "Playable main-story word count",
+      "passed": true,
+      "elapsedMs": 124
+    },
+    {
+      "name": "TypeScript",
+      "passed": true,
+      "elapsedMs": 2421
+    },
+    {
+      "name": "Early chapter build feasibility",
+      "passed": true,
+      "elapsedMs": 481
+    },
+    {
+      "name": "Headless rules and real-network integration",
+      "passed": true,
+      "elapsedMs": 698957
+    },
+    {
+      "name": "Production client build",
+      "passed": true,
+      "elapsedMs": 3831
+    },
+    {
+      "name": "Emitted encounter atlas contracts",
+      "passed": true,
+      "elapsedMs": 1074
+    }
+  ],
+  "exactSourcePushAndPRJobsStepsLogsAndOwnArtifacts": true,
+  "sourceByteBinding": "reviews/heavy-lineworker-entry-2026-11-12/source-binding-audit30.json",
+  "ci": "reviews/heavy-lineworker-entry-2026-11-12/source-ci.json",
+  "rows": [
+    {
+      "audience": "testing",
+      "url": "http://127.0.0.1:5386/",
+      "endpoint": "http://127.0.0.1:2762",
+      "filesHashed": 2063,
+      "nativeCases": 7,
+      "httpChecks": 52,
+      "manifestSha256": "d9b66804afcf68f7aad755beacce163d5d93514c9f5693530f92aeb39d367a47",
+      "servedWorkerSha256": "545ca98baca62c16b52c7139ee2f3ef2044634bdd420e86271f34cbbc7278cf9",
+      "backendSha256": "76604c4384320283423c0ab8b1958fc5c8eefdf6df4a3a7711f7126ef26d450a",
+      "emittedEmblems": [
+        {
+          "path": "assets/heavy-linework-1-DtPDXBng.png",
+          "bytes": 1032600,
+          "sha256": "5fe9f7dd36f9998af4685d6dfd36bdbec177f0023187958277c2ed319fcad7e9"
+        },
+        {
+          "path": "assets/heavy-linework-yoke-1-C2dn46IY.png",
+          "bytes": 1457875,
+          "sha256": "884af66a7ac33a22a859d0e405b1a87d4c94584b504683087f406a84aa5b3c66"
+        },
+        {
+          "path": "assets/heavy-linework-sheave-1-BXommnj2.png",
+          "bytes": 1315841,
+          "sha256": "f3cb55d9068ae0608cd28d0bf186e882a6f71f71a282cf43437750e833a6c254"
+        }
+      ],
+      "cases": [
+        {
+          "transport": "worker",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 3,
+          "walked": 56.999999999999666,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "504829727706da9e0bad6eb9b0119a715e08eee9b893147af3d929f68f317d54",
+          "receiptSha256": "ee466a4231f37786c9b1197e5a065e15d87be3bf106393f4204db7470ea051f4"
+        },
+        {
+          "transport": "worker",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 56.999999999999666,
+          "payout": 0,
+          "paidPrimaryProjectiles": 3,
+          "logSha256": "bc56aeccdfd06cc0bf2bdf92ab6f9b0cd1d07a3693188ec545f939eb846709d0",
+          "receiptSha256": "16bbeb023469029f5b5f21be159631af4f421853aecd98cf7a30d7ea1401ce08"
+        },
+        {
+          "transport": "worker",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 57.000000000000085,
+          "payout": 18.99940399526224,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "991376b0c0989edf7f7c7e6fb410d9f18640e7aa2691014be9ead44d4af2c287",
+          "receiptSha256": "730b30a19e31551440e1b07a8453ec302f1b5dd1ffee49d005edef88c2995618"
+        },
+        {
+          "transport": "peer",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 3,
+          "walked": 56.930330229149384,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "ce29be60196aab6ea90f6dc52a43f9fc43cdfb0e987061ae4981f838a73cea05",
+          "receiptSha256": "54f637bd6ebdeb314ccbec124d9b7c2ab89f6db2da8dbc21615f9d51158784cb"
+        },
+        {
+          "transport": "peer",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 75.95928185547834,
+          "payout": 0,
+          "paidPrimaryProjectiles": 3,
+          "logSha256": "614c3e3a5495a0e0e7eb251125292cd677b7ca68a114a0bb4232dd2f5b298fcf",
+          "receiptSha256": "615639262f08cac82617475c2eab0a96ae9bd2a8a5d9e84becaa8e3b09558181"
+        },
+        {
+          "transport": "peer",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 75.95928185547834,
+          "payout": 6.328891362985473,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "c07a5b5809a923d994579788b623f0bb2ec0857f2e0811eec624bec14f6a3848",
+          "receiptSha256": "ddebd0aa5f3f4bca5dba7b7bf331f6cd4e769ed14b5ec55910205900d07be13c"
+        }
+      ]
+    },
+    {
+      "audience": "public",
+      "url": "http://127.0.0.1:5387/",
+      "endpoint": "http://127.0.0.1:2763",
+      "filesHashed": 2063,
+      "nativeCases": 7,
+      "httpChecks": 52,
+      "manifestSha256": "7df576e163c81137bcb6c16a99a6a8becab9b7d80aba5d44bc82cb46e47e451f",
+      "servedWorkerSha256": "6816429dcd38728c5807be2d4c37f24b26abdedb9c175c3008749945f0eddd1e",
+      "backendSha256": "76604c4384320283423c0ab8b1958fc5c8eefdf6df4a3a7711f7126ef26d450a",
+      "emittedEmblems": [
+        {
+          "path": "assets/heavy-linework-1-DtPDXBng.png",
+          "bytes": 1032600,
+          "sha256": "5fe9f7dd36f9998af4685d6dfd36bdbec177f0023187958277c2ed319fcad7e9"
+        },
+        {
+          "path": "assets/heavy-linework-yoke-1-C2dn46IY.png",
+          "bytes": 1457875,
+          "sha256": "884af66a7ac33a22a859d0e405b1a87d4c94584b504683087f406a84aa5b3c66"
+        },
+        {
+          "path": "assets/heavy-linework-sheave-1-BXommnj2.png",
+          "bytes": 1315841,
+          "sha256": "f3cb55d9068ae0608cd28d0bf186e882a6f71f71a282cf43437750e833a6c254"
+        }
+      ],
+      "cases": [
+        {
+          "transport": "worker",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 3,
+          "walked": 46.74000000000018,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "1742418233359b6aeaa79517030813e9971bdf2691004428d3947fa2d77d58d8",
+          "receiptSha256": "9b965f585b5091f646f637b1a777f766c1b8843417191843ca4b56ee4ca6a916"
+        },
+        {
+          "transport": "worker",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 46.74000000000018,
+          "payout": 0,
+          "paidPrimaryProjectiles": 2,
+          "logSha256": "36a068610f7baec072e42fdb74c7fab5e19416972fa94f9ce810ac582aaca166",
+          "receiptSha256": "4beb7dfae491af1ec783208ac90a2e6457e4011ba799d1ef82d6306fb7462341"
+        },
+        {
+          "transport": "worker",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 46.74000000000019,
+          "payout": 15.579504583139453,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "d5b3a14b8262722db301da13262894b2ae768de50d5bb7421547c67cec5c4c1b",
+          "receiptSha256": "0a6daa5e6cb00f059f093acdca00a7567ef8c4cde8db5d1d5cf408e15d3ef936"
+        },
+        {
+          "transport": "peer",
+          "fitting": "bare",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 3,
+          "walked": 69.63117118072911,
+          "payout": 0,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "5d1c5d39854da2b442f647b5f162823157ceeac653594030444cc28272fc0741",
+          "receiptSha256": "769ce1cdd6fb33af2ab4647dae249367dd3ee24d2c03814be45112e5e391c482"
+        },
+        {
+          "transport": "peer",
+          "fitting": "yoke",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 75.95928185547834,
+          "payout": 0,
+          "paidPrimaryProjectiles": 2,
+          "logSha256": "4452cb96a7f1e1f58a5089eb875be118c99a10dd00d39b76e0368a3b193f1301",
+          "receiptSha256": "c1a7d1f67d5a4131464edd327b57588abc666fd69c134775b2a080d28d147736"
+        },
+        {
+          "transport": "peer",
+          "fitting": "sheave",
+          "actualEarnedSequence": [
+            3,
+            9
+          ],
+          "spent": 5,
+          "walked": 69.63117118072911,
+          "payout": 31.730272644146112,
+          "paidPrimaryProjectiles": 0,
+          "logSha256": "99659dd39751ce2bcef8c073382932a23e76ac08128cb4d5214427bb3efcd92e",
+          "receiptSha256": "cb1b8e1840239fda52f4ff347e05eb94970bab59a1f3595a4c2560640e5c2565"
+        }
+      ]
+    }
+  ],
+  "cancelledPushAttemptPreserved": {
+    "runId": 43147505811,
+    "attempt": 1,
+    "receipt": "reviews/heavy-lineworker-entry-2026-11-12/ci-source-failed-1794454849290.json",
+    "receiptSha256": "487c313109ef12b2129b0da9bdafd69ba29b8a902fdd867e6254f958c025c9c6",
+    "logs": [
+      {
+        "id": 130948676188,
+        "log": "reviews/heavy-lineworker-entry-2026-11-12/ci-source-push-130948676188.log",
+        "sha256": "8c31736237c15ec0da51b1135b33a00511d0be9d1c2332257517f0db2993589f"
+      }
+    ]
+  },
+  "previousVerifiedReview": "reviews/heavy-tethered-menu21-2026-11-10/frozen-verification.json",
+  "previousSourceCommit": "dd2ae752279d3b2f31b6b4c8961a3b5682a8e1d2",
+  "previousRollbackArchiveSha256": "21ceabead7c881c906b2828ac85c5043ba7169ce442abad808eeb73f9b38dd32",
+  "originalFailedGate": {
+    "counts": {
+      "tests": 2304,
+      "pass": 2297,
+      "fail": 7,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "logSha256": "8072b9519483d679252c2e115f0b9ced5c33d0d875664aabd431d0ad80432734"
+  },
+  "originalFocusedAndResearchOutputsPreserved": true,
+  "controlledBuildSets": 2226,
+  "seededShortTrials": 48,
+  "preexistingPrivateSQLiteRelatedFilesVerified": 213,
+  "privateHashesRemainLocalOnly": true,
+  "serviceYardWipExact": true,
+  "processIdentities": "reviews/heavy-lineworker-entry-2026-11-12/process-identities.json",
+  "retentionPromotionPending": true,
+  "scope": "Fresh native HTTP and three whole served worker plus three non-host peer Short acquisitions per audience. The full source gate independently executes historical and current source tests. The previous Tethered receipts retain their original source, endpoints and results. Human, rendered, device, language, listening, motion and final balance review remain open."
+}

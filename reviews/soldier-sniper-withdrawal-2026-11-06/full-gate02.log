@@ -1,0 +1,114 @@
+
+Stage 1 authored content
+{
+  "schemaVersion": 1,
+  "stage": "Stage 1 source validation",
+  "passed": true,
+  "legalMutationSets": 2255,
+  "checks": [
+    {
+      "name": "Complete finite versioned content",
+      "passed": true
+    },
+    {
+      "name": "Twelve classes, 648 specialization nodes, all eighteen grades and ultimates",
+      "passed": true
+    },
+    {
+      "name": "Campaign, raid and uncapped endless budgets",
+      "passed": true
+    },
+    {
+      "name": "Fixed boss grades, independent variants and complete translated tier labels",
+      "passed": true
+    },
+    {
+      "name": "Weapon accounting, rates and finite cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Soldier technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Engineer technique emblems retain exact generated alpha and provenance",
+      "passed": true
+    },
+    {
+      "name": "Alchemist retained natives, whole-figure crops and independent RGBA delivery",
+      "passed": true
+    },
+    {
+      "name": "Summoner original natives, complete companion poses and exact RGBA delivery",
+      "passed": true
+    },
+    {
+      "name": "Swordsman native crops, complete delivery poses and item RGBA",
+      "passed": true
+    },
+    {
+      "name": "Every legal one-, two- and three-mutation composition",
+      "passed": true
+    },
+    {
+      "name": "Boss attack contracts, transitions, arenas and deadlines",
+      "passed": true
+    },
+    {
+      "name": "Sixty-six distinct bosses, route-specific gauntlets and Endless exclusives",
+      "passed": true
+    },
+    {
+      "name": "The Open Ledger has fifteen encounters, fourteen decisions and three reserved finales",
+      "passed": true
+    },
+    {
+      "name": "Design bible and complete editable tables",
+      "passed": true
+    },
+    {
+      "name": "Painted arena cover and lava native pixels, transparency and provenance",
+      "passed": true
+    },
+    {
+      "name": "Painted arena worlds match exact normalized native pixels and floor-fit metadata",
+      "passed": true
+    },
+    {
+      "name": "Bellringer eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Alchemist eight drawn walking poses and exact retained action RGBA",
+      "passed": true
+    },
+    {
+      "name": "Ranger whole-figure extraction, independent RGBA reconstruction and exact retained natives",
+      "passed": true
+    },
+    {
+      "name": "All fifteen translation catalogs and placeholder parity",
+      "passed": true
+    },
+    {
+      "name": "Eight reviewed art proof sets with original provenance",
+      "passed": true
+    },
+    {
+      "name": "Original music and SFX objective review",
+      "passed": true
+    },
+    {
+      "name": "Leaderboard fixtures and bounded score",
+      "passed": true
+    }
+  ]
+}
+
+Playable main-story word count
+{"schemaVersion":1,"language":"en","method":"Intl.Segmenter English word-like segments","measure":"Fresh Story Campaign prose and all three current route-choice/scene alternatives, counted once; earlier prototype-only passages reported separately","target":5000000,"targetAchieved":false,"openingScenes":[{"id":"gate-cart","words":1866},{"id":"first-return","words":1526}],"openingWords":3392,"authoredPlayableMainStoryWords":5741,"uniquePassages":10,"legacyPrototypeOnlyWords":2031,"legacyPrototypeOnlyUniquePassages":102,"totalAuthoredMainStoryIncludingLegacyWords":7772,"excluded":["UI and guide copy","chapter and scene headings","translated copies","superseded short opening and first report","duplicate archive/transcript displays","optional survivor letters and future personal routes","unimplemented drafts and editorial notes","earlier prototype-only passages from the current-campaign target; reported separately"],"limits":["Authored words are not words encountered in a single playthrough.","Word count does not establish literary quality, completed character arcs or a finished main story."]}
+
+TypeScript
+tests/helpers/sniper-withdrawal-flow.ts(140,63): error TS2345: Argument of type 'BossCue' is not assignable to parameter of type '{ x1: number; y1: number; x2: number; y2: number; width: number; }'.
+  Type 'AmbulanceBurst' is missing the following properties from type '{ x1: number; y1: number; x2: number; y2: number; width: number; }': x1, y1, x2, y2, width
+Verification failed

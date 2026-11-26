@@ -1,0 +1,22 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';import{createRequire}from'node:module';import{fileURLToPath}from'node:url';
+const stage=path.dirname(fileURLToPath(import.meta.url)),root='C:/Users/yigal/OneDrive/Documents/ChatGPT/OpenAI Multiplayer Game Contest (Bullet Hell)',scope='reviews/heavy-clutch-stat-scaling-2026-11-10';process.chdir(root);
+const git=(args,options={})=>execFileSync('git',['-c','core.bare=false',...args],{maxBuffer:64*1024*1024,...options}),sha=b=>createHash('sha256').update(b).digest('hex'),esbuild=createRequire(root+'/package.json')('esbuild');
+const head=git(['rev-parse','HEAD'],{encoding:'utf8'}).trim();assert.equal(head,'20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c');
+const extras=['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.json','vite.config.ts','index.html'],walk=d=>fs.readdirSync(d).sort().flatMap(n=>{const f=d+'/'+n;return fs.statSync(f).isDirectory()?walk(f):[f];});
+const workingFiles=[...walk('src'),...walk('tests'),...extras].sort();
+const tracked=git(['ls-tree','-r','-z','--name-only','HEAD','--','src','tests',...extras,'tools/verify.mjs'],{encoding:'utf8'}).split('\0').filter(Boolean).sort();assert.deepEqual(tracked.filter(f=>f!=='tools/verify.mjs'),workingFiles);
+const batch=git(['cat-file','--batch'],{input:tracked.map(f=>'HEAD:'+f+'\n').join('')});let offset=0;const differences=[],runtime=createHash('sha256'),snapshot=createHash('sha256'),localRuntime=createHash('sha256'),localSnapshot=createHash('sha256');let committedDriver;
+for(const file of tracked){const end=batch.indexOf(10,offset),header=batch.subarray(offset,end).toString().split(' ');assert.equal(header[1],'blob');const size=Number(header[2]),committed=batch.subarray(end+1,end+1+size);offset=end+1+size+1;const working=fs.readFileSync(file);
+ if(file==='tools/verify.mjs'){assert(working.equals(committed));committedDriver=sha(committed);continue;}
+ snapshot.update(file+'\0').update(committed);localSnapshot.update(file+'\0').update(working);if(file.startsWith('src/')){runtime.update(file+'\0').update(committed);localRuntime.update(file+'\0').update(working);}
+ if(!working.equals(committed)){
+  const normalized=Buffer.from(working.toString().replaceAll('\r\n','\n'));assert(normalized.equals(committed),file+' differs beyond CRLF');let semantic='LF-only nonruntime text';
+  if(file.endsWith('.json')){assert.deepEqual(JSON.parse(working),JSON.parse(committed));semantic='Parsed JSON values exactly equal';}
+  else if(file.endsWith('.ts')||file.endsWith('.css')){const loader=file.endsWith('.css')?'css':'ts',options={loader,minify:true,sourcefile:file,target:'es2022'};assert.equal(esbuild.transformSync(working.toString(),options).code,esbuild.transformSync(committed.toString(),options).code);semantic='Emitted '+loader+' exactly equal';}
+  else assert(!file.startsWith('src/'),'Every runtime difference requires parsed/emitted comparison');
+  differences.push({file,workingSha256:sha(working),committedSha256:sha(committed),onlyCRLFNormalization:true,semanticComparison:semantic});
+ }
+}
+assert.equal(git(['diff','--raw','18da7f9267710090ea9566fc49728d44c8f26dbe',head,'--','src'],{encoding:'utf8'}).trim(),'');
+const result={passed:true,checkedAt:new Date().toISOString(),sourceCommit:head,workingRuntimeSourceSha256:localRuntime.digest('hex'),workingSourceSnapshotSha256:localSnapshot.digest('hex'),committedRuntimeSourceSha256:runtime.digest('hex'),committedSourceSnapshotSha256:snapshot.digest('hex'),verificationDriverSha256:committedDriver,workingAndCommittedDriverBytesExact:true,trackedSnapshotFiles:workingFiles.length,differences,allDifferencesOnlyCRLF:true,allRuntimeParsedJSONOrEmittedCodeExact:true,committedRuntimeBytesExactSinceOriginal18daFeature:true,checkoutFilesModified:false,gitConfigurationModified:false,originalNaturalExecutionRuntimeHashRetained:true,limits:'The local exact-served build/natural execution keep their actual raw Windows source hashes. Successful Linux CI is verified against exact committed Git bytes. These are distinct raw hashes with fully enumerated CRLF-only differences and equal parsed data/emitted code; neither execution is relabelled.'};
+fs.writeFileSync(stage+'/source-binding-audit04.json',JSON.stringify(result,null,2)+'\n',{flag:'wx'});fs.writeFileSync(scope+'/source-binding-audit04.json',JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(result));

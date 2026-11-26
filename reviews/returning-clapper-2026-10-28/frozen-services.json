@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "createdAt": "2026-10-28T21:43:20.410Z",
+  "sourceCommit": "12c3ffa2b50d0d00e4c6d9a1be07a18a774c8759",
+  "protocol": 37,
+  "backendBundleSha256": "0351dfa7fb6b0d5ea44eb2e59e9e1ece998686cc6fdf383b0f3df3b0ef86a6eb",
+  "publicHTTPChecks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 540,
+      "sha256": "b790e4028bcc1b12b2d739890d795faecab63cf33fb264bbffc8dba5362fb203",
+      "mime": "text/html;charset=utf-8"
+    },
+    {
+      "path": "assets/index-DBWrs9v6.js",
+      "status": 200,
+      "bytes": 3506938,
+      "sha256": "c5c250d731ff3fbe785a775e51db73bfe5aad6f22be788dd020a869762779f68",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/index-ByqqpBqG.css",
+      "status": 200,
+      "bytes": 458816,
+      "sha256": "8d0032f299cceabe511b2d6b0583eb06e9939f02052193e0ce33d38a9c2983b1",
+      "mime": "text/css"
+    },
+    {
+      "path": "assets/offline.worker-jcdqaGPH.js",
+      "status": 200,
+      "bytes": 866179,
+      "sha256": "801d5d59abbad0e1f80791cbc810123892a9de2f7b230649ce2bec5be86bb622",
+      "mime": "text/javascript"
+    },
+    {
+      "path": "assets/bellringer-action-walk-v2-atlas-Dl7IU3Aa.png",
+      "status": 200,
+      "bytes": 784549,
+      "sha256": "3f9e6ca972d9ba8187d9eff2c346960c893a1449d6764de0c8fafccee07e4ec5",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/quarantine-clerk-action-v2-atlas-BkOEnJl8.png",
+      "status": 200,
+      "bytes": 469844,
+      "sha256": "cbfddac1c1fdcb68d543bd880021cd9b86bbdf9c8e5ee9bd5e459f27b50d1ec1",
+      "mime": "image/png"
+    },
+    {
+      "path": "assets/late-warning-oa9t7D0A.mp3",
+      "status": 200,
+      "bytes": 1590586,
+      "sha256": "ea5e314ddc342a9571ec97d5414b300bcaf41fa69ad98bbf20d2ba126b2df669",
+      "mime": "audio/mpeg"
+    },
+    {
+      "path": "assets/ar-ChhN0vkA.js",
+      "status": 200,
+      "bytes": 183071,
+      "sha256": "401161914e68cf3524c78bcf096e8ee83817fe1b0f99e7d2b3b42af993d910b4",
+      "mime": "text/javascript"
+    }
+  ],
+  "matchingSourceHealthAndCors": [
+    {
+      "endpoint": "http://127.0.0.1:2584",
+      "origin": "http://127.0.0.1:5210",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-28T21:40:51.996Z",
+      "uptimeSeconds": 144.4808981,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 37,
+      "contentRevision": "6bf9b3f3f87c98e2e552b99e4dbf6ae856b57b3aba032d03a72bcc97c8367cdd",
+      "practiceOnly": true,
+      "audience": "testing",
+      "sourceCommit": "12c3ffa2b50d0d00e4c6d9a1be07a18a774c8759",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    },
+    {
+      "endpoint": "http://127.0.0.1:2585",
+      "origin": "http://127.0.0.1:5211",
+      "cors": true,
+      "status": "ok",
+      "startedAt": "2026-10-28T21:40:52.951Z",
+      "uptimeSeconds": 143.3182267,
+      "prototype": "grave-accord-development",
+      "playable": {
+        "bosses": 66,
+        "classes": 7,
+        "modes": [
+          "short",
+          "standard",
+          "long",
+          "raid",
+          "endless"
+        ]
+      },
+      "protocolVersion": 37,
+      "contentRevision": "6bf9b3f3f87c98e2e552b99e4dbf6ae856b57b3aba032d03a72bcc97c8367cdd",
+      "practiceOnly": true,
+      "audience": "public",
+      "sourceCommit": "12c3ffa2b50d0d00e4c6d9a1be07a18a774c8759",
+      "capacity": {
+        "reservedSlots": 0,
+        "instanceLimit": 50,
+        "rooms": 0,
+        "roomLimit": 4,
+        "available": true,
+        "canJoin": true,
+        "canCreate": true,
+        "queued": 0,
+        "offeredSlots": 0
+      }
+    }
+  ],
+  "realFrozenBackendNetwork": {
+    "passed": true,
+    "testingBoss": "bellringer",
+    "players": 2,
+    "chatSenderMatchesServerIdentity": true,
+    "publicBoss": "lantern-warden",
+    "publicOpeningRequestSanitized": true,
+    "lockedTollMatchesAcrossClients": true,
+    "concurrentReplyVerified": true,
+    "returnChainWarningAndPeerGeometryVerified": true,
+    "testingForm": "crazed",
+    "fullTollTellTicks": 33,
+    "numericCueId": true,
+    "headlessOnly": true
+  },
+  "limits": [
+    "Raw HTTP, source-pinned bundle and headless real-network smoke only.",
+    "Browser use remains disabled in Work settings; no retry/bypass.",
+    "No personal clear, final balance, WAN/capacity/device/listening/native-language or deployment acceptance."
+  ]
+}

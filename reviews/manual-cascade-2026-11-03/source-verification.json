@@ -1,0 +1,945 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-03T17:34:51.609Z",
+  "base": "fe4c82ddc5b313f5fb5fcbb8328c21a785ba3645",
+  "precedingPlayable": "76bac94af793762aa3176a85bd0c18b929ec1bfd",
+  "buildId": "2026.11.03-machinery-manual-polish",
+  "protocol": 51,
+  "contentRevision": "9b4db7927068a0b75ba0d915094354eb66102090eeed913b8d013e3c9459233f",
+  "runtimeSourceSha256": "d329708d42890890d93369db646890aac79e61a6ed7881c2fd9d4a6ec8f68137",
+  "sourceSnapshotSha256": "55c248d209a276fcf60c869d1ef41f544a321a63794d56e8ab421d6671c62edc",
+  "tests": 1296,
+  "finalGate": {
+    "path": "reviews/manual-cascade-2026-11-03/full-gate01.log",
+    "sha256": "7699ca161d1c4af2b3b73c6212c8df094e6ff5c7447b727c7ccfec70f2cae87c"
+  },
+  "mechanicsContentLocalesAssetsAndTestsUnchanged": true,
+  "cascadeReview": {
+    "passed": true,
+    "baseline": "76bac94af793762aa3176a85bd0c18b929ec1bfd",
+    "sheets": [
+      {
+        "file": "src/client/ui/polish.css",
+        "beforeSha256": "8dbe8c9d94bc33f4ed0c5eafd54ad74a066b42762cdec5df34ee5537f4181387",
+        "afterSha256": "8dbe8c9d94bc33f4ed0c5eafd54ad74a066b42762cdec5df34ee5537f4181387"
+      },
+      {
+        "file": "src/client/ui/skill-map.css",
+        "beforeSha256": "afa525ec9c96f2f066dc7cf75fb2ca81e44e83e1522ede5c66c7345437156461",
+        "afterSha256": "0eb342191e2a0715e9dbaa2814e1c90f9a4205815d4e246e1a066b4ef3a32270"
+      }
+    ],
+    "before": [
+      {
+        "role": "entry",
+        "state": "available",
+        "button": {
+          "border-width": {
+            "value": "1.5px",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-color": {
+            "value": "#527d4c",
+            "important": true,
+            "specificity": 20,
+            "order": 31,
+            "selector": ".item-node.available",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "background": {
+            "value": "#e8e5cd",
+            "important": true,
+            "specificity": 10,
+            "order": 4,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "-15px",
+            "important": false,
+            "specificity": 10,
+            "order": 37,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 95,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "50%",
+            "important": false,
+            "specificity": 10,
+            "order": 38,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "right": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 96,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "translateX(-50%)",
+            "important": false,
+            "specificity": 10,
+            "order": 39,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 30,
+            "order": 69,
+            "selector": ".pathway-technique .skill-node .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "active",
+        "state": "available",
+        "button": {
+          "border-width": {
+            "value": "1.5px",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-color": {
+            "value": "#527d4c",
+            "important": true,
+            "specificity": 20,
+            "order": 31,
+            "selector": ".item-node.available",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "background": {
+            "value": "#e8e5cd",
+            "important": true,
+            "specificity": 10,
+            "order": 4,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "-15px",
+            "important": false,
+            "specificity": 10,
+            "order": 37,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 95,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "50%",
+            "important": false,
+            "specificity": 10,
+            "order": 38,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "right": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 96,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "translateX(-50%)",
+            "important": false,
+            "specificity": 10,
+            "order": 39,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 30,
+            "order": 69,
+            "selector": ".pathway-technique .skill-node .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "active",
+        "state": "owned unavailable",
+        "button": {
+          "border-width": {
+            "value": "1.5px",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-color": {
+            "value": "#9f7a30",
+            "important": true,
+            "specificity": 20,
+            "order": 29,
+            "selector": ".item-node.owned",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "background": {
+            "value": "#d1c48e",
+            "important": true,
+            "specificity": 20,
+            "order": 28,
+            "selector": ".item-node.owned",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "-15px",
+            "important": false,
+            "specificity": 10,
+            "order": 37,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 95,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "50%",
+            "important": false,
+            "specificity": 10,
+            "order": 38,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "right": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 96,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "translateX(-50%)",
+            "important": false,
+            "specificity": 10,
+            "order": 39,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "saturate(.4) opacity(.7)",
+            "important": false,
+            "specificity": 40,
+            "order": 73,
+            "selector": ".pathway-technique .skill-node.unavailable .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "evolution",
+        "state": "available",
+        "button": {
+          "border-width": {
+            "value": "1.5px",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-color": {
+            "value": "#527d4c",
+            "important": true,
+            "specificity": 20,
+            "order": 31,
+            "selector": ".item-node.available",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "background": {
+            "value": "#e8e5cd",
+            "important": true,
+            "specificity": 10,
+            "order": 4,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "-15px",
+            "important": false,
+            "specificity": 10,
+            "order": 37,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 95,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "50%",
+            "important": false,
+            "specificity": 10,
+            "order": 38,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "right": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 96,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "translateX(-50%)",
+            "important": false,
+            "specificity": 10,
+            "order": 39,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 30,
+            "order": 69,
+            "selector": ".pathway-technique .skill-node .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "capstone",
+        "state": "owned unavailable inspected",
+        "button": {
+          "border-width": {
+            "value": "1.5px",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 10,
+            "order": 5,
+            "selector": ".item-node",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "border-color": {
+            "value": "#9f7a30",
+            "important": true,
+            "specificity": 20,
+            "order": 29,
+            "selector": ".item-node.owned",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "background": {
+            "value": "#d1c48e",
+            "important": true,
+            "specificity": 20,
+            "order": 28,
+            "selector": ".item-node.owned",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "-15px",
+            "important": false,
+            "specificity": 10,
+            "order": 37,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 95,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "50%",
+            "important": false,
+            "specificity": 10,
+            "order": 38,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          },
+          "right": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 96,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "translateX(-50%)",
+            "important": false,
+            "specificity": 10,
+            "order": 39,
+            "selector": ".node-grade",
+            "sheet": "src/client/ui/polish.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "saturate(.4) opacity(.7)",
+            "important": false,
+            "specificity": 40,
+            "order": 73,
+            "selector": ".pathway-technique .skill-node.unavailable .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "role": "entry",
+        "state": "available",
+        "button": {
+          "border-width": {
+            "value": "2px",
+            "important": true,
+            "specificity": 20,
+            "order": 61,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 20,
+            "order": 61,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-color": {
+            "value": "#50785e",
+            "important": true,
+            "specificity": 30,
+            "order": 75,
+            "selector": ".pathway-technique .skill-node.available",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "background": {
+            "value": "radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)",
+            "important": true,
+            "specificity": 20,
+            "order": 63,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 98,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 99,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 100,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "right": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 101,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "none",
+            "important": false,
+            "specificity": 20,
+            "order": 102,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 30,
+            "order": 69,
+            "selector": ".pathway-technique .skill-node .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "active",
+        "state": "available",
+        "button": {
+          "border-width": {
+            "value": "5px",
+            "important": true,
+            "specificity": 30,
+            "order": 84,
+            "selector": ".pathway-technique.role-active .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-style": {
+            "value": "double",
+            "important": true,
+            "specificity": 30,
+            "order": 83,
+            "selector": ".pathway-technique.role-active .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-color": {
+            "value": "#50785e",
+            "important": true,
+            "specificity": 30,
+            "order": 75,
+            "selector": ".pathway-technique .skill-node.available",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "background": {
+            "value": "radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)",
+            "important": true,
+            "specificity": 20,
+            "order": 63,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 98,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 99,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 100,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "right": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 101,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "none",
+            "important": false,
+            "specificity": 20,
+            "order": 102,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 30,
+            "order": 69,
+            "selector": ".pathway-technique .skill-node .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "active",
+        "state": "owned unavailable",
+        "button": {
+          "border-width": {
+            "value": "5px",
+            "important": true,
+            "specificity": 30,
+            "order": 84,
+            "selector": ".pathway-technique.role-active .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-style": {
+            "value": "double",
+            "important": true,
+            "specificity": 30,
+            "order": 83,
+            "selector": ".pathway-technique.role-active .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-color": {
+            "value": "#a77d29",
+            "important": true,
+            "specificity": 30,
+            "order": 77,
+            "selector": ".pathway-technique .skill-node.owned",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "background": {
+            "value": "radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)",
+            "important": true,
+            "specificity": 30,
+            "order": 78,
+            "selector": ".pathway-technique .skill-node.owned",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 98,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 99,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 100,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "right": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 101,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "none",
+            "important": false,
+            "specificity": 20,
+            "order": 102,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 40,
+            "order": 74,
+            "selector": ".pathway-technique .skill-node.owned .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "evolution",
+        "state": "available",
+        "button": {
+          "border-width": {
+            "value": "2px",
+            "important": true,
+            "specificity": 20,
+            "order": 61,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 20,
+            "order": 61,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-color": {
+            "value": "#50785e",
+            "important": true,
+            "specificity": 30,
+            "order": 75,
+            "selector": ".pathway-technique .skill-node.available",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "background": {
+            "value": "radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)",
+            "important": true,
+            "specificity": 20,
+            "order": 63,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 98,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 99,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 100,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "right": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 101,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "none",
+            "important": false,
+            "specificity": 20,
+            "order": 102,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 30,
+            "order": 69,
+            "selector": ".pathway-technique .skill-node .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      },
+      {
+        "role": "capstone",
+        "state": "owned unavailable inspected",
+        "button": {
+          "border-width": {
+            "value": "4px",
+            "important": true,
+            "specificity": 30,
+            "order": 88,
+            "selector": ".pathway-technique.role-capstone .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-style": {
+            "value": "solid",
+            "important": true,
+            "specificity": 20,
+            "order": 61,
+            "selector": ".pathway-technique .skill-node",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "border-color": {
+            "value": "#24584c",
+            "important": true,
+            "specificity": 30,
+            "order": 80,
+            "selector": ".pathway-technique .skill-node.inspected",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "background": {
+            "value": "radial-gradient(circle at 45% 30%,#f4eacb,#c9b987)",
+            "important": true,
+            "specificity": 30,
+            "order": 78,
+            "selector": ".pathway-technique .skill-node.owned",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "badge": {
+          "top": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 98,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "bottom": {
+            "value": "-5px",
+            "important": false,
+            "specificity": 20,
+            "order": 99,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "left": {
+            "value": "-8px",
+            "important": false,
+            "specificity": 20,
+            "order": 100,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "right": {
+            "value": "auto",
+            "important": false,
+            "specificity": 20,
+            "order": 101,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          },
+          "transform": {
+            "value": "none",
+            "important": false,
+            "specificity": 20,
+            "order": 102,
+            "selector": ".pathway-technique .node-grade",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        },
+        "image": {
+          "filter": {
+            "value": "drop-shadow(0 2px 1px #0004)",
+            "important": false,
+            "specificity": 40,
+            "order": 74,
+            "selector": ".pathway-technique .skill-node.owned .item-art",
+            "sheet": "src/client/ui/skill-map.css"
+          }
+        }
+      }
+    ],
+    "limits": [
+      "Native parser + simple class-selector source cascade for the normal top-level stylesheet rules only. This is not a complete CSS engine, browser, rendered view or physical-device acceptance.",
+      "Proves the legacy important-border/background and conflicting badge-anchor defects and their scoped corrections. Font layout, media-query rendering and human aesthetics remain separate."
+    ]
+  },
+  "limits": [
+    "Native source cascade comparison and automated checks only; full rendered/device/human aesthetic acceptance remains separate.",
+    "Gameplay, migrations, SP/ownership and all original emblem bytes are the same as the preceding Machinery slice."
+  ]
+}

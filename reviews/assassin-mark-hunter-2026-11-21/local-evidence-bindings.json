@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "protocol": 92,
+  "contentRevision": "2f0f32426186c4cabb75d229b01a8dcbcc18ddcdcec0f1436a6a26e92bad0d8b",
+  "runtimeSourceSha256": "0bce91e90e96b07b35b07dfc88e5d050ba9a34a51b7d44033125f5c483620e6a",
+  "sourceSnapshotSha256": "ef9e0a7d148e6da4914e270f1b0fd9324a46604e7107effea334ba46fa4458d4",
+  "tests": 2826,
+  "checks": 7,
+  "cases": [
+    {
+      "transport": "worker",
+      "fitting": "entry",
+      "startingBoss": "constable",
+      "mode": "short",
+      "earned": 3,
+      "paidUntil": 2785,
+      "cutoff": 32,
+      "crossing": "strike",
+      "pinned": false,
+      "transferred": false
+    },
+    {
+      "transport": "worker",
+      "fitting": "canted",
+      "startingBoss": "stitchwright",
+      "mode": "short",
+      "earned": 9,
+      "paidUntil": 3872,
+      "cutoff": 406,
+      "pinned": true,
+      "transferred": false
+    },
+    {
+      "transport": "worker",
+      "fitting": "transfer",
+      "startingBoss": "city-eater",
+      "mode": "raid",
+      "earned": 12,
+      "paidUntil": 2654,
+      "cutoff": 16,
+      "pinned": false,
+      "transferred": true
+    },
+    {
+      "transport": "peer",
+      "fitting": "entry",
+      "startingBoss": "brass-toad",
+      "mode": "short",
+      "earned": 3,
+      "paidUntil": 2756,
+      "cutoff": 25,
+      "crossing": "strike",
+      "pinned": false,
+      "transferred": false
+    },
+    {
+      "transport": "peer",
+      "fitting": "canted",
+      "startingBoss": "stitchwright",
+      "mode": "short",
+      "earned": 9,
+      "paidUntil": 4699,
+      "cutoff": 837,
+      "pinned": true,
+      "transferred": false
+    },
+    {
+      "transport": "peer",
+      "fitting": "transfer",
+      "startingBoss": "city-eater",
+      "mode": "raid",
+      "earned": 12,
+      "paidUntil": 3018,
+      "cutoff": 114,
+      "pinned": false,
+      "transferred": true
+    }
+  ],
+  "files": [
+    {
+      "path": "source-verification.json",
+      "from": "gate02/generated/reviews/runtime-verification.json",
+      "sha256": "05698d1f99b85ab54739d63f235e1b95c4fc5f5848f359af93eba47d51addec8"
+    },
+    {
+      "path": "build-census.json",
+      "from": "census01.json",
+      "sha256": "15e8d23c83b359f803f756b23c03577a138a7999ff329ae3fb96257d5579550d"
+    },
+    {
+      "path": "audio-checks.json",
+      "from": "audio-checks01.json",
+      "sha256": "7f169515927733c3fe7a3eb1a08ffaec7bb83c1beb4dcc4baedbbb51b4fcd974"
+    },
+    {
+      "path": "staged-transport-bindings.json",
+      "from": "staged-native-bindings01.json",
+      "sha256": "24db4108b0ad7700dc7e964e67fef058631787205c9971ce9d3560dbe0f7c33b"
+    },
+    {
+      "path": "study-summary.json",
+      "from": "study-summary01.json",
+      "sha256": "3aba3cb542ec44806bc406b9afa8dc5b1349362ea072e0a7253b3359175adfa4"
+    },
+    {
+      "path": "practice-replays.json",
+      "from": "replays01/summary.json",
+      "sha256": "cd0b1f4ff6bd01695c7c7fb5f18d89da2776c904eebaae190004506621559a2c"
+    },
+    {
+      "path": "compatibility-development-proof.json",
+      "from": "migration-proof01.json",
+      "sha256": "389a5aa8d28efe6049fc1deeb74c26dd285bdbc201f9a231acd040eda91d2abb"
+    },
+    {
+      "path": "compatibility-exact-proof.json",
+      "from": "migration-proof02.json",
+      "sha256": "d179a08768248c1019a3c10af4a63d42d95b56fdddd111c1239636c4f0fe6a77"
+    },
+    {
+      "path": "short-solo-study.json",
+      "from": "short-solo08.json",
+      "sha256": "4750b676f3d07734b51e3d427d4537fee60216970ea1ed104d7f76179ddd22b5"
+    },
+    {
+      "path": "short-party-study.json",
+      "from": "short-party08.json",
+      "sha256": "8a97513620eae870f6fc302722880d8719ff99e458768e8988a8029099fcfb57"
+    },
+    {
+      "path": "standard-solo-study.json",
+      "from": "standard-solo08.json",
+      "sha256": "d2ad799481c4454067404adcca5447597b688c7780f7992656b2955146d1e704"
+    },
+    {
+      "path": "standard-party-study.json",
+      "from": "standard-party08.json",
+      "sha256": "5477bcc0247f7bea8b675d4d9b24518273efb107263b0c99618c4f068918beed"
+    },
+    {
+      "path": "source-worker-entry.json",
+      "from": "native-source01/worker-entry.json",
+      "sha256": "4ac2741b21866a5cbc32d75b94af7c960d2305f30c2d144bd266384278927b8e"
+    },
+    {
+      "path": "source-worker-canted.json",
+      "from": "native-source01/worker-canted.json",
+      "sha256": "715830516c83277ba39ef62aa6e472f6baea65be8f7070b3542bfd864120450c"
+    },
+    {
+      "path": "source-worker-transfer.json",
+      "from": "native-source01/worker-transfer.json",
+      "sha256": "27d6aa3b974fcba4146f6b2b6498c1cfd16111405a123ab6dfa6c8ca89fbdfb5"
+    },
+    {
+      "path": "source-peer-entry.json",
+      "from": "native-source01/peer-entry.json",
+      "sha256": "f26877efff116b9cfaf14567bc0f1c0ed29dacb6b28d02900d103a7a17e3d1f6"
+    },
+    {
+      "path": "source-peer-canted.json",
+      "from": "native-source01/peer-canted.json",
+      "sha256": "f6dc7eebe25129172fcae0aeac155ce245ee236abc42b1e5dd762ac9388ffca6"
+    },
+    {
+      "path": "source-peer-transfer.json",
+      "from": "native-source01/peer-transfer.json",
+      "sha256": "378f55c8215f5dd91fd2a437124da5af03ea4b9e980ceab29d9a320b3e5db94d"
+    }
+  ],
+  "documents": [
+    "docs/ASSASSIN_MARK_HUNTER.md",
+    "docs/FREE_PLAY_POLISH_ROADMAP.md",
+    "docs/CLASS_SPECIALIZATION_PLAN.md",
+    "handoff/NEXT_CHAT.md",
+    "docs/BUILD_VARIETY_AUDIT.md"
+  ]
+}

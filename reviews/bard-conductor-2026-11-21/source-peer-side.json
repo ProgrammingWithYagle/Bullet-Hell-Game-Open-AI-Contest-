@@ -1,0 +1,282 @@
+{
+  "passed": true,
+  "protocol": 93,
+  "contentRevision": "dd7833eb6cab7b2d1d233e8d05be5ea4e049c2fdff80dcd33d84fa56a5ed32a4",
+  "transport": "peer",
+  "fitting": "side",
+  "bought": [
+    {
+      "item": "bard-performance-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-call-and-response-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "bard-conductor-side-stage-1",
+      "earned": 5,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "matron",
+    "arena": "triage-yard",
+    "start": 2207
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "ossuary-works",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 109
+    }
+  },
+  "result": {
+    "stage": {
+      "first": {
+        "kind": "bard-response-stage",
+        "owner": "SSC-OuYy1",
+        "id": 955,
+        "x": 969.8725699381594,
+        "y": 474.1412524995611,
+        "originX": 1016.2686183553611,
+        "originY": 623.082202849922,
+        "radius": 62,
+        "at": 2478,
+        "until": 2592,
+        "proof": false
+      },
+      "last": {
+        "kind": "bard-response-stage",
+        "owner": "SSC-OuYy1",
+        "id": 955,
+        "x": 1023.7569618037659,
+        "y": 467.2620349883813,
+        "originX": 1016.2686183553611,
+        "originY": 623.082202849922,
+        "radius": 62,
+        "at": 2478,
+        "until": 2592,
+        "proof": true,
+        "shifted": true
+      },
+      "phases": [
+        {
+          "kind": "bard-response-stage",
+          "owner": "SSC-OuYy1",
+          "id": 955,
+          "x": 969.8725699381594,
+          "y": 474.1412524995611,
+          "originX": 1016.2686183553611,
+          "originY": 623.082202849922,
+          "radius": 62,
+          "at": 2478,
+          "until": 2592,
+          "proof": false
+        },
+        {
+          "kind": "bard-response-stage",
+          "owner": "SSC-OuYy1",
+          "id": 955,
+          "x": 1023.7569618037659,
+          "y": 467.2620349883813,
+          "originX": 1016.2686183553611,
+          "originY": 623.082202849922,
+          "radius": 62,
+          "at": 2478,
+          "until": 2592,
+          "proof": false,
+          "shifted": true
+        },
+        {
+          "kind": "bard-response-stage",
+          "owner": "SSC-OuYy1",
+          "id": 955,
+          "x": 1023.7569618037659,
+          "y": 467.2620349883813,
+          "originX": 1016.2686183553611,
+          "originY": 623.082202849922,
+          "radius": 62,
+          "at": 2478,
+          "until": 2592,
+          "proof": true,
+          "shifted": true
+        }
+      ],
+      "cooldown": 2829
+    },
+    "call": {
+      "kind": "bard-phrase",
+      "id": 956,
+      "owner": "SSC-OuYy1",
+      "x": 1016.2686183553611,
+      "y": 623.082202849922,
+      "radius": 145,
+      "at": 2478,
+      "until": 2492,
+      "cadence": 3,
+      "beat": 0,
+      "encore": false
+    },
+    "answer": {
+      "kind": "bard-phrase",
+      "id": 965,
+      "owner": "SSC-OuYy1",
+      "x": 1023.7569618037659,
+      "y": 467.2620349883813,
+      "radius": 145,
+      "at": 2509,
+      "until": 2523,
+      "cadence": 3,
+      "beat": 1,
+      "encore": false
+    },
+    "recovery": 2829,
+    "shifted": true,
+    "returned": false,
+    "sounds": [
+      "bard-answer-call",
+      "bard-answer-shift",
+      "bard-answer-proof",
+      "bard-answer-release"
+    ],
+    "plans": [
+      {
+        "action": "call",
+        "tick": 2477,
+        "from": {
+          "x": 1016.25,
+          "y": 623
+        },
+        "stage": {
+          "x": 969.8539515827982,
+          "y": 474.05904964963906
+        },
+        "cadence": 3
+      },
+      {
+        "action": "shift",
+        "tick": 2484,
+        "from": {
+          "x": 969.8725699381594,
+          "y": 474.1412524995611
+        },
+        "at": {
+          "x": 1023.7569618037659,
+          "y": 467.2620349883813
+        }
+      },
+      {
+        "action": "answer",
+        "tick": 2508,
+        "at": {
+          "x": 1023.7569618037659,
+          "y": 467.2620349883813
+        }
+      }
+    ],
+    "boss": "matron"
+  },
+  "witnessed": {
+    "nonHost": true,
+    "shared": {
+      "first": {
+        "kind": "bard-response-stage",
+        "owner": "SSC-OuYy1",
+        "id": 955,
+        "x": 969.8725699381594,
+        "y": 474.1412524995611,
+        "originX": 1016.2686183553611,
+        "originY": 623.082202849922,
+        "radius": 62,
+        "at": 2478,
+        "until": 2592,
+        "proof": false
+      },
+      "last": {
+        "kind": "bard-response-stage",
+        "owner": "SSC-OuYy1",
+        "id": 955,
+        "x": 1023.7569618037659,
+        "y": 467.2620349883813,
+        "originX": 1016.2686183553611,
+        "originY": 623.082202849922,
+        "radius": 62,
+        "at": 2478,
+        "until": 2592,
+        "proof": true,
+        "shifted": true
+      },
+      "phases": [
+        {
+          "kind": "bard-response-stage",
+          "owner": "SSC-OuYy1",
+          "id": 955,
+          "x": 969.8725699381594,
+          "y": 474.1412524995611,
+          "originX": 1016.2686183553611,
+          "originY": 623.082202849922,
+          "radius": 62,
+          "at": 2478,
+          "until": 2592,
+          "proof": false
+        },
+        {
+          "kind": "bard-response-stage",
+          "owner": "SSC-OuYy1",
+          "id": 955,
+          "x": 1023.7569618037659,
+          "y": 467.2620349883813,
+          "originX": 1016.2686183553611,
+          "originY": 623.082202849922,
+          "radius": 62,
+          "at": 2478,
+          "until": 2592,
+          "proof": false,
+          "shifted": true
+        },
+        {
+          "kind": "bard-response-stage",
+          "owner": "SSC-OuYy1",
+          "id": 955,
+          "x": 1023.7569618037659,
+          "y": 467.2620349883813,
+          "originX": 1016.2686183553611,
+          "originY": 623.082202849922,
+          "radius": 62,
+          "at": 2478,
+          "until": 2592,
+          "proof": true,
+          "shifted": true
+        }
+      ],
+      "cooldown": 2829
+    },
+    "pulse": {
+      "kind": "bard-phrase",
+      "id": 965,
+      "owner": "SSC-OuYy1",
+      "x": 1023.7569618037659,
+      "y": 467.2620349883813,
+      "radius": 145,
+      "at": 2509,
+      "until": 2523,
+      "cadence": 3,
+      "beat": 1,
+      "encore": false
+    },
+    "ownedStatePrivate": true,
+    "ownedSoundsPrivate": true
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "driverSha256": "d551ac69f0d13e138a6f971f66ba87728cbad3d4f26dd699f19c3b7fc18cc64b",
+  "testedAudience": "public"
+}

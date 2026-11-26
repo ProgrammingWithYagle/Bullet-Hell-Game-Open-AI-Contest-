@@ -1,0 +1,131 @@
+✖ device record filters retain the current keyboard editing focus (244.7234ms)
+✖ switching record tabs focuses the current live tab (160.1971ms)
+✖ online records retain mode, difficulty, squad size and week when returning from device records (143.5321ms)
+✖ device and online record filters keep their separate choices (145.5422ms)
+✖ a smaller mode keeps the corrected squad size and time period on return (152.5162ms)
+✖ disposed record controls cannot navigate back or start a new board request (123.5325ms)
+✖ detached record filters and tabs cannot replace the live online view (143.2078ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1672.7769
+
+✖ failing tests:
+
+test at tests\records-navigation.test.ts:1:1774
+✖ device record filters retain the current keyboard editing focus (244.7234ms)
+  AssertionError [ERR_ASSERTION]: Focus must remain on the live record filter
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:29:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:2208
+✖ switching record tabs focuses the current live tab (160.1971ms)
+  AssertionError [ERR_ASSERTION]: Focus must move to the live record tab
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:37:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:2614
+✖ online records retain mode, difficulty, squad size and week when returning from device records (143.5321ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'short' !== 'endless'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:46:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'short',
+    expected: 'endless',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:3641
+✖ device and online record filters keep their separate choices (145.5422ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'long' !== 'endless'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:60:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'long',
+    expected: 'endless',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:4349
+✖ a smaller mode keeps the corrected squad size and time period on return (152.5162ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'false' !== 'true'
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:67:152)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'false',
+    expected: 'true',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:5159
+✖ disposed record controls cannot navigate back or start a new board request (123.5325ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:73:62)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\records-navigation.test.ts:1:5481
+✖ detached record filters and tabs cannot replace the live online view (143.2078ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.host.querySelector('[data-record-mode]'))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\records-navigation.test.ts:80:2)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+{"createdAt":"2026-10-30T21:11:28.821Z","reference":"7d01e6dd0370c6368f2f712e633229cbbc27f5db","baselineExit":1,"candidateRestored":true,"selectFixtureUsesBrowserOptionReplacementSemantics":true,"files":[{"file":"src/client/ui/leaderboards.ts","baselineSha256":"6d4b7d8717587f422a5490e4521f1ba8c02b2126f16f27622969b7f3b2703757","candidateSha256":"f176e4e44ed3367b1c707bac7b2c2d094b40fdbdc2d35abbe373285cebb7d2bf","restoredSha256":"f176e4e44ed3367b1c707bac7b2c2d094b40fdbdc2d35abbe373285cebb7d2bf"},{"file":"src/client/ui/team-records.ts","baselineSha256":"cfb9511b7faf4bc19b698b5a6ec3c4c6e12d3cd0976587e463975666c61d51d7","candidateSha256":"c689e64b8c72a3fd1e1a31c1c752e4aef464ab2a3291f837d4c1721b8c247be5","restoredSha256":"c689e64b8c72a3fd1e1a31c1c752e4aef464ab2a3291f837d4c1721b8c247be5"}],"limits":["Native controller baseline only; all active previews use their existing frozen roots. No rendered or human acceptance."]}

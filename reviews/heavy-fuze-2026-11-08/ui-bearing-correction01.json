@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-08T02:39:12.130Z",
+  "originalUI": {
+    "tests": 16,
+    "pass": 15,
+    "fail": 1
+  },
+  "cause": "The new four-direction fixture turned pi by another pi/2 without normalizing the input, producing4.712... outside the issued valid[-pi,pi] input range. The real authority correctly rejected it.",
+  "correction": "Normalize the test-only changed aim with atan2(sin,cos); preserve the captured original bearing assertion, real wire decoder and zero-velocity update checks.",
+  "gameplayOrInputValidationChanged": false,
+  "originalFailedEvidencePreserved": true
+}

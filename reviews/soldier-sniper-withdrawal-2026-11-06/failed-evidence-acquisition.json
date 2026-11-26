@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-06T22:14:25.714Z",
+  "fullGate04": {
+    "tests": 1788,
+    "pass": 1787,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "log": "full-gate04.log",
+    "failure": "The new equipment wrapper supplied an optional inspection function even without a source-bound guide, so the ordinary peer path did not perform its capstone purchase."
+  },
+  "correction": "When the optional guide is absent, the adapter now sends the real Session purchase and waits for its actual result plus separate owner view. When present, the source-bound guide performs its one real purchase.",
+  "targetedPeer": {
+    "log": "peer-acquisition02.log",
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "actualTwoRaidClears": true,
+    "earnedSP": 27,
+    "paidReturnAndExtendedRecovery": true,
+    "actualClearAndHostExit": true
+  },
+  "runtimeChanges": false,
+  "timeoutOrDeadlineExtensions": false,
+  "skippedChecks": false,
+  "allPriorFailuresPreserved": true
+}

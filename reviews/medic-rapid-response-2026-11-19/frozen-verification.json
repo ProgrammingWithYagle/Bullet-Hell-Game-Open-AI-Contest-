@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "sourceCommit": "7c84f1faa2556eeaca653902742b0646e75161b5",
+  "contentRevision": "5c38a80c4d8992fc97b7d81f86b9e236c1d1f2f61d4a7282616b2f7289763ed6",
+  "protocol": 85,
+  "checkedAt": "2026-11-20T14:53:44.239Z",
+  "nativeDriverSha256": "e95e6c7ae5af56fd0edd74ceab612c30ed00ef3504d648b320d973b5efd0f4c3",
+  "audiences": [
+    {
+      "passed": true,
+      "audience": "testing",
+      "sourceCommit": "7c84f1faa2556eeaca653902742b0646e75161b5",
+      "contentRevision": "5c38a80c4d8992fc97b7d81f86b9e236c1d1f2f61d4a7282616b2f7289763ed6",
+      "protocol": 85,
+      "url": "http://127.0.0.1:5414/",
+      "endpoint": "http://127.0.0.1:2790",
+      "files": 2102,
+      "manifestSha256": "405a60af769288d66ffe83514192d082738227c88652f0b94fddcb5bd121661e",
+      "backendSha256": "449456830b00bc42cd63510531e0e3adc1d746fa60765d75144867ef2af1b456",
+      "backendStartedAt": "2026-11-20T14:47:00.473Z",
+      "worker": {
+        "path": "assets/offline.worker-BsZbLeJi.js",
+        "bytes": 1576612,
+        "sha256": "191eb192308fa37b983cd3cd568386684ca8ae206053986c795072c008ba91ad"
+      },
+      "sampledNewAssets": 11,
+      "httpSha256": "a5035a10992fceb0044640e0e1542eac4c1265f7e67be4f629f3735a0027e066",
+      "httpLogSha256": "c8074a09b2d9e6cda56f22f39f55514420ac53b1b70fd25ddf90cd5dcbeb7486",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-entry.log",
+          "logSha256": "c223a7264f0980627c8adda6b9d2974943455d81c4efa95533e364b1ab3a485a",
+          "raw": "testing-worker-entry.json",
+          "resultSha256": "ec3bb65ed5a5949c5f3caf95b80ffc7658a88848fccf2d9b4ac56dae234b6226",
+          "backendStartedAt": "2026-11-20T14:47:00.473Z"
+        },
+        {
+          "fitting": "switchback",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-switchback.log",
+          "logSha256": "754e9eccec766cb3de68848ce1c2f50d1d061838313e552c65f298bb096b9e89",
+          "raw": "testing-worker-switchback.json",
+          "resultSha256": "0731611cd0f65be496ce735ce66bdc9dd1788eba97c27abfb4d9aed6a9432e20",
+          "backendStartedAt": "2026-11-20T14:47:00.473Z"
+        },
+        {
+          "fitting": "handoff",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "testing-worker-handoff.log",
+          "logSha256": "52a1f08deac9d2c2e2241cd2530618b578fc9cfcbc3192acb3d20bba36bdc0a9",
+          "raw": "testing-worker-handoff.json",
+          "resultSha256": "081582c6fc3e72d27ddf3e061fdc3649bb4e38391d6b5d70a0998b3f396c4aab",
+          "backendStartedAt": "2026-11-20T14:47:00.473Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-entry.log",
+          "logSha256": "5cf34e62f6d980e59a9b9d6869a71578847033a50cfedf0b4c3228367e60370d",
+          "raw": "testing-peer-entry.json",
+          "resultSha256": "a332c7bc76b06398bd2610a51ea7182dc9fda15efef2e2df6abdcb0a34ba5b53",
+          "backendStartedAt": "2026-11-20T14:47:00.473Z"
+        },
+        {
+          "fitting": "switchback",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-switchback.log",
+          "logSha256": "dff86d88b42f1da4ec6eeb97571ca16fa1b148e13666b2661235217910c8ee26",
+          "raw": "testing-peer-switchback.json",
+          "resultSha256": "eee9acafea7b6e80b3243426845c18cd5be6c0f543ea0638756181931c109eea",
+          "backendStartedAt": "2026-11-20T14:47:00.473Z"
+        },
+        {
+          "fitting": "handoff",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "testing-peer-handoff.log",
+          "logSha256": "c2682e9849090ddeb435da5f7cd8ce4cdd7b977abb5080560b8b3e1fde40afe3",
+          "raw": "testing-peer-handoff.json",
+          "resultSha256": "5e188aedec587fd1e0e2e1431dc14356b6338fe7f89444ff2fdc09b7978bd3ec",
+          "backendStartedAt": "2026-11-20T14:47:00.473Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    },
+    {
+      "passed": true,
+      "audience": "public",
+      "sourceCommit": "7c84f1faa2556eeaca653902742b0646e75161b5",
+      "contentRevision": "5c38a80c4d8992fc97b7d81f86b9e236c1d1f2f61d4a7282616b2f7289763ed6",
+      "protocol": 85,
+      "url": "http://127.0.0.1:5415/",
+      "endpoint": "http://127.0.0.1:2791",
+      "files": 2102,
+      "manifestSha256": "92927c42adf6c06258a1410fbe0aecdb93919eabb0afc33be35228c4516e76e8",
+      "backendSha256": "449456830b00bc42cd63510531e0e3adc1d746fa60765d75144867ef2af1b456",
+      "backendStartedAt": "2026-11-20T14:47:00.826Z",
+      "worker": {
+        "path": "assets/offline.worker-BxqmK47M.js",
+        "bytes": 1576709,
+        "sha256": "e5e80b2550b7a409bb3350f22452a4451b03c8bd404a0b1caaecea18767af203"
+      },
+      "sampledNewAssets": 11,
+      "httpSha256": "2bbb6c1055dd26b805c41bcaeb55b509b94c475fb7a9e8090eb2a9e430f07cc7",
+      "httpLogSha256": "b1f7526cde74d90a7518113af118bbcf027ed1fd43cb29a31ecd38bf66a477e6",
+      "cases": [
+        {
+          "fitting": "entry",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-entry.log",
+          "logSha256": "04b2be480dd1d7e8ee7d77bf1dd7297f198108157226299722c28b095decd98b",
+          "raw": "public-worker-entry.json",
+          "resultSha256": "31d9325a567582c82aaa218895dff3fb4da602c9dcac156a904a4607fd0233c5",
+          "backendStartedAt": "2026-11-20T14:47:00.826Z"
+        },
+        {
+          "fitting": "switchback",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-switchback.log",
+          "logSha256": "18c471fc7d2cee6f8335670a54def6e4898a2eab3be0af6b371634cf3fbe4a19",
+          "raw": "public-worker-switchback.json",
+          "resultSha256": "cbddb19e8f1d5bc3f5905b4958cb4882621b2fd653fb4b0adcd13127a7b0982d",
+          "backendStartedAt": "2026-11-20T14:47:00.826Z"
+        },
+        {
+          "fitting": "handoff",
+          "transport": "worker",
+          "passed": true,
+          "status": 0,
+          "log": "public-worker-handoff.log",
+          "logSha256": "07343493a75e3dbfc2c86de1b4605e572690d06471fb18bb339a81d1fd1de677",
+          "raw": "public-worker-handoff.json",
+          "resultSha256": "1f03ae269ce93d82b17d12ba03694a542efe84fb203ed14c99a38adb691461bd",
+          "backendStartedAt": "2026-11-20T14:47:00.826Z"
+        },
+        {
+          "fitting": "entry",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-entry.log",
+          "logSha256": "ed9e7ab376513e6609dd4047e2fa3f9ce8ca132b42c8a4d0801f2ac081dd4133",
+          "raw": "public-peer-entry.json",
+          "resultSha256": "6b61712e42f21876ccba75a86ea0da4f615b7b14b1bdc28d2f00816bbfcdccba",
+          "backendStartedAt": "2026-11-20T14:47:00.826Z"
+        },
+        {
+          "fitting": "switchback",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-switchback.log",
+          "logSha256": "165d858726d820be8a8f317fc9064106bbeba1d753009a6100c49e96e29c2a00",
+          "raw": "public-peer-switchback.json",
+          "resultSha256": "1f1880270ad6d6c5c6c9c0fe970c1b76dc51fb3e361949a23f0d76e0c5a32744",
+          "backendStartedAt": "2026-11-20T14:47:00.826Z"
+        },
+        {
+          "fitting": "handoff",
+          "transport": "peer",
+          "passed": true,
+          "status": 0,
+          "log": "public-peer-handoff.log",
+          "logSha256": "172dcba56004a20d58fd69b5884cd0804653cf235b6019037bbbc3f681216539",
+          "raw": "public-peer-handoff.json",
+          "resultSha256": "d9049ee4ff03f126072ac49cfb9770828dd5678678f951ccbd10c31b2844c1db",
+          "backendStartedAt": "2026-11-20T14:47:00.826Z"
+        }
+      ],
+      "caseCount": 7,
+      "remainingProbeRooms": 0,
+      "remainingProbeConnections": 0
+    }
+  ]
+}

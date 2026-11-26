@@ -1,0 +1,216 @@
+{
+  "passed": true,
+  "protocol": 98,
+  "contentRevision": "8306dd0494bdd90b32123b6b9f2d74265e0c091f2187f94b059eb2689a30dc7b",
+  "transport": "worker",
+  "fitting": "cross",
+  "bought": [
+    {
+      "item": "swordsman-footwork-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-passing-cut-1",
+      "earned": 3,
+      "clears": 0
+    },
+    {
+      "item": "swordsman-pursuit-crossing-step-1",
+      "earned": 5,
+      "clears": 1
+    }
+  ],
+  "firstClear": 1,
+  "next": {
+    "boss": "matron",
+    "arena": "triage-yard",
+    "start": 841
+  },
+  "setup": {
+    "mode": "standard",
+    "difficulty": "normal",
+    "arenaSelection": "route",
+    "openingArenaId": "sunken-chapel",
+    "freePlay": {
+      "openingBossId": "constable",
+      "variant": "normal",
+      "seed": 73
+    }
+  },
+  "result": {
+    "first": {
+      "cue": {
+        "kind": "sword-passing-cut",
+        "state": "passing",
+        "owner": "solo",
+        "id": 247,
+        "x": 649.8635401343234,
+        "y": 441.03637831240854,
+        "aim": -2.0981026427147684,
+        "radius": 139,
+        "arc": 1.5009831567151233,
+        "at": 912,
+        "until": 919
+      },
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 3184.2,
+          "after": 3072.2
+        }
+      ],
+      "stride": 54,
+      "heading": -2.5048877841933312,
+      "ammo": [
+        10,
+        9
+      ],
+      "q": 983,
+      "e": 1044,
+      "boss": "matron",
+      "encounter": 1,
+      "footing": {
+        "x": 649.8635401343234,
+        "y": 441.03637831240854
+      },
+      "opening": {
+        "kind": "sword-passing-cut",
+        "state": "open-cross",
+        "id": 248,
+        "owner": "solo",
+        "x": 649.8635401343234,
+        "y": 441.03637831240854,
+        "aim": -2.5048877841933312,
+        "radius": 33,
+        "arc": 2.1642082724729685,
+        "at": 912,
+        "until": 954
+      }
+    },
+    "release": {
+      "cue": {
+        "kind": "sword-passing-cut",
+        "state": "cross",
+        "owner": "solo",
+        "id": 249,
+        "x": 656.4061511544563,
+        "y": 409.71235811960383,
+        "aim": -2.155458262647537,
+        "radius": 116,
+        "arc": 2.1642082724729685,
+        "at": 917,
+        "until": 924
+      },
+      "hits": [
+        {
+          "id": "boss/matron",
+          "before": 3072.2,
+          "after": 2998.2
+        }
+      ],
+      "stride": 32,
+      "heading": -1.3648877841933322,
+      "ammo": [
+        9,
+        8
+      ],
+      "q": 983,
+      "e": 1044,
+      "boss": "matron",
+      "encounter": 1,
+      "footing": {
+        "x": 656.4061511544563,
+        "y": 409.71235811960383
+      }
+    },
+    "boss": "matron",
+    "angle": 1.139999999999999,
+    "sounds": [
+      "sword-pursuit-passing",
+      "sword-pursuit-open-cross",
+      "sword-pursuit-cross"
+    ],
+    "trace": [
+      {
+        "cue": {
+          "kind": "sword-passing-cut",
+          "state": "passing",
+          "owner": "solo",
+          "id": 247,
+          "x": 649.8635401343234,
+          "y": 441.03637831240854,
+          "aim": -2.0981026427147684,
+          "radius": 139,
+          "arc": 1.5009831567151233,
+          "at": 912,
+          "until": 919
+        },
+        "hits": [
+          {
+            "id": "boss/matron",
+            "before": 3184.2,
+            "after": 3072.2
+          }
+        ],
+        "stride": 54,
+        "heading": -2.5048877841933312,
+        "ammo": [
+          10,
+          9
+        ],
+        "q": 983,
+        "e": 1044,
+        "boss": "matron",
+        "encounter": 1,
+        "footing": {
+          "x": 649.8635401343234,
+          "y": 441.03637831240854
+        }
+      },
+      {
+        "cue": {
+          "kind": "sword-passing-cut",
+          "state": "cross",
+          "owner": "solo",
+          "id": 249,
+          "x": 656.4061511544563,
+          "y": 409.71235811960383,
+          "aim": -2.155458262647537,
+          "radius": 116,
+          "arc": 2.1642082724729685,
+          "at": 917,
+          "until": 924
+        },
+        "hits": [
+          {
+            "id": "boss/matron",
+            "before": 3072.2,
+            "after": 2998.2
+          }
+        ],
+        "stride": 32,
+        "heading": -1.3648877841933322,
+        "ammo": [
+          9,
+          8
+        ],
+        "q": 983,
+        "e": 1044,
+        "boss": "matron",
+        "encounter": 1,
+        "footing": {
+          "x": 656.4061511544563,
+          "y": 409.71235811960383
+        }
+      }
+    ]
+  },
+  "pausedCommandsDiscarded": true,
+  "noCheckpointImports": true,
+  "wholeOptimizedWorker": true,
+  "workerPatched": false,
+  "workerSha256": "a4829bc1dc7c93d199c87588092befcd239d7fe3e8cef7cb9f9f4fbff3646114",
+  "driverSha256": "3181f2a6515413fea0290aaff78acfb041374095db2d1ac7eb546c235e1b66b7",
+  "testedAudience": "public"
+}

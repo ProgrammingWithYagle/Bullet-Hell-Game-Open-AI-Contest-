@@ -1,0 +1,10 @@
+{
+  "kind": "Observed initial fixture error and corrected rerun",
+  "initialFocusedTests": { "tests": 10, "pass": 10, "fail": 0 },
+  "initialTypeScriptError": "tests/run-results.test.ts(59,3): error TS2739: campaignBank fixture was missing timeouts and bankedAt",
+  "rawInitialTypeScriptOutputStored": false,
+  "correction": "Include the existing typed campaign-bank timeouts and bankedAt fields in the test fixture. No runtime model was changed to accommodate the fixture.",
+  "currentTypeScriptPassed": true,
+  "currentFocusedTests": { "tests": 10, "pass": 10, "fail": 0 },
+  "fullGate": "reviews/run-results-2026-10-28/gate-01/runtime-verification.json"
+}

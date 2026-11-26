@@ -1,0 +1,163 @@
+{
+  "passed": true,
+  "exactReplays": 12,
+  "gameBundle": "5ace75c8b369875b3f38701b975281ac234bbfc4ed53f595fe5a855bb56f6505",
+  "comparisons": [
+    {
+      "path": "replays01/01-short-solo-shunt.json",
+      "sha256": "0502f47567ced33801d2d3c192948dc2b70cfbf0bc933017271d87b9df036b83",
+      "matches": "bank-short-solo-ossuary-works-shunt.json",
+      "mode": "short",
+      "cohort": "solo",
+      "policy": "shunt",
+      "arena": "ossuary-works",
+      "trace": "7335b318622a2eb9b66a6630a42f137e3ade0f793d0911c03719f3074afb0250",
+      "handling": [
+        "shunt"
+      ]
+    },
+    {
+      "path": "replays01/02-short-solo-twin.json",
+      "sha256": "1e6fdf44c9e773ab0e09251e52a6d6caf0b3bb97134dc220148aba49b944b62c",
+      "matches": "bank-short-solo-ossuary-works-twin.json",
+      "mode": "short",
+      "cohort": "solo",
+      "policy": "twin",
+      "arena": "ossuary-works",
+      "trace": "2afa19f5b67b4ff6811b4501944595eac9561fd96d43715aa472c975a83adbf4",
+      "handling": [
+        "split",
+        "echo"
+      ]
+    },
+    {
+      "path": "replays01/03-short-solo-crossed.json",
+      "sha256": "31a1a794821ec3acc6729f9116613d6f3c70f26b9310fa5755fdf58f5081dfc8",
+      "matches": "short-solo02.json",
+      "mode": "short",
+      "cohort": "solo",
+      "policy": "crossed",
+      "arena": "gatehouse",
+      "trace": "9183fd9ca548e7920a2bec39a39179dc7765c94d87bfce9e4632efb7ba086ac4",
+      "handling": []
+    },
+    {
+      "path": "replays01/04-short-party-shunt.json",
+      "sha256": "35aca932bbffed355b0b4dc459de3df1e804c598cd2ec0d46be804556d204d6f",
+      "matches": "bank-short-party-sunken-chapel-shunt.json",
+      "mode": "short",
+      "cohort": "party",
+      "policy": "shunt",
+      "arena": "sunken-chapel",
+      "trace": "e89a5202c3126c237850eb438c2de2be4d595284bb925b5f5e89a181b4320ea9",
+      "handling": [
+        "shunt",
+        "shunt"
+      ]
+    },
+    {
+      "path": "replays01/05-short-party-twin.json",
+      "sha256": "84d3345bbdf3b72917d1356632d001bdf0232fbdac08316da83ff559d01d2906",
+      "matches": "bank-short-party-gatehouse-twin.json",
+      "mode": "short",
+      "cohort": "party",
+      "policy": "twin",
+      "arena": "gatehouse",
+      "trace": "3b00a9d90e8c927070e2778f96abf462af3f8b34f33df37f1a774b1b817a6a20",
+      "handling": [
+        "split",
+        "echo"
+      ]
+    },
+    {
+      "path": "replays01/06-short-party-crossed.json",
+      "sha256": "ee30222ba04b75e3587fcaaf230cdb6061b77761daf8bb76e0c9f89d8c7a68b0",
+      "matches": "short-party02.json",
+      "mode": "short",
+      "cohort": "party",
+      "policy": "crossed",
+      "arena": "gatehouse",
+      "trace": "726ff946c68f38ead44c2b41b7ca840cb95c0431127b90deed595b1803f95614",
+      "handling": []
+    },
+    {
+      "path": "replays01/07-standard-solo-shunt.json",
+      "sha256": "0cb132ec3a5894089cffb5f2a467c334a44e1af44e1b08aaa84984f8b0e97886",
+      "matches": "adaptive-standard-solo-gatehouse-shunt.json",
+      "mode": "standard",
+      "cohort": "solo",
+      "policy": "shunt",
+      "arena": "gatehouse",
+      "trace": "72f054d42008a538e6ca76fa5bca340e2f3aab00f8f978f3b30408238973cd12",
+      "handling": [
+        "shunt",
+        "shunt"
+      ]
+    },
+    {
+      "path": "replays01/08-standard-solo-twin.json",
+      "sha256": "2b837e8208708bd7c7cd99dc3570ed38b48d4233208c9e56ba753cc9f9d92a3a",
+      "matches": "adaptive-standard-solo-crown-crypt-twin.json",
+      "mode": "standard",
+      "cohort": "solo",
+      "policy": "twin",
+      "arena": "crown-crypt",
+      "trace": "fa990c692f25dd26153a66ab828c38e4e4ffb05c11a7c0e21ed68d27ebb166e7",
+      "handling": [
+        "split",
+        "echo"
+      ]
+    },
+    {
+      "path": "replays01/09-standard-solo-crossed.json",
+      "sha256": "e72cd6fb5957c32e05dfd4a3e64157bd4855e968d2d0cfc24a015141fa22f718",
+      "matches": "standard-solo02.json",
+      "mode": "standard",
+      "cohort": "solo",
+      "policy": "crossed",
+      "arena": "gatehouse",
+      "trace": "220589c2a4e193e35fea17744853d9b72f6a0915d60a3026410a4e0f6f3918bb",
+      "handling": []
+    },
+    {
+      "path": "replays01/10-standard-party-shunt.json",
+      "sha256": "bfb46acd6da9ca185ffdae3a55abb2322e61eceb9a09989fa250b2b091ab9e1e",
+      "matches": "adaptive-standard-party-sunken-chapel-shunt.json",
+      "mode": "standard",
+      "cohort": "party",
+      "policy": "shunt",
+      "arena": "sunken-chapel",
+      "trace": "4320edb0901a16a95796ed572cee073c73fabe72bb56353d2c2b9ac511c59af1",
+      "handling": [
+        "shunt",
+        "shunt",
+        "shunt"
+      ]
+    },
+    {
+      "path": "replays01/11-standard-party-twin.json",
+      "sha256": "1ee9f5d55b113967ab48a8075d5fa5b47cd0a382ece1a391e9af87cf17875bfa",
+      "matches": "adaptive-standard-party-crown-crypt-twin.json",
+      "mode": "standard",
+      "cohort": "party",
+      "policy": "twin",
+      "arena": "crown-crypt",
+      "trace": "092dbcad83cddddd34c868a4aaf74fb726bfdeae6015a7f7e3da255971524113",
+      "handling": [
+        "split",
+        "echo"
+      ]
+    },
+    {
+      "path": "replays01/12-standard-party-crossed.json",
+      "sha256": "39d71a3af01d622af391b3c328c396de3b7559983b01d6e670867558289d029e",
+      "matches": "standard-party02.json",
+      "mode": "standard",
+      "cohort": "party",
+      "policy": "crossed",
+      "arena": "gatehouse",
+      "trace": "d55f6e9e5d6578b1727bdc056432ad042fddac4d64816580dcd7ca1e04c0ca1a",
+      "handling": []
+    }
+  ]
+}

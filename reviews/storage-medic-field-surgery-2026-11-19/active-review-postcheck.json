@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-20T03:13:11.2988289Z",
+  "stage": "after",
+  "currentScope": "reviews/medic-field-surgery-2026-11-19",
+  "rollbackScope": "reviews/tank-interceptor-fittings-2026-11-19",
+  "rollbackSha256": "6769e465b03978f121eff7be8b316af34e67c7bee8cf596e2f919c4d728e336e",
+  "previews": [
+    {
+      "scope": "reviews/medic-field-surgery-2026-11-19",
+      "audience": "testing",
+      "source": "be2e815cd2050695a125d9aae64810ce62d3387e",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 49256,
+          "port": 5410,
+          "processUtc": "2026-11-19T22:36:34.5450730Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-medic-field-surgery-2026-11-19-testing-be2e815 --host 127.0.0.1 --port 5410 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 47852,
+          "port": 2786,
+          "processUtc": "2026-11-19T22:36:34.5240720Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-medic-field-surgery-2026-11-19-be2e815.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-19T22:36:35.203Z",
+        "uptimeSeconds": 16587.6839031,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 83,
+        "contentRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+        "practiceOnly": true,
+        "audience": "testing",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "be2e815cd2050695a125d9aae64810ce62d3387e",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/medic-field-surgery-2026-11-19",
+      "audience": "public",
+      "source": "be2e815cd2050695a125d9aae64810ce62d3387e",
+      "bindings": [
+        {
+          "kind": "client",
+          "pid": 52604,
+          "port": 5411,
+          "processUtc": "2026-11-19T22:36:35.1491280Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" node_modules/vite/bin/vite.js preview --outDir output\\playtest-medic-field-surgery-2026-11-19-public-be2e815 --host 127.0.0.1 --port 5411 --strictPort"
+        },
+        {
+          "kind": "backend",
+          "pid": 56152,
+          "port": 2787,
+          "processUtc": "2026-11-19T22:36:35.1318960Z",
+          "commandLine": "\"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1118-904-0_26.1118.904.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe\" \"C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\frozen-medic-field-surgery-2026-11-19-be2e815.mjs\""
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "startedAt": "2026-11-19T22:36:35.661Z",
+        "uptimeSeconds": 16589.6613778,
+        "prototype": "grave-accord-development",
+        "playable": {
+          "bosses": 66,
+          "classes": 12,
+          "modes": [
+            "short",
+            "standard",
+            "long",
+            "raid",
+            "endless",
+            "story"
+          ]
+        },
+        "protocolVersion": 83,
+        "contentRevision": "1719985fd93fc79e682a2196cecd551e63e4485cb91fd6c77f3b4e7ec1dd810e",
+        "practiceOnly": true,
+        "audience": "public",
+        "teamRecords": {
+          "available": true,
+          "scope": "server",
+          "persistent": true
+        },
+        "sourceCommit": "be2e815cd2050695a125d9aae64810ce62d3387e",
+        "capacity": {
+          "reservedSlots": 0,
+          "instanceLimit": 50,
+          "rooms": 0,
+          "roomLimit": 4,
+          "available": true,
+          "canJoin": true,
+          "canCreate": true,
+          "queued": 0,
+          "offeredSlots": 0
+        }
+      }
+    },
+    {
+      "scope": "reviews/tank-interceptor-fittings-2026-11-19",
+      "audience": "testing",
+      "source": "6c811bfa5e6ca3c5fe92cafaa27f3ff2b7866850",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5408,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2784,
+          "retired": true
+        }
+      ],
+      "health": null
+    },
+    {
+      "scope": "reviews/tank-interceptor-fittings-2026-11-19",
+      "audience": "public",
+      "source": "6c811bfa5e6ca3c5fe92cafaa27f3ff2b7866850",
+      "bindings": [
+        {
+          "kind": "client",
+          "port": 5409,
+          "retired": true
+        },
+        {
+          "kind": "backend",
+          "port": 2785,
+          "retired": true
+        }
+      ],
+      "health": null
+    }
+  ]
+}

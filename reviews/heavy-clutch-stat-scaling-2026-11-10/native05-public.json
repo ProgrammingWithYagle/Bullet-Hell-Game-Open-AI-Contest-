@@ -1,0 +1,528 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-10T17:16:31.179Z",
+  "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+  "audience": "public",
+  "groups": 4,
+  "cases": 106,
+  "invocations": 44,
+  "checks": [
+    {
+      "label": "http",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-http.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "c983ebf94238296f9f9f70d835d51e01727dff77f8f649a7fb711f9fe94282cc"
+    },
+    {
+      "label": "guide",
+      "cases": 63,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-guide.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "4a9652401914ec3ba0189df073abdbd301953e526ac00493e327bab731db7179"
+    },
+    {
+      "label": "worker-cover",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-cover.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "13e6af9e0e176a2e7b3c22c29fd6f3d3d0fe341218714e48eace5bcbca3d4595"
+    },
+    {
+      "label": "worker-fuse",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-fuse.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "426fbbdb0f018aaa6072682244b574c279d07910d4355c20ad7c480ebe651da8"
+    },
+    {
+      "label": "worker-compact",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-compact.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "984d265b7b94991da6930da3ce593e75884ecbefd8620017bf436bb400fe2af9"
+    },
+    {
+      "label": "worker-frontal",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-frontal.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "c1280f5c7d9ea4af780f96bbbad653f03ad6a6168ff56f23f15eb8042edd45ba"
+    },
+    {
+      "label": "worker-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-running.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "f36301dbc1d1f53feaaef329f4c7b33f23f8378f2dabba5fd5bbe6a391634374"
+    },
+    {
+      "label": "worker-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-hanging.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "36b64fc272b7692f9400965d19ef45823b0eb92df989a7b1d569daefefa25ed1"
+    },
+    {
+      "label": "worker-seam-manual",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-seam-manual.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "76e88993d33300fcee5c9a07223f357e46aec78064c0900bfa039542f71f52bf"
+    },
+    {
+      "label": "worker-seam-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-seam-running.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "78ea9a903f98c90bc20a31bb28caa4f0a34ea08f357bcdf348df9c0589f08685"
+    },
+    {
+      "label": "worker-seam-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-worker-seam-hanging.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "8f4073350ae10b3067c37904afcdd9930895007a3d3fd398aaf73ae8acec4491"
+    },
+    {
+      "label": "worker-traverse-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-public-worker-traverse-loose.log",
+      "attempt": "native05",
+      "originalExecutionRetained": false,
+      "logSha256": "d105baf0ec6c4b6c5d696b523493e4daab17b49d745aacf436ced86b40052ded"
+    },
+    {
+      "label": "worker-traverse-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-public-worker-traverse-spade.log",
+      "attempt": "native05",
+      "originalExecutionRetained": false,
+      "logSha256": "d470d98bc01d02b106561111b11b467e1473c97005ba1c42b7875c3affe75c82"
+    },
+    {
+      "label": "worker-traverse-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-public-worker-traverse-floating.log",
+      "attempt": "native05",
+      "originalExecutionRetained": false,
+      "logSha256": "376987f439985e8bbfe7e04f60da3b2d2d5b769309197020f306e2fa43d78afc"
+    },
+    {
+      "label": "worker-clutch-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-clutch-loose.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "45ec61619d9fcb9d3cde8722a4eee51c312ec6c753c2c28e3ba298f9a2070e49"
+    },
+    {
+      "label": "worker-clutch-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-clutch-spade.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "a07d14bf549637f2c3dbf53cbff8d3d3025b85bdde59a13265f3cbcc3e70e503"
+    },
+    {
+      "label": "worker-clutch-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-clutch-floating.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "0024bba6d99196baa7d6e5c3aa09e6697d8b6ed24fe38e77d55610f156bf58fa"
+    },
+    {
+      "label": "worker-handling-keyed-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-handling-keyed-loose.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "addd161a50fad7fc5febf91989d4821d08c23d99dbb1afbb0fadacd440ca0f41"
+    },
+    {
+      "label": "worker-handling-keyed-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-handling-keyed-spade.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "efd0d289cf73c70bee8eb71028a1a216f0362166a99a9383784857c2ea69aa04"
+    },
+    {
+      "label": "worker-handling-keyed-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-handling-keyed-floating.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "6de9484dc12adc3a06fb167bfd631cedb73f275c135fb3eef54aeadac53913c7"
+    },
+    {
+      "label": "worker-handling-open-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-handling-open-loose.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "d5a707d2511fac948f2a9026137acdc00d70ffdbe4be7ba0081bdb20d62cfb31"
+    },
+    {
+      "label": "worker-handling-open-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-worker-handling-open-spade.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "cdbf57283ce47c3eee02b941586f4635f4766426b8cf504398a61cfca36ea335"
+    },
+    {
+      "label": "worker-handling-open-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-worker-handling-open-floating.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "2e9f0f106554418432bc239f2901f39d6921982a0cd3311a1c7ae5ad95a60185"
+    },
+    {
+      "label": "room-cover",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-room-cover.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "189c320e824d261be3075a780a9513ba7b3e2dfac85b3a1ff018e264e162951f"
+    },
+    {
+      "label": "room-exit",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-room-exit.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "de8df9edf4dd0e1f483168225143d609a909a62af88d4091bef7b5712a054d04"
+    },
+    {
+      "label": "room-compact",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-room-compact.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "2db35b52d8806600dbc10663bb1c5a459efffffd476d8c8d0c8dff9e1818f5da"
+    },
+    {
+      "label": "room-frontal",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-room-frontal.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "982ec5115a9c9637849cf666799fcaad5f8ff1a4dee30dfb8f19f77bfee9ab5a"
+    },
+    {
+      "label": "room-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-room-running.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "0e6ce41d4a389aed127ec71eda28415278e8bb7f26881c29bc10bd441f189051"
+    },
+    {
+      "label": "room-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-room-hanging.log",
+      "attempt": "native01",
+      "originalExecutionRetained": true,
+      "logSha256": "aebb923f96e3306279797baa3997ec7d12225164ed5f5a4da4a7ac32ef21523e"
+    },
+    {
+      "label": "room-seam-manual",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-room-seam-manual.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "c16e1ee02f2f90055faa30f9ecb0b4b24d50953e18874c93527c54cd60545aa1"
+    },
+    {
+      "label": "room-seam-running",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-room-seam-running.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "001658f13a757c383db755eb42dd4db1054b62916b91b55a5ebc4ba915a9820b"
+    },
+    {
+      "label": "room-seam-hanging",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-room-seam-hanging.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "adc89769cf711286ccf1b5c5453bda406c2b0f753300fbc0f02925b060c9f5d2"
+    },
+    {
+      "label": "room-traverse-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-public-room-traverse-loose.log",
+      "attempt": "native05",
+      "originalExecutionRetained": false,
+      "logSha256": "6412f82e354039a3778e184ce189d16e2f79d18ed3ffa4b6655b083eac60ed05"
+    },
+    {
+      "label": "room-traverse-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-public-room-traverse-spade.log",
+      "attempt": "native05",
+      "originalExecutionRetained": false,
+      "logSha256": "1633ebad38b3bc41aceb2628887790b3399a625384e9b3d9f69fa754f19c98df"
+    },
+    {
+      "label": "room-traverse-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-public-room-traverse-floating.log",
+      "attempt": "native05",
+      "originalExecutionRetained": false,
+      "logSha256": "8192a69918a36eb60e14bce6bac11fe8069367ef9679fa1ffa01e60704a69bf8"
+    },
+    {
+      "label": "room-clutch-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-room-clutch-loose.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "c43f9ac8f0060a2332f634a34e238e288eea8edb08ac4df42bd63138e6d9ec7f"
+    },
+    {
+      "label": "room-clutch-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-room-clutch-spade.log",
+      "attempt": "native02",
+      "originalExecutionRetained": true,
+      "logSha256": "4d29754fe8ef9f5a03d1157611aef6b5e90b8e0742a8eded9b5349fc9c6602d5"
+    },
+    {
+      "label": "room-clutch-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-clutch-floating.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "667e33ed85b0ceb015969c65b8850d7f78cc42c15d5888ca03b1dbaaa1d80d05"
+    },
+    {
+      "label": "room-handling-keyed-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-handling-keyed-loose.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "18c4c3a0294f58d12d103642f9acc768bfe69dd547c6f6be819cc2fff16131bb"
+    },
+    {
+      "label": "room-handling-keyed-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-handling-keyed-spade.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "71f8fff4bbeb24b3bcc40a03418943b360f2c6e435df29b9cacbb227f648d884"
+    },
+    {
+      "label": "room-handling-keyed-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-handling-keyed-floating.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "3c24856e3e889980b0bc7f5f63318fc5295bf497c143377d73b48715b0bf7ae2"
+    },
+    {
+      "label": "room-handling-open-loose",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-handling-open-loose.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "b40295584dbbd05c91a5f10f6b48eb3788b82e09e20e68bbc0bfcade371da1e7"
+    },
+    {
+      "label": "room-handling-open-spade",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-handling-open-spade.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "11c340b9b3e59ee8db5f51fc41c85bd9f2a0a766a6641b3b9186cef4df4254b3"
+    },
+    {
+      "label": "room-handling-open-floating",
+      "cases": 1,
+      "passed": true,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native03-public-room-handling-open-floating.log",
+      "attempt": "native03",
+      "originalExecutionRetained": true,
+      "logSha256": "27de6cff6f9a62539569eb7cfaaa8968b06be4cb2317e4f0bd13311896ed4815"
+    }
+  ],
+  "originalPreparationFailurePreserved": true,
+  "previousInterruptedWallClockFailuresPreserved": true,
+  "attemptHistory": [
+    {
+      "attempt": "native01",
+      "report": "reviews/heavy-clutch-stat-scaling-2026-11-10/native01-public-partial.json",
+      "sha256": "f2e634ef53531303abd9dc010221e34c0887ed1285a332f4ede0fbaae4f09088"
+    },
+    {
+      "attempt": "native02",
+      "report": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-partial.json",
+      "sha256": "68a9d0c8ec7fa37f8e193960c06c9d6a730f72c96d040515a459fd06569b1dfd"
+    },
+    {
+      "attempt": "native03",
+      "report": "reviews/heavy-clutch-stat-scaling-2026-11-10/native-public.json",
+      "sha256": "d69a3491a6d7804c4537b4e49e635511d196c379a2fd433b3fc6d35d7f273a79"
+    },
+    {
+      "attempt": "native04",
+      "report": "reviews/heavy-clutch-stat-scaling-2026-11-10/native04-public-partial.json",
+      "sha256": "205e574bd8a1ccacf5e21e9993f8a79e04747781d7cc600bf3d1c47c12d606eb"
+    }
+  ],
+  "originalAttempt": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-partial.json",
+  "originalAttemptSha256": "68a9d0c8ec7fa37f8e193960c06c9d6a730f72c96d040515a459fd06569b1dfd",
+  "originalFailedPreparationInvocations": [
+    {
+      "label": "room-clutch-floating",
+      "cases": 1,
+      "passed": false,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-room-clutch-floating.log",
+      "attempt": "native02",
+      "originalExecutionRetained": false,
+      "logSha256": "4cbd95821549a25b4e7ad160a40bf95d9bff90512936479fa89d9794c928c197"
+    },
+    {
+      "label": "worker-handling-open-spade",
+      "cases": 1,
+      "passed": false,
+      "log": "reviews/heavy-clutch-stat-scaling-2026-11-10/native02-public-worker-handling-open-spade.log",
+      "attempt": "native02",
+      "originalExecutionRetained": false,
+      "logSha256": "2a45a13f59ba4ac19ab7652b90a14781b3670e80cda446bc5e119413075ccefb"
+    }
+  ],
+  "retainedOriginalPassedInvocations": 38,
+  "newInvocations": 6,
+  "driverSha256": "66ef0124bcd0c82b23ef3dfaab296371b22242eac0c8896f1db2724874df63b2",
+  "restoredRetainedDependencies": [
+    {
+      "file": "retained-clutch-menu.mts",
+      "source": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-handling-movement-stage/retained-clutch-menu.mts",
+      "sha256": "4ecc7ad74ac473bef79731e921fe3c61c376f686e579b7ba1063482bf1d6c1a8",
+      "copiedBytesExact": true
+    },
+    {
+      "file": "retained-seam-earned-menu.mts",
+      "source": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-handling-movement-stage/retained-seam-earned-menu.mts",
+      "sha256": "2c14662a0f2e4d4c7562e286cbfb590f834b6f48cbe8d9ef9d35d509b78cbcb8",
+      "copiedBytesExact": true
+    },
+    {
+      "file": "retained-traverse-menu.mts",
+      "source": "C:\\Users\\yigal\\Documents\\Codex\\2026-11-05\\continue-grave-accord-in-the-same\\work\\heavy-clutch-handling-movement-stage/retained-traverse-menu.mts",
+      "sha256": "206819d1bf144714b741630e6d6f54a120d781b5d91fe2630cca07a785003284",
+      "copiedBytesExact": true
+    }
+  ],
+  "existingDriverAndSourceBytesUnchanged": true,
+  "limits": "Complete exact-source106-case matrix composed from original passed executions and resumed failed/unexecuted cases. Original missing-module preparation failures and subsequent wall-clock-bound failures remain. Those last failing sessions did not retain terminal Game phase snapshots, so the exact cause is not asserted. No timeout, policy or source change is made for this new attempt. HTTP1,sourceUI/control/prediction/private presentation63,whole exact optimized workers21,actual peers21. All gameplay/content/test/deadline bytes remain the verified source. Actual operation admissions can have zero contacts; native tests are separate from rendered/device/native-language/listening/motion/human/final-balance acceptance. Native05 reruns the six entry worker/peer cases to report actual pre-stroke stat context and copies of actual shot values; the previous six successful entry executions remain in native03 history without retroactive fields. Native04 transport assertions passed for four loose cases but its post-run context audit stopped because it read mutations from the player rather than the full view; all original partial reports remain. Gameplay, assertions, original timeouts and policies are unchanged. The original native probe and all earlier raw reports remain untouched.",
+  "reportOverrides": {
+    "room-traverse-loose": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-room-public-traverse-loose.json",
+    "worker-traverse-loose": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-worker-public-traverse-loose.json",
+    "room-traverse-spade": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-room-public-traverse-spade.json",
+    "worker-traverse-spade": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-worker-public-traverse-spade.json",
+    "room-traverse-floating": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-room-public-traverse-floating.json",
+    "worker-traverse-floating": "reviews/heavy-clutch-stat-scaling-2026-11-10/native05-worker-public-traverse-floating.json"
+  },
+  "originalProbeAndResultsPreserved": true,
+  "entryReportingPreparation": {
+    "preparedAt": "2026-11-10T17:11:33.468Z",
+    "sourceCommit": "20aad19bdfb8819cd7db0483b9c79f2c6e9dcd5c",
+    "priorReportingStop": "Native04 passed four loose transport invocations, then its post-run reporting audit stopped: active mutations are a View field, not a PlayerView field. No failed context is relabelled as complete.",
+    "changes": [
+      "Capture actual v().mutations, matching the canonical source helper.",
+      "Explicitly type the copied view as View so this field error is caught by strict checking.",
+      "No input, assertion, timeout, policy, gameplay or source changes."
+    ],
+    "files": [
+      {
+        "file": "retained-traverse-flow05.mts",
+        "sha256": "45e2d103135a3b1b4eb4083caf69f70ab98efc726d9ca3cecf01ebe8cdc7fd0e"
+      },
+      {
+        "file": "retained-traverse-worker05.mts",
+        "sha256": "e07bf32b09865dad1187c42095f94b7ba9e473665a5d4bb721da7ae82c77dccb"
+      },
+      {
+        "file": "retained-traverse-peer05.mts",
+        "sha256": "159959d5c6f536734cddeda22d7a35e56ff6c2fb0408ff21ceabc0961f33d9dc"
+      },
+      {
+        "file": "native-probe05.mts",
+        "sha256": "66ef0124bcd0c82b23ef3dfaab296371b22242eac0c8896f1db2724874df63b2"
+      },
+      {
+        "file": "verify-frozen05.mjs",
+        "sha256": "d11982a3f540898fe725a30cca95ef94e97830b592620df1d075aea9782ac4f9"
+      }
+    ],
+    "driverSha256": "66ef0124bcd0c82b23ef3dfaab296371b22242eac0c8896f1db2724874df63b2",
+    "requiredReruns": 12,
+    "preTransportTypeOnlyCorrection": {
+      "previousSource": "retained-traverse-flow05-before-type-only.mts.txt",
+      "previousSha256": "d1e7d235df11369fc28c3366f51c9735c0fd99213d6975c446e4c18dc04991de",
+      "failedStrictLog": "entry-strict05.log",
+      "correction": "Type-only non-null assertion on the shot timestamp already established by the unchanged actual paid-shot wait. No runtime code, operation assertion or policy changes."
+    }
+  },
+  "entryCasesReportActualContextAndShotCopies": true
+}

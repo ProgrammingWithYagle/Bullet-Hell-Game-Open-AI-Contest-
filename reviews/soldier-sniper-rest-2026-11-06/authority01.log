@@ -1,0 +1,66 @@
+✔ issued64profiles preserve all twelve disciplines, both HUD layouts, remapped controls and historical local records (4.7071ms)
+✔ issued64records retain exact historical identity while wrong editions and verified claims remain excluded (0.3758ms)
+✔ Field Rest is a real acquired17earned operation with Bore prerequisite, not a fresh Raid purchase (9.3082ms)
+✔ empty setup spends no round/recovery and shares only finite spatial state, never a firing pose (17.3345ms)
+✔ dry setup needs its real settling; early C pays for ordinary full settling and cancels the empty setup (4.6662ms)
+✔ settled same-site C claims exactly once, stays manual and keeps actual payment/deadline/recovery (8.6326ms)
+✔ C and B on the claim tick cannot release instantly or plant another rest (5.6722ms)
+✔ B recalls one empty rest without payment, then a later B starts a genuinely new setup (5.5591ms)
+✔ leaving a settled position keeps it fixed; C elsewhere pays full settling without remotely claiming it (8.4794ms)
+✔ ordinary actual walking away and back permits the one fixed-site claim (7.0624ms)
+✔ unfinished manual re-aim restarts settling inside the original rest lifetime; a settled bearing cannot rotate (8.1293ms)
+✔ last actual round can be claimed and B-released without requiring a second cartridge (3.991ms)
+✔ fresh C empty rejection preserves the settled site and spends nothing (3.9049ms)
+✔ fresh C pool rejection preserves the settled site and spends nothing (10.5034ms)
+✔ fresh C reload rejection preserves the settled site and spends nothing (6.9052ms)
+✔ fresh C channel rejection preserves the settled site and spends nothing (6.0009ms)
+✔ fresh C overdrive rejection preserves the settled site and spends nothing (5.3643ms)
+✔ planting during spent C recovery never bypasses recovery; only a later normally accepted C can claim (29.4042ms)
+✔ unfinished rest move interruption never spends a round or C recovery (1.4491ms)
+✔ unfinished rest primary interruption never spends a round or C recovery (2.3364ms)
+✔ unfinished rest reload interruption never spends a round or C recovery (1.8113ms)
+✔ unfinished rest dodge interruption never spends a round or C recovery (1.4417ms)
+✔ unfinished rest e interruption never spends a round or C recovery (2.3839ms)
+✔ unfinished rest ultimate interruption never spends a round or C recovery (1.3969ms)
+✔ unfinished rest damage interruption never spends a round or C recovery (1.5902ms)
+✖ absorbed damage retains empty setup but actual health loss cancels it immediately even before a later heal (8.1293ms)
+✔ an already settled site remains during ordinary fighting, damage and Reload (3.0632ms)
+✔ claimed rest retains issued carry handling and never recreates the consumed site (2.9347ms)
+✔ claimed rest retains issued clear handling and never recreates the consumed site (2.7533ms)
+✔ failed manual release preserves the already paid rest-assisted opportunity, not a second rest (9.8292ms)
+✔ required technique loss removes the site and loses a claimed paid opportunity without refund (8.3794ms)
+✔ required weapon loss removes the site and loses a claimed paid opportunity without refund (7.3685ms)
+✔ required disconnect loss removes the site and loses a claimed paid opportunity without refund (6.1344ms)
+✔ original rest expiry never shoots or grants shortcut settling afterward (20.7577ms)
+✔ Field Rest path supports real27SP alternatives without enlarging the budget (3.012ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 34
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 949.1182
+
+✖ failing tests:
+
+test at tests\soldier-sniper-rest.test.ts:1:8874
+✖ absorbed damage retains empty setup but actual health loss cancels it immediately even before a later heal (8.1293ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(f.rest())
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\soldier-sniper-rest.test.ts:31:228)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

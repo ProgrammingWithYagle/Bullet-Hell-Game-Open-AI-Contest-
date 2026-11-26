@@ -1,0 +1,3549 @@
+{
+  "scope": "Ordinary Short. The controller uses observed hostile launch packets and real arena footprints to choose crossings. Return waits for more expected contacts than the current lane. Terminal outcomes are recorded for all paired attempts.",
+  "bindings": {
+    "baseline": {
+      "entry": "game",
+      "variant": "baseline",
+      "baselineContentRevision": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "bundleSha256": "cde03d042319e88cf1690127971a8eae43f00ca19583ea1965746628634d845a",
+      "originalInterceptorSha256": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+      "canonicalUpgradesAdded": 0,
+      "overlays": {}
+    },
+    "candidate": {
+      "protocol": 82,
+      "contentRevision": "663f1d96303acfc83cfa9f8964526357319bf947c9d27a6d76ade871a1fc9b49",
+      "runtimeSourceSha256": "bbd6dbce3d7857af9707d61c7b1c67d621312abf9d12100824c7d6d09271649c",
+      "bundleSha256": "ba5022271dc697642588085b4c5482f66011fd40472787087ca74c0f149fdeb2",
+      "originalInterceptorSha256": "e8eb7eb094d35ace4815fa200d7a5a9416ca3a9ad1e8a1287f4636520b5f65d9",
+      "comparedBaseline": "9aeb7546f78fb0e13b9072bff0aab7510a89b7c0845c15038fa088646273f08f",
+      "canonicalGame": true
+    }
+  },
+  "rows": [
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 2483,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1320,
+          "encounter": 4,
+          "at": 1811,
+          "until": 1821,
+          "origin": {
+            "x": 770.673714111189,
+            "y": 598.3940474677582
+          },
+          "normal": {
+            "x": 0.10942505381966437,
+            "y": -0.9939950490805091
+          },
+          "motion": {
+            "x": 0.9939950490805091,
+            "y": 0.10942505381966437
+          }
+        },
+        {
+          "id": 1745,
+          "encounter": 4,
+          "at": 2282,
+          "until": 2292,
+          "origin": {
+            "x": 935.1519296509972,
+            "y": 558.4527749143236
+          },
+          "normal": {
+            "x": -0.5124875885606046,
+            "y": -0.858694632317762
+          },
+          "motion": {
+            "x": -0.858694632317762,
+            "y": 0.5124875885606046
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 4,
+          "tick": 1817,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 2288,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 2483,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1320,
+          "encounter": 4,
+          "at": 1811,
+          "until": 1821,
+          "origin": {
+            "x": 770.673714111189,
+            "y": 598.3940474677582
+          },
+          "normal": {
+            "x": 0.10942505381966437,
+            "y": -0.9939950490805091
+          },
+          "motion": {
+            "x": 0.9939950490805091,
+            "y": 0.10942505381966437
+          }
+        },
+        {
+          "id": 1745,
+          "encounter": 4,
+          "at": 2282,
+          "until": 2292,
+          "origin": {
+            "x": 935.1519296509972,
+            "y": 558.4527749143236
+          },
+          "normal": {
+            "x": -0.5124875885606046,
+            "y": -0.858694632317762
+          },
+          "motion": {
+            "x": -0.858694632317762,
+            "y": 0.5124875885606046
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 4,
+          "tick": 1817,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 2288,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 2483,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1320,
+          "encounter": 4,
+          "at": 1811,
+          "until": 1821,
+          "origin": {
+            "x": 770.673714111189,
+            "y": 598.3940474677582
+          },
+          "normal": {
+            "x": 0.10942505381966437,
+            "y": -0.9939950490805091
+          },
+          "motion": {
+            "x": 0.9939950490805091,
+            "y": 0.10942505381966437
+          }
+        },
+        {
+          "id": 1745,
+          "encounter": 4,
+          "at": 2282,
+          "until": 2292,
+          "origin": {
+            "x": 935.1519296509972,
+            "y": 558.4527749143236
+          },
+          "normal": {
+            "x": -0.5124875885606046,
+            "y": -0.858694632317762
+          },
+          "motion": {
+            "x": -0.858694632317762,
+            "y": 0.5124875885606046
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 4,
+          "tick": 1817,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 2288,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 5588,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 130.6,
+      "launches": [
+        {
+          "id": 1693,
+          "encounter": 3,
+          "at": 3131,
+          "until": 3141,
+          "origin": {
+            "x": 941.2232301474259,
+            "y": 589.2743437471993
+          },
+          "normal": {
+            "x": -0.48119223349470835,
+            "y": -0.8766151004998568
+          },
+          "motion": {
+            "x": -0.8766151004998568,
+            "y": 0.48119223349470835
+          }
+        },
+        {
+          "id": 1916,
+          "encounter": 3,
+          "at": 3489,
+          "until": 3499,
+          "origin": {
+            "x": 1016.6285332993513,
+            "y": 329.61844517851085
+          },
+          "normal": {
+            "x": -0.9999395744674346,
+            "y": 0.010993062079591758
+          },
+          "motion": {
+            "x": 0.010993062079591758,
+            "y": 0.9999395744674346
+          }
+        },
+        {
+          "id": 2455,
+          "encounter": 4,
+          "at": 4240,
+          "until": 4250,
+          "origin": {
+            "x": 787.6715667479598,
+            "y": 596.9826425151973
+          },
+          "normal": {
+            "x": 0.04647516378631494,
+            "y": -0.9989194457768029
+          },
+          "motion": {
+            "x": -0.9989194457768029,
+            "y": -0.04647516378631494
+          }
+        },
+        {
+          "id": 3022,
+          "encounter": 4,
+          "at": 4885,
+          "until": 4895,
+          "origin": {
+            "x": 764.8924967814983,
+            "y": 568.1084972052764
+          },
+          "normal": {
+            "x": 0.14707526495040046,
+            "y": -0.9891253037101869
+          },
+          "motion": {
+            "x": 0.9891253037101869,
+            "y": 0.14707526495040046
+          }
+        },
+        {
+          "id": 3366,
+          "encounter": 4,
+          "at": 5307,
+          "until": 5317,
+          "origin": {
+            "x": 958.0893153709895,
+            "y": 542.1564154089014
+          },
+          "normal": {
+            "x": -0.6011480756756635,
+            "y": -0.7991376546699865
+          },
+          "motion": {
+            "x": -0.7991376546699865,
+            "y": 0.6011480756756635
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3495,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4245,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4247,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4892,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5315,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 5588,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 130.6,
+      "launches": [
+        {
+          "id": 1693,
+          "encounter": 3,
+          "at": 3131,
+          "until": 3141,
+          "origin": {
+            "x": 941.2232301474259,
+            "y": 589.2743437471993
+          },
+          "normal": {
+            "x": -0.48119223349470835,
+            "y": -0.8766151004998568
+          },
+          "motion": {
+            "x": -0.8766151004998568,
+            "y": 0.48119223349470835
+          }
+        },
+        {
+          "id": 1916,
+          "encounter": 3,
+          "at": 3489,
+          "until": 3499,
+          "origin": {
+            "x": 1016.6285332993513,
+            "y": 329.61844517851085
+          },
+          "normal": {
+            "x": -0.9999395744674346,
+            "y": 0.010993062079591758
+          },
+          "motion": {
+            "x": 0.010993062079591758,
+            "y": 0.9999395744674346
+          }
+        },
+        {
+          "id": 2455,
+          "encounter": 4,
+          "at": 4240,
+          "until": 4250,
+          "origin": {
+            "x": 787.6715667479598,
+            "y": 596.9826425151973
+          },
+          "normal": {
+            "x": 0.04647516378631494,
+            "y": -0.9989194457768029
+          },
+          "motion": {
+            "x": -0.9989194457768029,
+            "y": -0.04647516378631494
+          }
+        },
+        {
+          "id": 3022,
+          "encounter": 4,
+          "at": 4885,
+          "until": 4895,
+          "origin": {
+            "x": 764.8924967814983,
+            "y": 568.1084972052764
+          },
+          "normal": {
+            "x": 0.14707526495040046,
+            "y": -0.9891253037101869
+          },
+          "motion": {
+            "x": 0.9891253037101869,
+            "y": 0.14707526495040046
+          }
+        },
+        {
+          "id": 3366,
+          "encounter": 4,
+          "at": 5307,
+          "until": 5317,
+          "origin": {
+            "x": 958.0893153709895,
+            "y": 542.1564154089014
+          },
+          "normal": {
+            "x": -0.6011480756756635,
+            "y": -0.7991376546699865
+          },
+          "motion": {
+            "x": -0.7991376546699865,
+            "y": 0.6011480756756635
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3495,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4245,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4247,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4892,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5315,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "gatehouse",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 5524,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 122.1,
+      "launches": [
+        {
+          "id": 1693,
+          "encounter": 3,
+          "at": 3131,
+          "until": 3141,
+          "origin": {
+            "x": 941.2232301474259,
+            "y": 589.2743437471993
+          },
+          "normal": {
+            "x": -0.48119223349470835,
+            "y": -0.8766151004998568
+          },
+          "motion": {
+            "x": -0.8766151004998568,
+            "y": 0.48119223349470835
+          }
+        },
+        {
+          "id": 2105,
+          "encounter": 3,
+          "at": 3746,
+          "until": 3756,
+          "origin": {
+            "x": 572.707816662681,
+            "y": 325.91175251118335
+          },
+          "normal": {
+            "x": 0.9996414481434596,
+            "y": 0.026776391721946152
+          },
+          "motion": {
+            "x": -0.026776391721946152,
+            "y": 0.9996414481434596
+          }
+        },
+        {
+          "id": 2600,
+          "encounter": 4,
+          "at": 4430,
+          "until": 4440,
+          "origin": {
+            "x": 787.6715667479598,
+            "y": 596.9826425151973
+          },
+          "normal": {
+            "x": 0.04647516378631494,
+            "y": -0.9989194457768029
+          },
+          "motion": {
+            "x": -0.9989194457768029,
+            "y": -0.04647516378631494
+          }
+        },
+        {
+          "id": 3126,
+          "encounter": 4,
+          "at": 5067,
+          "until": 5077,
+          "origin": {
+            "x": 697.0953708840088,
+            "y": 565.0776444209449
+          },
+          "normal": {
+            "x": 0.4038907276135459,
+            "y": -0.9148072366065981
+          },
+          "motion": {
+            "x": 0.9148072366065981,
+            "y": 0.4038907276135459
+          }
+        }
+      ],
+      "reseats": [
+        {
+          "id": 1693,
+          "encounter": 3,
+          "tick": 3135,
+          "until": 3141,
+          "body": {
+            "x": 906.1586261274316,
+            "y": 608.5220330869877
+          },
+          "recovery": 3431
+        },
+        {
+          "id": 2105,
+          "encounter": 3,
+          "tick": 3751,
+          "until": 3756,
+          "body": {
+            "x": 571.1012331593644,
+            "y": 385.89023939979086
+          },
+          "recovery": 4046
+        }
+      ],
+      "clearance": [
+        {
+          "at": 3134,
+          "back": 3,
+          "forward": 0
+        },
+        {
+          "at": 3750,
+          "back": 6,
+          "forward": 0
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3137,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3138,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3140,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3753,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3754,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3755,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4437,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5075,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 4912,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 56.22,
+      "launches": [
+        {
+          "id": 1659,
+          "encounter": 3,
+          "at": 2791,
+          "until": 2801,
+          "origin": {
+            "x": 763.2501020506651,
+            "y": 442.40990129233774
+          },
+          "normal": {
+            "x": -0.8949530918352699,
+            "y": -0.4461602440990131
+          },
+          "motion": {
+            "x": -0.4461602440990131,
+            "y": 0.8949530918352699
+          }
+        },
+        {
+          "id": 1894,
+          "encounter": 3,
+          "at": 3118,
+          "until": 3128,
+          "origin": {
+            "x": 804.872764510943,
+            "y": 455.62912387033026
+          },
+          "normal": {
+            "x": -0.9017651252054268,
+            "y": -0.43222639780934347
+          },
+          "motion": {
+            "x": -0.43222639780934347,
+            "y": 0.9017651252054268
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 4912,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 56.22,
+      "launches": [
+        {
+          "id": 1659,
+          "encounter": 3,
+          "at": 2791,
+          "until": 2801,
+          "origin": {
+            "x": 763.2501020506651,
+            "y": 442.40990129233774
+          },
+          "normal": {
+            "x": -0.8949530918352699,
+            "y": -0.4461602440990131
+          },
+          "motion": {
+            "x": -0.4461602440990131,
+            "y": 0.8949530918352699
+          }
+        },
+        {
+          "id": 1894,
+          "encounter": 3,
+          "at": 3118,
+          "until": 3128,
+          "origin": {
+            "x": 804.872764510943,
+            "y": 455.62912387033026
+          },
+          "normal": {
+            "x": -0.9017651252054268,
+            "y": -0.43222639780934347
+          },
+          "motion": {
+            "x": -0.43222639780934347,
+            "y": 0.9017651252054268
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 4840,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 78,
+      "launches": [
+        {
+          "id": 1659,
+          "encounter": 3,
+          "at": 2791,
+          "until": 2801,
+          "origin": {
+            "x": 763.2501020506651,
+            "y": 442.40990129233774
+          },
+          "normal": {
+            "x": -0.8949530918352699,
+            "y": -0.4461602440990131
+          },
+          "motion": {
+            "x": -0.4461602440990131,
+            "y": 0.8949530918352699
+          }
+        },
+        {
+          "id": 1894,
+          "encounter": 3,
+          "at": 3117,
+          "until": 3127,
+          "origin": {
+            "x": 801.1690453108564,
+            "y": 452.21098927955893
+          },
+          "normal": {
+            "x": -0.9032498229336424,
+            "y": -0.4291150863933166
+          },
+          "motion": {
+            "x": -0.4291150863933166,
+            "y": 0.9032498229336424
+          }
+        }
+      ],
+      "reseats": [
+        {
+          "id": 1659,
+          "encounter": 3,
+          "tick": 2795,
+          "until": 2801,
+          "body": {
+            "x": 745.4036922867045,
+            "y": 478.20802496574856
+          },
+          "recovery": 3091
+        },
+        {
+          "id": 1894,
+          "encounter": 3,
+          "tick": 3121,
+          "until": 3127,
+          "body": {
+            "x": 784.0044418551237,
+            "y": 488.34098219690463
+          },
+          "recovery": 3417
+        }
+      ],
+      "clearance": [
+        {
+          "at": 2794,
+          "back": 1,
+          "forward": 0
+        },
+        {
+          "at": 3120,
+          "back": 2,
+          "forward": 0
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 2797,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3123,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "issued",
+      "outcome": "defeat",
+      "ticks": 7822,
+      "clears": 3,
+      "tankDamage": 0,
+      "allyDamage": 29.725,
+      "launches": [
+        {
+          "id": 2595,
+          "encounter": 3,
+          "at": 4633,
+          "until": 4643,
+          "origin": {
+            "x": 163.38681789618934,
+            "y": 386.40807809553974
+          },
+          "normal": {
+            "x": 0.9032188537307887,
+            "y": -0.42918026779575996
+          },
+          "motion": {
+            "x": 0.42918026779575996,
+            "y": 0.9032188537307887
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 4634,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4635,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "defeat",
+      "ticks": 7822,
+      "clears": 3,
+      "tankDamage": 0,
+      "allyDamage": 29.725,
+      "launches": [
+        {
+          "id": 2595,
+          "encounter": 3,
+          "at": 4633,
+          "until": 4643,
+          "origin": {
+            "x": 163.38681789618934,
+            "y": 386.40807809553974
+          },
+          "normal": {
+            "x": 0.9032188537307887,
+            "y": -0.42918026779575996
+          },
+          "motion": {
+            "x": 0.42918026779575996,
+            "y": 0.9032188537307887
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 4634,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4635,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "triage-yard",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "active",
+      "outcome": "defeat",
+      "ticks": 7822,
+      "clears": 3,
+      "tankDamage": 0,
+      "allyDamage": 29.725,
+      "launches": [
+        {
+          "id": 2595,
+          "encounter": 3,
+          "at": 4633,
+          "until": 4643,
+          "origin": {
+            "x": 163.38681789618934,
+            "y": 386.40807809553974
+          },
+          "normal": {
+            "x": 0.9032188537307887,
+            "y": -0.42918026779575996
+          },
+          "motion": {
+            "x": 0.42918026779575996,
+            "y": 0.9032188537307887
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 4634,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4635,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "issued",
+      "outcome": "defeat",
+      "ticks": 3600,
+      "clears": 0,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "defeat",
+      "ticks": 3600,
+      "clears": 0,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "active",
+      "outcome": "defeat",
+      "ticks": 3600,
+      "clears": 0,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "issued",
+      "outcome": "defeat",
+      "ticks": 3600,
+      "clears": 0,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "defeat",
+      "ticks": 3600,
+      "clears": 0,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "ossuary-works",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "active",
+      "outcome": "defeat",
+      "ticks": 3600,
+      "clears": 0,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 3040,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 19.185,
+      "launches": [
+        {
+          "id": 1072,
+          "encounter": 3,
+          "at": 1870,
+          "until": 1880,
+          "origin": {
+            "x": 949.1363299800176,
+            "y": 747.9569149580877
+          },
+          "normal": {
+            "x": 0.6922667839134877,
+            "y": -0.7216416700067122
+          },
+          "motion": {
+            "x": -0.7216416700067122,
+            "y": -0.6922667839134877
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 3040,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 19.185,
+      "launches": [
+        {
+          "id": 1072,
+          "encounter": 3,
+          "at": 1870,
+          "until": 1880,
+          "origin": {
+            "x": 949.1363299800176,
+            "y": 747.9569149580877
+          },
+          "normal": {
+            "x": 0.6922667839134877,
+            "y": -0.7216416700067122
+          },
+          "motion": {
+            "x": -0.7216416700067122,
+            "y": -0.6922667839134877
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 3135,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 38.489999999999995,
+      "launches": [
+        {
+          "id": 1072,
+          "encounter": 3,
+          "at": 1870,
+          "until": 1880,
+          "origin": {
+            "x": 949.1363299800176,
+            "y": 747.9569149580877
+          },
+          "normal": {
+            "x": 0.6922667839134877,
+            "y": -0.7216416700067122
+          },
+          "motion": {
+            "x": -0.7216416700067122,
+            "y": -0.6922667839134877
+          }
+        },
+        {
+          "id": 1632,
+          "encounter": 4,
+          "at": 2510,
+          "until": 2520,
+          "origin": {
+            "x": 928.4714246323028,
+            "y": 578.0674202024782
+          },
+          "normal": {
+            "x": 0.9573061345889927,
+            "y": -0.28907605345009374
+          },
+          "motion": {
+            "x": 0.28907605345009374,
+            "y": 0.9573061345889927
+          }
+        },
+        {
+          "id": 2153,
+          "encounter": 4,
+          "at": 3087,
+          "until": 3097,
+          "origin": {
+            "x": 1021.1009726732424,
+            "y": 719.0338426094514
+          },
+          "normal": {
+            "x": 0.6037751303901708,
+            "y": -0.7971546850657858
+          },
+          "motion": {
+            "x": -0.7971546850657858,
+            "y": -0.6037751303901708
+          }
+        }
+      ],
+      "reseats": [
+        {
+          "id": 1072,
+          "encounter": 3,
+          "tick": 1874,
+          "until": 1880,
+          "body": {
+            "x": 920.2706631797492,
+            "y": 720.2662436015482
+          },
+          "recovery": 2170
+        }
+      ],
+      "clearance": [
+        {
+          "at": 1873,
+          "back": 1,
+          "forward": 0
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 1876,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 2516,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 3093,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "issued",
+      "outcome": "defeat",
+      "ticks": 8524,
+      "clears": 4,
+      "tankDamage": 275,
+      "allyDamage": 199,
+      "launches": [
+        {
+          "id": 1841,
+          "encounter": 3,
+          "at": 3806,
+          "until": 3816,
+          "origin": {
+            "x": 1312.6972172092442,
+            "y": 522.8807734742794
+          },
+          "normal": {
+            "x": -0.9838330617648792,
+            "y": -0.17908798557788116
+          },
+          "motion": {
+            "x": -0.17908798557788116,
+            "y": 0.9838330617648792
+          }
+        },
+        {
+          "id": 2336,
+          "encounter": 3,
+          "at": 4678,
+          "until": 4688,
+          "origin": {
+            "x": 935.509082476374,
+            "y": 344.13924039068155
+          },
+          "normal": {
+            "x": 0.849998959834253,
+            "y": 0.5267843660177169
+          },
+          "motion": {
+            "x": -0.5267843660177169,
+            "y": 0.849998959834253
+          }
+        },
+        {
+          "id": 3196,
+          "encounter": 4,
+          "at": 5988,
+          "until": 5998,
+          "origin": {
+            "x": 930.1344077908234,
+            "y": 578.7562503807354
+          },
+          "normal": {
+            "x": 0.9560707584190543,
+            "y": -0.2931359836253719
+          },
+          "motion": {
+            "x": 0.2931359836253719,
+            "y": 0.9560707584190543
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3809,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3810,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5994,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "defeat",
+      "ticks": 8524,
+      "clears": 4,
+      "tankDamage": 275,
+      "allyDamage": 199,
+      "launches": [
+        {
+          "id": 1841,
+          "encounter": 3,
+          "at": 3806,
+          "until": 3816,
+          "origin": {
+            "x": 1312.6972172092442,
+            "y": 522.8807734742794
+          },
+          "normal": {
+            "x": -0.9838330617648792,
+            "y": -0.17908798557788116
+          },
+          "motion": {
+            "x": -0.17908798557788116,
+            "y": 0.9838330617648792
+          }
+        },
+        {
+          "id": 2336,
+          "encounter": 3,
+          "at": 4678,
+          "until": 4688,
+          "origin": {
+            "x": 935.509082476374,
+            "y": 344.13924039068155
+          },
+          "normal": {
+            "x": 0.849998959834253,
+            "y": 0.5267843660177169
+          },
+          "motion": {
+            "x": -0.5267843660177169,
+            "y": 0.849998959834253
+          }
+        },
+        {
+          "id": 3196,
+          "encounter": 4,
+          "at": 5988,
+          "until": 5998,
+          "origin": {
+            "x": 930.1344077908234,
+            "y": 578.7562503807354
+          },
+          "normal": {
+            "x": 0.9560707584190543,
+            "y": -0.2931359836253719
+          },
+          "motion": {
+            "x": 0.2931359836253719,
+            "y": 0.9560707584190543
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3809,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3810,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5994,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "sunken-chapel",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 7747,
+      "clears": 5,
+      "tankDamage": 185,
+      "allyDamage": 226.975,
+      "launches": [
+        {
+          "id": 1841,
+          "encounter": 3,
+          "at": 3806,
+          "until": 3816,
+          "origin": {
+            "x": 1312.6972172092442,
+            "y": 522.8807734742794
+          },
+          "normal": {
+            "x": -0.9838330617648792,
+            "y": -0.17908798557788116
+          },
+          "motion": {
+            "x": -0.17908798557788116,
+            "y": 0.9838330617648792
+          }
+        },
+        {
+          "id": 2336,
+          "encounter": 3,
+          "at": 4678,
+          "until": 4688,
+          "origin": {
+            "x": 935.509082476374,
+            "y": 344.13924039068155
+          },
+          "normal": {
+            "x": 0.849998959834253,
+            "y": 0.5267843660177169
+          },
+          "motion": {
+            "x": -0.5267843660177169,
+            "y": 0.849998959834253
+          }
+        },
+        {
+          "id": 3136,
+          "encounter": 4,
+          "at": 5863,
+          "until": 5873,
+          "origin": {
+            "x": 928.4714246323028,
+            "y": 578.0674202024782
+          },
+          "normal": {
+            "x": 0.9573061345889927,
+            "y": -0.28907605345009374
+          },
+          "motion": {
+            "x": -0.28907605345009374,
+            "y": -0.9573061345889927
+          }
+        },
+        {
+          "id": 3601,
+          "encounter": 4,
+          "at": 6560,
+          "until": 6570,
+          "origin": {
+            "x": 928.5036058124808,
+            "y": 450.67439825572455
+          },
+          "normal": {
+            "x": 0.9822769135365343,
+            "y": 0.1874354959263046
+          },
+          "motion": {
+            "x": 0.1874354959263046,
+            "y": -0.9822769135365343
+          }
+        },
+        {
+          "id": 4040,
+          "encounter": 4,
+          "at": 7209,
+          "until": 7219,
+          "origin": {
+            "x": 978.3146992385491,
+            "y": 336.6674941846224
+          },
+          "normal": {
+            "x": 0.7874801385988613,
+            "y": 0.6163400289712798
+          },
+          "motion": {
+            "x": -0.6163400289712798,
+            "y": 0.7874801385988613
+          }
+        },
+        {
+          "id": 4292,
+          "encounter": 4,
+          "at": 7642,
+          "until": 7652,
+          "origin": {
+            "x": 919.0559068337768,
+            "y": 485.59856399870733
+          },
+          "normal": {
+            "x": 0.9985587028903367,
+            "y": 0.05367044700734541
+          },
+          "motion": {
+            "x": -0.05367044700734541,
+            "y": 0.9985587028903367
+          }
+        }
+      ],
+      "reseats": [
+        {
+          "id": 2336,
+          "encounter": 3,
+          "tick": 4684,
+          "until": 4688,
+          "body": {
+            "x": 893.3663331949567,
+            "y": 412.13915717742174
+          },
+          "recovery": 4978
+        }
+      ],
+      "clearance": [
+        {
+          "at": 4683,
+          "back": 3,
+          "forward": 0
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3809,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3810,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4685,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4686,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5870,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 6566,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 7215,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 7647,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 3224,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 17.61,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 3224,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 17.61,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 3224,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 17.61,
+      "launches": [],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 5597,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 112.025,
+      "launches": [
+        {
+          "id": 1822,
+          "encounter": 3,
+          "at": 3472,
+          "until": 3482,
+          "origin": {
+            "x": 1078.4348860438868,
+            "y": 631.0550342782894
+          },
+          "normal": {
+            "x": 0.340733041951503,
+            "y": -0.940160089624355
+          },
+          "motion": {
+            "x": -0.940160089624355,
+            "y": -0.340733041951503
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 5597,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 112.025,
+      "launches": [
+        {
+          "id": 1822,
+          "encounter": 3,
+          "at": 3472,
+          "until": 3482,
+          "origin": {
+            "x": 1078.4348860438868,
+            "y": 631.0550342782894
+          },
+          "normal": {
+            "x": 0.340733041951503,
+            "y": -0.940160089624355
+          },
+          "motion": {
+            "x": -0.940160089624355,
+            "y": -0.340733041951503
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "bell-foundry",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 5442,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 112.025,
+      "launches": [
+        {
+          "id": 1822,
+          "encounter": 3,
+          "at": 3472,
+          "until": 3482,
+          "origin": {
+            "x": 1078.4348860438868,
+            "y": 631.0550342782894
+          },
+          "normal": {
+            "x": 0.340733041951503,
+            "y": -0.940160089624355
+          },
+          "motion": {
+            "x": -0.940160089624355,
+            "y": -0.340733041951503
+          }
+        },
+        {
+          "id": 2037,
+          "encounter": 3,
+          "at": 3789,
+          "until": 3799,
+          "origin": {
+            "x": 1427.1386730390989,
+            "y": 568.6739401284376
+          },
+          "normal": {
+            "x": -0.5644820074586822,
+            "y": -0.8254453726658211
+          },
+          "motion": {
+            "x": -0.8254453726658211,
+            "y": 0.5644820074586822
+          }
+        },
+        {
+          "id": 2411,
+          "encounter": 3,
+          "at": 4273,
+          "until": 4283,
+          "origin": {
+            "x": 1359.8700330052716,
+            "y": 270.07790107377315
+          },
+          "normal": {
+            "x": -0.9960051045850655,
+            "y": -0.08929631370046953
+          },
+          "motion": {
+            "x": -0.08929631370046953,
+            "y": 0.9960051045850655
+          }
+        }
+      ],
+      "reseats": [
+        {
+          "id": 1822,
+          "encounter": 3,
+          "tick": 3476,
+          "until": 3482,
+          "body": {
+            "x": 1040.8284824589127,
+            "y": 617.4257126002294
+          },
+          "recovery": 3772
+        },
+        {
+          "id": 2411,
+          "encounter": 3,
+          "tick": 4277,
+          "until": 4283,
+          "body": {
+            "x": 1356.2981804572528,
+            "y": 309.9181052571758
+          },
+          "recovery": 4573
+        }
+      ],
+      "clearance": [
+        {
+          "at": 3475,
+          "back": 1,
+          "forward": 0
+        },
+        {
+          "at": 4276,
+          "back": 9,
+          "forward": 0
+        }
+      ],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3478,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3790,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 3791,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4277,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4278,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 3,
+          "tick": 4279,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 3775,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1862,
+          "encounter": 4,
+          "at": 2895,
+          "until": 2905,
+          "origin": {
+            "x": 1081.4116378502595,
+            "y": 502.5419052418462
+          },
+          "normal": {
+            "x": 0.48391200036798543,
+            "y": -0.87511666416533
+          },
+          "motion": {
+            "x": 0.87511666416533,
+            "y": 0.48391200036798543
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 4,
+          "tick": 2901,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 3775,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1862,
+          "encounter": 4,
+          "at": 2895,
+          "until": 2905,
+          "origin": {
+            "x": 1081.4116378502595,
+            "y": 502.5419052418462
+          },
+          "normal": {
+            "x": 0.48391200036798543,
+            "y": -0.87511666416533
+          },
+          "motion": {
+            "x": 0.87511666416533,
+            "y": 0.48391200036798543
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 4,
+          "tick": 2901,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "baby",
+      "seed": 41,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 3775,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 0,
+      "launches": [
+        {
+          "id": 1862,
+          "encounter": 4,
+          "at": 2895,
+          "until": 2905,
+          "origin": {
+            "x": 1081.4116378502595,
+            "y": 502.5419052418462
+          },
+          "normal": {
+            "x": 0.48391200036798543,
+            "y": -0.87511666416533
+          },
+          "motion": {
+            "x": 0.87511666416533,
+            "y": 0.48391200036798543
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 4,
+          "tick": 2901,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "issued",
+      "outcome": "victory",
+      "ticks": 5705,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 174.9,
+      "launches": [
+        {
+          "id": 1828,
+          "encounter": 3,
+          "at": 3826,
+          "until": 3836,
+          "origin": {
+            "x": 1342.780826464013,
+            "y": 292.6679029235646
+          },
+          "normal": {
+            "x": -0.9857388815160738,
+            "y": -0.1682820770832111
+          },
+          "motion": {
+            "x": -0.1682820770832111,
+            "y": 0.9857388815160738
+          }
+        },
+        {
+          "id": 2421,
+          "encounter": 4,
+          "at": 4660,
+          "until": 4670,
+          "origin": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "normal": {
+            "x": 0.4891508799540208,
+            "y": -0.8721991840400948
+          },
+          "motion": {
+            "x": 0.8721991840400948,
+            "y": 0.4891508799540208
+          }
+        },
+        {
+          "id": 2950,
+          "encounter": 4,
+          "at": 5253,
+          "until": 5263,
+          "origin": {
+            "x": 1260.439464288797,
+            "y": 526.9886692998892
+          },
+          "normal": {
+            "x": -0.19259657612415523,
+            "y": -0.9812780232254529
+          },
+          "motion": {
+            "x": -0.9812780232254529,
+            "y": 0.19259657612415523
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3833,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4662,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4663,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4665,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4669,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5259,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "owned-unused",
+      "outcome": "victory",
+      "ticks": 5705,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 174.9,
+      "launches": [
+        {
+          "id": 1828,
+          "encounter": 3,
+          "at": 3826,
+          "until": 3836,
+          "origin": {
+            "x": 1342.780826464013,
+            "y": 292.6679029235646
+          },
+          "normal": {
+            "x": -0.9857388815160738,
+            "y": -0.1682820770832111
+          },
+          "motion": {
+            "x": -0.1682820770832111,
+            "y": 0.9857388815160738
+          }
+        },
+        {
+          "id": 2421,
+          "encounter": 4,
+          "at": 4660,
+          "until": 4670,
+          "origin": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "normal": {
+            "x": 0.4891508799540208,
+            "y": -0.8721991840400948
+          },
+          "motion": {
+            "x": 0.8721991840400948,
+            "y": 0.4891508799540208
+          }
+        },
+        {
+          "id": 2950,
+          "encounter": 4,
+          "at": 5253,
+          "until": 5263,
+          "origin": {
+            "x": 1260.439464288797,
+            "y": 526.9886692998892
+          },
+          "normal": {
+            "x": -0.19259657612415523,
+            "y": -0.9812780232254529
+          },
+          "motion": {
+            "x": -0.9812780232254529,
+            "y": 0.19259657612415523
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3833,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4662,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4663,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4665,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4669,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5259,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "arena": "crown-crypt",
+      "difficulty": "normal",
+      "seed": 73,
+      "party": true,
+      "version": "active",
+      "outcome": "victory",
+      "ticks": 5705,
+      "clears": 5,
+      "tankDamage": 0,
+      "allyDamage": 174.9,
+      "launches": [
+        {
+          "id": 1828,
+          "encounter": 3,
+          "at": 3826,
+          "until": 3836,
+          "origin": {
+            "x": 1342.780826464013,
+            "y": 292.6679029235646
+          },
+          "normal": {
+            "x": -0.9857388815160738,
+            "y": -0.1682820770832111
+          },
+          "motion": {
+            "x": -0.1682820770832111,
+            "y": 0.9857388815160738
+          }
+        },
+        {
+          "id": 2421,
+          "encounter": 4,
+          "at": 4660,
+          "until": 4670,
+          "origin": {
+            "x": 1079.5847466305304,
+            "y": 502.5419052418463
+          },
+          "normal": {
+            "x": 0.4891508799540208,
+            "y": -0.8721991840400948
+          },
+          "motion": {
+            "x": 0.8721991840400948,
+            "y": 0.4891508799540208
+          }
+        },
+        {
+          "id": 2950,
+          "encounter": 4,
+          "at": 5253,
+          "until": 5263,
+          "origin": {
+            "x": 1260.439464288797,
+            "y": 526.9886692998892
+          },
+          "normal": {
+            "x": -0.19259657612415523,
+            "y": -0.9812780232254529
+          },
+          "motion": {
+            "x": -0.9812780232254529,
+            "y": 0.19259657612415523
+          }
+        }
+      ],
+      "reseats": [],
+      "clearance": [],
+      "impacts": [
+        {
+          "encounter": 3,
+          "tick": 3833,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4662,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4663,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4665,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 4669,
+          "mode": "crossing"
+        },
+        {
+          "encounter": 4,
+          "tick": 5259,
+          "mode": "crossing"
+        }
+      ],
+      "purchases": [
+        {
+          "skill": "tank-bastion-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-1",
+          "earned": 3,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 9,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 15,
+          "result": {
+            "ok": false,
+            "reason": "insufficientPoints"
+          }
+        },
+        {
+          "skill": "tank-interceptor-return-crossing-1",
+          "earned": 21,
+          "result": {
+            "ok": true
+          }
+        }
+      ]
+    }
+  ],
+  "errors": 0,
+  "mismatches": []
+}

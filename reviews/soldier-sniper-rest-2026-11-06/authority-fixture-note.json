@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-06T16:55:06.952Z",
+  "initial": {
+    "tests": 35,
+    "pass": 34,
+    "fail": 1
+  },
+  "reason": "A new fixture passed diagnostic strings into Game.damage boolean parameters, enabling healthLossOnly and bypassing the intended shield. Correct typed Game.damage(p,1,false) retains real shield absorption/actual health-loss assertions and prevents an invulnerability grant between the two events.",
+  "gameplayBytesChangedForCorrection": false,
+  "failedLogPreserved": true,
+  "timeOutOrDeadlineChanges": false
+}

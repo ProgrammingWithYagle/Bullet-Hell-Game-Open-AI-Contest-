@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "protocol": 80,
+  "contentRevision": "563e4fba3657c0847b0211980c6b9aedf1c471c9876b65cd547c07d296d7e258",
+  "results": [
+    {
+      "passed": true,
+      "choice": "relief",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15
+      ],
+      "spent": 8,
+      "sharedGate": {
+        "kind": "tank-gate-signal",
+        "id": 358,
+        "owner": "solo",
+        "x": 695,
+        "y": 794,
+        "at": 995,
+        "until": 1235,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -1.5707963267948966,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -1.5707963267948966,
+            "half": "right",
+            "open": true
+          }
+        ]
+      },
+      "adjustedGate": {
+        "kind": "tank-gate-signal",
+        "id": 358,
+        "owner": "solo",
+        "x": 695,
+        "y": 794,
+        "at": 995,
+        "until": 1235,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -1.5707963267948966,
+            "half": "left",
+            "open": true
+          },
+          {
+            "aim": -1.5707963267948966,
+            "half": "right",
+            "open": false
+          }
+        ]
+      },
+      "guardUntil": 1235,
+      "pausedCommandsDiscarded": true,
+      "claimant": "tank",
+      "wholeOptimizedWorker": true,
+      "workerPatched": false,
+      "transport": "worker"
+    },
+    {
+      "passed": true,
+      "choice": "countermarch",
+      "actualEarnedSequence": [
+        3,
+        9,
+        15
+      ],
+      "spent": 8,
+      "sharedGate": {
+        "kind": "tank-gate-signal",
+        "id": 433,
+        "owner": "Hgxsorb68",
+        "x": 725,
+        "y": 794,
+        "at": 878,
+        "until": 1118,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -1.5707963267948966,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": 6.123233995736766e-17,
+            "half": "whole",
+            "open": true
+          }
+        ]
+      },
+      "adjustedGate": {
+        "kind": "tank-gate-signal",
+        "id": 433,
+        "owner": "Hgxsorb68",
+        "x": 725,
+        "y": 794,
+        "at": 878,
+        "until": 1118,
+        "radius": 54,
+        "entrances": [
+          {
+            "aim": -1.5707963267948966,
+            "half": "whole",
+            "open": true
+          },
+          {
+            "aim": -3.141592653589793,
+            "half": "whole",
+            "open": true
+          }
+        ]
+      },
+      "guardUntil": 1118,
+      "pausedCommandsDiscarded": true,
+      "claimant": "soldier",
+      "realPeers": 2,
+      "tankIsNonHost": true,
+      "ownerPrivate": true,
+      "transport": "peer"
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+✖ soldier starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (33.6375ms)
+✖ medic starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (7.7512ms)
+✖ heavy starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (6.3729ms)
+✖ tank starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (6.3764ms)
+✖ mage starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (4.6ms)
+✖ engineer starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.8328ms)
+✖ assassin starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.2433ms)
+✖ bard starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.507ms)
+✖ swordsman starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.9561ms)
+✖ summoner starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.5515ms)
+✖ ranger starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.9491ms)
+✖ alchemist starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.4794ms)
+✔ Fresh primary readiness never refreshes Engineer Q, E or ultimate recovery or reconstructs prior work (13.6948ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 1
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1057.0741
+
+✖ failing tests:
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ soldier starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (33.6375ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  10 !== 9
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 10,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ medic starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (7.7512ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  14 !== 13
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 14,
+    expected: 13,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ heavy starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (6.3729ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  45 !== 44
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 45,
+    expected: 44,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ tank starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (6.3764ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  6 !== 5
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 6,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ mage starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (4.6ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  8 !== 7
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 8,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ engineer starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.8328ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  12 !== 11
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 11,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ assassin starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.2433ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  10 !== 9
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 10,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ bard starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.507ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  12 !== 11
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 11,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ swordsman starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.9561ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  7 !== 6
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 7,
+    expected: 6,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ summoner starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.5515ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  12 !== 11
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 11,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ ranger starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.9491ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  10 !== 9
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 10,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\encounter-primary-replay.test.ts:1:1437
+✖ alchemist starts each fresh encounter ready to fire and keeps identical held-fire results after any safe intermission restore (3.4794ms)
+  AssertionError [ERR_ASSERTION]: uninterrupted: the refilled primary is ready immediately
+  
+  12 !== 11
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\encounter-primary-replay.test.ts:61:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 11,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

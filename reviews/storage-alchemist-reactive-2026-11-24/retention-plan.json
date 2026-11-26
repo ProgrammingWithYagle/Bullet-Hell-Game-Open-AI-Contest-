@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-25T15:54:16.362578+00:00",
+  "repo": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)",
+  "gitHead": "61fe200deb40e4881239c58fb39e63ae73e69d6f",
+  "branch": "feat/first-playable-loop",
+  "currentScope": "reviews/alchemist-reactive-2026-11-24",
+  "rollbackScope": "reviews/ranger-field-controller-2026-11-24",
+  "currentSourceCommit": "61fe200deb40e4881239c58fb39e63ae73e69d6f",
+  "rollbackSourceCommit": "d572d5ec38c8c40b3d1eef53754e17c43f049930",
+  "keep": [
+    {
+      "path": "output/playtest-alchemist-reactive-2026-11-24-testing-61fe200",
+      "sourceCommit": "61fe200deb40e4881239c58fb39e63ae73e69d6f",
+      "scope": "reviews/alchemist-reactive-2026-11-24",
+      "audience": "testing",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\alchemist-reactive-2026-11-24-testing-files.json",
+      "manifestSha256": "e844ae8bb537da9e4ebbe665b6dab1a26e30488e237df56bd882290a0e620143",
+      "files": 2233,
+      "bytes": 952861377,
+      "treeStatSha256": "6067fd3319d13fab889cd944309b172de6377ca15f83edc4312f63f85fe34c80"
+    },
+    {
+      "path": "output/playtest-alchemist-reactive-2026-11-24-public-61fe200",
+      "sourceCommit": "61fe200deb40e4881239c58fb39e63ae73e69d6f",
+      "scope": "reviews/alchemist-reactive-2026-11-24",
+      "audience": "public",
+      "manifestPath": "C:\\Users\\yigal\\OneDrive\\Documents\\ChatGPT\\OpenAI Multiplayer Game Contest (Bullet Hell)\\output\\alchemist-reactive-2026-11-24-public-files.json",
+      "manifestSha256": "61275d47383439bfcab922295bbcf76002e348bdf463b0c16e2d4bb1cc106f06",
+      "files": 2233,
+      "bytes": 952856094,
+      "treeStatSha256": "a89609252eb4737b7ef49ed43a42510629a44eca57ffcf8f431fa04fa3074b04"
+    }
+  ],
+  "keepBackendPaths": [
+    "output/frozen-alchemist-reactive-2026-11-24-61fe200.mjs"
+  ],
+  "retireDirectories": [
+    {
+      "path": "output/playtest-ranger-field-controller-2026-11-24-public-d572d5e",
+      "files": 2230,
+      "bytes": 949251916,
+      "treeStatSha256": "cf8c837b7bc92e97129fd31c5eb0dd6debbe9abc969da1628df7c7724fb5a5bb",
+      "identity": {
+        "sourceCommit": "d572d5ec38c8c40b3d1eef53754e17c43f049930",
+        "buildId": "2026.11.24-ranger-field-controller",
+        "protocol": 104,
+        "contentRevision": "0bb3f810e7267ddf040b14d3a3a9ccffada6fc9947f529cf706fa7350df1865a",
+        "audience": "public",
+        "runtimeSourceSha256": "302ef941d38262234838cb5d03ea3abdb3b5164dbda24f82a008db8c697519de",
+        "sourceSnapshotSha256": "db88950bf7fb234eda6e40dfad38ff441a2eabb590bf6b5584b09122c019ffdd",
+        "endpoint": "http://127.0.0.1:2829"
+      },
+      "identitySha256": "20fed7785ba693d06317e6fa28ac6a0e7edce3f4bf5d3ddab4b1afec844ff450"
+    },
+    {
+      "path": "output/playtest-ranger-field-controller-2026-11-24-testing-d572d5e",
+      "files": 2230,
+      "bytes": 949257198,
+      "treeStatSha256": "740637fcc167538f78eced81fcf7b6270dbfe2763e40f5cfb9ea8a2716e7239e",
+      "identity": {
+        "sourceCommit": "d572d5ec38c8c40b3d1eef53754e17c43f049930",
+        "buildId": "2026.11.24-ranger-field-controller",
+        "protocol": 104,
+        "contentRevision": "0bb3f810e7267ddf040b14d3a3a9ccffada6fc9947f529cf706fa7350df1865a",
+        "audience": "testing",
+        "runtimeSourceSha256": "302ef941d38262234838cb5d03ea3abdb3b5164dbda24f82a008db8c697519de",
+        "sourceSnapshotSha256": "db88950bf7fb234eda6e40dfad38ff441a2eabb590bf6b5584b09122c019ffdd",
+        "endpoint": "http://127.0.0.1:2828"
+      },
+      "identitySha256": "1c2f1b1973951f91f05793957f859560ff4111a9335e5890dce4cc9cf689a9f5"
+    }
+  ],
+  "retireBackends": [
+    {
+      "path": "output/frozen-ranger-field-controller-2026-11-24-d572d5e.mjs",
+      "bytes": 4528427,
+      "sha256": "8941ee1bffa77c01d868170498a04a89c23a662081123ce5d7ff9a31b2a05b52"
+    }
+  ],
+  "retireDirectoryCount": 2,
+  "retireFileBytes": 1903037541,
+  "candidateArchive": "output/review-rollback.next.zip",
+  "finalArchive": "output/review-rollback.zip",
+  "previousArchiveSha256": "f09ebae1de15f4958b76b3e5b0b68f267cb4b135dd05b8ffb868764db43e6de4",
+  "sourceAssetsReviewsReleaseAndPrivateDatabasesExcluded": true,
+  "policy": "Keep one current expanded testing/public pair and one verified rollback archive; retire older expanded build copies and their exact preview services. Original receipts remain historical.",
+  "authorizedByUser": true,
+  "cleanupNotYetPerformed": true,
+  "reuseExistingVerifiedRollback": false,
+  "existingRollbackArchiveSha256": null
+}

@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-10T03:51:32.417Z",
+  "baseSourceCommit": "d2386943ce6d2fbf077ee1a2aa40a55b8bc7f8e2",
+  "buildId": "2026.11.09-heavy-clutch-handling",
+  "protocol": 72,
+  "expectedTests": 2151,
+  "changedTestCodePaths": [
+    "tests/helpers/heavy-clutch-handling-flow.ts",
+    "tests/heavy-clutch-handling-slow-walk.test.ts"
+  ],
+  "originalHelperSha256": "f61983be4096df1d137790a607306e806e4b37e85c74cefd53d7a8c80225812b",
+  "correctedHelperBeforeFormattingSha256": "261099201843ac7c076233de6f8c3a1136523474eeb9202d46cb3c6410dcf992",
+  "priorSourceCI2149AllJobsStepsDecoded": true,
+  "priorPublicReview": {
+    "passed": true,
+    "cases": 106,
+    "invocations": 44,
+    "receipt": "reviews/heavy-clutch-handling-rounds-2026-11-09/native-public.json"
+  },
+  "priorTestingReview": {
+    "casesExecuted": 106,
+    "passingCases": 105,
+    "failedCases": 1,
+    "failed": "room-handling-open-floating",
+    "receipt": "reviews/heavy-clutch-handling-rounds-2026-11-09/native01-testing-partial.json"
+  },
+  "controlledReproduction": {
+    "actualDisplacement": 4.233333333333327,
+    "minimumRequired": 5,
+    "existingSlow": true,
+    "exactOriginalFailedDebuffSnapshotRetained": false
+  },
+  "focusedRegressionPass": 6,
+  "newSourceRegressionCases": 2,
+  "originalWaitAndDistanceRequirementRetained": true,
+  "bodyRadiusAndCurrentCGeometryUsed": true,
+  "positiveForwardWalkingObservedWhileFeedRetained": true,
+  "gameplayAndContentChanges": false,
+  "sourceBearingProgressRegenerated": false,
+  "naturalReplayOriginalExecutionProvenancePreserved": true,
+  "privateSQLiteUploaded": false,
+  "cleanupPerformed": false,
+  "goalContinues": true
+}

@@ -1,0 +1,79 @@
+✔ Early Watch grades, three ordinary phases and extra Brutal geometry execute through real Game casts (343.0993ms)
+✖ destroying a ticket stand cancels all its pending volleys and leaves the other aisle intact (33.4726ms)
+✖ Toad changes ground position only on its warned hop, lands with real damage and emits a broad-gap ring (7.051ms)
+✔ breaking the drain plug removes the tongue without suppressing warned hops (17.8412ms)
+✔ wind is bounded, absent during tells and dodge, and authority/prediction share collision-resolved displacement (7.9397ms)
+✔ phase changes cancel outgoing attack cues and every moving body respects all six arena layouts (416.9145ms)
+✔ four-frame defeats hold the last pose and hop lift follows combat time even after a world-clock offset (7.3486ms)
+✔ issued protocol-14 Practice migration preserves fixed-grade cards, progress and run identity while rejecting unknown revisions and forged scope (1.1761ms)
+✔ fifteen locale sources contain original names, complete help and three named phase labels (58.9108ms)
+✖ real two-client rooms replicate every Early Watch identity, warned geometry and break cancellation (2301.1265ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 7
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5912.4934
+
+✖ failing tests:
+
+test at tests\early-watch.test.ts:1:2846
+✖ destroying a ticket stand cancels all its pending volleys and leaves the other aisle intact (33.4726ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(!emissions.some(s=>s.x===stand.x&&s.y===stand.y))
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:54:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\early-watch.test.ts:1:3597
+✖ Toad changes ground position only on its warned hop, lands with real damage and emits a broad-gap ring (7.051ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(Math.abs(delta)>=gap/2-1e-6)
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:66:120)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\early-watch.test.ts:1:9103
+✖ real two-client rooms replicate every Early Watch identity, warned geometry and break cancellation (2301.1265ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 15
+  
+      at TestContext.<anonymous> (C:\Users\yigal\OneDrive\Documents\ChatGPT\OpenAI Multiplayer Game Contest (Bullet Hell)\tests\early-watch.test.ts:141:11)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 15,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

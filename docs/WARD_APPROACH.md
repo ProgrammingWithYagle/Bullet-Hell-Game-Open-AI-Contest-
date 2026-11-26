@@ -1,0 +1,15 @@
+# Ward Approach: a shared ordinary-enemy objective
+
+Ward Approach is a standalone Free Play practice scenario at Triage Yard. Select it in Free Play's final setup under Combat scenario. It supports current classes and multiplayer through the shared authority. It is not yet wired into the expanded Story chapter graph; the first-chapter blueprint is in FIRST_CHAPTER_GRAPH.md.
+
+Three groups of street dead appear at floor-bounded sites, with2.5-second warnings,3-second intervals after a cleared wave and a180-second scenario deadline. Solo counts are4/6/8; party scaling uses a capped square-root factor, producing at most16/24/32actors per group. The shared60actor cap remains. Sites are clear of cover/lava and at least170px from initially visible aim targets. If a site is occupied at release or the geometry changes, its spawn is cancelled and any later attempt gets a fresh warning. Unannounced relocation is not allowed.
+
+The coordinator uses actual Minions ordinary actors and their shared shot/area/slow/decoy/navigation paths. Each actor has its own health. Completion requires removal of every scheduled actor; expiry is failure, not a kill. Actors, portal ownership, constructs, fields and shots are cleared on scenario completion/failure. The existing humanoid infirmary-minion atlas is reused honestly. This does not deliver a new zombie/skeleton/wraith art roster.
+
+The objective is replicated separately from the legacy boss slot. Boss stepping, collisions, damage credit, phase cues and scoring are disabled for the scenario; an inert internal compatibility slot remains because the current shared Game/View schema always has a boss field. It has zero health, does not represent an active opponent, and does not determine completion. The HUD, aiming, guidance, ambience and results use the ordinary objective. No fake boss clear, stamp, campaign bank, progression reward or team ranking is issued.
+
+Scenario settings are explicit customized Free Play settings, mutually exclusive with boss/form selection. Story cannot inherit them. Only the lobby is a resumable scenario boundary; combat is not falsely advertised as resumable. Known issued1707fd9local saves/profiles/records migrate to the content revision; online authority remains exact. Different objective histories are not imported into the old fifteen-boss records.
+
+Focused checks use actual projectile damage from all seven base classes, legal spawn samples across all maps/difficulties, bounded parties up to50, occupied promises, expiry/timeouts/contact defeat, native warning drawing/aim/HUD models, setup/records and real two-peer replication. The seven-class shooting fixture uses invulnerability to isolate damage and completion. None of this establishes rendered, human, device, native-language, final encounter balance or full Story integration acceptance.
+
+Next: connect an actual chapter/node objective graph with its own receipts and choices; add deeper ordinary archetypes; implement Story learning/practice/proof/preparation and slower resources. The twelve-class roster and Bard/Summoner/Swordsman/Ranger/Alchemist kits remain future implementation.
